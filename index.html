@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مصلحة المستخدمين | مقر الولاية</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Tajawal,Tahoma,Arial,sans-serif;
+background:#eef3f8;
+color:#172033
+}
+
+.top{
+background:linear-gradient(135deg,#062b45,#075985,#0ea5e9);
+color:#fff;
+padding:18px 25px;
+box-shadow:0 5px 25px #0003;
+position:sticky;
+top:0;
+z-index:10
+}
+
+.dev{
+color:#ffe500;
+font-size:15px;
+font-weight:900;
+margin-bottom:6px
+}
+
+.top h1{
+margin:0;
+font-size:28px
+}
+
+.top p{
+margin:6px 0 0;
+opacity:.9
+}
+
+.wrap{
+max-width:1500px;
+margin:auto;
+padding:20px
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-bottom:18px
+}
+
+.stat{
+background:white;
+border-radius:17px;
+padding:18px;
+box-shadow:0 5px 20px #0001
+}
+
+.stat b{
+display:block;
+font-size:31px;
+color:#0369a1
+}
+
+.stat span{
+color:#64748b
+}
+
+.tools{
+background:#fff;
+border-radius:17px;
+padding:16px;
+box-shadow:0 5px 20px #0001;
+margin-bottom:20px
+}
+
+.search{
+width:100%;
+padding:16px;
+font-size:17px;
+border:2px solid #dbe5ef;
+border-radius:12px;
+outline:none
+}
+
+.search:focus{
+border-color:#0284c7
+}
+
+.btn{
+border:0;
+padding:12px 18px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer
+}
+
+.add{
+margin-top:12px;
+background:#0284c7;
+color:white
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+gap:18px
+}
+
+.employee{
+background:#fff;
+border-radius:19px;
+overflow:hidden;
+box-shadow:0 6px 22px #0001;
+transition:.2s
+}
+
+.employee:hover{
+transform:translateY(-4px);
+box-shadow:0 12px 30px #0002
+}
+
+.profile{
+display:flex;
+align-items:center;
+gap:14px;
+padding:18px;
+background:linear-gradient(135deg,#e0f2fe,#f8fafc)
+}
+
+.photo{
+width:82px;
+height:82px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid #fff;
+box-shadow:0 3px 12px #0002
+}
+
+.no-photo{
+width:82px;
+height:82px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:35px;
+background:#cbd5e1
+}
+
+.name{
+font-size:20px;
+font-weight:900
+}
+
+.number{
+color:#0284c7;
+font-weight:bold;
+margin-top:5px
+}
+
+.info{
+padding:15px
+}
+
+.line{
+display:flex;
+justify-content:space-between;
+gap:10px;
+padding:9px 0;
+border-bottom:1px solid #edf2f7
+}
+
+.label{
+color:#64748b
+}
+
+.value{
+font-weight:bold;
+text-align:left
+}
+
+.status{
+background:#dcfce7;
+color:#166534;
+padding:4px 9px;
+border-radius:20px;
+font-size:12px
+}
+
+.actions{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+padding:15px
+}
+
+.action{
+padding:11px;
+border-radius:10px;
+text-align:center;
+text-decoration:none;
+font-weight:bold;
+background:#e0f2fe;
+color:#075985
+}
+
+.absence{
+background:#fef3c7;
+color:#92400e
+}
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:#0009;
+z-index:100;
+align-items:center;
+justify-content:center;
+padding:15px
+}
+
+.modalbox{
+background:white;
+width:100%;
+max-width:900px;
+max-height:95vh;
+overflow:auto;
+border-radius:20px;
+padding:23px
+}
+
+.modalbox h2{
+margin-top:0;
+color:#075985
+}
+
+.form{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px
+}
+
+input,select,textarea{
+width:100%;
+padding:13px;
+border:1px solid #cbd5e1;
+border-radius:10px;
+font-size:15px;
+font-family:inherit
+}
+
+textarea{
+min-height:100px;
+resize:vertical
+}
+
+.full{
+grid-column:1/-1
+}
+
+.filebox{
+border:2px dashed #94a3b8;
+padding:15px;
+border-radius:12px;
+background:#f8fafc
+}
+
+.filebox label{
+display:block;
+font-weight:bold;
+margin-bottom:8px
+}
+
+.formbuttons{
+display:flex;
+gap:10px;
+margin-top:17px
+}
+
+.save{
+background:#0284c7;
+color:#fff;
+flex:1
+}
+
+.close{
+background:#e2e8f0
+}
+
+.empty{
+background:white;
+padding:40px;
+border-radius:18px;
+text-align:center;
+color:#64748b
+}
+
+@media(max-width:800px){
+.stats{grid-template-columns:1fr 1fr}
+.form{grid-template-columns:1fr}
+.full{grid-column:auto}
+}
+
+@media(max-width:500px){
+.wrap{padding:10px}
+.grid{grid-template-columns:1fr}
+.top h1{font-size:22px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+
+<div class="dev">تطوير براهيمي يوسف</div>
+
+<h1>مصلحة المستخدمين</h1>
+
+<p>نظام تسيير موظفي مقر الولاية</p>
+
+</header>
+
+<main class="wrap">
+
+<div class="stats">
+
+<div class="stat">
+<b>{{ total }}</b>
+<span>إجمالي الموظفين</span>
+</div>
+
+<div class="stat">
+<b>{{ active }}</b>
+<span>الموظفون النشطون</span>
+</div>
+
+<div class="stat">
+<b>{{ absent }}</b>
+<span>في عطلة</span>
+</div>
+
+<div class="stat">
+<b>📁</b>
+<span>الملفات الإدارية</span>
+</div>
+
+</div>
+
+
+<div class="tools">
+
+<input
+id="search"
+class="search"
+type="search"
+placeholder="🔎 ابحث برقم الموظف أو الاسم أو اللقب أو الرتبة أو المصلحة..."
+oninput="filterEmployees()"
+>
+
+<button
+class="btn add"
+onclick="openAdd()"
+>
+＋ إضافة موظف
+</button>
+
+</div>
+
+
+<div id="employeeGrid" class="grid">
+
+{% for e in employees %}
+
+<div
+class="employee"
+data-search="{{ e.employee_number }} {{ e.first_name }} {{ e.last_name }} {{ e.rank }} {{ e.department }} {{ e.position }} {{ e.workplace }}"
+>
+
+<div class="profile">
+
+{% if e.photo %}
+
+<img
+class="photo"
+src="/photos/{{ e.photo }}"
+>
+
+{% else %}
+
+<div class="no-photo">👤</div>
+
+{% endif %}
+
+<div>
+
+<div class="name">
+{{ e.first_name }} {{ e.last_name }}
+</div>
+
+<div class="number">
+رقم الموظف: {{ e.employee_number }}
+</div>
+
+</div>
+
+</div>
+
+
+<div class="info">
+
+<div class="line">
+<span class="label">الرتبة</span>
+<span class="value">{{ e.rank or '—' }}</span>
+</div>
+
+<div class="line">
+<span class="label">المصلحة</span>
+<span class="value">{{ e.department or 'مصلحة المستخدمين' }}</span>
+</div>
+
+<div class="line">
+<span class="label">المنصب</span>
+<span class="value">{{ e.position or '—' }}</span>
+</div>
+
+<div class="line">
+<span class="label">مكان التواجد</span>
+<span class="value">{{ e.workplace or 'مقر الولاية' }}</span>
+</div>
+
+<div class="line">
+<span class="label">الحالة</span>
+<span class="value status">{{ e.status }}</span>
+</div>
+
+</div>
+
+
+<div class="actions">
+
+<a
+class="action"
+href="/employee/{{ e.id }}"
+>
+👤 الملف الكامل
+</a>
+
+<a
+class="action absence"
+href="/absence/{{ e.id }}"
+target="_blank"
+>
+📄 رخصة غياب
+</a>
+
+</div>
+
+</div>
+
+{% else %}
+
+<div class="empty">
+<h2>لا يوجد موظفون بعد</h2>
+<p>اضغط «إضافة موظف» لإنشاء أول ملف.</p>
+</div>
+
+{% endfor %}
+
+</div>
+
+</main>
+
+
+<div id="modal" class="modal">
+
+<div class="modalbox">
+
+<h2>👤 إضافة موظف جديد</h2>
+
+<form
+method="POST"
+action="/add"
+enctype="multipart/form-data"
+>
+
+<div class="form">
+
+<input
+name="employee_number"
+placeholder="رقم الموظف *"
+required
+>
+
+<input
+name="first_name"
+placeholder="الاسم *"
+required
+>
+
+<input
+name="last_name"
+placeholder="اللقب *"
+required
+>
+
+<input
+name="rank"
+placeholder="الرتبة"
+>
+
+<input
+name="department"
+value="مصلحة المستخدمين"
+placeholder="المصلحة"
+>
+
+<input
+name="position"
+placeholder="المنصب / الوظيفة"
+>
+
+<input
+name="workplace"
+value="مقر الولاية"
+placeholder="مكان التواجد"
+>
+
+<select name="status">
+<option value="نشط">نشط</option>
+<option value="في عطلة">في عطلة</option>
+<option value="في إجازة مرضية">في إجازة مرضية</option>
+<option value="منتدب">منتدب</option>
+<option value="متقاعد">متقاعد</option>
+<option value="متوقف">متوقف</option>
+</select>
+
+<input
+name="phone"
+placeholder="رقم الهاتف"
+>
+
+<input
+name="email"
+placeholder="البريد الإلكتروني"
+>
+
+<input
+type="date"
+name="birth_date"
+>
+
+<input
+type="date"
+name="recruitment_date"
+>
+
+<input
+name="grade"
+placeholder="الدرجة"
+>
+
+<input
+name="category"
+placeholder="الصنف"
+>
+
+<input
+name="address"
+placeholder="العنوان"
+>
+
+<div class="filebox">
+
+<label>📷 صورة الموظف</label>
+
+<input
+type="file"
+name="photo"
+accept="image/*"
+>
+
+</div>
+
+<div class="filebox full">
+
+<label>📁 ملفات ووثائق الموظف</label>
+
+<input
+type="file"
+name="documents"
+multiple
+accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.webp"
+>
+
+</div>
+
+<textarea
+class="full"
+name="notes"
+placeholder="ملاحظات إدارية عن الموظف..."
+></textarea>
+
+</div>
+
+
+<div class="formbuttons">
+
+<button
+class="btn save"
+type="submit"
+>
+💾 حفظ الموظف
+</button>
+
+<button
+class="btn close"
+type="button"
+onclick="closeAdd()"
+>
+إلغاء
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+
+<script>
+
+function openAdd(){
+document.getElementById("modal").style.display="flex";
+}
+
+function closeAdd(){
+document.getElementById("modal").style.display="none";
+}
+
+window.addEventListener("click",function(e){
+let modal=document.getElementById("modal");
+
+if(e.target===modal){
+closeAdd();
+}
+});
+
+
+function filterEmployees(){
+
+let q=document
+.getElementById("search")
+.value
+.toLowerCase()
+.trim();
+
+let cards=document
+.querySelectorAll(".employee");
+
+cards.forEach(card=>{
+
+let text=card
+.getAttribute("data-search")
+.toLowerCase();
+
+card.style.display=
+text.includes(q) ? "" : "none";
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
