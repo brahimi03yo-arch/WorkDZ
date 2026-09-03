@@ -1,1383 +1,955 @@
-from flask import Flask, request, redirect, url_for, jsonify, send_from_directory, render_template_string
-import sqlite3
 import os
+import sqlite3
 import uuid
 from datetime import datetime
-from werkzeug.utils import secure_filename
 
-# ============================================================
-# مصلحة المستخدمين - مقر الولاية
-# تطوير براهيمي يوسف
-# ============================================================
+from flask import (
+    Flask,
+    request,
+    jsonify,
+    send_from_directory,
+    send_file
+)
+
+from werkzeug.utils import secure_filename
+from openpyxl import load_workbook, Workbook
+from docx import Document
+
+
+BASE = os.path.dirname(
+    os.path.abspath(__file__)
+)
+
+DB = os.path.join(
+    BASE,
+    "employees.db"
+)
+
+UPLOADS = os.path.join(
+    BASE,
+    "uploads"
+)
+
+OUTPUTS = os.path.join(
+    BASE,
+    "documents"
+)
+
+os.makedirs(UPLOADS, exist_ok=True)
+os.makedirs(OUTPUTS, exist_ok=True)
+
 
 app = Flask(__name__)
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-DB_FILE = os.path.join(BASE_DIR, "employees.db")
-UPLOAD_DIR = os.path.join(BASE_DIR, "uploads")
-PHOTO_DIR = os.path.join(UPLOAD_DIR, "photos")
-DOC_DIR = os.path.join(UPLOAD_DIR, "documents")
-
-os.makedirs(PHOTO_DIR, exist_ok=True)
-os.makedirs(DOC_DIR, exist_ok=True)
-
-app.config["MAX_CONTENT_LENGTH"] = 50 * 1024 * 1024
+app.config[
+    "MAX_CONTENT_LENGTH"
+] = 100 * 1024 * 1024
 
 
-IMAGE_EXTENSIONS = {
-    "jpg",
-    "jpeg",
-    "png",
-    "webp",
-    "gif"
-}
+def db():
 
-DOCUMENT_EXTENSIONS = {
-    "pdf",
-    "doc",
-    "docx",
-    "xls",
-    "xlsx",
-    "jpg",
-    "jpeg",
-    "png",
-    "webp"
-}
+    c = sqlite3.connect(DB)
+    c.row_factory = sqlite3.Row
+    return c
 
 
-# ============================================================
-# قاعدة البيانات
-# ============================================================
+def init_db():
 
-def get_db():
-    conn = sqlite3.connect(DB_FILE)
-    conn.row_factory = sqlite3.Row
-    return conn
+    c = db()
 
+    c.execute("""
+    CREATE TABLE IF NOT EXISTS employees(
 
-def init_database():
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
 
-    conn = get_db()
+        card_number TEXT,
+        first_name TEXT,
+        last_name TEXT,
+        rank TEXT,
 
-    conn.execute("""
-        CREATE TABLE IF NOT EXISTS employees (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+        installation_date TEXT,
 
-            employee_number TEXT UNIQUE NOT NULL,
+        workplace TEXT,
+        current_location TEXT,
 
-            first_name TEXT NOT NULL,
-            last_name TEXT NOT NULL,
+        birth_date TEXT,
+        phone TEXT,
+        email TEXT,
 
-            rank TEXT DEFAULT '',
-            department TEXT DEFAULT 'مصلحة المستخدمين',
-            position TEXT DEFAULT '',
+        note TEXT,
 
-            workplace TEXT DEFAULT 'مقر الولاية',
+        photo TEXT,
+        employee_file TEXT,
+        note_file TEXT,
 
-            status TEXT DEFAULT 'نشط',
-
-            phone TEXT DEFAULT '',
-            email TEXT DEFAULT '',
-
-            birth_date TEXT DEFAULT '',
-            recruitment_date TEXT DEFAULT '',
-
-            grade TEXT DEFAULT '',
-            category TEXT DEFAULT '',
-
-            address TEXT DEFAULT '',
-
-            notes TEXT DEFAULT '',
-
-            photo TEXT DEFAULT '',
-
-            created_at TEXT DEFAULT CURRENT_TIMESTAMP
-        )
+        created_at TEXT
+    )
     """)
 
-    conn.execute("""
-        CREATE TABLE IF NOT EXISTS employee_files (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-
-            employee_id INTEGER NOT NULL,
-
-            filename TEXT NOT NULL,
-            original_name TEXT NOT NULL,
-
-            uploaded_at TEXT DEFAULT CURRENT_TIMESTAMP,
-
-            FOREIGN KEY(employee_id)
-            REFERENCES employees(id)
-            ON DELETE CASCADE
-        )
-    """)
-
-    conn.execute("""
-        CREATE INDEX IF NOT EXISTS idx_employee_number
-        ON employees(employee_number)
-    """)
-
-    conn.execute("""
-        CREATE INDEX IF NOT EXISTS idx_employee_name
-        ON employees(first_name, last_name)
-    """)
-
-    conn.commit()
-    conn.close()
+    c.commit()
+    c.close()
 
 
-init_database()
+init_db()
 
-
-# ============================================================
-# أدوات
-# ============================================================
-
-def allowed_extension(filename, allowed):
-
-    if not filename or "." not in filename:
-        return False
-
-    ext = filename.rsplit(".", 1)[1].lower()
-
-    return ext in allowed
-
-
-def unique_filename(original):
-
-    safe = secure_filename(original)
-
-    ext = ""
-
-    if "." in safe:
-        ext = "." + safe.rsplit(".", 1)[1].lower()
-
-    return uuid.uuid4().hex + ext
-
-
-def clean(value):
-
-    if value is None:
-        return ""
-
-    return str(value).strip()
-
-
-# ============================================================
-# الصفحة الرئيسية
-# ============================================================
 
 @app.route("/")
 def index():
 
-    conn = get_db()
-
-    employees = conn.execute("""
-        SELECT *
-        FROM employees
-        ORDER BY id DESC
-    """).fetchall()
-
-    total = conn.execute("""
-        SELECT COUNT(*)
-        FROM employees
-    """).fetchone()[0]
-
-    active = conn.execute("""
-        SELECT COUNT(*)
-        FROM employees
-        WHERE status = 'نشط'
-    """).fetchone()[0]
-
-    absent = conn.execute("""
-        SELECT COUNT(*)
-        FROM employees
-        WHERE status IN (
-            'في عطلة',
-            'في إجازة مرضية'
-        )
-    """).fetchone()[0]
-
-    conn.close()
-
-    index_file = os.path.join(BASE_DIR, "index.html")
-
-    if not os.path.exists(index_file):
-
-        return """
-        <html lang="ar" dir="rtl">
-        <meta charset="UTF-8">
-        <body style="font-family:Tahoma;text-align:center;padding:60px">
-        <h1>تطوير براهيمي يوسف</h1>
-        <h2>ملف index.html غير موجود</h2>
-        <p>ضع index.html بجانب app.py</p>
-        </body>
-        </html>
-        """
-
-    with open(index_file, "r", encoding="utf-8") as f:
-        html = f.read()
-
-    return render_template_string(
-        html,
-        employees=employees,
-        total=total,
-        active=active,
-        absent=absent
+    return send_from_directory(
+        BASE,
+        "index.html"
     )
 
 
-# ============================================================
-# إضافة موظف
-# ============================================================
-
-@app.route("/add", methods=["POST"])
-def add_employee():
-
-    employee_number = clean(
-        request.form.get("employee_number")
-    )
-
-    first_name = clean(
-        request.form.get("first_name")
-    )
-
-    last_name = clean(
-        request.form.get("last_name")
-    )
-
-    if not employee_number:
-        return "رقم الموظف مطلوب", 400
-
-    if not first_name:
-        return "الاسم مطلوب", 400
-
-    if not last_name:
-        return "اللقب مطلوب", 400
-
-
-    rank = clean(request.form.get("rank"))
-
-    department = clean(
-        request.form.get("department")
-    ) or "مصلحة المستخدمين"
-
-    position = clean(
-        request.form.get("position")
-    )
-
-    workplace = clean(
-        request.form.get("workplace")
-    ) or "مقر الولاية"
-
-    status = clean(
-        request.form.get("status")
-    ) or "نشط"
-
-    phone = clean(
-        request.form.get("phone")
-    )
-
-    email = clean(
-        request.form.get("email")
-    )
-
-    birth_date = clean(
-        request.form.get("birth_date")
-    )
-
-    recruitment_date = clean(
-        request.form.get("recruitment_date")
-    )
-
-    grade = clean(
-        request.form.get("grade")
-    )
-
-    category = clean(
-        request.form.get("category")
-    )
-
-    address = clean(
-        request.form.get("address")
-    )
-
-    notes = clean(
-        request.form.get("notes")
-    )
-
-
-    photo_name = ""
-
-
-    # ========================================================
-    # صورة الموظف
-    # ========================================================
-
-    photo = request.files.get("photo")
-
-    if photo and photo.filename:
-
-        if not allowed_extension(
-            photo.filename,
-            IMAGE_EXTENSIONS
-        ):
-            return "صيغة صورة غير مسموحة", 400
-
-        photo_name = unique_filename(
-            photo.filename
-        )
-
-        photo.save(
-            os.path.join(
-                PHOTO_DIR,
-                photo_name
-            )
-        )
-
-
-    conn = get_db()
-
-    try:
-
-        cursor = conn.execute("""
-            INSERT INTO employees (
-
-                employee_number,
-
-                first_name,
-                last_name,
-
-                rank,
-                department,
-                position,
-
-                workplace,
-
-                status,
-
-                phone,
-                email,
-
-                birth_date,
-                recruitment_date,
-
-                grade,
-                category,
-
-                address,
-
-                notes,
-
-                photo,
-
-                created_at
-
-            )
-
-            VALUES (
-                ?, ?, ?,
-                ?, ?, ?,
-                ?,
-                ?,
-                ?, ?,
-                ?, ?,
-                ?, ?,
-                ?,
-                ?,
-                ?,
-                ?
-            )
-        """, (
-
-            employee_number,
-
-            first_name,
-            last_name,
-
-            rank,
-            department,
-            position,
-
-            workplace,
-
-            status,
-
-            phone,
-            email,
-
-            birth_date,
-            recruitment_date,
-
-            grade,
-            category,
-
-            address,
-
-            notes,
-
-            photo_name,
-
-            datetime.now().strftime(
-                "%Y-%m-%d %H:%M:%S"
-            )
-        ))
-
-        employee_id = cursor.lastrowid
-
-
-        # ====================================================
-        # ملفات الموظف
-        # ====================================================
-
-        files = request.files.getlist(
-            "documents"
-        )
-
-        for uploaded in files:
-
-            if not uploaded:
-                continue
-
-            if not uploaded.filename:
-                continue
-
-            if not allowed_extension(
-                uploaded.filename,
-                DOCUMENT_EXTENSIONS
-            ):
-                continue
-
-            stored_name = unique_filename(
-                uploaded.filename
-            )
-
-            uploaded.save(
-                os.path.join(
-                    DOC_DIR,
-                    stored_name
-                )
-            )
-
-            conn.execute("""
-                INSERT INTO employee_files (
-
-                    employee_id,
-                    filename,
-                    original_name,
-                    uploaded_at
-
-                )
-
-                VALUES (?, ?, ?, ?)
-            """, (
-
-                employee_id,
-                stored_name,
-                uploaded.filename,
-
-                datetime.now().strftime(
-                    "%Y-%m-%d %H:%M:%S"
-                )
-            ))
-
-
-        conn.commit()
-
-    except sqlite3.IntegrityError:
-
-        conn.rollback()
-
-        if photo_name:
-
-            path = os.path.join(
-                PHOTO_DIR,
-                photo_name
-            )
-
-            if os.path.exists(path):
-                os.remove(path)
-
-        conn.close()
-
-        return """
-        <html lang="ar" dir="rtl">
-        <meta charset="UTF-8">
-        <body style="font-family:Tahoma;text-align:center;padding:50px">
-        <h2>⚠️ رقم الموظف موجود مسبقًا</h2>
-        <a href="/">العودة</a>
-        </body>
-        </html>
-        """, 409
-
-    except Exception as e:
-
-        conn.rollback()
-        conn.close()
-
-        return f"""
-        <html lang="ar" dir="rtl">
-        <meta charset="UTF-8">
-        <body style="font-family:Tahoma;text-align:center;padding:50px">
-        <h2>حدث خطأ أثناء الحفظ</h2>
-        <p>{e}</p>
-        <a href="/">العودة</a>
-        </body>
-        </html>
-        """, 500
-
-
-    conn.close()
-
-    return redirect(url_for("index"))
-
-
-# ============================================================
-# صورة الموظف
-# ============================================================
-
-@app.route("/photos/<path:filename>")
-def photos(filename):
+@app.route("/uploads/<path:name>")
+def upload_file(name):
 
     return send_from_directory(
-        PHOTO_DIR,
+        UPLOADS,
+        name
+    )
+
+
+@app.route("/documents/<path:name>")
+def document_file(name):
+
+    return send_from_directory(
+        OUTPUTS,
+        name
+    )
+
+
+def save_upload(file):
+
+    if not file:
+        return ""
+
+    if not file.filename:
+        return ""
+
+    original = secure_filename(
+        file.filename
+    )
+
+    ext = ""
+
+    if "." in original:
+        ext = "." + original.rsplit(
+            ".",
+            1
+        )[1].lower()
+
+    filename = (
+        uuid.uuid4().hex
+        + ext
+    )
+
+    path = os.path.join(
+        UPLOADS,
         filename
     )
 
+    file.save(path)
 
-# ============================================================
-# ملفات الموظفين
-# ============================================================
+    return filename
 
-@app.route("/documents/<path:filename>")
-def documents(filename):
 
-    return send_from_directory(
-        DOC_DIR,
-        filename,
-        as_attachment=False
+def public_file(name):
+
+    if not name:
+        return ""
+
+    return "/uploads/" + name
+
+
+@app.get("/api/employees")
+def employees():
+
+    q = request.args.get(
+        "q",
+        ""
+    ).strip()
+
+    rank = request.args.get(
+        "rank",
+        ""
+    ).strip()
+
+    place = request.args.get(
+        "place",
+        ""
+    ).strip()
+
+    sort = request.args.get(
+        "sort",
+        ""
     )
 
-
-# ============================================================
-# ملف الموظف الكامل
-# ============================================================
-
-@app.route("/employee/<int:employee_id>")
-def employee(employee_id):
-
-    conn = get_db()
-
-    employee_data = conn.execute("""
-        SELECT *
-        FROM employees
-        WHERE id = ?
-    """, (
-        employee_id,
-    )).fetchone()
-
-    if not employee_data:
-
-        conn.close()
-
-        return "الموظف غير موجود", 404
-
-
-    files = conn.execute("""
-        SELECT *
-        FROM employee_files
-        WHERE employee_id = ?
-        ORDER BY id DESC
-    """, (
-        employee_id,
-    )).fetchall()
-
-    conn.close()
-
-
-    return render_template_string("""
-
-<!DOCTYPE html>
-
-<html lang="ar" dir="rtl">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1">
-
-<title>ملف الموظف</title>
-
-<style>
-
-*{
-box-sizing:border-box
-}
-
-body{
-margin:0;
-font-family:Tahoma,Arial;
-background:#eef3f8;
-color:#172033
-}
-
-header{
-background:linear-gradient(
-135deg,
-#062b45,
-#075985,
-#0ea5e9
-);
-color:white;
-padding:22px
-}
-
-.dev{
-color:#ffe500;
-font-weight:bold
-}
-
-.container{
-max-width:1100px;
-margin:auto;
-padding:20px
-}
-
-.box{
-background:white;
-border-radius:18px;
-padding:22px;
-margin-bottom:18px;
-box-shadow:0 5px 20px #0001
-}
-
-.profile{
-display:flex;
-gap:25px;
-align-items:center
-}
-
-.photo{
-width:150px;
-height:150px;
-object-fit:cover;
-border-radius:20px
-}
-
-.no-photo{
-width:150px;
-height:150px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#cbd5e1;
-border-radius:20px;
-font-size:60px
-}
-
-.info{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px
-}
-
-.item{
-padding:13px;
-background:#f8fafc;
-border-radius:10px
-}
-
-.label{
-display:block;
-font-size:13px;
-color:#64748b
-}
-
-.value{
-display:block;
-font-weight:bold;
-margin-top:5px
-}
-
-.button{
-display:inline-block;
-padding:12px 17px;
-border-radius:10px;
-background:#0284c7;
-color:white;
-text-decoration:none;
-font-weight:bold;
-margin:4px
-}
-
-.file{
-padding:12px;
-border-bottom:1px solid #e2e8f0
-}
-
-@media(max-width:650px){
-
-.profile{
-flex-direction:column;
-text-align:center
-}
-
-.info{
-grid-template-columns:1fr
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<header>
-
-<div class="dev">
-تطوير براهيمي يوسف
-</div>
-
-<h1>
-الملف الإداري للموظف
-</h1>
-
-</header>
-
-
-<main class="container">
-
-
-<div class="box">
-
-<div class="profile">
-
-{% if employee.photo %}
-
-<img
-class="photo"
-src="/photos/{{ employee.photo }}"
->
-
-{% else %}
-
-<div class="no-photo">
-👤
-</div>
-
-{% endif %}
-
-
-<div>
-
-<h2>
-{{ employee.first_name }}
-{{ employee.last_name }}
-</h2>
-
-<p>
-رقم الموظف:
-<strong>
-{{ employee.employee_number }}
-</strong>
-</p>
-
-<a
-class="button"
-href="/absence/{{ employee.id }}"
-target="_blank"
->
-📄 استخراج رخصة غياب
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="box">
-
-<h2>
-المعلومات الإدارية
-</h2>
-
-<div class="info">
-
-
-<div class="item">
-<span class="label">الاسم</span>
-<span class="value">{{ employee.first_name }}</span>
-</div>
-
-
-<div class="item">
-<span class="label">اللقب</span>
-<span class="value">{{ employee.last_name }}</span>
-</div>
-
-
-<div class="item">
-<span class="label">رقم الموظف</span>
-<span class="value">{{ employee.employee_number }}</span>
-</div>
-
-
-<div class="item">
-<span class="label">الرتبة</span>
-<span class="value">{{ employee.rank or "—" }}</span>
-</div>
-
-
-<div class="item">
-<span class="label">المصلحة</span>
-<span class="value">{{ employee.department }}</span>
-</div>
-
-
-<div class="item">
-<span class="label">المنصب</span>
-<span class="value">{{ employee.position or "—" }}</span>
-</div>
-
-
-<div class="item">
-<span class="label">مكان التواجد</span>
-<span class="value">{{ employee.workplace }}</span>
-</div>
-
-
-<div class="item">
-<span class="label">الحالة</span>
-<span class="value">{{ employee.status }}</span>
-</div>
-
-
-<div class="item">
-<span class="label">الدرجة</span>
-<span class="value">{{ employee.grade or "—" }}</span>
-</div>
-
-
-<div class="item">
-<span class="label">الصنف</span>
-<span class="value">{{ employee.category or "—" }}</span>
-</div>
-
-
-<div class="item">
-<span class="label">تاريخ التوظيف</span>
-<span class="value">{{ employee.recruitment_date or "—" }}</span>
-</div>
-
-
-<div class="item">
-<span class="label">تاريخ الميلاد</span>
-<span class="value">{{ employee.birth_date or "—" }}</span>
-</div>
-
-
-<div class="item">
-<span class="label">الهاتف</span>
-<span class="value">{{ employee.phone or "—" }}</span>
-</div>
-
-
-<div class="item">
-<span class="label">البريد الإلكتروني</span>
-<span class="value">{{ employee.email or "—" }}</span>
-</div>
-
-
-<div class="item">
-<span class="label">العنوان</span>
-<span class="value">{{ employee.address or "—" }}</span>
-</div>
-
-
-</div>
-
-</div>
-
-
-<div class="box">
-
-<h2>
-📁 وثائق الموظف
-</h2>
-
-{% if files %}
-
-{% for file in files %}
-
-<div class="file">
-
-📄
-
-<a
-href="/documents/{{ file.filename }}"
-target="_blank"
->
-{{ file.original_name }}
-</a>
-
-</div>
-
-{% endfor %}
-
-{% else %}
-
-<p>
-لا توجد وثائق مرفوعة.
-</p>
-
-{% endif %}
-
-</div>
-
-
-<div class="box">
-
-<h2>
-📝 الملاحظات
-</h2>
-
-<p>
-{{ employee.notes or "لا توجد ملاحظات." }}
-</p>
-
-</div>
-
-
-</main>
-
-</body>
-
-</html>
-
-""",
-        employee=employee_data,
-        files=files
-    )
-
-
-# ============================================================
-# رخصة الغياب
-# ============================================================
-
-@app.route("/absence/<int:employee_id>")
-def absence(employee_id):
-
-    conn = get_db()
-
-    employee_data = conn.execute("""
-        SELECT *
-        FROM employees
-        WHERE id = ?
-    """, (
-        employee_id,
-    )).fetchone()
-
-    conn.close()
-
-    if not employee_data:
-        return "الموظف غير موجود", 404
-
-
-    today = datetime.now().strftime(
-        "%Y-%m-%d"
-    )
-
-
-    return render_template_string("""
-
-<!DOCTYPE html>
-
-<html lang="ar" dir="rtl">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1">
-
-<title>رخصة غياب</title>
-
-<style>
-
-body{
-margin:0;
-background:#ddd;
-font-family:"Times New Roman",Tahoma,serif
-}
-
-.actions{
-text-align:center;
-padding:18px
-}
-
-button{
-padding:13px 25px;
-border:0;
-border-radius:9px;
-background:#075985;
-color:white;
-font-weight:bold;
-cursor:pointer;
-font-size:16px
-}
-
-.paper{
-width:210mm;
-min-height:297mm;
-margin:15px auto;
-background:white;
-padding:24mm 22mm;
-box-sizing:border-box
-}
-
-.header{
-text-align:center;
-line-height:2;
-font-size:17px
-}
-
-.title{
-text-align:center;
-font-size:27px;
-font-weight:bold;
-text-decoration:underline;
-margin-top:45px;
-margin-bottom:45px
-}
-
-.content{
-font-size:19px;
-line-height:2.4;
-text-align:justify
-}
-
-.signature{
-margin-top:70px;
-text-align:left;
-font-weight:bold
-}
-
-.footer{
-margin-top:100px;
-text-align:center;
-font-size:11px;
-color:#777;
-border-top:1px solid #aaa;
-padding-top:10px
-}
-
-@media print{
-
-body{
-background:white
-}
-
-.actions{
-display:none
-}
-
-.paper{
-margin:0;
-box-shadow:none
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="actions">
-
-<button onclick="window.print()">
-🖨️ طباعة / حفظ PDF
-</button>
-
-</div>
-
-
-<div class="paper">
-
-
-<div class="header">
-
-<strong>
-الجمهورية الجزائرية الديمقراطية الشعبية
-</strong>
-
-<strong>
-ولاية ........................................
-</strong>
-
-<strong>
-مقر الولاية
-</strong>
-
-<strong>
-مصلحة المستخدمين
-</strong>
-
-</div>
-
-
-<div class="title">
-رخصة غياب
-</div>
-
-
-<div class="content">
-
-<p>
-يشهد السيد/السيدة مسؤول مصلحة المستخدمين أن الموظف:
-</p>
-
-
-<p>
-
-الاسم:
-<strong>
-{{ employee.first_name }}
-</strong>
-
-<br>
-
-اللقب:
-<strong>
-{{ employee.last_name }}
-</strong>
-
-<br>
-
-رقم الموظف:
-<strong>
-{{ employee.employee_number }}
-</strong>
-
-<br>
-
-الرتبة:
-<strong>
-{{ employee.rank or "................................" }}
-</strong>
-
-<br>
-
-المصلحة:
-<strong>
-{{ employee.department }}
-</strong>
-
-<br>
-
-مكان العمل:
-<strong>
-{{ employee.workplace }}
-</strong>
-
-</p>
-
-
-<p>
-مرخص له بالغياب عن العمل:
-</p>
-
-
-<p style="text-align:center">
-
-من:
-....................................................
-
-<br>
-
-إلى:
-....................................................
-
-</p>
-
-
-<p>
-وذلك وفقًا للإجراءات والتنظيمات المعمول بها.
-</p>
-
-
-<p>
-
-حررت بتاريخ:
-
-<strong>
-{{ today }}
-</strong>
-
-</p>
-
-</div>
-
-
-<div class="signature">
-
-مسؤول مصلحة المستخدمين
-
-<br><br><br>
-
-الإمضاء والختم
-
-</div>
-
-
-<div class="footer">
-تطوير براهيمي يوسف
-</div>
-
-
-</div>
-
-</body>
-
-</html>
-
-""",
-        employee=employee_data,
-        today=today
-    )
-
-
-# ============================================================
-# البحث
-# ============================================================
-
-@app.route("/search")
-def search():
-
-    q = clean(
-        request.args.get("q")
-    )
-
-    conn = get_db()
+    c = db()
+
+    sql = """
+    SELECT *
+    FROM employees
+    WHERE 1=1
+    """
+
+    values = []
 
     if q:
 
-        pattern = "%" + q + "%"
+        sql += """
+        AND (
+            first_name LIKE ?
+            OR last_name LIKE ?
+            OR card_number LIKE ?
+            OR rank LIKE ?
+            OR workplace LIKE ?
+            OR current_location LIKE ?
+            OR phone LIKE ?
+        )
+        """
 
-        rows = conn.execute("""
-            SELECT *
-            FROM employees
+        x = "%" + q + "%"
 
-            WHERE employee_number LIKE ?
-               OR first_name LIKE ?
-               OR last_name LIKE ?
-               OR rank LIKE ?
-               OR department LIKE ?
-               OR position LIKE ?
-               OR workplace LIKE ?
+        values += [
+            x,x,x,x,x,x,x
+        ]
 
-            ORDER BY id DESC
-        """, (
-            pattern,
-            pattern,
-            pattern,
-            pattern,
-            pattern,
-            pattern,
-            pattern
-        )).fetchall()
+    if rank:
 
-    else:
+        sql += """
+        AND rank LIKE ?
+        """
 
-        rows = conn.execute("""
-            SELECT *
-            FROM employees
-            ORDER BY id DESC
-        """).fetchall()
+        values.append(
+            "%" + rank + "%"
+        )
 
+    if place:
 
-    conn.close()
+        sql += """
+        AND (
+            workplace LIKE ?
+            OR current_location LIKE ?
+        )
+        """
 
+        values += [
+            "%" + place + "%",
+            "%" + place + "%"
+        ]
 
-    result = []
+    order = {
+        "name":
+            "first_name COLLATE NOCASE",
 
-    for row in rows:
+        "rank":
+            "rank COLLATE NOCASE",
 
-        result.append({
-            "id": row["id"],
-            "employee_number": row["employee_number"],
-            "first_name": row["first_name"],
-            "last_name": row["last_name"],
-            "rank": row["rank"],
-            "department": row["department"],
-            "position": row["position"],
-            "workplace": row["workplace"],
-            "status": row["status"],
-            "photo": row["photo"]
-        })
+        "place":
+            "workplace COLLATE NOCASE"
+    }.get(
+        sort,
+        "created_at DESC"
+    )
 
+    sql += " ORDER BY " + order
 
-    return jsonify(result)
+    rows = c.execute(
+        sql,
+        values
+    ).fetchall()
 
-
-# ============================================================
-# الإحصائيات
-# ============================================================
-
-@app.route("/api/stats")
-def api_stats():
-
-    conn = get_db()
-
-    total = conn.execute(
+    total = c.execute(
         "SELECT COUNT(*) FROM employees"
     ).fetchone()[0]
 
-    active = conn.execute(
-        "SELECT COUNT(*) FROM employees WHERE status='نشط'"
-    ).fetchone()[0]
-
-    vacation = conn.execute("""
+    files = c.execute("""
         SELECT COUNT(*)
         FROM employees
-        WHERE status='في عطلة'
+        WHERE employee_file IS NOT NULL
+        AND employee_file != ''
     """).fetchone()[0]
 
-    sick = conn.execute("""
+    photos = c.execute("""
         SELECT COUNT(*)
         FROM employees
-        WHERE status='في إجازة مرضية'
+        WHERE photo IS NOT NULL
+        AND photo != ''
     """).fetchone()[0]
 
-    conn.close()
+    notes = c.execute("""
+        SELECT COUNT(*)
+        FROM employees
+        WHERE note IS NOT NULL
+        AND note != ''
+    """).fetchone()[0]
+
+    c.close()
+
+    result = []
+
+    for r in rows:
+
+        x = dict(r)
+
+        x["photo"] = public_file(
+            x["photo"]
+        )
+
+        x["employee_file"] = public_file(
+            x["employee_file"]
+        )
+
+        x["note_file"] = public_file(
+            x["note_file"]
+        )
+
+        result.append(x)
 
     return jsonify({
-        "total": total,
-        "active": active,
-        "vacation": vacation,
-        "sick": sick
+        "items": result,
+        "stats": {
+            "employees": total,
+            "files": files,
+            "photos": photos,
+            "notes": notes,
+            "date": datetime.now().strftime(
+                "%Y-%m-%d"
+            )
+        }
     })
 
 
-# ============================================================
-# تشغيل
-# ============================================================
+@app.post("/api/employees")
+def create_employee():
+
+    form = request.form
+
+    photo = save_upload(
+        request.files.get("photo")
+    )
+
+    employee_file = save_upload(
+        request.files.get("employee_file")
+    )
+
+    note_file = save_upload(
+        request.files.get("note_file")
+    )
+
+    c = db()
+
+    cur = c.execute("""
+    INSERT INTO employees(
+        card_number,
+        first_name,
+        last_name,
+        rank,
+        installation_date,
+        workplace,
+        current_location,
+        birth_date,
+        phone,
+        email,
+        note,
+        photo,
+        employee_file,
+        note_file,
+        created_at
+    )
+    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+    """, (
+
+        form.get("card_number",""),
+        form.get("first_name",""),
+        form.get("last_name",""),
+        form.get("rank",""),
+
+        form.get(
+            "installation_date",
+            ""
+        ),
+
+        form.get(
+            "workplace",
+            ""
+        ),
+
+        form.get(
+            "current_location",
+            ""
+        ),
+
+        form.get(
+            "birth_date",
+            ""
+        ),
+
+        form.get(
+            "phone",
+            ""
+        ),
+
+        form.get(
+            "email",
+            ""
+        ),
+
+        form.get(
+            "note",
+            ""
+        ),
+
+        photo,
+        employee_file,
+        note_file,
+
+        datetime.now().isoformat()
+    ))
+
+    c.commit()
+
+    employee_id = cur.lastrowid
+
+    c.close()
+
+    return jsonify({
+        "ok": True,
+        "id": employee_id
+    })
+
+
+@app.put("/api/employees/<int:employee_id>")
+def update_employee(employee_id):
+
+    c = db()
+
+    old = c.execute(
+        "SELECT * FROM employees WHERE id=?",
+        (employee_id,)
+    ).fetchone()
+
+    if not old:
+
+        c.close()
+
+        return jsonify({
+            "error":
+                "الموظف غير موجود"
+        }), 404
+
+    form = request.form
+
+    photo = old["photo"]
+
+    employee_file = old[
+        "employee_file"
+    ]
+
+    note_file = old[
+        "note_file"
+    ]
+
+    new_photo = request.files.get(
+        "photo"
+    )
+
+    new_employee_file = request.files.get(
+        "employee_file"
+    )
+
+    new_note_file = request.files.get(
+        "note_file"
+    )
+
+    if new_photo and new_photo.filename:
+        photo = save_upload(
+            new_photo
+        )
+
+    if new_employee_file and new_employee_file.filename:
+        employee_file = save_upload(
+            new_employee_file
+        )
+
+    if new_note_file and new_note_file.filename:
+        note_file = save_upload(
+            new_note_file
+        )
+
+    c.execute("""
+    UPDATE employees SET
+
+        card_number=?,
+        first_name=?,
+        last_name=?,
+        rank=?,
+        installation_date=?,
+        workplace=?,
+        current_location=?,
+        birth_date=?,
+        phone=?,
+        email=?,
+        note=?,
+        photo=?,
+        employee_file=?,
+        note_file=?
+
+    WHERE id=?
+    """, (
+
+        form.get("card_number",""),
+        form.get("first_name",""),
+        form.get("last_name",""),
+        form.get("rank",""),
+        form.get(
+            "installation_date",
+            ""
+        ),
+        form.get(
+            "workplace",
+            ""
+        ),
+        form.get(
+            "current_location",
+            ""
+        ),
+        form.get(
+            "birth_date",
+            ""
+        ),
+        form.get(
+            "phone",
+            ""
+        ),
+        form.get(
+            "email",
+            ""
+        ),
+        form.get(
+            "note",
+            ""
+        ),
+        photo,
+        employee_file,
+        note_file,
+
+        employee_id
+    ))
+
+    c.commit()
+    c.close()
+
+    return jsonify({
+        "ok": True
+    })
+
+
+@app.delete("/api/employees/<int:employee_id>")
+def delete_employee(employee_id):
+
+    c = db()
+
+    c.execute(
+        "DELETE FROM employees WHERE id=?",
+        (employee_id,)
+    )
+
+    c.commit()
+    c.close()
+
+    return jsonify({
+        "ok": True
+    })
+
+
+# ------------------------------------------------
+# قراءة Excel
+# ------------------------------------------------
+
+@app.post("/api/excel/read")
+def excel_read():
+
+    file = request.files.get(
+        "excel"
+    )
+
+    if not file or not file.filename:
+
+        return jsonify({
+            "error":
+                "لم يتم اختيار ملف Excel"
+        }), 400
+
+    filename = secure_filename(
+        file.filename
+    )
+
+    path = os.path.join(
+        UPLOADS,
+        uuid.uuid4().hex
+        + "_"
+        + filename
+    )
+
+    file.save(path)
+
+    sheet = request.form.get(
+        "sheet",
+        "SS"
+    )
+
+    wilaya = request.form.get(
+        "wilaya",
+        ""
+    )
+
+    try:
+
+        wb = load_workbook(
+            path,
+            read_only=True,
+            data_only=True
+        )
+
+        if sheet not in wb.sheetnames:
+
+            return jsonify({
+                "error":
+                    "صفحة "
+                    + sheet
+                    + " غير موجودة في الملف"
+            }), 400
+
+        ws = wb[sheet]
+
+        rows = 0
+
+        for row in ws.iter_rows(
+            values_only=True
+        ):
+
+            if any(
+                x is not None
+                for x in row
+            ):
+                rows += 1
+
+        wb.close()
+
+        return jsonify({
+            "ok": True,
+            "filename": filename,
+            "wilaya": wilaya,
+            "sheet": sheet,
+            "rows": rows
+        })
+
+    except Exception as e:
+
+        return jsonify({
+            "error":
+                "تعذر قراءة Excel: "
+                + str(e)
+        }), 400
+
+
+# ------------------------------------------------
+# إنشاء الوثائق
+# ------------------------------------------------
+
+def employee_data(employee_id):
+
+    c = db()
+
+    e = c.execute(
+        "SELECT * FROM employees WHERE id=?",
+        (employee_id,)
+    ).fetchone()
+
+    c.close()
+
+    return e
+
+
+@app.post("/api/documents/create")
+def create_document():
+
+    employee_id = request.form.get(
+        "employee_id"
+    )
+
+    doc_type = request.form.get(
+        "document_type",
+        "work"
+    )
+
+    wilaya = request.form.get(
+        "wilaya",
+        ""
+    )
+
+    sheet = request.form.get(
+        "sheet",
+        "SS"
+    )
+
+    page = request.form.get(
+        "page",
+        ""
+    )
+
+    e = employee_data(
+        employee_id
+    )
+
+    if not e:
+
+        return jsonify({
+            "error":
+                "الموظف غير موجود"
+        }), 404
+
+    if doc_type == "absence":
+
+        title = "شهادة غياب"
+
+        body = f"""
+تشهد المصلحة بأن السيد/السيدة:
+
+{e["first_name"]} {e["last_name"]}
+
+الرتبة: {e["rank"] or "—"}
+رقم البطاقة: {e["card_number"] or "—"}
+مكان العمل: {e["workplace"] or "—"}
+
+قد تم إعداد هذه الوثيقة بناءً على المعلومات
+المسجلة في ملف الموظف.
+
+الولاية: {wilaya or "—"}
+المصدر: {sheet}
+الصفحة/السطر: {page or "—"}
+"""
+
+    elif doc_type == "attendance":
+
+        title = "وثيقة حضور"
+
+        body = f"""
+تشهد المصلحة بأن:
+
+{e["first_name"]} {e["last_name"]}
+
+الرتبة: {e["rank"] or "—"}
+مكان العمل: {e["workplace"] or "—"}
+
+مسجل ضمن موظفي المصلحة.
+
+الولاية: {wilaya or "—"}
+المصدر: {sheet}
+الصفحة/السطر: {page or "—"}
+"""
+
+    else:
+
+        title = "شهادة عمل"
+
+        body = f"""
+تشهد المصلحة بأن السيد/السيدة:
+
+{e["first_name"]} {e["last_name"]}
+
+الرتبة: {e["rank"] or "—"}
+
+يعمل/تعمل بالمصلحة في:
+
+{e["workplace"] or "—"}
+
+وذلك حسب المعلومات الإدارية المسجلة.
+
+الولاية: {wilaya or "—"}
+المصدر: {sheet}
+الصفحة/السطر: {page or "—"}
+"""
+
+    doc = Document()
+
+    section = doc.sections[0]
+
+    section.top_margin = 700000
+    section.bottom_margin = 700000
+    section.left_margin = 900000
+    section.right_margin = 900000
+
+    p = doc.add_paragraph()
+
+    p.alignment = 1
+
+    run = p.add_run(
+        title
+    )
+
+    run.bold = True
+    run.font.size = None
+
+    doc.add_paragraph("")
+
+    for line in body.strip().split("\n"):
+
+        p = doc.add_paragraph()
+
+        p.alignment = 2
+
+        p.add_run(
+            line
+        )
+
+    doc.add_paragraph("")
+
+    p = doc.add_paragraph()
+
+    p.alignment = 2
+
+    p.add_run(
+        "حرر بتاريخ: "
+        + datetime.now().strftime(
+            "%Y/%m/%d"
+        )
+    )
+
+    filename = (
+        uuid.uuid4().hex
+        + ".docx"
+    )
+
+    path = os.path.join(
+        OUTPUTS,
+        filename
+    )
+
+    doc.save(path)
+
+    return jsonify({
+        "ok": True,
+        "file":
+            "/documents/"
+            + filename
+    })
+
+
+# ------------------------------------------------
+# استخراج قائمة الموظفين Excel
+# ------------------------------------------------
+
+@app.get("/api/employees/export")
+def export_employees():
+
+    c = db()
+
+    rows = c.execute("""
+    SELECT
+        card_number,
+        first_name,
+        last_name,
+        rank,
+        installation_date,
+        workplace,
+        current_location,
+        birth_date,
+        phone,
+        email,
+        note
+    FROM employees
+    ORDER BY last_name
+    """).fetchall()
+
+    c.close()
+
+    wb = Workbook()
+
+    ws = wb.active
+
+    ws.title = "SS"
+
+    headers = [
+        "رقم البطاقة",
+        "الاسم",
+        "اللقب",
+        "الرتبة",
+        "تاريخ التنصيب",
+        "مكان العمل",
+        "التواجد الحالي",
+        "تاريخ الميلاد",
+        "الهاتف",
+        "البريد",
+        "ملاحظة"
+    ]
+
+    ws.append(headers)
+
+    for r in rows:
+        ws.append([
+            r[x] or ""
+            for x in [
+                "card_number",
+                "first_name",
+                "last_name",
+                "rank",
+                "installation_date",
+                "workplace",
+                "current_location",
+                "birth_date",
+                "phone",
+                "email",
+                "note"
+            ]
+        ])
+
+    filename = (
+        "قائمة_الموظفين_"
+        + datetime.now().strftime(
+            "%Y%m%d_%H%M%S"
+        )
+        + ".xlsx"
+    )
+
+    path = os.path.join(
+        OUTPUTS,
+        filename
+    )
+
+    wb.save(path)
+
+    return send_file(
+        path,
+        as_attachment=True,
+        download_name=filename
+    )
+
+
+@app.get("/api/health")
+def health():
+
+    return jsonify({
+        "status":
+            "online",
+        "database":
+            True,
+        "excel":
+            True,
+        "documents":
+            True
+    })
+
 
 if __name__ == "__main__":
 
     port = int(
-        os.environ.get(
+        os.getenv(
             "PORT",
-            5000
+            "5000"
         )
     )
 
