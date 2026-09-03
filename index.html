@@ -3,316 +3,215 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>مصلحة المستخدمين | مقر الولاية</title>
+<title>نظام تسيير الموظفين</title>
 
 <style>
 *{box-sizing:border-box}
-
+:root{
+ --bg:#eef3f8;
+ --card:#fff;
+ --dark:#10243a;
+ --dark2:#173a5b;
+ --blue:#1683d8;
+ --blue2:#45b4f4;
+ --gold:#dcae4b;
+ --green:#1d9b67;
+ --red:#d94c58;
+ --text:#172536;
+ --muted:#718096;
+ --border:#dce5ee;
+ --shadow:0 15px 45px #16324b18
+}
 body{
-margin:0;
-font-family:Tajawal,Tahoma,Arial,sans-serif;
-background:#eef3f8;
-color:#172033
+ margin:0;
+ font-family:Tahoma,Arial,sans-serif;
+ background:
+ radial-gradient(circle at 10% 0%,#dff3ff,transparent 30%),
+ var(--bg);
+ color:var(--text)
 }
-
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
 .top{
-background:linear-gradient(135deg,#062b45,#075985,#0ea5e9);
-color:#fff;
-padding:18px 25px;
-box-shadow:0 5px 25px #0003;
-position:sticky;
-top:0;
-z-index:10
+ background:linear-gradient(120deg,#0d2236,#17547e,#102b43);
+ color:white;
+ padding:18px 4%;
+ box-shadow:0 8px 30px #10243a33;
+ position:sticky;top:0;z-index:20
 }
-
-.dev{
-color:#ffe500;
-font-size:15px;
-font-weight:900;
-margin-bottom:6px
+.topin{
+ max-width:1500px;margin:auto;
+ display:flex;align-items:center;gap:15px
 }
-
-.top h1{
-margin:0;
-font-size:28px
+.brand{font-size:25px;font-weight:900}
+.brand small{
+ display:block;font-size:10px;color:#a9dfff;margin-top:4px
 }
-
-.top p{
-margin:6px 0 0;
-opacity:.9
+.nav{
+ margin-right:auto;display:flex;gap:7px;flex-wrap:wrap
 }
-
-.wrap{
-max-width:1500px;
-margin:auto;
-padding:20px
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
-margin-bottom:18px
-}
-
-.stat{
-background:white;
-border-radius:17px;
-padding:18px;
-box-shadow:0 5px 20px #0001
-}
-
-.stat b{
-display:block;
-font-size:31px;
-color:#0369a1
-}
-
-.stat span{
-color:#64748b
-}
-
-.tools{
-background:#fff;
-border-radius:17px;
-padding:16px;
-box-shadow:0 5px 20px #0001;
-margin-bottom:20px
-}
-
-.search{
-width:100%;
-padding:16px;
-font-size:17px;
-border:2px solid #dbe5ef;
-border-radius:12px;
-outline:none
-}
-
-.search:focus{
-border-color:#0284c7
-}
-
 .btn{
-border:0;
-padding:12px 18px;
-border-radius:10px;
-font-weight:bold;
-cursor:pointer
+ border:0;border-radius:12px;padding:11px 16px;
+ background:#edf4fa;color:#183149;font-weight:bold
 }
-
-.add{
-margin-top:12px;
-background:#0284c7;
-color:white
+.btn.blue{
+ background:linear-gradient(135deg,var(--blue),var(--blue2));
+ color:#fff
 }
-
+.btn.green{background:var(--green);color:#fff}
+.btn.red{background:var(--red);color:#fff}
+.btn.dark{background:#ffffff16;color:#fff;border:1px solid #ffffff22}
+.container{max-width:1500px;margin:auto;padding:25px 3% 60px}
+.welcome{
+ min-height:350px;border-radius:30px;
+ background:
+ linear-gradient(90deg,#0a2035dd,#164c70aa,#071725dd),
+ url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2200&q=90")
+ center/cover;
+ padding:60px;
+ color:#fff;
+ display:flex;align-items:center;
+ box-shadow:var(--shadow)
+}
+.welcome h1{font-size:clamp(35px,6vw,68px);margin:0 0 15px}
+.welcome p{font-size:18px;line-height:2;max-width:800px;color:#e9f6ff}
+.searchbox{
+ margin-top:25px;background:#fff;padding:7px;border-radius:17px;
+ max-width:900px;display:flex
+}
+.searchbox input{
+ flex:1;border:0;outline:0;padding:14px;color:#222;min-width:0
+}
+.stats{
+ display:grid;grid-template-columns:repeat(5,1fr);
+ gap:13px;margin-top:20px
+}
+.stat{
+ background:var(--card);border:1px solid var(--border);
+ border-radius:19px;padding:20px;box-shadow:var(--shadow)
+}
+.stat span{color:var(--muted);font-size:13px}
+.stat b{display:block;font-size:30px;color:var(--dark);margin-top:6px}
+.panel{
+ background:#fff;border:1px solid var(--border);
+ border-radius:22px;padding:18px;margin-top:20px;
+ box-shadow:var(--shadow)
+}
+.filters{display:flex;gap:9px;flex-wrap:wrap}
+.filters input,.filters select{
+ padding:12px;border:1px solid var(--border);
+ border-radius:11px;background:#fff;color:#222
+}
+.sectionTitle{
+ display:flex;align-items:center;justify-content:space-between;
+ margin:30px 0 15px
+}
+.sectionTitle h2{margin:0}
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
-gap:18px
+ display:grid;grid-template-columns:repeat(4,1fr);gap:15px
 }
-
 .employee{
-background:#fff;
-border-radius:19px;
-overflow:hidden;
-box-shadow:0 6px 22px #0001;
-transition:.2s
+ background:#fff;border:1px solid var(--border);
+ border-radius:22px;overflow:hidden;
+ box-shadow:var(--shadow);transition:.25s
 }
-
-.employee:hover{
-transform:translateY(-4px);
-box-shadow:0 12px 30px #0002
+.employee:hover{transform:translateY(-5px)}
+.empTop{
+ height:85px;background:linear-gradient(120deg,#12314b,#2394d5)
 }
-
-.profile{
-display:flex;
-align-items:center;
-gap:14px;
-padding:18px;
-background:linear-gradient(135deg,#e0f2fe,#f8fafc)
+.empBody{padding:0 16px 18px;position:relative}
+.avatar{
+ width:100px;height:100px;border-radius:50%;
+ border:5px solid #fff;object-fit:cover;
+ margin-top:-50px;background:#dfeaf2
 }
-
-.photo{
-width:82px;
-height:82px;
-border-radius:50%;
-object-fit:cover;
-border:4px solid #fff;
-box-shadow:0 3px 12px #0002
-}
-
-.no-photo{
-width:82px;
-height:82px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:35px;
-background:#cbd5e1
-}
-
-.name{
-font-size:20px;
-font-weight:900
-}
-
-.number{
-color:#0284c7;
-font-weight:bold;
-margin-top:5px
-}
-
-.info{
-padding:15px
-}
-
-.line{
-display:flex;
-justify-content:space-between;
-gap:10px;
-padding:9px 0;
-border-bottom:1px solid #edf2f7
-}
-
-.label{
-color:#64748b
-}
-
-.value{
-font-weight:bold;
-text-align:left
-}
-
-.status{
-background:#dcfce7;
-color:#166534;
-padding:4px 9px;
-border-radius:20px;
-font-size:12px
-}
-
-.actions{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:8px;
-padding:15px
-}
-
-.action{
-padding:11px;
-border-radius:10px;
-text-align:center;
-text-decoration:none;
-font-weight:bold;
-background:#e0f2fe;
-color:#075985
-}
-
-.absence{
-background:#fef3c7;
-color:#92400e
-}
-
-.modal{
-display:none;
-position:fixed;
-inset:0;
-background:#0009;
-z-index:100;
-align-items:center;
-justify-content:center;
-padding:15px
-}
-
-.modalbox{
-background:white;
-width:100%;
-max-width:900px;
-max-height:95vh;
-overflow:auto;
-border-radius:20px;
-padding:23px
-}
-
-.modalbox h2{
-margin-top:0;
-color:#075985
-}
-
-.form{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px
-}
-
-input,select,textarea{
-width:100%;
-padding:13px;
-border:1px solid #cbd5e1;
-border-radius:10px;
-font-size:15px;
-font-family:inherit
-}
-
-textarea{
-min-height:100px;
-resize:vertical
-}
-
-.full{
-grid-column:1/-1
-}
-
-.filebox{
-border:2px dashed #94a3b8;
-padding:15px;
-border-radius:12px;
-background:#f8fafc
-}
-
-.filebox label{
-display:block;
-font-weight:bold;
-margin-bottom:8px
-}
-
-.formbuttons{
-display:flex;
-gap:10px;
-margin-top:17px
-}
-
-.save{
-background:#0284c7;
-color:#fff;
-flex:1
-}
-
-.close{
-background:#e2e8f0
-}
-
+.empName{font-size:20px;font-weight:900;margin-top:10px}
+.empRank{color:var(--blue);font-weight:bold;margin-top:5px}
+.meta{color:var(--muted);font-size:13px;line-height:1.9;margin-top:10px}
+.empActions{display:flex;gap:6px;flex-wrap:wrap;margin-top:13px}
+.empActions button{padding:8px 10px;font-size:12px}
 .empty{
-background:white;
-padding:40px;
-border-radius:18px;
-text-align:center;
-color:#64748b
+ text-align:center;padding:60px;color:var(--muted);
+ grid-column:1/-1
 }
-
-@media(max-width:800px){
-.stats{grid-template-columns:1fr 1fr}
-.form{grid-template-columns:1fr}
-.full{grid-column:auto}
+.modal{
+ position:fixed;inset:0;background:#061421aa;
+ z-index:100;display:none;align-items:center;
+ justify-content:center;padding:15px
 }
-
-@media(max-width:500px){
-.wrap{padding:10px}
-.grid{grid-template-columns:1fr}
-.top h1{font-size:22px}
+.modal.open{display:flex}
+.box{
+ width:min(1150px,100%);max-height:94vh;overflow:auto;
+ background:#fff;border-radius:25px;padding:25px;
+ box-shadow:0 30px 100px #0005
+}
+.close{
+ float:left;width:38px;height:38px;border:0;
+ border-radius:50%;background:#edf2f6;font-size:22px
+}
+.formgrid{
+ display:grid;grid-template-columns:repeat(2,1fr);gap:12px
+}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field input,.field select,.field textarea{
+ padding:12px;border:1px solid var(--border);
+ border-radius:11px;outline:0
+}
+.photoBox{
+ border:2px dashed #bdd0df;border-radius:15px;
+ padding:20px;text-align:center
+}
+.profile{
+ display:grid;grid-template-columns:270px 1fr;gap:25px
+}
+.profilePhoto{
+ width:250px;height:300px;object-fit:cover;
+ border-radius:20px
+}
+.info{
+ display:grid;grid-template-columns:repeat(2,1fr);gap:10px
+}
+.infoItem{
+ background:#f4f7fa;border:1px solid var(--border);
+ padding:13px;border-radius:12px
+}
+.infoItem b{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}
+.actions{
+ display:flex;gap:8px;flex-wrap:wrap;margin-top:18px
+}
+.file{
+ background:#f7f9fb;border:1px solid var(--border);
+ border-radius:13px;padding:13px;margin-top:8px;
+ display:flex;align-items:center;gap:10px
+}
+.file a{margin-right:auto}
+.notice{
+ padding:13px;border-radius:12px;
+ background:#fff8df;border:1px solid #efd78b;
+ margin-top:15px
+}
+footer{
+ text-align:center;padding:35px;color:#7b8996
+}
+@media(max-width:1100px){
+ .grid{grid-template-columns:repeat(3,1fr)}
+ .stats{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:700px){
+ .topin{align-items:flex-start}
+ .nav{display:none}
+ .welcome{padding:35px 22px;min-height:430px}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .stats{grid-template-columns:repeat(2,1fr)}
+ .formgrid,.profile{grid-template-columns:1fr}
+ .field.full{grid-column:auto}
+ .info{grid-template-columns:1fr}
+ .profilePhoto{width:100%;height:330px}
+}
+@media(max-width:480px){
+ .grid{grid-template-columns:1fr}
+ .stats{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -320,366 +219,756 @@ color:#64748b
 <body>
 
 <header class="top">
+<div class="topin">
+<div class="brand">
+نظام الموظفين
+<small>منصة تسيير ومتابعة الملفات الإدارية</small>
+</div>
 
-<div class="dev">تطوير براهيمي يوسف</div>
-
-<h1>مصلحة المستخدمين</h1>
-
-<p>نظام تسيير موظفي مقر الولاية</p>
-
+<div class="nav">
+<button class="btn dark" onclick="newEmployee()">＋ موظف</button>
+<button class="btn dark" onclick="openModal('excelModal')">📊 Excel</button>
+<button class="btn dark" onclick="openModal('documentModal')">📄 وثيقة</button>
+<button class="btn dark" onclick="loadEmployees()">↻ تحديث</button>
+</div>
+</div>
 </header>
 
-<main class="wrap">
+<main class="container">
 
-<div class="stats">
-
-<div class="stat">
-<b>{{ total }}</b>
-<span>إجمالي الموظفين</span>
-</div>
-
-<div class="stat">
-<b>{{ active }}</b>
-<span>الموظفون النشطون</span>
-</div>
-
-<div class="stat">
-<b>{{ absent }}</b>
-<span>في عطلة</span>
-</div>
-
-<div class="stat">
-<b>📁</b>
-<span>الملفات الإدارية</span>
-</div>
-
-</div>
-
-
-<div class="tools">
-
-<input
-id="search"
-class="search"
-type="search"
-placeholder="🔎 ابحث برقم الموظف أو الاسم أو اللقب أو الرتبة أو المصلحة..."
-oninput="filterEmployees()"
->
-
-<button
-class="btn add"
-onclick="openAdd()"
->
-＋ إضافة موظف
-</button>
-
-</div>
-
-
-<div id="employeeGrid" class="grid">
-
-{% for e in employees %}
-
-<div
-class="employee"
-data-search="{{ e.employee_number }} {{ e.first_name }} {{ e.last_name }} {{ e.rank }} {{ e.department }} {{ e.position }} {{ e.workplace }}"
->
-
-<div class="profile">
-
-{% if e.photo %}
-
-<img
-class="photo"
-src="/photos/{{ e.photo }}"
->
-
-{% else %}
-
-<div class="no-photo">👤</div>
-
-{% endif %}
-
+<section class="welcome">
 <div>
+<h1>مصلحة الموظفين</h1>
+<p>
+واجهة حديثة لإدارة معلومات الموظفين وملفاتهم،
+مع الوصول السريع للبيانات والوثائق والصور،
+واستخراج الوثائق الإدارية من ملفات Excel.
+</p>
 
-<div class="name">
-{{ e.first_name }} {{ e.last_name }}
+<div class="searchbox">
+<input id="search"
+placeholder="ابحث بالاسم، اللقب، رقم البطاقة، الرتبة أو مكان العمل..."
+oninput="loadEmployees()">
+<button class="btn blue" onclick="loadEmployees()">بحث</button>
+</div>
+</div>
+</section>
+
+<section class="stats">
+<div class="stat"><span>إجمالي الموظفين</span><b id="sAll">0</b></div>
+<div class="stat"><span>الملفات المرفوعة</span><b id="sFiles">0</b></div>
+<div class="stat"><span>الصور</span><b id="sPhotos">0</b></div>
+<div class="stat"><span>الملاحظات</span><b id="sNotes">0</b></div>
+<div class="stat"><span>آخر تحديث</span><b id="sDate">—</b></div>
+</section>
+
+<section class="panel">
+<div class="filters">
+<input id="filterRank" placeholder="الرتبة" oninput="loadEmployees()">
+<input id="filterPlace" placeholder="مكان العمل / التواجد" oninput="loadEmployees()">
+<select id="filterSort" onchange="loadEmployees()">
+<option value="">الترتيب</option>
+<option value="name">الاسم</option>
+<option value="rank">الرتبة</option>
+<option value="place">مكان العمل</option>
+</select>
+
+<button class="btn blue" onclick="newEmployee()">＋ إدخال موظف</button>
+<button class="btn" onclick="exportEmployees()">⬇ استخراج القائمة</button>
+</div>
+</section>
+
+<section>
+<div class="sectionTitle">
+<h2>👥 الموظفون</h2>
+<span id="count" style="color:#718096"></span>
 </div>
 
-<div class="number">
-رقم الموظف: {{ e.employee_number }}
+<div class="grid" id="employees">
+<div class="empty">جاري تحميل البيانات...</div>
 </div>
-
-</div>
-
-</div>
-
-
-<div class="info">
-
-<div class="line">
-<span class="label">الرتبة</span>
-<span class="value">{{ e.rank or '—' }}</span>
-</div>
-
-<div class="line">
-<span class="label">المصلحة</span>
-<span class="value">{{ e.department or 'مصلحة المستخدمين' }}</span>
-</div>
-
-<div class="line">
-<span class="label">المنصب</span>
-<span class="value">{{ e.position or '—' }}</span>
-</div>
-
-<div class="line">
-<span class="label">مكان التواجد</span>
-<span class="value">{{ e.workplace or 'مقر الولاية' }}</span>
-</div>
-
-<div class="line">
-<span class="label">الحالة</span>
-<span class="value status">{{ e.status }}</span>
-</div>
-
-</div>
-
-
-<div class="actions">
-
-<a
-class="action"
-href="/employee/{{ e.id }}"
->
-👤 الملف الكامل
-</a>
-
-<a
-class="action absence"
-href="/absence/{{ e.id }}"
-target="_blank"
->
-📄 رخصة غياب
-</a>
-
-</div>
-
-</div>
-
-{% else %}
-
-<div class="empty">
-<h2>لا يوجد موظفون بعد</h2>
-<p>اضغط «إضافة موظف» لإنشاء أول ملف.</p>
-</div>
-
-{% endfor %}
-
-</div>
+</section>
 
 </main>
 
+<footer>
+نظام تسيير الموظفين — تطوير يوسف براهيمي
+</footer>
 
-<div id="modal" class="modal">
 
-<div class="modalbox">
+<!-- الموظف -->
+<div class="modal" id="employeeModal">
+<div class="box">
+<button class="close" onclick="closeModal('employeeModal')">×</button>
+<h2 id="formTitle">إضافة موظف</h2>
 
-<h2>👤 إضافة موظف جديد</h2>
+<form id="employeeForm">
 
-<form
-method="POST"
-action="/add"
-enctype="multipart/form-data"
->
+<input type="hidden" name="id">
 
-<div class="form">
+<div class="formgrid">
 
-<input
-name="employee_number"
-placeholder="رقم الموظف *"
-required
->
+<label class="field">
+رقم بطاقة الموظف
+<input name="card_number">
+</label>
 
-<input
-name="first_name"
-placeholder="الاسم *"
-required
->
+<label class="field">
+الاسم
+<input name="first_name" required>
+</label>
 
-<input
-name="last_name"
-placeholder="اللقب *"
-required
->
+<label class="field">
+اللقب
+<input name="last_name" required>
+</label>
 
-<input
-name="rank"
-placeholder="الرتبة"
->
+<label class="field">
+الرتبة
+<input name="rank">
+</label>
 
-<input
-name="department"
-value="مصلحة المستخدمين"
-placeholder="المصلحة"
->
+<label class="field">
+تاريخ التنصيب
+<input name="installation_date" type="date">
+</label>
 
-<input
-name="position"
-placeholder="المنصب / الوظيفة"
->
+<label class="field">
+مكان العمل
+<input name="workplace">
+</label>
 
-<input
-name="workplace"
-value="مقر الولاية"
-placeholder="مكان التواجد"
->
+<label class="field">
+مكان التواجد الحالي
+<input name="current_location">
+</label>
 
-<select name="status">
-<option value="نشط">نشط</option>
-<option value="في عطلة">في عطلة</option>
-<option value="في إجازة مرضية">في إجازة مرضية</option>
-<option value="منتدب">منتدب</option>
-<option value="متقاعد">متقاعد</option>
-<option value="متوقف">متوقف</option>
+<label class="field">
+تاريخ الميلاد
+<input name="birth_date" type="date">
+</label>
+
+<label class="field">
+رقم الهاتف
+<input name="phone" type="tel">
+</label>
+
+<label class="field">
+البريد الإلكتروني
+<input name="email" type="email">
+</label>
+
+<label class="field full">
+ملاحظة
+<textarea name="note" rows="4"></textarea>
+</label>
+
+<div class="photoBox">
+الصورة الشخصية
+<br><br>
+<input name="photo" type="file" accept="image/*">
+</div>
+
+<div class="photoBox">
+ملف الموظف
+<br><br>
+<input name="employee_file" type="file">
+</div>
+
+<div class="photoBox">
+ملف ملاحظة
+<br><br>
+<input name="note_file" type="file">
+</div>
+
+</div>
+
+<br>
+<button class="btn blue" style="width:100%">💾 حفظ المعلومات</button>
+</form>
+</div>
+</div>
+
+
+<!-- التفاصيل -->
+<div class="modal" id="profileModal">
+<div class="box">
+<button class="close" onclick="closeModal('profileModal')">×</button>
+<div id="profileContent"></div>
+</div>
+</div>
+
+
+<!-- Excel -->
+<div class="modal" id="excelModal">
+<div class="box">
+<button class="close" onclick="closeModal('excelModal')">×</button>
+
+<h2>📊 مصدر بيانات Excel</h2>
+
+<form id="excelForm">
+
+<div class="formgrid">
+
+<label class="field">
+ملف Excel
+<input name="excel" type="file" accept=".xlsx,.xls" required>
+</label>
+
+<label class="field">
+الولاية
+<input name="wilaya" placeholder="مثال: ...">
+</label>
+
+<label class="field">
+صفحة البيانات
+<select name="sheet">
+<option value="SS">SS</option>
+<option value="FF">FF</option>
 </select>
+</label>
 
-<input
-name="phone"
-placeholder="رقم الهاتف"
->
-
-<input
-name="email"
-placeholder="البريد الإلكتروني"
->
-
-<input
-type="date"
-name="birth_date"
->
-
-<input
-type="date"
-name="recruitment_date"
->
-
-<input
-name="grade"
-placeholder="الدرجة"
->
-
-<input
-name="category"
-placeholder="الصنف"
->
-
-<input
-name="address"
-placeholder="العنوان"
->
-
-<div class="filebox">
-
-<label>📷 صورة الموظف</label>
-
-<input
-type="file"
-name="photo"
-accept="image/*"
->
+<label class="field">
+رقم الصفحة / السطر
+<input name="page" placeholder="اختياري">
+</label>
 
 </div>
 
-<div class="filebox full">
-
-<label>📁 ملفات ووثائق الموظف</label>
-
-<input
-type="file"
-name="documents"
-multiple
-accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.webp"
->
-
+<div class="notice">
+يمكن استعمال الملف كمصدر لاستخراج بيانات الموظفين والوثائق لاحقًا.
 </div>
 
-<textarea
-class="full"
-name="notes"
-placeholder="ملاحظات إدارية عن الموظف..."
-></textarea>
-
-</div>
-
-
-<div class="formbuttons">
-
-<button
-class="btn save"
-type="submit"
->
-💾 حفظ الموظف
-</button>
-
-<button
-class="btn close"
-type="button"
-onclick="closeAdd()"
->
-إلغاء
-</button>
-
-</div>
-
+<br>
+<button class="btn blue">📥 قراءة ملف Excel</button>
 </form>
 
+<div id="excelResult"></div>
+</div>
 </div>
 
+
+<!-- الوثائق -->
+<div class="modal" id="documentModal">
+<div class="box">
+<button class="close" onclick="closeModal('documentModal')">×</button>
+
+<h2>📄 الوثائق الإدارية</h2>
+
+<form id="documentForm">
+
+<label class="field">
+الموظف
+<select name="employee_id" id="docEmployee"></select>
+</label>
+
+<br>
+
+<label class="field">
+نوع الوثيقة
+<select name="document_type">
+<option value="work">شهادة عمل</option>
+<option value="absence">شهادة غياب</option>
+<option value="attendance">وثيقة حضور</option>
+<option value="custom">وثيقة إدارية</option>
+</select>
+</label>
+
+<br>
+
+<div class="formgrid">
+
+<label class="field">
+ملف Excel المصدر
+<input name="excel_file" placeholder="اسم ملف Excel">
+</label>
+
+<label class="field">
+الولاية
+<input name="wilaya">
+</label>
+
+<label class="field">
+الصفحة
+<select name="sheet">
+<option>SS</option>
+<option>FF</option>
+</select>
+</label>
+
+<label class="field">
+صفحة / سطر
+<input name="page">
+</label>
+
+</div>
+
+<br>
+
+<button class="btn blue">📄 إنشاء الوثيقة</button>
+</form>
+
+<div id="documentResult"></div>
+
+</div>
 </div>
 
 
 <script>
 
-function openAdd(){
-document.getElementById("modal").style.display="flex";
+const API="/api";
+let employees=[];
+
+function esc(x){
+return String(x??"").replace(/[&<>"']/g,
+m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 }
 
-function closeAdd(){
-document.getElementById("modal").style.display="none";
+function openModal(id){
+document.getElementById(id).classList.add("open");
 }
 
-window.addEventListener("click",function(e){
-let modal=document.getElementById("modal");
-
-if(e.target===modal){
-closeAdd();
+function closeModal(id){
+document.getElementById(id).classList.remove("open");
 }
+
+function photo(url){
+if(url)return url;
+
+return "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80";
+}
+
+async function loadEmployees(){
+
+let q=document.getElementById("search").value;
+let rank=document.getElementById("filterRank").value;
+let place=document.getElementById("filterPlace").value;
+let sort=document.getElementById("filterSort").value;
+
+try{
+
+let url=API+"/employees?q="+encodeURIComponent(q)
++"&rank="+encodeURIComponent(rank)
++"&place="+encodeURIComponent(place)
++"&sort="+encodeURIComponent(sort);
+
+let r=await fetch(url);
+let data=await r.json();
+
+employees=data.items||[];
+
+document.getElementById("count").textContent=
+employees.length+" موظف";
+
+document.getElementById("sAll").textContent=
+data.stats?.employees||employees.length;
+
+document.getElementById("sFiles").textContent=
+data.stats?.files||0;
+
+document.getElementById("sPhotos").textContent=
+data.stats?.photos||0;
+
+document.getElementById("sNotes").textContent=
+data.stats?.notes||0;
+
+document.getElementById("sDate").textContent=
+data.stats?.date||"—";
+
+renderEmployees();
+
+}catch(e){
+
+document.getElementById("employees").innerHTML=
+'<div class="empty">تعذر الاتصال بالخادم.</div>';
+
+}
+}
+
+function renderEmployees(){
+
+let box=document.getElementById("employees");
+
+if(!employees.length){
+box.innerHTML=
+'<div class="empty">لا توجد بيانات موظفين بعد.<br><br><button class="btn blue" onclick="newEmployee()">＋ إضافة أول موظف</button></div>';
+return;
+}
+
+box.innerHTML=employees.map((e,i)=>`
+
+<article class="employee">
+
+<div class="empTop"></div>
+
+<div class="empBody">
+
+<img class="avatar"
+src="${esc(photo(e.photo))}">
+
+<div class="empName">
+${esc(e.first_name)} ${esc(e.last_name)}
+</div>
+
+<div class="empRank">
+${esc(e.rank||"—")}
+</div>
+
+<div class="meta">
+🪪 ${esc(e.card_number||"—")}<br>
+🏢 ${esc(e.workplace||"—")}<br>
+📍 ${esc(e.current_location||"—")}<br>
+📅 ${esc(e.installation_date||"—")}
+</div>
+
+<div class="empActions">
+
+<button class="btn blue"
+onclick="profile(${i})">
+فتح
+</button>
+
+<button class="btn"
+onclick="editEmployee(${i})">
+تعديل
+</button>
+
+<button class="btn red"
+onclick="deleteEmployee(${i})">
+حذف
+</button>
+
+</div>
+
+</div>
+</article>
+
+`).join("");
+}
+
+function newEmployee(){
+
+document.getElementById("employeeForm").reset();
+document.querySelector('[name="id"]').value="";
+document.getElementById("formTitle").textContent="إضافة موظف";
+
+openModal("employeeModal");
+}
+
+function editEmployee(i){
+
+let e=employees[i];
+let form=document.getElementById("employeeForm");
+
+for(let key in e){
+
+let input=form.elements[key];
+
+if(input && input.type!=="file")
+input.value=e[key]||"";
+
+}
+
+document.getElementById("formTitle").textContent=
+"تعديل بيانات الموظف";
+
+openModal("employeeModal");
+}
+
+async function deleteEmployee(i){
+
+let e=employees[i];
+
+if(!confirm(
+"هل تريد حذف الموظف:\n"+
+e.first_name+" "+e.last_name+" ؟"
+))return;
+
+let r=await fetch(
+API+"/employees/"+e.id,
+{method:"DELETE"}
+);
+
+if(r.ok){
+loadEmployees();
+}else{
+alert("تعذر الحذف.");
+}
+}
+
+function profile(i){
+
+let e=employees[i];
+
+document.getElementById("profileContent").innerHTML=`
+
+<div class="profile">
+
+<div>
+<img class="profilePhoto"
+src="${esc(photo(e.photo))}">
+
+<div class="actions">
+
+<button class="btn blue"
+onclick="editEmployee(${i});closeModal('profileModal')">
+تعديل
+</button>
+
+<button class="btn"
+onclick="document.getElementById('docEmployee').value='${e.id}';closeModal('profileModal');openModal('documentModal')">
+وثيقة
+</button>
+
+</div>
+
+</div>
+
+<div>
+
+<h1>
+${esc(e.first_name)}
+${esc(e.last_name)}
+</h1>
+
+<div class="info">
+
+<div class="infoItem">
+<b>رقم البطاقة</b>
+${esc(e.card_number||"—")}
+</div>
+
+<div class="infoItem">
+<b>الرتبة</b>
+${esc(e.rank||"—")}
+</div>
+
+<div class="infoItem">
+<b>تاريخ التنصيب</b>
+${esc(e.installation_date||"—")}
+</div>
+
+<div class="infoItem">
+<b>مكان العمل</b>
+${esc(e.workplace||"—")}
+</div>
+
+<div class="infoItem">
+<b>التواجد الحالي</b>
+${esc(e.current_location||"—")}
+</div>
+
+<div class="infoItem">
+<b>تاريخ الميلاد</b>
+${esc(e.birth_date||"—")}
+</div>
+
+<div class="infoItem">
+<b>الهاتف</b>
+${esc(e.phone||"—")}
+</div>
+
+<div class="infoItem">
+<b>البريد</b>
+${esc(e.email||"—")}
+</div>
+
+</div>
+
+${e.note?
+`<div class="notice"><b>ملاحظة:</b><br>${esc(e.note)}</div>`:""}
+
+<h3>📎 الملفات</h3>
+
+${e.employee_file?
+`<div class="file">
+📁 ملف الموظف
+<a class="btn" target="_blank"
+href="${esc(e.employee_file)}">فتح</a>
+</div>`:""}
+
+${e.note_file?
+`<div class="file">
+📝 ملف الملاحظة
+<a class="btn" target="_blank"
+href="${esc(e.note_file)}">فتح</a>
+</div>`:""}
+
+</div>
+</div>
+`;
+
+openModal("profileModal");
+}
+
+document.getElementById("employeeForm").onsubmit=
+async function(ev){
+
+ev.preventDefault();
+
+let fd=new FormData(this);
+let id=fd.get("id");
+
+let url=id?
+API+"/employees/"+id:
+API+"/employees";
+
+let method=id?"PUT":"POST";
+
+let r=await fetch(url,{
+method:method,
+body:fd
 });
 
+let data=await r.json();
 
-function filterEmployees(){
+if(!r.ok){
+alert(data.error||"تعذر الحفظ");
+return;
+}
 
-let q=document
-.getElementById("search")
-.value
-.toLowerCase()
-.trim();
+closeModal("employeeModal");
+loadEmployees();
+};
 
-let cards=document
-.querySelectorAll(".employee");
+document.getElementById("excelForm").onsubmit=
+async function(ev){
 
-cards.forEach(card=>{
+ev.preventDefault();
 
-let text=card
-.getAttribute("data-search")
-.toLowerCase();
+let fd=new FormData(this);
 
-card.style.display=
-text.includes(q) ? "" : "none";
+document.getElementById("excelResult").innerHTML=
+"<p>📊 جاري قراءة Excel...</p>";
 
+try{
+
+let r=await fetch(API+"/excel/read",{
+method:"POST",
+body:fd
 });
 
+let data=await r.json();
+
+if(!r.ok){
+document.getElementById("excelResult").innerHTML=
+"<div class='notice'>"+esc(data.error)+"</div>";
+return;
 }
+
+document.getElementById("excelResult").innerHTML=
+`
+<div class="notice">
+<b>تمت قراءة الملف.</b><br>
+الملف: ${esc(data.filename)}<br>
+الولاية: ${esc(data.wilaya||"—")}<br>
+الصفحة: ${esc(data.sheet||"—")}<br>
+عدد الصفوف: ${esc(data.rows||0)}
+</div>
+`;
+
+}catch(e){
+
+document.getElementById("excelResult").innerHTML=
+"<div class='notice'>تعذر قراءة الملف.</div>";
+
+}
+
+};
+
+async function prepareDocumentEmployees(){
+
+try{
+
+let r=await fetch(API+"/employees");
+let data=await r.json();
+
+let select=document.getElementById("docEmployee");
+
+select.innerHTML=(data.items||[]).map(e=>
+`<option value="${e.id}">
+${esc(e.first_name)} ${esc(e.last_name)}
+</option>`
+).join("");
+
+}catch(e){}
+
+}
+
+document.getElementById("documentForm").onsubmit=
+async function(ev){
+
+ev.preventDefault();
+
+let fd=new FormData(this);
+
+document.getElementById("documentResult").innerHTML=
+"<p>📄 جاري تجهيز الوثيقة...</p>";
+
+try{
+
+let r=await fetch(API+"/documents/create",{
+method:"POST",
+body:fd
+});
+
+let data=await r.json();
+
+if(!r.ok){
+document.getElementById("documentResult").innerHTML=
+"<div class='notice'>"+esc(data.error)+"</div>";
+return;
+}
+
+document.getElementById("documentResult").innerHTML=`
+
+<div class="notice">
+
+<b>تم تجهيز الوثيقة.</b>
+
+<br><br>
+
+<a class="btn blue"
+target="_blank"
+href="${esc(data.file)}">
+فتح الملف
+</a>
+
+<button class="btn"
+onclick="window.open('${esc(data.file)}','_blank')">
+معاينة / طباعة
+</button>
+
+</div>
+
+`;
+
+}catch(e){
+
+document.getElementById("documentResult").innerHTML=
+"<div class='notice'>تعذر إنشاء الوثيقة.</div>";
+
+}
+
+};
+
+function exportEmployees(){
+
+window.open(API+"/employees/export","_blank");
+}
+
+document.getElementById("excelModal")
+.addEventListener("click",prepareDocumentEmployees);
+
+loadEmployees();
+
+window.onclick=function(e){
+
+document.querySelectorAll(".modal").forEach(m=>{
+if(e.target===m)m.classList.remove("open");
+});
+
+};
 
 </script>
 
