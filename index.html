@@ -3,2285 +3,621 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نادر | الكتب النادرة والقيمة</title>
+
+<title>مركز التكوين المهني والتمهين - وادي مرة</title>
 
 <style>
 *{
     box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-:root{
-    --brown:#5b3a29;
-    --brown2:#7a5038;
-    --gold:#e4b63d;
-    --yellow:#f4ca55;
-    --white:#ffffff;
-    --gray:#f1f1f1;
-    --gray2:#d8d8d8;
-    --dark:#202020;
-    --text:#292929;
-    --danger:#9b3333;
-    --shadow:0 8px 25px rgba(0,0,0,.10);
 }
 
 body{
-    font-family:
-        "Tahoma",
-        "Arial",
-        sans-serif;
-    background:
-        linear-gradient(
-            135deg,
-            #f4f4f4,
-            #ffffff
-        );
-    color:var(--text);
-    min-height:100vh;
+    margin:0;
+    font-family:Tahoma, Arial, sans-serif;
+    background:#f4f5f5;
+    color:#263238;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* ===== الرأس ===== */
 
 header{
-    background:
-        linear-gradient(
-            135deg,
-            var(--brown),
-            #38251c
-        );
-    color:white;
-    padding:15px 20px;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    box-shadow:0 4px 20px rgba(0,0,0,.25);
-}
-
-.header-inner{
-    max-width:1250px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
+    background:linear-gradient(135deg,#ffffff,#eeeeee);
+    border-bottom:5px solid #e4c400;
+    padding:22px 15px 16px;
+    text-align:center;
 }
 
 .logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.logo-icon{
-    width:48px;
-    height:48px;
-    border-radius:14px;
-    background:var(--gold);
-    color:var(--brown);
+    width:76px;
+    height:76px;
+    border-radius:50%;
+    margin:auto;
+    background:#087f4b;
+    color:white;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:25px;
-    box-shadow:0 4px 12px rgba(0,0,0,.25);
+    font-size:35px;
+    box-shadow:0 5px 18px #0002;
 }
 
-.logo h1{
-    font-size:23px;
+header h1{
+    margin:12px 0 4px;
+    font-size:24px;
+    color:#075f3b;
 }
 
-.logo span{
-    color:#ddd;
-    font-size:12px;
+header h2{
+    margin:0;
+    font-size:18px;
+    color:#444;
 }
 
-/* =========================
-   NAV
-========================= */
-
-nav{
-    display:flex;
-    gap:7px;
-    flex-wrap:wrap;
+header p{
+    margin:8px 0 0;
+    color:#777;
 }
 
-nav button{
-    border:0;
-    background:rgba(255,255,255,.08);
-    color:white;
-    padding:10px 14px;
-    border-radius:10px;
-    cursor:pointer;
-    transition:.2s;
+/* ===== الشريط المتحرك ===== */
+
+.marquee{
+    overflow:hidden;
+    white-space:nowrap;
+    background:#e4c400;
+    color:#222;
     font-weight:bold;
+    padding:10px 0;
 }
 
-nav button:hover,
-nav button.active{
-    background:var(--gold);
-    color:var(--brown);
+.marquee span{
+    display:inline-block;
+    padding-right:100%;
+    animation:move 18s linear infinite;
 }
 
-/* =========================
-   APP
-========================= */
+@keyframes move{
+    from{
+        transform:translateX(-10%);
+    }
 
-.app{
-    max-width:1250px;
-    margin:auto;
-    padding:25px 18px 100px;
+    to{
+        transform:translateX(100%);
+    }
 }
 
-.page{
-    display:none;
-}
-
-.page.active{
-    display:block;
-}
-
-/* =========================
-   HERO
-========================= */
+/* ===== الترحيب ===== */
 
 .hero{
-    background:
-        linear-gradient(
-            135deg,
-            var(--brown),
-            #806044
-        );
-    border-radius:24px;
-    padding:35px;
+    max-width:1100px;
+    margin:25px auto 15px;
+    padding:0 15px;
+}
+
+.welcome{
+    background:linear-gradient(135deg,#075f3b,#0b8b55);
     color:white;
-    box-shadow:var(--shadow);
-    margin-bottom:25px;
+    border-radius:24px;
+    padding:35px 22px;
+    text-align:center;
+    box-shadow:0 10px 30px #0002;
     position:relative;
     overflow:hidden;
 }
 
-.hero:after{
-    content:"📚";
-    position:absolute;
-    left:35px;
-    bottom:-25px;
-    font-size:130px;
-    opacity:.08;
+.welcome h3{
+    font-size:28px;
+    margin:0 0 12px;
 }
 
-.hero h2{
-    font-size:32px;
-    margin-bottom:12px;
-}
-
-.hero p{
-    color:#eee;
+.welcome p{
+    font-size:17px;
+    line-height:1.9;
+    margin:6px auto;
     max-width:700px;
-    line-height:1.8;
 }
 
-.search{
-    margin-top:25px;
-    display:flex;
-    gap:10px;
-    position:relative;
-    z-index:2;
-}
-
-.search input{
-    flex:1;
-    padding:15px;
-    border:0;
-    border-radius:13px;
-    font-size:16px;
-    outline:none;
-}
-
-.btn{
-    border:0;
-    padding:13px 20px;
-    border-radius:12px;
-    cursor:pointer;
+.signature{
+    color:#ffe56b;
     font-weight:bold;
-    transition:.2s;
+    font-size:18px;
+    margin-top:15px;
 }
 
-.btn:hover{
-    transform:translateY(-2px);
-}
+/* ===== المحتوى ===== */
 
-.btn-gold{
-    background:var(--gold);
-    color:var(--brown);
-}
-
-.btn-brown{
-    background:var(--brown);
-    color:white;
-}
-
-.btn-gray{
-    background:var(--gray);
-    color:var(--dark);
-}
-
-/* =========================
-   FEATURE CARDS
-========================= */
-
-.features{
-    display:grid;
-    grid-template-columns:
-        repeat(5,1fr);
-    gap:14px;
-    margin-bottom:30px;
-}
-
-.feature{
-    background:white;
-    border:1px solid var(--gray2);
-    border-radius:18px;
-    padding:20px 12px;
-    text-align:center;
-    cursor:pointer;
-    box-shadow:0 4px 15px rgba(0,0,0,.06);
-    transition:.25s;
-}
-
-.feature:hover{
-    transform:translateY(-5px);
-    border-color:var(--gold);
-}
-
-.feature-icon{
-    width:52px;
-    height:52px;
-    border-radius:15px;
-    background:#f8f0d5;
-    margin:auto auto 10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:25px;
-}
-
-.feature strong{
-    display:block;
-    margin-bottom:5px;
-}
-
-.feature small{
-    color:#777;
-}
-
-/* =========================
-   SECTION
-========================= */
-
-.section{
-    background:white;
-    border-radius:20px;
-    padding:22px;
-    margin-bottom:25px;
-    box-shadow:var(--shadow);
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:10px 15px 40px;
 }
 
 .section-title{
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    margin-bottom:18px;
+    gap:10px;
+    margin:25px 0 15px;
+    font-size:22px;
+    color:#075f3b;
 }
 
-.section-title h3{
-    color:var(--brown);
+.section-title span{
+    width:8px;
+    height:30px;
+    background:#e4c400;
+    border-radius:8px;
 }
 
-/* =========================
-   BOOK GRID
-========================= */
+/* ===== البطاقات ===== */
 
-.books{
+.grid{
     display:grid;
-    grid-template-columns:
-        repeat(4,1fr);
-    gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
 }
 
-.book{
+.card{
     background:white;
-    border:1px solid #ddd;
-    border-radius:17px;
-    overflow:hidden;
-    box-shadow:0 5px 18px rgba(0,0,0,.07);
-    transition:.25s;
+    border-radius:18px;
+    padding:20px;
+    border-right:5px solid #e4c400;
+    box-shadow:0 5px 18px #00000010;
+    transition:.2s;
 }
 
-.book:hover{
+.card:hover{
     transform:translateY(-4px);
-    box-shadow:var(--shadow);
+    box-shadow:0 10px 25px #0002;
 }
 
-.book-cover{
-    height:210px;
-    background:
-        linear-gradient(
-            135deg,
-            #eee,
-            #ddd
-        );
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
+.icon{
+    font-size:34px;
 }
 
-.book-cover img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+.card h4{
+    margin:10px 0 8px;
+    color:#075f3b;
+    font-size:19px;
 }
 
-.no-cover{
-    font-size:55px;
-    opacity:.3;
-}
-
-.book-info{
-    padding:15px;
-}
-
-.book-title{
-    font-weight:bold;
-    margin-bottom:7px;
-}
-
-.book-author{
-    color:#777;
-    font-size:13px;
-    margin-bottom:10px;
+.card p{
+    margin:6px 0;
+    color:#666;
+    line-height:1.7;
 }
 
 .badge{
     display:inline-block;
-    padding:5px 9px;
-    background:#f6e7ae;
-    color:#684e12;
-    border-radius:8px;
-    font-size:11px;
-    margin-bottom:10px;
-}
-
-.book-actions{
-    display:flex;
-    gap:6px;
-}
-
-.book-actions button{
-    flex:1;
-    padding:9px 5px;
-    border:0;
-    border-radius:9px;
-    cursor:pointer;
-    font-size:12px;
-    font-weight:bold;
-}
-
-/* =========================
-   FORM
-========================= */
-
-.form-grid{
-    display:grid;
-    grid-template-columns:
-        repeat(2,1fr);
-    gap:14px;
-}
-
-.field{
-    display:flex;
-    flex-direction:column;
-    gap:7px;
-}
-
-.field.full{
-    grid-column:1/-1;
-}
-
-.field label{
-    font-weight:bold;
-    font-size:14px;
-}
-
-.field input,
-.field select,
-.field textarea{
-    border:1px solid #ccc;
-    border-radius:11px;
-    padding:12px;
-    outline:none;
-    font-family:inherit;
-}
-
-.field textarea{
-    min-height:120px;
-    resize:vertical;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
-    border-color:var(--gold);
-}
-
-/* =========================
-   AI
-========================= */
-
-.ai-box{
-    background:
-        linear-gradient(
-            135deg,
-            #fff,
-            #f2f2f2
-        );
-    border:2px solid var(--gold);
+    margin-top:8px;
+    padding:6px 10px;
     border-radius:20px;
-    padding:20px;
+    background:#f4e9a2;
+    color:#625500;
+    font-size:13px;
 }
 
-.ai-title{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:15px;
-}
+/* ===== المعلومات ===== */
 
-.ai-icon{
-    width:50px;
-    height:50px;
-    background:var(--gold);
-    color:var(--brown);
-    border-radius:15px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:25px;
-}
-
-.chat{
-    min-height:250px;
-    max-height:500px;
-    overflow-y:auto;
-    background:#fff;
-    border-radius:14px;
-    padding:15px;
-    border:1px solid #ddd;
-    margin-bottom:12px;
-}
-
-.message{
-    padding:12px 15px;
-    border-radius:13px;
-    margin-bottom:10px;
-    line-height:1.8;
-    white-space:pre-wrap;
-}
-
-.message.user{
-    background:#eee;
-    margin-right:20%;
-}
-
-.message.ai{
-    background:#f8f0d5;
-    color:#3d3019;
-    margin-left:10%;
-}
-
-.chat-input{
-    display:flex;
-    gap:8px;
-}
-
-.chat-input input{
-    flex:1;
-    padding:14px;
-    border:1px solid #ccc;
-    border-radius:12px;
-}
-
-/* =========================
-   BOOK TOOLS
-========================= */
-
-.tools{
-    display:grid;
-    grid-template-columns:
-        repeat(4,1fr);
-    gap:12px;
-}
-
-.tool{
-    background:#f5f5f5;
-    border:1px solid #ddd;
-    border-radius:15px;
-    padding:18px 10px;
-    cursor:pointer;
-    text-align:center;
-    transition:.2s;
-}
-
-.tool:hover{
-    background:#fff8dc;
-    border-color:var(--gold);
-}
-
-.tool div{
-    font-size:25px;
-    margin-bottom:8px;
-}
-
-/* =========================
-   MODAL
-========================= */
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.65);
-    z-index:3000;
-    align-items:center;
-    justify-content:center;
-    padding:15px;
-}
-
-.modal.show{
-    display:flex;
-}
-
-.modal-content{
-    background:white;
-    width:min(850px,100%);
-    max-height:90vh;
-    overflow:auto;
-    border-radius:22px;
-    padding:25px;
-}
-
-.modal-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
-
-.close{
-    border:0;
-    background:#eee;
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    cursor:pointer;
-    font-size:20px;
-}
-
-/* =========================
-   READER
-========================= */
-
-.reader{
+.info{
+    margin-top:25px;
     background:white;
     border-radius:20px;
-    padding:30px;
-    line-height:2.2;
-    white-space:pre-wrap;
-    max-height:65vh;
-    overflow:auto;
-    border:1px solid #ddd;
+    padding:22px;
+    box-shadow:0 5px 18px #00000010;
 }
 
-/* =========================
-   EMPTY
-========================= */
+.info-row{
+    padding:12px 5px;
+    border-bottom:1px solid #eee;
+    line-height:1.7;
+}
 
-.empty{
+.info-row:last-child{
+    border:0;
+}
+
+/* ===== التذييل ===== */
+
+footer{
     text-align:center;
-    padding:50px 20px;
-    color:#777;
-}
-
-.empty-icon{
-    font-size:60px;
-    margin-bottom:15px;
-}
-
-/* =========================
-   TOAST
-========================= */
-
-.toast{
-    position:fixed;
-    bottom:25px;
-    left:50%;
-    transform:translateX(-50%);
-    background:#222;
+    background:#263238;
     color:white;
-    padding:13px 22px;
-    border-radius:12px;
-    z-index:5000;
-    display:none;
+    padding:22px 15px;
+    margin-top:20px;
 }
 
-.toast.show{
-    display:block;
+footer strong{
+    color:#ffe56b;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* ===== الهاتف ===== */
 
-@media(max-width:900px){
+@media(max-width:600px){
 
-    .features{
-        grid-template-columns:
-            repeat(3,1fr);
+    header h1{
+        font-size:20px;
     }
 
-    .books{
-        grid-template-columns:
-            repeat(3,1fr);
+    header h2{
+        font-size:16px;
     }
 
-    .tools{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-}
-
-@media(max-width:650px){
-
-    header{
-        padding:10px;
+    .welcome h3{
+        font-size:23px;
     }
 
-    .header-inner{
-        flex-direction:column;
-        align-items:stretch;
+    .welcome{
+        padding:28px 16px;
     }
 
-    .logo{
-        justify-content:center;
-    }
-
-    nav{
-        overflow-x:auto;
-        flex-wrap:nowrap;
-        padding-bottom:3px;
-    }
-
-    nav button{
-        white-space:nowrap;
-    }
-
-    .app{
-        padding:15px 10px 90px;
-    }
-
-    .hero{
-        padding:23px 18px;
-    }
-
-    .hero h2{
-        font-size:24px;
-    }
-
-    .search{
-        flex-direction:column;
-    }
-
-    .features{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .books{
-        grid-template-columns:
-            repeat(2,1fr);
-        gap:10px;
-    }
-
-    .book-cover{
-        height:180px;
-    }
-
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-
-    .field.full{
-        grid-column:auto;
-    }
-
-    .book-actions{
-        flex-direction:column;
-    }
-
-    .section{
-        padding:15px;
-    }
-
-    .chat-input{
-        flex-direction:column;
-    }
-}
-
-@media(max-width:380px){
-
-    .books{
-        grid-template-columns:1fr;
-    }
-
-    .features{
-        grid-template-columns:1fr 1fr;
-    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- ===== رأس الصفحة ===== -->
+
 <header>
 
-<div class="header-inner">
+    <div class="logo">
+        🏫
+    </div>
 
-<div class="logo">
+    <h1>
+        مركز التكوين المهني والتمهين
+    </h1>
 
-<div class="logo-icon">📚</div>
+    <h2>
+        الشهيد دناقة عمر — وادي مرة
+    </h2>
 
-<div>
-<h1>نادر</h1>
-<span>سوق الكتب النادرة والقيمة</span>
-</div>
-
-</div>
-
-<nav>
-
-<button class="active"
-onclick="showPage('home',this)">
-الرئيسية
-</button>
-
-<button onclick="showPage('market',this)">
-🏪 السوق
-</button>
-
-<button onclick="showPage('library',this)">
-🔖 خزانتي
-</button>
-
-<button onclick="showPage('upload',this)">
-⬆️ رفع كتاب
-</button>
-
-<button onclick="showPage('assistant',this)">
-🤖 المساعد
-</button>
-
-</nav>
-
-</div>
+    <p>
+        مديرية التكوين والتعليم المهنيين لولاية أفلو
+    </p>
 
 </header>
 
 
-<main class="app">
+<!-- ===== رسالة متحركة ===== -->
 
+<div class="marquee">
 
-<!-- =========================
-     HOME
-========================= -->
-
-<section id="home" class="page active">
-
-<div class="hero">
-
-<h2>عالم الكتاب بين يديك 📚</h2>
-
-<p>
-اكتشف الكتب النادرة والقيمة،
-ابحث عنها، اقرأها، حللها،
-احتفظ بها في خزانتك،
-أو اعرضها للبيع والتبادل.
-</p>
-
-<div class="search">
-
-<input
-id="searchInput"
-placeholder="ابحث عن كتاب، مؤلف، ISBN..."
-onkeydown="if(event.key==='Enter') searchBooks()">
-
-<button
-class="btn btn-gold"
-onclick="searchBooks()">
-🔎 بحث
-</button>
-
-</div>
+    <span>
+        🌟 مرحبًا بكم في مركز التكوين المهني والتمهين الشهيد دناقة عمر — وادي مرة 🌟 أهلاً وسهلاً بكم
+    </span>
 
 </div>
 
 
-<div class="features">
+<!-- ===== الترحيب ===== -->
 
-<div class="feature"
-onclick="showPage('market')">
-<div class="feature-icon">🏪</div>
-<strong>سوق الكتب</strong>
-<small>بيع وشراء وتبادل</small>
-</div>
+<section class="hero">
 
-<div class="feature"
-onclick="showPage('library')">
-<div class="feature-icon">📚</div>
-<strong>خزانتي</strong>
-<small>كتبك المحفوظة</small>
-</div>
+    <div class="welcome">
 
-<div class="feature"
-onclick="showPage('upload')">
-<div class="feature-icon">⬆️</div>
-<strong>أضف كتابًا</strong>
-<small>اعرض كتابك</small>
-</div>
+        <h3>
+            مرحبًا بكم في مركزنا 👋
+        </h3>
 
-<div class="feature"
-onclick="showPage('assistant')">
-<div class="feature-icon">🤖</div>
-<strong>المساعد الذكي</strong>
-<small>افهم الكتاب</small>
-</div>
+        <p>
+            فضاء تعريفي يساعدكم على الاطلاع على
+            التخصصات ومعلومات التكوين المتوفرة بالمركز.
+        </p>
 
-<div class="feature"
-onclick="randomBook()">
-<div class="feature-icon">🎲</div>
-<strong>اكتشف كتابًا</strong>
-<small>اختيار عشوائي</small>
-</div>
+        <div class="signature">
+            أخوكم ي. ب.
+        </div>
 
-</div>
-
-
-<div class="section">
-
-<div class="section-title">
-
-<h3>📖 اكتشاف الكتب</h3>
-
-<button
-class="btn btn-gray"
-onclick="loadBooks('')">
-تحديث
-</button>
-
-</div>
-
-<div id="homeBooks"
-class="books">
-
-<div class="empty">
-<div class="empty-icon">📚</div>
-جارٍ تحميل الكتب...
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- =========================
-     MARKET
-========================= -->
+<!-- ===== المحتوى ===== -->
 
-<section id="market" class="page">
+<main class="container">
 
-<div class="section">
 
-<div class="section-title">
+    <div class="section-title">
+        <span></span>
+        التخصصات والتكوينات
+    </div>
 
-<h2>🏪 سوق الكتب</h2>
 
-<button
-class="btn btn-gold"
-onclick="showPage('upload')">
-+ عرض كتاب
-</button>
+    <div class="grid">
 
-</div>
 
-<p style="color:#777;margin-bottom:20px">
-مكان واحد للبيع والشراء والتبادل بين محبي الكتب.
-</p>
+        <!-- خياطة -->
 
-<div id="marketBooks" class="books"></div>
+        <div class="card">
 
-</div>
+            <div class="icon">
+                🧵
+            </div>
 
-</section>
+            <h4>
+                خياطة
+            </h4>
 
+            <p>
+                المستوى المطلوب: طور متوسط
+            </p>
 
-<!-- =========================
-     LIBRARY
-========================= -->
+            <p>
+                مدة التكوين: 12 شهرًا
+            </p>
 
-<section id="library" class="page">
+            <span class="badge">
+                تكوين حضوري
+            </span>
 
-<div class="section">
+        </div>
 
-<div class="section-title">
 
-<h2>🔖 خزانتي</h2>
+        <!-- بستنة -->
 
-</div>
+        <div class="card">
 
-<p style="color:#777;margin-bottom:20px">
-كتبك التي اخترتها للاحتفاظ بها والعودة إليها.
-</p>
+            <div class="icon">
+                🌱
+            </div>
 
-<div id="libraryBooks" class="books"></div>
+            <h4>
+                البستنة
+            </h4>
 
-</div>
+            <p>
+                المستوى المطلوب: الطور الابتدائي
+            </p>
 
-</section>
+            <p>
+                مدة التكوين: 12 شهرًا
+            </p>
 
+            <span class="badge">
+                تكوين حضوري
+            </span>
 
-<!-- =========================
-     UPLOAD
-========================= -->
+        </div>
 
-<section id="upload" class="page">
 
-<div class="section">
+        <!-- مستغل معلوماتية -->
 
-<div class="section-title">
+        <div class="card">
 
-<h2>⬆️ عرض كتاب جديد</h2>
+            <div class="icon">
+                💻
+            </div>
 
-</div>
+            <h4>
+                مستغل معلوماتية
+            </h4>
 
-<form id="uploadForm">
+            <p>
+                مدة التكوين: 6 أشهر
+            </p>
 
-<div class="form-grid">
+            <p>
+                التكوين في مجال الإعلام الآلي.
+            </p>
 
-<div class="field">
-<label>عنوان الكتاب *</label>
-<input name="title" required>
-</div>
+            <span class="badge">
+                تكوين متخصص
+            </span>
 
-<div class="field">
-<label>المؤلف</label>
-<input name="author">
-</div>
+        </div>
 
-<div class="field">
-<label>ISBN</label>
-<input name="isbn">
-</div>
 
-<div class="field">
-<label>سنة النشر</label>
-<input name="year">
-</div>
+        <!-- الطاقة الشمسية -->
 
-<div class="field">
-<label>التصنيف</label>
+        <div class="card">
 
-<select name="category">
+            <div class="icon">
+                ☀️
+            </div>
 
-<option value="">اختر التصنيف</option>
-<option>أدب</option>
-<option>تاريخ</option>
-<option>فلسفة</option>
-<option>علوم</option>
-<option>تراث</option>
-<option>دين</option>
-<option>سياسة</option>
-<option>اقتصاد</option>
-<option>علم الاجتماع</option>
-<option>روايات</option>
-<option>أخرى</option>
+            <h4>
+                تركيب الألواح الشمسية
+                الضوئية والحرارية
+            </h4>
 
-</select>
+            <p>
+                المستوى المطلوب: الرابعة متوسط
+            </p>
 
-</div>
+            <p>
+                مدة التكوين: 12 شهرًا
+            </p>
 
-<div class="field">
-<label>حالة العرض</label>
+            <span class="badge">
+                تكوين مهني
+            </span>
 
-<select name="deal_type">
+        </div>
 
-<option>بيع</option>
-<option>تبادل</option>
-<option>بيع أو تبادل</option>
-<option>عرض</option>
 
-</select>
+        <!-- الوقاية والأمن -->
 
-</div>
+        <div class="card">
 
-<div class="field">
-<label>السعر</label>
-<input
-name="price"
-type="number"
-min="0"
-step="0.01"
-placeholder="0">
-</div>
+            <div class="icon">
+                🛡️
+            </div>
 
-<div class="field">
-<label>درجة الندرة</label>
+            <h4>
+                عون الوقاية والأمن
+            </h4>
 
-<select name="rarity">
+            <p>
+                المستوى المطلوب: الثالثة ثانوي
+            </p>
 
-<option value="">غير محددة</option>
-<option>عادي</option>
-<option>نادر</option>
-<option>نادر جدًا</option>
-<option>طبعة قديمة</option>
-<option>نسخة محدودة</option>
-<option>نسخة تاريخية</option>
+            <p>
+                مدة التكوين: 6 أشهر
+            </p>
 
-</select>
+            <span class="badge">
+                تأهيل أولي
+            </span>
 
-</div>
+        </div>
 
-<div class="field full">
 
-<label>وصف الكتاب</label>
+        <!-- إعلام آلي -->
 
-<textarea
-name="description"
-placeholder="اكتب معلومات عن حالة الكتاب، الطبعة، مصدره، وأي معلومات مهمة..."></textarea>
+        <div class="card">
 
-</div>
+            <div class="icon">
+                🖥️
+            </div>
 
-<div class="field">
+            <h4>
+                تقني إعلام آلي
+            </h4>
 
-<label>صورة الغلاف</label>
-<input
-name="cover"
-type="file"
-accept="image/*">
+            <p>
+                Word — Excel — PowerPoint
+            </p>
 
-</div>
+            <p>
+                المستوى المطلوب: الرابعة متوسط
+            </p>
 
-<div class="field">
+            <p>
+                مدة التكوين: 6 أشهر
+            </p>
 
-<label>ملف الكتاب PDF</label>
-<input
-name="pdf"
-type="file"
-accept=".pdf">
+            <span class="badge">
+                تأهيل أولي
+            </span>
 
-</div>
+        </div>
 
-</div>
 
-<br>
+        <!-- إعادة التدوير -->
 
-<button
-class="btn btn-gold"
-type="submit">
-📚 نشر الكتاب
-</button>
+        <div class="card">
 
-</form>
+            <div class="icon">
+                ♻️
+            </div>
 
-</div>
+            <h4>
+                استعادة النفايات
+                وإعادة تدويرها
+            </h4>
 
-</section>
+            <p>
+                المستوى المطلوب:
+                بدون مستوى دراسي
+            </p>
 
+            <p>
+                مدة التكوين: 6 أشهر
+            </p>
 
-<!-- =========================
-     ASSISTANT
-========================= -->
+            <span class="badge">
+                تأهيل أولي
+            </span>
 
-<section id="assistant" class="page">
+        </div>
 
-<div class="section">
 
-<div class="ai-box">
+    </div>
 
-<div class="ai-title">
 
-<div class="ai-icon">🤖</div>
+    <!-- ===== معلومات المركز ===== -->
 
-<div>
+    <div class="section-title">
 
-<h2>المساعد الذكي</h2>
+        <span></span>
 
-<p style="color:#777">
-اسأل عن الكتاب، اطلب تلخيصه أو تحليل أفكاره.
-</p>
+        معلومات المركز
 
-</div>
+    </div>
 
-</div>
 
+    <div class="info">
 
-<div class="chat" id="chat">
+        <div class="info-row">
 
-<div class="message ai">
-مرحبًا 👋
+            🏫
 
-أنا مساعدك في عالم الكتب.
+            <strong>
+                المؤسسة:
+            </strong>
 
-يمكنك أن تقول مثلًا:
-• لخّص هذا الكتاب
-• أعطني أهم الأفكار
-• اشرح لي الكتاب ببساطة
-• ما أهم الشخصيات؟
-• ترجم هذا النص
-• أنشئ لي أسئلة حول الكتاب
-</div>
+            مركز التكوين المهني والتمهين
+            الشهيد دناقة عمر
 
-</div>
+        </div>
 
 
-<div class="chat-input">
+        <div class="info-row">
 
-<input
-id="chatInput"
-placeholder="اكتب سؤالك عن الكتاب..."
-onkeydown="if(event.key==='Enter') sendMessage()">
+            📍
 
-<button
-class="btn btn-gold"
-onclick="sendMessage()">
-إرسال
-</button>
+            <strong>
+                المكان:
+            </strong>
 
-</div>
+            وادي مرة
 
-</div>
+        </div>
 
-</div>
 
-</section>
+        <div class="info-row">
 
+            🎓
 
-<!-- =========================
-     BOOK DETAIL
-========================= -->
+            <strong>
+                المجال:
+            </strong>
 
-<section id="bookPage" class="page">
+            التكوين والتعليم المهنيين
 
-<div class="section">
+        </div>
 
-<button
-class="btn btn-gray"
-onclick="showPage('home')">
-← رجوع
-</button>
 
-<div
-id="bookDetail"
-style="margin-top:20px">
-</div>
+        <div class="info-row">
 
-</div>
+            🌐
 
-</section>
+            <strong>
+                منصة التسجيل:
+            </strong>
+
+            takwin.dz
+
+        </div>
+
+    </div>
+
 
 </main>
 
 
-<!-- =========================
-     MODAL
-========================= -->
+<!-- ===== أسفل الصفحة ===== -->
 
-<div id="modal" class="modal">
+<footer>
 
-<div class="modal-content">
+    <div>
+        مركز التكوين المهني والتمهين
+        الشهيد دناقة عمر — وادي مرة
+    </div>
 
-<div class="modal-head">
+    <div style="margin-top:8px">
 
-<h2 id="modalTitle">
-نتيجة
-</h2>
+        تطوير
 
-<button
-class="close"
-onclick="closeModal()">
-×
-</button>
-
-</div>
-
-<div id="modalBody"></div>
-
-</div>
-
-</div>
-
-
-<div id="toast" class="toast"></div>
-
-
-<script>
-
-/* ======================================
-   STATE
-====================================== */
-
-let allBooks = [];
-let selectedBook = null;
-
-
-/* ======================================
-   PAGE
-====================================== */
-
-function showPage(id, button){
-
-    document.querySelectorAll(".page")
-        .forEach(p =>
-            p.classList.remove("active")
-        );
-
-    const page =
-        document.getElementById(id);
-
-    if(page)
-        page.classList.add("active");
-
-    if(button){
-
-        document.querySelectorAll("nav button")
-            .forEach(b =>
-                b.classList.remove("active")
-            );
-
-        button.classList.add("active");
-
-    }
-
-    if(id === "market"){
-        loadBooks("market");
-    }
-
-    if(id === "library"){
-        renderLibrary();
-    }
-}
-
-
-/* ======================================
-   TOAST
-====================================== */
-
-function toast(message){
-
-    const t =
-        document.getElementById("toast");
-
-    t.textContent = message;
-
-    t.classList.add("show");
-
-    setTimeout(() =>
-        t.classList.remove("show"),
-        2500
-    );
-}
-
-
-/* ======================================
-   LOAD BOOKS
-====================================== */
-
-async function loadBooks(target="home"){
-
-    try{
-
-        const r =
-            await fetch("/api/books?q=");
-
-        const data =
-            await r.json();
-
-        allBooks =
-            data.items || [];
-
-        if(target === "market"){
-
-            renderBooks(
-                "marketBooks",
-                allBooks.filter(
-                    b =>
-                        b.deal_type
-                )
-            );
-
-        }else{
-
-            renderBooks(
-                "homeBooks",
-                allBooks
-            );
-
-        }
-
-    }catch(e){
-
-        console.error(e);
-
-        if(target === "home"){
-
-            document.getElementById(
-                "homeBooks"
-            ).innerHTML = emptyHTML(
-                "تعذر تحميل الكتب"
-            );
-
-        }
-
-    }
-
-}
-
-
-/* ======================================
-   SEARCH
-====================================== */
-
-async function searchBooks(){
-
-    const q =
-        document.getElementById(
-            "searchInput"
-        ).value.trim();
-
-    if(!q){
-
-        loadBooks();
-
-        return;
-    }
-
-    try{
-
-        const r =
-            await fetch(
-                "/api/books?q=" +
-                encodeURIComponent(q)
-            );
-
-        const data =
-            await r.json();
-
-        allBooks =
-            data.items || [];
-
-        renderBooks(
-            "homeBooks",
-            allBooks
-        );
-
-    }catch(e){
-
-        toast("تعذر تنفيذ البحث");
-
-    }
-
-}
-
-
-/* ======================================
-   RENDER
-====================================== */
-
-function renderBooks(
-    containerId,
-    books
-){
-
-    const box =
-        document.getElementById(
-            containerId
-        );
-
-    if(!box)
-        return;
-
-    if(!books.length){
-
-        box.innerHTML =
-            emptyHTML(
-                "لا توجد كتب حاليًا"
-            );
-
-        return;
-    }
-
-    box.innerHTML =
-        books.map(
-            bookCard
-        ).join("");
-
-}
-
-
-/* ======================================
-   BOOK CARD
-====================================== */
-
-function bookCard(book){
-
-    const image =
-        book.image
-        ? `<img src="${escapeAttr(book.image)}"
-             onerror="this.style.display='none'">`
-        : `<div class="no-cover">📖</div>`;
-
-    const price =
-        book.price &&
-        Number(book.price) > 0
-        ? `${book.price} دج`
-        : "السعر عند التواصل";
-
-    return `
-
-    <div class="book">
-
-        <div class="book-cover">
-            ${image}
-        </div>
-
-        <div class="book-info">
-
-            <div class="book-title">
-                ${escapeHTML(book.title || "بدون عنوان")}
-            </div>
-
-            <div class="book-author">
-                ${escapeHTML(book.author || "مؤلف غير معروف")}
-            </div>
-
-            ${
-                book.rarity
-                ?
-                `<span class="badge">
-                    ${escapeHTML(book.rarity)}
-                 </span>`
-                :
-                ""
-            }
-
-            ${
-                book.deal_type
-                ?
-                `<span class="badge">
-                    ${escapeHTML(book.deal_type)}
-                 </span>`
-                :
-                ""
-            }
-
-            <div style="
-                font-weight:bold;
-                margin-bottom:10px;
-                color:#5b3a29">
-                ${price}
-            </div>
-
-            <div class="book-actions">
-
-                <button
-                    style="background:#f4ca55"
-                    onclick='openBook(${JSON.stringify(book)})'>
-                    فتح
-                </button>
-
-                <button
-                    style="background:#eee"
-                    onclick='saveBook(${JSON.stringify(book)})'>
-                    🔖
-                </button>
-
-            </div>
-
-        </div>
+        <strong>
+            ي. ب.
+        </strong>
 
     </div>
 
-    `;
+</footer>
 
-}
-
-
-/* ======================================
-   OPEN BOOK
-====================================== */
-
-function openBook(book){
-
-    selectedBook = book;
-
-    document.querySelectorAll(".page")
-        .forEach(p =>
-            p.classList.remove("active")
-        );
-
-    document
-        .getElementById("bookPage")
-        .classList.add("active");
-
-    const detail =
-        document.getElementById(
-            "bookDetail"
-        );
-
-    const image =
-        book.image
-        ?
-        `<img
-            src="${escapeAttr(book.image)}"
-            style="
-                width:180px;
-                height:250px;
-                object-fit:cover;
-                border-radius:14px;
-                box-shadow:0 5px 20px rgba(0,0,0,.2)">
-        `
-        :
-        `<div style="
-            width:180px;
-            height:250px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            background:#eee;
-            border-radius:14px;
-            font-size:70px">
-            📖
-        </div>`;
-
-    detail.innerHTML = `
-
-    <div style="
-        display:flex;
-        gap:25px;
-        flex-wrap:wrap">
-
-        <div>
-            ${image}
-        </div>
-
-        <div style="flex:1;min-width:250px">
-
-            <h1 style="
-                color:#5b3a29;
-                margin-bottom:10px">
-                ${escapeHTML(book.title || "")}
-            </h1>
-
-            <p>
-                <strong>المؤلف:</strong>
-                ${escapeHTML(book.author || "غير معروف")}
-            </p>
-
-            <p>
-                <strong>السنة:</strong>
-                ${escapeHTML(book.year || "غير محددة")}
-            </p>
-
-            <p>
-                <strong>ISBN:</strong>
-                ${escapeHTML(book.isbn || "غير متوفر")}
-            </p>
-
-            <p style="margin-top:12px;color:#666">
-                ${escapeHTML(book.description || "لا يوجد وصف.")}
-            </p>
-
-            <div style="margin-top:20px">
-
-                ${
-                    book.pdf
-                    ?
-                    `<button
-                        class="btn btn-brown"
-                        onclick="readBook()">
-                        📖 قراءة
-                    </button>`
-                    :
-                    ""
-                }
-
-                <button
-                    class="btn btn-gold"
-                    onclick="bookAI('summary')">
-                    📝 ملخص
-                </button>
-
-                <button
-                    class="btn btn-gray"
-                    onclick="bookAI('ideas')">
-                    💡 الأفكار
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="section"
-         style="margin-top:25px">
-
-        <h3 style="
-            color:#5b3a29;
-            margin-bottom:15px">
-            أدوات الكتاب
-        </h3>
-
-        <div class="tools">
-
-            <div class="tool"
-                 onclick="readBook()">
-                <div>📖</div>
-                القراءة
-            </div>
-
-            <div class="tool"
-                 onclick="bookAI('summary')">
-                <div>📝</div>
-                ملخص الكتاب
-            </div>
-
-            <div class="tool"
-                 onclick="bookAI('ideas')">
-                <div>💡</div>
-                أفكار الكتاب
-            </div>
-
-            <div class="tool"
-                 onclick="bookAI('analysis')">
-                <div>🔍</div>
-                تحليل
-            </div>
-
-            <div class="tool"
-                 onclick="bookAI('questions')">
-                <div>❓</div>
-                أسئلة
-            </div>
-
-            <div class="tool"
-                 onclick="bookAI('simplify')">
-                <div>🧠</div>
-                تبسيط
-            </div>
-
-            <div class="tool"
-                 onclick="bookAI('translate')">
-                <div>🌐</div>
-                ترجمة
-            </div>
-
-            <div class="tool"
-                 onclick="saveBook(book)">
-                <div>🔖</div>
-                خزانتي
-            </div>
-
-        </div>
-
-    </div>
-
-    `;
-
-}
-
-
-/* ======================================
-   AI BOOK ACTION
-====================================== */
-
-async function bookAI(action){
-
-    if(!selectedBook){
-
-        toast("اختر كتابًا أولًا");
-
-        return;
-    }
-
-    const prompts = {
-
-        summary:
-            "لخّص هذا الكتاب بوضوح، واستخرج أهم الأفكار والمحاور.",
-
-        ideas:
-            "استخرج أهم الأفكار والمفاهيم التي يقدمها الكتاب، واجعلها في نقاط واضحة.",
-
-        analysis:
-            "حلل الكتاب: موضوعه، أفكاره، حججه أو أحداثه، وأهم ما يميزه.",
-
-        questions:
-            "أنشئ 10 أسئلة وأجوبة تساعد القارئ على فهم الكتاب.",
-
-        simplify:
-            "اشرح محتوى الكتاب بطريقة بسيطة جدًا لشخص لم يقرأه.",
-
-        translate:
-            "اشرح للقارئ كيف يمكن ترجمة محتوى هذا الكتاب، وإذا كان هناك نص متاح فاقترح ترجمة مناسبة."
-    };
-
-    const prompt =
-        prompts[action] ||
-        "اشرح هذا الكتاب.";
-
-    showModal(
-        "🤖 المساعد الذكي",
-        `<div class="message ai">
-        جارٍ تحليل الكتاب...
-        </div>`
-    );
-
-    try{
-
-        const r =
-            await fetch(
-                "/api/chat",
-                {
-                    method:"POST",
-                    headers:{
-                        "Content-Type":
-                            "application/json"
-                    },
-                    body:JSON.stringify({
-
-                        message:
-                            prompt,
-
-                        book:
-                            selectedBook
-
-                    })
-                }
-            );
-
-        const data =
-            await r.json();
-
-        if(data.answer){
-
-            showModal(
-                actionTitle(action),
-                `<div class="reader">
-                    ${escapeHTML(
-                        data.answer
-                    )}
-                 </div>`
-            );
-
-        }else{
-
-            showModal(
-                "المساعد",
-                `<div class="empty">
-                    تعذر الحصول على الإجابة حاليًا.
-                 </div>`
-            );
-
-        }
-
-    }catch(e){
-
-        showModal(
-            "المساعد",
-            `<div class="empty">
-                حدث خطأ في الاتصال بالمساعد.
-             </div>`
-        );
-
-    }
-
-}
-
-
-/* ======================================
-   ACTION TITLE
-====================================== */
-
-function actionTitle(action){
-
-    const titles = {
-
-        summary:"📝 ملخص الكتاب",
-        ideas:"💡 أفكار الكتاب",
-        analysis:"🔍 تحليل الكتاب",
-        questions:"❓ أسئلة وأجوبة",
-        simplify:"🧠 تبسيط الكتاب",
-        translate:"🌐 الترجمة"
-
-    };
-
-    return titles[action] || "المساعد";
-
-}
-
-
-/* ======================================
-   READ
-====================================== */
-
-async function readBook(){
-
-    if(!selectedBook)
-        return;
-
-    if(!selectedBook.pdf){
-
-        toast("لا يوجد ملف PDF لهذا الكتاب");
-
-        return;
-    }
-
-    try{
-
-        const r =
-            await fetch(
-                `/api/book/${selectedBook.id}`
-            );
-
-        const data =
-            await r.json();
-
-        if(data.text){
-
-            showModal(
-                "📖 قراءة الكتاب",
-                `<div class="reader">
-                    ${escapeHTML(data.text)}
-                 </div>`
-            );
-
-        }else{
-
-            window.open(
-                selectedBook.pdf,
-                "_blank"
-            );
-
-        }
-
-    }catch(e){
-
-        window.open(
-            selectedBook.pdf,
-            "_blank"
-        );
-
-    }
-
-}
-
-
-/* ======================================
-   LIBRARY
-====================================== */
-
-function saveBook(book){
-
-    let library =
-        JSON.parse(
-            localStorage.getItem(
-                "nadir_library"
-            ) || "[]"
-        );
-
-    if(
-        library.some(
-            x =>
-                String(x.id) ===
-                String(book.id)
-        )
-    ){
-
-        toast("الكتاب موجود في خزانتك");
-
-        return;
-    }
-
-    library.push(book);
-
-    localStorage.setItem(
-        "nadir_library",
-        JSON.stringify(library)
-    );
-
-    toast("تمت إضافة الكتاب إلى خزانتك");
-
-}
-
-
-/* ======================================
-   LIBRARY RENDER
-====================================== */
-
-function renderLibrary(){
-
-    const box =
-        document.getElementById(
-            "libraryBooks"
-        );
-
-    let library =
-        JSON.parse(
-            localStorage.getItem(
-                "nadir_library"
-            ) || "[]"
-        );
-
-    if(!library.length){
-
-        box.innerHTML =
-            emptyHTML(
-                "خزانتك فارغة حاليًا"
-            );
-
-        return;
-    }
-
-    box.innerHTML =
-        library.map(
-            bookCard
-        ).join("");
-
-}
-
-
-/* ======================================
-   RANDOM
-====================================== */
-
-function randomBook(){
-
-    if(!allBooks.length){
-
-        loadBooks();
-
-        toast("جارٍ تحميل الكتب");
-
-        return;
-    }
-
-    const book =
-        allBooks[
-            Math.floor(
-                Math.random() *
-                allBooks.length
-            )
-        ];
-
-    openBook(book);
-
-}
-
-
-/* ======================================
-   CHAT
-====================================== */
-
-async function sendMessage(){
-
-    const input =
-        document.getElementById(
-            "chatInput"
-        );
-
-    const message =
-        input.value.trim();
-
-    if(!message)
-        return;
-
-    addChat(
-        message,
-        "user"
-    );
-
-    input.value = "";
-
-    addChat(
-        "جارٍ التفكير...",
-        "ai"
-    );
-
-    try{
-
-        const r =
-            await fetch(
-                "/api/chat",
-                {
-                    method:"POST",
-                    headers:{
-                        "Content-Type":
-                            "application/json"
-                    },
-                    body:JSON.stringify({
-
-                        message,
-
-                        book:
-                            selectedBook || {}
-
-                    })
-                }
-            );
-
-        const data =
-            await r.json();
-
-        const chat =
-            document.getElementById(
-                "chat"
-            );
-
-        chat.lastElementChild
-            .remove();
-
-        addChat(
-            data.answer ||
-            "لم أحصل على إجابة.",
-            "ai"
-        );
-
-    }catch(e){
-
-        const chat =
-            document.getElementById(
-                "chat"
-            );
-
-        chat.lastElementChild
-            .remove();
-
-        addChat(
-            "تعذر الاتصال بالمساعد.",
-            "ai"
-        );
-
-    }
-
-}
-
-
-function addChat(text,type){
-
-    const chat =
-        document.getElementById(
-            "chat"
-        );
-
-    const div =
-        document.createElement(
-            "div"
-        );
-
-    div.className =
-        "message " + type;
-
-    div.textContent =
-        text;
-
-    chat.appendChild(div);
-
-    chat.scrollTop =
-        chat.scrollHeight;
-
-}
-
-
-/* ======================================
-   UPLOAD
-====================================== */
-
-document
-.getElementById("uploadForm")
-.addEventListener(
-    "submit",
-    async function(e){
-
-        e.preventDefault();
-
-        const form =
-            new FormData(this);
-
-        try{
-
-            const r =
-                await fetch(
-                    "/api/upload",
-                    {
-                        method:"POST",
-                        body:form
-                    }
-                );
-
-            const data =
-                await r.json();
-
-            if(!r.ok){
-
-                toast(
-                    data.error ||
-                    "فشل رفع الكتاب"
-                );
-
-                return;
-            }
-
-            toast(
-                "تم نشر الكتاب بنجاح 📚"
-            );
-
-            this.reset();
-
-            await loadBooks();
-
-            setTimeout(
-                () =>
-                    showPage("home"),
-                700
-            );
-
-        }catch(e){
-
-            toast(
-                "حدث خطأ أثناء رفع الكتاب"
-            );
-
-        }
-
-    }
-);
-
-
-/* ======================================
-   MODAL
-====================================== */
-
-function showModal(
-    title,
-    body
-){
-
-    document.getElementById(
-        "modalTitle"
-    ).textContent = title;
-
-    document.getElementById(
-        "modalBody"
-    ).innerHTML = body;
-
-    document.getElementById(
-        "modal"
-    ).classList.add("show");
-
-}
-
-
-function closeModal(){
-
-    document.getElementById(
-        "modal"
-    ).classList.remove("show");
-
-}
-
-
-document
-.getElementById("modal")
-.addEventListener(
-    "click",
-    function(e){
-
-        if(e.target === this)
-            closeModal();
-
-    }
-);
-
-
-/* ======================================
-   EMPTY
-====================================== */
-
-function emptyHTML(text){
-
-    return `
-
-    <div class="empty"
-         style="grid-column:1/-1">
-
-        <div class="empty-icon">
-            📚
-        </div>
-
-        ${escapeHTML(text)}
-
-    </div>
-
-    `;
-
-}
-
-
-/* ======================================
-   SECURITY
-====================================== */
-
-function escapeHTML(value){
-
-    return String(
-        value ?? ""
-    )
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
-}
-
-
-function escapeAttr(value){
-
-    return escapeHTML(value);
-
-}
-
-
-/* ======================================
-   START
-====================================== */
-
-loadBooks();
-
-</script>
 
 </body>
 </html>
