@@ -7,75 +7,104 @@
 <title>مركز التكوين المهني والتمهين - وادي مرة</title>
 
 <style>
+
 *{
     box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
     margin:0;
     font-family:Tahoma, Arial, sans-serif;
-    background:#f4f5f5;
+    background:#f4f6f5;
     color:#263238;
 }
 
-/* ===== الرأس ===== */
+/* =========================
+   HEADER
+========================= */
 
 header{
-    background:linear-gradient(135deg,#ffffff,#eeeeee);
+    background:white;
     border-bottom:5px solid #e4c400;
-    padding:22px 15px 16px;
+    padding:20px 15px;
     text-align:center;
 }
 
 .logo{
-    width:76px;
-    height:76px;
-    border-radius:50%;
+    width:78px;
+    height:78px;
     margin:auto;
+    border-radius:50%;
     background:#087f4b;
     color:white;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:35px;
-    box-shadow:0 5px 18px #0002;
+    font-size:38px;
+    box-shadow:0 5px 20px #0002;
 }
 
 header h1{
-    margin:12px 0 4px;
-    font-size:24px;
+    margin:12px 0 5px;
     color:#075f3b;
+    font-size:25px;
 }
 
 header h2{
-    margin:0;
-    font-size:18px;
-    color:#444;
+    margin:5px 0;
+    font-size:19px;
 }
 
 header p{
-    margin:8px 0 0;
     color:#777;
+    margin:8px 0 0;
 }
 
-/* ===== الشريط المتحرك ===== */
+/* =========================
+   اسم المطور
+========================= */
+
+.developer{
+    display:inline-block;
+    margin-top:13px;
+    padding:8px 18px;
+    border-radius:25px;
+    background:#f4f6f5;
+    border:1px solid #e4c400;
+    color:#075f3b;
+    font-size:15px;
+    font-weight:bold;
+    box-shadow:0 3px 10px #0001;
+}
+
+.developer strong{
+    color:#087f4b;
+}
+
+/* =========================
+   MARQUEE
+========================= */
 
 .marquee{
-    overflow:hidden;
-    white-space:nowrap;
     background:#e4c400;
     color:#222;
+    padding:11px 0;
+    overflow:hidden;
+    white-space:nowrap;
     font-weight:bold;
-    padding:10px 0;
 }
 
 .marquee span{
     display:inline-block;
     padding-right:100%;
-    animation:move 18s linear infinite;
+    animation:moveText 20s linear infinite;
 }
 
-@keyframes move{
+@keyframes moveText{
     from{
         transform:translateX(-10%);
     }
@@ -85,74 +114,109 @@ header p{
     }
 }
 
-/* ===== الترحيب ===== */
+/* =========================
+   NAVIGATION
+========================= */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#075f3b;
+    display:flex;
+    justify-content:center;
+    gap:5px;
+    padding:8px;
+    box-shadow:0 3px 12px #0003;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:10px 14px;
+    border-radius:10px;
+    font-size:14px;
+}
+
+nav a:hover{
+    background:#e4c400;
+    color:#222;
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
-    max-width:1100px;
-    margin:25px auto 15px;
+    max-width:1150px;
+    margin:25px auto;
     padding:0 15px;
 }
 
 .welcome{
-    background:linear-gradient(135deg,#075f3b,#0b8b55);
+    background:
+        linear-gradient(135deg,#075f3b,#0b8b55);
     color:white;
-    border-radius:24px;
-    padding:35px 22px;
+    border-radius:25px;
+    padding:42px 20px;
     text-align:center;
     box-shadow:0 10px 30px #0002;
-    position:relative;
-    overflow:hidden;
 }
 
 .welcome h3{
-    font-size:28px;
     margin:0 0 12px;
+    font-size:30px;
 }
 
 .welcome p{
+    max-width:800px;
+    margin:auto;
+    line-height:2;
     font-size:17px;
-    line-height:1.9;
-    margin:6px auto;
-    max-width:700px;
 }
 
 .signature{
+    margin-top:18px;
     color:#ffe56b;
+    font-size:20px;
     font-weight:bold;
-    font-size:18px;
-    margin-top:15px;
 }
 
-/* ===== المحتوى ===== */
+/* =========================
+   CONTAINER
+========================= */
 
 .container{
-    max-width:1100px;
+    max-width:1150px;
     margin:auto;
-    padding:10px 15px 40px;
+    padding:0 15px 50px;
 }
 
 .section-title{
     display:flex;
     align-items:center;
     gap:10px;
-    margin:25px 0 15px;
-    font-size:22px;
     color:#075f3b;
+    margin:35px 0 18px;
+    font-size:24px;
+    font-weight:bold;
 }
 
 .section-title span{
     width:8px;
-    height:30px;
+    height:32px;
     background:#e4c400;
-    border-radius:8px;
+    border-radius:10px;
 }
 
-/* ===== البطاقات ===== */
+/* =========================
+   CARDS
+========================= */
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:15px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:17px;
 }
 
 .card{
@@ -160,76 +224,227 @@ header p{
     border-radius:18px;
     padding:20px;
     border-right:5px solid #e4c400;
-    box-shadow:0 5px 18px #00000010;
+    box-shadow:0 5px 18px #00000012;
     transition:.2s;
 }
 
 .card:hover{
     transform:translateY(-4px);
-    box-shadow:0 10px 25px #0002;
+    box-shadow:0 10px 25px #0003;
 }
 
 .icon{
-    font-size:34px;
+    font-size:35px;
 }
 
-.card h4{
-    margin:10px 0 8px;
+.card h3{
     color:#075f3b;
-    font-size:19px;
+    margin:10px 0;
 }
 
 .card p{
-    margin:6px 0;
-    color:#666;
+    margin:7px 0;
     line-height:1.7;
+    color:#555;
 }
 
 .badge{
     display:inline-block;
     margin-top:8px;
-    padding:6px 10px;
-    border-radius:20px;
     background:#f4e9a2;
-    color:#625500;
+    color:#635500;
+    border-radius:20px;
+    padding:6px 12px;
     font-size:13px;
 }
 
-/* ===== المعلومات ===== */
+/* =========================
+   ANNOUNCEMENT
+========================= */
 
-.info{
-    margin-top:25px;
+.announcement{
     background:white;
-    border-radius:20px;
-    padding:22px;
-    box-shadow:0 5px 18px #00000010;
+    border-radius:22px;
+    padding:25px;
+    margin-top:20px;
+    box-shadow:0 5px 20px #0001;
 }
 
-.info-row{
-    padding:12px 5px;
-    border-bottom:1px solid #eee;
+.announcement.green{
+    border-top:6px solid #07824c;
+}
+
+.announcement.red{
+    border-top:6px solid #d71920;
+}
+
+.announcement.yellow{
+    border-top:6px solid #e4c400;
+}
+
+.announcement.blue{
+    border-top:6px solid #1976d2;
+}
+
+.announcement h3{
+    margin-top:0;
+    color:#075f3b;
+}
+
+.announcement.red h3{
+    color:#c91515;
+}
+
+.announcement p{
+    line-height:2;
+}
+
+/* =========================
+   DATE BOXES
+========================= */
+
+.date-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;
+}
+
+.date-box{
+    background:white;
+    border-radius:15px;
+    padding:18px;
+    text-align:center;
+    box-shadow:0 4px 15px #0001;
+    border-bottom:4px solid #e4c400;
+}
+
+.date-box strong{
+    display:block;
+    color:#075f3b;
+    font-size:20px;
+    margin-bottom:8px;
+}
+
+/* =========================
+   NOTICE LIST
+========================= */
+
+.notice-list{
+    list-style:none;
+    padding:0;
+    margin:10px 0;
+}
+
+.notice-list li{
+    background:#f8f8f8;
+    margin:9px 0;
+    padding:13px;
+    border-radius:10px;
     line-height:1.7;
 }
 
-.info-row:last-child{
-    border:0;
+.notice-list li::before{
+    content:"✓";
+    color:#087f4b;
+    font-weight:bold;
+    margin-left:8px;
 }
 
-/* ===== التذييل ===== */
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper{
+    overflow-x:auto;
+    background:white;
+    border-radius:18px;
+    box-shadow:0 5px 18px #0001;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:750px;
+}
+
+th{
+    background:#075f3b;
+    color:white;
+    padding:13px;
+}
+
+td{
+    padding:13px;
+    border-bottom:1px solid #ddd;
+    text-align:center;
+    line-height:1.7;
+}
+
+tr:nth-child(even){
+    background:#f7f8f8;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.main-button{
+    display:inline-block;
+    background:#087f4b;
+    color:white;
+    text-decoration:none;
+    padding:14px 25px;
+    border-radius:30px;
+    margin-top:12px;
+    font-weight:bold;
+    box-shadow:0 5px 15px #0002;
+}
+
+.main-button:hover{
+    background:#e4c400;
+    color:#222;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.info{
+    background:white;
+    border-radius:20px;
+    padding:22px;
+    box-shadow:0 5px 18px #0001;
+}
+
+.info-row{
+    padding:13px 5px;
+    border-bottom:1px solid #eee;
+    line-height:1.8;
+}
+
+.info-row:last-child{
+    border-bottom:0;
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-    text-align:center;
     background:#263238;
     color:white;
-    padding:22px 15px;
-    margin-top:20px;
+    text-align:center;
+    padding:25px 15px;
+    line-height:2;
 }
 
 footer strong{
     color:#ffe56b;
 }
 
-/* ===== الهاتف ===== */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:600px){
 
@@ -241,21 +456,49 @@ footer strong{
         font-size:16px;
     }
 
-    .welcome h3{
-        font-size:23px;
+    .developer{
+        font-size:13px;
+        padding:7px 14px;
+    }
+
+    nav{
+        overflow-x:auto;
+        justify-content:flex-start;
+    }
+
+    nav a{
+        white-space:nowrap;
+        font-size:13px;
     }
 
     .welcome{
-        padding:28px 16px;
+        padding:30px 16px;
+    }
+
+    .welcome h3{
+        font-size:24px;
+    }
+
+    .welcome p{
+        font-size:15px;
+    }
+
+    .section-title{
+        font-size:21px;
     }
 
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- ===== رأس الصفحة ===== -->
+
+<!-- =====================================================
+     رأس الموقع
+===================================================== -->
 
 <header>
 
@@ -272,349 +515,770 @@ footer strong{
     </h2>
 
     <p>
+        وزارة التكوين والتعليم المهنيين
+    </p>
+
+    <p>
         مديرية التكوين والتعليم المهنيين لولاية أفلو
     </p>
+
+    <!-- اسم المطور -->
+
+    <div class="developer">
+        💻 مطور برامج: <strong>براهيمي يوسف</strong>
+    </div>
 
 </header>
 
 
-<!-- ===== رسالة متحركة ===== -->
+<!-- =====================================================
+     الشريط المتحرك
+===================================================== -->
 
 <div class="marquee">
 
-    <span>
-        🌟 مرحبًا بكم في مركز التكوين المهني والتمهين الشهيد دناقة عمر — وادي مرة 🌟 أهلاً وسهلاً بكم
-    </span>
+<span>
+
+🌟 مرحبًا بكم في مركز التكوين المهني والتمهين الشهيد دناقة عمر — وادي مرة
+🌟
+أهلاً وسهلاً بكم
+🌟
+اكتشفوا التخصصات والتكوينات المتاحة
+
+</span>
 
 </div>
 
 
-<!-- ===== الترحيب ===== -->
+<!-- =====================================================
+     القائمة
+===================================================== -->
 
-<section class="hero">
+<nav>
 
-    <div class="welcome">
+<a href="#home">الرئيسية</a>
 
-        <h3>
-            مرحبًا بكم في مركزنا 👋
-        </h3>
+<a href="#specialties">التخصصات</a>
 
-        <p>
-            فضاء تعريفي يساعدكم على الاطلاع على
-            التخصصات ومعلومات التكوين المتوفرة بالمركز.
-        </p>
+<a href="#registration">التسجيل</a>
 
-        <div class="signature">
-            أخوكم ي. ب.
-        </div>
+<a href="#open-days">الأبواب المفتوحة</a>
 
-    </div>
+<a href="#notices">التنبيهات</a>
+
+<a href="#contact">المركز</a>
+
+</nav>
+
+
+<!-- =====================================================
+     الترحيب
+===================================================== -->
+
+<section class="hero" id="home">
+
+<div class="welcome">
+
+<h3>
+مرحبًا بكم في مركزنا 👋
+</h3>
+
+<p>
+
+مركز التكوين المهني والتمهين
+<strong>الشهيد دناقة عمر</strong>
+بوادي مرة يرحب بكم.
+
+</p>
+
+<p>
+
+فضاء للتكوين واكتساب المهارات والحرف
+والاندماج في الحياة المهنية.
+
+</p>
+
+<div class="signature">
+أخوكم ي. ب.
+</div>
+
+</div>
 
 </section>
 
 
-<!-- ===== المحتوى ===== -->
-
 <main class="container">
 
 
-    <div class="section-title">
-        <span></span>
-        التخصصات والتكوينات
-    </div>
+<!-- إعلان الدورة -->
 
+<div class="section-title">
+<span></span>
+إعلان دورة أكتوبر 2026
+</div>
 
-    <div class="grid">
+<div class="announcement green">
 
+<h3>
+📢 دورة التكوين أكتوبر 2026
+</h3>
 
-        <!-- خياطة -->
+<p>
+يعلن مركز التكوين المهني والتمهين
+<strong>الشهيد دناقة عمر وادي مرة</strong>
+عن بداية التسجيلات لدورة أكتوبر 2026.
+</p>
+
+<p>
+🎓 للراغبين في اكتساب مهارة أو حرفة تمكنهم
+من الاندماج في الحياة المهنية واختيار التخصص المناسب لهم.
+</p>
 
-        <div class="card">
+<a
+class="main-button"
+href="https://takwin.dz"
+target="_blank">
 
-            <div class="icon">
-                🧵
-            </div>
+🌐 التسجيل عبر منصة takwin.dz
 
-            <h4>
-                خياطة
-            </h4>
+</a>
 
-            <p>
-                المستوى المطلوب: طور متوسط
-            </p>
+</div>
 
-            <p>
-                مدة التكوين: 12 شهرًا
-            </p>
 
-            <span class="badge">
-                تكوين حضوري
-            </span>
+<!-- التخصصات -->
 
-        </div>
+<div class="section-title" id="specialties">
 
+<span></span>
 
-        <!-- بستنة -->
+التخصصات والتكوينات
 
-        <div class="card">
+</div>
 
-            <div class="icon">
-                🌱
-            </div>
 
-            <h4>
-                البستنة
-            </h4>
+<div class="table-wrapper">
 
-            <p>
-                المستوى المطلوب: الطور الابتدائي
-            </p>
+<table>
 
-            <p>
-                مدة التكوين: 12 شهرًا
-            </p>
+<thead>
 
-            <span class="badge">
-                تكوين حضوري
-            </span>
+<tr>
+<th>الرقم</th>
+<th>التخصص</th>
+<th>المستوى المطلوب</th>
+<th>مدة التكوين</th>
+<th>نمط التكوين</th>
+</tr>
 
-        </div>
+</thead>
 
+<tbody>
 
-        <!-- مستغل معلوماتية -->
+<tr>
+<td>01</td>
+<td>🧵 خياطة</td>
+<td>طور متوسط</td>
+<td>12 شهرًا</td>
+<td>حضوري</td>
+</tr>
 
-        <div class="card">
+<tr>
+<td>02</td>
+<td>🌱 البستنة</td>
+<td>الطور الابتدائي</td>
+<td>12 شهرًا</td>
+<td>حضوري</td>
+</tr>
 
-            <div class="icon">
-                💻
-            </div>
+<tr>
+<td>03</td>
+<td>💻 مستغل معلوماتية</td>
+<td>حسب شروط الالتحاق</td>
+<td>6 أشهر</td>
+<td>معابر</td>
+</tr>
 
-            <h4>
-                مستغل معلوماتية
-            </h4>
+<tr>
+<td>04</td>
+<td>☀️ تركيب الألواح الشمسية الضوئية والحرارية</td>
+<td>الرابعة متوسط</td>
+<td>12 شهرًا</td>
+<td>تمهين</td>
+</tr>
 
-            <p>
-                مدة التكوين: 6 أشهر
-            </p>
+<tr>
+<td>05</td>
+<td>🛡️ عون الوقاية والأمن</td>
+<td>الثالثة ثانوي</td>
+<td>6 أشهر</td>
+<td>تأهيل أولي</td>
+</tr>
 
-            <p>
-                التكوين في مجال الإعلام الآلي.
-            </p>
+<tr>
+<td>06</td>
+<td>🖥️ تقني إعلام آلي<br>WORD - EXCEL - POWER POINT</td>
+<td>الرابعة متوسط</td>
+<td>6 أشهر</td>
+<td>تأهيل أولي</td>
+</tr>
 
-            <span class="badge">
-                تكوين متخصص
-            </span>
+<tr>
+<td>07</td>
+<td>♻️ استعادة النفايات وإعادة تدويرها</td>
+<td>بدون مستوى دراسي</td>
+<td>6 أشهر</td>
+<td>تأهيل أولي</td>
+</tr>
 
-        </div>
+</tbody>
 
+</table>
 
-        <!-- الطاقة الشمسية -->
+</div>
 
-        <div class="card">
 
-            <div class="icon">
-                ☀️
-            </div>
+<!-- تفاصيل مستغل معلوماتية -->
 
-            <h4>
-                تركيب الألواح الشمسية
-                الضوئية والحرارية
-            </h4>
+<div class="announcement blue">
 
-            <p>
-                المستوى المطلوب: الرابعة متوسط
-            </p>
+<h3>
+💻 شروط الالتحاق بتخصص مستغل معلوماتية
+</h3>
 
-            <p>
-                مدة التكوين: 12 شهرًا
-            </p>
+<p>
+بالنسبة للمترشحين الذين يثبتون مستوى
+<strong>السنة الثانية ثانوي</strong>:
+</p>
 
-            <span class="badge">
-                تكوين مهني
-            </span>
+<p>
+يشترط أن يكون المترشح قد درس أو لديه مستوى
+في الإعلام الآلي والمعلوماتية حسب الشروط المحددة
+للتخصص.
+</p>
 
-        </div>
+<p>
+وبالنسبة للمترشحين الذين يثبتون مستوى أقل
+من السنة الثانية ثانوي، تطبق عليهم شروط الالتحاق
+المحددة من طرف قطاع التكوين والتعليم المهنيين.
+</p>
 
+<p>
+⏱️ مدة التكوين: <strong>6 أشهر</strong>
+</p>
 
-        <!-- الوقاية والأمن -->
+</div>
 
-        <div class="card">
 
-            <div class="icon">
-                🛡️
-            </div>
+<!-- التسجيلات -->
 
-            <h4>
-                عون الوقاية والأمن
-            </h4>
+<div class="section-title" id="registration">
 
-            <p>
-                المستوى المطلوب: الثالثة ثانوي
-            </p>
+<span></span>
 
-            <p>
-                مدة التكوين: 6 أشهر
-            </p>
+مواعيد التسجيل
 
-            <span class="badge">
-                تأهيل أولي
-            </span>
+</div>
 
-        </div>
 
+<div class="date-grid">
 
-        <!-- إعلام آلي -->
+<div class="date-box">
+<strong>08 سبتمبر 2026</strong>
+بداية التسجيلات
+</div>
 
-        <div class="card">
+<div class="date-box">
+<strong>26 سبتمبر 2026</strong>
+نهاية الفترة الأولى المعلنة
+</div>
 
-            <div class="icon">
-                🖥️
-            </div>
+<div class="date-box">
+<strong>30 سبتمبر 2026</strong>
+استمرار التسجيلات حسب الإعلان اللاحق
+</div>
 
-            <h4>
-                تقني إعلام آلي
-            </h4>
+<div class="date-box">
+<strong>01 أكتوبر 2026</strong>
+إعلان النتائج حسب الإعلان المنشور
+</div>
 
-            <p>
-                Word — Excel — PowerPoint
-            </p>
+<div class="date-box">
+<strong>28 / 29 / 30 سبتمبر</strong>
+أيام الأبواب المفتوحة
+</div>
 
-            <p>
-                المستوى المطلوب: الرابعة متوسط
-            </p>
+</div>
 
-            <p>
-                مدة التكوين: 6 أشهر
-            </p>
 
-            <span class="badge">
-                تأهيل أولي
-            </span>
+<!-- الأبواب المفتوحة -->
 
-        </div>
+<div class="section-title" id="open-days">
 
+<span></span>
 
-        <!-- إعادة التدوير -->
+الأبواب المفتوحة على المركز
 
-        <div class="card">
+</div>
 
-            <div class="icon">
-                ♻️
-            </div>
 
-            <h4>
-                استعادة النفايات
-                وإعادة تدويرها
-            </h4>
+<div class="announcement green">
 
-            <p>
-                المستوى المطلوب:
-                بدون مستوى دراسي
-            </p>
+<h3>
+🚪 أبواب مفتوحة
+</h3>
 
-            <p>
-                مدة التكوين: 6 أشهر
-            </p>
+<p>
+يمكنكم زيارة المركز خلال الأيام المفتوحة
+والاطلاع على مختلف التخصصات التكوينية المتاحة.
+</p>
 
-            <span class="badge">
-                تأهيل أولي
-            </span>
+<div class="date-grid">
 
-        </div>
+<div class="date-box">
+<strong>27</strong>
+سبتمبر
+</div>
 
+<div class="date-box">
+<strong>28</strong>
+سبتمبر
+</div>
 
-    </div>
+<div class="date-box">
+<strong>29</strong>
+سبتمبر
+</div>
 
+<div class="date-box">
+<strong>30</strong>
+سبتمبر
+</div>
 
-    <!-- ===== معلومات المركز ===== -->
+</div>
 
-    <div class="section-title">
+<p style="margin-top:20px">
+كما يمكنكم زيارة الورشات والأقسام
+والتعرف على التجهيزات.
+</p>
 
-        <span></span>
+</div>
 
-        معلومات المركز
 
-    </div>
+<!-- ملف التسجيل -->
 
+<div class="section-title">
 
-    <div class="info">
+<span></span>
 
-        <div class="info-row">
+ملف التسجيل
 
-            🏫
+</div>
 
-            <strong>
-                المؤسسة:
-            </strong>
 
-            مركز التكوين المهني والتمهين
-            الشهيد دناقة عمر
+<div class="announcement yellow">
 
-        </div>
+<h3>
+📋 كيفية التسجيل
+</h3>
 
+<p>
+استمارة التسجيل الأولي من الموقع الإلكتروني
+لمنصة التكوين.
+</p>
 
-        <div class="info-row">
+<p>
+بعد تأكيد التسجيل، يتم التقرب من مكتب الاستقبال
+والتوجيه بالمركز عند طلب ذلك لاستكمال الإجراءات.
+</p>
 
-            📍
+<a
+class="main-button"
+href="https://takwin.dz"
+target="_blank">
 
-            <strong>
-                المكان:
-            </strong>
+🌐 فتح منصة التسجيل
 
-            وادي مرة
+</a>
 
-        </div>
+</div>
 
 
-        <div class="info-row">
+<!-- إعلانات وتنبيهات -->
 
-            🎓
+<div class="section-title" id="notices">
 
-            <strong>
-                المجال:
-            </strong>
+<span></span>
 
-            التكوين والتعليم المهنيين
+إعلانات وتنبيهات هامة
 
-        </div>
+</div>
 
 
-        <div class="info-row">
+<div class="announcement red">
 
-            🌐
+<h3>
+📢 إعلان هام
+</h3>
 
-            <strong>
-                منصة التسجيل:
-            </strong>
+<p>
+ليكن في علم كافة المترشحين المسجلين
+عبر منصة تكوين لدورة أكتوبر 2026
+أنه يتعين عليهم مراجعة ملفاتهم في أقرب الآجال
+والتأكد من صحة ودقة المعلومات المصرح بها،
+وكذا مطابقة وصحة الوثائق المرفوعة عبر المنصة.
+</p>
 
-            takwin.dz
+<p>
+مع ضرورة استكمال أي وثائق أو معلومات ناقصة.
+</p>
 
-        </div>
+</div>
 
-    </div>
+
+<div class="announcement red">
+
+<h3>
+⚠️ أهم نقائص التسجيل
+</h3>
+
+<ul class="notice-list">
+
+<li>صورة شخصية غير مطابقة للمعايير.</li>
+
+<li>عدم تحميل شهادة مدرسية أو رقم التعريف المدرسي.</li>
+
+<li>وثائق غير واضحة أو غير مطابقة للمعلومات المصرح بها.</li>
+
+<li>عدم تحميل شهادة طبية.</li>
+
+</ul>
+
+</div>
+
+
+<div class="announcement green">
+
+<h3>
+👨‍🔧 بالنسبة للمترشحين في نمط التمهين
+</h3>
+
+<p>
+يرجى التأكد من استكمال الإجراءات والوثائق
+المتعلقة بعقد التمهين وإعادة رفع الوثائق المطلوبة
+على منصة التكوين.
+</p>
+
+</div>
+
+
+<div class="announcement red">
+
+<h3>
+🚨 هام جدًا
+</h3>
+
+<p>
+دعوة لجميع المترشحين الذين لديهم نقائص أو أخطاء
+في ملفاتهم إلى الإسراع في تصحيحها تفاديًا لأي
+إشكال قد يحول دون استكمال التسجيل أو دراسة الملف.
+</p>
+
+</div>
+
+
+<div class="announcement yellow">
+
+<h3>
+📌 تنبيه للمترشحين المسجلين
+</h3>
+
+<p>
+المترشحون المسجلون لدى أكثر من مؤسسة
+أو في أكثر من تخصص مطالبون بمراجعة اختياراتهم
+واعتماد اختيار واحد فقط وفق الإجراءات المعمول بها.
+</p>
+
+</div>
+
+
+<div class="announcement blue">
+
+<h3>
+📣 لا تضيعوا الفرصة من أيديكم
+</h3>
+
+<p>
+سجّل الآن واستفد من فرصة التكوين واكتساب
+مهارة تساعدك في بناء مستقبلك المهني.
+</p>
+
+<a
+class="main-button"
+href="https://takwin.dz"
+target="_blank">
+
+🎓 سجّل الآن عبر takwin.dz
+
+</a>
+
+</div>
+
+
+<!-- التكوين بالتأهيل الأولي -->
+
+<div class="section-title">
+
+<span></span>
+
+التكوين بالتأهيل الأولي
+
+</div>
+
+
+<div class="grid">
+
+<div class="card">
+
+<div class="icon">🛡️</div>
+
+<h3>عون الوقاية والأمن</h3>
+
+<p>المستوى المطلوب: الثالثة ثانوي</p>
+
+<p>المدة: 06 أشهر</p>
+
+<span class="badge">تأهيل أولي</span>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">💻</div>
+
+<h3>تقني إعلام آلي</h3>
+
+<p>WORD - EXCEL - POWER POINT</p>
+
+<p>المستوى: الرابعة متوسط</p>
+
+<p>المدة: 06 أشهر</p>
+
+<span class="badge">تأهيل أولي</span>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">♻️</div>
+
+<h3>استعادة النفايات وإعادة تدويرها</h3>
+
+<p>المستوى المطلوب: بدون مستوى دراسي</p>
+
+<p>المدة: 06 أشهر</p>
+
+<span class="badge">تأهيل أولي</span>
+
+</div>
+
+</div>
+
+
+<!-- التكوين المهني -->
+
+<div class="section-title">
+
+<span></span>
+
+التكوين المهني
+
+</div>
+
+
+<div class="grid">
+
+<div class="card">
+
+<div class="icon">🧵</div>
+
+<h3>خياطة</h3>
+
+<p>طور متوسط</p>
+
+<p>12 شهرًا</p>
+
+<span class="badge">حضوري</span>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🌱</div>
+
+<h3>البستنة</h3>
+
+<p>الطور الابتدائي</p>
+
+<p>12 شهرًا</p>
+
+<span class="badge">حضوري</span>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">☀️</div>
+
+<h3>تركيب الألواح الشمسية الضوئية والحرارية</h3>
+
+<p>الرابعة متوسط</p>
+
+<p>12 شهرًا</p>
+
+<span class="badge">تمهين</span>
+
+</div>
+
+</div>
+
+
+<!-- منصة التسجيل -->
+
+<div class="section-title">
+
+<span></span>
+
+منصة التسجيل
+
+</div>
+
+
+<div class="announcement green" style="text-align:center">
+
+<h3>🌐 takwin.dz</h3>
+
+<p>
+منصة التسجيل الخاصة بالتكوين والتعليم المهنيين.
+</p>
+
+<a
+href="https://takwin.dz"
+target="_blank"
+class="main-button">
+
+فتح منصة takwin.dz
+
+</a>
+
+</div>
+
+
+<!-- معلومات المركز -->
+
+<div class="section-title" id="contact">
+
+<span></span>
+
+معلومات المركز
+
+</div>
+
+
+<div class="info">
+
+<div class="info-row">
+
+🏫
+
+<strong>المؤسسة:</strong>
+
+مركز التكوين المهني والتمهين
+الشهيد دناقة عمر
+
+</div>
+
+
+<div class="info-row">
+
+📍
+
+<strong>الموقع:</strong>
+
+وادي مرة
+
+</div>
+
+
+<div class="info-row">
+
+🏛️
+
+<strong>القطاع:</strong>
+
+وزارة التكوين والتعليم المهنيين
+
+</div>
+
+
+<div class="info-row">
+
+🏢
+
+<strong>المديرية:</strong>
+
+مديرية التكوين والتعليم المهنيين
+لولاية أفلو
+
+</div>
+
+
+<div class="info-row">
+
+🌐
+
+<strong>منصة التسجيل:</strong>
+
+takwin.dz
+
+</div>
+
+</div>
 
 
 </main>
 
 
-<!-- ===== أسفل الصفحة ===== -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-    <div>
-        مركز التكوين المهني والتمهين
-        الشهيد دناقة عمر — وادي مرة
-    </div>
+<div>
+🏫 مركز التكوين المهني والتمهين
+</div>
 
-    <div style="margin-top:8px">
+<div>
+الشهيد دناقة عمر — وادي مرة
+</div>
 
-        تطوير
+<div>
+🌟 مرحبًا بالجميع
+</div>
 
-        <strong>
-            ي. ب.
-        </strong>
+<div style="margin-top:10px">
 
-    </div>
+تطوير
+<strong>
+براهيمي يوسف
+</strong>
+
+</div>
 
 </footer>
 
