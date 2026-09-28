@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>مركز التكوين المهني والتمهين - وادي مرة</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>
+مركز التكوين المهني والتمهين - وادي مرة
+</title>
 
 <style>
+
+/* =========================
+   GENERAL
+========================= */
 
 *{
     box-sizing:border-box;
@@ -18,7 +28,7 @@ html{
 
 body{
     margin:0;
-    font-family:Tahoma, Arial, sans-serif;
+    font-family:Tahoma,Arial,sans-serif;
     background:#f4f6f5;
     color:#263238;
 }
@@ -29,9 +39,9 @@ body{
 
 header{
     background:white;
-    border-bottom:5px solid #e4c400;
-    padding:20px 15px;
     text-align:center;
+    padding:22px 15px;
+    border-bottom:5px solid #e4c400;
 }
 
 .logo{
@@ -41,10 +51,13 @@ header{
     border-radius:50%;
     background:#087f4b;
     color:white;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     font-size:38px;
+
     box-shadow:0 5px 20px #0002;
 }
 
@@ -60,24 +73,26 @@ header h2{
 }
 
 header p{
+    margin:7px 0;
     color:#777;
-    margin:8px 0 0;
 }
-
-/* =========================
-   اسم المطور
-========================= */
 
 .developer{
     display:inline-block;
-    margin-top:13px;
+
+    margin-top:12px;
     padding:8px 18px;
+
     border-radius:25px;
+
     background:#f4f6f5;
     border:1px solid #e4c400;
+
     color:#075f3b;
+
     font-size:15px;
     font-weight:bold;
+
     box-shadow:0 3px 10px #0001;
 }
 
@@ -92,19 +107,25 @@ header p{
 .marquee{
     background:#e4c400;
     color:#222;
+
     padding:11px 0;
+
     overflow:hidden;
     white-space:nowrap;
+
     font-weight:bold;
 }
 
 .marquee span{
     display:inline-block;
+
     padding-right:100%;
+
     animation:moveText 20s linear infinite;
 }
 
 @keyframes moveText{
+
     from{
         transform:translateX(-10%);
     }
@@ -112,29 +133,40 @@ header p{
     to{
         transform:translateX(100%);
     }
+
 }
 
 /* =========================
-   NAVIGATION
+   NAV
 ========================= */
 
 nav{
     position:sticky;
     top:0;
+
     z-index:100;
+
     background:#075f3b;
+
     display:flex;
     justify-content:center;
+
     gap:5px;
+
     padding:8px;
+
     box-shadow:0 3px 12px #0003;
 }
 
 nav a{
     color:white;
+
     text-decoration:none;
+
     padding:10px 14px;
+
     border-radius:10px;
+
     font-size:14px;
 }
 
@@ -144,118 +176,89 @@ nav a:hover{
 }
 
 /* =========================
-   HERO
-========================= */
-
-.hero{
-    max-width:1150px;
-    margin:25px auto;
-    padding:0 15px;
-}
-
-.welcome{
-    background:
-        linear-gradient(135deg,#075f3b,#0b8b55);
-    color:white;
-    border-radius:25px;
-    padding:42px 20px;
-    text-align:center;
-    box-shadow:0 10px 30px #0002;
-}
-
-.welcome h3{
-    margin:0 0 12px;
-    font-size:30px;
-}
-
-.welcome p{
-    max-width:800px;
-    margin:auto;
-    line-height:2;
-    font-size:17px;
-}
-
-.signature{
-    margin-top:18px;
-    color:#ffe56b;
-    font-size:20px;
-    font-weight:bold;
-}
-
-/* =========================
    CONTAINER
 ========================= */
 
 .container{
     max-width:1150px;
+
     margin:auto;
+
     padding:0 15px 50px;
 }
 
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    max-width:1150px;
+
+    margin:25px auto;
+
+    padding:0 15px;
+}
+
+.welcome{
+    background:
+    linear-gradient(135deg,#075f3b,#0b8b55);
+
+    color:white;
+
+    border-radius:25px;
+
+    padding:40px 20px;
+
+    text-align:center;
+
+    box-shadow:0 10px 30px #0002;
+}
+
+.welcome h3{
+    margin:0 0 12px;
+
+    font-size:30px;
+}
+
+.welcome p{
+    max-width:800px;
+
+    margin:10px auto;
+
+    line-height:2;
+
+    font-size:17px;
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+
 .section-title{
+
     display:flex;
+
     align-items:center;
+
     gap:10px;
+
     color:#075f3b;
+
     margin:35px 0 18px;
+
     font-size:24px;
+
     font-weight:bold;
 }
 
 .section-title span{
+
     width:8px;
     height:32px;
+
     background:#e4c400;
+
     border-radius:10px;
-}
-
-/* =========================
-   CARDS
-========================= */
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:17px;
-}
-
-.card{
-    background:white;
-    border-radius:18px;
-    padding:20px;
-    border-right:5px solid #e4c400;
-    box-shadow:0 5px 18px #00000012;
-    transition:.2s;
-}
-
-.card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 10px 25px #0003;
-}
-
-.icon{
-    font-size:35px;
-}
-
-.card h3{
-    color:#075f3b;
-    margin:10px 0;
-}
-
-.card p{
-    margin:7px 0;
-    line-height:1.7;
-    color:#555;
-}
-
-.badge{
-    display:inline-block;
-    margin-top:8px;
-    background:#f4e9a2;
-    color:#635500;
-    border-radius:20px;
-    padding:6px 12px;
-    font-size:13px;
 }
 
 /* =========================
@@ -263,10 +266,15 @@ nav a:hover{
 ========================= */
 
 .announcement{
+
     background:white;
+
     border-radius:22px;
+
     padding:25px;
+
     margin-top:20px;
+
     box-shadow:0 5px 20px #0001;
 }
 
@@ -287,7 +295,9 @@ nav a:hover{
 }
 
 .announcement h3{
+
     margin-top:0;
+
     color:#075f3b;
 }
 
@@ -296,92 +306,8 @@ nav a:hover{
 }
 
 .announcement p{
+
     line-height:2;
-}
-
-/* =========================
-   DATE BOXES
-========================= */
-
-.date-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:12px;
-}
-
-.date-box{
-    background:white;
-    border-radius:15px;
-    padding:18px;
-    text-align:center;
-    box-shadow:0 4px 15px #0001;
-    border-bottom:4px solid #e4c400;
-}
-
-.date-box strong{
-    display:block;
-    color:#075f3b;
-    font-size:20px;
-    margin-bottom:8px;
-}
-
-/* =========================
-   NOTICE LIST
-========================= */
-
-.notice-list{
-    list-style:none;
-    padding:0;
-    margin:10px 0;
-}
-
-.notice-list li{
-    background:#f8f8f8;
-    margin:9px 0;
-    padding:13px;
-    border-radius:10px;
-    line-height:1.7;
-}
-
-.notice-list li::before{
-    content:"✓";
-    color:#087f4b;
-    font-weight:bold;
-    margin-left:8px;
-}
-
-/* =========================
-   TABLE
-========================= */
-
-.table-wrapper{
-    overflow-x:auto;
-    background:white;
-    border-radius:18px;
-    box-shadow:0 5px 18px #0001;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    min-width:750px;
-}
-
-th{
-    background:#075f3b;
-    color:white;
-    padding:13px;
-}
-
-td{
-    padding:13px;
-    border-bottom:1px solid #ddd;
-    text-align:center;
-    line-height:1.7;
-}
-
-tr:nth-child(even){
-    background:#f7f8f8;
 }
 
 /* =========================
@@ -389,20 +315,204 @@ tr:nth-child(even){
 ========================= */
 
 .main-button{
+
     display:inline-block;
+
     background:#087f4b;
+
     color:white;
+
     text-decoration:none;
+
     padding:14px 25px;
+
     border-radius:30px;
+
     margin-top:12px;
+
     font-weight:bold;
+
     box-shadow:0 5px 15px #0002;
 }
 
 .main-button:hover{
+
     background:#e4c400;
+
     color:#222;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:17px;
+}
+
+.card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    border-right:5px solid #e4c400;
+
+    box-shadow:0 5px 18px #0001;
+
+    transition:.2s;
+}
+
+.card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 25px #0003;
+}
+
+.icon{
+
+    font-size:35px;
+}
+
+.card h3{
+
+    color:#075f3b;
+
+    margin:10px 0;
+}
+
+.card p{
+
+    margin:7px 0;
+
+    line-height:1.7;
+
+    color:#555;
+}
+
+.badge{
+
+    display:inline-block;
+
+    margin-top:8px;
+
+    background:#f4e9a2;
+
+    color:#635500;
+
+    border-radius:20px;
+
+    padding:6px 12px;
+
+    font-size:13px;
+}
+
+/* =========================
+   NOTICE
+========================= */
+
+.notice-list{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:10px 0;
+}
+
+.notice-list li{
+
+    background:#f8f8f8;
+
+    margin:9px 0;
+
+    padding:13px;
+
+    border-radius:10px;
+
+    line-height:1.7;
+}
+
+.notice-list li::before{
+
+    content:"✓";
+
+    color:#087f4b;
+
+    font-weight:bold;
+
+    margin-left:8px;
+}
+
+/* =========================
+   DATE
+========================= */
+
+.date-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+    gap:12px;
+}
+
+.date-box{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:18px;
+
+    text-align:center;
+
+    box-shadow:0 4px 15px #0001;
+
+    border-bottom:4px solid #e4c400;
+}
+
+.date-box strong{
+
+    display:block;
+
+    color:#075f3b;
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+/* =========================
+   OLD / ARCHIVE
+========================= */
+
+.archive{
+
+    opacity:.85;
+}
+
+.archive-title{
+
+    color:#777;
+
+    font-size:21px;
+
+    margin-top:40px;
+
+    padding-bottom:10px;
+
+    border-bottom:2px solid #ddd;
 }
 
 /* =========================
@@ -410,19 +520,27 @@ tr:nth-child(even){
 ========================= */
 
 .info{
+
     background:white;
+
     border-radius:20px;
+
     padding:22px;
+
     box-shadow:0 5px 18px #0001;
 }
 
 .info-row{
+
     padding:13px 5px;
+
     border-bottom:1px solid #eee;
+
     line-height:1.8;
 }
 
 .info-row:last-child{
+
     border-bottom:0;
 }
 
@@ -431,14 +549,20 @@ tr:nth-child(even){
 ========================= */
 
 footer{
+
     background:#263238;
+
     color:white;
+
     text-align:center;
+
     padding:25px 15px;
+
     line-height:2;
 }
 
 footer strong{
+
     color:#ffe56b;
 }
 
@@ -458,38 +582,46 @@ footer strong{
 
     .developer{
         font-size:13px;
-        padding:7px 14px;
     }
 
     nav{
+
         overflow-x:auto;
+
         justify-content:flex-start;
     }
 
     nav a{
+
         white-space:nowrap;
+
         font-size:13px;
     }
 
     .welcome{
+
         padding:30px 16px;
     }
 
     .welcome h3{
+
         font-size:24px;
     }
 
     .welcome p{
+
         font-size:15px;
     }
 
     .section-title{
+
         font-size:21px;
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -497,7 +629,7 @@ footer strong{
 
 
 <!-- =====================================================
-     رأس الموقع
+     HEADER
 ===================================================== -->
 
 <header>
@@ -522,28 +654,27 @@ footer strong{
         مديرية التكوين والتعليم المهنيين لولاية أفلو
     </p>
 
-    <!-- اسم المطور -->
-
     <div class="developer">
-        💻 مطور برامج: <strong>براهيمي يوسف</strong>
+
+        💻 مطور برامج:
+        <strong>براهيمي يوسف</strong>
+
     </div>
 
 </header>
 
 
 <!-- =====================================================
-     الشريط المتحرك
+     MARQUEE
 ===================================================== -->
 
 <div class="marquee">
 
 <span>
 
-🌟 مرحبًا بكم في مركز التكوين المهني والتمهين الشهيد دناقة عمر — وادي مرة
-🌟
-أهلاً وسهلاً بكم
-🌟
-اكتشفوا التخصصات والتكوينات المتاحة
+🆕 جديد مركز التكوين المهني والتمهين الشهيد دناقة عمر — وادي مرة
+&nbsp;&nbsp;&nbsp; 🌟 أهلاً وسهلاً بكم
+&nbsp;&nbsp;&nbsp; 🎓 اكتشفوا التخصصات والتكوينات
 
 </span>
 
@@ -551,7 +682,7 @@ footer strong{
 
 
 <!-- =====================================================
-     القائمة
+     NAVIGATION
 ===================================================== -->
 
 <nav>
@@ -562,8 +693,6 @@ footer strong{
 
 <a href="#registration">التسجيل</a>
 
-<a href="#open-days">الأبواب المفتوحة</a>
-
 <a href="#notices">التنبيهات</a>
 
 <a href="#contact">المركز</a>
@@ -572,7 +701,7 @@ footer strong{
 
 
 <!-- =====================================================
-     الترحيب
+     WELCOME
 ===================================================== -->
 
 <section class="hero" id="home">
@@ -598,10 +727,6 @@ footer strong{
 
 </p>
 
-<div class="signature">
-أخوكم ي. ب.
-</div>
-
 </div>
 
 </section>
@@ -610,214 +735,55 @@ footer strong{
 <main class="container">
 
 
-<!-- إعلان الدورة -->
+<!-- =====================================================
+     01 - أحدث إعلان
+===================================================== -->
 
 <div class="section-title">
+
 <span></span>
-إعلان دورة أكتوبر 2026
+
+🔴 أحدث مستجدات المركز
+
 </div>
+
 
 <div class="announcement green">
 
 <h3>
-📢 دورة التكوين أكتوبر 2026
+
+🆕 جديد مركز التكوين المهني والتمهين وادي مرة
+
 </h3>
 
 <p>
-يعلن مركز التكوين المهني والتمهين
-<strong>الشهيد دناقة عمر وادي مرة</strong>
-عن بداية التسجيلات لدورة أكتوبر 2026.
-</p>
 
-<p>
-🎓 للراغبين في اكتساب مهارة أو حرفة تمكنهم
-من الاندماج في الحياة المهنية واختيار التخصص المناسب لهم.
+تابعوا آخر المستجدات والإعلانات المتعلقة
+بالتكوين والتخصصات وملفات المترشحين.
+
 </p>
 
 <a
-class="main-button"
-href="https://takwin.dz"
-target="_blank">
+href="https://workdz-u7oo.onrender.com"
+target="_blank"
+class="main-button">
 
-🌐 التسجيل عبر منصة takwin.dz
+👀 اكتشف الجديد
 
 </a>
 
 </div>
 
 
-<!-- التخصصات -->
+<!-- =====================================================
+     02 - دورة أكتوبر
+===================================================== -->
 
-<div class="section-title" id="specialties">
-
-<span></span>
-
-التخصصات والتكوينات
-
-</div>
-
-
-<div class="table-wrapper">
-
-<table>
-
-<thead>
-
-<tr>
-<th>الرقم</th>
-<th>التخصص</th>
-<th>المستوى المطلوب</th>
-<th>مدة التكوين</th>
-<th>نمط التكوين</th>
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-<td>01</td>
-<td>🧵 خياطة</td>
-<td>طور متوسط</td>
-<td>12 شهرًا</td>
-<td>حضوري</td>
-</tr>
-
-<tr>
-<td>02</td>
-<td>🌱 البستنة</td>
-<td>الطور الابتدائي</td>
-<td>12 شهرًا</td>
-<td>حضوري</td>
-</tr>
-
-<tr>
-<td>03</td>
-<td>💻 مستغل معلوماتية</td>
-<td>حسب شروط الالتحاق</td>
-<td>6 أشهر</td>
-<td>معابر</td>
-</tr>
-
-<tr>
-<td>04</td>
-<td>☀️ تركيب الألواح الشمسية الضوئية والحرارية</td>
-<td>الرابعة متوسط</td>
-<td>12 شهرًا</td>
-<td>تمهين</td>
-</tr>
-
-<tr>
-<td>05</td>
-<td>🛡️ عون الوقاية والأمن</td>
-<td>الثالثة ثانوي</td>
-<td>6 أشهر</td>
-<td>تأهيل أولي</td>
-</tr>
-
-<tr>
-<td>06</td>
-<td>🖥️ تقني إعلام آلي<br>WORD - EXCEL - POWER POINT</td>
-<td>الرابعة متوسط</td>
-<td>6 أشهر</td>
-<td>تأهيل أولي</td>
-</tr>
-
-<tr>
-<td>07</td>
-<td>♻️ استعادة النفايات وإعادة تدويرها</td>
-<td>بدون مستوى دراسي</td>
-<td>6 أشهر</td>
-<td>تأهيل أولي</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-
-<!-- تفاصيل مستغل معلوماتية -->
-
-<div class="announcement blue">
-
-<h3>
-💻 شروط الالتحاق بتخصص مستغل معلوماتية
-</h3>
-
-<p>
-بالنسبة للمترشحين الذين يثبتون مستوى
-<strong>السنة الثانية ثانوي</strong>:
-</p>
-
-<p>
-يشترط أن يكون المترشح قد درس أو لديه مستوى
-في الإعلام الآلي والمعلوماتية حسب الشروط المحددة
-للتخصص.
-</p>
-
-<p>
-وبالنسبة للمترشحين الذين يثبتون مستوى أقل
-من السنة الثانية ثانوي، تطبق عليهم شروط الالتحاق
-المحددة من طرف قطاع التكوين والتعليم المهنيين.
-</p>
-
-<p>
-⏱️ مدة التكوين: <strong>6 أشهر</strong>
-</p>
-
-</div>
-
-
-<!-- التسجيلات -->
-
-<div class="section-title" id="registration">
+<div class="section-title">
 
 <span></span>
 
-مواعيد التسجيل
-
-</div>
-
-
-<div class="date-grid">
-
-<div class="date-box">
-<strong>08 سبتمبر 2026</strong>
-بداية التسجيلات
-</div>
-
-<div class="date-box">
-<strong>26 سبتمبر 2026</strong>
-نهاية الفترة الأولى المعلنة
-</div>
-
-<div class="date-box">
-<strong>30 سبتمبر 2026</strong>
-استمرار التسجيلات حسب الإعلان اللاحق
-</div>
-
-<div class="date-box">
-<strong>01 أكتوبر 2026</strong>
-إعلان النتائج حسب الإعلان المنشور
-</div>
-
-<div class="date-box">
-<strong>28 / 29 / 30 سبتمبر</strong>
-أيام الأبواب المفتوحة
-</div>
-
-</div>
-
-
-<!-- الأبواب المفتوحة -->
-
-<div class="section-title" id="open-days">
-
-<span></span>
-
-الأبواب المفتوحة على المركز
+📢 دورة أكتوبر 2026
 
 </div>
 
@@ -825,53 +791,269 @@ target="_blank">
 <div class="announcement green">
 
 <h3>
-🚪 أبواب مفتوحة
+
+🎓 التكوينات والتخصصات
+
 </h3>
 
 <p>
-يمكنكم زيارة المركز خلال الأيام المفتوحة
-والاطلاع على مختلف التخصصات التكوينية المتاحة.
+
+يمكن للمترشحين الاطلاع على التخصصات المتاحة
+وشروط الالتحاق بكل تخصص قبل اختيار المسار المناسب.
+
 </p>
 
-<div class="date-grid">
+<a
+href="https://takwin.dz"
+target="_blank"
+class="main-button">
 
-<div class="date-box">
-<strong>27</strong>
-سبتمبر
-</div>
+🌐 منصة takwin.dz
 
-<div class="date-box">
-<strong>28</strong>
-سبتمبر
-</div>
-
-<div class="date-box">
-<strong>29</strong>
-سبتمبر
-</div>
-
-<div class="date-box">
-<strong>30</strong>
-سبتمبر
-</div>
-
-</div>
-
-<p style="margin-top:20px">
-كما يمكنكم زيارة الورشات والأقسام
-والتعرف على التجهيزات.
-</p>
+</a>
 
 </div>
 
 
-<!-- ملف التسجيل -->
+<!-- =====================================================
+     03 - التخصصات
+===================================================== -->
 
-<div class="section-title">
+<div class="section-title"
+     id="specialties">
 
 <span></span>
 
-ملف التسجيل
+🎓 التخصصات والتكوينات
+
+</div>
+
+
+<div class="grid">
+
+
+<div class="card">
+
+<div class="icon">
+🧵
+</div>
+
+<h3>
+خياطة
+</h3>
+
+<p>
+المستوى: طور متوسط
+</p>
+
+<p>
+المدة: 12 شهرًا
+</p>
+
+<span class="badge">
+حضوري
+</span>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🌱
+</div>
+
+<h3>
+البستنة
+</h3>
+
+<p>
+المستوى: الطور الابتدائي
+</p>
+
+<p>
+المدة: 12 شهرًا
+</p>
+
+<span class="badge">
+حضوري
+</span>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+💻
+</div>
+
+<h3>
+مستغل معلوماتية
+</h3>
+
+<p>
+حسب شروط الالتحاق
+</p>
+
+<p>
+المدة: 06 أشهر
+</p>
+
+<span class="badge">
+معابر
+</span>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+☀️
+</div>
+
+<h3>
+تركيب الألواح الشمسية
+الضوئية والحرارية
+</h3>
+
+<p>
+المستوى: الرابعة متوسط
+</p>
+
+<p>
+المدة: 12 شهرًا
+</p>
+
+<span class="badge">
+تمهين
+</span>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🛡️
+</div>
+
+<h3>
+عون الوقاية والأمن
+</h3>
+
+<p>
+المستوى: الثالثة ثانوي
+</p>
+
+<p>
+المدة: 06 أشهر
+</p>
+
+<span class="badge">
+تأهيل أولي
+</span>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🖥️
+</div>
+
+<h3>
+تقني إعلام آلي
+</h3>
+
+<p>
+WORD - EXCEL - POWER POINT
+</p>
+
+<p>
+المستوى: الرابعة متوسط
+</p>
+
+<p>
+المدة: 06 أشهر
+</p>
+
+<span class="badge">
+تأهيل أولي
+</span>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+♻️
+</div>
+
+<h3>
+استعادة النفايات وإعادة تدويرها
+</h3>
+
+<p>
+بدون مستوى دراسي
+</p>
+
+<p>
+المدة: 06 أشهر
+</p>
+
+<span class="badge">
+تأهيل أولي
+</span>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     04 - شرح المعلوماتية
+===================================================== -->
+
+<div class="announcement blue">
+
+<h3>
+
+💻 شرح تخصص مستغل معلوماتية
+
+</h3>
+
+<p>
+
+هذا التخصص موجه للمترشحين الذين تتوفر فيهم
+شروط الالتحاق المحددة من طرف قطاع التكوين
+والتعليم المهنيين.
+
+</p>
+
+<p>
+
+⏱️ مدة التكوين:
+<strong>06 أشهر</strong>
+
+</p>
+
+</div>
+
+
+<!-- =====================================================
+     05 - التسجيل
+===================================================== -->
+
+<div class="section-title"
+     id="registration">
+
+<span></span>
+
+📋 التسجيل وملف المترشح
 
 </div>
 
@@ -879,23 +1061,22 @@ target="_blank">
 <div class="announcement yellow">
 
 <h3>
-📋 كيفية التسجيل
+
+📝 قبل التسجيل
+
 </h3>
 
 <p>
-استمارة التسجيل الأولي من الموقع الإلكتروني
-لمنصة التكوين.
-</p>
 
-<p>
-بعد تأكيد التسجيل، يتم التقرب من مكتب الاستقبال
-والتوجيه بالمركز عند طلب ذلك لاستكمال الإجراءات.
+تأكد من إدخال معلوماتك الشخصية بشكل صحيح،
+ومطابقة المعلومات للوثائق التي تقوم بتحميلها.
+
 </p>
 
 <a
-class="main-button"
 href="https://takwin.dz"
-target="_blank">
+target="_blank"
+class="main-button">
 
 🌐 فتح منصة التسجيل
 
@@ -904,13 +1085,16 @@ target="_blank">
 </div>
 
 
-<!-- إعلانات وتنبيهات -->
+<!-- =====================================================
+     06 - النقائص
+===================================================== -->
 
-<div class="section-title" id="notices">
+<div class="section-title"
+     id="notices">
 
 <span></span>
 
-إعلانات وتنبيهات هامة
+⚠️ تنبيهات ونقائص الملفات
 
 </div>
 
@@ -918,252 +1102,60 @@ target="_blank">
 <div class="announcement red">
 
 <h3>
-📢 إعلان هام
-</h3>
 
-<p>
-ليكن في علم كافة المترشحين المسجلين
-عبر منصة تكوين لدورة أكتوبر 2026
-أنه يتعين عليهم مراجعة ملفاتهم في أقرب الآجال
-والتأكد من صحة ودقة المعلومات المصرح بها،
-وكذا مطابقة وصحة الوثائق المرفوعة عبر المنصة.
-</p>
+⚠️ تأكد من ملفك قبل استكمال التسجيل
 
-<p>
-مع ضرورة استكمال أي وثائق أو معلومات ناقصة.
-</p>
-
-</div>
-
-
-<div class="announcement red">
-
-<h3>
-⚠️ أهم نقائص التسجيل
 </h3>
 
 <ul class="notice-list">
 
-<li>صورة شخصية غير مطابقة للمعايير.</li>
+<li>
+الصورة الشخصية غير المطابقة للمعايير.
+</li>
 
-<li>عدم تحميل شهادة مدرسية أو رقم التعريف المدرسي.</li>
+<li>
+عدم تحميل الشهادة المدرسية أو الوثيقة المطلوبة.
+</li>
 
-<li>وثائق غير واضحة أو غير مطابقة للمعلومات المصرح بها.</li>
+<li>
+وثائق غير واضحة.
+</li>
 
-<li>عدم تحميل شهادة طبية.</li>
+<li>
+عدم مطابقة الوثائق للمعلومات المصرح بها.
+</li>
+
+<li>
+عدم تحميل الشهادة الطبية عند طلبها.
+</li>
+
+<li>
+عدم استكمال وثائق عقد التمهين بالنسبة للمترشحين المعنيين.
+</li>
 
 </ul>
 
 </div>
 
 
-<div class="announcement green">
+<!-- =====================================================
+     07 - دعوة
+===================================================== -->
+
+<div class="announcement blue"
+     style="text-align:center">
 
 <h3>
-👨‍🔧 بالنسبة للمترشحين في نمط التمهين
+
+📣 لا تضيع فرصة التكوين
+
 </h3>
 
 <p>
-يرجى التأكد من استكمال الإجراءات والوثائق
-المتعلقة بعقد التمهين وإعادة رفع الوثائق المطلوبة
-على منصة التكوين.
-</p>
 
-</div>
+اختر التخصص المناسب لك،
+وتابع إجراءات التسجيل عبر منصة التكوين.
 
-
-<div class="announcement red">
-
-<h3>
-🚨 هام جدًا
-</h3>
-
-<p>
-دعوة لجميع المترشحين الذين لديهم نقائص أو أخطاء
-في ملفاتهم إلى الإسراع في تصحيحها تفاديًا لأي
-إشكال قد يحول دون استكمال التسجيل أو دراسة الملف.
-</p>
-
-</div>
-
-
-<div class="announcement yellow">
-
-<h3>
-📌 تنبيه للمترشحين المسجلين
-</h3>
-
-<p>
-المترشحون المسجلون لدى أكثر من مؤسسة
-أو في أكثر من تخصص مطالبون بمراجعة اختياراتهم
-واعتماد اختيار واحد فقط وفق الإجراءات المعمول بها.
-</p>
-
-</div>
-
-
-<div class="announcement blue">
-
-<h3>
-📣 لا تضيعوا الفرصة من أيديكم
-</h3>
-
-<p>
-سجّل الآن واستفد من فرصة التكوين واكتساب
-مهارة تساعدك في بناء مستقبلك المهني.
-</p>
-
-<a
-class="main-button"
-href="https://takwin.dz"
-target="_blank">
-
-🎓 سجّل الآن عبر takwin.dz
-
-</a>
-
-</div>
-
-
-<!-- التكوين بالتأهيل الأولي -->
-
-<div class="section-title">
-
-<span></span>
-
-التكوين بالتأهيل الأولي
-
-</div>
-
-
-<div class="grid">
-
-<div class="card">
-
-<div class="icon">🛡️</div>
-
-<h3>عون الوقاية والأمن</h3>
-
-<p>المستوى المطلوب: الثالثة ثانوي</p>
-
-<p>المدة: 06 أشهر</p>
-
-<span class="badge">تأهيل أولي</span>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">💻</div>
-
-<h3>تقني إعلام آلي</h3>
-
-<p>WORD - EXCEL - POWER POINT</p>
-
-<p>المستوى: الرابعة متوسط</p>
-
-<p>المدة: 06 أشهر</p>
-
-<span class="badge">تأهيل أولي</span>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">♻️</div>
-
-<h3>استعادة النفايات وإعادة تدويرها</h3>
-
-<p>المستوى المطلوب: بدون مستوى دراسي</p>
-
-<p>المدة: 06 أشهر</p>
-
-<span class="badge">تأهيل أولي</span>
-
-</div>
-
-</div>
-
-
-<!-- التكوين المهني -->
-
-<div class="section-title">
-
-<span></span>
-
-التكوين المهني
-
-</div>
-
-
-<div class="grid">
-
-<div class="card">
-
-<div class="icon">🧵</div>
-
-<h3>خياطة</h3>
-
-<p>طور متوسط</p>
-
-<p>12 شهرًا</p>
-
-<span class="badge">حضوري</span>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">🌱</div>
-
-<h3>البستنة</h3>
-
-<p>الطور الابتدائي</p>
-
-<p>12 شهرًا</p>
-
-<span class="badge">حضوري</span>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">☀️</div>
-
-<h3>تركيب الألواح الشمسية الضوئية والحرارية</h3>
-
-<p>الرابعة متوسط</p>
-
-<p>12 شهرًا</p>
-
-<span class="badge">تمهين</span>
-
-</div>
-
-</div>
-
-
-<!-- منصة التسجيل -->
-
-<div class="section-title">
-
-<span></span>
-
-منصة التسجيل
-
-</div>
-
-
-<div class="announcement green" style="text-align:center">
-
-<h3>🌐 takwin.dz</h3>
-
-<p>
-منصة التسجيل الخاصة بالتكوين والتعليم المهنيين.
 </p>
 
 <a
@@ -1171,20 +1163,23 @@ href="https://takwin.dz"
 target="_blank"
 class="main-button">
 
-فتح منصة takwin.dz
+🎓 التسجيل عبر takwin.dz
 
 </a>
 
 </div>
 
 
-<!-- معلومات المركز -->
+<!-- =====================================================
+     08 - معلومات المركز
+===================================================== -->
 
-<div class="section-title" id="contact">
+<div class="section-title"
+     id="contact">
 
 <span></span>
 
-معلومات المركز
+🏫 معلومات المركز
 
 </div>
 
@@ -1195,7 +1190,9 @@ class="main-button">
 
 🏫
 
-<strong>المؤسسة:</strong>
+<strong>
+المؤسسة:
+</strong>
 
 مركز التكوين المهني والتمهين
 الشهيد دناقة عمر
@@ -1207,7 +1204,9 @@ class="main-button">
 
 📍
 
-<strong>الموقع:</strong>
+<strong>
+الموقع:
+</strong>
 
 وادي مرة
 
@@ -1218,7 +1217,9 @@ class="main-button">
 
 🏛️
 
-<strong>القطاع:</strong>
+<strong>
+القطاع:
+</strong>
 
 وزارة التكوين والتعليم المهنيين
 
@@ -1229,7 +1230,9 @@ class="main-button">
 
 🏢
 
-<strong>المديرية:</strong>
+<strong>
+المديرية:
+</strong>
 
 مديرية التكوين والتعليم المهنيين
 لولاية أفلو
@@ -1237,13 +1240,83 @@ class="main-button">
 </div>
 
 
-<div class="info-row">
+</div>
 
-🌐
 
-<strong>منصة التسجيل:</strong>
+<!-- =====================================================
+     09 - المعلومات القديمة في الأسفل
+===================================================== -->
 
-takwin.dz
+<div class="archive">
+
+<div class="archive-title">
+
+📚 معلومات سابقة — أرشيف دورة أكتوبر 2026
+
+</div>
+
+
+<div class="announcement">
+
+<h3>
+📅 المواعيد السابقة
+</h3>
+
+<div class="date-grid">
+
+
+<div class="date-box">
+
+<strong>
+08 سبتمبر 2026
+</strong>
+
+بداية التسجيلات
+
+</div>
+
+
+<div class="date-box">
+
+<strong>
+26 سبتمبر 2026
+</strong>
+
+نهاية الفترة الأولى
+
+</div>
+
+
+<div class="date-box">
+
+<strong>
+28 / 29 / 30 سبتمبر
+</strong>
+
+الأبواب المفتوحة
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="announcement">
+
+<h3>
+
+🚪 الأبواب المفتوحة
+
+</h3>
+
+<p>
+
+كانت أيام الأبواب المفتوحة فرصة للتعرف
+على المركز والتخصصات والورشات.
+
+</p>
 
 </div>
 
@@ -1273,7 +1346,8 @@ takwin.dz
 
 <div style="margin-top:10px">
 
-تطوير
+💻 مطور برامج:
+
 <strong>
 براهيمي يوسف
 </strong>
@@ -1284,4 +1358,5 @@ takwin.dz
 
 
 </body>
+
 </html>
