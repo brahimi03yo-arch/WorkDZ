@@ -2,973 +2,2284 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>نظام تسيير الموظفين</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نادر | الكتب النادرة والقيمة</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
 :root{
- --bg:#eef3f8;
- --card:#fff;
- --dark:#10243a;
- --dark2:#173a5b;
- --blue:#1683d8;
- --blue2:#45b4f4;
- --gold:#dcae4b;
- --green:#1d9b67;
- --red:#d94c58;
- --text:#172536;
- --muted:#718096;
- --border:#dce5ee;
- --shadow:0 15px 45px #16324b18
+    --brown:#5b3a29;
+    --brown2:#7a5038;
+    --gold:#e4b63d;
+    --yellow:#f4ca55;
+    --white:#ffffff;
+    --gray:#f1f1f1;
+    --gray2:#d8d8d8;
+    --dark:#202020;
+    --text:#292929;
+    --danger:#9b3333;
+    --shadow:0 8px 25px rgba(0,0,0,.10);
 }
+
 body{
- margin:0;
- font-family:Tahoma,Arial,sans-serif;
- background:
- radial-gradient(circle at 10% 0%,#dff3ff,transparent 30%),
- var(--bg);
- color:var(--text)
+    font-family:
+        "Tahoma",
+        "Arial",
+        sans-serif;
+    background:
+        linear-gradient(
+            135deg,
+            #f4f4f4,
+            #ffffff
+        );
+    color:var(--text);
+    min-height:100vh;
 }
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-.top{
- background:linear-gradient(120deg,#0d2236,#17547e,#102b43);
- color:white;
- padding:18px 4%;
- box-shadow:0 8px 30px #10243a33;
- position:sticky;top:0;z-index:20
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    background:
+        linear-gradient(
+            135deg,
+            var(--brown),
+            #38251c
+        );
+    color:white;
+    padding:15px 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 20px rgba(0,0,0,.25);
 }
-.topin{
- max-width:1500px;margin:auto;
- display:flex;align-items:center;gap:15px
+
+.header-inner{
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
-.brand{font-size:25px;font-weight:900}
-.brand small{
- display:block;font-size:10px;color:#a9dfff;margin-top:4px
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
-.nav{
- margin-right:auto;display:flex;gap:7px;flex-wrap:wrap
+
+.logo-icon{
+    width:48px;
+    height:48px;
+    border-radius:14px;
+    background:var(--gold);
+    color:var(--brown);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    box-shadow:0 4px 12px rgba(0,0,0,.25);
 }
+
+.logo h1{
+    font-size:23px;
+}
+
+.logo span{
+    color:#ddd;
+    font-size:12px;
+}
+
+/* =========================
+   NAV
+========================= */
+
+nav{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+}
+
+nav button{
+    border:0;
+    background:rgba(255,255,255,.08);
+    color:white;
+    padding:10px 14px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.2s;
+    font-weight:bold;
+}
+
+nav button:hover,
+nav button.active{
+    background:var(--gold);
+    color:var(--brown);
+}
+
+/* =========================
+   APP
+========================= */
+
+.app{
+    max-width:1250px;
+    margin:auto;
+    padding:25px 18px 100px;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    background:
+        linear-gradient(
+            135deg,
+            var(--brown),
+            #806044
+        );
+    border-radius:24px;
+    padding:35px;
+    color:white;
+    box-shadow:var(--shadow);
+    margin-bottom:25px;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero:after{
+    content:"📚";
+    position:absolute;
+    left:35px;
+    bottom:-25px;
+    font-size:130px;
+    opacity:.08;
+}
+
+.hero h2{
+    font-size:32px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    color:#eee;
+    max-width:700px;
+    line-height:1.8;
+}
+
+.search{
+    margin-top:25px;
+    display:flex;
+    gap:10px;
+    position:relative;
+    z-index:2;
+}
+
+.search input{
+    flex:1;
+    padding:15px;
+    border:0;
+    border-radius:13px;
+    font-size:16px;
+    outline:none;
+}
+
 .btn{
- border:0;border-radius:12px;padding:11px 16px;
- background:#edf4fa;color:#183149;font-weight:bold
+    border:0;
+    padding:13px 20px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.2s;
 }
-.btn.blue{
- background:linear-gradient(135deg,var(--blue),var(--blue2));
- color:#fff
+
+.btn:hover{
+    transform:translateY(-2px);
 }
-.btn.green{background:var(--green);color:#fff}
-.btn.red{background:var(--red);color:#fff}
-.btn.dark{background:#ffffff16;color:#fff;border:1px solid #ffffff22}
-.container{max-width:1500px;margin:auto;padding:25px 3% 60px}
-.welcome{
- min-height:350px;border-radius:30px;
- background:
- linear-gradient(90deg,#0a2035dd,#164c70aa,#071725dd),
- url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2200&q=90")
- center/cover;
- padding:60px;
- color:#fff;
- display:flex;align-items:center;
- box-shadow:var(--shadow)
+
+.btn-gold{
+    background:var(--gold);
+    color:var(--brown);
 }
-.welcome h1{font-size:clamp(35px,6vw,68px);margin:0 0 15px}
-.welcome p{font-size:18px;line-height:2;max-width:800px;color:#e9f6ff}
-.searchbox{
- margin-top:25px;background:#fff;padding:7px;border-radius:17px;
- max-width:900px;display:flex
+
+.btn-brown{
+    background:var(--brown);
+    color:white;
 }
-.searchbox input{
- flex:1;border:0;outline:0;padding:14px;color:#222;min-width:0
+
+.btn-gray{
+    background:var(--gray);
+    color:var(--dark);
 }
-.stats{
- display:grid;grid-template-columns:repeat(5,1fr);
- gap:13px;margin-top:20px
+
+/* =========================
+   FEATURE CARDS
+========================= */
+
+.features{
+    display:grid;
+    grid-template-columns:
+        repeat(5,1fr);
+    gap:14px;
+    margin-bottom:30px;
 }
-.stat{
- background:var(--card);border:1px solid var(--border);
- border-radius:19px;padding:20px;box-shadow:var(--shadow)
+
+.feature{
+    background:white;
+    border:1px solid var(--gray2);
+    border-radius:18px;
+    padding:20px 12px;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 4px 15px rgba(0,0,0,.06);
+    transition:.25s;
 }
-.stat span{color:var(--muted);font-size:13px}
-.stat b{display:block;font-size:30px;color:var(--dark);margin-top:6px}
-.panel{
- background:#fff;border:1px solid var(--border);
- border-radius:22px;padding:18px;margin-top:20px;
- box-shadow:var(--shadow)
+
+.feature:hover{
+    transform:translateY(-5px);
+    border-color:var(--gold);
 }
-.filters{display:flex;gap:9px;flex-wrap:wrap}
-.filters input,.filters select{
- padding:12px;border:1px solid var(--border);
- border-radius:11px;background:#fff;color:#222
+
+.feature-icon{
+    width:52px;
+    height:52px;
+    border-radius:15px;
+    background:#f8f0d5;
+    margin:auto auto 10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
 }
-.sectionTitle{
- display:flex;align-items:center;justify-content:space-between;
- margin:30px 0 15px
+
+.feature strong{
+    display:block;
+    margin-bottom:5px;
 }
-.sectionTitle h2{margin:0}
-.grid{
- display:grid;grid-template-columns:repeat(4,1fr);gap:15px
+
+.feature small{
+    color:#777;
 }
-.employee{
- background:#fff;border:1px solid var(--border);
- border-radius:22px;overflow:hidden;
- box-shadow:var(--shadow);transition:.25s
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    background:white;
+    border-radius:20px;
+    padding:22px;
+    margin-bottom:25px;
+    box-shadow:var(--shadow);
 }
-.employee:hover{transform:translateY(-5px)}
-.empTop{
- height:85px;background:linear-gradient(120deg,#12314b,#2394d5)
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
 }
-.empBody{padding:0 16px 18px;position:relative}
-.avatar{
- width:100px;height:100px;border-radius:50%;
- border:5px solid #fff;object-fit:cover;
- margin-top:-50px;background:#dfeaf2
+
+.section-title h3{
+    color:var(--brown);
 }
-.empName{font-size:20px;font-weight:900;margin-top:10px}
-.empRank{color:var(--blue);font-weight:bold;margin-top:5px}
-.meta{color:var(--muted);font-size:13px;line-height:1.9;margin-top:10px}
-.empActions{display:flex;gap:6px;flex-wrap:wrap;margin-top:13px}
-.empActions button{padding:8px 10px;font-size:12px}
-.empty{
- text-align:center;padding:60px;color:var(--muted);
- grid-column:1/-1
+
+/* =========================
+   BOOK GRID
+========================= */
+
+.books{
+    display:grid;
+    grid-template-columns:
+        repeat(4,1fr);
+    gap:18px;
 }
+
+.book{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:17px;
+    overflow:hidden;
+    box-shadow:0 5px 18px rgba(0,0,0,.07);
+    transition:.25s;
+}
+
+.book:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow);
+}
+
+.book-cover{
+    height:210px;
+    background:
+        linear-gradient(
+            135deg,
+            #eee,
+            #ddd
+        );
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.book-cover img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.no-cover{
+    font-size:55px;
+    opacity:.3;
+}
+
+.book-info{
+    padding:15px;
+}
+
+.book-title{
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.book-author{
+    color:#777;
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+.badge{
+    display:inline-block;
+    padding:5px 9px;
+    background:#f6e7ae;
+    color:#684e12;
+    border-radius:8px;
+    font-size:11px;
+    margin-bottom:10px;
+}
+
+.book-actions{
+    display:flex;
+    gap:6px;
+}
+
+.book-actions button{
+    flex:1;
+    padding:9px 5px;
+    border:0;
+    border-radius:9px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(2,1fr);
+    gap:14px;
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.field.full{
+    grid-column:1/-1;
+}
+
+.field label{
+    font-weight:bold;
+    font-size:14px;
+}
+
+.field input,
+.field select,
+.field textarea{
+    border:1px solid #ccc;
+    border-radius:11px;
+    padding:12px;
+    outline:none;
+    font-family:inherit;
+}
+
+.field textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+    border-color:var(--gold);
+}
+
+/* =========================
+   AI
+========================= */
+
+.ai-box{
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #f2f2f2
+        );
+    border:2px solid var(--gold);
+    border-radius:20px;
+    padding:20px;
+}
+
+.ai-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:15px;
+}
+
+.ai-icon{
+    width:50px;
+    height:50px;
+    background:var(--gold);
+    color:var(--brown);
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:25px;
+}
+
+.chat{
+    min-height:250px;
+    max-height:500px;
+    overflow-y:auto;
+    background:#fff;
+    border-radius:14px;
+    padding:15px;
+    border:1px solid #ddd;
+    margin-bottom:12px;
+}
+
+.message{
+    padding:12px 15px;
+    border-radius:13px;
+    margin-bottom:10px;
+    line-height:1.8;
+    white-space:pre-wrap;
+}
+
+.message.user{
+    background:#eee;
+    margin-right:20%;
+}
+
+.message.ai{
+    background:#f8f0d5;
+    color:#3d3019;
+    margin-left:10%;
+}
+
+.chat-input{
+    display:flex;
+    gap:8px;
+}
+
+.chat-input input{
+    flex:1;
+    padding:14px;
+    border:1px solid #ccc;
+    border-radius:12px;
+}
+
+/* =========================
+   BOOK TOOLS
+========================= */
+
+.tools{
+    display:grid;
+    grid-template-columns:
+        repeat(4,1fr);
+    gap:12px;
+}
+
+.tool{
+    background:#f5f5f5;
+    border:1px solid #ddd;
+    border-radius:15px;
+    padding:18px 10px;
+    cursor:pointer;
+    text-align:center;
+    transition:.2s;
+}
+
+.tool:hover{
+    background:#fff8dc;
+    border-color:var(--gold);
+}
+
+.tool div{
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
 .modal{
- position:fixed;inset:0;background:#061421aa;
- z-index:100;display:none;align-items:center;
- justify-content:center;padding:15px
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    z-index:3000;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
 }
-.modal.open{display:flex}
-.box{
- width:min(1150px,100%);max-height:94vh;overflow:auto;
- background:#fff;border-radius:25px;padding:25px;
- box-shadow:0 30px 100px #0005
+
+.modal.show{
+    display:flex;
 }
+
+.modal-content{
+    background:white;
+    width:min(850px,100%);
+    max-height:90vh;
+    overflow:auto;
+    border-radius:22px;
+    padding:25px;
+}
+
+.modal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
 .close{
- float:left;width:38px;height:38px;border:0;
- border-radius:50%;background:#edf2f6;font-size:22px
+    border:0;
+    background:#eee;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:20px;
 }
-.formgrid{
- display:grid;grid-template-columns:repeat(2,1fr);gap:12px
+
+/* =========================
+   READER
+========================= */
+
+.reader{
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    line-height:2.2;
+    white-space:pre-wrap;
+    max-height:65vh;
+    overflow:auto;
+    border:1px solid #ddd;
 }
-.field{display:flex;flex-direction:column;gap:6px}
-.field.full{grid-column:1/-1}
-.field input,.field select,.field textarea{
- padding:12px;border:1px solid var(--border);
- border-radius:11px;outline:0
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+    text-align:center;
+    padding:50px 20px;
+    color:#777;
 }
-.photoBox{
- border:2px dashed #bdd0df;border-radius:15px;
- padding:20px;text-align:center
+
+.empty-icon{
+    font-size:60px;
+    margin-bottom:15px;
 }
-.profile{
- display:grid;grid-template-columns:270px 1fr;gap:25px
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#222;
+    color:white;
+    padding:13px 22px;
+    border-radius:12px;
+    z-index:5000;
+    display:none;
 }
-.profilePhoto{
- width:250px;height:300px;object-fit:cover;
- border-radius:20px
+
+.toast.show{
+    display:block;
 }
-.info{
- display:grid;grid-template-columns:repeat(2,1fr);gap:10px
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    .features{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+    .books{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+    .tools{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
 }
-.infoItem{
- background:#f4f7fa;border:1px solid var(--border);
- padding:13px;border-radius:12px
+
+@media(max-width:650px){
+
+    header{
+        padding:10px;
+    }
+
+    .header-inner{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .logo{
+        justify-content:center;
+    }
+
+    nav{
+        overflow-x:auto;
+        flex-wrap:nowrap;
+        padding-bottom:3px;
+    }
+
+    nav button{
+        white-space:nowrap;
+    }
+
+    .app{
+        padding:15px 10px 90px;
+    }
+
+    .hero{
+        padding:23px 18px;
+    }
+
+    .hero h2{
+        font-size:24px;
+    }
+
+    .search{
+        flex-direction:column;
+    }
+
+    .features{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .books{
+        grid-template-columns:
+            repeat(2,1fr);
+        gap:10px;
+    }
+
+    .book-cover{
+        height:180px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .field.full{
+        grid-column:auto;
+    }
+
+    .book-actions{
+        flex-direction:column;
+    }
+
+    .section{
+        padding:15px;
+    }
+
+    .chat-input{
+        flex-direction:column;
+    }
 }
-.infoItem b{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}
-.actions{
- display:flex;gap:8px;flex-wrap:wrap;margin-top:18px
-}
-.file{
- background:#f7f9fb;border:1px solid var(--border);
- border-radius:13px;padding:13px;margin-top:8px;
- display:flex;align-items:center;gap:10px
-}
-.file a{margin-right:auto}
-.notice{
- padding:13px;border-radius:12px;
- background:#fff8df;border:1px solid #efd78b;
- margin-top:15px
-}
-footer{
- text-align:center;padding:35px;color:#7b8996
-}
-@media(max-width:1100px){
- .grid{grid-template-columns:repeat(3,1fr)}
- .stats{grid-template-columns:repeat(3,1fr)}
-}
-@media(max-width:700px){
- .topin{align-items:flex-start}
- .nav{display:none}
- .welcome{padding:35px 22px;min-height:430px}
- .grid{grid-template-columns:repeat(2,1fr)}
- .stats{grid-template-columns:repeat(2,1fr)}
- .formgrid,.profile{grid-template-columns:1fr}
- .field.full{grid-column:auto}
- .info{grid-template-columns:1fr}
- .profilePhoto{width:100%;height:330px}
-}
-@media(max-width:480px){
- .grid{grid-template-columns:1fr}
- .stats{grid-template-columns:1fr 1fr}
+
+@media(max-width:380px){
+
+    .books{
+        grid-template-columns:1fr;
+    }
+
+    .features{
+        grid-template-columns:1fr 1fr;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<header class="top">
-<div class="topin">
-<div class="brand">
-نظام الموظفين
-<small>منصة تسيير ومتابعة الملفات الإدارية</small>
+<header>
+
+<div class="header-inner">
+
+<div class="logo">
+
+<div class="logo-icon">📚</div>
+
+<div>
+<h1>نادر</h1>
+<span>سوق الكتب النادرة والقيمة</span>
 </div>
 
-<div class="nav">
-<button class="btn dark" onclick="newEmployee()">＋ موظف</button>
-<button class="btn dark" onclick="openModal('excelModal')">📊 Excel</button>
-<button class="btn dark" onclick="openModal('documentModal')">📄 وثيقة</button>
-<button class="btn dark" onclick="loadEmployees()">↻ تحديث</button>
 </div>
+
+<nav>
+
+<button class="active"
+onclick="showPage('home',this)">
+الرئيسية
+</button>
+
+<button onclick="showPage('market',this)">
+🏪 السوق
+</button>
+
+<button onclick="showPage('library',this)">
+🔖 خزانتي
+</button>
+
+<button onclick="showPage('upload',this)">
+⬆️ رفع كتاب
+</button>
+
+<button onclick="showPage('assistant',this)">
+🤖 المساعد
+</button>
+
+</nav>
+
 </div>
+
 </header>
 
-<main class="container">
 
-<section class="welcome">
-<div>
-<h1>مصلحة الموظفين</h1>
+<main class="app">
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section id="home" class="page active">
+
+<div class="hero">
+
+<h2>عالم الكتاب بين يديك 📚</h2>
+
 <p>
-واجهة حديثة لإدارة معلومات الموظفين وملفاتهم،
-مع الوصول السريع للبيانات والوثائق والصور،
-واستخراج الوثائق الإدارية من ملفات Excel.
+اكتشف الكتب النادرة والقيمة،
+ابحث عنها، اقرأها، حللها،
+احتفظ بها في خزانتك،
+أو اعرضها للبيع والتبادل.
 </p>
 
-<div class="searchbox">
-<input id="search"
-placeholder="ابحث بالاسم، اللقب، رقم البطاقة، الرتبة أو مكان العمل..."
-oninput="loadEmployees()">
-<button class="btn blue" onclick="loadEmployees()">بحث</button>
+<div class="search">
+
+<input
+id="searchInput"
+placeholder="ابحث عن كتاب، مؤلف، ISBN..."
+onkeydown="if(event.key==='Enter') searchBooks()">
+
+<button
+class="btn btn-gold"
+onclick="searchBooks()">
+🔎 بحث
+</button>
+
 </div>
+
 </div>
+
+
+<div class="features">
+
+<div class="feature"
+onclick="showPage('market')">
+<div class="feature-icon">🏪</div>
+<strong>سوق الكتب</strong>
+<small>بيع وشراء وتبادل</small>
+</div>
+
+<div class="feature"
+onclick="showPage('library')">
+<div class="feature-icon">📚</div>
+<strong>خزانتي</strong>
+<small>كتبك المحفوظة</small>
+</div>
+
+<div class="feature"
+onclick="showPage('upload')">
+<div class="feature-icon">⬆️</div>
+<strong>أضف كتابًا</strong>
+<small>اعرض كتابك</small>
+</div>
+
+<div class="feature"
+onclick="showPage('assistant')">
+<div class="feature-icon">🤖</div>
+<strong>المساعد الذكي</strong>
+<small>افهم الكتاب</small>
+</div>
+
+<div class="feature"
+onclick="randomBook()">
+<div class="feature-icon">🎲</div>
+<strong>اكتشف كتابًا</strong>
+<small>اختيار عشوائي</small>
+</div>
+
+</div>
+
+
+<div class="section">
+
+<div class="section-title">
+
+<h3>📖 اكتشاف الكتب</h3>
+
+<button
+class="btn btn-gray"
+onclick="loadBooks('')">
+تحديث
+</button>
+
+</div>
+
+<div id="homeBooks"
+class="books">
+
+<div class="empty">
+<div class="empty-icon">📚</div>
+جارٍ تحميل الكتب...
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<section class="stats">
-<div class="stat"><span>إجمالي الموظفين</span><b id="sAll">0</b></div>
-<div class="stat"><span>الملفات المرفوعة</span><b id="sFiles">0</b></div>
-<div class="stat"><span>الصور</span><b id="sPhotos">0</b></div>
-<div class="stat"><span>الملاحظات</span><b id="sNotes">0</b></div>
-<div class="stat"><span>آخر تحديث</span><b id="sDate">—</b></div>
+
+<!-- =========================
+     MARKET
+========================= -->
+
+<section id="market" class="page">
+
+<div class="section">
+
+<div class="section-title">
+
+<h2>🏪 سوق الكتب</h2>
+
+<button
+class="btn btn-gold"
+onclick="showPage('upload')">
++ عرض كتاب
+</button>
+
+</div>
+
+<p style="color:#777;margin-bottom:20px">
+مكان واحد للبيع والشراء والتبادل بين محبي الكتب.
+</p>
+
+<div id="marketBooks" class="books"></div>
+
+</div>
+
 </section>
 
-<section class="panel">
-<div class="filters">
-<input id="filterRank" placeholder="الرتبة" oninput="loadEmployees()">
-<input id="filterPlace" placeholder="مكان العمل / التواجد" oninput="loadEmployees()">
-<select id="filterSort" onchange="loadEmployees()">
-<option value="">الترتيب</option>
-<option value="name">الاسم</option>
-<option value="rank">الرتبة</option>
-<option value="place">مكان العمل</option>
+
+<!-- =========================
+     LIBRARY
+========================= -->
+
+<section id="library" class="page">
+
+<div class="section">
+
+<div class="section-title">
+
+<h2>🔖 خزانتي</h2>
+
+</div>
+
+<p style="color:#777;margin-bottom:20px">
+كتبك التي اخترتها للاحتفاظ بها والعودة إليها.
+</p>
+
+<div id="libraryBooks" class="books"></div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     UPLOAD
+========================= -->
+
+<section id="upload" class="page">
+
+<div class="section">
+
+<div class="section-title">
+
+<h2>⬆️ عرض كتاب جديد</h2>
+
+</div>
+
+<form id="uploadForm">
+
+<div class="form-grid">
+
+<div class="field">
+<label>عنوان الكتاب *</label>
+<input name="title" required>
+</div>
+
+<div class="field">
+<label>المؤلف</label>
+<input name="author">
+</div>
+
+<div class="field">
+<label>ISBN</label>
+<input name="isbn">
+</div>
+
+<div class="field">
+<label>سنة النشر</label>
+<input name="year">
+</div>
+
+<div class="field">
+<label>التصنيف</label>
+
+<select name="category">
+
+<option value="">اختر التصنيف</option>
+<option>أدب</option>
+<option>تاريخ</option>
+<option>فلسفة</option>
+<option>علوم</option>
+<option>تراث</option>
+<option>دين</option>
+<option>سياسة</option>
+<option>اقتصاد</option>
+<option>علم الاجتماع</option>
+<option>روايات</option>
+<option>أخرى</option>
+
 </select>
 
-<button class="btn blue" onclick="newEmployee()">＋ إدخال موظف</button>
-<button class="btn" onclick="exportEmployees()">⬇ استخراج القائمة</button>
 </div>
+
+<div class="field">
+<label>حالة العرض</label>
+
+<select name="deal_type">
+
+<option>بيع</option>
+<option>تبادل</option>
+<option>بيع أو تبادل</option>
+<option>عرض</option>
+
+</select>
+
+</div>
+
+<div class="field">
+<label>السعر</label>
+<input
+name="price"
+type="number"
+min="0"
+step="0.01"
+placeholder="0">
+</div>
+
+<div class="field">
+<label>درجة الندرة</label>
+
+<select name="rarity">
+
+<option value="">غير محددة</option>
+<option>عادي</option>
+<option>نادر</option>
+<option>نادر جدًا</option>
+<option>طبعة قديمة</option>
+<option>نسخة محدودة</option>
+<option>نسخة تاريخية</option>
+
+</select>
+
+</div>
+
+<div class="field full">
+
+<label>وصف الكتاب</label>
+
+<textarea
+name="description"
+placeholder="اكتب معلومات عن حالة الكتاب، الطبعة، مصدره، وأي معلومات مهمة..."></textarea>
+
+</div>
+
+<div class="field">
+
+<label>صورة الغلاف</label>
+<input
+name="cover"
+type="file"
+accept="image/*">
+
+</div>
+
+<div class="field">
+
+<label>ملف الكتاب PDF</label>
+<input
+name="pdf"
+type="file"
+accept=".pdf">
+
+</div>
+
+</div>
+
+<br>
+
+<button
+class="btn btn-gold"
+type="submit">
+📚 نشر الكتاب
+</button>
+
+</form>
+
+</div>
+
 </section>
 
-<section>
-<div class="sectionTitle">
-<h2>👥 الموظفون</h2>
-<span id="count" style="color:#718096"></span>
+
+<!-- =========================
+     ASSISTANT
+========================= -->
+
+<section id="assistant" class="page">
+
+<div class="section">
+
+<div class="ai-box">
+
+<div class="ai-title">
+
+<div class="ai-icon">🤖</div>
+
+<div>
+
+<h2>المساعد الذكي</h2>
+
+<p style="color:#777">
+اسأل عن الكتاب، اطلب تلخيصه أو تحليل أفكاره.
+</p>
+
 </div>
 
-<div class="grid" id="employees">
-<div class="empty">جاري تحميل البيانات...</div>
 </div>
+
+
+<div class="chat" id="chat">
+
+<div class="message ai">
+مرحبًا 👋
+
+أنا مساعدك في عالم الكتب.
+
+يمكنك أن تقول مثلًا:
+• لخّص هذا الكتاب
+• أعطني أهم الأفكار
+• اشرح لي الكتاب ببساطة
+• ما أهم الشخصيات؟
+• ترجم هذا النص
+• أنشئ لي أسئلة حول الكتاب
+</div>
+
+</div>
+
+
+<div class="chat-input">
+
+<input
+id="chatInput"
+placeholder="اكتب سؤالك عن الكتاب..."
+onkeydown="if(event.key==='Enter') sendMessage()">
+
+<button
+class="btn btn-gold"
+onclick="sendMessage()">
+إرسال
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     BOOK DETAIL
+========================= -->
+
+<section id="bookPage" class="page">
+
+<div class="section">
+
+<button
+class="btn btn-gray"
+onclick="showPage('home')">
+← رجوع
+</button>
+
+<div
+id="bookDetail"
+style="margin-top:20px">
+</div>
+
+</div>
+
 </section>
 
 </main>
 
-<footer>
-نظام تسيير الموظفين — تطوير يوسف براهيمي
-</footer>
 
+<!-- =========================
+     MODAL
+========================= -->
 
-<!-- الموظف -->
-<div class="modal" id="employeeModal">
-<div class="box">
-<button class="close" onclick="closeModal('employeeModal')">×</button>
-<h2 id="formTitle">إضافة موظف</h2>
+<div id="modal" class="modal">
 
-<form id="employeeForm">
+<div class="modal-content">
 
-<input type="hidden" name="id">
+<div class="modal-head">
 
-<div class="formgrid">
+<h2 id="modalTitle">
+نتيجة
+</h2>
 
-<label class="field">
-رقم بطاقة الموظف
-<input name="card_number">
-</label>
+<button
+class="close"
+onclick="closeModal()">
+×
+</button>
 
-<label class="field">
-الاسم
-<input name="first_name" required>
-</label>
-
-<label class="field">
-اللقب
-<input name="last_name" required>
-</label>
-
-<label class="field">
-الرتبة
-<input name="rank">
-</label>
-
-<label class="field">
-تاريخ التنصيب
-<input name="installation_date" type="date">
-</label>
-
-<label class="field">
-مكان العمل
-<input name="workplace">
-</label>
-
-<label class="field">
-مكان التواجد الحالي
-<input name="current_location">
-</label>
-
-<label class="field">
-تاريخ الميلاد
-<input name="birth_date" type="date">
-</label>
-
-<label class="field">
-رقم الهاتف
-<input name="phone" type="tel">
-</label>
-
-<label class="field">
-البريد الإلكتروني
-<input name="email" type="email">
-</label>
-
-<label class="field full">
-ملاحظة
-<textarea name="note" rows="4"></textarea>
-</label>
-
-<div class="photoBox">
-الصورة الشخصية
-<br><br>
-<input name="photo" type="file" accept="image/*">
 </div>
 
-<div class="photoBox">
-ملف الموظف
-<br><br>
-<input name="employee_file" type="file">
-</div>
+<div id="modalBody"></div>
 
-<div class="photoBox">
-ملف ملاحظة
-<br><br>
-<input name="note_file" type="file">
 </div>
 
 </div>
 
-<br>
-<button class="btn blue" style="width:100%">💾 حفظ المعلومات</button>
-</form>
-</div>
-</div>
 
-
-<!-- التفاصيل -->
-<div class="modal" id="profileModal">
-<div class="box">
-<button class="close" onclick="closeModal('profileModal')">×</button>
-<div id="profileContent"></div>
-</div>
-</div>
-
-
-<!-- Excel -->
-<div class="modal" id="excelModal">
-<div class="box">
-<button class="close" onclick="closeModal('excelModal')">×</button>
-
-<h2>📊 مصدر بيانات Excel</h2>
-
-<form id="excelForm">
-
-<div class="formgrid">
-
-<label class="field">
-ملف Excel
-<input name="excel" type="file" accept=".xlsx,.xls" required>
-</label>
-
-<label class="field">
-الولاية
-<input name="wilaya" placeholder="مثال: ...">
-</label>
-
-<label class="field">
-صفحة البيانات
-<select name="sheet">
-<option value="SS">SS</option>
-<option value="FF">FF</option>
-</select>
-</label>
-
-<label class="field">
-رقم الصفحة / السطر
-<input name="page" placeholder="اختياري">
-</label>
-
-</div>
-
-<div class="notice">
-يمكن استعمال الملف كمصدر لاستخراج بيانات الموظفين والوثائق لاحقًا.
-</div>
-
-<br>
-<button class="btn blue">📥 قراءة ملف Excel</button>
-</form>
-
-<div id="excelResult"></div>
-</div>
-</div>
-
-
-<!-- الوثائق -->
-<div class="modal" id="documentModal">
-<div class="box">
-<button class="close" onclick="closeModal('documentModal')">×</button>
-
-<h2>📄 الوثائق الإدارية</h2>
-
-<form id="documentForm">
-
-<label class="field">
-الموظف
-<select name="employee_id" id="docEmployee"></select>
-</label>
-
-<br>
-
-<label class="field">
-نوع الوثيقة
-<select name="document_type">
-<option value="work">شهادة عمل</option>
-<option value="absence">شهادة غياب</option>
-<option value="attendance">وثيقة حضور</option>
-<option value="custom">وثيقة إدارية</option>
-</select>
-</label>
-
-<br>
-
-<div class="formgrid">
-
-<label class="field">
-ملف Excel المصدر
-<input name="excel_file" placeholder="اسم ملف Excel">
-</label>
-
-<label class="field">
-الولاية
-<input name="wilaya">
-</label>
-
-<label class="field">
-الصفحة
-<select name="sheet">
-<option>SS</option>
-<option>FF</option>
-</select>
-</label>
-
-<label class="field">
-صفحة / سطر
-<input name="page">
-</label>
-
-</div>
-
-<br>
-
-<button class="btn blue">📄 إنشاء الوثيقة</button>
-</form>
-
-<div id="documentResult"></div>
-
-</div>
-</div>
+<div id="toast" class="toast"></div>
 
 
 <script>
 
-const API="/api";
-let employees=[];
+/* ======================================
+   STATE
+====================================== */
 
-function esc(x){
-return String(x??"").replace(/[&<>"']/g,
-m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+let allBooks = [];
+let selectedBook = null;
+
+
+/* ======================================
+   PAGE
+====================================== */
+
+function showPage(id, button){
+
+    document.querySelectorAll(".page")
+        .forEach(p =>
+            p.classList.remove("active")
+        );
+
+    const page =
+        document.getElementById(id);
+
+    if(page)
+        page.classList.add("active");
+
+    if(button){
+
+        document.querySelectorAll("nav button")
+            .forEach(b =>
+                b.classList.remove("active")
+            );
+
+        button.classList.add("active");
+
+    }
+
+    if(id === "market"){
+        loadBooks("market");
+    }
+
+    if(id === "library"){
+        renderLibrary();
+    }
 }
 
-function openModal(id){
-document.getElementById(id).classList.add("open");
+
+/* ======================================
+   TOAST
+====================================== */
+
+function toast(message){
+
+    const t =
+        document.getElementById("toast");
+
+    t.textContent = message;
+
+    t.classList.add("show");
+
+    setTimeout(() =>
+        t.classList.remove("show"),
+        2500
+    );
 }
 
-function closeModal(id){
-document.getElementById(id).classList.remove("open");
-}
 
-function photo(url){
-if(url)return url;
+/* ======================================
+   LOAD BOOKS
+====================================== */
 
-return "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80";
-}
+async function loadBooks(target="home"){
 
-async function loadEmployees(){
+    try{
 
-let q=document.getElementById("search").value;
-let rank=document.getElementById("filterRank").value;
-let place=document.getElementById("filterPlace").value;
-let sort=document.getElementById("filterSort").value;
+        const r =
+            await fetch("/api/books?q=");
 
-try{
+        const data =
+            await r.json();
 
-let url=API+"/employees?q="+encodeURIComponent(q)
-+"&rank="+encodeURIComponent(rank)
-+"&place="+encodeURIComponent(place)
-+"&sort="+encodeURIComponent(sort);
+        allBooks =
+            data.items || [];
 
-let r=await fetch(url);
-let data=await r.json();
+        if(target === "market"){
 
-employees=data.items||[];
+            renderBooks(
+                "marketBooks",
+                allBooks.filter(
+                    b =>
+                        b.deal_type
+                )
+            );
 
-document.getElementById("count").textContent=
-employees.length+" موظف";
+        }else{
 
-document.getElementById("sAll").textContent=
-data.stats?.employees||employees.length;
+            renderBooks(
+                "homeBooks",
+                allBooks
+            );
 
-document.getElementById("sFiles").textContent=
-data.stats?.files||0;
+        }
 
-document.getElementById("sPhotos").textContent=
-data.stats?.photos||0;
+    }catch(e){
 
-document.getElementById("sNotes").textContent=
-data.stats?.notes||0;
+        console.error(e);
 
-document.getElementById("sDate").textContent=
-data.stats?.date||"—";
+        if(target === "home"){
 
-renderEmployees();
+            document.getElementById(
+                "homeBooks"
+            ).innerHTML = emptyHTML(
+                "تعذر تحميل الكتب"
+            );
 
-}catch(e){
+        }
 
-document.getElementById("employees").innerHTML=
-'<div class="empty">تعذر الاتصال بالخادم.</div>';
-
-}
-}
-
-function renderEmployees(){
-
-let box=document.getElementById("employees");
-
-if(!employees.length){
-box.innerHTML=
-'<div class="empty">لا توجد بيانات موظفين بعد.<br><br><button class="btn blue" onclick="newEmployee()">＋ إضافة أول موظف</button></div>';
-return;
-}
-
-box.innerHTML=employees.map((e,i)=>`
-
-<article class="employee">
-
-<div class="empTop"></div>
-
-<div class="empBody">
-
-<img class="avatar"
-src="${esc(photo(e.photo))}">
-
-<div class="empName">
-${esc(e.first_name)} ${esc(e.last_name)}
-</div>
-
-<div class="empRank">
-${esc(e.rank||"—")}
-</div>
-
-<div class="meta">
-🪪 ${esc(e.card_number||"—")}<br>
-🏢 ${esc(e.workplace||"—")}<br>
-📍 ${esc(e.current_location||"—")}<br>
-📅 ${esc(e.installation_date||"—")}
-</div>
-
-<div class="empActions">
-
-<button class="btn blue"
-onclick="profile(${i})">
-فتح
-</button>
-
-<button class="btn"
-onclick="editEmployee(${i})">
-تعديل
-</button>
-
-<button class="btn red"
-onclick="deleteEmployee(${i})">
-حذف
-</button>
-
-</div>
-
-</div>
-</article>
-
-`).join("");
-}
-
-function newEmployee(){
-
-document.getElementById("employeeForm").reset();
-document.querySelector('[name="id"]').value="";
-document.getElementById("formTitle").textContent="إضافة موظف";
-
-openModal("employeeModal");
-}
-
-function editEmployee(i){
-
-let e=employees[i];
-let form=document.getElementById("employeeForm");
-
-for(let key in e){
-
-let input=form.elements[key];
-
-if(input && input.type!=="file")
-input.value=e[key]||"";
+    }
 
 }
 
-document.getElementById("formTitle").textContent=
-"تعديل بيانات الموظف";
 
-openModal("employeeModal");
+/* ======================================
+   SEARCH
+====================================== */
+
+async function searchBooks(){
+
+    const q =
+        document.getElementById(
+            "searchInput"
+        ).value.trim();
+
+    if(!q){
+
+        loadBooks();
+
+        return;
+    }
+
+    try{
+
+        const r =
+            await fetch(
+                "/api/books?q=" +
+                encodeURIComponent(q)
+            );
+
+        const data =
+            await r.json();
+
+        allBooks =
+            data.items || [];
+
+        renderBooks(
+            "homeBooks",
+            allBooks
+        );
+
+    }catch(e){
+
+        toast("تعذر تنفيذ البحث");
+
+    }
+
 }
 
-async function deleteEmployee(i){
 
-let e=employees[i];
+/* ======================================
+   RENDER
+====================================== */
 
-if(!confirm(
-"هل تريد حذف الموظف:\n"+
-e.first_name+" "+e.last_name+" ؟"
-))return;
+function renderBooks(
+    containerId,
+    books
+){
 
-let r=await fetch(
-API+"/employees/"+e.id,
-{method:"DELETE"}
+    const box =
+        document.getElementById(
+            containerId
+        );
+
+    if(!box)
+        return;
+
+    if(!books.length){
+
+        box.innerHTML =
+            emptyHTML(
+                "لا توجد كتب حاليًا"
+            );
+
+        return;
+    }
+
+    box.innerHTML =
+        books.map(
+            bookCard
+        ).join("");
+
+}
+
+
+/* ======================================
+   BOOK CARD
+====================================== */
+
+function bookCard(book){
+
+    const image =
+        book.image
+        ? `<img src="${escapeAttr(book.image)}"
+             onerror="this.style.display='none'">`
+        : `<div class="no-cover">📖</div>`;
+
+    const price =
+        book.price &&
+        Number(book.price) > 0
+        ? `${book.price} دج`
+        : "السعر عند التواصل";
+
+    return `
+
+    <div class="book">
+
+        <div class="book-cover">
+            ${image}
+        </div>
+
+        <div class="book-info">
+
+            <div class="book-title">
+                ${escapeHTML(book.title || "بدون عنوان")}
+            </div>
+
+            <div class="book-author">
+                ${escapeHTML(book.author || "مؤلف غير معروف")}
+            </div>
+
+            ${
+                book.rarity
+                ?
+                `<span class="badge">
+                    ${escapeHTML(book.rarity)}
+                 </span>`
+                :
+                ""
+            }
+
+            ${
+                book.deal_type
+                ?
+                `<span class="badge">
+                    ${escapeHTML(book.deal_type)}
+                 </span>`
+                :
+                ""
+            }
+
+            <div style="
+                font-weight:bold;
+                margin-bottom:10px;
+                color:#5b3a29">
+                ${price}
+            </div>
+
+            <div class="book-actions">
+
+                <button
+                    style="background:#f4ca55"
+                    onclick='openBook(${JSON.stringify(book)})'>
+                    فتح
+                </button>
+
+                <button
+                    style="background:#eee"
+                    onclick='saveBook(${JSON.stringify(book)})'>
+                    🔖
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+
+/* ======================================
+   OPEN BOOK
+====================================== */
+
+function openBook(book){
+
+    selectedBook = book;
+
+    document.querySelectorAll(".page")
+        .forEach(p =>
+            p.classList.remove("active")
+        );
+
+    document
+        .getElementById("bookPage")
+        .classList.add("active");
+
+    const detail =
+        document.getElementById(
+            "bookDetail"
+        );
+
+    const image =
+        book.image
+        ?
+        `<img
+            src="${escapeAttr(book.image)}"
+            style="
+                width:180px;
+                height:250px;
+                object-fit:cover;
+                border-radius:14px;
+                box-shadow:0 5px 20px rgba(0,0,0,.2)">
+        `
+        :
+        `<div style="
+            width:180px;
+            height:250px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:#eee;
+            border-radius:14px;
+            font-size:70px">
+            📖
+        </div>`;
+
+    detail.innerHTML = `
+
+    <div style="
+        display:flex;
+        gap:25px;
+        flex-wrap:wrap">
+
+        <div>
+            ${image}
+        </div>
+
+        <div style="flex:1;min-width:250px">
+
+            <h1 style="
+                color:#5b3a29;
+                margin-bottom:10px">
+                ${escapeHTML(book.title || "")}
+            </h1>
+
+            <p>
+                <strong>المؤلف:</strong>
+                ${escapeHTML(book.author || "غير معروف")}
+            </p>
+
+            <p>
+                <strong>السنة:</strong>
+                ${escapeHTML(book.year || "غير محددة")}
+            </p>
+
+            <p>
+                <strong>ISBN:</strong>
+                ${escapeHTML(book.isbn || "غير متوفر")}
+            </p>
+
+            <p style="margin-top:12px;color:#666">
+                ${escapeHTML(book.description || "لا يوجد وصف.")}
+            </p>
+
+            <div style="margin-top:20px">
+
+                ${
+                    book.pdf
+                    ?
+                    `<button
+                        class="btn btn-brown"
+                        onclick="readBook()">
+                        📖 قراءة
+                    </button>`
+                    :
+                    ""
+                }
+
+                <button
+                    class="btn btn-gold"
+                    onclick="bookAI('summary')">
+                    📝 ملخص
+                </button>
+
+                <button
+                    class="btn btn-gray"
+                    onclick="bookAI('ideas')">
+                    💡 الأفكار
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="section"
+         style="margin-top:25px">
+
+        <h3 style="
+            color:#5b3a29;
+            margin-bottom:15px">
+            أدوات الكتاب
+        </h3>
+
+        <div class="tools">
+
+            <div class="tool"
+                 onclick="readBook()">
+                <div>📖</div>
+                القراءة
+            </div>
+
+            <div class="tool"
+                 onclick="bookAI('summary')">
+                <div>📝</div>
+                ملخص الكتاب
+            </div>
+
+            <div class="tool"
+                 onclick="bookAI('ideas')">
+                <div>💡</div>
+                أفكار الكتاب
+            </div>
+
+            <div class="tool"
+                 onclick="bookAI('analysis')">
+                <div>🔍</div>
+                تحليل
+            </div>
+
+            <div class="tool"
+                 onclick="bookAI('questions')">
+                <div>❓</div>
+                أسئلة
+            </div>
+
+            <div class="tool"
+                 onclick="bookAI('simplify')">
+                <div>🧠</div>
+                تبسيط
+            </div>
+
+            <div class="tool"
+                 onclick="bookAI('translate')">
+                <div>🌐</div>
+                ترجمة
+            </div>
+
+            <div class="tool"
+                 onclick="saveBook(book)">
+                <div>🔖</div>
+                خزانتي
+            </div>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+
+/* ======================================
+   AI BOOK ACTION
+====================================== */
+
+async function bookAI(action){
+
+    if(!selectedBook){
+
+        toast("اختر كتابًا أولًا");
+
+        return;
+    }
+
+    const prompts = {
+
+        summary:
+            "لخّص هذا الكتاب بوضوح، واستخرج أهم الأفكار والمحاور.",
+
+        ideas:
+            "استخرج أهم الأفكار والمفاهيم التي يقدمها الكتاب، واجعلها في نقاط واضحة.",
+
+        analysis:
+            "حلل الكتاب: موضوعه، أفكاره، حججه أو أحداثه، وأهم ما يميزه.",
+
+        questions:
+            "أنشئ 10 أسئلة وأجوبة تساعد القارئ على فهم الكتاب.",
+
+        simplify:
+            "اشرح محتوى الكتاب بطريقة بسيطة جدًا لشخص لم يقرأه.",
+
+        translate:
+            "اشرح للقارئ كيف يمكن ترجمة محتوى هذا الكتاب، وإذا كان هناك نص متاح فاقترح ترجمة مناسبة."
+    };
+
+    const prompt =
+        prompts[action] ||
+        "اشرح هذا الكتاب.";
+
+    showModal(
+        "🤖 المساعد الذكي",
+        `<div class="message ai">
+        جارٍ تحليل الكتاب...
+        </div>`
+    );
+
+    try{
+
+        const r =
+            await fetch(
+                "/api/chat",
+                {
+                    method:"POST",
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+                    body:JSON.stringify({
+
+                        message:
+                            prompt,
+
+                        book:
+                            selectedBook
+
+                    })
+                }
+            );
+
+        const data =
+            await r.json();
+
+        if(data.answer){
+
+            showModal(
+                actionTitle(action),
+                `<div class="reader">
+                    ${escapeHTML(
+                        data.answer
+                    )}
+                 </div>`
+            );
+
+        }else{
+
+            showModal(
+                "المساعد",
+                `<div class="empty">
+                    تعذر الحصول على الإجابة حاليًا.
+                 </div>`
+            );
+
+        }
+
+    }catch(e){
+
+        showModal(
+            "المساعد",
+            `<div class="empty">
+                حدث خطأ في الاتصال بالمساعد.
+             </div>`
+        );
+
+    }
+
+}
+
+
+/* ======================================
+   ACTION TITLE
+====================================== */
+
+function actionTitle(action){
+
+    const titles = {
+
+        summary:"📝 ملخص الكتاب",
+        ideas:"💡 أفكار الكتاب",
+        analysis:"🔍 تحليل الكتاب",
+        questions:"❓ أسئلة وأجوبة",
+        simplify:"🧠 تبسيط الكتاب",
+        translate:"🌐 الترجمة"
+
+    };
+
+    return titles[action] || "المساعد";
+
+}
+
+
+/* ======================================
+   READ
+====================================== */
+
+async function readBook(){
+
+    if(!selectedBook)
+        return;
+
+    if(!selectedBook.pdf){
+
+        toast("لا يوجد ملف PDF لهذا الكتاب");
+
+        return;
+    }
+
+    try{
+
+        const r =
+            await fetch(
+                `/api/book/${selectedBook.id}`
+            );
+
+        const data =
+            await r.json();
+
+        if(data.text){
+
+            showModal(
+                "📖 قراءة الكتاب",
+                `<div class="reader">
+                    ${escapeHTML(data.text)}
+                 </div>`
+            );
+
+        }else{
+
+            window.open(
+                selectedBook.pdf,
+                "_blank"
+            );
+
+        }
+
+    }catch(e){
+
+        window.open(
+            selectedBook.pdf,
+            "_blank"
+        );
+
+    }
+
+}
+
+
+/* ======================================
+   LIBRARY
+====================================== */
+
+function saveBook(book){
+
+    let library =
+        JSON.parse(
+            localStorage.getItem(
+                "nadir_library"
+            ) || "[]"
+        );
+
+    if(
+        library.some(
+            x =>
+                String(x.id) ===
+                String(book.id)
+        )
+    ){
+
+        toast("الكتاب موجود في خزانتك");
+
+        return;
+    }
+
+    library.push(book);
+
+    localStorage.setItem(
+        "nadir_library",
+        JSON.stringify(library)
+    );
+
+    toast("تمت إضافة الكتاب إلى خزانتك");
+
+}
+
+
+/* ======================================
+   LIBRARY RENDER
+====================================== */
+
+function renderLibrary(){
+
+    const box =
+        document.getElementById(
+            "libraryBooks"
+        );
+
+    let library =
+        JSON.parse(
+            localStorage.getItem(
+                "nadir_library"
+            ) || "[]"
+        );
+
+    if(!library.length){
+
+        box.innerHTML =
+            emptyHTML(
+                "خزانتك فارغة حاليًا"
+            );
+
+        return;
+    }
+
+    box.innerHTML =
+        library.map(
+            bookCard
+        ).join("");
+
+}
+
+
+/* ======================================
+   RANDOM
+====================================== */
+
+function randomBook(){
+
+    if(!allBooks.length){
+
+        loadBooks();
+
+        toast("جارٍ تحميل الكتب");
+
+        return;
+    }
+
+    const book =
+        allBooks[
+            Math.floor(
+                Math.random() *
+                allBooks.length
+            )
+        ];
+
+    openBook(book);
+
+}
+
+
+/* ======================================
+   CHAT
+====================================== */
+
+async function sendMessage(){
+
+    const input =
+        document.getElementById(
+            "chatInput"
+        );
+
+    const message =
+        input.value.trim();
+
+    if(!message)
+        return;
+
+    addChat(
+        message,
+        "user"
+    );
+
+    input.value = "";
+
+    addChat(
+        "جارٍ التفكير...",
+        "ai"
+    );
+
+    try{
+
+        const r =
+            await fetch(
+                "/api/chat",
+                {
+                    method:"POST",
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+                    body:JSON.stringify({
+
+                        message,
+
+                        book:
+                            selectedBook || {}
+
+                    })
+                }
+            );
+
+        const data =
+            await r.json();
+
+        const chat =
+            document.getElementById(
+                "chat"
+            );
+
+        chat.lastElementChild
+            .remove();
+
+        addChat(
+            data.answer ||
+            "لم أحصل على إجابة.",
+            "ai"
+        );
+
+    }catch(e){
+
+        const chat =
+            document.getElementById(
+                "chat"
+            );
+
+        chat.lastElementChild
+            .remove();
+
+        addChat(
+            "تعذر الاتصال بالمساعد.",
+            "ai"
+        );
+
+    }
+
+}
+
+
+function addChat(text,type){
+
+    const chat =
+        document.getElementById(
+            "chat"
+        );
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.className =
+        "message " + type;
+
+    div.textContent =
+        text;
+
+    chat.appendChild(div);
+
+    chat.scrollTop =
+        chat.scrollHeight;
+
+}
+
+
+/* ======================================
+   UPLOAD
+====================================== */
+
+document
+.getElementById("uploadForm")
+.addEventListener(
+    "submit",
+    async function(e){
+
+        e.preventDefault();
+
+        const form =
+            new FormData(this);
+
+        try{
+
+            const r =
+                await fetch(
+                    "/api/upload",
+                    {
+                        method:"POST",
+                        body:form
+                    }
+                );
+
+            const data =
+                await r.json();
+
+            if(!r.ok){
+
+                toast(
+                    data.error ||
+                    "فشل رفع الكتاب"
+                );
+
+                return;
+            }
+
+            toast(
+                "تم نشر الكتاب بنجاح 📚"
+            );
+
+            this.reset();
+
+            await loadBooks();
+
+            setTimeout(
+                () =>
+                    showPage("home"),
+                700
+            );
+
+        }catch(e){
+
+            toast(
+                "حدث خطأ أثناء رفع الكتاب"
+            );
+
+        }
+
+    }
 );
 
-if(r.ok){
-loadEmployees();
-}else{
-alert("تعذر الحذف.");
-}
-}
 
-function profile(i){
+/* ======================================
+   MODAL
+====================================== */
 
-let e=employees[i];
+function showModal(
+    title,
+    body
+){
 
-document.getElementById("profileContent").innerHTML=`
+    document.getElementById(
+        "modalTitle"
+    ).textContent = title;
 
-<div class="profile">
+    document.getElementById(
+        "modalBody"
+    ).innerHTML = body;
 
-<div>
-<img class="profilePhoto"
-src="${esc(photo(e.photo))}">
-
-<div class="actions">
-
-<button class="btn blue"
-onclick="editEmployee(${i});closeModal('profileModal')">
-تعديل
-</button>
-
-<button class="btn"
-onclick="document.getElementById('docEmployee').value='${e.id}';closeModal('profileModal');openModal('documentModal')">
-وثيقة
-</button>
-
-</div>
-
-</div>
-
-<div>
-
-<h1>
-${esc(e.first_name)}
-${esc(e.last_name)}
-</h1>
-
-<div class="info">
-
-<div class="infoItem">
-<b>رقم البطاقة</b>
-${esc(e.card_number||"—")}
-</div>
-
-<div class="infoItem">
-<b>الرتبة</b>
-${esc(e.rank||"—")}
-</div>
-
-<div class="infoItem">
-<b>تاريخ التنصيب</b>
-${esc(e.installation_date||"—")}
-</div>
-
-<div class="infoItem">
-<b>مكان العمل</b>
-${esc(e.workplace||"—")}
-</div>
-
-<div class="infoItem">
-<b>التواجد الحالي</b>
-${esc(e.current_location||"—")}
-</div>
-
-<div class="infoItem">
-<b>تاريخ الميلاد</b>
-${esc(e.birth_date||"—")}
-</div>
-
-<div class="infoItem">
-<b>الهاتف</b>
-${esc(e.phone||"—")}
-</div>
-
-<div class="infoItem">
-<b>البريد</b>
-${esc(e.email||"—")}
-</div>
-
-</div>
-
-${e.note?
-`<div class="notice"><b>ملاحظة:</b><br>${esc(e.note)}</div>`:""}
-
-<h3>📎 الملفات</h3>
-
-${e.employee_file?
-`<div class="file">
-📁 ملف الموظف
-<a class="btn" target="_blank"
-href="${esc(e.employee_file)}">فتح</a>
-</div>`:""}
-
-${e.note_file?
-`<div class="file">
-📝 ملف الملاحظة
-<a class="btn" target="_blank"
-href="${esc(e.note_file)}">فتح</a>
-</div>`:""}
-
-</div>
-</div>
-`;
-
-openModal("profileModal");
-}
-
-document.getElementById("employeeForm").onsubmit=
-async function(ev){
-
-ev.preventDefault();
-
-let fd=new FormData(this);
-let id=fd.get("id");
-
-let url=id?
-API+"/employees/"+id:
-API+"/employees";
-
-let method=id?"PUT":"POST";
-
-let r=await fetch(url,{
-method:method,
-body:fd
-});
-
-let data=await r.json();
-
-if(!r.ok){
-alert(data.error||"تعذر الحفظ");
-return;
-}
-
-closeModal("employeeModal");
-loadEmployees();
-};
-
-document.getElementById("excelForm").onsubmit=
-async function(ev){
-
-ev.preventDefault();
-
-let fd=new FormData(this);
-
-document.getElementById("excelResult").innerHTML=
-"<p>📊 جاري قراءة Excel...</p>";
-
-try{
-
-let r=await fetch(API+"/excel/read",{
-method:"POST",
-body:fd
-});
-
-let data=await r.json();
-
-if(!r.ok){
-document.getElementById("excelResult").innerHTML=
-"<div class='notice'>"+esc(data.error)+"</div>";
-return;
-}
-
-document.getElementById("excelResult").innerHTML=
-`
-<div class="notice">
-<b>تمت قراءة الملف.</b><br>
-الملف: ${esc(data.filename)}<br>
-الولاية: ${esc(data.wilaya||"—")}<br>
-الصفحة: ${esc(data.sheet||"—")}<br>
-عدد الصفوف: ${esc(data.rows||0)}
-</div>
-`;
-
-}catch(e){
-
-document.getElementById("excelResult").innerHTML=
-"<div class='notice'>تعذر قراءة الملف.</div>";
+    document.getElementById(
+        "modal"
+    ).classList.add("show");
 
 }
 
-};
 
-async function prepareDocumentEmployees(){
+function closeModal(){
 
-try{
-
-let r=await fetch(API+"/employees");
-let data=await r.json();
-
-let select=document.getElementById("docEmployee");
-
-select.innerHTML=(data.items||[]).map(e=>
-`<option value="${e.id}">
-${esc(e.first_name)} ${esc(e.last_name)}
-</option>`
-).join("");
-
-}catch(e){}
+    document.getElementById(
+        "modal"
+    ).classList.remove("show");
 
 }
 
-document.getElementById("documentForm").onsubmit=
-async function(ev){
 
-ev.preventDefault();
+document
+.getElementById("modal")
+.addEventListener(
+    "click",
+    function(e){
 
-let fd=new FormData(this);
+        if(e.target === this)
+            closeModal();
 
-document.getElementById("documentResult").innerHTML=
-"<p>📄 جاري تجهيز الوثيقة...</p>";
+    }
+);
 
-try{
 
-let r=await fetch(API+"/documents/create",{
-method:"POST",
-body:fd
-});
+/* ======================================
+   EMPTY
+====================================== */
 
-let data=await r.json();
+function emptyHTML(text){
 
-if(!r.ok){
-document.getElementById("documentResult").innerHTML=
-"<div class='notice'>"+esc(data.error)+"</div>";
-return;
-}
+    return `
 
-document.getElementById("documentResult").innerHTML=`
+    <div class="empty"
+         style="grid-column:1/-1">
 
-<div class="notice">
+        <div class="empty-icon">
+            📚
+        </div>
 
-<b>تم تجهيز الوثيقة.</b>
+        ${escapeHTML(text)}
 
-<br><br>
+    </div>
 
-<a class="btn blue"
-target="_blank"
-href="${esc(data.file)}">
-فتح الملف
-</a>
-
-<button class="btn"
-onclick="window.open('${esc(data.file)}','_blank')">
-معاينة / طباعة
-</button>
-
-</div>
-
-`;
-
-}catch(e){
-
-document.getElementById("documentResult").innerHTML=
-"<div class='notice'>تعذر إنشاء الوثيقة.</div>";
+    `;
 
 }
 
-};
 
-function exportEmployees(){
+/* ======================================
+   SECURITY
+====================================== */
 
-window.open(API+"/employees/export","_blank");
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
 }
 
-document.getElementById("excelModal")
-.addEventListener("click",prepareDocumentEmployees);
 
-loadEmployees();
+function escapeAttr(value){
 
-window.onclick=function(e){
+    return escapeHTML(value);
 
-document.querySelectorAll(".modal").forEach(m=>{
-if(e.target===m)m.classList.remove("open");
-});
+}
 
-};
+
+/* ======================================
+   START
+====================================== */
+
+loadBooks();
 
 </script>
 
