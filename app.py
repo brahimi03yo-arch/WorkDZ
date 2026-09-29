@@ -1,162 +1,231 @@
 import os
 import sqlite3
-import uuid
-import requests
-from flask import Flask, request, jsonify, send_from_directory
-from werkzeug.utils import secure_filename
+import secrets
+import hashlib
+import datetime
+from functools import wraps
+
+from flask import (
+    Flask,
+    request,
+    jsonify,
+    send_from_directory,
+    session
+)
+
+try:
+    import requests
+except ImportError:
+    requests = None
 
 try:
     from pypdf import PdfReader
-except Exception:
+except ImportError:
     PdfReader = None
 
 
 # =========================================================
-# الإعدادات
+# إعداد التطبيق
 # =========================================================
 
-BASE = os.path.dirname(os.path.abspath(__file__))
-DB = os.path.join(BASE, "books.db")
-UPLOADS = os.path.join(BASE, "uploads")
+app = Flask(__name__, static_folder=".")
 
-os.makedirs(UPLOADS, exist_ok=True)
-
-app = Flask(__name__)
-app.config["MAX_CONTENT_LENGTH"] = 100 * 1024 * 1024
-
-
-# =========================================================
-# مفاتيح الخدمات
-# =========================================================
-
-GOOGLE_BOOKS_API_KEY = os.getenv("GOOGLE_BOOKS_API_KEY", "")
-TAVILY_API_KEY = os.getenv("TAVILY_API_KEY", "")
-
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY", "")
-HF_TOKEN = os.getenv("HF_TOKEN", "")
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
-CEREBRAS_API_KEY = os.getenv("CEREBRAS_API_KEY", "")
-
-GEMINI_MODEL = os.getenv(
-    "GEMINI_MODEL",
-    "gemini-2.5-flash"
+app.secret_key = os.environ.get(
+    "SECRET_KEY",
+    "change-this-secret-key-in-production"
 )
 
-MISTRAL_MODEL = os.getenv(
-    "MISTRAL_MODEL",
-    "mistral-small-latest"
+BASE_DIR = os.path.dirname(
+    os.path.abspath(__file__)
 )
 
-HF_MODEL = os.getenv(
-    "HF_MODEL",
-    "Qwen/Qwen2.5-7B-Instruct"
+DATA_DIR = os.path.join(BASE_DIR, "youssef_data")
+UPLOAD_DIR = os.path.join(DATA_DIR, "uploads")
+
+os.makedirs(UPLOAD_DIR, exist_ok=True)
+
+DB_PATH = os.path.join(
+    DATA_DIR,
+    "kutub_link.db"
 )
 
-GROQ_MODEL = os.getenv(
-    "GROQ_MODEL",
-    "llama-3.3-70b-versatile"
-)
+MAX_UPLOAD = 100 * 1024 * 1024
 
-OPENROUTER_MODEL = os.getenv(
-    "OPENROUTER_MODEL",
-    "openai/gpt-4o-mini"
-)
-
-CEREBRAS_MODEL = os.getenv(
-    "CEREBRAS_MODEL",
-    "llama-3.3-70b"
-)
+app.config["MAX_CONTENT_LENGTH"] = MAX_UPLOAD
 
 
 # =========================================================
 # قاعدة البيانات
 # =========================================================
 
-def get_db():
-    con = sqlite3.connect(DB)
+def db():
+
+    con = sqlite3.connect(DB_PATH)
+
     con.row_factory = sqlite3.Row
+
     return con
-
-
-def add_column(con, table, column, definition):
-    try:
-        con.execute(
-            f"ALTER TABLE {table} ADD COLUMN {column} {definition}"
-        )
-    except sqlite3.OperationalError:
-        pass
 
 
 def init_db():
 
-    con = get_db()
+    con = db()
 
-    con.execute("""
-    CREATE TABLE IF NOT EXISTS books (
+    con.executescript("""
+    
+    CREATE TABLE IF NOT EXISTS users(
+
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+        name TEXT NOT NULL,
+
+        phone TEXT NOT NULL UNIQUE,
+
+        email TEXT UNIQUE,
+
+        wilaya TEXT,
+
+        password_hash TEXT NOT NULL,
+
+        created_at TEXT NOT NULL
+
+    );
+
+
+    CREATE TABLE IF NOT EXISTS books(
+
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+        user_id INTEGER,
+
         title TEXT NOT NULL,
+
         author TEXT,
+
         isbn TEXT,
+
         year TEXT,
+
+        wilaya TEXT,
+
         category TEXT,
-        deal_type TEXT,
-        price REAL DEFAULT 0,
-        rarity TEXT,
+
         condition TEXT,
-        language TEXT,
+
+        rarity TEXT,
+
+        deal_type TEXT,
+
+        price REAL DEFAULT 0,
+
         description TEXT,
-        tags TEXT,
+
         cover TEXT,
+
         pdf TEXT,
-        extracted_text TEXT,
-        views INTEGER DEFAULT 0,
-        favorites INTEGER DEFAULT 0,
-        notes TEXT,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )
-    """)
 
-    # دعم قواعد البيانات القديمة
-    add_column(con, "books", "condition", "TEXT")
-    add_column(con, "books", "language", "TEXT")
-    add_column(con, "tags", "dummy", "TEXT") if False else None
-    add_column(con, "books", "tags", "TEXT")
-    add_column(con, "books", "extracted_text", "TEXT")
-    add_column(con, "books", "views", "INTEGER DEFAULT 0")
-    add_column(con, "books", "favorites", "INTEGER DEFAULT 0")
-    add_column(con, "books", "notes", "TEXT")
+        created_at TEXT NOT NULL,
 
-    con.execute("""
-    CREATE TABLE IF NOT EXISTS favorites (
+        FOREIGN KEY(user_id)
+            REFERENCES users(id)
+
+    );
+
+
+    CREATE TABLE IF NOT EXISTS favorites(
+
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        book_id INTEGER UNIQUE,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )
-    """)
 
-    con.execute("""
-    CREATE TABLE IF NOT EXISTS history (
+        user_id INTEGER NOT NULL,
+
+        book_id INTEGER NOT NULL,
+
+        UNIQUE(user_id,book_id)
+
+    );
+
+
+    CREATE TABLE IF NOT EXISTS orders(
+
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+        order_code TEXT UNIQUE NOT NULL,
+
+        user_id INTEGER NOT NULL,
+
+        name TEXT NOT NULL,
+
+        phone TEXT NOT NULL,
+
+        wilaya TEXT NOT NULL,
+
+        commune TEXT,
+
+        address TEXT,
+
+        delivery TEXT,
+
+        payment TEXT,
+
+        total REAL DEFAULT 0,
+
+        status TEXT NOT NULL,
+
+        created_at TEXT NOT NULL,
+
+        FOREIGN KEY(user_id)
+            REFERENCES users(id)
+
+    );
+
+
+    CREATE TABLE IF NOT EXISTS order_items(
+
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+        order_id INTEGER NOT NULL,
+
         book_id INTEGER,
-        action TEXT,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )
-    """)
 
-    con.execute("""
-    CREATE TABLE IF NOT EXISTS exchanges (
+        title TEXT NOT NULL,
+
+        price REAL NOT NULL,
+
+        quantity INTEGER DEFAULT 1,
+
+        FOREIGN KEY(order_id)
+            REFERENCES orders(id)
+
+    );
+
+
+    CREATE TABLE IF NOT EXISTS exchanges(
+
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+        exchange_code TEXT UNIQUE NOT NULL,
+
+        user_id INTEGER NOT NULL,
+
         book_id INTEGER,
-        wanted TEXT,
-        message TEXT,
-        status TEXT DEFAULT 'مفتوح',
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )
+
+        offer TEXT NOT NULL,
+
+        note TEXT,
+
+        status TEXT NOT NULL,
+
+        created_at TEXT NOT NULL,
+
+        FOREIGN KEY(user_id)
+            REFERENCES users(id)
+
+    );
+
     """)
 
     con.commit()
+
     con.close()
 
 
@@ -164,552 +233,294 @@ init_db()
 
 
 # =========================================================
-# الصفحة والملفات
+# مساعدات
 # =========================================================
 
-@app.route("/")
-def index():
-    return send_from_directory(BASE, "index.html")
+def now():
+
+    return datetime.datetime.now().strftime(
+        "%Y-%m-%d %H:%M:%S"
+    )
 
 
-@app.route("/uploads/<path:filename>")
-def uploaded_file(filename):
-    return send_from_directory(UPLOADS, filename)
+def hash_password(password):
+
+    salt = secrets.token_hex(16)
+
+    hashed = hashlib.pbkdf2_hmac(
+        "sha256",
+        password.encode("utf-8"),
+        salt.encode("utf-8"),
+        120000
+    ).hex()
+
+    return salt + ":" + hashed
 
 
-# =========================================================
-# PDF
-# =========================================================
-
-def extract_pdf_text(filename):
-
-    if not filename or PdfReader is None:
-        return ""
-
-    path = os.path.join(UPLOADS, filename)
-
-    if not os.path.exists(path):
-        return ""
+def check_password(password, stored):
 
     try:
 
-        reader = PdfReader(path)
-
-        parts = []
-
-        max_pages = min(len(reader.pages), 100)
-
-        for page in reader.pages[:max_pages]:
-
-            try:
-
-                text = page.extract_text() or ""
-
-                if text.strip():
-                    parts.append(text)
-
-            except Exception:
-                continue
-
-        return "\n\n".join(parts)[:100000]
-
-    except Exception as e:
-
-        print("PDF:", repr(e))
-        return ""
-
-
-# =========================================================
-# تحويل الكتاب إلى JSON
-# =========================================================
-
-def book_json(b):
-
-    return {
-        "id": b["id"],
-        "title": b["title"] or "",
-        "author": b["author"] or "",
-        "isbn": b["isbn"] or "",
-        "year": b["year"] or "",
-        "category": b["category"] or "",
-        "deal_type": b["deal_type"] or "",
-        "price": b["price"] or 0,
-        "rarity": b["rarity"] or "",
-        "condition": b["condition"] or "",
-        "language": b["language"] or "",
-        "description": b["description"] or "",
-        "tags": b["tags"] or "",
-        "image": "/uploads/" + b["cover"] if b["cover"] else "",
-        "pdf": "/uploads/" + b["pdf"] if b["pdf"] else "",
-        "views": b["views"] or 0,
-        "favorites": b["favorites"] or 0,
-        "has_text": bool(b["extracted_text"]),
-        "notes": b["notes"] or "",
-        "source": "منصة الكتب"
-    }
-
-
-# =========================================================
-# البحث المحلي
-# =========================================================
-
-def local_search(
-    q="",
-    author="",
-    year="",
-    category=""
-):
-
-    con = get_db()
-
-    sql = """
-    SELECT *
-    FROM books
-    WHERE 1=1
-    """
-
-    values = []
-
-    if q:
-
-        sql += """
-        AND (
-            title LIKE ?
-            OR author LIKE ?
-            OR isbn LIKE ?
-            OR description LIKE ?
-            OR category LIKE ?
-            OR tags LIKE ?
-        )
-        """
-
-        x = "%" + q + "%"
-
-        values.extend([
-            x, x, x, x, x, x
-        ])
-
-    if author:
-
-        sql += " AND author LIKE ?"
-        values.append("%" + author + "%")
-
-    if year:
-
-        sql += " AND year LIKE ?"
-        values.append("%" + year + "%")
-
-    if category:
-
-        sql += " AND category LIKE ?"
-        values.append("%" + category + "%")
-
-    sql += """
-    ORDER BY created_at DESC
-    LIMIT 100
-    """
-
-    rows = con.execute(
-        sql,
-        values
-    ).fetchall()
-
-    con.close()
-
-    return [book_json(x) for x in rows]
-
-
-# =========================================================
-# Google Books
-# =========================================================
-
-def google_books(
-    q,
-    author="",
-    year=""
-):
-
-    query = q or "books"
-
-    if author:
-        query += " inauthor:" + author
-
-    if year:
-        query += " " + year
-
-    params = {
-        "q": query,
-        "maxResults": 40,
-        "printType": "books"
-    }
-
-    if GOOGLE_BOOKS_API_KEY:
-        params["key"] = GOOGLE_BOOKS_API_KEY
-
-    try:
-
-        response = requests.get(
-            "https://www.googleapis.com/books/v1/volumes",
-            params=params,
-            timeout=20
-        )
-
-        if response.status_code != 200:
-            return []
-
-        data = response.json()
-
-        results = []
-
-        for item in data.get("items", []):
-
-            info = item.get(
-                "volumeInfo",
-                {}
-            )
-
-            images = info.get(
-                "imageLinks",
-                {}
-            )
-
-            image = (
-                images.get("thumbnail")
-                or
-                images.get("smallThumbnail")
-                or
-                ""
-            )
-
-            image = image.replace(
-                "http://",
-                "https://"
-            )
-
-            isbn = ""
-
-            for identifier in info.get(
-                "industryIdentifiers",
-                []
-            ):
-
-                if identifier.get("type") in (
-                    "ISBN_13",
-                    "ISBN_10"
-                ):
-
-                    isbn = identifier.get(
-                        "identifier",
-                        ""
-                    )
-
-                    break
-
-            authors = info.get(
-                "authors",
-                []
-            )
-
-            categories = info.get(
-                "categories",
-                []
-            )
-
-            results.append({
-
-                "id":
-                    item.get("id"),
-
-                "title":
-                    info.get(
-                        "title",
-                        "بدون عنوان"
-                    ),
-
-                "author":
-                    ", ".join(authors),
-
-                "isbn":
-                    isbn,
-
-                "year":
-                    info.get(
-                        "publishedDate",
-                        ""
-                    ),
-
-                "language":
-                    info.get(
-                        "language",
-                        ""
-                    ),
-
-                "description":
-                    info.get(
-                        "description",
-                        ""
-                    ),
-
-                "category":
-                    categories[0]
-                    if categories
-                    else "",
-
-                "image":
-                    image,
-
-                "link":
-                    info.get(
-                        "infoLink",
-                        ""
-                    ),
-
-                "source":
-                    "Google Books"
-
-            })
-
-        return results
-
-    except Exception as e:
-
-        print(
-            "Google Books:",
-            repr(e)
-        )
-
-        return []
-
-
-# =========================================================
-# رفع كتاب
-# =========================================================
-
-@app.route(
-    "/api/upload",
-    methods=["POST"]
-)
-def upload():
-
-    title = request.form.get(
-        "title",
-        ""
-    ).strip()
-
-    if not title:
-
-        return jsonify({
-            "error":
-                "عنوان الكتاب مطلوب"
-        }), 400
-
-    author = request.form.get(
-        "author",
-        ""
-    ).strip()
-
-    year = request.form.get(
-        "year",
-        ""
-    ).strip()
-
-    isbn = request.form.get(
-        "isbn",
-        ""
-    ).strip()
-
-    category = request.form.get(
-        "category",
-        ""
-    ).strip()
-
-    deal_type = request.form.get(
-        "deal_type",
-        "خاص"
-    ).strip()
-
-    rarity = request.form.get(
-        "rarity",
-        ""
-    ).strip()
-
-    condition = request.form.get(
-        "condition",
-        ""
-    ).strip()
-
-    language = request.form.get(
-        "language",
-        ""
-    ).strip()
-
-    tags = request.form.get(
-        "tags",
-        ""
-    ).strip()
-
-    description = request.form.get(
-        "description",
-        ""
-    ).strip()
-
-    try:
-
-        price = float(
-            request.form.get(
-                "price",
-                "0"
-            ) or 0
+        salt, hashed = stored.split(":", 1)
+
+        test = hashlib.pbkdf2_hmac(
+            "sha256",
+            password.encode("utf-8"),
+            salt.encode("utf-8"),
+            120000
+        ).hex()
+
+        return secrets.compare_digest(
+            test,
+            hashed
         )
 
     except Exception:
 
-        price = 0
+        return False
 
-    cover_name = ""
-    pdf_name = ""
-    extracted_text = ""
 
-    cover = request.files.get(
-        "cover"
-    )
+def current_user():
 
-    pdf = request.files.get(
-        "pdf"
-    )
+    uid = session.get("user_id")
 
-    # الغلاف
-    if cover and cover.filename:
+    if not uid:
+        return None
 
-        original = secure_filename(
-            cover.filename
-        )
+    con = db()
 
-        if "." not in original:
-
-            return jsonify({
-                "error":
-                    "الغلاف غير صحيح"
-            }), 400
-
-        ext = original.rsplit(
-            ".",
-            1
-        )[-1].lower()
-
-        if ext not in {
-            "jpg",
-            "jpeg",
-            "png",
-            "webp"
-        }:
-
-            return jsonify({
-                "error":
-                    "صيغة الغلاف غير مدعومة"
-            }), 400
-
-        cover_name = (
-            uuid.uuid4().hex
-            + "."
-            + ext
-        )
-
-        cover.save(
-            os.path.join(
-                UPLOADS,
-                cover_name
-            )
-        )
-
-    # PDF
-    if pdf and pdf.filename:
-
-        if not pdf.filename.lower().endswith(
-            ".pdf"
-        ):
-
-            return jsonify({
-                "error":
-                    "الملف يجب أن يكون PDF"
-            }), 400
-
-        pdf_name = (
-            uuid.uuid4().hex
-            + ".pdf"
-        )
-
-        pdf_path = os.path.join(
-            UPLOADS,
-            pdf_name
-        )
-
-        pdf.save(pdf_path)
-
-        extracted_text = extract_pdf_text(
-            pdf_name
-        )
-
-    con = get_db()
-
-    cur = con.execute("""
-    INSERT INTO books (
-        title,
-        author,
-        isbn,
-        year,
-        category,
-        deal_type,
-        price,
-        rarity,
-        condition,
-        language,
-        description,
-        tags,
-        cover,
-        pdf,
-        extracted_text
-    )
-    VALUES (
-        ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
-    )
-    """, (
-        title,
-        author,
-        isbn,
-        year,
-        category,
-        deal_type,
-        price,
-        rarity,
-        condition,
-        language,
-        description,
-        tags,
-        cover_name,
-        pdf_name,
-        extracted_text
-    ))
-
-    con.commit()
-
-    book_id = cur.lastrowid
+    user = con.execute(
+        "SELECT * FROM users WHERE id=?",
+        (uid,)
+    ).fetchone()
 
     con.close()
 
+    return user
+
+
+def login_required(fn):
+
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+
+        if not current_user():
+
+            return jsonify({
+                "error": "يجب تسجيل الدخول أولًا"
+            }), 401
+
+        return fn(*args, **kwargs)
+
+    return wrapper
+
+
+def row_book(row, user_id=None):
+
+    item = dict(row)
+
+    item["source"] = "كتب لينك"
+
+    item["favorite"] = False
+
+    if user_id:
+
+        con = db()
+
+        fav = con.execute(
+            """
+            SELECT id
+            FROM favorites
+            WHERE user_id=? AND book_id=?
+            """,
+            (user_id, row["id"])
+        ).fetchone()
+
+        con.close()
+
+        item["favorite"] = bool(fav)
+
+    if item.get("cover"):
+
+        item["image"] = "/uploads/" + item["cover"]
+
+    else:
+
+        item["image"] = ""
+
+    if item.get("pdf"):
+
+        item["pdf"] = "/uploads/" + item["pdf"]
+
+    else:
+
+        item["pdf"] = ""
+
+    return item
+
+
+# =========================================================
+# الصفحة
+# =========================================================
+
+@app.route("/")
+def index():
+
+    return send_from_directory(
+        BASE_DIR,
+        "index.html"
+    )
+
+
+@app.route("/uploads/<path:name>")
+def uploads(name):
+
+    return send_from_directory(
+        UPLOAD_DIR,
+        name
+    )
+
+
+# =========================================================
+# الحساب
+# =========================================================
+
+@app.post("/api/register")
+def register():
+
+    data = request.get_json(silent=True) or {}
+
+    name = str(data.get("name", "")).strip()
+    phone = str(data.get("phone", "")).strip()
+    email = str(data.get("email", "")).strip()
+    wilaya = str(data.get("wilaya", "")).strip()
+    password = str(data.get("password", ""))
+
+    if not name or not phone or not password:
+
+        return jsonify({
+            "error": "الاسم والهاتف وكلمة المرور مطلوبة"
+        }), 400
+
+    if len(password) < 6:
+
+        return jsonify({
+            "error": "كلمة المرور يجب أن تكون 6 أحرف على الأقل"
+        }), 400
+
+    con = db()
+
+    try:
+
+        cur = con.execute(
+            """
+            INSERT INTO users
+            (name,phone,email,wilaya,password_hash,created_at)
+            VALUES(?,?,?,?,?,?)
+            """,
+            (
+                name,
+                phone,
+                email or None,
+                wilaya,
+                hash_password(password),
+                now()
+            )
+        )
+
+        con.commit()
+
+        uid = cur.lastrowid
+
+        session["user_id"] = uid
+
+        user = con.execute(
+            "SELECT id,name,phone,email,wilaya FROM users WHERE id=?",
+            (uid,)
+        ).fetchone()
+
+        return jsonify({
+            "message": "تم إنشاء الحساب",
+            "user": dict(user)
+        })
+
+    except sqlite3.IntegrityError:
+
+        return jsonify({
+            "error": "رقم الهاتف أو البريد الإلكتروني مسجل مسبقًا"
+        }), 409
+
+    finally:
+
+        con.close()
+
+
+@app.post("/api/login")
+def login():
+
+    data = request.get_json(silent=True) or {}
+
+    identifier = str(
+        data.get("identifier", "")
+    ).strip()
+
+    password = str(
+        data.get("password", "")
+    )
+
+    con = db()
+
+    user = con.execute(
+        """
+        SELECT *
+        FROM users
+        WHERE phone=?
+           OR email=?
+        """,
+        (identifier, identifier)
+    ).fetchone()
+
+    con.close()
+
+    if not user or not check_password(
+        password,
+        user["password_hash"]
+    ):
+
+        return jsonify({
+            "error": "بيانات الدخول غير صحيحة"
+        }), 401
+
+    session["user_id"] = user["id"]
+
     return jsonify({
-        "ok": True,
-        "id": book_id,
-        "message": "تمت إضافة الكتاب إلى المنصة"
+        "message": "تم الدخول",
+        "user": {
+            "id": user["id"],
+            "name": user["name"],
+            "phone": user["phone"],
+            "email": user["email"],
+            "wilaya": user["wilaya"]
+        }
+    })
+
+
+@app.post("/api/logout")
+def logout():
+
+    session.clear()
+
+    return jsonify({
+        "message": "تم تسجيل الخروج"
     })
 
 
 # =========================================================
-# جميع الكتب
+# الكتب
 # =========================================================
 
-@app.route("/api/books")
-def books_api():
+@app.get("/api/books")
+def books():
 
     q = request.args.get(
         "q",
@@ -726,109 +537,354 @@ def books_api():
         ""
     ).strip()
 
-    category = request.args.get(
-        "category",
-        ""
-    ).strip()
+    uid = session.get("user_id")
 
-    local = local_search(
-        q,
-        author,
-        year,
-        category
-    )
+    con = db()
 
-    external = google_books(
-        q or "books",
-        author,
-        year
-    )
+    sql = """
+        SELECT *
+        FROM books
+        WHERE 1=1
+    """
 
-    seen = set()
+    params = []
 
-    combined = []
+    if q:
 
-    for book in local + external:
+        sql += """
+        AND (
+            title LIKE ?
+            OR author LIKE ?
+            OR isbn LIKE ?
+            OR category LIKE ?
+            OR wilaya LIKE ?
+        )
+        """
 
-        key = (
-            str(
-                book.get("isbn")
-                or ""
+        x = "%" + q + "%"
+
+        params.extend([
+            x,x,x,x,x
+        ])
+
+    if author:
+
+        sql += """
+        AND author LIKE ?
+        """
+
+        params.append(
+            "%" + author + "%"
+        )
+
+    if year:
+
+        sql += """
+        AND year LIKE ?
+        """
+
+        params.append(
+            "%" + year + "%"
+        )
+
+    sql += """
+        ORDER BY id DESC
+        LIMIT 100
+    """
+
+    rows = con.execute(
+        sql,
+        params
+    ).fetchall()
+
+    con.close()
+
+    result = [
+        row_book(x, uid)
+        for x in rows
+    ]
+
+
+    # Google Books
+
+    google_items = []
+
+    if q and requests:
+
+        try:
+
+            response = requests.get(
+                "https://www.googleapis.com/books/v1/volumes",
+                params={
+                    "q": q,
+                    "maxResults": 12,
+                    "printType": "books"
+                },
+                timeout=8
             )
-            or
-            str(
-                book.get("title")
-                or ""
-            )
-        ).lower().strip()
 
-        if key and key in seen:
-            continue
+            if response.ok:
 
-        if key:
-            seen.add(key)
+                data = response.json()
 
-        combined.append(book)
+                for x in data.get(
+                    "items",
+                    []
+                ):
+
+                    info = x.get(
+                        "volumeInfo",
+                        {}
+                    )
+
+                    image = (
+                        info.get("imageLinks", {})
+                        .get("thumbnail", "")
+                    )
+
+                    google_items.append({
+
+                        "id":
+                            "google-" + str(x.get("id")),
+
+                        "title":
+                            info.get(
+                                "title",
+                                "بدون عنوان"
+                            ),
+
+                        "author":
+                            ", ".join(
+                                info.get(
+                                    "authors",
+                                    []
+                                )
+                            ),
+
+                        "year":
+                            info.get(
+                                "publishedDate",
+                                ""
+                            ),
+
+                        "description":
+                            info.get(
+                                "description",
+                                ""
+                            ),
+
+                        "image":
+                            image,
+
+                        "link":
+                            info.get(
+                                "infoLink",
+                                ""
+                            ),
+
+                        "source":
+                            "Google Books",
+
+                        "price": 0
+
+                    })
+
+        except Exception:
+
+            pass
+
 
     return jsonify({
-        "items": combined,
-        "local_count": len(local),
-        "google_count": len(external)
+        "items": result + google_items
     })
 
 
 # =========================================================
-# تفاصيل كتاب
+# رفع كتاب
 # =========================================================
 
-@app.route(
-    "/api/book/<int:book_id>"
-)
-def get_book(book_id):
+@app.post("/api/books")
+@login_required
+def create_book():
 
-    con = get_db()
+    user = current_user()
 
-    book = con.execute(
-        "SELECT * FROM books WHERE id=?",
-        (book_id,)
-    ).fetchone()
+    form = request.form
 
-    if not book:
+    title = form.get(
+        "title",
+        ""
+    ).strip()
 
-        con.close()
+    if not title:
 
         return jsonify({
-            "error":
-                "الكتاب غير موجود"
-        }), 404
+            "error": "عنوان الكتاب مطلوب"
+        }), 400
 
-    con.execute(
-        "UPDATE books SET views=views+1 WHERE id=?",
-        (book_id,)
+    try:
+
+        price = float(
+            form.get(
+                "price",
+                0
+            ) or 0
+        )
+
+    except Exception:
+
+        price = 0
+
+    cover_file = request.files.get(
+        "cover"
     )
 
-    con.execute("""
-    INSERT INTO history (
-        book_id,
-        action
+    pdf_file = request.files.get(
+        "pdf"
     )
-    VALUES (?,?)
-    """, (
-        book_id,
-        "view"
-    ))
+
+    cover_name = None
+    pdf_name = None
+
+
+    if cover_file and cover_file.filename:
+
+        ext = os.path.splitext(
+            cover_file.filename
+        )[1].lower()
+
+        if ext not in [
+            ".jpg",
+            ".jpeg",
+            ".png",
+            ".webp",
+            ".gif"
+        ]:
+
+            return jsonify({
+                "error": "صيغة صورة الغلاف غير مدعومة"
+            }), 400
+
+        cover_name = (
+            secrets.token_hex(12)
+            + ext
+        )
+
+        cover_file.save(
+            os.path.join(
+                UPLOAD_DIR,
+                cover_name
+            )
+        )
+
+
+    if pdf_file and pdf_file.filename:
+
+        ext = os.path.splitext(
+            pdf_file.filename
+        )[1].lower()
+
+        if ext != ".pdf":
+
+            return jsonify({
+                "error": "ملف الكتاب يجب أن يكون PDF"
+            }), 400
+
+        pdf_name = (
+            secrets.token_hex(12)
+            + ".pdf"
+        )
+
+        pdf_file.save(
+            os.path.join(
+                UPLOAD_DIR,
+                pdf_name
+            )
+        )
+
+
+    con = db()
+
+    cur = con.execute(
+        """
+        INSERT INTO books
+        (
+            user_id,
+            title,
+            author,
+            isbn,
+            year,
+            wilaya,
+            category,
+            condition,
+            rarity,
+            deal_type,
+            price,
+            description,
+            cover,
+            pdf,
+            created_at
+        )
+        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        """,
+        (
+            user["id"],
+            title,
+            form.get("author", ""),
+            form.get("isbn", ""),
+            form.get("year", ""),
+            form.get("wilaya", ""),
+            form.get("category", ""),
+            form.get("condition", ""),
+            form.get("rarity", ""),
+            form.get("deal_type", "بيع"),
+            price,
+            form.get("description", ""),
+            cover_name,
+            pdf_name,
+            now()
+        )
+    )
 
     con.commit()
 
-    book = con.execute(
-        "SELECT * FROM books WHERE id=?",
+    book_id = cur.lastrowid
+
+    con.close()
+
+    return jsonify({
+        "message": "تم نشر الكتاب",
+        "book_id": book_id
+    })
+
+
+@app.get("/api/book/<int:book_id>")
+def get_book(book_id):
+
+    con = db()
+
+    row = con.execute(
+        """
+        SELECT *
+        FROM books
+        WHERE id=?
+        """,
         (book_id,)
     ).fetchone()
 
     con.close()
 
+    if not row:
+
+        return jsonify({
+            "error": "الكتاب غير موجود"
+        }), 404
+
     return jsonify(
-        book_json(book)
+        row_book(
+            row,
+            session.get("user_id")
+        )
     )
 
 
@@ -836,284 +892,353 @@ def get_book(book_id):
 # المفضلة
 # =========================================================
 
-@app.route(
-    "/api/favorite/<int:book_id>",
-    methods=["POST"]
-)
+@app.post("/api/book/<int:book_id>/favorite")
+@login_required
 def favorite(book_id):
 
-    con = get_db()
+    user = current_user()
+
+    con = db()
 
     exists = con.execute(
-        "SELECT id FROM favorites WHERE book_id=?",
-        (book_id,)
+        """
+        SELECT id
+        FROM favorites
+        WHERE user_id=? AND book_id=?
+        """,
+        (
+            user["id"],
+            book_id
+        )
     ).fetchone()
 
     if exists:
 
         con.execute(
-            "DELETE FROM favorites WHERE book_id=?",
-            (book_id,)
-        )
-
-        con.execute(
             """
-            UPDATE books
-            SET favorites=MAX(favorites-1,0)
-            WHERE id=?
+            DELETE FROM favorites
+            WHERE user_id=? AND book_id=?
             """,
-            (book_id,)
+            (
+                user["id"],
+                book_id
+            )
         )
 
-        state = False
+        message = "تم حذف الكتاب من المفضلة"
 
     else:
 
         con.execute(
             """
-            INSERT OR IGNORE INTO favorites(book_id)
-            VALUES (?)
+            INSERT OR IGNORE INTO favorites
+            (user_id,book_id)
+            VALUES(?,?)
             """,
-            (book_id,)
+            (
+                user["id"],
+                book_id
+            )
         )
 
-        con.execute(
+        message = "تمت إضافة الكتاب إلى المفضلة"
+
+    con.commit()
+
+    con.close()
+
+    return jsonify({
+        "message": message
+    })
+
+
+# =========================================================
+# مكتبتي
+# =========================================================
+
+@app.get("/api/library")
+@login_required
+def library():
+
+    user = current_user()
+
+    con = db()
+
+    rows = con.execute(
+        """
+        SELECT *
+        FROM books
+        WHERE user_id=?
+        ORDER BY id DESC
+        """,
+        (user["id"],)
+    ).fetchall()
+
+    con.close()
+
+    return jsonify({
+        "items":[
+            row_book(x,user["id"])
+            for x in rows
+        ]
+    })
+
+
+# =========================================================
+# الطلبات
+# =========================================================
+
+def make_code(prefix):
+
+    return (
+        prefix
+        + "-"
+        + datetime.datetime.now().strftime("%Y")
+        + "-"
+        + secrets.token_hex(4).upper()
+    )
+
+
+@app.post("/api/orders")
+@login_required
+def create_order():
+
+    user = current_user()
+
+    data = request.get_json(
+        silent=True
+    ) or {}
+
+    items = data.get(
+        "items",
+        []
+    )
+
+    if not items:
+
+        return jsonify({
+            "error": "السلة فارغة"
+        }), 400
+
+    name = str(
+        data.get("name", "")
+    ).strip()
+
+    phone = str(
+        data.get("phone", "")
+    ).strip()
+
+    wilaya = str(
+        data.get("wilaya", "")
+    ).strip()
+
+    if not name or not phone or not wilaya:
+
+        return jsonify({
+            "error": "بيانات التسليم ناقصة"
+        }), 400
+
+
+    con = db()
+
+    total = 0
+
+    clean_items = []
+
+    for item in items:
+
+        try:
+
+            book_id = int(
+                item.get("id")
+            )
+
+        except Exception:
+
+            continue
+
+        row = con.execute(
             """
-            UPDATE books
-            SET favorites=favorites+1
+            SELECT id,title,price
+            FROM books
             WHERE id=?
             """,
             (book_id,)
+        ).fetchone()
+
+        if not row:
+
+            continue
+
+        try:
+
+            quantity = max(
+                1,
+                int(
+                    item.get(
+                        "qty",
+                        1
+                    )
+                )
+            )
+
+        except Exception:
+
+            quantity = 1
+
+        price = float(
+            row["price"] or 0
         )
 
-        state = True
+        total += price * quantity
 
-    con.commit()
-
-    con.close()
-
-    return jsonify({
-        "ok": True,
-        "favorite": state
-    })
+        clean_items.append({
+            "id": row["id"],
+            "title": row["title"],
+            "price": price,
+            "quantity": quantity
+        })
 
 
-@app.route("/api/favorites")
-def favorites():
+    if not clean_items:
 
-    con = get_db()
-
-    rows = con.execute("""
-    SELECT books.*
-    FROM books
-    INNER JOIN favorites
-    ON books.id=favorites.book_id
-    ORDER BY favorites.created_at DESC
-    """).fetchall()
-
-    con.close()
-
-    return jsonify({
-        "items":
-            [book_json(x) for x in rows]
-    })
-
-
-# =========================================================
-# سجل القراءة
-# =========================================================
-
-@app.route("/api/history")
-def history():
-
-    con = get_db()
-
-    rows = con.execute("""
-    SELECT books.*
-    FROM history
-    INNER JOIN books
-    ON books.id=history.book_id
-    WHERE history.action='view'
-    GROUP BY books.id
-    ORDER BY MAX(history.created_at) DESC
-    LIMIT 30
-    """).fetchall()
-
-    con.close()
-
-    return jsonify({
-        "items":
-            [book_json(x) for x in rows]
-    })
-
-
-# =========================================================
-# ملاحظات
-# =========================================================
-
-@app.route(
-    "/api/book/<int:book_id>/notes",
-    methods=["POST"]
-)
-def save_notes(book_id):
-
-    data = request.get_json(
-        silent=True
-    ) or {}
-
-    notes = str(
-        data.get(
-            "notes",
-            ""
-        )
-    )
-
-    con = get_db()
-
-    con.execute(
-        """
-        UPDATE books
-        SET notes=?
-        WHERE id=?
-        """,
-        (
-            notes,
-            book_id
-        )
-    )
-
-    con.commit()
-    con.close()
-
-    return jsonify({
-        "ok": True
-    })
-
-
-# =========================================================
-# الكتب المعروضة للبيع
-# =========================================================
-
-@app.route("/api/market")
-def market():
-
-    con = get_db()
-
-    rows = con.execute("""
-    SELECT *
-    FROM books
-    WHERE LOWER(deal_type) LIKE '%بيع%'
-       OR LOWER(deal_type) LIKE '%sale%'
-       OR LOWER(deal_type) LIKE '%عرض للبيع%'
-    ORDER BY created_at DESC
-    LIMIT 100
-    """).fetchall()
-
-    con.close()
-
-    return jsonify({
-        "items":
-            [book_json(x) for x in rows]
-    })
-
-
-# =========================================================
-# كتب التبادل
-# =========================================================
-
-@app.route(
-    "/api/exchange",
-    methods=["POST"]
-)
-def create_exchange():
-
-    data = request.get_json(
-        silent=True
-    ) or {}
-
-    book_id = data.get("book_id")
-
-    if not book_id:
+        con.close()
 
         return jsonify({
-            "error":
-                "معرف الكتاب مطلوب"
+            "error": "لا توجد كتب صالحة في الطلب"
         }), 400
 
-    wanted = str(
-        data.get(
-            "wanted",
-            ""
+
+    code = make_code("KL")
+
+    status = "في انتظار تأكيد الطلب"
+
+    cur = con.execute(
+        """
+        INSERT INTO orders
+        (
+            order_code,
+            user_id,
+            name,
+            phone,
+            wilaya,
+            commune,
+            address,
+            delivery,
+            payment,
+            total,
+            status,
+            created_at
         )
-    ).strip()
-
-    message = str(
-        data.get(
-            "message",
-            ""
+        VALUES(?,?,?,?,?,?,?,?,?,?,?,?)
+        """,
+        (
+            code,
+            user["id"],
+            name,
+            phone,
+            wilaya,
+            data.get("commune", ""),
+            data.get("address", ""),
+            data.get("delivery", ""),
+            data.get("payment", ""),
+            total,
+            status,
+            now()
         )
-    ).strip()
-
-    con = get_db()
-
-    con.execute("""
-    INSERT INTO exchanges (
-        book_id,
-        wanted,
-        message
     )
-    VALUES (?,?,?)
-    """, (
-        int(book_id),
-        wanted,
-        message
-    ))
+
+    order_id = cur.lastrowid
+
+
+    for item in clean_items:
+
+        con.execute(
+            """
+            INSERT INTO order_items
+            (
+                order_id,
+                book_id,
+                title,
+                price,
+                quantity
+            )
+            VALUES(?,?,?,?,?)
+            """,
+            (
+                order_id,
+                item["id"],
+                item["title"],
+                item["price"],
+                item["quantity"]
+            )
+        )
+
 
     con.commit()
+
     con.close()
 
     return jsonify({
-        "ok": True,
-        "message":
-            "تم تسجيل طلب التبادل"
+        "message": "تم تسجيل الطلب",
+        "order": {
+            "id": code,
+            "total": total,
+            "status": status,
+            "name": name,
+            "phone": phone,
+            "wilaya": wilaya,
+            "commune": data.get("commune", ""),
+            "address": data.get("address", ""),
+            "delivery": data.get("delivery", ""),
+            "payment": data.get("payment", ""),
+            "created_at": now(),
+            "items": clean_items
+        }
     })
 
 
-@app.route("/api/exchanges")
-def exchanges():
+@app.get("/api/orders")
+@login_required
+def orders():
 
-    con = get_db()
+    user = current_user()
 
-    rows = con.execute("""
-    SELECT
-        exchanges.*,
-        books.title,
-        books.author,
-        books.cover
-    FROM exchanges
-    LEFT JOIN books
-    ON books.id=exchanges.book_id
-    ORDER BY exchanges.created_at DESC
-    LIMIT 100
-    """).fetchall()
+    con = db()
+
+    rows = con.execute(
+        """
+        SELECT *
+        FROM orders
+        WHERE user_id=?
+        ORDER BY id DESC
+        """,
+        (user["id"],)
+    ).fetchall()
 
     result = []
 
-    for x in rows:
+    for row in rows:
 
-        result.append({
-            "id": x["id"],
-            "book_id": x["book_id"],
-            "title": x["title"] or "",
-            "author": x["author"] or "",
-            "wanted": x["wanted"] or "",
-            "message": x["message"] or "",
-            "status": x["status"] or "",
-            "image":
-                "/uploads/" + x["cover"]
-                if x["cover"]
-                else ""
-        })
+        item_rows = con.execute(
+            """
+            SELECT title,price,quantity
+            FROM order_items
+            WHERE order_id=?
+            """,
+            (row["id"],)
+        ).fetchall()
+
+        x = dict(row)
+
+        x["id"] = x["order_code"]
+
+        x["items"] = [
+            dict(i)
+            for i in item_rows
+        ]
+
+        result.append(x)
 
     con.close()
 
@@ -1123,548 +1248,250 @@ def exchanges():
 
 
 # =========================================================
-# إحصائيات المنصة
+# التبادل
 # =========================================================
 
-@app.route("/api/stats")
-def stats():
+@app.post("/api/exchanges")
+@login_required
+def create_exchange():
 
-    con = get_db()
+    user = current_user()
 
-    total = con.execute(
-        "SELECT COUNT(*) c FROM books"
-    ).fetchone()["c"]
+    data = request.get_json(
+        silent=True
+    ) or {}
 
-    sale = con.execute("""
-    SELECT COUNT(*) c
-    FROM books
-    WHERE deal_type LIKE '%بيع%'
-    """).fetchone()["c"]
+    offer = str(
+        data.get("offer", "")
+    ).strip()
 
-    exchange = con.execute("""
-    SELECT COUNT(*) c
-    FROM books
-    WHERE deal_type LIKE '%تبادل%'
-    """).fetchone()["c"]
+    if not offer:
 
-    rare = con.execute("""
-    SELECT COUNT(*) c
-    FROM books
-    WHERE rarity LIKE '%نادر%'
-    """).fetchone()["c"]
+        return jsonify({
+            "error": "اكتب الكتاب الذي ستقدمه مقابلًا"
+        }), 400
 
-    views = con.execute(
-        "SELECT COALESCE(SUM(views),0) c FROM books"
-    ).fetchone()["c"]
+    code = make_code("EX")
 
-    favorites = con.execute(
-        "SELECT COALESCE(SUM(favorites),0) c FROM books"
-    ).fetchone()["c"]
+    con = db()
+
+    cur = con.execute(
+        """
+        INSERT INTO exchanges
+        (
+            exchange_code,
+            user_id,
+            book_id,
+            offer,
+            note,
+            status,
+            created_at
+        )
+        VALUES(?,?,?,?,?,?,?)
+        """,
+        (
+            code,
+            user["id"],
+            data.get("book_id"),
+            offer,
+            data.get("note", ""),
+            "في انتظار رد صاحب الكتاب",
+            now()
+        )
+    )
+
+    con.commit()
 
     con.close()
 
     return jsonify({
-        "books": total,
-        "sale": sale,
-        "exchange": exchange,
-        "rare": rare,
-        "views": views,
-        "favorites": favorites
+        "message": "تم تسجيل التبادل",
+        "exchange": {
+            "id": code,
+            "status": "في انتظار رد صاحب الكتاب"
+        }
     })
 
 
 # =========================================================
-# Tavily
+# أدوات الكتاب والذكاء الاصطناعي
 # =========================================================
 
-def tavily_search(q):
+def extract_pdf_text(path):
 
-    if not TAVILY_API_KEY:
-        return []
+    if not PdfReader:
+        return ""
 
     try:
 
-        response = requests.post(
-            "https://api.tavily.com/search",
-            json={
-                "api_key": TAVILY_API_KEY,
-                "query": q,
-                "search_depth": "basic",
-                "max_results": 6,
-                "include_answer": True
-            },
-            timeout=25
-        )
+        reader = PdfReader(path)
 
-        if response.status_code != 200:
-            return []
+        chunks = []
 
-        return response.json().get(
-            "results",
-            []
-        )
+        for page in reader.pages[:30]:
+
+            text = page.extract_text()
+
+            if text:
+                chunks.append(text)
+
+        return "\n".join(chunks)
 
     except Exception:
 
-        return []
+        return ""
 
 
-# =========================================================
-# Gemini
-# =========================================================
+def local_book_text(book):
 
-def gemini(prompt):
+    text = ""
 
-    if not GEMINI_API_KEY:
-        return None
+    if book["pdf"]:
 
-    try:
-
-        url = (
-            "https://generativelanguage.googleapis.com/"
-            "v1beta/models/"
-            + GEMINI_MODEL
-            + ":generateContent"
+        path = os.path.join(
+            UPLOAD_DIR,
+            book["pdf"]
         )
 
-        response = requests.post(
-            url,
-            params={
-                "key":
-                    GEMINI_API_KEY
-            },
-            json={
-                "contents": [{
-                    "parts": [{
-                        "text":
-                            prompt
-                    }]
-                }],
-                "generationConfig": {
-                    "temperature": 0.3,
-                    "maxOutputTokens": 4000
-                }
-            },
-            timeout=90
-        )
+        if os.path.exists(path):
 
-        if response.status_code != 200:
-            return None
-
-        data = response.json()
-
-        candidates = data.get(
-            "candidates",
-            []
-        )
-
-        if not candidates:
-            return None
-
-        parts = candidates[0].get(
-            "content",
-            {}
-        ).get(
-            "parts",
-            []
-        )
-
-        text = "\n".join(
-            p.get("text", "")
-            for p in parts
-            if isinstance(p, dict)
-        ).strip()
-
-        return text or None
-
-    except Exception:
-
-        return None
-
-
-# =========================================================
-# OpenAI Compatible
-# =========================================================
-
-def compatible_ai(
-    api_key,
-    url,
-    model,
-    prompt,
-    extra_headers=None
-):
-
-    if not api_key:
-        return None
-
-    headers = {
-        "Authorization":
-            "Bearer " + api_key,
-        "Content-Type":
-            "application/json"
-    }
-
-    if extra_headers:
-        headers.update(
-            extra_headers
-        )
-
-    try:
-
-        response = requests.post(
-            url,
-            headers=headers,
-            json={
-                "model":
-                    model,
-                "messages": [
-                    {
-                        "role":
-                            "system",
-                        "content":
-                            "أنت مساعد متخصص في الكتب والنصوص. أجب بالعربية عندما يكون السؤال بالعربية. لا تخترع معلومات غير موجودة."
-                    },
-                    {
-                        "role":
-                            "user",
-                        "content":
-                            prompt
-                    }
-                ],
-                "temperature":
-                    0.3,
-                "max_tokens":
-                    4000
-            },
-            timeout=120
-        )
-
-        if response.status_code != 200:
-            return None
-
-        data = response.json()
-
-        choices = data.get(
-            "choices",
-            []
-        )
-
-        if not choices:
-            return None
-
-        content = (
-            choices[0]
-            .get("message", {})
-            .get("content", "")
-        )
-
-        if isinstance(content, list):
-
-            content = "\n".join(
-                str(x.get("text", ""))
-                for x in content
-                if isinstance(x, dict)
+            text = extract_pdf_text(
+                path
             )
 
-        return str(
-            content or ""
-        ).strip() or None
+    if not text:
 
-    except Exception:
+        text = (
+            "عنوان الكتاب: "
+            + str(book["title"])
+            + "\n"
+            + "المؤلف: "
+            + str(book["author"] or "")
+            + "\n"
+            + "الوصف: "
+            + str(book["description"] or "")
+        )
 
-        return None
+    return text[:30000]
 
-
-def groq(prompt):
-
-    return compatible_ai(
-        GROQ_API_KEY,
-        "https://api.groq.com/openai/v1/chat/completions",
-        GROQ_MODEL,
-        prompt
-    )
-
-
-def openrouter(prompt):
-
-    return compatible_ai(
-        OPENROUTER_API_KEY,
-        "https://openrouter.ai/api/v1/chat/completions",
-        OPENROUTER_MODEL,
-        prompt,
-        {
-            "HTTP-Referer":
-                os.getenv(
-                    "APP_URL",
-                    ""
-                ),
-            "X-Title":
-                "معرض الكتب النادرة والقيمة"
-        }
-    )
-
-
-def mistral(prompt):
-
-    return compatible_ai(
-        MISTRAL_API_KEY,
-        "https://api.mistral.ai/v1/chat/completions",
-        MISTRAL_MODEL,
-        prompt
-    )
-
-
-def huggingface(prompt):
-
-    return compatible_ai(
-        HF_TOKEN,
-        "https://router.huggingface.co/v1/chat/completions",
-        HF_MODEL,
-        prompt
-    )
-
-
-def cerebras(prompt):
-
-    return compatible_ai(
-        CEREBRAS_API_KEY,
-        "https://api.cerebras.ai/v1/chat/completions",
-        CEREBRAS_MODEL,
-        prompt
-    )
-
-
-# =========================================================
-# الذكاء الاصطناعي الاحتياطي
-# =========================================================
 
 def ai_answer(prompt):
 
-    providers = [
-        ("gemini", gemini),
-        ("cerebras", cerebras),
-        ("groq", groq),
-        ("openrouter", openrouter),
-        ("mistral", mistral),
-        ("huggingface", huggingface)
-    ]
+    api_key = os.environ.get(
+        "GEMINI_API_KEY"
+    )
 
-    for name, provider in providers:
+    if api_key and requests:
 
         try:
 
-            answer = provider(prompt)
-
-            if answer:
-                return answer.strip(), name
-
-        except Exception as e:
-
-            print(
-                name,
-                "error:",
-                repr(e)
+            url = (
+                "https://generativelanguage.googleapis.com/"
+                "v1beta/models/gemini-2.5-flash:generateContent"
             )
 
-    return None, None
+            response = requests.post(
+                url,
+                params={
+                    "key": api_key
+                },
+                json={
+                    "contents":[
+                        {
+                            "parts":[
+                                {
+                                    "text":prompt
+                                }
+                            ]
+                        }
+                    ]
+                },
+                timeout=40
+            )
 
+            if response.ok:
 
-# =========================================================
-# المساعد الذكي
-# =========================================================
+                data = response.json()
 
-@app.route(
-    "/api/chat",
-    methods=["POST"]
-)
-def chat():
-
-    data = request.get_json(
-        silent=True
-    ) or {}
-
-    message = str(
-        data.get(
-            "message",
-            ""
-        )
-    ).strip()
-
-    book = data.get(
-        "book",
-        {}
-    ) or {}
-
-    if not message:
-
-        return jsonify({
-            "answer":
-                "اكتب طلبك."
-        }), 400
-
-    title = str(
-        book.get(
-            "title",
-            ""
-        )
-    )
-
-    author = str(
-        book.get(
-            "author",
-            ""
-        )
-    )
-
-    description = str(
-        book.get(
-            "description",
-            ""
-        )
-    )
-
-    book_text = ""
-
-    book_id = book.get("id")
-
-    if book_id:
-
-        try:
-
-            con = get_db()
-
-            row = con.execute(
-                """
-                SELECT extracted_text
-                FROM books
-                WHERE id=?
-                """,
-                (int(book_id),)
-            ).fetchone()
-
-            con.close()
-
-            if row:
-                book_text = (
-                    row["extracted_text"]
-                    or ""
+                candidates = data.get(
+                    "candidates",
+                    []
                 )
+
+                if candidates:
+
+                    parts = candidates[0] \
+                        .get("content", {}) \
+                        .get("parts", [])
+
+                    answer = "".join(
+                        p.get("text", "")
+                        for p in parts
+                    )
+
+                    if answer:
+
+                        return answer
 
         except Exception:
+
             pass
 
-    book_text = book_text[:60000]
 
-    prompt = f"""
-أنت المساعد الذكي داخل منصة
-«الكتب النادرة والقيمة».
-
-ساعد القارئ في:
-التلخيص، التحليل، استخراج الأفكار،
-شرح الكلمات، الترجمة، الأسئلة والأجوبة،
-تبسيط المحتوى، ومناقشة الكتاب.
-
-العنوان:
-{title}
-
-المؤلف:
-{author}
-
-الوصف:
-{description}
-
-النص المستخرج من الكتاب:
-{book_text}
-
-طلب القارئ:
-{message}
-
-قواعد:
-- اعتمد على النص عندما يكون متوفرًا.
-- لا تدعي أنك قرأت ما ليس موجودًا.
-- لا تخترع معلومات عن الكتاب.
-- نظم الإجابة بعناوين ونقاط عندما يكون ذلك مفيدًا.
-- إذا طلب القارئ ملخصًا، أعطه ملخصًا واضحًا.
-- إذا طلب الأفكار، استخرج الأفكار الرئيسية.
-"""
-
-    answer, provider = ai_answer(
-        prompt
+    mistral_key = os.environ.get(
+        "MISTRAL_API_KEY"
     )
 
-    if not answer:
+    if mistral_key and requests:
 
-        web = tavily_search(
-            message + " " + title
-        )
+        try:
 
-        if web:
+            response = requests.post(
+                "https://api.mistral.ai/v1/chat/completions",
+                headers={
+                    "Authorization":
+                        "Bearer " + mistral_key,
+                    "Content-Type":
+                        "application/json"
+                },
+                json={
+                    "model":
+                        "mistral-small-latest",
 
-            web_text = "\n\n".join(
-                str(
-                    x.get(
-                        "content",
-                        ""
-                    )
-                )
-                for x in web
+                    "messages":[
+                        {
+                            "role":"user",
+                            "content":prompt
+                        }
+                    ],
+
+                    "temperature":0.3
+                },
+                timeout=40
             )
 
-            fallback = f"""
-أجب عن طلب المستخدم اعتمادًا
-على نتائج البحث التالية:
+            if response.ok:
 
-الطلب:
-{message}
+                data = response.json()
 
-الكتاب:
-{title}
+                return data["choices"][0]["message"]["content"]
 
-النتائج:
-{web_text[:30000]}
-"""
+        except Exception:
 
-            answer, provider = ai_answer(
-                fallback
-            )
-
-    if not answer:
-
-        return jsonify({
-            "ok": False,
-            "answer":
-                "المساعد غير متاح حاليًا. بقية وظائف المنصة تعمل بشكل طبيعي."
-        }), 503
-
-    return jsonify({
-        "ok": True,
-        "answer": answer,
-        "provider": provider or ""
-    })
+            pass
 
 
-# =========================================================
-# عمليات ذكية جاهزة
-# =========================================================
+    return (
+        "المساعد الذكي غير متصل حاليًا. "
+        "أضف GEMINI_API_KEY أو MISTRAL_API_KEY "
+        "في متغيرات البيئة حتى يتم تفعيل الإجابات الذكية."
+    )
 
-@app.route(
-    "/api/book/<int:book_id>/action",
-    methods=["POST"]
-)
-def book_action(book_id):
 
-    data = request.get_json(
-        silent=True
-    ) or {}
+@app.post("/api/book/<int:book_id>/tool")
+def book_tool(book_id):
 
-    action = str(
-        data.get(
-            "action",
-            ""
-        )
-    ).strip()
-
-    con = get_db()
+    con = db()
 
     book = con.execute(
         "SELECT * FROM books WHERE id=?",
@@ -1676,151 +1503,143 @@ def book_action(book_id):
     if not book:
 
         return jsonify({
-            "error":
-                "الكتاب غير موجود"
+            "error": "الكتاب غير موجود"
         }), 404
 
-    text = book["extracted_text"] or ""
-
-    title = book["title"] or ""
-    author = book["author"] or ""
-    description = book["description"] or ""
-
-    prompts = {
-
-        "summary": f"""
-لخص الكتاب التالي بالعربية.
-العنوان: {title}
-المؤلف: {author}
-الوصف: {description}
-النص:
-{text[:60000]}
-أعطني ملخصًا منظمًا وواضحًا.
-""",
-
-        "ideas": f"""
-استخرج أهم الأفكار والمحاور من الكتاب.
-العنوان: {title}
-المؤلف: {author}
-النص:
-{text[:60000]}
-ضع كل فكرة في نقطة مستقلة مع شرح مختصر.
-""",
-
-        "questions": f"""
-أنشئ أسئلة وأجوبة لفهم الكتاب.
-العنوان: {title}
-النص:
-{text[:60000]}
-أنشئ أسئلة متنوعة مع إجاباتها اعتمادًا على النص.
-""",
-
-        "simplify": f"""
-اشرح محتوى الكتاب بطريقة بسيطة للقارئ.
-العنوان: {title}
-النص:
-{text[:60000]}
-""",
-
-        "analysis": f"""
-حلل الكتاب من حيث:
-الموضوع، الأفكار، الحجج أو الأحداث،
-وأبرز النقاط المهمة.
-العنوان: {title}
-المؤلف: {author}
-النص:
-{text[:60000]}
-"""
-    }
-
-    if action not in prompts:
-
-        return jsonify({
-            "error":
-                "العملية غير معروفة"
-        }), 400
-
-    answer, provider = ai_answer(
-        prompts[action]
+    action = (
+        request.get_json(
+            silent=True
+        ) or {}
+    ).get(
+        "action",
+        "summary"
     )
 
-    if not answer:
+    text = local_book_text(book)
+
+    if action == "stats":
 
         return jsonify({
-            "ok": False,
-            "answer":
-                "هذه الوظيفة تحتاج إلى توفر مساعد ذكي."
-        }), 503
+            "stats": {
+                "words": len(text.split()),
+                "characters": len(text),
+                "paragraphs": len(
+                    [
+                        x for x in text.split("\n")
+                        if x.strip()
+                    ]
+                )
+            }
+        })
+
+
+    instructions = {
+
+        "summary":
+            "لخص الكتاب بالعربية في نقاط واضحة.",
+
+        "ideas":
+            "استخرج أهم الأفكار والمحاور في الكتاب.",
+
+        "questions":
+            "أنشئ أسئلة وأجوبة تساعد على فهم الكتاب.",
+
+        "simple":
+            "اشرح محتوى الكتاب بطريقة بسيطة ومفهومة.",
+
+        "translation":
+            "ترجم أهم محتوى الكتاب إلى العربية مع الحفاظ على المعنى."
+
+    }
+
+    instruction = instructions.get(
+        action,
+        instructions["summary"]
+    )
+
+    prompt = f"""
+أنت مساعد منصة كتب لينك.
+
+عنوان الكتاب:
+{book["title"]}
+
+المؤلف:
+{book["author"] or "غير محدد"}
+
+المطلوب:
+{instruction}
+
+محتوى الكتاب أو المعلومات المتاحة:
+{text}
+"""
+
+    answer = ai_answer(prompt)
 
     return jsonify({
-        "ok": True,
-        "answer": answer,
-        "provider": provider or ""
+        "answer": answer
+    })
+
+
+@app.post("/api/chat")
+def chat():
+
+    data = request.get_json(
+        silent=True
+    ) or {}
+
+    message = str(
+        data.get("message", "")
+    ).strip()
+
+    if not message:
+
+        return jsonify({
+            "error": "الرسالة فارغة"
+        }), 400
+
+    book = data.get(
+        "book"
+    ) or {}
+
+    context = ""
+
+    if book:
+
+        context = f"""
+الكتاب المحدد:
+العنوان: {book.get("title","")}
+المؤلف: {book.get("author","")}
+الوصف: {book.get("description","")}
+"""
+
+    prompt = f"""
+أنت المساعد الذكي لمنصة كتب لينك.
+
+أجب باللغة العربية بوضوح واختصار مفيد.
+
+{context}
+
+سؤال المستخدم:
+{message}
+"""
+
+    answer = ai_answer(prompt)
+
+    return jsonify({
+        "answer": answer
     })
 
 
 # =========================================================
-# Health
-# =========================================================
-
-@app.route("/api/health")
-def health():
-
-    return jsonify({
-
-        "status":
-            "online",
-
-        "ai":
-            bool(
-                GEMINI_API_KEY
-                or CEREBRAS_API_KEY
-                or GROQ_API_KEY
-                or OPENROUTER_API_KEY
-                or MISTRAL_API_KEY
-                or HF_TOKEN
-            ),
-
-        "gemini":
-            bool(GEMINI_API_KEY),
-
-        "cerebras":
-            bool(CEREBRAS_API_KEY),
-
-        "groq":
-            bool(GROQ_API_KEY),
-
-        "openrouter":
-            bool(OPENROUTER_API_KEY),
-
-        "mistral":
-            bool(MISTRAL_API_KEY),
-
-        "huggingface":
-            bool(HF_TOKEN),
-
-        "google_books":
-            bool(GOOGLE_BOOKS_API_KEY),
-
-        "tavily":
-            bool(TAVILY_API_KEY),
-
-        "pdf":
-            bool(PdfReader)
-
-    })
-
-
-# =========================================================
-# التشغيل
+# تشغيل
 # =========================================================
 
 if __name__ == "__main__":
 
     port = int(
-        os.getenv(
+        os.environ.get(
             "PORT",
-            "5000"
+            5000
         )
     )
 
