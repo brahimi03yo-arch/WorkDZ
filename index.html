@@ -1,2491 +1,2506 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width,initial-scale=1.0">
-
-<title>كتب لينك | الكتب النادرة والقيمة</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>كتب لينك | سوق الكتب الجزائرية</title>
 
 <style>
+*{box-sizing:border-box}
 
-*{
-    box-sizing:border-box;
+:root{
+ --blue:#173b68;
+ --blue2:#285e94;
+ --gold:#c49a45;
+ --yellow:#e3b72d;
+ --green:#23875a;
+ --red:#b84d4d;
+ --paper:#fffdf8;
+ --bg:#f4f1ea;
+ --line:#e5dccb;
+ --muted:#707b87;
+ --dark:#172433;
 }
 
 body{
-    margin:0;
-    background:#f4f4f2;
-    color:#202020;
-    font-family:
-        Tahoma,
-        Arial,
-        sans-serif;
+ margin:0;
+ background:var(--bg);
+ color:var(--dark);
+ font-family:Tahoma,Arial,sans-serif;
 }
 
-button,
-input,
-textarea,
-select{
-    font-family:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-
-/* =================================================
-   التطبيق
-================================================= */
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
 
 .app{
-    max-width:520px;
-    margin:auto;
-    min-height:100vh;
-    background:#fff;
-    box-shadow:0 0 30px #00000012;
-    position:relative;
-    padding-bottom:85px;
+ min-height:100vh;
 }
 
-
-/* =================================================
-   الرأس
-================================================= */
-
-.header{
-    position:sticky;
-    top:0;
-    z-index:20;
-
-    background:#fff;
-
-    height:70px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:10px 18px;
-
-    border-bottom:1px solid #eee;
+.topbar{
+ position:sticky;
+ top:0;
+ z-index:50;
+ background:#fffdf9ee;
+ backdrop-filter:blur(14px);
+ border-bottom:1px solid var(--line);
 }
 
-.brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
+.top{
+ max-width:1250px;
+ min-height:72px;
+ margin:auto;
+ padding:10px 16px;
+ display:flex;
+ align-items:center;
+ gap:15px;
 }
 
 .logo{
-    width:42px;
-    height:42px;
-
-    border-radius:13px;
-
-    background:#f3c400;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:23px;
-
-    box-shadow:
-        0 5px 15px #f3c40035;
+ display:flex;
+ align-items:center;
+ gap:10px;
+ cursor:pointer;
+ min-width:190px;
 }
 
-.brand h1{
-    font-size:18px;
-    margin:0;
+.logo-icon{
+ width:46px;
+ height:46px;
+ border-radius:14px;
+ background:linear-gradient(135deg,var(--blue),var(--blue2));
+ color:white;
+ display:grid;
+ place-items:center;
+ font-size:23px;
+ box-shadow:0 8px 20px #173b6825;
 }
 
-.brand span{
-    font-size:11px;
-    color:#888;
+.logo b{
+ color:var(--blue);
+ font-size:19px;
 }
 
-.header-icons{
-    display:flex;
-    gap:8px;
+.logo small{
+ display:block;
+ color:var(--muted);
+ font-size:10px;
+ margin-top:3px;
 }
 
-.icon-btn{
-    width:40px;
-    height:40px;
-
-    border:0;
-
-    border-radius:12px;
-
-    background:#f5f5f3;
-
-    font-size:19px;
+.nav{
+ flex:1;
+ display:flex;
+ justify-content:center;
+ gap:4px;
 }
 
-
-/* =================================================
-   البحث
-================================================= */
-
-.search-area{
-    padding:15px;
-    background:#fafafa;
+.nav button{
+ border:0;
+ background:transparent;
+ color:#56616d;
+ padding:10px 12px;
+ border-radius:10px;
 }
 
-.search-box{
-    display:flex;
-
-    background:#fff;
-
-    border:1px solid #ddd;
-
-    border-radius:15px;
-
-    overflow:hidden;
+.nav button:hover{
+ background:#eee8dd;
+ color:var(--blue);
 }
 
-.search-box input{
-    flex:1;
-
-    border:0;
-
-    outline:none;
-
-    padding:13px;
-
-    font-size:14px;
+.actions{
+ display:flex;
+ gap:7px;
 }
 
-.search-box button{
-    width:52px;
-
-    border:0;
-
-    background:#f3c400;
-
-    font-size:19px;
+.round{
+ width:42px;
+ height:42px;
+ border:1px solid var(--line);
+ background:white;
+ border-radius:12px;
 }
 
+.primary{
+ border:0;
+ background:var(--blue);
+ color:#fff;
+ border-radius:11px;
+ padding:11px 16px;
+ font-weight:bold;
+}
 
-/* =================================================
-   الترحيب
-================================================= */
+.gold{
+ border:0;
+ background:var(--gold);
+ color:#fff;
+ border-radius:11px;
+ padding:11px 16px;
+ font-weight:bold;
+}
 
 .hero{
-    margin:15px;
-
-    padding:22px;
-
-    border-radius:22px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fffdf0,
-            #f5f5f3
-        );
-
-    border:1px solid #eee;
+ max-width:1250px;
+ margin:25px auto;
+ padding:0 16px;
 }
 
-.hero h2{
-    margin:0 0 8px;
+.hero-box{
+ min-height:355px;
+ padding:50px;
+ border-radius:28px;
+ background:
+ linear-gradient(115deg,#102f52,#285f93);
+ color:#fff;
+ position:relative;
+ overflow:hidden;
+ box-shadow:0 20px 50px #173b6820;
+}
 
-    font-size:23px;
+.hero-box:after{
+ content:"";
+ position:absolute;
+ width:430px;
+ height:430px;
+ border:1px solid #ffffff22;
+ border-radius:50%;
+ left:-120px;
+ bottom:-240px;
+}
+
+.hero h1{
+ margin:0 0 12px;
+ font-size:38px;
+ line-height:1.5;
+ position:relative;
+ z-index:2;
 }
 
 .hero p{
-    margin:0;
-
-    color:#777;
-
-    font-size:13px;
-
-    line-height:1.8;
+ max-width:720px;
+ color:#e5edf5;
+ line-height:2;
+ position:relative;
+ z-index:2;
 }
 
-
-/* =================================================
-   وظائف التطبيق
-================================================= */
-
-.tools{
-    padding:5px 15px 15px;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:12px;
+.search{
+ max-width:820px;
+ background:white;
+ border-radius:15px;
+ padding:7px;
+ display:flex;
+ margin-top:23px;
+ position:relative;
+ z-index:2;
 }
 
-.tool{
-    border:1px solid #e5e5e5;
-
-    background:#fff;
-
-    border-radius:18px;
-
-    padding:17px 12px;
-
-    text-align:right;
-
-    transition:.2s;
-
-    min-height:100px;
+.search input{
+ flex:1;
+ border:0;
+ outline:0;
+ padding:13px;
+ color:#222;
 }
 
-.tool:hover{
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 8px 25px #0000000d;
+.search button{
+ border:0;
+ border-radius:10px;
+ background:var(--gold);
+ color:white;
+ padding:0 25px;
 }
 
-.tool .tool-icon{
-    width:42px;
-    height:42px;
-
-    border-radius:13px;
-
-    background:#f3c400;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:21px;
-
-    margin-bottom:10px;
+.wrap{
+ max-width:1250px;
+ margin:auto;
+ padding:0 16px 70px;
 }
 
-.tool strong{
-    display:block;
-    font-size:14px;
+.quick{
+ display:grid;
+ grid-template-columns:repeat(6,1fr);
+ gap:10px;
+ margin-bottom:30px;
 }
 
-.tool small{
-    color:#888;
-    line-height:1.7;
+.quick button{
+ border:1px solid var(--line);
+ background:#fff;
+ border-radius:16px;
+ padding:16px 8px;
+ color:var(--blue);
+ transition:.2s;
 }
 
+.quick button:hover{
+ transform:translateY(-3px);
+ border-color:var(--gold);
+}
 
-/* =================================================
-   العناوين
-================================================= */
-
-.section{
-    padding:10px 15px;
+.quick div{
+ font-size:24px;
+ margin-bottom:7px;
 }
 
 .section-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    margin-bottom:12px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin:25px 0 16px;
 }
 
-.section-head h3{
-    margin:0;
-    font-size:17px;
+.section-head h2{
+ margin:0;
+ color:var(--blue);
 }
 
-.section-head button{
-    border:0;
-    background:none;
-    color:#777;
+.section-head span{
+ color:var(--muted);
+ font-size:12px;
 }
-
-
-/* =================================================
-   الكتب
-================================================= */
 
 .books{
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:12px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:16px;
 }
 
 .book{
-    background:#fff;
-
-    border:1px solid #e8e8e8;
-
-    border-radius:18px;
-
-    overflow:hidden;
-
-    position:relative;
+ background:var(--paper);
+ border:1px solid var(--line);
+ border-radius:17px;
+ overflow:hidden;
+ box-shadow:0 5px 20px #473d2d0a;
+ transition:.2s;
 }
 
-.book-cover{
-    height:190px;
-
-    background:#eee;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    overflow:hidden;
+.book:hover{
+ transform:translateY(-3px);
+ box-shadow:0 12px 30px #473d2d18;
 }
 
-.book-cover img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
+.cover{
+ height:225px;
+ background:linear-gradient(140deg,#8b633b,#d4b883);
+ color:white;
+ display:grid;
+ place-items:center;
+ text-align:center;
+ padding:20px;
+ position:relative;
+ overflow:hidden;
 }
 
-.no-cover{
-    font-size:45px;
-    color:#aaa;
+.cover img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+}
+
+.cover.blue{background:linear-gradient(140deg,#183b67,#5283aa)}
+.cover.green{background:linear-gradient(140deg,#28584b,#82986e)}
+.cover.red{background:linear-gradient(140deg,#713738,#bd7d6c)}
+
+.cover-badge{
+ position:absolute;
+ top:10px;
+ right:10px;
+ background:#fff;
+ color:var(--blue);
+ padding:5px 9px;
+ border-radius:20px;
+ font-size:10px;
+ z-index:2;
+}
+
+.cover strong{
+ font:21px Georgia,serif;
+ line-height:1.7;
 }
 
 .book-body{
-    padding:11px;
+ padding:14px;
 }
 
-.book-title{
-    font-weight:bold;
-
-    font-size:13px;
-
-    line-height:1.6;
-
-    min-height:42px;
+.book h3{
+ margin:0 0 6px;
+ color:var(--blue);
+ font-size:15px;
 }
 
-.book-author{
-    color:#888;
-
-    font-size:11px;
-
-    margin-top:4px;
+.author,.muted{
+ color:var(--muted);
+ font-size:12px;
 }
 
-.book-meta{
-    display:flex;
-
-    justify-content:space-between;
-
-    margin-top:8px;
-
-    font-size:10px;
-}
-
-.badge{
-    background:#f5f5f3;
-
-    border-radius:8px;
-
-    padding:4px 7px;
+.meta{
+ display:flex;
+ justify-content:space-between;
+ gap:8px;
+ margin:10px 0;
+ font-size:11px;
+ color:var(--muted);
 }
 
 .price{
-    color:#b28a00;
-    font-weight:bold;
+ color:var(--green);
+ font-size:17px;
+ font-weight:bold;
 }
 
 .book-actions{
-    display:flex;
-    gap:5px;
-    margin-top:8px;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:7px;
 }
 
 .book-actions button{
-    flex:1;
-
-    border:0;
-
-    background:#f3c400;
-
-    border-radius:9px;
-
-    padding:8px;
-
-    font-size:11px;
+ padding:9px;
+ border-radius:9px;
+ border:1px solid var(--line);
+ background:white;
 }
 
-.book-actions .secondary{
-    background:#f1f1f1;
+.buy{
+ background:var(--blue)!important;
+ color:white;
+ border-color:var(--blue)!important;
 }
 
+.exchange{
+ color:var(--green);
+}
 
-/* =================================================
-   الصفحات الداخلية
-================================================= */
+.favorite{
+ color:#a34b4b;
+}
+
+.features{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:12px;
+ margin:38px 0;
+}
+
+.feature{
+ background:white;
+ border:1px solid var(--line);
+ border-radius:17px;
+ padding:20px;
+}
+
+.feature h3{
+ color:var(--blue);
+ margin:8px 0;
+}
+
+.feature p{
+ color:var(--muted);
+ font-size:12px;
+ line-height:1.9;
+}
+
+footer{
+ background:#14283e;
+ color:white;
+ padding:38px 16px;
+}
+
+.foot{
+ max-width:1250px;
+ margin:auto;
+ display:grid;
+ grid-template-columns:2fr 1fr 1fr;
+ gap:25px;
+}
+
+.foot p{
+ color:#cbd4dd;
+ font-size:12px;
+ line-height:1.9;
+}
 
 .page{
-    display:none;
+ display:none;
 }
 
 .page.active{
-    display:block;
+ display:block;
 }
-
-
-/* =================================================
-   البطاقات
-================================================= */
 
 .card{
-    margin:15px;
-
-    background:#fff;
-
-    border:1px solid #e7e7e7;
-
-    border-radius:20px;
-
-    padding:16px;
+ background:white;
+ border:1px solid var(--line);
+ border-radius:18px;
+ padding:18px;
+ margin:15px 0;
 }
 
-.card h3{
-    margin-top:0;
+.card h2,.card h3{
+ color:var(--blue);
 }
 
-
-/* =================================================
-   النماذج
-================================================= */
-
-.form-group{
-    margin-bottom:13px;
+.form-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
 }
 
-.form-group label{
-    display:block;
-
-    font-size:12px;
-
-    color:#666;
-
-    margin-bottom:6px;
+.field{
+ margin-bottom:10px;
 }
 
-.form-group input,
-.form-group textarea,
-.form-group select{
-    width:100%;
-
-    border:1px solid #ddd;
-
-    border-radius:12px;
-
-    padding:11px;
-
-    outline:none;
-
-    background:#fafafa;
+.field.full{
+ grid-column:1/-1;
 }
 
-.form-group textarea{
-    min-height:100px;
-    resize:vertical;
+.field label{
+ display:block;
+ color:#5d6975;
+ font-size:12px;
+ margin-bottom:6px;
 }
 
-.main-button{
-    width:100%;
-
-    padding:13px;
-
-    border:0;
-
-    border-radius:13px;
-
-    background:#f3c400;
-
-    font-weight:bold;
-
-    font-size:14px;
+.field input,
+.field textarea,
+.field select{
+ width:100%;
+ padding:11px;
+ border:1px solid #dcd3c3;
+ border-radius:10px;
+ background:#fff;
+ outline:none;
 }
 
-
-/* =================================================
-   المساعد
-================================================= */
-
-.chat{
-    margin:15px;
-
-    min-height:500px;
-
-    display:flex;
-
-    flex-direction:column;
+.field textarea{
+ min-height:100px;
+ resize:vertical;
 }
 
-.chat-title{
-    background:#202020;
-
-    color:#fff;
-
-    border-radius:18px;
-
-    padding:16px;
+.wide{
+ width:100%;
+ margin-top:8px;
 }
 
-.chat-title strong{
-    display:block;
+.notice{
+ background:#faf3e4;
+ border:1px dashed #c9ae73;
+ padding:12px;
+ border-radius:11px;
+ font-size:12px;
+ line-height:1.9;
 }
 
-.chat-title small{
-    color:#ccc;
+.loading,.empty{
+ padding:30px;
+ text-align:center;
+ color:#888;
 }
-
-.messages{
-    flex:1;
-
-    padding:15px 0;
-}
-
-.message{
-    max-width:90%;
-
-    padding:12px 14px;
-
-    margin-bottom:10px;
-
-    border-radius:16px;
-
-    line-height:1.8;
-
-    white-space:pre-wrap;
-
-    font-size:13px;
-}
-
-.message.bot{
-    background:#f3f3f1;
-
-    margin-left:auto;
-}
-
-.message.user{
-    background:#f3c400;
-
-    margin-right:auto;
-}
-
-.chat-input{
-    display:flex;
-
-    gap:7px;
-}
-
-.chat-input textarea{
-    flex:1;
-
-    border:1px solid #ddd;
-
-    border-radius:14px;
-
-    padding:11px;
-
-    resize:none;
-
-    height:48px;
-
-    outline:none;
-}
-
-.chat-input button{
-    width:52px;
-
-    border:0;
-
-    border-radius:14px;
-
-    background:#202020;
-
-    color:#fff;
-}
-
-
-/* =================================================
-   أدوات الكتاب
-================================================= */
-
-.book-tools{
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:10px;
-}
-
-.book-tools button{
-    border:1px solid #e5e5e5;
-
-    background:#fff;
-
-    border-radius:14px;
-
-    padding:13px;
-
-    text-align:right;
-
-    font-size:12px;
-}
-
-.book-tools button span{
-    display:block;
-
-    font-size:20px;
-
-    margin-bottom:6px;
-}
-
-
-/* =================================================
-   النافذة
-================================================= */
 
 .modal{
-    position:fixed;
-
-    inset:0;
-
-    background:#0008;
-
-    z-index:100;
-
-    display:none;
-
-    align-items:flex-end;
-
-    justify-content:center;
+ display:none;
+ position:fixed;
+ inset:0;
+ background:#081625aa;
+ backdrop-filter:blur(5px);
+ z-index:100;
+ align-items:center;
+ justify-content:center;
+ padding:15px;
 }
 
-.modal.show{
-    display:flex;
+.modal.open{
+ display:flex;
 }
 
-.modal-content{
-    width:100%;
-
-    max-width:520px;
-
-    max-height:90vh;
-
-    overflow:auto;
-
-    background:#fff;
-
-    border-radius:25px 25px 0 0;
-
-    padding:18px;
+.modal-box{
+ width:min(760px,100%);
+ max-height:92vh;
+ overflow:auto;
+ background:#fffdf8;
+ border-radius:22px;
+ padding:22px;
+ box-shadow:0 25px 80px #0005;
 }
 
-.modal-header{
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:15px;
+.modal-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:18px;
 }
 
 .close{
-    border:0;
-
-    background:#f1f1f1;
-
-    border-radius:10px;
-
-    width:38px;
-
-    height:38px;
-
-    font-size:18px;
+ width:36px;
+ height:36px;
+ border:0;
+ border-radius:50%;
+ background:#eee8dc;
 }
 
+.tabs{
+ display:flex;
+ gap:7px;
+ margin-bottom:15px;
+}
 
-/* =================================================
-   قارئ
-================================================= */
+.tabs button{
+ flex:1;
+ padding:10px;
+ border:1px solid var(--line);
+ background:white;
+ border-radius:9px;
+}
+
+.tabs button.active{
+ background:var(--blue);
+ color:white;
+}
+
+.cart-item,.order{
+ background:white;
+ border:1px solid var(--line);
+ border-radius:12px;
+ padding:13px;
+ margin-bottom:9px;
+}
+
+.row{
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ padding:8px 0;
+ border-bottom:1px solid #eee8dc;
+}
+
+.row:last-child{
+ border-bottom:0;
+}
+
+.status{
+ background:#e8f5ee;
+ color:var(--green);
+ padding:5px 9px;
+ border-radius:20px;
+ font-size:10px;
+}
 
 .reader{
-    line-height:2;
-
-    font-size:15px;
-
-    white-space:pre-wrap;
-
-    background:#fffdf4;
-
-    border-radius:15px;
-
-    padding:16px;
-
-    max-height:55vh;
-
-    overflow:auto;
+ background:#fff9e9;
+ border-radius:15px;
+ padding:18px;
+ line-height:2;
+ max-height:65vh;
+ overflow:auto;
+ white-space:pre-wrap;
 }
 
-
-/* =================================================
-   الشريط السفلي
-================================================= */
-
-.bottom-nav{
-    position:fixed;
-
-    bottom:0;
-
-    width:100%;
-
-    max-width:520px;
-
-    height:75px;
-
-    background:#fff;
-
-    border-top:1px solid #ddd;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    z-index:50;
+.tool-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px;
+ margin-top:15px;
 }
 
-.nav-btn{
-    border:0;
-
-    background:#fff;
-
-    color:#777;
-
-    font-size:10px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:4px;
+.tool-grid button{
+ border:1px solid var(--line);
+ background:white;
+ border-radius:13px;
+ padding:14px;
+ text-align:right;
 }
 
-.nav-btn .nav-icon{
-    font-size:22px;
+.chat{
+ min-height:500px;
+ display:flex;
+ flex-direction:column;
 }
 
-.nav-btn.active{
-    color:#111;
+.chat-head{
+ background:#172433;
+ color:white;
+ padding:17px;
+ border-radius:17px;
 }
 
-.nav-btn.active .nav-icon{
-    background:#f3c400;
-
-    width:42px;
-    height:30px;
-
-    border-radius:10px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
+.messages{
+ flex:1;
+ padding:15px 0;
 }
 
-
-/* =================================================
-   زر عائم
-================================================= */
-
-.floating{
-    position:fixed;
-
-    bottom:92px;
-
-    left:calc(50% + 180px);
-
-    width:56px;
-    height:56px;
-
-    border:0;
-
-    border-radius:50%;
-
-    background:#f3c400;
-
-    font-size:25px;
-
-    box-shadow:
-        0 10px 25px #0003;
+.message{
+ max-width:90%;
+ padding:12px 14px;
+ border-radius:16px;
+ margin-bottom:9px;
+ white-space:pre-wrap;
+ line-height:1.8;
+ font-size:13px;
 }
 
-@media(max-width:520px){
-
-    .floating{
-        left:auto;
-        right:18px;
-    }
-
+.message.bot{
+ background:#f0f0ed;
+ margin-left:auto;
 }
 
-
-/* =================================================
-   رسائل
-================================================= */
-
-.notice{
-    padding:12px;
-
-    border-radius:12px;
-
-    background:#f5f5f3;
-
-    color:#555;
-
-    font-size:12px;
-
-    margin-bottom:10px;
+.message.user{
+ background:var(--yellow);
+ margin-right:auto;
 }
 
-.loading{
-    text-align:center;
-
-    padding:30px;
-
-    color:#888;
+.chat-input{
+ display:flex;
+ gap:7px;
 }
 
-.empty{
-    padding:30px;
-
-    text-align:center;
-
-    color:#999;
+.chat-input textarea{
+ flex:1;
+ height:50px;
+ resize:none;
+ border:1px solid #ddd;
+ border-radius:13px;
+ padding:11px;
+ outline:0;
 }
 
+.chat-input button{
+ width:55px;
+ border:0;
+ border-radius:13px;
+ background:var(--blue);
+ color:white;
+}
+
+#toast{
+ position:fixed;
+ bottom:22px;
+ left:50%;
+ transform:translate(-50%,100px);
+ background:#172433;
+ color:white;
+ padding:12px 20px;
+ border-radius:11px;
+ z-index:300;
+ opacity:0;
+ transition:.25s;
+}
+
+#toast.show{
+ opacity:1;
+ transform:translate(-50%,0);
+}
+
+.bottom{
+ display:none;
+}
+
+@media(max-width:950px){
+ .nav{display:none}
+ .books{grid-template-columns:repeat(2,1fr)}
+ .quick{grid-template-columns:repeat(3,1fr)}
+ .features{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:600px){
+ .top{padding:9px 10px}
+ .logo{min-width:auto}
+ .logo b{font-size:16px}
+ .logo small{font-size:9px}
+ .actions .primary{display:none}
+ .hero-box{padding:30px 20px}
+ .hero h1{font-size:26px}
+ .hero p{font-size:12px}
+ .search{flex-direction:column}
+ .search button{height:43px}
+ .books{grid-template-columns:repeat(2,1fr);gap:9px}
+ .cover{height:180px}
+ .cover strong{font-size:16px}
+ .book-body{padding:10px}
+ .book h3{font-size:13px}
+ .book-actions{grid-template-columns:1fr}
+ .quick{grid-template-columns:repeat(3,1fr);gap:7px}
+ .quick button{font-size:10px;padding:12px 5px}
+ .features{grid-template-columns:1fr}
+ .form-grid{grid-template-columns:1fr}
+ .field.full{grid-column:auto}
+ .foot{grid-template-columns:1fr}
+ .bottom{
+  display:grid;
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:67px;
+  background:white;
+  border-top:1px solid var(--line);
+  z-index:80;
+  grid-template-columns:repeat(4,1fr);
+ }
+ .bottom button{
+  border:0;
+  background:white;
+  color:#6b737c;
+  font-size:10px;
+ }
+ .bottom span{
+  display:block;
+  font-size:21px;
+  margin-bottom:3px;
+ }
+}
 </style>
-
 </head>
-
 
 <body>
 
-<div class="app">
+<header class="topbar">
+<div class="top">
 
+<div class="logo" onclick="showPage('home')">
+<div class="logo-icon">📚</div>
+<div>
+<b>كتب لينك</b>
+<small>سوق الكتب الجزائرية</small>
+</div>
+</div>
 
-<!-- =================================================
-     الرأس
-================================================= -->
+<nav class="nav">
+<button onclick="showPage('home')">الرئيسية</button>
+<button onclick="showPage('search')">اكتشف</button>
+<button onclick="showPage('sell')">بيع كتاب</button>
+<button onclick="openExchange()">تبادل</button>
+<button onclick="openOrders()">طلباتي</button>
+</nav>
 
-<header class="header">
+<div class="actions">
+<button class="round" onclick="openCart()">🛒</button>
+<button class="round" onclick="openAccount()">👤</button>
+<button class="primary" onclick="showPage('sell')">+ بيع</button>
+</div>
 
-    <div class="brand">
-
-        <div class="logo">
-            📖
-        </div>
-
-        <div>
-            <h1>كتب لينك</h1>
-            <span>الكتب النادرة والقيمة</span>
-        </div>
-
-    </div>
-
-    <div class="header-icons">
-
-        <button
-            class="icon-btn"
-            onclick="showPage('search')">
-            🔎
-        </button>
-
-        <button
-            class="icon-btn"
-            onclick="showPage('assistant')">
-            🤖
-        </button>
-
-    </div>
-
+</div>
 </header>
 
 
-<!-- =================================================
-     الصفحة الرئيسية
-================================================= -->
+<main>
 
 <section id="home" class="page active">
 
-    <div class="search-area">
+<div class="hero">
+<div class="hero-box">
 
-        <div class="search-box">
+<h1>
+الكتاب الذي تبحث عنه<br>
+قد يكون عند قارئ آخر.
+</h1>
 
-            <input
-                id="searchInput"
-                placeholder="ابحث عن كتاب، مؤلف، ISBN..."
-                onkeydown="
-                    if(event.key==='Enter')
-                    searchBooks()
-                ">
+<p>
+بيع وشراء وتبادل الكتب الجديدة والمستعملة والنادرة،
+وابحث في خزانة كتب لينك أو في Google Books.
+</p>
 
-            <button onclick="searchBooks()">
-                🔎
-            </button>
+<div class="search">
+<input id="homeSearch"
+placeholder="عنوان، مؤلف، ISBN، ولاية..."
+onkeydown="if(event.key==='Enter')searchFromHome()">
+<button onclick="searchFromHome()">بحث</button>
+</div>
 
-        </div>
+</div>
+</div>
 
-    </div>
+<div class="wrap">
 
+<div class="quick">
 
-    <div class="hero">
+<button onclick="filterBooks('روايات')"><div>📖</div>روايات</button>
+<button onclick="filterBooks('جامعية')"><div>🎓</div>جامعية</button>
+<button onclick="filterBooks('نادرة')"><div>🏛️</div>نادرة</button>
+<button onclick="filterBooks('علوم')"><div>🔬</div>علوم</button>
+<button onclick="filterBooks('أطفال')"><div>🧒</div>أطفال</button>
+<button onclick="filterBooks('لغات')"><div>🌍</div>لغات</button>
 
-        <h2>
-            عالم الكتاب بين يديك
-        </h2>
+</div>
 
-        <p>
-            اكتشف الكتب النادرة والقيمة،
-            أنشئ خزانتك، اعرض كتبك للبيع أو التبادل،
-            واقرأ واستفد من أدوات القراءة الذكية.
-        </p>
+<div class="section-head">
+<div>
+<h2>كتب معروضة الآن</h2>
+<span>بيع • شراء • تبادل</span>
+</div>
+<button onclick="showPage('search')">عرض الكل</button>
+</div>
 
-    </div>
+<div id="homeBooks" class="books">
+<div class="loading">جارٍ تحميل الكتب...</div>
+</div>
 
+<div class="features">
 
-    <!-- الوظائف -->
+<div class="feature">
+<div>👤</div>
+<h3>حساب شخصي</h3>
+<p>حساب للمشتري والبائع مع الطلبات والمبيعات والتبادل.</p>
+</div>
 
-    <div class="tools">
+<div class="feature">
+<div>🛒</div>
+<h3>شراء منظم</h3>
+<p>أضف الكتب إلى السلة وأنشئ طلبًا برقم خاص.</p>
+</div>
 
-        <button
-            class="tool"
-            onclick="showPage('upload')">
+<div class="feature">
+<div>🧾</div>
+<h3>وثيقة العملية</h3>
+<p>احصل على وثيقة تسجيل الطلب قابلة للطباعة.</p>
+</div>
 
-            <div class="tool-icon">
-                ＋
-            </div>
+<div class="feature">
+<div>🔄</div>
+<h3>تبادل</h3>
+<p>اقترح كتابًا مقابل كتاب آخر وتابع حالة التبادل.</p>
+</div>
 
-            <strong>
-                عرض كتاب
-            </strong>
+</div>
 
-            <small>
-                أضف كتابًا للبيع أو التبادل
-            </small>
-
-        </button>
-
-
-        <button
-            class="tool"
-            onclick="showPage('library')">
-
-            <div class="tool-icon">
-                📚
-            </div>
-
-            <strong>
-                مكتبتي
-            </strong>
-
-            <small>
-                خزانتك الخاصة بالكتب
-            </small>
-
-        </button>
-
-
-        <button
-            class="tool"
-            onclick="showPage('assistant')">
-
-            <div class="tool-icon">
-                🤖
-            </div>
-
-            <strong>
-                مساعد ذكي
-            </strong>
-
-            <small>
-                اسأل، لخص، حلل وترجم
-            </small>
-
-        </button>
-
-
-        <button
-            class="tool"
-            onclick="showPage('search')">
-
-            <div class="tool-icon">
-                🔎
-            </div>
-
-            <strong>
-                اكتشف الكتب
-            </strong>
-
-            <small>
-                بحث محلي وGoogle Books
-            </small>
-
-        </button>
-
-    </div>
-
-
-    <div class="section">
-
-        <div class="section-head">
-
-            <h3>
-                كتب مقترحة
-            </h3>
-
-            <button
-                onclick="searchBooks()">
-                عرض الكل
-            </button>
-
-        </div>
-
-        <div
-            id="homeBooks"
-            class="books">
-
-            <div class="loading">
-                جارٍ تحميل الكتب...
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
-
-<!-- =================================================
-     البحث
-================================================= -->
 
 <section id="search" class="page">
 
-    <div class="card">
+<div class="wrap">
 
-        <h3>
-            🔎 اكتشاف الكتب
-        </h3>
+<div class="card">
 
-        <div class="form-group">
+<h2>🔎 اكتشاف الكتب</h2>
 
-            <label>
-                اسم الكتاب أو كلمة
-            </label>
+<div class="form-grid">
 
-            <input
-                id="searchPageInput"
-                placeholder="مثال: تاريخ الجزائر">
+<div class="field">
+<label>العنوان أو كلمة البحث</label>
+<input id="searchQuery">
+</div>
 
-        </div>
+<div class="field">
+<label>المؤلف</label>
+<input id="searchAuthor">
+</div>
 
-        <div class="form-group">
+<div class="field">
+<label>السنة</label>
+<input id="searchYear">
+</div>
 
-            <label>
-                المؤلف
-            </label>
+</div>
 
-            <input
-                id="authorInput"
-                placeholder="اسم المؤلف">
+<button class="primary wide" onclick="advancedSearch()">
+بحث في كتب لينك وGoogle Books
+</button>
 
-        </div>
+</div>
 
-        <div class="form-group">
+<div id="searchResults" class="books"></div>
 
-            <label>
-                السنة
-            </label>
-
-            <input
-                id="yearInput"
-                placeholder="مثال: 1950">
-
-        </div>
-
-        <button
-            class="main-button"
-            onclick="advancedSearch()">
-
-            بحث
-
-        </button>
-
-    </div>
-
-
-    <div class="section">
-
-        <div
-            id="searchResults"
-            class="books">
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
-
-<!-- =================================================
-     المكتبة
-================================================= -->
 
 <section id="library" class="page">
 
-    <div class="card">
+<div class="wrap">
 
-        <h3>
-            📚 مكتبتي
-        </h3>
+<div class="card">
 
-        <p style="color:#777;font-size:13px;line-height:1.8">
+<h2>📚 مكتبتي</h2>
 
-            هنا تظهر الكتب التي أضفتها إلى المنصة.
-            يمكنك فتح الكتاب وقراءته والاستفادة من أدواته.
+<p class="muted">
+الكتب التي أضفتها إلى خزانة المنصة.
+</p>
 
-        </p>
+</div>
 
-    </div>
+<div id="libraryBooks" class="books"></div>
 
-    <div class="section">
-
-        <div
-            id="libraryBooks"
-            class="books">
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- =================================================
-     رفع كتاب
-================================================= -->
+<section id="sell" class="page">
+
+<div class="wrap">
+
+<div class="card">
+
+<h2>📚 عرض كتاب للبيع أو التبادل</h2>
+
+<div class="notice">
+يجب تسجيل الدخول قبل نشر الكتاب.
+</div>
+
+<form id="sellForm">
+
+<div class="form-grid">
+
+<div class="field">
+<label>عنوان الكتاب *</label>
+<input name="title" required>
+</div>
+
+<div class="field">
+<label>المؤلف</label>
+<input name="author">
+</div>
+
+<div class="field">
+<label>ISBN</label>
+<input name="isbn">
+</div>
+
+<div class="field">
+<label>السنة</label>
+<input name="year">
+</div>
+
+<div class="field">
+<label>الولاية</label>
+<input name="wilaya">
+</div>
+
+<div class="field">
+<label>السعر بالدينار</label>
+<input name="price" type="number" min="0">
+</div>
+
+<div class="field">
+<label>التصنيف</label>
+<select name="category">
+<option>روايات</option>
+<option>جامعية</option>
+<option>نادرة</option>
+<option>علوم</option>
+<option>أطفال</option>
+<option>لغات</option>
+<option>تاريخ</option>
+<option>أخرى</option>
+</select>
+</div>
+
+<div class="field">
+<label>الحالة</label>
+<select name="condition">
+<option>جديد</option>
+<option>ممتاز</option>
+<option>جيد جدًا</option>
+<option>جيد</option>
+<option>قديم / نادر</option>
+</select>
+</div>
+
+<div class="field">
+<label>نوع العملية</label>
+<select name="deal_type">
+<option>بيع</option>
+<option>بيع أو تبادل</option>
+<option>تبادل فقط</option>
+</select>
+</div>
+
+<div class="field">
+<label>درجة الندرة</label>
+<select name="rarity">
+<option>عادي</option>
+<option>نادر</option>
+<option>نادر جدًا</option>
+<option>نسخة قيمة</option>
+<option>طبعة قديمة</option>
+</select>
+</div>
+
+<div class="field full">
+<label>الوصف</label>
+<textarea name="description"></textarea>
+</div>
+
+<div class="field">
+<label>صورة الغلاف</label>
+<input name="cover" type="file" accept="image/*">
+</div>
+
+<div class="field">
+<label>ملف PDF</label>
+<input name="pdf" type="file" accept=".pdf">
+</div>
 
-<section id="upload" class="page">
+</div>
 
-    <div class="card">
+<button class="primary wide" type="submit">
+📚 نشر الكتاب
+</button>
 
-        <h3>
-            ➕ عرض كتاب
-        </h3>
+</form>
 
-        <div class="notice">
-            أضف كتابًا نادرًا أو مستعملًا للبيع أو التبادل.
-        </div>
+<div id="sellMessage"></div>
 
+</div>
 
-        <form
-            id="uploadForm"
-            enctype="multipart/form-data">
-
-
-            <div class="form-group">
-
-                <label>
-                    عنوان الكتاب *
-                </label>
-
-                <input
-                    name="title"
-                    required>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    المؤلف
-                </label>
-
-                <input
-                    name="author">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    ISBN
-                </label>
-
-                <input
-                    name="isbn">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    السنة
-                </label>
-
-                <input
-                    name="year">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    التصنيف
-                </label>
-
-                <input
-                    name="category"
-                    placeholder="تاريخ، أدب، علوم...">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    العملية
-                </label>
-
-                <select name="deal_type">
-
-                    <option>
-                        بيع
-                    </option>
-
-                    <option>
-                        تبادل
-                    </option>
-
-                    <option>
-                        شراء مطلوب
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    السعر
-                </label>
-
-                <input
-                    name="price"
-                    type="number"
-                    step="0.01"
-                    value="0">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    درجة الندرة
-                </label>
-
-                <select name="rarity">
-
-                    <option>
-                        عادي
-                    </option>
-
-                    <option>
-                        نادر
-                    </option>
-
-                    <option>
-                        نادر جدًا
-                    </option>
-
-                    <option>
-                        نسخة قيمة
-                    </option>
-
-                    <option>
-                        طبعة قديمة
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    وصف الكتاب
-                </label>
-
-                <textarea
-                    name="description"
-                    placeholder="اكتب حالة الكتاب ومعلوماته..."></textarea>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    صورة الغلاف
-                </label>
-
-                <input
-                    type="file"
-                    name="cover"
-                    accept="image/*">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    PDF الكتاب
-                </label>
-
-                <input
-                    type="file"
-                    name="pdf"
-                    accept=".pdf">
-
-            </div>
-
-
-            <button
-                class="main-button"
-                type="submit">
-
-                حفظ وعرض الكتاب
-
-            </button>
-
-        </form>
-
-        <div
-            id="uploadMessage"
-            style="margin-top:12px">
-        </div>
-
-    </div>
+</div>
 
 </section>
 
-
-<!-- =================================================
-     المساعد
-================================================= -->
 
 <section id="assistant" class="page">
 
-    <div class="chat">
+<div class="wrap">
 
-        <div class="chat-title">
+<div class="card chat">
 
-            <strong>
-                🤖 المساعد الذكي
-            </strong>
+<div class="chat-head">
+<strong>🤖 مساعد كتب لينك</strong>
+<br>
+<small>اسأل عن كتاب أو اطلب شرحًا أو تلخيصًا.</small>
+</div>
 
-            <small>
-                اسأل عن الكتاب أو اطلب تلخيصه وتحليله
-            </small>
+<div id="messages" class="messages">
 
-        </div>
+<div class="message bot">
+مرحبًا 👋
+أنا مساعد كتب لينك.
+يمكنني مساعدتك في التلخيص والشرح والتحليل والأسئلة والترجمة.
+</div>
 
+</div>
 
-        <div
-            id="messages"
-            class="messages">
+<div class="chat-input">
 
-            <div class="message bot">
+<textarea
+id="chatInput"
+placeholder="اكتب سؤالك..."
+onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat()}"></textarea>
 
-                مرحبًا 👋
+<button onclick="sendChat()">➤</button>
 
-                أنا مساعد كتب لينك.
+</div>
 
-                أستطيع مساعدتك في:
-                • تلخيص الكتاب
-                • استخراج الأفكار
-                • شرح النص
-                • إنشاء أسئلة
-                • الترجمة
-                • تحليل المحتوى
+</div>
 
-                اختر كتابًا أولًا من المكتبة إذا أردت تحليل كتاب محدد.
-
-            </div>
-
-        </div>
-
-
-        <div class="chat-input">
-
-            <textarea
-                id="chatInput"
-                placeholder="اكتب سؤالك..."></textarea>
-
-            <button
-                onclick="sendChat()">
-
-                ➤
-
-            </button>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
-
-<!-- =================================================
-     الشريط السفلي
-================================================= -->
-
-<nav class="bottom-nav">
-
-    <button
-        class="nav-btn active"
-        data-page="home"
-        onclick="showPage('home')">
-
-        <span class="nav-icon">
-            🏠
-        </span>
-
-        الرئيسية
-
-    </button>
+</main>
 
 
-    <button
-        class="nav-btn"
-        data-page="search"
-        onclick="showPage('search')">
+<footer>
+<div class="foot">
 
-        <span class="nav-icon">
-            🔎
-        </span>
+<div>
+<h3>📚 كتب لينك</h3>
+<p>
+منصة رقمية للكتب الجديدة والمستعملة والنادرة،
+تجمع البيع والشراء والتبادل والقراءة الذكية.
+</p>
+</div>
 
-        اكتشف
+<div>
+<h3>السوق</h3>
+<p>بيع الكتب</p>
+<p>شراء الكتب</p>
+<p>الكتب النادرة</p>
+</div>
 
-    </button>
+<div>
+<h3>الخدمة</h3>
+<p>الطلبات</p>
+<p>التبادل</p>
+<p>وثائق العمليات</p>
+</div>
+
+</div>
+</footer>
 
 
-    <button
-        class="nav-btn"
-        data-page="library"
-        onclick="showPage('library')">
+<nav class="bottom">
 
-        <span class="nav-icon">
-            📚
-        </span>
+<button onclick="showPage('home')">
+<span>🏠</span>
+الرئيسية
+</button>
 
-        مكتبتي
+<button onclick="showPage('search')">
+<span>🔎</span>
+اكتشف
+</button>
 
-    </button>
+<button onclick="openCart()">
+<span>🛒</span>
+السلة
+</button>
 
-
-    <button
-        class="nav-btn"
-        data-page="assistant"
-        onclick="showPage('assistant')">
-
-        <span class="nav-icon">
-            🤖
-        </span>
-
-        المساعد
-
-    </button>
+<button onclick="openAccount()">
+<span>👤</span>
+حسابي
+</button>
 
 </nav>
 
 
-<button
-    class="floating"
-    onclick="showPage('upload')">
+<!-- ACCOUNT -->
 
-    ＋
+<div id="accountModal" class="modal">
 
+<div class="modal-box">
+
+<div class="modal-head">
+<h2>👤 حسابي</h2>
+<button class="close" onclick="closeModal('accountModal')">×</button>
+</div>
+
+<div class="tabs">
+
+<button id="loginTab" class="active" onclick="accountTab('login')">
+دخول
 </button>
 
+<button id="registerTab" onclick="accountTab('register')">
+حساب جديد
+</button>
 
 </div>
 
-
-<!-- =================================================
-     نافذة الكتاب
-================================================= -->
-
-<div
-    id="modal"
-    class="modal"
-    onclick="if(event.target===this)closeModal()">
-
-    <div class="modal-content">
-
-        <div class="modal-header">
-
-            <strong id="modalTitle">
-                الكتاب
-            </strong>
-
-            <button
-                class="close"
-                onclick="closeModal()">
-
-                ×
-
-            </button>
-
-        </div>
-
-        <div id="modalBody"></div>
-
-    </div>
+<div id="accountForm"></div>
 
 </div>
+</div>
+
+
+<!-- CART -->
+
+<div id="cartModal" class="modal">
+
+<div class="modal-box">
+
+<div class="modal-head">
+<h2>🛒 السلة</h2>
+<button class="close" onclick="closeModal('cartModal')">×</button>
+</div>
+
+<div id="cart"></div>
+
+</div>
+</div>
+
+
+<!-- CHECKOUT -->
+
+<div id="checkoutModal" class="modal">
+
+<div class="modal-box">
+
+<div class="modal-head">
+<h2>📦 إتمام الطلب</h2>
+<button class="close" onclick="closeModal('checkoutModal')">×</button>
+</div>
+
+<div id="checkout"></div>
+
+</div>
+</div>
+
+
+<!-- BOOK -->
+
+<div id="bookModal" class="modal">
+
+<div class="modal-box">
+
+<div class="modal-head">
+
+<h2 id="bookModalTitle">الكتاب</h2>
+
+<button class="close" onclick="closeModal('bookModal')">×</button>
+
+</div>
+
+<div id="bookModalBody"></div>
+
+</div>
+</div>
+
+
+<!-- EXCHANGE -->
+
+<div id="exchangeModal" class="modal">
+
+<div class="modal-box">
+
+<div class="modal-head">
+
+<h2>🔄 طلب تبادل</h2>
+
+<button class="close" onclick="closeModal('exchangeModal')">×</button>
+
+</div>
+
+<div id="exchangeBook" class="notice"></div>
+
+<div class="form-grid">
+
+<div class="field">
+<label>اسمك</label>
+<input id="exchangeName">
+</div>
+
+<div class="field">
+<label>الهاتف</label>
+<input id="exchangePhone">
+</div>
+
+<div class="field full">
+<label>الكتاب الذي تقدمه مقابلًا</label>
+<input id="exchangeOffer">
+</div>
+
+<div class="field full">
+<label>ملاحظات</label>
+<textarea id="exchangeNote"></textarea>
+</div>
+
+</div>
+
+<button class="primary wide" onclick="sendExchange()">
+إرسال اقتراح التبادل
+</button>
+
+</div>
+</div>
+
+
+<!-- ORDERS -->
+
+<div id="ordersModal" class="modal">
+
+<div class="modal-box">
+
+<div class="modal-head">
+
+<h2>🧾 طلباتي</h2>
+
+<button class="close" onclick="closeModal('ordersModal')">×</button>
+
+</div>
+
+<div id="orders"></div>
+
+</div>
+</div>
+
+
+<div id="toast"></div>
 
 
 <script>
 
-/* =====================================================
-   الحالة
-===================================================== */
+const API="/api";
 
-let currentBook = null;
+let cart=JSON.parse(localStorage.getItem("kl_cart")||"[]");
+let user=JSON.parse(localStorage.getItem("kl_user")||"null");
+let currentBook=null;
+let exchangeTarget=null;
 
+function esc(v){
+ return String(v??"")
+ .replaceAll("&","&amp;")
+ .replaceAll("<","&lt;")
+ .replaceAll(">","&gt;")
+ .replaceAll('"',"&quot;")
+ .replaceAll("'","&#039;");
+}
 
-/* =====================================================
-   التنقل
-===================================================== */
+function toast(t){
+ const x=document.getElementById("toast");
+ x.textContent=t;
+ x.classList.add("show");
+ setTimeout(()=>x.classList.remove("show"),2600);
+}
+
+function closeModal(id){
+ document.getElementById(id).classList.remove("open");
+}
+
+function openModal(id){
+ document.getElementById(id).classList.add("open");
+}
+
+function saveLocal(){
+ localStorage.setItem("kl_cart",JSON.stringify(cart));
+ if(user)
+  localStorage.setItem("kl_user",JSON.stringify(user));
+ else
+  localStorage.removeItem("kl_user");
+}
 
 function showPage(page){
 
-    document
-        .querySelectorAll(".page")
-        .forEach(x => {
-            x.classList.remove("active");
-        });
+ document.querySelectorAll(".page")
+ .forEach(x=>x.classList.remove("active"));
 
-    const target =
-        document.getElementById(page);
+ const p=document.getElementById(page);
 
-    if(target){
-        target.classList.add("active");
-    }
+ if(p)p.classList.add("active");
 
-    document
-        .querySelectorAll(".nav-btn")
-        .forEach(x => {
+ window.scrollTo({top:0,behavior:"smooth"});
 
-            x.classList.toggle(
-                "active",
-                x.dataset.page === page
-            );
-
-        });
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-
-    if(page === "library"){
-        loadLibrary();
-    }
-
-    if(page === "home"){
-        loadHome();
-    }
+ if(page==="home")loadHome();
+ if(page==="library")loadLibrary();
 
 }
-
-
-/* =====================================================
-   تحميل الصفحة الرئيسية
-===================================================== */
 
 async function loadHome(){
 
-    const box =
-        document.getElementById(
-            "homeBooks"
-        );
+ const box=document.getElementById("homeBooks");
 
-    box.innerHTML =
-        '<div class="loading">جارٍ التحميل...</div>';
+ box.innerHTML='<div class="loading">جارٍ تحميل الكتب...</div>';
 
-    try{
+ try{
 
-        const r =
-            await fetch(
-                "/api/books?q="
-            );
+  const r=await fetch(API+"/books?q=");
+  const d=await r.json();
 
-        const data =
-            await r.json();
+  renderBooks((d.items||[]).slice(0,8),box);
 
-        renderBooks(
-            data.items.slice(0,8),
-            box
-        );
+ }catch(e){
 
-    }catch(e){
+  box.innerHTML='<div class="empty">تعذر تحميل الكتب</div>';
 
-        box.innerHTML =
-            '<div class="empty">تعذر تحميل الكتب</div>';
-
-    }
+ }
 
 }
 
+function renderBooks(books,box){
 
-/* =====================================================
-   البحث
-===================================================== */
+ if(!books.length){
 
-async function searchBooks(){
+  box.innerHTML='<div class="empty">لا توجد كتب حاليًا</div>';
+  return;
 
-    const q =
-        document.getElementById(
-            "searchInput"
-        ).value.trim();
+ }
 
-    showPage("search");
+ box.innerHTML="";
 
-    document.getElementById(
-        "searchPageInput"
-    ).value = q;
+ books.forEach(book=>{
 
-    await advancedSearch();
+  const div=document.createElement("article");
 
-}
+  div.className="book";
 
+  const img=book.image
+   ? `<img src="${esc(book.image)}" loading="lazy">`
+   : `<strong>📖</strong>`;
 
-async function advancedSearch(){
+  div.innerHTML=`
 
-    const q =
-        document.getElementById(
-            "searchPageInput"
-        ).value.trim();
+   <div class="cover">
 
-    const author =
-        document.getElementById(
-            "authorInput"
-        ).value.trim();
+    <span class="cover-badge">
+     ${esc(book.rarity||book.category||"كتاب")}
+    </span>
 
-    const year =
-        document.getElementById(
-            "yearInput"
-        ).value.trim();
+    ${img}
 
-    const box =
-        document.getElementById(
-            "searchResults"
-        );
+   </div>
 
-    box.innerHTML =
-        '<div class="loading">جاري البحث...</div>';
+   <div class="book-body">
 
-    try{
+    <h3>${esc(book.title)}</h3>
 
-        const url =
-            "/api/books?q="
-            + encodeURIComponent(q)
-            + "&author="
-            + encodeURIComponent(author)
-            + "&year="
-            + encodeURIComponent(year);
+    <div class="author">
+     ${esc(book.author||"مؤلف غير محدد")}
+    </div>
 
-        const r =
-            await fetch(url);
+    <div class="meta">
+     <span>📍 ${esc(book.wilaya||"الجزائر")}</span>
+     <span>${esc(book.condition||"")}</span>
+    </div>
 
-        const data =
-            await r.json();
+    <div class="meta">
 
-        renderBooks(
-            data.items,
-            box
-        );
+     <b class="price">
+      ${book.price?Number(book.price).toLocaleString("ar-DZ")+" دج":"للاستفسار"}
+     </b>
 
-    }catch(e){
+     <span>${esc(book.deal_type||"بيع")}</span>
 
-        box.innerHTML =
-            '<div class="empty">حدث خطأ أثناء البحث</div>';
+    </div>
 
-    }
+    <div class="book-actions">
 
-}
+     <button class="buy"
+       onclick='buyBook(${JSON.stringify(book).replace(/'/g,"&#039;")})'>
+       🛒 شراء
+     </button>
 
+     <button class="exchange"
+       onclick='startExchange(${JSON.stringify(book).replace(/'/g,"&#039;")})'>
+       🔄 تبادل
+     </button>
 
-/* =====================================================
-   عرض الكتب
-===================================================== */
+    </div>
 
-function renderBooks(
-    books,
-    container
-){
+    <div class="book-actions" style="margin-top:7px">
 
-    if(!books.length){
+     <button onclick='openBook(${JSON.stringify(book).replace(/'/g,"&#039;")})'>
+      📖 فتح
+     </button>
 
-        container.innerHTML =
-            '<div class="empty">لا توجد كتب</div>';
+     <button class="favorite"
+       onclick="favoriteBook(${Number(book.id)||0})">
+      ${book.favorite?"♥":"♡"} مفضلة
+     </button>
 
-        return;
-    }
+    </div>
 
-    container.innerHTML = "";
+   </div>
 
-    books.forEach(book => {
+  `;
 
-        const div =
-            document.createElement(
-                "div"
-            );
+  box.appendChild(div);
 
-        div.className =
-            "book";
-
-        const image =
-            book.image
-            ?
-            `<img src="${escapeAttr(book.image)}"
-                  loading="lazy">`
-            :
-            `<div class="no-cover">📖</div>`;
-
-        div.innerHTML = `
-
-            <div class="book-cover">
-                ${image}
-            </div>
-
-            <div class="book-body">
-
-                <div class="book-title">
-                    ${escapeHtml(book.title)}
-                </div>
-
-                <div class="book-author">
-                    ${escapeHtml(book.author || "مؤلف غير محدد")}
-                </div>
-
-                <div class="book-meta">
-
-                    <span class="badge">
-                        ${escapeHtml(book.rarity || "كتاب")}
-                    </span>
-
-                    <span class="price">
-                        ${
-                            book.price
-                            ?
-                            book.price + " دج"
-                            :
-                            ""
-                        }
-                    </span>
-
-                </div>
-
-                <div class="book-actions">
-
-                    <button
-                        onclick='openBook(${JSON.stringify(book).replace(/'/g,"&#39;")})'>
-                        فتح
-                    </button>
-
-                    <button
-                        class="secondary"
-                        onclick="toggleFavorite(${Number(book.id)})">
-
-                        ${book.favorite ? "♥" : "♡"}
-
-                    </button>
-
-                </div>
-
-            </div>
-        `;
-
-        container.appendChild(div);
-
-    });
+ });
 
 }
 
+function buyBook(book){
 
-/* =====================================================
-   فتح الكتاب
-===================================================== */
+ if(!book.price){
+  toast("هذا الكتاب ليس له سعر محدد");
+  return;
+ }
+
+ let x=cart.find(i=>Number(i.id)===Number(book.id));
+
+ if(x)x.qty++;
+ else cart.push({
+  id:book.id,
+  title:book.title,
+  price:Number(book.price),
+  qty:1,
+  image:book.image||""
+ });
+
+ saveLocal();
+
+ toast("تمت إضافة الكتاب إلى السلة");
+
+ openCart();
+
+}
+
+function openCart(){
+
+ const box=document.getElementById("cart");
+
+ if(!cart.length){
+
+  box.innerHTML=
+   `<div class="notice">السلة فارغة.</div>`;
+
+  openModal("cartModal");
+  return;
+ }
+
+ box.innerHTML=cart.map((x,i)=>`
+
+ <div class="cart-item">
+
+  <div class="row">
+   <strong>${esc(x.title)}</strong>
+   <b>${(x.price*x.qty).toLocaleString("ar-DZ")} دج</b>
+  </div>
+
+  <div class="row">
+   <span>الكمية: ${x.qty}</span>
+   <button onclick="removeCart(${i})">حذف</button>
+  </div>
+
+ </div>
+
+ `).join("");
+
+ const total=cart.reduce((s,x)=>s+x.price*x.qty,0);
+
+ box.innerHTML+=`
+
+ <div class="row">
+  <strong>المجموع</strong>
+  <strong class="price">${total.toLocaleString("ar-DZ")} دج</strong>
+ </div>
+
+ <button class="primary wide" onclick="checkout()">
+  📦 متابعة الطلب والتوصيل
+ </button>
+ `;
+
+ openModal("cartModal");
+
+}
+
+function removeCart(i){
+
+ cart.splice(i,1);
+ saveLocal();
+ openCart();
+
+}
+
+function checkout(){
+
+ if(!user){
+
+  closeModal("cartModal");
+  openAccount();
+
+  toast("سجّل الدخول أولًا");
+
+  return;
+ }
+
+ closeModal("cartModal");
+
+ const total=cart.reduce((s,x)=>s+x.price*x.qty,0);
+
+ document.getElementById("checkout").innerHTML=`
+
+ <div class="notice">
+ إجمالي الطلب:
+ <b>${total.toLocaleString("ar-DZ")} دج</b>
+ </div>
+
+ <div class="form-grid">
+
+  <div class="field">
+   <label>الاسم الكامل</label>
+   <input id="coName" value="${esc(user.name||"")}">
+  </div>
+
+  <div class="field">
+   <label>الهاتف</label>
+   <input id="coPhone" value="${esc(user.phone||"")}">
+  </div>
+
+  <div class="field">
+   <label>الولاية</label>
+   <input id="coWilaya" value="${esc(user.wilaya||"")}">
+  </div>
+
+  <div class="field">
+   <label>البلدية</label>
+   <input id="coCommune">
+  </div>
+
+  <div class="field full">
+   <label>العنوان</label>
+   <textarea id="coAddress"></textarea>
+  </div>
+
+  <div class="field">
+   <label>طريقة التسليم</label>
+   <select id="coDelivery">
+    <option>توصيل إلى العنوان</option>
+    <option>نقطة استلام</option>
+    <option>تسليم يدًا بيد</option>
+   </select>
+  </div>
+
+  <div class="field">
+   <label>طريقة الدفع</label>
+   <select id="coPayment">
+    <option>الدفع عند الاستلام</option>
+    <option>الدفع الإلكتروني</option>
+   </select>
+  </div>
+
+ </div>
+
+ <div class="notice">
+ الدفع الإلكتروني يحتاج ربط بوابة دفع حقيقية من الخادم.
+ لن يتم اعتبار الدفع ناجحًا إلا بعد وصول تأكيد من مزود الدفع.
+ </div>
+
+ <button class="primary wide" onclick="placeOrder()">
+  🧾 تأكيد الطلب وإنشاء الوثيقة
+ </button>
+
+ `;
+
+ openModal("checkoutModal");
+
+}
+
+function val(id){
+ return document.getElementById(id)?.value.trim()||"";
+}
+
+async function placeOrder(){
+
+ if(!cart.length)return;
+
+ const data={
+  name:val("coName"),
+  phone:val("coPhone"),
+  wilaya:val("coWilaya"),
+  commune:val("coCommune"),
+  address:val("coAddress"),
+  delivery:val("coDelivery"),
+  payment:val("coPayment"),
+  items:cart
+ };
+
+ if(!data.name||!data.phone||!data.wilaya){
+  toast("أكمل بيانات التسليم");
+  return;
+ }
+
+ try{
+
+  const r=await fetch(API+"/orders",{
+   method:"POST",
+   headers:{"Content-Type":"application/json"},
+   body:JSON.stringify(data)
+  });
+
+  const d=await r.json();
+
+  if(!r.ok){
+   toast(d.error||"تعذر إنشاء الطلب");
+   return;
+  }
+
+  cart=[];
+  saveLocal();
+
+  closeModal("checkoutModal");
+
+  toast("تم تسجيل الطلب "+d.order.id);
+
+  openOrders();
+
+ }catch(e){
+
+  toast("تعذر الاتصال بالخادم");
+
+ }
+
+}
+
+function openOrders(){
+
+ if(!user){
+  openAccount();
+  toast("سجل الدخول لعرض الطلبات");
+  return;
+ }
+
+ fetch(API+"/orders")
+ .then(r=>r.json())
+ .then(d=>{
+
+  const box=document.getElementById("orders");
+
+  if(!d.items?.length){
+
+   box.innerHTML=
+    `<div class="notice">لا توجد طلبات.</div>`;
+
+   openModal("ordersModal");
+   return;
+  }
+
+  box.innerHTML=d.items.map(o=>`
+
+   <div class="order">
+
+    <div class="row">
+     <strong>${esc(o.id)}</strong>
+     <span class="status">${esc(o.status)}</span>
+    </div>
+
+    <div class="row">
+     <span>المجموع</span>
+     <b>${Number(o.total).toLocaleString("ar-DZ")} دج</b>
+    </div>
+
+    <div class="row">
+     <span>التاريخ</span>
+     <span>${esc(o.created_at||"")}</span>
+    </div>
+
+    <button class="primary wide"
+     onclick='printReceipt(${JSON.stringify(o).replace(/'/g,"&#039;")})'>
+     🧾 طباعة الوثيقة
+    </button>
+
+   </div>
+
+  `).join("");
+
+  openModal("ordersModal");
+
+ })
+ .catch(()=>{
+  toast("تعذر تحميل الطلبات");
+ });
+
+}
+
+function printReceipt(o){
+
+ const w=window.open("","_blank");
+
+ w.document.write(`
+
+ <html lang="ar" dir="rtl">
+
+ <head>
+ <meta charset="UTF-8">
+ <title>${esc(o.id)}</title>
+
+ <style>
+ body{font-family:Tahoma;padding:40px}
+ h1{text-align:center;color:#173b68}
+ table{width:100%;border-collapse:collapse;margin-top:25px}
+ td{border:1px solid #aaa;padding:12px}
+ .note{margin-top:25px;padding:15px;background:#fff4d8}
+ </style>
+
+ </head>
+
+ <body>
+
+ <h1>📚 كتب لينك</h1>
+
+ <h2 style="text-align:center">
+ وثيقة تسجيل طلب شراء
+ </h2>
+
+ <table>
+
+ <tr><td>رقم الطلب</td><td>${esc(o.id)}</td></tr>
+ <tr><td>المشتري</td><td>${esc(o.name)}</td></tr>
+ <tr><td>الهاتف</td><td>${esc(o.phone)}</td></tr>
+ <tr><td>الولاية</td><td>${esc(o.wilaya)}</td></tr>
+ <tr><td>البلدية</td><td>${esc(o.commune)}</td></tr>
+ <tr><td>العنوان</td><td>${esc(o.address)}</td></tr>
+ <tr><td>التسليم</td><td>${esc(o.delivery)}</td></tr>
+ <tr><td>الدفع</td><td>${esc(o.payment)}</td></tr>
+ <tr><td>المجموع</td><td>${Number(o.total).toLocaleString("ar-DZ")} دج</td></tr>
+ <tr><td>الحالة</td><td>${esc(o.status)}</td></tr>
+
+ </table>
+
+ <div class="note">
+ هذه الوثيقة تثبت تسجيل الطلب في المنصة.
+ ولا تثبت استلام المبلغ أو الكتاب إلا بعد تأكيد العملية والتسليم.
+ </div>
+
+ <script>
+ window.onload=()=>window.print()
+ <\/script>
+
+ </body>
+ </html>
+
+ `);
+
+ w.document.close();
+
+}
+
+function openAccount(){
+
+ accountTab(user?"profile":"login");
+ openModal("accountModal");
+
+}
+
+function accountTab(type){
+
+ document.getElementById("loginTab")
+ .classList.toggle("active",type==="login");
+
+ document.getElementById("registerTab")
+ .classList.toggle("active",type==="register");
+
+ const f=document.getElementById("accountForm");
+
+ if(type==="profile"){
+
+  f.innerHTML=`
+
+   <div class="notice">
+    <b>${esc(user.name)}</b><br>
+    ${esc(user.phone||"")}<br>
+    ${esc(user.wilaya||"")}
+   </div>
+
+   <button class="primary wide" onclick="openOrders();closeModal('accountModal')">
+    🧾 طلباتي
+   </button>
+
+   <button class="gold wide" onclick="logout()">
+    تسجيل الخروج
+   </button>
+
+  `;
+
+  return;
+ }
+
+ if(type==="login"){
+
+  f.innerHTML=`
+
+   <div class="field">
+    <label>البريد أو الهاتف</label>
+    <input id="loginId">
+   </div>
+
+   <div class="field">
+    <label>كلمة المرور</label>
+    <input id="loginPass" type="password">
+   </div>
+
+   <button class="primary wide" onclick="login()">
+    دخول
+   </button>
+
+  `;
+
+ }else{
+
+  f.innerHTML=`
+
+   <div class="form-grid">
+
+    <div class="field">
+     <label>الاسم الكامل</label>
+     <input id="regName">
+    </div>
+
+    <div class="field">
+     <label>الهاتف</label>
+     <input id="regPhone">
+    </div>
+
+    <div class="field">
+     <label>البريد الإلكتروني</label>
+     <input id="regEmail">
+    </div>
+
+    <div class="field">
+     <label>الولاية</label>
+     <input id="regWilaya">
+    </div>
+
+    <div class="field full">
+     <label>كلمة المرور</label>
+     <input id="regPass" type="password">
+    </div>
+
+   </div>
+
+   <button class="primary wide" onclick="register()">
+    إنشاء الحساب
+   </button>
+
+  `;
+
+ }
+
+}
+
+async function register(){
+
+ const data={
+  name:val("regName"),
+  phone:val("regPhone"),
+  email:val("regEmail"),
+  wilaya:val("regWilaya"),
+  password:val("regPass")
+ };
+
+ if(!data.name||!data.phone||!data.password){
+  toast("أكمل البيانات المطلوبة");
+  return;
+ }
+
+ try{
+
+  const r=await fetch(API+"/register",{
+   method:"POST",
+   headers:{"Content-Type":"application/json"},
+   body:JSON.stringify(data)
+  });
+
+  const d=await r.json();
+
+  if(!r.ok){
+   toast(d.error||"تعذر إنشاء الحساب");
+   return;
+  }
+
+  user=d.user;
+  saveLocal();
+
+  closeModal("accountModal");
+
+  toast("تم إنشاء الحساب بنجاح");
+
+ }catch(e){
+
+  toast("تعذر الاتصال بالخادم");
+
+ }
+
+}
+
+async function login(){
+
+ const identifier=val("loginId");
+ const password=val("loginPass");
+
+ try{
+
+  const r=await fetch(API+"/login",{
+   method:"POST",
+   headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({identifier,password})
+  });
+
+  const d=await r.json();
+
+  if(!r.ok){
+   toast(d.error||"بيانات الدخول غير صحيحة");
+   return;
+  }
+
+  user=d.user;
+  saveLocal();
+
+  closeModal("accountModal");
+
+  toast("مرحبًا بك "+user.name);
+
+ }catch(e){
+
+  toast("تعذر الاتصال بالخادم");
+
+ }
+
+}
+
+async function logout(){
+
+ try{
+  await fetch(API+"/logout",{method:"POST"});
+ }catch(e){}
+
+ user=null;
+ saveLocal();
+
+ closeModal("accountModal");
+
+ toast("تم تسجيل الخروج");
+
+}
 
 async function openBook(book){
 
-    currentBook = book;
+ currentBook=book;
 
-    let full = book;
+ let full=book;
 
-    if(
-        book.source === "كتب لينك"
-        &&
-        book.id
-    ){
+ if(book.id){
 
-        try{
+  try{
 
-            const r =
-                await fetch(
-                    "/api/book/"
-                    + book.id
-                );
+   const r=await fetch(API+"/book/"+book.id);
 
-            if(r.ok){
-                full =
-                    await r.json();
-            }
+   if(r.ok)full=await r.json();
 
-        }catch(e){}
+  }catch(e){}
 
-    }
+ }
 
-    currentBook = full;
+ currentBook=full;
 
-    document.getElementById(
-        "modalTitle"
-    ).textContent =
-        full.title || "الكتاب";
+ let html=`
 
+ <div style="text-align:center">
 
-    let html = `
+ ${
+ full.image
+ ? `<img src="${esc(full.image)}"
+ style="width:170px;height:230px;object-fit:cover;border-radius:14px">`
+ : "📖"
+ }
 
-        <div style="text-align:center">
+ </div>
 
-            ${
-                full.image
-                ?
-                `<img
-                    src="${escapeAttr(full.image)}"
-                    style="
-                    width:150px;
-                    max-height:210px;
-                    object-fit:cover;
-                    border-radius:14px;
-                    margin-bottom:12px">`
-                :
-                "📖"
-            }
+ <h2>${esc(full.title)}</h2>
 
-        </div>
+ <p class="muted">${esc(full.author||"")}</p>
 
-        <h3>
-            ${escapeHtml(full.title)}
-        </h3>
+ <p style="line-height:2">
+ ${esc(full.description||"لا يوجد وصف.")}
+ </p>
 
-        <p style="color:#777">
-            ${escapeHtml(full.author || "")}
-        </p>
+ `;
 
-        <p style="line-height:1.8">
-            ${escapeHtml(
-                full.description ||
-                "لا يوجد وصف."
-            )}
-        </p>
+ if(full.pdf){
 
-    `;
+  html+=`
 
+  <button class="primary wide" onclick="readPDF()">
+   📖 قراءة PDF
+  </button>
 
-    if(full.pdf){
+  `;
 
-        html += `
+ }
 
-            <button
-                class="main-button"
-                onclick="openReader()">
+ html+=`
 
-                📖 قراءة الكتاب
+ <div class="tool-grid">
 
-            </button>
+ <button onclick="bookTool('summary')">📝<br>تلخيص</button>
+ <button onclick="bookTool('ideas')">💡<br>الأفكار</button>
+ <button onclick="bookTool('questions')">❓<br>أسئلة</button>
+ <button onclick="bookTool('simple')">📚<br>شرح مبسط</button>
+ <button onclick="bookTool('translation')">🌐<br>ترجمة</button>
+ <button onclick="bookTool('stats')">📊<br>إحصائيات</button>
 
-            <div style="height:8px"></div>
+ </div>
 
-        `;
+ <div id="bookToolResult"></div>
 
-    }
+ `;
 
+ document.getElementById("bookModalTitle")
+ .textContent=full.title||"الكتاب";
 
-    html += `
+ document.getElementById("bookModalBody")
+ .innerHTML=html;
 
-        <div class="book-tools">
-
-            <button onclick="bookTool('summary')">
-                <span>📝</span>
-                ملخص الكتاب
-            </button>
-
-            <button onclick="bookTool('ideas')">
-                <span>💡</span>
-                أفكار الكتاب
-            </button>
-
-            <button onclick="bookTool('questions')">
-                <span>❓</span>
-                أسئلة وأجوبة
-            </button>
-
-            <button onclick="bookTool('simple')">
-                <span>📚</span>
-                شرح مبسط
-            </button>
-
-            <button onclick="bookTool('translation')">
-                <span>🌐</span>
-                ترجمة
-            </button>
-
-            <button onclick="bookTool('stats')">
-                <span>📊</span>
-                إحصائيات الكتاب
-            </button>
-
-            ${
-                full.pdf
-                ?
-                `<button onclick="window.open('${escapeAttr(full.pdf)}','_blank')">
-                    <span>📄</span>
-                    فتح PDF
-                </button>`
-                :
-                ""
-            }
-
-            ${
-                full.link
-                ?
-                `<button onclick="window.open('${escapeAttr(full.link)}','_blank')">
-                    <span>🔗</span>
-                    معلومات إضافية
-                </button>`
-                :
-                ""
-            }
-
-        </div>
-
-        <div
-            id="toolResult"
-            style="margin-top:15px">
-        </div>
-    `;
-
-
-    document.getElementById(
-        "modalBody"
-    ).innerHTML = html;
-
-    document.getElementById(
-        "modal"
-    ).classList.add("show");
+ openModal("bookModal");
 
 }
 
+function readPDF(){
 
-function closeModal(){
+ if(!currentBook?.pdf)return;
 
-    document.getElementById(
-        "modal"
-    ).classList.remove("show");
+ document.getElementById("bookModalBody").innerHTML=`
 
-}
+ <iframe
+ src="${esc(currentBook.pdf)}"
+ style="width:100%;height:65vh;border:0;border-radius:15px">
+ </iframe>
 
-
-/* =====================================================
-   قارئ PDF
-===================================================== */
-
-function openReader(){
-
-    if(!currentBook || !currentBook.pdf){
-        return;
-    }
-
-    document.getElementById(
-        "modalTitle"
-    ).textContent =
-        "📖 " + currentBook.title;
-
-    document.getElementById(
-        "modalBody"
-    ).innerHTML = `
-
-        <iframe
-            src="${escapeAttr(currentBook.pdf)}"
-            style="
-            width:100%;
-            height:65vh;
-            border:0;
-            border-radius:15px">
-        </iframe>
-
-    `;
+ `;
 
 }
-
-
-/* =====================================================
-   وظائف الكتاب
-===================================================== */
 
 async function bookTool(action){
 
-    if(!currentBook || !currentBook.id){
+ if(!currentBook?.id){
 
-        alert(
-            "هذه الوظيفة متاحة للكتب الموجودة في خزانة المنصة."
-        );
+  toast("هذه الوظيفة متاحة للكتب الموجودة في المنصة");
+  return;
 
-        return;
-    }
+ }
 
-    const result =
-        document.getElementById(
-            "toolResult"
-        );
+ const box=document.getElementById("bookToolResult");
 
-    result.innerHTML =
-        '<div class="notice">جارٍ تجهيز النتيجة...</div>';
+ box.innerHTML=
+ `<div class="notice">جارٍ تجهيز النتيجة...</div>`;
 
-    try{
+ try{
 
-        const r =
-            await fetch(
-                "/api/book/"
-                + currentBook.id
-                + "/tool",
-                {
-                    method:"POST",
+  const r=await fetch(
+   API+"/book/"+currentBook.id+"/tool",
+   {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({action})
+   }
+  );
 
-                    headers:{
-                        "Content-Type":
-                            "application/json"
-                    },
+  const d=await r.json();
 
-                    body:JSON.stringify({
-                        action:action
-                    })
-                }
-            );
+  if(!r.ok){
 
-        const data =
-            await r.json();
+   box.innerHTML=
+   `<div class="notice">${esc(d.error||"تعذر التنفيذ")}</div>`;
 
-        if(action === "stats"){
+   return;
+  }
 
-            const s =
-                data.stats || {};
+  if(action==="stats"){
 
-            result.innerHTML = `
+   box.innerHTML=`
 
-                <div class="notice">
+   <div class="notice">
 
-                    الكلمات:
-                    <strong>${s.words || 0}</strong>
+   الكلمات: <b>${d.stats?.words||0}</b><br>
+   الحروف: <b>${d.stats?.characters||0}</b><br>
+   الفقرات: <b>${d.stats?.paragraphs||0}</b>
 
-                    <br>
+   </div>
 
-                    الحروف:
-                    <strong>${s.characters || 0}</strong>
+   `;
 
-                    <br>
+   return;
 
-                    الفقرات:
-                    <strong>${s.paragraphs || 0}</strong>
+  }
 
-                </div>
+  box.innerHTML=`
 
-            `;
+  <div class="reader">
+   ${esc(d.answer||"لم تصل نتيجة")}
+  </div>
 
-            return;
-        }
+  `;
 
+ }catch(e){
 
-        if(data.ideas){
+  box.innerHTML=
+  `<div class="notice">تعذر الاتصال بالمساعد.</div>`;
 
-            result.innerHTML = `
-
-                <div class="notice">
-
-                    <strong>
-                        💡 أفكار أولية
-                    </strong>
-
-                    <ul>
-
-                        ${data.ideas.map(
-                            x =>
-                            `<li>${escapeHtml(x)}</li>`
-                        ).join("")}
-
-                    </ul>
-
-                </div>
-
-            `;
-
-            return;
-        }
-
-
-        result.innerHTML = `
-
-            <div class="reader">
-                ${escapeHtml(
-                    data.answer ||
-                    "لم تصل نتيجة."
-                )}
-            </div>
-
-        `;
-
-    }catch(e){
-
-        result.innerHTML =
-            '<div class="notice">تعذر تنفيذ الوظيفة.</div>';
-
-    }
+ }
 
 }
 
+async function favoriteBook(id){
 
-/* =====================================================
-   المفضلة
-===================================================== */
+ if(!user){
 
-async function toggleFavorite(id){
+  openAccount();
+  toast("سجل الدخول أولًا");
+  return;
 
-    try{
+ }
 
-        await fetch(
-            "/api/book/"
-            + id
-            + "/favorite",
-            {
-                method:"POST"
-            }
-        );
+ try{
 
-        loadHome();
+  const r=await fetch(API+"/book/"+id+"/favorite",{
+   method:"POST"
+  });
 
-        loadLibrary();
+  const d=await r.json();
 
-    }catch(e){}
+  toast(d.message||"تم تحديث المفضلة");
+
+  loadHome();
+
+ }catch(e){
+
+  toast("تعذر تحديث المفضلة");
+
+ }
 
 }
-
-
-/* =====================================================
-   المكتبة
-===================================================== */
 
 async function loadLibrary(){
 
-    const box =
-        document.getElementById(
-            "libraryBooks"
-        );
+ const box=document.getElementById("libraryBooks");
 
-    box.innerHTML =
-        '<div class="loading">جاري تحميل المكتبة...</div>';
+ box.innerHTML=
+ `<div class="loading">جارٍ تحميل مكتبتك...</div>`;
 
-    try{
+ if(!user){
 
-        const r =
-            await fetch(
-                "/api/books?q="
-            );
+  box.innerHTML=
+  `<div class="empty">سجل الدخول لعرض مكتبتك.</div>`;
 
-        const data =
-            await r.json();
+  return;
 
-        const local =
-            data.items.filter(
-                x =>
-                    x.source === "كتب لينك"
-            );
+ }
 
-        renderBooks(
-            local,
-            box
-        );
+ try{
 
-    }catch(e){
+  const r=await fetch(API+"/library");
+  const d=await r.json();
 
-        box.innerHTML =
-            '<div class="empty">تعذر تحميل المكتبة</div>';
+  renderBooks(d.items||[],box);
 
-    }
+ }catch(e){
+
+  box.innerHTML=
+  `<div class="empty">تعذر تحميل المكتبة.</div>`;
+
+ }
 
 }
 
+function searchFromHome(){
 
-/* =====================================================
-   رفع كتاب
-===================================================== */
+ const q=val("homeSearch");
 
-document.getElementById(
-    "uploadForm"
-).addEventListener(
-    "submit",
-    async function(e){
+ showPage("search");
 
-        e.preventDefault();
+ document.getElementById("searchQuery").value=q;
 
-        const message =
-            document.getElementById(
-                "uploadMessage"
-            );
+ advancedSearch();
 
-        message.innerHTML =
-            '<div class="notice">جاري حفظ الكتاب...</div>';
+}
 
-        try{
+async function advancedSearch(){
 
-            const form =
-                new FormData(this);
+ const q=val("searchQuery");
+ const author=val("searchAuthor");
+ const year=val("searchYear");
 
-            const r =
-                await fetch(
-                    "/api/upload",
-                    {
-                        method:"POST",
-                        body:form
-                    }
-                );
+ const box=document.getElementById("searchResults");
 
-            const data =
-                await r.json();
+ box.innerHTML=
+ `<div class="loading">جاري البحث...</div>`;
 
-            if(!r.ok){
+ try{
 
-                message.innerHTML =
-                    `<div class="notice">
-                        ${escapeHtml(
-                            data.error ||
-                            "حدث خطأ"
-                        )}
-                    </div>`;
+  const url=
+   API+"/books?q="+encodeURIComponent(q)+
+   "&author="+encodeURIComponent(author)+
+   "&year="+encodeURIComponent(year);
 
-                return;
-            }
+  const r=await fetch(url);
 
-            message.innerHTML =
-                '<div class="notice">✅ تم حفظ الكتاب بنجاح.</div>';
+  const d=await r.json();
 
-            this.reset();
+  renderBooks(d.items||[],box);
 
-            loadHome();
+ }catch(e){
 
-        }catch(e){
+  box.innerHTML=
+  `<div class="empty">حدث خطأ أثناء البحث.</div>`;
 
-            message.innerHTML =
-                '<div class="notice">تعذر الاتصال بالخادم.</div>';
+ }
 
-        }
+}
 
-    }
-);
+function filterBooks(category){
 
+ showPage("search");
 
-/* =====================================================
-   المساعد
-===================================================== */
+ document.getElementById("searchQuery").value=category;
+
+ advancedSearch();
+
+}
+
+function startExchange(book){
+
+ exchangeTarget=book;
+
+ document.getElementById("exchangeBook").innerHTML=
+ `الكتاب المطلوب:<br><b>${esc(book.title||book)}</b>`;
+
+ if(user){
+
+  document.getElementById("exchangeName").value=user.name||"";
+  document.getElementById("exchangePhone").value=user.phone||"";
+
+ }
+
+ openModal("exchangeModal");
+
+}
+
+function openExchange(){
+
+ startExchange({
+  title:"اختر كتابًا من السوق"
+ });
+
+}
+
+async function sendExchange(){
+
+ if(!user){
+
+  closeModal("exchangeModal");
+  openAccount();
+  toast("سجل الدخول أولًا");
+  return;
+
+ }
+
+ const data={
+  book_id:exchangeTarget?.id||null,
+  offer:val("exchangeOffer"),
+  note:val("exchangeNote")
+ };
+
+ if(!data.offer){
+
+  toast("اكتب اسم الكتاب الذي ستقدمه");
+  return;
+
+ }
+
+ try{
+
+  const r=await fetch(API+"/exchanges",{
+   method:"POST",
+   headers:{"Content-Type":"application/json"},
+   body:JSON.stringify(data)
+  });
+
+  const d=await r.json();
+
+  if(!r.ok){
+
+   toast(d.error||"تعذر إرسال التبادل");
+   return;
+
+  }
+
+  closeModal("exchangeModal");
+
+  toast("تم تسجيل اقتراح التبادل "+d.exchange.id);
+
+ }catch(e){
+
+  toast("تعذر الاتصال بالخادم");
+
+ }
+
+}
 
 async function sendChat(){
 
-    const input =
-        document.getElementById(
-            "chatInput"
-        );
+ const input=document.getElementById("chatInput");
+ const text=input.value.trim();
 
-    const message =
-        input.value.trim();
+ if(!text)return;
 
-    if(!message){
-        return;
-    }
+ addMessage(text,"user");
 
-    addMessage(
-        message,
-        "user"
-    );
+ input.value="";
 
-    input.value = "";
+ const waiting=addMessage("أفكر في طلبك...","bot");
 
-    const waiting =
-        addMessage(
-            "أفكر في طلبك...",
-            "bot"
-        );
+ try{
 
-    try{
+  const r=await fetch(API+"/chat",{
+   method:"POST",
+   headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({
+    message:text,
+    book:currentBook||{}
+   })
+  });
 
-        const r =
-            await fetch(
-                "/api/chat",
-                {
-                    method:"POST",
+  const d=await r.json();
 
-                    headers:{
-                        "Content-Type":
-                            "application/json"
-                    },
+  waiting.remove();
 
-                    body:JSON.stringify({
+  addMessage(
+   d.answer||"لم تصل إجابة.",
+   "bot"
+  );
 
-                        message:message,
+ }catch(e){
 
-                        book:
-                            currentBook || {}
+  waiting.remove();
 
-                    })
-                }
-            );
+  addMessage(
+   "تعذر الاتصال بالمساعد.",
+   "bot"
+  );
 
-        const data =
-            await r.json();
+ }
 
-        waiting.remove();
+}
 
-        addMessage(
-            data.answer ||
-            "لم تصل إجابة.",
-            "bot"
-        );
+function addMessage(text,type){
 
-    }catch(e){
+ const box=document.getElementById("messages");
 
-        waiting.remove();
+ const div=document.createElement("div");
 
-        addMessage(
-            "تعذر الاتصال بالمساعد.",
-            "bot"
-        );
+ div.className="message "+type;
 
-    }
+ div.textContent=text;
+
+ box.appendChild(div);
+
+ box.scrollTop=box.scrollHeight;
+
+ return div;
 
 }
 
 
-function addMessage(
-    text,
-    type
-){
+document.getElementById("sellForm")
+.addEventListener("submit",async e=>{
 
-    const box =
-        document.getElementById(
-            "messages"
-        );
+ e.preventDefault();
 
-    const div =
-        document.createElement(
-            "div"
-        );
+ if(!user){
 
-    div.className =
-        "message " + type;
+  openAccount();
+  toast("سجل الدخول أولًا");
+  return;
 
-    div.textContent =
-        text;
+ }
 
-    box.appendChild(div);
+ const form=new FormData(e.target);
 
-    box.scrollTop =
-        box.scrollHeight;
+ try{
 
-    return div;
+  const r=await fetch(API+"/books",{
+   method:"POST",
+   body:form
+  });
 
-}
+  const d=await r.json();
 
+  if(!r.ok){
 
-/* =====================================================
-   حماية النصوص
-===================================================== */
+   toast(d.error||"تعذر نشر الكتاب");
+   return;
 
-function escapeHtml(value){
+  }
 
-    return String(
-        value ?? ""
-    )
-    .replaceAll(
-        "&",
-        "&amp;"
-    )
-    .replaceAll(
-        "<",
-        "&lt;"
-    )
-    .replaceAll(
-        ">",
-        "&gt;"
-    )
-    .replaceAll(
-        '"',
-        "&quot;"
-    )
-    .replaceAll(
-        "'",
-        "&#039;"
-    );
+  e.target.reset();
 
-}
+  document.getElementById("sellMessage").innerHTML=
+   `<div class="notice">
+   ✅ تم نشر الكتاب بنجاح.
+   </div>`;
+
+  toast("تم نشر الكتاب");
+
+  showPage("home");
+
+ }catch(err){
+
+  toast("تعذر الاتصال بالخادم");
+
+ }
+
+});
 
 
-function escapeAttr(value){
+document.querySelectorAll(".modal")
+.forEach(m=>{
+ m.addEventListener("click",e=>{
+  if(e.target===m)m.classList.remove("open");
+ });
+});
 
-    return escapeHtml(value);
-
-}
-
-
-/* =====================================================
-   تشغيل
-===================================================== */
 
 loadHome();
 
