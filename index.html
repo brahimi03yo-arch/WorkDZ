@@ -3,108 +3,113 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#07152e">
-<title>انتهت مدة العمل</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ماستر علم الاجتماع | التنظيم والعمل</title>
 <style>
 *{box-sizing:border-box}
 body{
-    margin:0;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    font-family:Tahoma,Arial,sans-serif;
-    color:white;
-    background:radial-gradient(circle at top,#204b7b,transparent 60%),
-    linear-gradient(135deg,#061126,#102b4e,#050b18);
+ margin:0;font-family:Tahoma,Arial,sans-serif;
+ color:#fff;text-align:center;min-height:100vh;
+ background:linear-gradient(140deg,#07152f,#102c50,#17112f);
+ overflow-x:hidden
 }
-.container{
-    width:92%;
-    max-width:800px;
-    text-align:center;
-    padding:25px 12px;
+header{padding:35px 15px 15px}
+.badge{color:#f5d77b;font-size:14px;letter-spacing:2px}
+h1{font-size:clamp(27px,6vw,45px);margin:18px 0;color:#ffdf83}
+h2{font-size:22px;color:#e6efff}
+.card{
+ width:min(92%,750px);margin:25px auto;padding:30px 20px;
+ border:1px solid #d9bd69;border-radius:22px;
+ background:rgba(255,255,255,.07);
+ box-shadow:0 0 35px #0005
 }
-.icon{
-    font-size:65px;
-    animation:float 3s ease-in-out infinite;
+.star{color:#ffd96c;font-size:25px;animation:glow 1.5s infinite alternate}
+@keyframes glow{from{opacity:.5;text-shadow:0 0 3px gold}to{opacity:1;text-shadow:0 0 18px gold}}
+.message{font-size:19px;line-height:2.1;color:#f4f6ff}
+.ribbon{
+ margin:20px 0;background:#f3d77e;color:#17243c;
+ padding:13px 0;overflow:hidden;white-space:nowrap;font-weight:bold
 }
-h1{
-    color:#ffd66b;
-    font-size:clamp(26px,5vw,42px);
+.ribbon span{display:inline-block;padding-right:100%;animation:move 18s linear infinite}
+@keyframes move{from{transform:translateX(0)}to{transform:translateX(100%)}}
+.decor{font-size:25px;letter-spacing:9px;margin:18px}
+.signature{color:#ffdf83;font-size:21px;font-weight:bold;margin-top:25px}
+footer{padding:25px 10px;color:#c7d3e6;font-size:13px}
+button{
+ border:1px solid #ffdf83;background:transparent;color:#ffdf83;
+ padding:12px 22px;border-radius:25px;font-size:16px;
+ margin:15px 5px;cursor:pointer
 }
-.message{
-    font-size:clamp(18px,4vw,25px);
-    line-height:2;
-    color:#edf4ff;
-}
-.ticker{
-    width:100%;
-    overflow:hidden;
-    white-space:nowrap;
-    border:1px solid #d8b85c;
-    border-radius:14px;
-    background:#061126a8;
-    padding:18px 0;
-    margin-top:30px;
-}
-.track{
-    display:flex;
-    width:max-content;
-    animation:move 13s linear infinite;
-}
-.track span{
-    flex-shrink:0;
-    padding-left:35px;
-    font-size:clamp(18px,4vw,27px);
-    font-weight:bold;
-    color:#ffd66b;
-}
-.footer{
-    margin-top:35px;
-    color:#b6c6dc;
-    font-size:14px;
-}
-@keyframes move{
-    from{transform:translateX(0)}
-    to{transform:translateX(-50%)}
-}
-@keyframes float{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-10px)}
-}
-@media(prefers-reduced-motion:reduce){
-    .track,.icon{animation:none}
-    .track{width:100%;justify-content:center}
-    .track span:last-child{display:none}
-    .track span{white-space:normal;padding:0 8px}
-}
+button:hover{background:#ffdf83;color:#10203c}
+#clock{color:#d5e5ff;font-size:13px}
 </style>
 </head>
-
 <body>
-<main class="container">
-    <div class="icon">⏳</div>
 
-    <h1>انتهت مدة العمل</h1>
+<header>
+ <div class="badge">✦ زمالة علمية • تعاون • نجاح ✦</div>
+ <div class="decor">⭐ ✨ 🌟 ✨ ⭐</div>
+ <h1>مرحبًا بكم يا زملاء الماستر</h1>
+ <h2>ماستر علم الاجتماع — التنظيم والعمل</h2>
+</header>
 
-    <p class="message">
-        نشكركم على جهودكم وتعاونكم.<br>
-        نتمنى لكم دوام التوفيق والنجاح.
-    </p>
+<div class="ribbon">
+ <span>⭐ أهلًا وسهلًا بكم ⭐ يدًا بيد نحو التنظيم والعمل والنجاح ⭐ المعرفة تجمعنا والتعاون يقوّينا ⭐</span>
+</div>
 
-    <div class="ticker">
-        <div class="track">
-            <span>✨ انتهت مدة العمل — نتمنى لكم التوفيق ✨</span>
-            <span aria-hidden="true">✨ انتهت مدة العمل — نتمنى لكم التوفيق ✨</span>
-        </div>
-    </div>
+<main class="card">
+ <div class="star">✦ ✧ ★ ✧ ✦</div>
+ <h2>رسالة ترحيب وتقدير</h2>
 
-    <div class="footer">
-        مع تمنياتنا لكم بمستقبل مليء بالنجاح والإنجاز
-    </div>
+ <p class="message">
+ إلى زملائي وزميلاتي في قروب ماستر علم الاجتماع،
+ <br>
+ تخصص التنظيم والعمل، أرحب بكم جميعًا بكل تقدير واحترام.
+ <br><br>
+ يجمعنا طلب العلم، وتبادل الأفكار، وروح التعاون
+ والعمل الجماعي. فلنجعل من مجموعتنا فضاءً للحوار
+ البنّاء، وتبادل المعارف والمراجع، ومساعدة بعضنا
+ بعضًا في مسيرتنا الجامعية.
+ <br><br>
+ أتمنى لكم التوفيق والنجاح في الدراسة والبحث،
+ وأن تكون أيامنا مليئة بالإنجازات والتميز.
+ <br><br>
+ دمتم زملاء متعاونين، وأصدقاء يجمعهم العلم والطموح.
+ </p>
+
+ <div class="decor">🌟 ⭐ 🌟 ⭐ 🌟</div>
+ <div class="signature">تحيات زميلكم: براهيمي يوسف</div>
+ <p>مع خالص التقدير والاحترام</p>
+
+ <button onclick="sharePage()">مشاركة رسالة الترحيب ↗</button>
+ <button onclick="window.print()">طباعة الرسالة</button>
+ <div id="clock"></div>
 </main>
+
+<div class="ribbon">
+ <span>✨ بالعلم نرتقي • بالتنظيم ننجح • بالتعاون نصنع الفرق ✨</span>
+</div>
+
+<footer>
+ ⭐ ماستر علم الاجتماع — التنظيم والعمل ⭐
+ <br><br>
+ صُممت هذه الصفحة بمودة وتقدير من زميلكم براهيمي يوسف
+</footer>
+
+<script>
+function sharePage(){
+ const text = "مرحبًا بزملاء ماستر علم الاجتماع — التنظيم والعمل. نتمنى للجميع التوفيق والنجاح. تحيات زميلكم براهيمي يوسف ⭐";
+ if(navigator.share){
+   navigator.share({title:"رسالة ترحيب",text:text}).catch(()=>{});
+ }else if(navigator.clipboard){
+   navigator.clipboard.writeText(text).then(()=>alert("تم نسخ رسالة الترحيب"));
+ }else{
+   alert(text);
+ }
+}
+document.getElementById("clock").textContent =
+ "مع أطيب التمنيات بالنجاح والتوفيق ⭐";
+</script>
+
 </body>
 </html>
