@@ -1,83 +1,92 @@
 
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>نشرجيلكم تلفونات 😂</title>
-
+<title>براهيمي يوسف | نشرجيلكم تلفونات</title>
 <style>
-body {
-    margin: 0;
-    background: #111827;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
+*{box-sizing:border-box}
+body{
+  margin:0;background:#101827;color:white;
+  font-family:Arial,sans-serif;text-align:center
 }
-.container {
-    max-width: 650px;
-    margin: 35px auto;
-    padding: 20px;
+main{
+  max-width:520px;margin:25px auto;padding:22px
 }
-h1 { color: #facc15; font-size: 32px; }
-.subtitle { font-size: 20px; color: #ddd; }
-img {
-    width: 100%;
-    max-width: 520px;
-    border-radius: 15px;
-    border: 3px solid #facc15;
+h1{color:#facc15;font-size:29px}
+img{
+  width:100%;border-radius:16px;
+  border:3px solid #facc15
 }
-.notice {
-    background: #7f1d1d;
-    padding: 18px;
-    margin-top: 20px;
-    border-radius: 12px;
-    font-size: 23px;
-    line-height: 1.8;
+.card{
+  background:#1f2937;padding:20px;
+  border-radius:16px;margin-top:18px
 }
-.price {
-    color: #facc15;
-    font-weight: bold;
-    font-size: 26px;
+label{display:block;margin:15px 0 8px}
+input{
+  width:100%;padding:14px;border:0;
+  border-radius:10px;font-size:19px;text-align:center
 }
-footer {
-    margin-top: 25px;
-    color: #aaa;
+button{
+  width:100%;padding:14px;margin-top:13px;
+  border:0;border-radius:10px;
+  background:#facc15;color:#111827;
+  font-size:20px;font-weight:bold;cursor:pointer
 }
+#result{
+  display:none;background:#7f1d1d;
+  padding:15px;border-radius:12px;
+  margin-top:15px;line-height:1.8
+}
+footer{color:#cbd5e1;margin-top:22px}
 </style>
 </head>
-
 <body>
-<div class="container">
+<main>
+  <h1>⚡ نشرجيلكم تلفونات ههههه ⚡</h1>
+  <p>صاحب الوكالة: <strong>براهيمي يوسف</strong></p>
 
-<h1>⚡ وكالة نشرجيلكم تلفونات ⚡</h1>
+  <img
+    src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=900&q=80"
+    alt="الكهرباء">
 
-<p class="subtitle">
-بعد انقطاع الضوء... وجدنا الحل العبقري 😂
-</p>
+  <section class="card">
+    <h2>🔌 وكالة الدفع قبل التشغيل</h2>
+    <p>الضوء ما يشعلش بالدعاء وحده 😂</p>
 
-<img
-src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=900&q=80"
-alt="أعمدة وأسلاك كهربائية">
+    <label for="amount">💰 اكتب المبلغ الذي تريد دفعه (دج)</label>
+    <input id="amount" type="number" min="1"
+           placeholder="مثلاً: 100">
 
-<div class="notice">
-🔌 قاطع الكهرباء والعداد تحت الخدمة!<br>
-📱 تحب تشعل الضوء؟ حضّر تلفونك!<br>
-💰 الاستعمال مقابل الدفع 😂<br>
-<span class="price">الدفع قبل التشغيل ههههه</span>
-</div>
+    <button onclick="pay()">ادفع ههههه 😂</button>
 
-<h2>📞 نشرجيلكم تلفونات هههه</h2>
+    <div id="result" role="status"></div>
+  </section>
 
-<p>الضوء يروح... والضحكة تبقى! 🤣</p>
+  <footer>
+    برمجة وتطوير: براهيمي يوسف<br>
+    ⚠️ الدفع هنا مزاح فقط، لا توجد عملية مالية حقيقية.
+  </footer>
+</main>
 
-<footer>
-برعاية وكالة الضحك على انقطاع الكهرباء
-<br>
-© مشروع فكاهي فقط — لا بيع ولا خدمات حقيقية
-</footer>
+<script>
+function pay(){
+  const amount = document.getElementById("amount").value;
+  const result = document.getElementById("result");
 
-</div>
+  result.style.display = "block";
+
+  if(!amount || Number(amount) <= 0){
+    result.textContent = "اكتب المبلغ أولاً يا خويا 😂";
+    return;
+  }
+
+  result.textContent =
+    "تم تسجيل طلب الدفع الوهمي بمبلغ " +
+    Number(amount).toLocaleString("ar-DZ") +
+    " دج 😂⚡ بقي غير يرجع الضوء! نشرجيلكم تلفونات ههههه";
+}
+</script>
 </body>
 </html>
