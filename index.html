@@ -1,92 +1,169 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>براهيمي يوسف | نشرجيلكم تلفونات</title>
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0;background:#101827;color:white;
-  font-family:Arial,sans-serif;text-align:center
-}
-main{
-  max-width:520px;margin:25px auto;padding:22px
-}
-h1{color:#facc15;font-size:29px}
-img{
-  width:100%;border-radius:16px;
-  border:3px solid #facc15
-}
-.card{
-  background:#1f2937;padding:20px;
-  border-radius:16px;margin-top:18px
-}
-label{display:block;margin:15px 0 8px}
-input{
-  width:100%;padding:14px;border:0;
-  border-radius:10px;font-size:19px;text-align:center
-}
-button{
-  width:100%;padding:14px;margin-top:13px;
-  border:0;border-radius:10px;
-  background:#facc15;color:#111827;
-  font-size:20px;font-weight:bold;cursor:pointer
-}
-#result{
-  display:none;background:#7f1d1d;
-  padding:15px;border-radius:12px;
-  margin-top:15px;line-height:1.8
-}
-footer{color:#cbd5e1;margin-top:22px}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090f">
+  <title>YB Views | براهيمي يوسف</title>
+  <style>
+    :root { color-scheme: dark; --bg:#09090f; --panel:#14141e; --muted:#a5a5b8; --cyan:#20d9e8; --pink:#ff3d75; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Tahoma,Arial,sans-serif; color:#f6f6fb; background:radial-gradient(ellipse at top,#20203a 0,#09090f 58%); min-height:100vh; }
+    .wrap { width:min(960px,92%); margin:auto; padding:28px 0 48px; }
+    header { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+    .brand { font-size:22px; font-weight:800; letter-spacing:.2px; }
+    .brand span { color:var(--cyan); }
+    .tag { border:1px solid #343449; border-radius:999px; padding:8px 12px; color:var(--muted); font-size:12px; }
+    .hero { text-align:center; padding:54px 0 30px; }
+    .logo { width:72px; height:72px; margin:0 auto 18px; border-radius:23px; display:grid; place-items:center; font-size:28px; font-weight:900; background:linear-gradient(135deg,var(--cyan),#8b5cf6 58%,var(--pink)); color:#09090f; box-shadow:0 12px 45px #20d9e822; }
+    h1 { font-size:clamp(30px,6vw,48px); margin:0 0 12px; line-height:1.2; }
+    h1 em { color:var(--cyan); font-style:normal; }
+    .lead { max-width:650px; margin:0 auto; color:var(--muted); line-height:1.9; }
+    .card { background:linear-gradient(180deg,#171723,#11111a); border:1px solid #2d2d40; border-radius:22px; padding:24px; box-shadow:0 18px 60px #0004; }
+    .card h2 { margin:0 0 8px; font-size:20px; }
+    .hint { color:var(--muted); font-size:13px; line-height:1.8; margin:0 0 18px; }
+    .form { display:flex; gap:10px; }
+    input { flex:1; min-width:0; background:#090910; border:1px solid #39394d; border-radius:13px; padding:15px; color:#fff; outline:none; font-size:15px; direction:ltr; text-align:left; }
+    input:focus { border-color:var(--cyan); box-shadow:0 0 0 3px #20d9e81c; }
+    button,.btn { border:0; border-radius:13px; padding:14px 18px; background:var(--cyan); color:#071015; font-weight:800; cursor:pointer; font-size:14px; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:8px; }
+    button:hover,.btn:hover { filter:brightness(1.07); }
+    button.secondary,.btn.secondary { background:#262638; color:#fff; border:1px solid #3a3a50; }
+    .message { min-height:24px; margin-top:12px; font-size:13px; color:var(--muted); line-height:1.7; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+    .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:18px 0 0; }
+    .stat { padding:18px; border:1px solid #2d2d40; background:#11111a; border-radius:17px; }
+    .stat .num { font-size:28px; font-weight:900; color:var(--cyan); }
+    .stat .label { color:var(--muted); font-size:12px; margin-top:6px; }
+    .features { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px; }
+    .feature { background:#11111a; border:1px solid #29293b; padding:18px; border-radius:17px; }
+    .feature .icon { font-size:24px; margin-bottom:10px; }
+    .feature h3 { margin:0 0 8px; font-size:15px; }
+    .feature p { margin:0; color:var(--muted); font-size:13px; line-height:1.8; }
+    .notice { margin-top:18px; border-right:3px solid var(--pink); padding:12px 15px; background:#ff3d750b; color:#d6d6e2; border-radius:10px; font-size:13px; line-height:1.9; }
+    footer { text-align:center; color:#77778c; font-size:12px; padding-top:30px; }
+    @media(max-width:650px) { .form { flex-direction:column; } .stats,.features { grid-template-columns:1fr; } .hero { padding-top:38px; } .card { padding:18px; } .stat { display:flex; align-items:center; justify-content:space-between; } .stat .label { margin:0; } }
+  </style>
 </head>
 <body>
-<main>
-  <h1>⚡ نشرجيلكم تلفونات ههههه ⚡</h1>
-  <p>صاحب الوكالة: <strong>براهيمي يوسف</strong></p>
+  <main class="wrap">
+    <header>
+      <div class="brand"><span>YB</span> Views</div>
+      <div class="tag">أداة مشاركة فيديوهات TikTok</div>
+    </header>
 
-  <img
-    src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=900&q=80"
-    alt="الكهرباء">
+    <section class="hero">
+      <div class="logo">YB</div>
+      <h1>شارك فيديوك، <em>وسهّل الوصول إليه</em></h1>
+      <p class="lead">ضع رابط فيديو تيك توك، ثم افتحه أو شاركه مع الآخرين. موقع بسيط بالعربية لمساعدتك على تنظيم مشاركة محتواك ومتابعة استخدام الموقع.</p>
+    </section>
 
-  <section class="card">
-    <h2>🔌 وكالة الدفع قبل التشغيل</h2>
-    <p>الضوء ما يشعلش بالدعاء وحده 😂</p>
+    <section class="card">
+      <h2>🔗 رابط فيديو تيك توك</h2>
+      <p class="hint">الصق رابط الفيديو العام. لا تدخل كلمة المرور أو رمز التحقق الخاص بحسابك.</p>
+      <form id="videoForm">
+        <div class="form">
+          <input id="videoUrl" type="url" placeholder="https://www.tiktok.com/@user/video/..." autocomplete="url" required>
+          <button type="submit">تحقق من الرابط</button>
+        </div>
+      </form>
+      <div id="message" class="message" role="status" aria-live="polite">أدخل الرابط للمتابعة.</div>
+      <div id="actions" class="actions" hidden>
+        <a id="openVideo" class="btn" href="#" target="_blank" rel="noopener noreferrer">▶ فتح الفيديو</a>
+        <button id="shareVideo" class="secondary" type="button">↗ مشاركة الرابط</button>
+        <button id="copyVideo" class="secondary" type="button">نسخ الرابط</button>
+      </div>
+      <div class="notice">تنبيه: الموقع لا يستطيع زيادة مشاهدات تيك توك تلقائيًا لمجرد إدخال الرابط. المشاهدات تعتمد على وصول أشخاص حقيقيين إلى الفيديو ومشاهدتهم له.</div>
+    </section>
 
-    <label for="amount">💰 اكتب المبلغ الذي تريد دفعه (دج)</label>
-    <input id="amount" type="number" min="1"
-           placeholder="مثلاً: 100">
+    <section class="stats" aria-label="إحصاءات استخدام الموقع">
+      <div class="stat"><div><div class="num" id="visits">{{ stats.visits }}</div><div class="label">زيارات الموقع</div></div><span>🌐</span></div>
+      <div class="stat"><div><div class="num" id="opens">{{ stats.video_opens }}</div><div class="label">نقرات فتح الفيديو</div></div><span>▶️</span></div>
+      <div class="stat"><div><div class="num" id="shares">{{ stats.shares }}</div><div class="label">محاولات المشاركة</div></div><span>↗️</span></div>
+    </section>
 
-    <button onclick="pay()">ادفع ههههه 😂</button>
+    <section class="features">
+      <div class="feature"><div class="icon">⚡</div><h3>سهل وسريع</h3><p>واجهة متوافقة مع الهاتف والحاسوب، دون الحاجة إلى تسجيل دخول.</p></div>
+      <div class="feature"><div class="icon">🔒</div><h3>خصوصية أفضل</h3><p>لا نطلب كلمة مرور تيك توك أو بيانات الدخول الخاصة بك.</p></div>
+      <div class="feature"><div class="icon">📊</div><h3>إحصاءات الموقع</h3><p>تعرض أرقام الزيارات والنقرات التي يسجلها هذا الموقع، وليست إجمالي مشاهدات تيك توك.</p></div>
+    </section>
 
-    <div id="result" role="status"></div>
-  </section>
+    <footer>برمجة وتطوير براهيمي يوسف · YB Views</footer>
+  </main>
 
-  <footer>
-    برمجة وتطوير: براهيمي يوسف<br>
-    ⚠️ الدفع هنا مزاح فقط، لا توجد عملية مالية حقيقية.
-  </footer>
-</main>
+  <script>
+    const form = document.getElementById('videoForm');
+    const input = document.getElementById('videoUrl');
+    const message = document.getElementById('message');
+    const actions = document.getElementById('actions');
+    const openVideo = document.getElementById('openVideo');
+    let validUrl = '';
 
-<script>
-function pay(){
-  const amount = document.getElementById("amount").value;
-  const result = document.getElementById("result");
+    async function sendEvent(name) {
+      try {
+        const response = await fetch('/api/event', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({event: name})
+        });
+        const result = await response.json();
+        if (result.ok) {
+          document.getElementById('opens').textContent = result.stats.video_opens;
+          document.getElementById('shares').textContent = result.stats.shares;
+        }
+      } catch (_) {}
+    }
 
-  result.style.display = "block";
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      message.textContent = 'جارٍ التحقق من الرابط...';
+      actions.hidden = true;
+      try {
+        const response = await fetch('/api/validate', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({url: input.value.trim()})
+        });
+        const result = await response.json();
+        if (!response.ok || !result.ok) throw new Error(result.error || 'تعذر التحقق من الرابط.');
+        validUrl = result.url;
+        openVideo.href = validUrl;
+        actions.hidden = false;
+        message.textContent = 'الرابط يبدو من نطاق تيك توك. اضغط «فتح الفيديو» للمتابعة.';
+      } catch (error) {
+        message.textContent = error.message || 'حدث خطأ. تحقق من الرابط.';
+      }
+    });
 
-  if(!amount || Number(amount) <= 0){
-    result.textContent = "اكتب المبلغ أولاً يا خويا 😂";
-    return;
-  }
+    openVideo.addEventListener('click', () => sendEvent('video_open'));
 
-  result.textContent =
-    "تم تسجيل طلب الدفع الوهمي بمبلغ " +
-    Number(amount).toLocaleString("ar-DZ") +
-    " دج 😂⚡ بقي غير يرجع الضوء! نشرجيلكم تلفونات ههههه";
-}
-</script>
+    document.getElementById('shareVideo').addEventListener('click', async () => {
+      if (!validUrl) return;
+      await sendEvent('share');
+      if (navigator.share) {
+        try { await navigator.share({title: 'شاهد هذا الفيديو على TikTok', url: validUrl}); }
+        catch (_) {}
+      } else {
+        try {
+          await navigator.clipboard.writeText(validUrl);
+          message.textContent = 'تم نسخ رابط الفيديو؛ يمكنك إرساله إلى أصدقائك.';
+        } catch (_) {
+          message.textContent = 'انسخ الرابط من مربع الإدخال وشاركه يدويًا.';
+        }
+      }
+    });
+
+    document.getElementById('copyVideo').addEventListener('click', async () => {
+      if (!validUrl) return;
+      try {
+        await navigator.clipboard.writeText(validUrl);
+        message.textContent = 'تم نسخ رابط الفيديو.';
+      } catch (_) {
+        input.value = validUrl;
+        input.focus();
+        input.select();
+        message.textContent = 'حدد الرابط وانسخه يدويًا.';
+      }
+    });
+  </script>
 </body>
 </html>
