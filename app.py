@@ -1,64 +1,89 @@
-from flask import Flask, render_template, request, jsonify
-from urllib.parse import urlparse
-from pathlib import Path
-import json
-from datetime import datetime, timezone
 
-app = Flask(__name__)
-DATA_FILE = Path(__file__).with_name("stats.json")
+import os
+import random
 
-def read_stats():
-    try:
-        data = json.loads(DATA_FILE.read_text(encoding="utf-8"))
-        if not isinstance(data, dict):
-            raise ValueError("Invalid stats")
-    except (FileNotFoundError, json.JSONDecodeError, ValueError):
-        data = {"visits": 0, "video_opens": 0, "shares": 0}
-    return data
+from flask import Flask, jsonify, send_from_directory, session
 
-def write_stats(data):
-    DATA_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+app = Flask(__name__, static_folder="static")
+app.secret_key = os.environ.get(
+    "SECRET_KEY",
+    "Youssef-Brahimi-Change-This-Key-2026"
+)
 
-def is_tiktok_url(value):
-    try:
-        parsed = urlparse(value.strip())
-        host = (parsed.hostname or "").lower()
-        return parsed.scheme in ("http", "https") and (
-            host == "tiktok.com" or host.endswith(".tiktok.com")
-        )
-    except ValueError:
-        return False
+DUAS = [
+    "اللهم ارزقه راحة البال وسعة الرزق.",
+    "اللهم افتح له أبواب الخير والتوفيق.",
+    "اللهم اجعل أيامه فرحًا وسعادة.",
+    "اللهم احفظه ووفقه لكل خير.",
+    "اللهم ارزقه من حيث لا يحتسب.",
+    "اللهم اجعل له من كل هم فرجًا.",
+    "اللهم اكتب له الخير أينما كان.",
+    "اللهم حقق له ما يتمنى إن كان خيرًا له.",
+    "اللهم املأ قلبه نورًا وطمأنينة.",
+    "اللهم اجعل القادم من حياته أجمل."
+]
 
-@app.get("/")
+GIFTS = [
+    "🎁 هدية الفرح",
+    "👑 تاج التميز",
+    "💎 جوهرة الأمل",
+    "🌟 نجمة التوفيق",
+    "🌹 وردة المحبة",
+    "🏆 كأس الإنجاز",
+    "🕊️ هدية الطمأنينة",
+    "✨ نجمة الحظ الجميل"
+]
+
+
+def prepare_visit():
+    if "dua" not in session:
+        session["dua"] = random.choice(DUAS)
+        session["gift"] = random.choice(GIFTS)
+        session["claimed"] = False
+
+
+@app.route("/")
 def home():
-    stats = read_stats()
-    stats["visits"] += 1
-    write_stats(stats)
-    return render_template("index.html", stats=stats)
+    return send_from_directory(".", "index.html")
 
-@app.post("/api/event")
-def event():
-    body = request.get_json(silent=True) or {}
-    event_name = body.get("event")
-    mapping = {
-        "video_open": "video_opens",
-        "share": "shares",
-    }
-    if event_name not in mapping:
-        return jsonify({"ok": False, "error": "حدث غير معروف"}), 400
-    stats = read_stats()
-    stats[mapping[event_name]] += 1
-    write_stats(stats)
-    return jsonify({"ok": True, "stats": stats})
 
-@app.post("/api/validate")
-def validate():
-    body = request.get_json(silent=True) or {}
-    url = str(body.get("url", "")).strip()
-    if not is_tiktok_url(url):
-        return jsonify({"ok": False, "error": "أدخل رابطًا صحيحًا من TikTok."}), 400
-    return jsonify({"ok": True, "url": url})
+@app.route("/data")
+def data():
+    prepare_visit()
+
+    return jsonify({
+        "dua": session["dua"],
+        "gift": session["gift"],
+        "claimed": session["claimed"]
+    })
+
+
+@app.route("/claim", methods=["POST"])
+def claim():
+    prepare_visit()
+
+    if session.get("claimed", False):
+        return jsonify({
+            "success": False,
+            "message": "لقد استلمت هديتك الرمزية من قبل."
+        }), 409
+
+    session["claimed"] = True
+    session.modified = True
+
+    return jsonify({
+        "success": True,
+        "message": "تم استلام هديتك الرمزية بنجاح! 🎉"
+    })
+
+
+@app.route("/health")
+def health():
+    return "OK", 200
+
 
 if __name__ == "__main__":
-    # For local testing only. For deployment, use a production WSGI server.
-    app.run(host="127.0.0.1", port=5000, debug=False)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", "5000"))
+    )
