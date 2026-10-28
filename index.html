@@ -1,262 +1,260 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>بوت رسائل فيسبوك | براهيمي يوسف</title>
 
-    <meta name="theme-color" content="#111827">
-    <meta property="og:title" content="اختر هديتك 🎁">
-    <meta property="og:description"
-          content="اكتشف دعاءً جميلًا وهدية رمزية خاصة بك.">
-    <meta property="og:type" content="website">
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    <title>اختر هديتك | دعاء وهدية</title>
+body {
+    margin: 0;
+    font-family: Tahoma, Arial, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+    line-height: 1.8;
+}
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+header {
+    background: linear-gradient(135deg, #10233f, #1769aa);
+    color: white;
+    padding: 30px 16px;
+    border-bottom: 4px solid #e5b85c;
+}
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            padding: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: Tahoma, Arial, sans-serif;
-            color: white;
-            background:
-                radial-gradient(circle at top, #45558e, transparent 50%),
-                linear-gradient(145deg, #10172f, #25163e, #090d1a);
-        }
+.container {
+    width: min(950px, 94%);
+    margin: auto;
+}
 
-        .card {
-            position: relative;
-            width: 100%;
-            max-width: 540px;
-            padding: 32px 24px;
-            text-align: center;
-            border: 1px solid #ffffff30;
-            border-radius: 28px;
-            background: #ffffff12;
-            box-shadow: 0 20px 70px #0006;
-            backdrop-filter: blur(14px);
-        }
+h1 {
+    margin: 0;
+    font-size: 27px;
+}
 
-        .brand {
-            color: #f7d98b;
-            font-size: 14px;
-        }
+header p {
+    margin-bottom: 0;
+    color: #dbeafe;
+}
 
-        h1 {
-            margin: 14px 0;
-            font-size: clamp(28px, 7vw, 42px);
-        }
+main {
+    padding: 22px 0;
+}
 
-        .description {
-            color: #d9def5;
-            line-height: 1.9;
-        }
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 18px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 5px 18px #0f172a0b;
+}
 
-        .gift-icon {
-            margin: 20px 0;
-            font-size: 78px;
-            animation: float 2s ease-in-out infinite;
-        }
+h2 {
+    color: #10233f;
+    font-size: 20px;
+    margin-top: 0;
+}
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(-4deg);
-            }
-            50% {
-                transform: translateY(-12px) rotate(4deg);
-            }
-        }
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 16px;
+    margin-top: 8px;
+}
 
-        .panel {
-            padding: 22px 16px;
-            border: 1px solid #ffffff20;
-            border-radius: 20px;
-            background: #080d204d;
-        }
+button {
+    background: #1769aa;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 18px;
+    margin-top: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+}
 
-        .label {
-            margin-bottom: 12px;
-            color: #f7d98b;
-            font-size: 14px;
-        }
+button:hover {
+    background: #12548a;
+}
 
-        #dua {
-            font-size: 20px;
-            line-height: 2;
-        }
+.result {
+    background: #f8fafc;
+    border: 1px dashed #94a3b8;
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 12px;
+    overflow-wrap: anywhere;
+}
 
-        #gift {
-            margin-top: 14px;
-            color: #ffe5a2;
-            font-size: 23px;
-            font-weight: bold;
-        }
+.muted {
+    color: #64748b;
+    font-size: 14px;
+}
 
-        button {
-            width: 100%;
-            margin-top: 14px;
-            padding: 15px;
-            border: 0;
-            border-radius: 14px;
-            font-family: inherit;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #64748b;
+}
 
-        .primary {
-            color: #241a08;
-            background: linear-gradient(100deg, #ffe6a1, #d7a640);
-        }
+code {
+    direction: ltr;
+    display: inline-block;
+    overflow-wrap: anywhere;
+    background: #eaf0f7;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
 
-        .secondary {
-            color: white;
-            background: #ffffff12;
-            border: 1px solid #ffffff30;
-        }
+@media (max-width: 600px) {
+    h1 {
+        font-size: 22px;
+    }
 
-        button:disabled {
-            opacity: .6;
-            cursor: not-allowed;
-        }
-
-        #message {
-            min-height: 28px;
-            margin-top: 12px;
-            color: #ffe7ad;
-            line-height: 1.8;
-        }
-
-        .footer {
-            margin-top: 20px;
-            color: #c2c9e2;
-            font-size: 12px;
-            line-height: 1.9;
-        }
-    </style>
+    .card {
+        padding: 15px;
+    }
+}
+</style>
 </head>
 
 <body>
-    <main class="card">
-        <div class="brand">✦ لحظة جميلة لك ✦</div>
 
-        <h1>اختر هديتك</h1>
+<header>
+    <div class="container">
+        <h1>💬 بوت رسائل فيسبوك</h1>
+        <p>برمجة وتطوير براهيمي يوسف</p>
+    </div>
+</header>
 
-        <p class="description">
-            افتح نافذتك للأمل واكتشف دعاءً جميلًا
-            وهدية رمزية اختيرت لك.
+<main class="container">
+
+    <section class="card">
+        <h2>حالة البوت</h2>
+        <div id="status" class="result">
+            جارٍ الاتصال بالخادم...
+        </div>
+        <button onclick="loadStatus()">تحديث الحالة</button>
+    </section>
+
+    <section class="card">
+        <h2>تجربة الرد التلقائي</h2>
+        <p class="muted">
+            اكتب رسالة لمعرفة الرد الذي سيختاره البوت.
+            هذه تجربة محلية ولا ترسل رسالة إلى فيسبوك.
         </p>
 
-        <div class="gift-icon">🎁</div>
+        <input
+            id="message"
+            type="text"
+            placeholder="مثال: السلام عليكم"
+        >
 
-        <section class="panel">
-            <div class="label">الدعاء الخاص بك</div>
-            <div id="dua">جارٍ تجهيز دعائك...</div>
-            <div id="gift"></div>
-        </section>
+        <button onclick="testReply()">تجربة الرد</button>
 
-        <button id="claimBtn" class="primary">
-            استلام الهدية الرمزية
-        </button>
-
-        <button id="shareBtn" class="secondary">
-            مشاركة الرابط
-        </button>
-
-        <div id="message" role="status"></div>
-
-        <div class="footer">
-            برمجة وتطوير براهيمي يوسف
-            <br>
-            الهدايا المعروضة رمزية ومعنوية وليست جوائز مادية.
+        <div id="reply" class="result">
+            سيظهر الرد هنا.
         </div>
-    </main>
+    </section>
 
-    <script>
-        const duaElement = document.getElementById("dua");
-        const giftElement = document.getElementById("gift");
-        const claimButton = document.getElementById("claimBtn");
-        const messageElement = document.getElementById("message");
+    <section class="card">
+        <h2>الرد الافتراضي</h2>
 
-        async function loadGift() {
-            try {
-                const response = await fetch("/data", {
-                    cache: "no-store"
-                });
+        <div class="result">
+            أنا مجرد بوت برمجني براهيمي يوسف،
+            اترك رسالتك وسوف يرد عليك عن قريب.
+        </div>
+    </section>
 
-                if (!response.ok) {
-                    throw new Error("تعذر تحميل البيانات");
-                }
+    <section class="card">
+        <h2>طريقة التشغيل على Render</h2>
 
-                const data = await response.json();
+        <ol>
+            <li>ارفع الملفات إلى مستودع GitHub.</li>
+            <li>أنشئ خدمة Web Service على Render واربطها بالمستودع.</li>
+            <li>اجعل أمر البناء:
+                <code>pip install -r requirements.txt</code>
+            </li>
+            <li>اجعل أمر التشغيل:
+                <code>gunicorn app:app</code>
+            </li>
+            <li>أضف متغيرات البيئة المطلوبة أدناه.</li>
+            <li>في إعدادات Meta استخدم رابط الخدمة متبوعًا بـ
+                <code>/webhook</code>.
+            </li>
+        </ol>
+    </section>
 
-                duaElement.textContent = data.dua;
-                giftElement.textContent = data.gift;
+    <section class="card">
+        <h2>متغيرات البيئة المطلوبة</h2>
 
-                if (data.claimed) {
-                    claimButton.disabled = true;
-                    claimButton.textContent = "تم الاستلام من قبل";
-                    messageElement.textContent =
-                        "لقد استلمت هديتك الرمزية من قبل.";
-                }
-            } catch (error) {
-                duaElement.textContent =
-                    "تعذر تحميل الدعاء. حاول تحديث الصفحة.";
-            }
-        }
+        <p><code>VERIFY_TOKEN</code>: كلمة تحقق تختارها أنت.</p>
+        <p><code>PAGE_ACCESS_TOKEN</code>: رمز وصول صفحة فيسبوك.</p>
+        <p><code>APP_SECRET</code>: سر تطبيق Meta.</p>
 
-        claimButton.addEventListener("click", async () => {
-            claimButton.disabled = true;
+        <p class="muted">
+            لا تضع هذه الرموز في هذا الملف أو في مستودع GitHub.
+            أضفها من إعدادات Environment في Render.
+        </p>
+    </section>
 
-            try {
-                const response = await fetch("/claim", {
-                    method: "POST"
-                });
+</main>
 
-                const result = await response.json();
+<footer>
+    برمجة وتطوير براهيمي يوسف
+</footer>
 
-                messageElement.textContent = result.message;
+<script>
+async function loadStatus() {
+    const box = document.getElementById("status");
+    box.textContent = "جارٍ التحديث...";
 
-                if (result.success || response.status === 409) {
-                    claimButton.textContent = "تم الاستلام من قبل";
-                } else {
-                    claimButton.disabled = false;
-                }
-            } catch (error) {
-                messageElement.textContent =
-                    "تعذر الاتصال. حاول مرة أخرى.";
-                claimButton.disabled = false;
-            }
+    try {
+        const response = await fetch("/api/status");
+        const data = await response.json();
+
+        box.innerHTML =
+            "رمز الصفحة: " +
+            (data.page_token_configured ? "مضبوط" : "غير مضبوط") +
+            "<br>سر التطبيق: " +
+            (data.app_secret_configured ? "مضبوط" : "غير مضبوط");
+    } catch (error) {
+        box.textContent = "تعذر الاتصال بالخادم.";
+    }
+}
+
+async function testReply() {
+    const message = document.getElementById("message").value;
+    const box = document.getElementById("reply");
+
+    box.textContent = "جارٍ تجهيز الرد...";
+
+    try {
+        const response = await fetch("/api/test-reply", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({text: message})
         });
 
-        document.getElementById("shareBtn")
-            .addEventListener("click", async () => {
-                try {
-                    if (navigator.share) {
-                        await navigator.share({
-                            title: "اختر هديتك",
-                            text: "اكتشف دعاءً وهدية رمزية جميلة.",
-                            url: location.href
-                        });
-                    } else {
-                        await navigator.clipboard.writeText(location.href);
-                        messageElement.textContent = "تم نسخ الرابط.";
-                    }
-                } catch (error) {
-                    messageElement.textContent =
-                        "يمكنك نسخ الرابط من شريط العنوان.";
-                }
-            });
+        const data = await response.json();
+        box.textContent = data.reply;
+    } catch (error) {
+        box.textContent = "تعذر الاتصال بالخادم.";
+    }
+}
 
-        loadGift();
-    </script>
+loadStatus();
+</script>
+
 </body>
 </html>
