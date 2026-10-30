@@ -1,260 +1,159 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>بوت رسائل فيسبوك | براهيمي يوسف</title>
-
+<title>BRAHIMI AI</title>
 <style>
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: Tahoma, Arial, sans-serif;
-    background: #f1f5f9;
-    color: #1e293b;
-    line-height: 1.8;
-}
-
-header {
-    background: linear-gradient(135deg, #10233f, #1769aa);
-    color: white;
-    padding: 30px 16px;
-    border-bottom: 4px solid #e5b85c;
-}
-
-.container {
-    width: min(950px, 94%);
-    margin: auto;
-}
-
-h1 {
-    margin: 0;
-    font-size: 27px;
-}
-
-header p {
-    margin-bottom: 0;
-    color: #dbeafe;
-}
-
-main {
-    padding: 22px 0;
-}
-
-.card {
-    background: white;
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 18px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 5px 18px #0f172a0b;
-}
-
-h2 {
-    color: #10233f;
-    font-size: 20px;
-    margin-top: 0;
-}
-
-input {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid #cbd5e1;
-    border-radius: 10px;
-    font-family: inherit;
-    font-size: 16px;
-    margin-top: 8px;
-}
-
-button {
-    background: #1769aa;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 12px 18px;
-    margin-top: 12px;
-    font-family: inherit;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #12548a;
-}
-
-.result {
-    background: #f8fafc;
-    border: 1px dashed #94a3b8;
-    border-radius: 10px;
-    padding: 14px;
-    margin-top: 12px;
-    overflow-wrap: anywhere;
-}
-
-.muted {
-    color: #64748b;
-    font-size: 14px;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    color: #64748b;
-}
-
-code {
-    direction: ltr;
-    display: inline-block;
-    overflow-wrap: anywhere;
-    background: #eaf0f7;
-    padding: 2px 5px;
-    border-radius: 4px;
-}
-
-@media (max-width: 600px) {
-    h1 {
-        font-size: 22px;
-    }
-
-    .card {
-        padding: 15px;
-    }
-}
+*{box-sizing:border-box}
+body{margin:0;background:#0b1020;color:white;font-family:Tahoma,Arial}
+header{display:flex;align-items:center;gap:20px;justify-content:space-between;padding:15px 5%;background:#111a30;direction:ltr;flex-wrap:wrap}
+.brand{font-size:21px;font-weight:bold;color:#56d7ff}
+.dev{font-size:12px;color:#c4d3ed;margin-top:5px}
+.marquee{flex:1;min-width:180px;overflow:hidden;background:#1a2943;border-radius:30px;padding:10px}
+.marquee span{display:inline-block;white-space:nowrap;color:#65dfff;animation:move 13s linear infinite}
+@keyframes move{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
+main{max-width:750px;margin:45px auto;padding:15px}
+h1{text-align:center}
+.subtitle{text-align:center;color:#9fb1ce;margin-bottom:30px}
+.panel{background:#131e35;padding:22px;border:1px solid #2c4164;border-radius:18px}
+.tabs{display:flex;gap:10px;margin-bottom:20px}
+button{cursor:pointer}
+.tabs button{flex:1;padding:13px;border:0;border-radius:10px;background:#263653;color:white}
+.tabs button.active{background:#087fae}
+textarea{width:100%;height:140px;padding:15px;background:#0c1427;color:white;border:1px solid #344a6b;border-radius:12px;font-size:15px;resize:vertical}
+.generate{width:100%;padding:15px;margin-top:17px;background:linear-gradient(90deg,#087fae,#5148d9);color:white;border:0;border-radius:12px;font-size:17px;font-weight:bold}
+.generate:disabled{opacity:.5}
+#status{text-align:center;margin:20px 0;color:#8ddfff}
+#result{display:none;margin-top:20px;padding:15px;background:#0b1427;border-radius:12px;overflow-wrap:anywhere}
+#result video,#result img{width:100%;border-radius:10px;margin-top:10px}
+#result a{color:#65dfff}
+footer{text-align:center;color:#8293ae;padding:30px;font-size:12px}
 </style>
 </head>
-
 <body>
 
 <header>
-    <div class="container">
-        <h1>💬 بوت رسائل فيسبوك</h1>
-        <p>برمجة وتطوير براهيمي يوسف</p>
-    </div>
+ <div>
+  <div class="brand">BRAHIMI AI</div>
+  <div class="dev">Developer: BRAHIMI YOUSEF</div>
+ </div>
+ <div class="marquee">
+  <span>تطبيق بسيط لتوليد فيديوهات وصور بالذكاء الاصطناعي • BRAHIMI AI •</span>
+ </div>
 </header>
 
-<main class="container">
+<main>
+ <h1>اصنع فكرتك بالذكاء الاصطناعي</h1>
+ <div class="subtitle">حوّل وصفك إلى فيديو أو صورة</div>
 
-    <section class="card">
-        <h2>حالة البوت</h2>
-        <div id="status" class="result">
-            جارٍ الاتصال بالخادم...
-        </div>
-        <button onclick="loadStatus()">تحديث الحالة</button>
-    </section>
+ <section class="panel">
+  <div class="tabs">
+   <button id="videoTab" class="active" onclick="setMode('video')">🎬 إنشاء فيديو</button>
+   <button id="imageTab" onclick="setMode('image')">🎨 إنشاء صورة</button>
+  </div>
 
-    <section class="card">
-        <h2>تجربة الرد التلقائي</h2>
-        <p class="muted">
-            اكتب رسالة لمعرفة الرد الذي سيختاره البوت.
-            هذه تجربة محلية ولا ترسل رسالة إلى فيسبوك.
-        </p>
+  <label id="label">اكتب وصف الفيديو</label>
+  <textarea id="prompt" placeholder="مثلاً: منظر طبيعي جميل وشلال وقت الغروب..."></textarea>
 
-        <input
-            id="message"
-            type="text"
-            placeholder="مثال: السلام عليكم"
-        >
+  <button class="generate" id="generateBtn" onclick="generate()">✨ ابدأ الإنشاء</button>
 
-        <button onclick="testReply()">تجربة الرد</button>
-
-        <div id="reply" class="result">
-            سيظهر الرد هنا.
-        </div>
-    </section>
-
-    <section class="card">
-        <h2>الرد الافتراضي</h2>
-
-        <div class="result">
-            أنا مجرد بوت برمجني براهيمي يوسف،
-            اترك رسالتك وسوف يرد عليك عن قريب.
-        </div>
-    </section>
-
-    <section class="card">
-        <h2>طريقة التشغيل على Render</h2>
-
-        <ol>
-            <li>ارفع الملفات إلى مستودع GitHub.</li>
-            <li>أنشئ خدمة Web Service على Render واربطها بالمستودع.</li>
-            <li>اجعل أمر البناء:
-                <code>pip install -r requirements.txt</code>
-            </li>
-            <li>اجعل أمر التشغيل:
-                <code>gunicorn app:app</code>
-            </li>
-            <li>أضف متغيرات البيئة المطلوبة أدناه.</li>
-            <li>في إعدادات Meta استخدم رابط الخدمة متبوعًا بـ
-                <code>/webhook</code>.
-            </li>
-        </ol>
-    </section>
-
-    <section class="card">
-        <h2>متغيرات البيئة المطلوبة</h2>
-
-        <p><code>VERIFY_TOKEN</code>: كلمة تحقق تختارها أنت.</p>
-        <p><code>PAGE_ACCESS_TOKEN</code>: رمز وصول صفحة فيسبوك.</p>
-        <p><code>APP_SECRET</code>: سر تطبيق Meta.</p>
-
-        <p class="muted">
-            لا تضع هذه الرموز في هذا الملف أو في مستودع GitHub.
-            أضفها من إعدادات Environment في Render.
-        </p>
-    </section>
-
+  <div id="status"></div>
+  <div id="result"></div>
+ </section>
 </main>
 
-<footer>
-    برمجة وتطوير براهيمي يوسف
-</footer>
+<footer>برمجة وتطوير BRAHIMI YOUSEF © 2026</footer>
 
 <script>
-async function loadStatus() {
-    const box = document.getElementById("status");
-    box.textContent = "جارٍ التحديث...";
+let mode = "video";
 
-    try {
-        const response = await fetch("/api/status");
-        const data = await response.json();
-
-        box.innerHTML =
-            "رمز الصفحة: " +
-            (data.page_token_configured ? "مضبوط" : "غير مضبوط") +
-            "<br>سر التطبيق: " +
-            (data.app_secret_configured ? "مضبوط" : "غير مضبوط");
-    } catch (error) {
-        box.textContent = "تعذر الاتصال بالخادم.";
-    }
+function setMode(value){
+ mode=value;
+ document.getElementById("videoTab").classList.toggle("active",mode==="video");
+ document.getElementById("imageTab").classList.toggle("active",mode==="image");
+ document.getElementById("label").textContent =
+ mode==="video" ? "اكتب وصف الفيديو" : "اكتب وصف الصورة";
+ document.getElementById("prompt").placeholder =
+ mode==="video" ? "صف الفيديو الذي تريد إنشاءه..." : "صف الصورة التي تريد إنشاءها...";
+ document.getElementById("result").style.display="none";
+ document.getElementById("status").textContent="";
 }
 
-async function testReply() {
-    const message = document.getElementById("message").value;
-    const box = document.getElementById("reply");
+async function generate(){
+ const prompt=document.getElementById("prompt").value.trim();
+ const btn=document.getElementById("generateBtn");
+ const status=document.getElementById("status");
+ const result=document.getElementById("result");
 
-    box.textContent = "جارٍ تجهيز الرد...";
+ if(!prompt){status.textContent="اكتب وصفاً أولاً";return;}
 
-    try {
-        const response = await fetch("/api/test-reply", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({text: message})
-        });
+ btn.disabled=true;
+ status.textContent="جارٍ إرسال طلب الإنشاء...";
+ result.style.display="none";
 
-        const data = await response.json();
-        box.textContent = data.reply;
-    } catch (error) {
-        box.textContent = "تعذر الاتصال بالخادم.";
-    }
+ try{
+  const response=await fetch("/api/"+mode,{
+   method:"POST",
+   headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({prompt})
+  });
+
+  const data=await response.json();
+
+  if(!response.ok || data.error){
+   throw new Error(typeof data.error==="string"?data.error:JSON.stringify(data.error));
+  }
+
+  result.style.display="block";
+  result.innerHTML="<b>استجابة الخدمة:</b><pre style='white-space:pre-wrap;direction:ltr'></pre>";
+  result.querySelector("pre").textContent=JSON.stringify(data,null,2);
+
+  const url=findUrl(data);
+  if(url){
+   const media=document.createElement(mode==="video"?"video":"img");
+   media.src=url;
+   if(mode==="video"){
+    media.controls=true;
+    media.playsInline=true;
+   }
+   result.appendChild(media);
+
+   const link=document.createElement("a");
+   link.href=url;
+   link.target="_blank";
+   link.rel="noopener";
+   link.textContent="فتح النتيجة";
+   result.appendChild(link);
+  }
+
+  status.textContent="وصل رد من الخدمة. تحقق من النتيجة أدناه.";
+ }catch(error){
+  status.textContent="تعذر الإنشاء: "+error.message;
+ }finally{
+  btn.disabled=false;
+ }
 }
 
-loadStatus();
+function findUrl(obj){
+ if(!obj || typeof obj!=="object")return null;
+ for(const key of ["video_url","image_url","url","output_url"]){
+  if(typeof obj[key]==="string" && /^https?:\/\//i.test(obj[key]))return obj[key];
+ }
+ for(const value of Object.values(obj)){
+  if(Array.isArray(value)){
+   for(const item of value){
+    const found=findUrl(item);
+    if(found)return found;
+   }
+  }else if(value && typeof value==="object"){
+   const found=findUrl(value);
+   if(found)return found;
+  }
+ }
+ return null;
+}
 </script>
-
 </body>
 </html>
