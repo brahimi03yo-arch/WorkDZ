@@ -5,33 +5,141 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BRAHIMI AI</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#0b1020;color:white;font-family:Tahoma,Arial}
-header{display:flex;align-items:center;gap:20px;justify-content:space-between;padding:15px 5%;background:#111a30;direction:ltr;flex-wrap:wrap}
-.brand{font-size:21px;font-weight:bold;color:#56d7ff}
-.dev{font-size:12px;color:#c4d3ed;margin-top:5px}
-.marquee{flex:1;min-width:180px;overflow:hidden;background:#1a2943;border-radius:30px;padding:10px}
-.marquee span{display:inline-block;white-space:nowrap;color:#65dfff;animation:move 13s linear infinite}
-@keyframes move{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
-main{max-width:750px;margin:45px auto;padding:15px}
-h1{text-align:center}
-.subtitle{text-align:center;color:#9fb1ce;margin-bottom:30px}
-.panel{background:#131e35;padding:22px;border:1px solid #2c4164;border-radius:18px}
-.tabs{display:flex;gap:10px;margin-bottom:20px}
-button{cursor:pointer}
-.tabs button{flex:1;padding:13px;border:0;border-radius:10px;background:#263653;color:white}
+body{
+ margin:0;
+ background:#0b1020;
+ color:white;
+ font-family:Tahoma,Arial,sans-serif;
+ min-height:100vh;
+}
+header{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:18px;
+ padding:15px 5%;
+ background:#111a30;
+ border-bottom:1px solid #263b5c;
+ direction:ltr;
+ flex-wrap:wrap;
+}
+.brand{font-size:22px;font-weight:bold;color:#55d9ff}
+.dev{font-size:12px;color:#c1d0e8;margin-top:5px}
+.marquee{
+ flex:1;
+ min-width:180px;
+ overflow:hidden;
+ background:#192943;
+ border-radius:30px;
+ padding:11px;
+}
+.marquee span{
+ display:inline-block;
+ white-space:nowrap;
+ color:#65dfff;
+ animation:move 13s linear infinite;
+}
+@keyframes move{
+ from{transform:translateX(100%)}
+ to{transform:translateX(-100%)}
+}
+main{max-width:760px;margin:40px auto;padding:15px}
+h1{text-align:center;font-size:29px}
+.subtitle{text-align:center;color:#9eafca;margin-bottom:28px}
+.panel{
+ background:#131e35;
+ padding:23px;
+ border:1px solid #2c4164;
+ border-radius:18px;
+}
+.tabs{display:flex;gap:10px;margin-bottom:22px}
+button{cursor:pointer;font-family:inherit}
+.tabs button{
+ flex:1;
+ padding:14px;
+ border:0;
+ border-radius:10px;
+ background:#263653;
+ color:white;
+ font-weight:bold;
+}
 .tabs button.active{background:#087fae}
-textarea{width:100%;height:140px;padding:15px;background:#0c1427;color:white;border:1px solid #344a6b;border-radius:12px;font-size:15px;resize:vertical}
-.generate{width:100%;padding:15px;margin-top:17px;background:linear-gradient(90deg,#087fae,#5148d9);color:white;border:0;border-radius:12px;font-size:17px;font-weight:bold}
-.generate:disabled{opacity:.5}
-#status{text-align:center;margin:20px 0;color:#8ddfff}
-#result{display:none;margin-top:20px;padding:15px;background:#0b1427;border-radius:12px;overflow-wrap:anywhere}
-#result video,#result img{width:100%;border-radius:10px;margin-top:10px}
-#result a{color:#65dfff}
-footer{text-align:center;color:#8293ae;padding:30px;font-size:12px}
+label{display:block;margin-bottom:10px}
+textarea{
+ width:100%;
+ height:140px;
+ padding:15px;
+ background:#0c1427;
+ color:white;
+ border:1px solid #344a6b;
+ border-radius:12px;
+ font-size:15px;
+ resize:vertical;
+}
+textarea:focus{outline:1px solid #36c9ff}
+.generate{
+ width:100%;
+ padding:15px;
+ margin-top:17px;
+ background:linear-gradient(90deg,#087fae,#5148d9);
+ color:white;
+ border:0;
+ border-radius:12px;
+ font-size:17px;
+ font-weight:bold;
+}
+.generate:disabled{opacity:.5;cursor:wait}
+.test{
+ width:100%;
+ margin-top:12px;
+ padding:11px;
+ background:#243653;
+ color:#a8eaff;
+ border:1px solid #3a567c;
+ border-radius:10px;
+}
+#status{
+ text-align:center;
+ margin:18px 0;
+ color:#8ddfff;
+ overflow-wrap:anywhere;
+}
+#result{
+ display:none;
+ margin-top:20px;
+ padding:15px;
+ background:#0b1427;
+ border-radius:12px;
+}
+#result video,#result img{
+ width:100%;
+ border-radius:10px;
+ margin-top:12px;
+}
+#result a{
+ display:inline-block;
+ color:#65dfff;
+ margin:12px 0;
+}
+#error{
+ color:#ff9999;
+ white-space:pre-wrap;
+ overflow-wrap:anywhere;
+ direction:ltr;
+ text-align:left;
+}
+footer{
+ text-align:center;
+ color:#8293ae;
+ padding:30px;
+ font-size:12px;
+}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -39,6 +147,7 @@ footer{text-align:center;color:#8293ae;padding:30px;font-size:12px}
   <div class="brand">BRAHIMI AI</div>
   <div class="dev">Developer: BRAHIMI YOUSEF</div>
  </div>
+
  <div class="marquee">
   <span>تطبيق بسيط لتوليد فيديوهات وصور بالذكاء الاصطناعي • BRAHIMI AI •</span>
  </div>
@@ -49,111 +158,202 @@ footer{text-align:center;color:#8293ae;padding:30px;font-size:12px}
  <div class="subtitle">حوّل وصفك إلى فيديو أو صورة</div>
 
  <section class="panel">
+
   <div class="tabs">
-   <button id="videoTab" class="active" onclick="setMode('video')">🎬 إنشاء فيديو</button>
-   <button id="imageTab" onclick="setMode('image')">🎨 إنشاء صورة</button>
+   <button id="videoTab" class="active" onclick="setMode('video')">
+    🎬 إنشاء فيديو
+   </button>
+   <button id="imageTab" onclick="setMode('image')">
+    🎨 إنشاء صورة
+   </button>
   </div>
 
-  <label id="label">اكتب وصف الفيديو</label>
-  <textarea id="prompt" placeholder="مثلاً: منظر طبيعي جميل وشلال وقت الغروب..."></textarea>
+  <label id="promptLabel">اكتب وصف الفيديو</label>
 
-  <button class="generate" id="generateBtn" onclick="generate()">✨ ابدأ الإنشاء</button>
+  <textarea id="prompt"
+   placeholder="مثلاً: منظر طبيعي جميل وشلال ومياه صافية وقت الغروب..."></textarea>
+
+  <button class="generate" id="generateBtn" onclick="generate()">
+   ✨ ابدأ الإنشاء
+  </button>
+
+  <button class="test" id="testBtn" onclick="testConnection()">
+   اختبار اتصال API
+  </button>
 
   <div id="status"></div>
   <div id="result"></div>
+
  </section>
 </main>
 
-<footer>برمجة وتطوير BRAHIMI YOUSEF © 2026</footer>
+<footer>
+ برمجة وتطوير BRAHIMI YOUSEF © 2026
+</footer>
 
 <script>
 let mode = "video";
 
 function setMode(value){
- mode=value;
- document.getElementById("videoTab").classList.toggle("active",mode==="video");
- document.getElementById("imageTab").classList.toggle("active",mode==="image");
- document.getElementById("label").textContent =
- mode==="video" ? "اكتب وصف الفيديو" : "اكتب وصف الصورة";
+ mode = value;
+
+ document.getElementById("videoTab")
+  .classList.toggle("active", mode === "video");
+
+ document.getElementById("imageTab")
+  .classList.toggle("active", mode === "image");
+
+ document.getElementById("promptLabel").textContent =
+  mode === "video" ? "اكتب وصف الفيديو" : "اكتب وصف الصورة";
+
  document.getElementById("prompt").placeholder =
- mode==="video" ? "صف الفيديو الذي تريد إنشاءه..." : "صف الصورة التي تريد إنشاءها...";
- document.getElementById("result").style.display="none";
- document.getElementById("status").textContent="";
+  mode === "video"
+  ? "صف الفيديو الذي تريد إنشاءه..."
+  : "صف الصورة التي تريد إنشاءها...";
+
+ document.getElementById("result").style.display = "none";
+ document.getElementById("status").textContent = "";
+}
+
+async function testConnection(){
+ const status = document.getElementById("status");
+ const btn = document.getElementById("testBtn");
+
+ btn.disabled = true;
+ status.textContent = "جارٍ اختبار الاتصال...";
+
+ try{
+  const response = await fetch("/api/test");
+  const data = await response.json();
+
+  if(!response.ok || !data.ok){
+   throw new Error(data.message || "فشل الاتصال");
+  }
+
+  status.textContent = "✅ " + data.message;
+
+ }catch(error){
+  status.textContent = "❌ " + error.message;
+ }finally{
+  btn.disabled = false;
+ }
+}
+
+function findMediaUrl(obj, keys){
+ if(!obj || typeof obj !== "object") return null;
+
+ for(const key of keys){
+  if(typeof obj[key] === "string" &&
+     /^https?:\/\//i.test(obj[key])){
+   return obj[key];
+  }
+ }
+
+ for(const value of Object.values(obj)){
+  if(value && typeof value === "object"){
+   const found = findMediaUrl(value, keys);
+   if(found) return found;
+  }
+ }
+
+ return null;
 }
 
 async function generate(){
- const prompt=document.getElementById("prompt").value.trim();
- const btn=document.getElementById("generateBtn");
- const status=document.getElementById("status");
- const result=document.getElementById("result");
+ const prompt = document.getElementById("prompt").value.trim();
+ const btn = document.getElementById("generateBtn");
+ const status = document.getElementById("status");
+ const result = document.getElementById("result");
 
- if(!prompt){status.textContent="اكتب وصفاً أولاً";return;}
+ if(!prompt){
+  status.textContent = "اكتب وصفاً أولاً";
+  return;
+ }
 
- btn.disabled=true;
- status.textContent="جارٍ إرسال طلب الإنشاء...";
- result.style.display="none";
+ btn.disabled = true;
+ result.style.display = "none";
+ result.innerHTML = "";
+ status.textContent = "⏳ جارٍ إرسال طلبك إلى الذكاء الاصطناعي...";
 
  try{
-  const response=await fetch("/api/"+mode,{
+  const response = await fetch("/api/" + mode,{
    method:"POST",
    headers:{"Content-Type":"application/json"},
    body:JSON.stringify({prompt})
   });
 
-  const data=await response.json();
+  const data = await response.json();
 
   if(!response.ok || data.error){
-   throw new Error(typeof data.error==="string"?data.error:JSON.stringify(data.error));
+   throw new Error(
+    typeof data.error === "string"
+     ? data.error
+     : JSON.stringify(data.error || data)
+   );
   }
 
-  result.style.display="block";
-  result.innerHTML="<b>استجابة الخدمة:</b><pre style='white-space:pre-wrap;direction:ltr'></pre>";
-  result.querySelector("pre").textContent=JSON.stringify(data,null,2);
+  const keys = mode === "video"
+   ? ["video_url","url","output_url"]
+   : ["image_url","url","output_url"];
 
-  const url=findUrl(data);
-  if(url){
-   const media=document.createElement(mode==="video"?"video":"img");
-   media.src=url;
-   if(mode==="video"){
-    media.controls=true;
-    media.playsInline=true;
+  const mediaUrl = findMediaUrl(data,keys);
+
+  result.style.display = "block";
+
+  if(mediaUrl){
+   const media = document.createElement(
+    mode === "video" ? "video" : "img"
+   );
+
+   media.src = mediaUrl;
+
+   if(mode === "video"){
+    media.controls = true;
+    media.playsInline = true;
    }
+
    result.appendChild(media);
 
-   const link=document.createElement("a");
-   link.href=url;
-   link.target="_blank";
-   link.rel="noopener";
-   link.textContent="فتح النتيجة";
+   const link = document.createElement("a");
+   link.href = mediaUrl;
+   link.target = "_blank";
+   link.rel = "noopener";
+   link.download = mode === "video" ? "brahimi-video.mp4" : "brahimi-image.png";
+   link.textContent = "⬇ فتح / تنزيل النتيجة";
+
    result.appendChild(link);
+
+   status.textContent = "✅ تم استلام النتيجة";
+  }else{
+   status.textContent = "وصل رد الخدمة، لكن لم يظهر رابط الملف. راجع تفاصيل الاستجابة.";
   }
 
-  status.textContent="وصل رد من الخدمة. تحقق من النتيجة أدناه.";
+  const details = document.createElement("details");
+  const summary = document.createElement("summary");
+  summary.textContent = "تفاصيل استجابة الخدمة";
+  const pre = document.createElement("pre");
+  pre.style.whiteSpace = "pre-wrap";
+  pre.style.direction = "ltr";
+  pre.textContent = JSON.stringify(data,null,2);
+
+  details.appendChild(summary);
+  details.appendChild(pre);
+  result.appendChild(details);
+
  }catch(error){
-  status.textContent="تعذر الإنشاء: "+error.message;
- }finally{
-  btn.disabled=false;
- }
-}
+  status.textContent = "❌ تعذر الإنشاء";
+  result.style.display = "block";
 
-function findUrl(obj){
- if(!obj || typeof obj!=="object")return null;
- for(const key of ["video_url","image_url","url","output_url"]){
-  if(typeof obj[key]==="string" && /^https?:\/\//i.test(obj[key]))return obj[key];
+  const errorText = document.createElement("pre");
+  errorText.id = "error";
+  errorText.textContent = error.message;
+  result.appendChild(errorText);
+
+ }finally{
+  btn.disabled = false;
  }
- for(const value of Object.values(obj)){
-  if(Array.isArray(value)){
-   for(const item of value){
-    const found=findUrl(item);
-    if(found)return found;
-   }
-  }else if(value && typeof value==="object"){
-   const found=findUrl(value);
-   if(found)return found;
-  }
- }
- return null;
 }
 </script>
+
 </body>
 </html>
