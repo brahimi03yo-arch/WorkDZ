@@ -7,7 +7,7 @@
 <title>اعرف مترشحك | براهيمي يوسف</title>
 <meta name="description" content="تعرف على المسار المهني والتكوين والشهادات لبراهيمي يوسف.">
 
-<!-- صورة الغلاف الخارجية عند نشر الرابط -->
+<!-- صورة المعاينة الخارجية عند مشاركة الرابط -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_DZ">
 <meta property="og:site_name" content="اعرف مترشحك">
@@ -17,6 +17,9 @@
 <meta property="og:image" content="https://i.postimg.cc/4dxrK7Sd/file-00000000cea482109c433786e9f56cc8.png">
 <meta property="og:image:secure_url" content="https://i.postimg.cc/4dxrK7Sd/file-00000000cea482109c433786e9f56cc8.png">
 <meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1648">
+<meta property="og:image:height" content="928">
+
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="براهيمي يوسف | اعرف مترشحك">
 <meta name="twitter:description" content="معًا للتغيير والنهوض بالوطن">
@@ -25,6 +28,7 @@
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+
 body{
  margin:0;
  font-family:Tahoma,Arial,sans-serif;
@@ -32,27 +36,32 @@ body{
  background:#071d16;
  overflow-x:hidden;
 }
+
 #stars{
  position:fixed;
  inset:0;
  width:100%;
  height:100%;
  z-index:-1;
+ pointer-events:none;
 }
+
 header{
  position:sticky;
  top:0;
  z-index:10;
- background:rgba(5,29,21,.94);
+ background:rgba(5,29,21,.96);
  border-bottom:1px solid #b99a4a;
  padding:14px;
  backdrop-filter:blur(12px);
  text-align:center;
 }
+
 header h2{
  margin:0;
  color:#e8c76e;
 }
+
 nav{
  display:flex;
  justify-content:center;
@@ -60,12 +69,15 @@ nav{
  gap:20px;
  margin-top:12px;
 }
+
 nav a{
  color:#fff4d7;
  text-decoration:none;
  font-size:14px;
 }
+
 nav a:hover{color:#e8c76e}
+
 .ticker{
  overflow:hidden;
  background:#b8943f;
@@ -74,15 +86,18 @@ nav a:hover{color:#e8c76e}
  padding:11px 0;
  font-weight:bold;
 }
+
 .ticker span{
  display:inline-block;
  padding-right:100%;
  animation:move 22s linear infinite;
 }
+
 @keyframes move{
  from{transform:translateX(0)}
  to{transform:translateX(100%)}
 }
+
 .hero{
  min-height:570px;
  padding:55px 18px;
@@ -93,24 +108,30 @@ nav a:hover{color:#e8c76e}
  text-align:center;
  background:linear-gradient(180deg,#0b3324aa,#071d16cc);
 }
+
+/* الصورة الشخصية داخل الموقع */
 .profile{
- width:210px;
- height:250px;
+ width:300px;
+ height:360px;
+ max-width:90%;
  object-fit:cover;
  border:4px solid #d8b65d;
  border-radius:22px;
  box-shadow:0 0 35px #c5a34b55;
 }
+
 h1{
  color:#f0cf78;
  font-size:clamp(30px,6vw,48px);
  margin:20px 0 8px;
 }
+
 .hero p{
  color:#eee2c1;
  font-size:18px;
  line-height:1.9;
 }
+
 .tag{
  display:inline-block;
  padding:10px 20px;
@@ -119,17 +140,20 @@ h1{
  color:#f1d47f;
  margin-top:10px;
 }
+
 section{
  max-width:1050px;
  margin:auto;
  padding:55px 18px;
 }
+
 .section-title{
  text-align:center;
  color:#e9c66d;
  font-size:29px;
  margin-bottom:30px;
 }
+
 .intro{
  text-align:center;
  max-width:750px;
@@ -137,11 +161,13 @@ section{
  line-height:2.2;
  color:#eee8d8;
 }
+
 .cards{
  display:grid;
  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
  gap:18px;
 }
+
 .card{
  background:linear-gradient(145deg,#123b2b,#0b291f);
  border:1px solid #a88943;
@@ -153,32 +179,39 @@ section{
  opacity:0;
  transform:translateY(25px);
 }
+
 .card.show{
  opacity:1;
  transform:translateY(0);
 }
+
 .card:hover{
  transform:translateY(-5px);
  border-color:#f1d47f;
 }
+
 .icon{
  font-size:38px;
  margin-bottom:10px;
 }
+
 .card h3{
  color:#e9c66d;
  margin:10px 0;
 }
+
 .card p{
  line-height:1.9;
  color:#e8e4d8;
 }
+
 .timeline{
  max-width:750px;
  margin:auto;
  border-right:3px solid #c9a64f;
  padding-right:22px;
 }
+
 .timeline-item{
  position:relative;
  background:#103324;
@@ -188,6 +221,7 @@ section{
  margin-bottom:18px;
  line-height:2;
 }
+
 .timeline-item:before{
  content:"";
  position:absolute;
@@ -198,7 +232,9 @@ section{
  background:#e4c46c;
  border-radius:50%;
 }
+
 .timeline-item strong{color:#e9c66d}
+
 .message{
  text-align:center;
  padding:35px 20px;
@@ -207,7 +243,9 @@ section{
  background:linear-gradient(135deg,#123c2a,#0a251b);
  line-height:2.2;
 }
+
 .message h2{color:#e9c66d}
+
 footer{
  text-align:center;
  padding:30px 15px;
@@ -216,10 +254,15 @@ footer{
  line-height:2;
  color:#d8d0b9;
 }
+
 footer strong{color:#e9c66d}
+
 @media(max-width:600px){
  .hero{padding:35px 14px}
- .profile{width:185px;height:225px}
+ .profile{
+  width:260px;
+  height:320px;
+ }
  nav{gap:13px}
  section{padding:38px 14px}
  .section-title{font-size:25px}
@@ -251,17 +294,24 @@ footer strong{color:#e9c66d}
 <main>
 
 <div class="hero">
+
  <img class="profile"
  src="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png"
  alt="الصورة الشخصية لبراهيمي يوسف">
 
  <h1>براهيمي يوسف</h1>
+
  <p>معًا للتغيير والنهوض بالوطن</p>
- <div class="tag">المجلس الشعبي الولائي – ولاية أفلو</div>
+
+ <div class="tag">
+ المجلس الشعبي الولائي – ولاية أفلو
+ </div>
+
 </div>
 
 <section id="about">
  <h2 class="section-title">من أنا؟</h2>
+
  <p class="intro">
  براهيمي يوسف، متصرف إداري بمقر الولاية حاليًا،
  صاحب مسار مهني متنوع وخبرة في العمل الإداري
@@ -273,6 +323,7 @@ footer strong{color:#e9c66d}
 
 <section id="experience">
  <h2 class="section-title">المسار المهني</h2>
+
  <div class="cards">
 
   <div class="card">
@@ -298,6 +349,7 @@ footer strong{color:#e9c66d}
 
 <section>
  <h2 class="section-title">محطات المسار المهني</h2>
+
  <div class="timeline">
 
   <div class="timeline-item">
@@ -320,6 +372,7 @@ footer strong{color:#e9c66d}
 
 <section id="education">
  <h2 class="section-title">الشهادات والتكوين</h2>
+
  <div class="cards">
 
   <div class="card">
@@ -346,12 +399,16 @@ footer strong{color:#e9c66d}
 <section id="message">
  <div class="message">
   <h2>شكرًا لزيارتكم</h2>
+
   <p>
    شكرًا لكل من خصص وقتًا للتعرف على مساري المهني والتكويني.
    نسأل الله التوفيق والسداد، وأن يحفظ وطننا
    ويوفق الجميع لما فيه الخير.
   </p>
-  <h3 style="color:#e9c66d">معًا للتغيير والنهوض بالوطن</h3>
+
+  <h3 style="color:#e9c66d">
+   معًا للتغيير والنهوض بالوطن
+  </h3>
  </div>
 </section>
 
@@ -373,6 +430,7 @@ let stars=[];
 function resize(){
  canvas.width=window.innerWidth;
  canvas.height=window.innerHeight;
+
  stars=Array.from({length:90},()=>({
   x:Math.random()*canvas.width,
   y:Math.random()*canvas.height,
@@ -380,21 +438,27 @@ function resize(){
   speed:Math.random()*.35+.1
  }));
 }
+
 function animate(){
  ctx.clearRect(0,0,canvas.width,canvas.height);
  ctx.fillStyle="#d8bd72";
+
  stars.forEach(s=>{
   ctx.beginPath();
   ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
   ctx.fill();
+
   s.y-=s.speed;
+
   if(s.y<0){
    s.y=canvas.height;
    s.x=Math.random()*canvas.width;
   }
  });
+
  requestAnimationFrame(animate);
 }
+
 window.addEventListener("resize",resize);
 resize();
 animate();
