@@ -1,200 +1,282 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>بطاقة إبراهيمي يوسف</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* === إعدادات التطبيق العامة === */
-        :root {
-            --bg-color: #0f172a;
-            --glass-bg: rgba(30, 41, 59, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --primary: #8b5cf6;
-            --secondary: #06b6d4;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background-color: var(--bg-color); color: var(--text-main); display: flex; justify-content: center; min-height: 100vh; overflow-x: hidden; }
-        
-        /* حاوية التطبيق */
-        .app-container { width: 100%; max-width: 480px; background: var(--bg-color); position: relative; padding-bottom: 80px; min-height: 100vh; box-shadow: 0 0 50px rgba(0,0,0,0.5); overflow-y: auto; }
-        .app-container::-webkit-scrollbar { display: none; }
-
-        /* === الشاشات === */
-        .screen { display: none; padding: 2rem 1.5rem; animation: fadeIn 0.4s ease; }
-        .screen.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* === الشاشة الرئيسية === */
-        .profile-header { text-align: center; margin-top: 2rem; position: relative; }
-        .avatar-container { position: relative; width: 150px; height: 150px; margin: 0 auto 1.5rem; }
-        .avatar-container::before { content: ''; position: absolute; inset: -5px; border-radius: 50%; background: linear-gradient(45deg, var(--primary), var(--secondary)); z-index: -1; filter: blur(15px); opacity: 0.7; animation: pulse 3s infinite; }
-        .avatar { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--bg-color); background-color: #1e293b; }
-        
-        @keyframes pulse { 0% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(1); opacity: 0.7; } }
-
-        .profile-name { font-size: 2rem; font-weight: 800; margin-bottom: 0.2rem; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .profile-title { color: var(--secondary); font-weight: 500; font-size: 1.1rem; margin-bottom: 1.5rem; }
-        
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 2rem; }
-        .stat-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1rem; text-align: center; backdrop-filter: blur(10px); }
-        .stat-number { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
-        .stat-label { font-size: 0.8rem; color: var(--text-muted); }
-
-        /* === شاشة حول === */
-        .section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; color: #fff; display: flex; align-items: center; gap: 10px; }
-        .section-title::before { content: ''; display: block; width: 8px; height: 24px; background: linear-gradient(to bottom, var(--primary), var(--secondary)); border-radius: 4px; }
-        
-        .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 1.5rem; backdrop-filter: blur(10px); margin-bottom: 1rem; }
-        .glass-card p { color: var(--text-muted); line-height: 1.8; font-size: 1rem; }
-        .glass-card strong { color: var(--text-main); }
-
-        /* === شاشة المهارات === */
-        .skills-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .skill-tag { background: rgba(139, 92, 246, 0.2); color: var(--primary); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 500; border: 1px solid rgba(139, 92, 246, 0.3); }
-        
-        /* === شاشة التواصل === */
-        .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-        .input-group { position: relative; }
-        .input-group input, .input-group textarea { width: 100%; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--glass-border); border-radius: 12px; padding: 1rem; color: #fff; font-family: inherit; font-size: 1rem; transition: 0.3s; }
-        .input-group input:focus, .input-group textarea:focus { outline: none; border-color: var(--secondary); box-shadow: 0 0 10px rgba(6, 182, 212, 0.2); }
-        .btn-submit { background: linear-gradient(45deg, var(--primary), var(--secondary)); color: #fff; border: none; padding: 1rem; border-radius: 12px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: 0.3s; margin-top: 10px; }
-        .btn-submit:active { transform: scale(0.95); }
-        
-        /* === شريط التنقل السفلي === */
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; max-width: 480px; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(20px); border-top: 1px solid var(--glass-border); display: flex; justify-content: space-around; padding: 10px 0 15px; z-index: 1000; }
-        .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); text-decoration: none; font-size: 0.75rem; transition: 0.3s; width: 25%; cursor: pointer; }
-        .nav-item svg { width: 24px; height: 24px; margin-bottom: 4px; fill: currentColor; transition: 0.3s; }
-        .nav-item.active { color: var(--secondary); }
-        .nav-item.active svg { fill: var(--secondary); transform: translateY(-3px); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#075b3b">
+  <meta name="description" content="تعرف على المترشح براهيمي يوسف للمجلس الشعبي الولائي - حزب صوت الشعب - ولاية أفلو.">
+  <title>اعرف مترشحك | براهيمي يوسف</title>
+  <style>
+    :root {
+      --green: #075b3b;
+      --green-dark: #033d2b;
+      --green-light: #e8f4ed;
+      --gold: #e6bd4e;
+      --ink: #17352a;
+      --muted: #64766d;
+      --white: #fff;
+      --shadow: 0 14px 38px rgba(0, 55, 35, .12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      color: var(--ink);
+      background: #f4f8f5;
+      line-height: 1.8;
+    }
+    a { color: inherit; text-decoration: none; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e4eee7;
+    }
+    .nav {
+      width: min(1120px, 92%); margin: auto; min-height: 70px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .brand { color: var(--green); font-weight: 900; font-size: 1.12rem; }
+    .brand small { display: block; color: var(--muted); font-size: .72rem; font-weight: 600; }
+    .navlinks { display: flex; gap: 22px; align-items: center; font-size: .92rem; font-weight: 700; }
+    .navlinks a:hover { color: #b58a1e; }
+    .hero {
+      overflow: hidden; position: relative; color: white;
+      background: radial-gradient(circle at 12% 15%, #17865a 0, transparent 30%),
+                  linear-gradient(125deg, var(--green-dark), #08764b 58%, #0a5038);
+    }
+    .hero:before, .hero:after {
+      content: ""; position: absolute; border: 1px solid rgba(255,255,255,.14);
+      border-radius: 50%; width: 430px; height: 430px; pointer-events: none;
+    }
+    .hero:before { left: -160px; top: -210px; }
+    .hero:after { right: 38%; bottom: -340px; width: 600px; height: 600px; }
+    .hero-inner {
+      position: relative; z-index: 1; width: min(1120px, 92%); margin: auto;
+      min-height: 570px; display: grid; grid-template-columns: 1.1fr .9fr;
+      align-items: center; gap: 42px; padding: 58px 0;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      border: 1px solid rgba(255,255,255,.35); border-radius: 30px;
+      padding: 7px 15px; background: rgba(255,255,255,.08); font-weight: 700;
+    }
+    h1 { font-size: clamp(2.2rem, 5vw, 4.3rem); line-height: 1.25; margin: 22px 0 12px; }
+    .hero h1 span { color: #ffdc72; }
+    .hero p { color: #e5f3eb; font-size: 1.08rem; max-width: 590px; margin: 0 0 26px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex; justify-content: center; align-items: center;
+      border-radius: 12px; padding: 11px 20px; font-weight: 800;
+      transition: .2s; border: 1px solid transparent;
+    }
+    .btn-gold { background: var(--gold); color: #26351d; }
+    .btn-outline { border-color: rgba(255,255,255,.55); color: white; }
+    .btn:hover { transform: translateY(-2px); }
+    .portrait-wrap { display: flex; justify-content: center; }
+    .portrait-frame {
+      width: min(350px, 82vw); aspect-ratio: 4 / 5; padding: 9px;
+      border: 2px solid rgba(255,255,255,.65); border-radius: 30px;
+      background: linear-gradient(145deg, rgba(255,255,255,.28), rgba(255,255,255,.04));
+      box-shadow: 0 25px 60px rgba(0,0,0,.25); transform: rotate(1deg);
+    }
+    .portrait {
+      width: 100%; height: 100%; border-radius: 22px; object-fit: cover;
+      background: linear-gradient(145deg, #dce9e0, #a7c9b5);
+      display: block;
+    }
+    .photo-hint {
+      text-align: center; font-size: .75rem; color: rgba(255,255,255,.75);
+      margin-top: 10px;
+    }
+    .section { width: min(1120px, 92%); margin: auto; padding: 76px 0; }
+    .section-head { text-align: center; max-width: 700px; margin: 0 auto 34px; }
+    .section-head .kicker { color: #b18a26; font-weight: 900; }
+    .section-head h2 { margin: 5px 0 8px; color: var(--green-dark); font-size: clamp(1.7rem, 3vw, 2.4rem); }
+    .section-head p { margin: 0; color: var(--muted); }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      background: white; border: 1px solid #e5eee8; border-radius: 20px;
+      padding: 25px; box-shadow: var(--shadow); min-height: 190px;
+      transition: .2s;
+    }
+    .card:hover { transform: translateY(-5px); border-color: #b8d5c3; }
+    .card-icon {
+      width: 48px; height: 48px; border-radius: 14px; display: grid;
+      place-items: center; background: var(--green-light); color: var(--green);
+      font-size: 1.45rem; margin-bottom: 14px;
+    }
+    .card h3 { margin: 0 0 7px; color: var(--green); font-size: 1.08rem; }
+    .card p { margin: 0; color: var(--muted); }
+    .about {
+      background: white; border-block: 1px solid #e5eee8;
+    }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 34px; align-items: center; }
+    .about-mark {
+      min-height: 250px; border-radius: 24px; padding: 30px;
+      display: grid; place-items: center; text-align: center; color: white;
+      background: linear-gradient(145deg, #08754b, #033d2b);
+      box-shadow: var(--shadow);
+    }
+    .about-mark strong { font-size: 1.8rem; color: #ffdc72; display: block; }
+    .about-copy h2 { color: var(--green-dark); margin: 0 0 12px; font-size: 1.8rem; }
+    .about-copy p { color: var(--muted); margin: 0 0 12px; }
+    .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
+    .fact { background: #f1f7f3; border-radius: 12px; padding: 12px 15px; }
+    .fact b { color: var(--green); display: block; }
+    .footer { background: #032f22; color: #e6f1e9; text-align: center; padding: 30px 15px; }
+    .footer strong { color: #ffdc72; }
+    .footer small { display: block; color: #b9d0c1; margin-top: 7px; }
+    @media (max-width: 760px) {
+      .nav { padding: 12px 0; align-items: flex-start; }
+      .navlinks { gap: 10px; flex-wrap: wrap; justify-content: flex-end; font-size: .78rem; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 28px; padding: 42px 0; }
+      .hero p { margin-inline: auto; }
+      .hero-actions { justify-content: center; }
+      .portrait-wrap { grid-row: 1; }
+      .portrait-frame { width: min(260px, 72vw); }
+      .cards { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-mark { min-height: 180px; }
+      .facts { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-
-    <div class="app-container">
-        
-        <!-- 🏠 الشاشة الرئيسية -->
-        <div id="home-screen" class="screen active">
-            <div class="profile-header">
-                <div class="avatar-container">
-                    <!-- 👇👇👇 (بداية مكان كود الصورة) 👇👇👇 -->
-                    <!-- امسح الرابط الذي بين علامتي التنصيص أدناه، وضع كود صورتك (Base64) مكانه -->
-                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="avatar" alt="إبراهيمي يوسف">
-                    <!-- 👆👆👆 (نهاية مكان كود الصورة) 👆👆👆 -->
-                </div>
-                <h1 class="profile-name">إبراهيمي يوسف</h1>
-                <p class="profile-title">مبتكر | مطور | رؤية للمستقبل</p>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label">سنوات خبرة</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">مشروع</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">التزام</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 👤 شاشة عني -->
-        <div id="about-screen" class="screen">
-            <h2 class="section-title">من أنا؟</h2>
-            <div class="glass-card">
-                <p>مرحباً، أنا <strong>إبراهيمي يوسف</strong>. أؤمن بأن التكنولوجيا والابتكار هما مفتاح بناء مستقبل أفضل. أسعى دائماً لترك بصمة إيجابية من خلال مشاريعي ورؤيتي التنموية.</p>
-            </div>
-            <div class="glass-card">
-                <p>هدفي ليس فقط تحقيق النجاح الشخصي، بل <strong>تمكين الشباب</strong> وخلق فرص حقيقية تساهم في نهضة المجتمع. الشفافية، العمل الجاد، والتفكير خارج الصندوق هي القيم التي أقود بها كل خطوة.</p>
-            </div>
-        </div>
-
-        <!-- 🚀 شاشة المهارات -->
-        <div id="skills-screen" class="screen">
-            <h2 class="section-title">مهاراتي ورؤيتي</h2>
-            <div class="glass-card">
-                <p style="margin-bottom: 1rem;">أعمل على دمج الخبرة التقنية مع الرؤية القيادية لتحقيق نتائج ملموسة.</p>
-                <div class="skills-list">
-                    <span class="skill-tag">تطوير الويب</span>
-                    <span class="skill-tag">إدارة المشاريع</span>
-                    <span class="skill-tag">القيادة</span>
-                    <span class="skill-tag">التخطيط الاستراتيجي</span>
-                    <span class="skill-tag">الابتكار</span>
-                    <span class="skill-tag">حل المشكلات</span>
-                    <span class="skill-tag">التواصل الفعال</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- ✉️ شاشة التواصل -->
-        <div id="contact-screen" class="screen">
-            <h2 class="section-title">تواصل معي</h2>
-            <div class="glass-card">
-                <form id="contactForm" class="contact-form">
-                    <div class="input-group">
-                        <input type="text" id="name" placeholder="الاسم الكامل" required>
-                    </div>
-                    <div class="input-group">
-                        <input type="email" id="email" placeholder="البريد الإلكتروني" required>
-                    </div>
-                    <div class="input-group">
-                        <textarea id="message" rows="4" placeholder="رسالتك..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">إرسال الرسالة</button>
-                </form>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- 📱 شريط التنقل السفلي -->
-    <nav class="bottom-nav">
-        <div class="nav-item active" onclick="showScreen('home-screen', this)">
-            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-            الرئيسية
-        </div>
-        <div class="nav-item" onclick="showScreen('about-screen', this)">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-            عني
-        </div>
-        <div class="nav-item" onclick="showScreen('skills-screen', this)">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            مهاراتي
-        </div>
-        <div class="nav-item" onclick="showScreen('contact-screen', this)">
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            تواصل
-        </div>
+  <header class="topbar">
+    <nav class="nav">
+      <a class="brand" href="#home">اعرف مترشحك<small>حزب صوت الشعب | ولاية أفلو</small></a>
+      <div class="navlinks">
+        <a href="#experience">الخبرات</a>
+        <a href="#qualifications">المؤهلات</a>
+        <a href="#about">نبذة</a>
+      </div>
     </nav>
+  </header>
 
-    <!-- كود JavaScript للتفاعل -->
-    <script>
-        // دالة التنقل بين الشاشات
-        function showScreen(screenId, element) {
-            document.querySelectorAll('.screen').forEach(screen => {
-                screen.classList.remove('active');
-            });
-            document.getElementById(screenId).classList.add('active');
+  <main id="home">
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">المجلس الشعبي الولائي · ولاية أفلو</div>
+          <h1>تعرّف على <span>براهيمي يوسف</span></h1>
+          <p>
+            مترشح لعضوية المجلس الشعبي الولائي عن حزب صوت الشعب – ولاية أفلو.
+            صفحة تعريفية للتعرّف على المسار المهني والمؤهلات العلمية.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#experience">اكتشف المسار المهني</a>
+            <a class="btn btn-outline" href="#qualifications">عرض المؤهلات</a>
+          </div>
+        </div>
+        <div>
+          <div class="portrait-wrap">
+            <div class="portrait-frame">
+              <img class="portrait" id="candidatePhoto" alt="صورة المترشح براهيمي يوسف">
+            </div>
+          </div>
+          <div class="photo-hint">ضع رابط الصورة أو كود Base64 في المتغير المخصص أسفل الصفحة</div>
+        </div>
+      </div>
+    </section>
 
-            document.querySelectorAll('.nav-item').forEach(nav => {
-                nav.classList.remove('active');
-            });
-            element.classList.add('active');
-        }
+    <section class="section" id="experience">
+      <div class="section-head">
+        <div class="kicker">المسار المهني</div>
+        <h2>الخبرات المهنية</h2>
+        <p>محطات مهنية في الإدارة والخدمة العمومية</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">🏛️</div>
+          <h3>متصرف إداري</h3>
+          <p>يعمل حاليًا بمقر الولاية.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">⚙️</div>
+          <h3>قطاع التكوين المهني والتمهين</h3>
+          <p>خبرة مهنية سابقة في التكوين المهني والتمهين.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">🏢</div>
+          <h3>العمل بالبلدية</h3>
+          <p>خبرة مهنية سابقة في البلدية.</p>
+        </article>
+      </div>
+    </section>
 
-        // رسالة تجريبية عند إرسال النموذج (لأننا لا نستخدم خادم بايثون الآن)
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('شكراً لتواصلك! هذه نسخة تجريبية للتصميم.');
-            this.reset();
-        });
-    </script>
+    <section class="about" id="qualifications">
+      <div class="section">
+        <div class="section-head">
+          <div class="kicker">التكوين والشهادات</div>
+          <h2>المؤهلات العلمية</h2>
+          <p>التكوين الأكاديمي والشهادات المصرّح بها</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">🎓</div>
+            <h3>ماستر تنظيم وعمل</h3>
+            <p>شهادة ماستر في تخصص تنظيم وعمل.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">💻</div>
+            <h3>شهادات إعلام آلي</h3>
+            <p>شهادات في مجال الإعلام الآلي.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🌐</div>
+            <h3>اللغة الإنجليزية</h3>
+            <p>مستوى / صنف ب.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="about-grid">
+        <div class="about-mark">
+          <div>
+            <div style="font-size:2.8rem">✦</div>
+            <strong>صوت الشعب</strong>
+            المجلس الشعبي الولائي<br>ولاية أفلو
+          </div>
+        </div>
+        <div class="about-copy">
+          <h2>من هو مترشحك؟</h2>
+          <p>
+            براهيمي يوسف، مترشح لعضوية المجلس الشعبي الولائي عن حزب صوت الشعب
+            بولاية أفلو. تعرض هذه الصفحة معلومات تعريفية عن خبرته المهنية
+            ومؤهلاته العلمية كما تم تقديمها.
+          </p>
+          <div class="facts">
+            <div class="fact"><b>الاسم</b>براهيمي يوسف</div>
+            <div class="fact"><b>الحزب</b>حزب صوت الشعب</div>
+            <div class="fact"><b>المجلس</b>المجلس الشعبي الولائي</div>
+            <div class="fact"><b>الولاية</b>ولاية أفلو</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>شكرًا لكل من زار صفحة <strong>اعرف مترشحك</strong></div>
+    <small>تحيات براهيمي يوسف · حزب صوت الشعب · ولاية أفلو</small>
+    <small>تصميم وتطوير: براهيمي يوسف</small>
+  </footer>
+
+  <script>
+    /*
+      ضع الصورة هنا بإحدى الطريقتين:
+      1) رابط صورة مباشر: const candidateImage = "https://example.com/photo.jpg";
+      2) كود Base64 كامل: const candidateImage = "data:image/jpeg;base64,ضع_الكود_هنا";
+      يمكنك أيضًا وضع الصورة داخل مجلد static باسم candidate.jpg
+      ثم كتابة: const candidateImage = "/static/candidate.jpg";
+    */
+    const candidateImage = "ضع_هنا_رابط_الصورة_أو_كود_Base64";
+    document.getElementById("candidatePhoto").src =
+      candidateImage.startsWith("ضع_هنا") ? "/static/candidate.jpg" : candidateImage;
+  </script>
 </body>
 </html>
