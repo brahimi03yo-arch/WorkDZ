@@ -1,359 +1,526 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BRAHIMI AI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>يوسف براهيمي - نسمعكم ونوصل صوتكم</title>
+    <!-- استدعاء خط عربي جميل -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- استدعاء أيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* إعدادات عامة */
+        :root {
+            --primary-green: #006233;
+            --primary-red: #D21034;
+            --gold: #d4af37;
+            --light-bg: #f4f7f6;
+            --dark-text: #333;
+        }
 
-<style>
-*{box-sizing:border-box}
-body{
- margin:0;
- background:#0b1020;
- color:white;
- font-family:Tahoma,Arial,sans-serif;
- min-height:100vh;
-}
-header{
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:18px;
- padding:15px 5%;
- background:#111a30;
- border-bottom:1px solid #263b5c;
- direction:ltr;
- flex-wrap:wrap;
-}
-.brand{font-size:22px;font-weight:bold;color:#55d9ff}
-.dev{font-size:12px;color:#c1d0e8;margin-top:5px}
-.marquee{
- flex:1;
- min-width:180px;
- overflow:hidden;
- background:#192943;
- border-radius:30px;
- padding:11px;
-}
-.marquee span{
- display:inline-block;
- white-space:nowrap;
- color:#65dfff;
- animation:move 13s linear infinite;
-}
-@keyframes move{
- from{transform:translateX(100%)}
- to{transform:translateX(-100%)}
-}
-main{max-width:760px;margin:40px auto;padding:15px}
-h1{text-align:center;font-size:29px}
-.subtitle{text-align:center;color:#9eafca;margin-bottom:28px}
-.panel{
- background:#131e35;
- padding:23px;
- border:1px solid #2c4164;
- border-radius:18px;
-}
-.tabs{display:flex;gap:10px;margin-bottom:22px}
-button{cursor:pointer;font-family:inherit}
-.tabs button{
- flex:1;
- padding:14px;
- border:0;
- border-radius:10px;
- background:#263653;
- color:white;
- font-weight:bold;
-}
-.tabs button.active{background:#087fae}
-label{display:block;margin-bottom:10px}
-textarea{
- width:100%;
- height:140px;
- padding:15px;
- background:#0c1427;
- color:white;
- border:1px solid #344a6b;
- border-radius:12px;
- font-size:15px;
- resize:vertical;
-}
-textarea:focus{outline:1px solid #36c9ff}
-.generate{
- width:100%;
- padding:15px;
- margin-top:17px;
- background:linear-gradient(90deg,#087fae,#5148d9);
- color:white;
- border:0;
- border-radius:12px;
- font-size:17px;
- font-weight:bold;
-}
-.generate:disabled{opacity:.5;cursor:wait}
-.test{
- width:100%;
- margin-top:12px;
- padding:11px;
- background:#243653;
- color:#a8eaff;
- border:1px solid #3a567c;
- border-radius:10px;
-}
-#status{
- text-align:center;
- margin:18px 0;
- color:#8ddfff;
- overflow-wrap:anywhere;
-}
-#result{
- display:none;
- margin-top:20px;
- padding:15px;
- background:#0b1427;
- border-radius:12px;
-}
-#result video,#result img{
- width:100%;
- border-radius:10px;
- margin-top:12px;
-}
-#result a{
- display:inline-block;
- color:#65dfff;
- margin:12px 0;
-}
-#error{
- color:#ff9999;
- white-space:pre-wrap;
- overflow-wrap:anywhere;
- direction:ltr;
- text-align:left;
-}
-footer{
- text-align:center;
- color:#8293ae;
- padding:30px;
- font-size:12px;
-}
-</style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* القائمة العلوية */
+        nav {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav .logo i {
+            color: var(--primary-red);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-red);
+        }
+
+        /* القسم الرئيسي (الواجهة مع الصورة) */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 10% 50px 10%;
+            background: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* خلفية زخرفية خفيفة */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(0,98,51,0.05) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            flex: 1;
+            z-index: 1;
+            padding-left: 20px;
+            animation: slideRight 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero-content h2 {
+            font-size: 1.6rem;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            font-weight: 700;
+            background: rgba(210, 16, 52, 0.1);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50px;
+        }
+
+        .hero-content p.slogan {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            border-right: 4px solid var(--gold);
+            padding-right: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background: var(--primary-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 98, 51, 0.3);
+            background: #004d28;
+        }
+
+        /* حاوية الصورة في الواجهة */
+        .hero-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            position: relative;
+            animation: slideLeft 1s ease-out;
+        }
+
+        .image-frame {
+            width: 380px;
+            height: 480px;
+            background-color: #ddd;
+            border-radius: 20px;
+            border: 8px solid white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 4px var(--gold);
+            overflow: hidden;
+            position: relative;
+            /* تأثير ثلاثي الأبعاد خفيف */
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s;
+        }
+
+        .image-frame:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        /* الأقسام العامة */
+        section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* رسالتي لكم */
+        .message-section {
+            background: white;
+            text-align: center;
+            border-radius: 20px;
+            margin: 0 5%;
+            padding: 60px 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .message-section p {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #444;
+            line-height: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .message-section .highlight {
+            color: var(--primary-red);
+            font-size: 1.8rem;
+        }
+
+        /* البطاقات */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-top: 5px solid var(--primary-green);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-right: 0;
+        }
+
+        .card ul li {
+            margin-bottom: 10px;
+            padding-right: 25px;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary-red);
+            position: absolute;
+            right: 0;
+        }
+
+        /* قسم التعهدات */
+        .promises-section {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .promises-section .section-title {
+            color: white;
+        }
+
+        .promises-section .card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            text-align: center;
+            border-top: none;
+        }
+
+        .promises-section .card:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .promises-section .card h3 {
+            color: var(--gold);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+        
+        .promises-section .card p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .promises-section .card i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        /* التذييل */
+        .footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .footer h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .party-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .party-info span {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        /* أنيميشن */
+        @keyframes slideRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* التجاوب مع الهواتف */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column-reverse; /* الصورة في الأعلى */
+                text-align: center;
+                padding-top: 120px;
+            }
+            .hero-content {
+                padding-left: 0;
+                margin-top: 40px;
+            }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content h2 { font-size: 1.2rem; }
+            .hero-content p.slogan { font-size: 1.1rem; border-right: none; padding-right: 0; }
+            .image-frame {
+                width: 280px;
+                height: 350px;
+                transform: none;
+            }
+            nav ul { display: none; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
- <div>
-  <div class="brand">BRAHIMI AI</div>
-  <div class="dev">Developer: BRAHIMI YOUSEF</div>
- </div>
+    <!-- القائمة العلوية -->
+    <nav>
+        <div class="logo"><i class="fas fa-star"></i> يوسف براهيمي</div>
+        <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#message">رسالتي لكم</a></li>
+            <li><a href="#cv">مساري</a></li>
+            <li><a href="#promises">تعهداتي</a></li>
+        </ul>
+    </nav>
 
- <div class="marquee">
-  <span>تطبيق بسيط لتوليد فيديوهات وصور بالذكاء الاصطناعي • BRAHIMI AI •</span>
- </div>
-</header>
+    <!-- القسم الرئيسي (الواجهة) -->
+    <header id="home" class="hero">
+        <!-- النص -->
+        <div class="hero-content">
+            <h2>مترشح لعضوية المجلس الشعبي الولائي - أفلو</h2>
+            <h1>يوسف براهيمي</h1>
+            <p class="slogan">
+                "لست هنا لأحكمكم، بل لأكون صوتكم وأذنكم الصاغية. <br>
+                نسمعكم، ونوصل صوتكم بكل حب وتواضع."
+            </p>
+            <a href="#message" class="btn">اقرأ رسالتي إليك <i class="fas fa-arrow-left" style="margin-right: 8px;"></i></a>
+        </div>
 
-<main>
- <h1>اصنع فكرتك بالذكاء الاصطناعي</h1>
- <div class="subtitle">حوّل وصفك إلى فيديو أو صورة</div>
+        <!-- الصورة في الواجهة (تم وضع صورة احترافية جاهزة) -->
+        <div class="hero-image-container">
+            <div class="image-frame">
+                <!-- رابط صورة احترافية جاهزة من الإنترنت -->
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="يوسف براهيمي">
+            </div>
+        </div>
+    </header>
 
- <section class="panel">
+    <!-- قسم الرسالة الودية -->
+    <section id="message" class="message-section" style="margin-top: 40px; margin-bottom: 80px;">
+        <p>
+            "أنا واحد منكم، ومنكم وإليكم... <br>
+            <span class="highlight">نسمع انشغالاتكم، وننقل صوتكم إلى السلطات.</span><br>
+            لا أعدكم بالمعجزات، بل أعدكم بأن أكون حلقة الوصل الصادقة التي تضع هموم المواطن البسيط في المكان الذي يستحق."
+        </p>
+    </section>
 
-  <div class="tabs">
-   <button id="videoTab" class="active" onclick="setMode('video')">
-    🎬 إنشاء فيديو
-   </button>
-   <button id="imageTab" onclick="setMode('image')">
-    🎨 إنشاء صورة
-   </button>
-  </div>
+    <!-- قسم الخبرات والمؤهلات -->
+    <section id="cv">
+        <h2 class="section-title">مساري وخبراتي</h2>
+        <div class="cards-container">
+            
+            <div class="card">
+                <i class="fas fa-briefcase"></i>
+                <h3>الخبرات المهنية</h3>
+                <ul>
+                    <li>متصرف إداري في مقر الولاية حالياً.</li>
+                    <li>موظف في التكوين المهني والتمهين سابقاً.</li>
+                    <li>موظف في البلدية سابقاً.</li>
+                    <li>خبرة ميدانية في الإدارة المحلية والولائية.</li>
+                </ul>
+            </div>
 
-  <label id="promptLabel">اكتب وصف الفيديو</label>
+            <div class="card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>المؤهلات العلمية</h3>
+                <ul>
+                    <li>شهادة ماستر في تنظيم وعمل.</li>
+                    <li>شهادات معتمدة في الإعلام الآلي.</li>
+                    <li>شهادة في اللغة الإنجليزية (صنف ب).</li>
+                </ul>
+                <!-- مكان لصور الشهادات -->
+                <div style="margin-top: 20px; text-align: center; border: 2px dashed #ccc; padding: 15px; border-radius: 10px;">
+                    <p style="color: #777; font-size: 0.9rem;"><i class="fas fa-image"></i> (ضع هنا صور شهاداتك لاحقاً)</p>
+                </div>
+            </div>
 
-  <textarea id="prompt"
-   placeholder="مثلاً: منظر طبيعي جميل وشلال ومياه صافية وقت الغروب..."></textarea>
+            <div class="card">
+                <i class="fas fa-handshake"></i>
+                <h3>لماذا أنا؟</h3>
+                <ul>
+                    <li>قريب من هموم المواطن اليومية.</li>
+                    <li>أمتلك الخبرة الإدارية لترجمة المطالب إلى واقع.</li>
+                    <li>أخلاق عالية، تواضع، وإخلاص في العمل.</li>
+                    <li>أضع نفسي في خدمتكم دون كلل أو ملل.</li>
+                </ul>
+            </div>
 
-  <button class="generate" id="generateBtn" onclick="generate()">
-   ✨ ابدأ الإنشاء
-  </button>
+        </div>
+    </section>
 
-  <button class="test" id="testBtn" onclick="testConnection()">
-   اختبار اتصال API
-  </button>
+    <!-- قسم التعهدات (نسمعكم ونوصل صوتكم) -->
+    <section id="promises" class="promises-section">
+        <h2 class="section-title">تعهداتي لكم</h2>
+        <div class="cards-container">
+            
+            <div class="card">
+                <i class="fas fa-ear-listen"></i>
+                <h3>نسمعكم</h3>
+                <p>أذن صاغية لكل مواطن، نستقبل انشغالاتكم ونصغي لكم بكل حب وتواضع. همومكم هي همومي، ولا يوجد طلب صغير أو كبير إلا وسنجده في قلبي.</p>
+            </div>
 
-  <div id="status"></div>
-  <div id="result"></div>
+            <div class="card">
+                <i class="fas fa-bullhorn"></i>
+                <h3>نوصل صوتكم</h3>
+                <p>نكون لسان حالكم في المجلس. ننقل معاناتكم ومطالبكم إلى أعلى السلطات المعنية، بكل أمانة وصدق، لنكون الصوت الذي يسمعكم ويحمل قضاياكم.</p>
+            </div>
 
- </section>
-</main>
+            <div class="card">
+                <i class="fas fa-heart"></i>
+                <h3>نكون معكم</h3>
+                <p>نرافقكم في كل خطوة، ونقف بجانبكم لخدمة منطقتنا وإيصال حقوقكم. نحن منكم وإليكم، وخدمتكم شرف لنا.</p>
+            </div>
 
-<footer>
- برمجة وتطوير BRAHIMI YOUSEF © 2026
-</footer>
+        </div>
+    </section>
 
-<script>
-let mode = "video";
-
-function setMode(value){
- mode = value;
-
- document.getElementById("videoTab")
-  .classList.toggle("active", mode === "video");
-
- document.getElementById("imageTab")
-  .classList.toggle("active", mode === "image");
-
- document.getElementById("promptLabel").textContent =
-  mode === "video" ? "اكتب وصف الفيديو" : "اكتب وصف الصورة";
-
- document.getElementById("prompt").placeholder =
-  mode === "video"
-  ? "صف الفيديو الذي تريد إنشاءه..."
-  : "صف الصورة التي تريد إنشاءها...";
-
- document.getElementById("result").style.display = "none";
- document.getElementById("status").textContent = "";
-}
-
-async function testConnection(){
- const status = document.getElementById("status");
- const btn = document.getElementById("testBtn");
-
- btn.disabled = true;
- status.textContent = "جارٍ اختبار الاتصال...";
-
- try{
-  const response = await fetch("/api/test");
-  const data = await response.json();
-
-  if(!response.ok || !data.ok){
-   throw new Error(data.message || "فشل الاتصال");
-  }
-
-  status.textContent = "✅ " + data.message;
-
- }catch(error){
-  status.textContent = "❌ " + error.message;
- }finally{
-  btn.disabled = false;
- }
-}
-
-function findMediaUrl(obj, keys){
- if(!obj || typeof obj !== "object") return null;
-
- for(const key of keys){
-  if(typeof obj[key] === "string" &&
-     /^https?:\/\//i.test(obj[key])){
-   return obj[key];
-  }
- }
-
- for(const value of Object.values(obj)){
-  if(value && typeof value === "object"){
-   const found = findMediaUrl(value, keys);
-   if(found) return found;
-  }
- }
-
- return null;
-}
-
-async function generate(){
- const prompt = document.getElementById("prompt").value.trim();
- const btn = document.getElementById("generateBtn");
- const status = document.getElementById("status");
- const result = document.getElementById("result");
-
- if(!prompt){
-  status.textContent = "اكتب وصفاً أولاً";
-  return;
- }
-
- btn.disabled = true;
- result.style.display = "none";
- result.innerHTML = "";
- status.textContent = "⏳ جارٍ إرسال طلبك إلى الذكاء الاصطناعي...";
-
- try{
-  const response = await fetch("/api/" + mode,{
-   method:"POST",
-   headers:{"Content-Type":"application/json"},
-   body:JSON.stringify({prompt})
-  });
-
-  const data = await response.json();
-
-  if(!response.ok || data.error){
-   throw new Error(
-    typeof data.error === "string"
-     ? data.error
-     : JSON.stringify(data.error || data)
-   );
-  }
-
-  const keys = mode === "video"
-   ? ["video_url","url","output_url"]
-   : ["image_url","url","output_url"];
-
-  const mediaUrl = findMediaUrl(data,keys);
-
-  result.style.display = "block";
-
-  if(mediaUrl){
-   const media = document.createElement(
-    mode === "video" ? "video" : "img"
-   );
-
-   media.src = mediaUrl;
-
-   if(mode === "video"){
-    media.controls = true;
-    media.playsInline = true;
-   }
-
-   result.appendChild(media);
-
-   const link = document.createElement("a");
-   link.href = mediaUrl;
-   link.target = "_blank";
-   link.rel = "noopener";
-   link.download = mode === "video" ? "brahimi-video.mp4" : "brahimi-image.png";
-   link.textContent = "⬇ فتح / تنزيل النتيجة";
-
-   result.appendChild(link);
-
-   status.textContent = "✅ تم استلام النتيجة";
-  }else{
-   status.textContent = "وصل رد الخدمة، لكن لم يظهر رابط الملف. راجع تفاصيل الاستجابة.";
-  }
-
-  const details = document.createElement("details");
-  const summary = document.createElement("summary");
-  summary.textContent = "تفاصيل استجابة الخدمة";
-  const pre = document.createElement("pre");
-  pre.style.whiteSpace = "pre-wrap";
-  pre.style.direction = "ltr";
-  pre.textContent = JSON.stringify(data,null,2);
-
-  details.appendChild(summary);
-  details.appendChild(pre);
-  result.appendChild(details);
-
- }catch(error){
-  status.textContent = "❌ تعذر الإنشاء";
-  result.style.display = "block";
-
-  const errorText = document.createElement("pre");
-  errorText.id = "error";
-  errorText.textContent = error.message;
-  result.appendChild(errorText);
-
- }finally{
-  btn.disabled = false;
- }
-}
-</script>
+    <!-- التذييل -->
+    <footer class="footer">
+        <h3>حزب صوت الشعب - ولاية أفلو</h3>
+        <div class="party-info">
+            <span>رقم الحزب: [ضع رقم الحزب هنا]</span>
+            <span>المجلس الشعبي الولائي</span>
+            <span>قائمة: يوسف براهيمي</span>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.9rem; color: #aaa;">
+            &copy; 2026 يوسف براهيمي. جميع الحقوق محفوظة. <br>
+            "نسمعكم، نوصل صوتكم، ونكون معكم."
+        </p>
+    </footer>
 
 </body>
 </html>
