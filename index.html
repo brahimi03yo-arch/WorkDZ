@@ -12,7 +12,1089 @@
 <meta property="og:site_name" content="اعرف مترشحك">
 <meta property="og:title" content="براهيمي يوسف | اعرف مترشحك">
 <meta property="og:description" content="برنامج ورؤية لخدمة ولاية أفلو والصالح العام. اضغط لزيارة الموقع.">
+<meta property="og:image" content="<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>اعرف مترشحك | براهيمي يوسف</title>
+<meta name="description" content="المسار المهني والبرنامج المحلي لبراهيمي يوسف">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_DZ">
+<meta property="og:site_name" content="اعرف مترشحك">
+<meta property="og:title" content="براهيمي يوسف | اعرف مترشحك">
+<meta property="og:description" content="برنامج ورؤية لخدمة ولاية أفلو والصالح العام. اضغط لزيارة الموقع.">
 <meta property="og:image" content="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png?v=2">
+<meta property="og:image:secure_url" content="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png?v=2">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://workdz-u7oo.onrender.com/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="براهيمي يوسف | اعرف مترشحك">
+<meta name="twitter:description" content="برنامج ورؤية لخدمة ولاية أفلو والصالح العام.">
+<meta name="twitter:image" content="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png?v=2">
+
+<style>
+:root {
+ --bg:#e0f2fe;
+ --bg-light:#f0f9ff;
+ --surface:#ffffff;
+ --surface-soft:#e0f2fe;
+ --brown:#0369a1;
+ --brown-dark:#075985;
+ --brown-mid:#0ea5e9;
+ --gold:#7dd3fc;
+ --gold-light:#bae6fd;
+ --text:#0c4a6e;
+ --muted:#64748b;
+ --border:#7dd3fc;
+ --shadow:rgba(3, 105, 161, 0.15);
+}
+
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+ margin:0;
+ font-family:Tahoma,Arial,sans-serif;
+ color:var(--text);
+ background:var(--bg);
+ overflow-x:hidden;
+}
+
+#welcome-overlay {
+ position:fixed;
+ inset:0;
+ background:#e0f2fe;
+ z-index:9999;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+ cursor:pointer;
+ transition:opacity .8s ease,visibility .8s;
+ padding:20px;
+}
+
+#welcome-overlay.hidden { opacity:0; visibility:hidden; }
+
+.welcome-img {
+ max-width:90%;
+ max-height:75vh;
+ border-radius:20px;
+ border:4px solid var(--gold);
+ box-shadow:0 0 45px rgba(3, 105, 161, 0.25);
+ object-fit:contain;
+ transition:transform .3s;
+}
+
+.welcome-img:hover { transform:scale(1.02); }
+
+.welcome-text {
+ margin-top:25px;
+ color:var(--brown);
+ font-size:20px;
+ font-weight:bold;
+ text-align:center;
+ animation:pulse 2s infinite;
+}
+
+@keyframes pulse {
+ 0%,100% {opacity:.55}
+ 50% {opacity:1}
+}
+
+#stars {
+ position:fixed;
+ inset:0;
+ width:100%;
+ height:100%;
+ z-index:-1;
+ pointer-events:none;
+ opacity:.35;
+}
+
+header {
+ position:sticky;
+ top:0;
+ z-index:20;
+ background:rgba(224, 242, 254, 0.96);
+ border-bottom:1px solid var(--gold);
+ padding:13px 10px;
+ backdrop-filter:blur(12px);
+ box-shadow:0 3px 12px var(--shadow);
+}
+
+.brand {
+ text-align:center;
+ color:var(--brown);
+ font-size:23px;
+ font-weight:bold;
+ margin-bottom:12px;
+}
+
+.developer-top {
+ text-align:center;
+ color:var(--brown);
+ padding:8px;
+ font-size:13px;
+ background:rgba(255,255,255,.35);
+ border-bottom:1px solid var(--border);
+}
+
+.developer-top strong { color:var(--brown-dark); }
+
+nav {
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:9px;
+}
+
+nav a {
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:7px;
+ padding:10px 15px;
+ border:1px solid var(--gold);
+ border-radius:12px;
+ color:var(--brown-dark);
+ text-decoration:none;
+ font-size:13px;
+ font-weight:bold;
+ background:linear-gradient(145deg,#ffffff,#e0f2fe);
+ transition:.25s;
+ box-shadow:0 3px 10px var(--shadow);
+}
+
+nav a:hover,
+nav a.active {
+ background:linear-gradient(135deg,#7dd3fc,#0ea5e9);
+ color:white;
+ transform:translateY(-2px);
+ box-shadow:0 5px 15px rgba(3, 105, 161, 0.2);
+}
+
+.ticker {
+ overflow:hidden;
+ background:#bae6fd;
+ color:#0c4a6e;
+ white-space:nowrap;
+ padding:11px 0;
+ font-weight:bold;
+}
+
+.ticker span {
+ display:inline-block;
+ padding-right:100%;
+ animation:move 22s linear infinite;
+}
+
+@keyframes move {
+ from {transform:translateX(0)}
+ to {transform:translateX(100%)}
+}
+
+.hero {
+ min-height:570px;
+ padding:45px 18px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ background:linear-gradient(180deg,rgba(186,230,253,.65),rgba(224,242,254,.95));
+}
+
+.profile {
+ width:300px;
+ height:360px;
+ max-width:90%;
+ object-fit:cover;
+ border:4px solid var(--gold);
+ border-radius:22px;
+ box-shadow:0 0 35px rgba(3, 105, 161, 0.2);
+}
+
+h1 {
+ color:var(--brown);
+ font-size:clamp(30px,6vw,48px);
+ margin:20px 0 8px;
+}
+
+.hero p {
+ color:#155e75;
+ font-size:18px;
+ line-height:1.9;
+}
+
+.tag {
+ display:inline-block;
+ padding:10px 20px;
+ border:1px solid var(--gold);
+ border-radius:30px;
+ color:var(--brown);
+ margin-top:10px;
+ background:rgba(255,255,255,.45);
+}
+
+section {
+ max-width:1100px;
+ margin:auto;
+ padding:55px 18px;
+ scroll-margin-top:145px;
+}
+
+.section-title {
+ text-align:center;
+ color:var(--brown);
+ font-size:29px;
+ margin-bottom:30px;
+}
+
+.intro {
+ text-align:center;
+ max-width:800px;
+ margin:auto;
+ line-height:2.2;
+ color:#155e75;
+}
+
+.cards {
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+ gap:18px;
+}
+
+.card {
+ background:rgba(255,255,255,.65);
+ backdrop-filter:blur(10px);
+ border:1px solid var(--border);
+ border-radius:17px;
+ padding:25px 18px;
+ text-align:center;
+ box-shadow:0 8px 24px var(--shadow);
+ transition:.3s;
+ opacity:0;
+ transform:translateY(20px);
+}
+
+.card.show { opacity:1; transform:translateY(0); }
+.card:hover {
+ transform:translateY(-5px);
+ border-color:var(--gold);
+ background:#ffffff;
+}
+
+.icon { font-size:38px; margin-bottom:10px; }
+.card h3 { color:var(--brown); margin:10px 0; }
+.card p { line-height:2; color:#155e75; font-size:14px; }
+
+.coming-soon {
+ text-align:center;
+ background:rgba(255,255,255,.65);
+ backdrop-filter:blur(10px);
+ border:1px solid var(--gold);
+ border-radius:20px;
+ padding:60px 20px;
+ max-width:700px;
+ margin:0 auto;
+ box-shadow:0 10px 30px var(--shadow);
+}
+
+.coming-soon-icon {
+ font-size:70px;
+ margin-bottom:20px;
+ animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+ 0%,100% {transform:translateY(0)}
+ 50% {transform:translateY(-15px)}
+}
+
+.coming-soon h3 { color:var(--brown); font-size:32px; margin-bottom:15px; }
+.coming-soon p { color:#155e75; font-size:18px; line-height:1.8; }
+
+.timeline {
+ max-width:750px;
+ margin:auto;
+ border-right:3px solid var(--gold);
+ padding-right:22px;
+}
+
+.timeline-item {
+ position:relative;
+ background:rgba(255,255,255,.55);
+ border:1px solid var(--border);
+ padding:20px;
+ border-radius:13px;
+ margin-bottom:18px;
+ line-height:2;
+ color:#155e75;
+ box-shadow:0 4px 12px var(--shadow);
+}
+
+.timeline-item:before {
+ content:"";
+ position:absolute;
+ right:-31px;
+ top:25px;
+ width:13px;
+ height:13px;
+ background:var(--brown-mid);
+ border-radius:50%;
+}
+
+.timeline-item strong { color:var(--brown); }
+
+.message {
+ text-align:center;
+ padding:35px 20px;
+ border:1px solid var(--border);
+ border-radius:20px;
+ background:rgba(255,255,255,.55);
+ line-height:2.2;
+ box-shadow:0 8px 25px var(--shadow);
+}
+
+.message h2 { color:var(--brown); }
+
+.visitor-box {
+ margin-top:25px;
+ padding:30px 22px;
+ border:1px solid var(--gold);
+ border-radius:20px;
+ background:rgba(255,255,255,.55);
+ text-align:center;
+ line-height:2.2;
+ box-shadow:0 8px 25px var(--shadow);
+}
+
+.visitor-box h3 { color:var(--brown); font-size:23px; }
+.visitor-box p { color:#155e75; }
+
+.interaction {
+ margin-top:25px;
+ padding:28px 20px;
+ border:1px solid var(--border);
+ border-radius:20px;
+ background:rgba(255,255,255,.55);
+ text-align:center;
+ box-shadow:0 8px 25px var(--shadow);
+}
+
+.interaction h3 { color:var(--brown); font-size:23px; }
+.interaction p { line-height:2; color:#155e75; }
+
+.action-buttons {
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:12px;
+ margin:20px 0;
+}
+
+.action-btn {
+ border:1px solid var(--brown-mid);
+ border-radius:30px;
+ padding:12px 25px;
+ background:linear-gradient(135deg,#7dd3fc,#0ea5e9);
+ color:white;
+ font-size:15px;
+ font-weight:bold;
+ cursor:pointer;
+ font-family:Tahoma,Arial,sans-serif;
+ transition:.25s;
+}
+
+.action-btn:hover { transform:translateY(-3px); box-shadow:0 5px 15px var(--shadow); }
+.action-btn:active { transform:scale(.97); }
+
+#likeCount { color:var(--brown); font-size:18px; font-weight:bold; }
+
+.comment-form {
+ max-width:650px;
+ margin:20px auto 0;
+ display:grid;
+ gap:12px;
+}
+
+.comment-form input,
+.comment-form textarea {
+ width:100%;
+ padding:13px;
+ border:1px solid var(--gold);
+ border-radius:10px;
+ background:#ffffff;
+ color:var(--brown-dark);
+ font-family:Tahoma,Arial,sans-serif;
+ font-size:14px;
+ outline:none;
+}
+
+.comment-form textarea { min-height:100px; resize:vertical; }
+
+.comment-form input:focus,
+.comment-form textarea:focus {
+ border-color:var(--brown);
+ box-shadow:0 0 0 3px rgba(14, 165, 233, 0.12);
+}
+
+.comment-form input::placeholder,
+.comment-form textarea::placeholder { color:#64748b; }
+
+.comment-list {
+ max-width:650px;
+ margin:20px auto 0;
+ text-align:right;
+}
+
+.comment-item {
+ padding:14px;
+ margin:10px 0;
+ background:rgba(255,255,255,.75);
+ border:1px solid var(--border);
+ border-radius:12px;
+ overflow-wrap:anywhere;
+}
+
+.comment-item strong { color:var(--brown); }
+.comment-item p { line-height:1.9; margin-bottom:0; color:var(--brown-dark); }
+
+footer {
+ text-align:center;
+ padding:30px 15px;
+ background:#bae6fd;
+ border-top:1px solid var(--gold);
+ line-height:2;
+ color:#155e75;
+}
+
+footer strong { color:var(--brown); }
+
+@media(max-width:600px) {
+ header { padding:10px 7px; }
+ nav { gap:6px; }
+ nav a { padding:9px 10px; font-size:12px; }
+ .hero { padding:35px 14px; }
+ .profile { width:260px; height:320px; }
+ section { padding:38px 14px; }
+ .section-title { font-size:25px; }
+ .coming-soon h3 { font-size:26px; }
+ .coming-soon p { font-size:16px; }
+ .welcome-text { font-size:17px; }
+}
+
+#dashboard {
+ display: none;
+ position: fixed;
+ inset: 0;
+ background: rgba(224, 242, 254, 0.98);
+ z-index: 10000;
+ padding: 20px;
+ overflow-y: auto;
+ direction: rtl;
+}
+
+#dashboard .dash-container {
+ max-width: 1000px;
+ margin: 20px auto;
+ background: white;
+ border-radius: 20px;
+ padding: 30px;
+ box-shadow: 0 0 50px rgba(3, 105, 161, 0.2);
+ border: 2px solid var(--gold);
+}
+
+#dashboard h2 { color: var(--brown); text-align: center; margin-bottom: 20px; }
+#dashboard h3 { color: var(--brown-dark); margin-top: 25px; border-bottom: 2px solid var(--gold); padding-bottom: 5px; }
+
+.dash-table {
+ width: 100%;
+ border-collapse: collapse;
+ margin-top: 15px;
+ font-size: 14px;
+}
+
+.dash-table th, .dash-table td {
+ border: 1px solid var(--border);
+ padding: 10px;
+ text-align: right;
+}
+
+.dash-table th { background: var(--surface-soft); color: var(--brown-dark); }
+.dash-table tr:nth-child(even) { background: #f8fafc; }
+
+#closeDash {
+ display: block;
+ margin: 20px auto 0;
+ background: #ef4444;
+ color: white;
+ border: none;
+ padding: 10px 20px;
+ border-radius: 10px;
+ cursor: pointer;
+ font-size: 16px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="welcome-overlay" onclick="enterSite()">
+ <img src="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png" alt="اضغط للدخول" class="welcome-img">
+ <div class="welcome-text">اضغط في أي مكان للدخول إلى الموقع</div>
+</div>
+
+<canvas id="stars"></canvas>
+
+<header>
+ <div class="brand">اعرف مترشحك</div>
+ <nav>
+  <a href="#home">🏠 الرئيسية</a>
+  <a href="#program">📋 برنامجي</a>
+  <a href="#experience">🏛️ المسار المهني</a>
+  <a href="#education">🎓 الشهادات</a>
+  <a href="#message">✉️ تواصل</a>
+ </nav>
+</header>
+
+<div class="developer-top">
+ ✦ تصميم وتطوير: <strong>براهيمي يوسف</strong> ✦
+</div>
+
+<div class="ticker">
+ <span>
+ براهيمي يوسف | معًا للتغيير والنهوض بالوطن |
+ خدمة المواطن | التنمية المتوازنة | حماية المصلحة العامة
+ </span>
+</div>
+
+<main>
+
+<div class="hero" id="home">
+ <img class="profile" src="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png" alt="الصورة الشخصية لبراهيمي يوسف">
+ <h1>براهيمي يوسف</h1>
+ <p>معًا للتغيير والنهوض بالوطن</p>
+ <div class="tag">المجلس الشعبي الولائي – ولاية أفلو</div>
+ <div class="tag">حزب صوت الشعب</div>
+</div>
+
+<section id="about">
+ <h2 class="section-title">من أنا؟</h2>
+ <p class="intro">
+ براهيمي يوسف، متصرف إداري بمقر الولاية حاليًا،
+ صاحب مسار مهني متنوع وخبرة في العمل الإداري
+ والبلدي وقطاع التكوين المهني والتمهين.
+ أؤمن بأهمية العمل الجاد والتكوين المستمر
+ وخدمة المواطن والمساهمة في تنمية المنطقة.
+ </p>
+</section>
+
+<section id="program">
+ <h2 class="section-title">برنامجي لخدمة الصالح العام</h2>
+ <div class="coming-soon">
+  <div class="coming-soon-icon">⏳</div>
+  <h3>سنوافيكم به بعد قليل</h3>
+  <p>
+   نعمل حالياً على إعداد ودراسة البرنامج الانتخابي الشامل
+   الذي يلبي تطلعاتكم ويلامس انشغالاتكم الحقيقية.
+  </p>
+ </div>
+</section>
+
+<section id="experience">
+ <h2 class="section-title">المسار المهني</h2>
+ <div class="cards">
+  <div class="card">
+   <div class="icon">🏛️</div>
+   <h3>مقر الولاية</h3>
+   <p>متصرف إداري حاليًا بمقر الولاية.</p>
+  </div>
+  <div class="card">
+   <div class="icon">🏢</div>
+   <h3>العمل البلدي</h3>
+   <p>موظف سابق في البلدية، مع تجربة في العمل الإداري المحلي.</p>
+  </div>
+  <div class="card">
+   <div class="icon">📚</div>
+   <h3>التكوين المهني</h3>
+   <p>موظف سابق في قطاع التكوين المهني والتمهين.</p>
+  </div>
+ </div>
+</section>
+
+<section>
+ <h2 class="section-title">محطات المسار المهني</h2>
+ <div class="timeline">
+  <div class="timeline-item">
+   <strong>العمل البلدي</strong><br>
+   تجربة مهنية سابقة في البلدية.
+  </div>
+  <div class="timeline-item">
+   <strong>التكوين المهني والتمهين</strong><br>
+   تجربة مهنية سابقة في قطاع التكوين المهني.
+  </div>
+  <div class="timeline-item">
+   <strong>مقر الولاية</strong><br>
+   متصرف إداري حاليًا.
+  </div>
+ </div>
+</section>
+
+<section id="education">
+ <h2 class="section-title">الشهادات والتكوين</h2>
+ <div class="cards">
+  <div class="card">
+   <div class="icon">🎓</div>
+   <h3>ماستر تنظيم وعمل</h3>
+   <p>شهادة ماستر في تخصص تنظيم وعمل.</p>
+  </div>
+  <div class="card">
+   <div class="icon">💻</div>
+   <h3>الإعلام الآلي</h3>
+   <p>شهادات في الإعلام الآلي.</p>
+  </div>
+  <div class="card">
+   <div class="icon">🌐</div>
+   <h3>اللغة الإنجليزية</h3>
+   <p>اللغة الإنجليزية – صنف ب.</p>
+  </div>
+ </div>
+</section>
+
+<section id="message">
+ <div class="message">
+  <h2>شكرًا لزيارتكم</h2>
+  <p>
+   شكرًا لكل من خصص وقتًا للتعرف على مساري المهني والتكويني
+   ورؤيتي لخدمة الصالح العام. نسأل الله التوفيق والسداد،
+   وأن يحفظ وطننا ويوفق الجميع لما فيه الخير.
+  </p>
+  <h3 style="color:#0369a1">معًا للتغيير والنهوض بالوطن</h3>
+ </div>
+
+ <div class="visitor-box">
+  <h3>إلى زوار صفحتي الكرام 🌹</h3>
+  <p>
+   أهلًا وسهلًا ومرحبًا بكل من زار هذا الفضاء التعريفي،
+   من أفلو، ومن جميع بلديات الولاية، ومن كل ربوع الجزائر.
+  </p>
+  <p>
+   وجودكم محل تقدير واحترام، وزيارتكم تسعدني.
+   إذا أعجبتكم الصفحة، لا تبخلوا علينا بترك إعجاب 👍
+   أو تعليق تعبّرون فيه عن رأيكم.
+  </p>
+  <h3>بكل احترام وتقدير، براهيمي يوسف</h3>
+ </div>
+
+ <div class="interaction">
+  <h3>رأيكم يهمنا ❤️</h3>
+  <p>
+   إذا أعجبتكم الصفحة، يمكنكم الضغط على زر الإعجاب
+   أو كتابة تعليق.
+  </p>
+  <div class="action-buttons">
+   <button class="action-btn" id="likeButton" type="button">👍 أعجبني</button>
+   <span id="likeCount">0 إعجاب</span>
+  </div>
+
+  <form class="comment-form" id="commentForm">
+   <input type="text" id="visitorName" maxlength="50" placeholder="اسمك (اختياري)">
+   <textarea id="visitorComment" maxlength="500" placeholder="اكتب تعليقك أو تحيتك هنا..." required></textarea>
+   <button class="action-btn" type="submit">✉️ إضافة التعليق</button>
+  </form>
+
+  <div class="comment-list" id="commentList"></div>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ <strong>براهيمي يوسف</strong><br>
+ المجلس الشعبي الولائي – حزب صوت الشعب – ولاية أفلو
+ <br>
+ <span style="color:#0369a1">تصميم وتطوير: براهيمي يوسف</span>
+ <br>
+ <a href="#" id="dashLink" style="font-size:11px; color:#64748b; text-decoration:none;">لوحة التحكم</a>
+</footer>
+
+<div id="dashboard">
+ <div class="dash-container">
+  <h2>📊 لوحة التحكم</h2>
+  <h3>👥 الزوار المسجلون</h3>
+  <div id="visitorsTableContainer">
+   <p style="text-align:center;color:#64748b;">جاري التحميل...</p>
+  </div>
+
+  <h3>💬 التعليقات</h3>
+  <div id="dashCommentsContainer">
+   <p style="text-align:center;color:#64748b;">جاري التحميل...</p>
+  </div>
+
+  <button id="closeDash">إغلاق لوحة التحكم</button>
+ </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
+<script>
+// =============================================
+// إعدادات Firebase الحقيقية لمشروع WorkDZ
+// =============================================
+const firebaseConfig = {
+  apiKey: "AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
+  authDomain: "workdz-web.firebaseapp.com",
+  databaseURL: "https://workdz-web-default-rtdb.firebaseio.com",
+  projectId: "workdz-web",
+  storageBucket: "workdz-web.firebasestorage.app",
+  messagingSenderId: "980881321562",
+  appId: "1:980881321562:web:5046cc8bfe27749a73f263",
+  measurementId: "G-NWPYNZT489"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const rtdb = firebase.database();
+
+// =============================================
+// تتبع الزوار
+// =============================================
+function trackVisitor() {
+  let sessionId = sessionStorage.getItem('visitor_session_id');
+  if (!sessionId) {
+    sessionId = 'visitor_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    sessionStorage.setItem('visitor_session_id', sessionId);
+  }
+
+  const visitorRef = rtdb.ref('visitors/' + sessionId);
+
+  visitorRef.set({
+    timestamp: firebase.database.ServerValue.TIMESTAMP,
+    userAgent: navigator.userAgent,
+    page: window.location.pathname,
+    language: navigator.language
+  }).catch(err => console.error("خطأ في تسجيل الزائر:", err));
+}
+
+// =============================================
+// نظام الإعجابات
+// =============================================
+const likeButton = document.getElementById("likeButton");
+const likeCountSpan = document.getElementById("likeCount");
+let liked = localStorage.getItem("aflouLiked") === "true";
+
+function fetchLikes() {
+  db.collection("stats").doc("likes").get()
+    .then(doc => {
+      if (doc.exists) {
+        const count = doc.data().count || 0;
+        likeCountSpan.textContent = count + " إعجاب";
+      } else {
+        db.collection("stats").doc("likes").set({ count: 0 });
+        likeCountSpan.textContent = "0 إعجاب";
+      }
+    })
+    .catch(err => console.error("خطأ في جلب الإعجابات:", err));
+}
+
+likeButton.addEventListener("click", () => {
+  const likeDocRef = db.collection("stats").doc("likes");
+  if (!liked) {
+    likeDocRef.set({
+      count: firebase.firestore.FieldValue.increment(1)
+    }, { merge: true })
+    .then(() => {
+      liked = true;
+      localStorage.setItem("aflouLiked", "true");
+      likeButton.textContent = "❤️ أعجبني";
+      fetchLikes();
+    })
+    .catch(err => console.error("خطأ في الإعجاب:", err));
+  } else {
+    likeDocRef.set({
+      count: firebase.firestore.FieldValue.increment(-1)
+    }, { merge: true })
+    .then(() => {
+      liked = false;
+      localStorage.setItem("aflouLiked", "false");
+      likeButton.textContent = "👍 أعجبني";
+      fetchLikes();
+    })
+    .catch(err => console.error("خطأ في إلغاء الإعجاب:", err));
+  }
+});
+
+fetchLikes();
+
+// =============================================
+// التعليقات
+// =============================================
+const commentForm = document.getElementById("commentForm");
+const commentList = document.getElementById("commentList");
+
+function loadComments() {
+  db.collection("comments").orderBy("timestamp", "desc").limit(20).get()
+    .then(snapshot => {
+      commentList.replaceChildren();
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const item = document.createElement("div");
+        item.className = "comment-item";
+
+        const name = document.createElement("strong");
+        name.textContent = data.name || "زائر";
+
+        const message = document.createElement("p");
+        message.textContent = data.message;
+
+        item.append(name, message);
+        commentList.appendChild(item);
+      });
+    })
+    .catch(err => {
+      console.error("خطأ في تحميل التعليقات:", err);
+      commentList.innerHTML = "<p style='color:#ef4444;'>تعذر تحميل التعليقات.</p>";
+    });
+}
+
+commentForm.addEventListener("submit", event => {
+  event.preventDefault();
+
+  const name = document.getElementById("visitorName").value.trim();
+  const message = document.getElementById("visitorComment").value.trim();
+
+  if (!message) return;
+
+  db.collection("comments").add({
+    name: name || "زائر",
+    message: message,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+  })
+  .then(() => {
+    commentForm.reset();
+    alert("تم إرسال تعليقك بنجاح. شكراً لك!");
+    loadComments();
+  })
+  .catch(err => {
+    console.error("خطأ في إرسال التعليق:", err);
+    alert("عذراً، حدث خطأ أثناء إرسال التعليق. يرجى المحاولة مرة أخرى.");
+  });
+});
+
+loadComments();
+
+// =============================================
+// لوحة التحكم (كود: 03 ثم 1984)
+// =============================================
+const dashLink = document.getElementById("dashLink");
+const dashboard = document.getElementById("dashboard");
+const closeDash = document.getElementById("closeDash");
+
+dashLink.addEventListener("click", (e) => {
+  e.preventDefault();
+  const code1 = prompt("أدخل كود الدخول الأول:");
+  if (code1 === "03") {
+    const code2 = prompt("أدخل كود الدخول الثاني:");
+    if (code2 === "1984") {
+      openDashboard();
+    } else {
+      alert("كود الدخول الثاني غير صحيح.");
+    }
+  } else if (code1 !== null) {
+    alert("كود الدخول الأول غير صحيح.");
+  }
+});
+
+function openDashboard() {
+  dashboard.style.display = "block";
+  document.body.style.overflow = "hidden";
+  loadDashboardData();
+}
+
+closeDash.addEventListener("click", () => {
+  dashboard.style.display = "none";
+  document.body.style.overflow = "";
+});
+
+function loadDashboardData() {
+  const visitorsContainer = document.getElementById("visitorsTableContainer");
+  visitorsContainer.innerHTML = "<p style='text-align:center;'>جاري تحميل الزوار...</p>";
+
+  rtdb.ref('visitors').orderByChild('timestamp').limitToLast(50).once('value')
+    .then(snapshot => {
+      const visitors = [];
+      snapshot.forEach(child => {
+        visitors.push({ id: child.key, ...child.val() });
+      });
+      visitors.reverse();
+
+      if (visitors.length === 0) {
+        visitorsContainer.innerHTML = "<p style='text-align:center;'>لا يوجد زوار مسجلون بعد.</p>";
+        return;
+      }
+
+      let tableHTML = `
+        <table class="dash-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>التاريخ والوقت</th>
+              <th>المتصفح</th>
+              <th>اللغة</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      visitors.forEach((v, index) => {
+        const date = v.timestamp ? new Date(v.timestamp).toLocaleString('ar-DZ') : 'غير معروف';
+        tableHTML += `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${date}</td>
+            <td style="direction:ltr; text-align:left; font-size:11px;">${v.userAgent || '-'}</td>
+            <td>${v.language || '-'}</td>
+          </tr>
+        `;
+      });
+
+      tableHTML += `</tbody></table>`;
+      visitorsContainer.innerHTML = tableHTML;
+    })
+    .catch(err => {
+      console.error("خطأ في تحميل الزوار:", err);
+      visitorsContainer.innerHTML = "<p style='color:red;'>تعذر تحميل بيانات الزوار.</p>";
+    });
+
+  const commentsContainer = document.getElementById("dashCommentsContainer");
+  commentsContainer.innerHTML = "<p style='text-align:center;'>جاري تحميل التعليقات...</p>";
+
+  db.collection("comments").orderBy("timestamp", "desc").get()
+    .then(snapshot => {
+      if (snapshot.empty) {
+        commentsContainer.innerHTML = "<p style='text-align:center;'>لا توجد تعليقات بعد.</p>";
+        return;
+      }
+
+      let tableHTML = `
+        <table class="dash-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>الاسم</th>
+              <th>التعليق</th>
+              <th>التاريخ</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      let index = 1;
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const date = data.timestamp ? data.timestamp.toDate().toLocaleString('ar-DZ') : 'غير معروف';
+        tableHTML += `
+          <tr>
+            <td>${index++}</td>
+            <td>${data.name || 'زائر'}</td>
+            <td>${data.message}</td>
+            <td>${date}</td>
+          </tr>
+        `;
+      });
+
+      tableHTML += `</tbody></table>`;
+      commentsContainer.innerHTML = tableHTML;
+    })
+    .catch(err => {
+      console.error("خطأ في تحميل التعليقات:", err);
+      commentsContainer.innerHTML = "<p style='color:red;'>تعذر تحميل التعليقات.</p>";
+    });
+}
+
+// =============================================
+// باقي التأثيرات
+// =============================================
+function enterSite() {
+ const overlay = document.getElementById("welcome-overlay");
+ overlay.classList.add("hidden");
+ setTimeout(() => { overlay.style.display = "none"; }, 800);
+}
+
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+let stars = [];
+
+function resize() {
+ canvas.width = window.innerWidth;
+ canvas.height = window.innerHeight;
+ stars = Array.from({length:90}, () => ({
+  x:Math.random()*canvas.width,
+  y:Math.random()*canvas.height,
+  r:Math.random()*1.8+.3,
+  speed:Math.random()*.35+.1
+ }));
+}
+
+function animate() {
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+ ctx.fillStyle = "#0ea5e9";
+ stars.forEach(s => {
+  ctx.beginPath();
+  ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+  ctx.fill();
+  s.y -= s.speed;
+  if(s.y < 0) {
+   s.y = canvas.height;
+   s.x = Math.random()*canvas.width;
+  }
+ });
+ requestAnimationFrame(animate);
+}
+
+window.addEventListener("resize",resize);
+resize();
+animate();
+
+const observer = new IntersectionObserver(entries => {
+ entries.forEach(entry => {
+  if(entry.isIntersecting) { entry.target.classList.add("show"); }
+ });
+},{threshold:.12});
+
+document.querySelectorAll(".card").forEach(card => { observer.observe(card); });
+
+const links = document.querySelectorAll("nav a");
+const sections = document.querySelectorAll("main section, .hero");
+const navObserver = new IntersectionObserver(entries => {
+ entries.forEach(entry => {
+  if(entry.isIntersecting) {
+   links.forEach(link => {
+    link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
+   });
+  }
+ });
+},{rootMargin:"-25% 0px -60% 0px"});
+
+sections.forEach(section => { if(section.id) navObserver.observe(section); });
+
+window.addEventListener('load', () => {
+  trackVisitor();
+});
+</script>
+
+</body>
+</html>">
 <meta property="og:image:secure_url" content="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png?v=2">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
