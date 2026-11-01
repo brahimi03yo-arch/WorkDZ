@@ -1,24 +1,38 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="الموقع الرسمي للتعريف بالمترشح براهيمي يوسف - حزب صوت الشعب">
 <title>اعرف مترشحك | براهيمي يوسف</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+[hidden]{display:none!important}
 body{margin:0;background:#f8f3e9;color:#30251d;font-family:Cairo,sans-serif}
-header{background:#30251d;color:#fff;text-align:center;padding:17px;font-size:22px;font-weight:900}
-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;padding:12px;background:#49382a;position:sticky;top:0;z-index:10}
-nav a{color:white;text-decoration:none;padding:8px 13px;border-radius:20px;font-size:13px}
-nav a:hover{background:#c49a52;color:#24190e}
-.notice{margin:14px auto;padding:15px;max-width:1100px;background:#fff1d7;border-right:5px solid #c49a52;border-radius:9px;text-align:center;font-weight:800;line-height:2}
+header{background:#30251d;color:white;text-align:center;padding:15px;font-size:21px;font-weight:900}
+
+/* ===== شريط التنقل : أزرار أيقونات ===== */
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;padding:12px;background:#49382a;position:sticky;top:0;z-index:20}
+nav a.nav-btn{
+  width:48px;height:48px;display:grid;place-items:center;font-size:22px;line-height:1;
+  border-radius:50%;background:#5d4936;color:#fff;text-decoration:none;
+  border:2px solid #6f5943;transition:.2s;position:relative;
+}
+nav a.nav-btn:hover,nav a.nav-btn:focus-visible{background:#c49a52;color:#24190e;transform:translateY(-2px)}
+nav a.nav-btn.active{background:#c49a52;color:#24190e;box-shadow:0 0 0 3px #c49a5240}
+nav a.nav-btn::after{
+  content:attr(data-label);position:absolute;top:110%;right:50%;transform:translateX(50%);
+  background:#24190e;color:#fff;font-size:11px;padding:4px 8px;border-radius:6px;
+  white-space:nowrap;opacity:0;pointer-events:none;transition:.2s;z-index:30;
+}
+nav a.nav-btn:hover::after{opacity:1}
+
+.notice{margin:12px auto;padding:14px;max-width:1100px;background:#fff1d7;border-right:5px solid #c49a52;border-radius:8px;text-align:center;font-weight:800;line-height:2}
 .hero{min-height:420px;background:linear-gradient(#20170a66,#20170acc),url('https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:30px}
-.hero h1{font-size:clamp(32px,6vw,50px);margin:12px}
-.hero p{font-size:19px}
+.hero h1{font-size:clamp(30px,6vw,48px);margin:10px}
+.hero p{font-size:18px}
 .party{color:#f4d49e;border:1px solid #c49a52;padding:8px 24px;border-radius:30px;display:inline-block}
 .container{max-width:1100px;margin:auto;padding:20px}
 section{margin:25px 0;padding:25px;background:white;border-radius:16px;box-shadow:0 5px 20px #0000000c}
@@ -26,38 +40,63 @@ h2{color:#8b642e;border-bottom:2px solid #e9d8b8;padding-bottom:12px}
 .profile{display:grid;grid-template-columns:260px 1fr;gap:25px;align-items:center}
 .profile img{width:100%;border-radius:15px;border:5px solid #ead8b8}
 .info{line-height:2.2}
+.info strong{color:#8b642e}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
 .card{background:#fbf6ed;border:1px solid #eadbc1;padding:18px;border-radius:12px;text-align:center;line-height:2}
-.card .symbol{font-size:30px}
-button{font-family:inherit;border:0;background:#c49a52;color:#24190e;padding:11px 20px;border-radius:8px;cursor:pointer;font-weight:800}
-button:disabled{opacity:.5;cursor:not-allowed}
-input,textarea{font-family:inherit;width:100%;padding:12px;margin:7px 0;border:1px solid #d9cbb6;border-radius:8px;font-size:15px}
+button{font-family:inherit;border:0;background:#c49a52;color:#24190e;padding:11px 20px;border-radius:8px;cursor:pointer;font-weight:800;transition:.2s}
+button:hover{filter:brightness(1.07)}
+button:disabled{opacity:.6;cursor:not-allowed}
+input,textarea{font-family:inherit;width:100%;padding:12px;margin:7px 0;border:1px solid #d9cbb6;border-radius:8px}
 textarea{min-height:110px}
-.comment,.adminItem{padding:14px;margin:10px 0;background:#faf6ee;border-radius:9px;border-right:3px solid #c49a52}
-.status{font-size:14px;margin:10px 0;line-height:2}
-#adminPanel{display:none;background:#f7f0e3;padding:18px;border-radius:12px}
+.actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.comment{padding:14px;margin:10px 0;background:#faf6ee;border-radius:9px;border-right:4px solid #c49a52}
+.comment small{color:#8a7864;font-size:12px}
+.comment p{margin:6px 0 0;line-height:1.9;white-space:pre-wrap;word-break:break-word}
+.status{font-size:14px;margin:10px 0;min-height:20px;font-weight:700}
+
+/* ===== لوحة الإدارة ===== */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin:15px 0}
+.stat{background:#fbf6ed;border:1px solid #eadbc1;border-radius:12px;padding:12px;text-align:center}
+.stat span{display:block;font-size:24px;font-weight:900;color:#8b642e}
+.stat small{color:#6b5a49;font-size:12px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.tab{background:#e9dcc5;color:#3a2c1f;padding:9px 16px;border-radius:22px;font-weight:800;font-size:14px}
+.tab.active{background:#c49a52;color:#24190e}
+.admin-card{background:#faf6ee;border-right:4px solid #c49a52;border-radius:10px;padding:12px;margin:10px 0}
+.c-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.c-head small{color:#8a7864;font-size:12px}
+.c-body{margin:6px 0 10px;line-height:1.9;white-space:pre-wrap;word-break:break-word}
+.c-actions{display:flex;gap:8px;flex-wrap:wrap}
+.c-actions button{font-size:13px;padding:8px 14px}
+button.ok{background:#2e7d32;color:#fff}
+button.no{background:#a93226;color:#fff}
+button.del{background:#8a6d3b;color:#fff}
+.empty{text-align:center;color:#8a7864;padding:15px}
+.mode-note{background:#fff1d7;border-right:4px solid #c49a52;border-radius:8px;padding:10px 14px;font-size:13px;line-height:1.9;margin-bottom:12px}
+
 footer{text-align:center;background:#30251d;color:white;padding:25px;margin-top:35px;line-height:2}
-.program{text-align:center;line-height:2.4;font-weight:800}
 @media(max-width:650px){
 .profile{grid-template-columns:1fr}
 .profile img{max-width:260px;display:block;margin:auto}
-.hero{min-height:340px}
+.hero h1{font-size:30px}
 section{padding:17px}
+nav a.nav-btn{width:44px;height:44px;font-size:20px}
 }
 </style>
 </head>
-
 <body>
 
-<header>اعرف مترشحك | براهيمي يوسف</header>
+<header>اعرف مترشحك</header>
 
-<nav>
-<a href="#home">الرئيسية</a>
-<a href="#profile">التعريف بالمترشح</a>
-<a href="#experience">المسار المهني</a>
-<a href="#education">المؤهلات</a>
-<a href="#program">البرنامج الانتخابي</a>
-<a href="#comments">التعليقات</a>
+<!-- ===== شريط التنقل بأزرار أيقونات ===== -->
+<nav aria-label="التنقل الرئيسي">
+  <a href="#home"       class="nav-btn" data-label="الرئيسية"     aria-label="الرئيسية"        title="الرئيسية">🏠</a>
+  <a href="#profile"    class="nav-btn" data-label="التعريف"       aria-label="التعريف"          title="التعريف بالمترشح">👤</a>
+  <a href="#experience" class="nav-btn" data-label="المسار المهني" aria-label="المسار المهني"    title="المسار المهني">💼</a>
+  <a href="#education"  class="nav-btn" data-label="المؤهلات"      aria-label="المؤهلات"         title="المؤهلات والشهادات">🎓</a>
+  <a href="#program"    class="nav-btn" data-label="البرنامج"      aria-label="البرنامج"         title="البرنامج الانتخابي">📋</a>
+  <a href="#comments"   class="nav-btn" data-label="التعليقات"     aria-label="التعليقات"        title="التعليقات والتفاعل">💬</a>
+  <a href="#admin"      class="nav-btn" data-label="الإعدادات"     aria-label="الإعدادات"        title="الإعدادات / لوحة الإدارة">⚙️</a>
 </nav>
 
 <div class="notice">
@@ -65,336 +104,525 @@ section{padding:17px}
 </div>
 
 <div class="hero" id="home">
-<div>
-<span class="party">حزب صوت الشعب</span>
-<h1>براهيمي يوسف</h1>
-<p>اعرف مترشحك</p>
-</div>
+  <div>
+    <div class="party">حزب صوت الشعب</div>
+    <h1>براهيمي يوسف</h1>
+    <p>متصرف إداري بمقر الولاية حاليًا</p>
+  </div>
 </div>
 
 <main class="container">
 
-<section id="profile">
-<h2>التعريف بالمترشح</h2>
-<div class="profile">
-<img src="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png" alt="براهيمي يوسف">
-<div class="info">
-<h3>براهيمي يوسف</h3>
-<p>مترشح عن حزب صوت الشعب.</p>
-<p>متصرف إداري بمقر الولاية حاليًا.</p>
-<p>هذا الموقع للتعريف بالمسار المهني والتكويني للمترشح والتواصل مع الزوار.</p>
-</div>
-</div>
-</section>
+  <!-- ===== التعريف ===== -->
+  <section id="profile">
+    <h2>التعريف بالمترشح</h2>
+    <div class="profile">
+      <img src="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png" alt="براهيمي يوسف">
+      <div class="info">
+        <h3>براهيمي يوسف</h3>
+        <p>مترشح عن حزب صوت الشعب.</p>
+        <p>متصرف إداري بمقر الولاية حاليًا.</p>
+        <p>هذا الموقع للتعريف بالمسار المهني والتكويني للمترشح والتواصل مع الزوار.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="experience">
-<h2>المسار المهني</h2>
-<div class="cards">
-<div class="card">
-<div class="symbol">🏛️</div>
-<h3>متصرف إداري</h3>
-<p>مقر الولاية حاليًا.</p>
-</div>
-<div class="card">
-<div class="symbol">🏢</div>
-<h3>العمل بالبلدية</h3>
-<p>موظف سابق بالبلدية.</p>
-</div>
-<div class="card">
-<div class="symbol">📚</div>
-<h3>التكوين المهني والتمهين</h3>
-<p>موظف سابق بالقطاع.</p>
-</div>
-</div>
-</section>
+  <!-- ===== المسار المهني ===== -->
+  <section id="experience">
+    <h2>المسار المهني</h2>
+    <div class="cards">
+      <div class="card"><div>🏛️</div><h3>متصرف إداري</h3><p>مقر الولاية حاليًا.</p></div>
+      <div class="card"><div>🏢</div><h3>العمل بالبلدية</h3><p>موظف سابق بالبلدية.</p></div>
+      <div class="card"><div>📚</div><h3>التكوين المهني والتمهين</h3><p>موظف سابق بالقطاع.</p></div>
+    </div>
+  </section>
 
-<section id="education">
-<h2>المؤهلات والشهادات</h2>
-<div class="cards">
-<div class="card">
-<div class="symbol">🎓</div>
-<h3>ماستر</h3>
-<p>تنظيم وعمل.</p>
-</div>
-<div class="card">
-<div class="symbol">💻</div>
-<h3>الإعلام الآلي</h3>
-<p>شهادات في الإعلام الآلي.</p>
-</div>
-<div class="card">
-<div class="symbol">🌐</div>
-<h3>اللغة الإنجليزية</h3>
-<p>صنف ب.</p>
-</div>
-</div>
-</section>
+  <!-- ===== المؤهلات ===== -->
+  <section id="education">
+    <h2>المؤهلات والشهادات</h2>
+    <div class="cards">
+      <div class="card"><h3>🎓 ماستر</h3><p>تنظيم وعمل.</p></div>
+      <div class="card"><h3>💻 الإعلام الآلي</h3><p>شهادات في الإعلام الآلي.</p></div>
+      <div class="card"><h3>🌐 اللغة الإنجليزية</h3><p>صنف ب.</p></div>
+    </div>
+  </section>
 
-<section id="program">
-<h2>البرنامج الانتخابي</h2>
-<div class="program">
-سيتم نشر البرنامج الانتخابي فور استيفاء الآجال القانونية، ونضعه بين أيديكم في حينه.
-</div>
-</section>
+  <!-- ===== البرنامج ===== -->
+  <section id="program">
+    <h2>البرنامج الانتخابي</h2>
+    <p style="text-align:center;font-weight:bold;line-height:2.3">
+      سيتم نشر البرنامج الانتخابي فور استيفاء الآجال القانونية، ونضعه بين أيديكم في حينه.
+    </p>
+  </section>
 
-<section id="comments">
-<h2>التعليقات والتفاعل</h2>
+  <!-- ===== التعليقات ===== -->
+  <section id="comments">
+    <h2>التعليقات والتفاعل</h2>
 
-<div>
-<button type="button" id="likeBtn">👍 أعجبني</button>
-<strong>عدد الإعجابات: <span id="likeCount">0</span></strong>
-</div>
-<div id="likeStatus" class="status"></div>
+    <div class="actions">
+      <button id="likeBtn" type="button">👍 أعجبني</button>
+      <strong>عدد الإعجابات: <span id="likeCount">0</span></strong>
+    </div>
 
-<h3>أضف تعليقك</h3>
-<form id="commentForm">
-<input id="commentName" maxlength="60" placeholder="اسمك" required>
-<textarea id="commentText" maxlength="1000" placeholder="اكتب تعليقك هنا..." required></textarea>
-<button type="submit" id="sendComment">إرسال التعليق</button>
-</form>
+    <h3>أضف تعليقك</h3>
+    <form id="commentForm" novalidate>
+      <input id="commentName" maxlength="60" placeholder="اسمك" required>
+      <textarea id="commentText" maxlength="1000" placeholder="اكتب تعليقك هنا..." required></textarea>
+      <button type="submit">إرسال التعليق</button>
+    </form>
 
-<div id="message" class="status"></div>
-<h3>التعليقات المنشورة</h3>
-<div id="publishedComments">جارٍ تحميل التعليقات...</div>
-</section>
+    <div id="message" class="status" aria-live="polite"></div>
 
-<section id="admin">
-<h2>إدارة التعليقات</h2>
-<p>الدخول إلى واجهة مراجعة التعليقات.</p>
-<input type="password" id="adminCode" placeholder="رمز الإدارة">
-<button type="button" id="adminLogin">دخول</button>
-<div id="adminMessage" class="status"></div>
-<div id="adminPanel">
-<h3>التعليقات الواردة للمراجعة</h3>
-<div id="pendingComments"></div>
-</div>
-</section>
+    <h3>التعليقات المنشورة</h3>
+    <div id="publishedComments"></div>
+  </section>
+
+  <!-- ===== الإدارة / الإعدادات ===== -->
+  <section id="admin">
+    <h2>⚙️ الإعدادات ولوحة الإدارة</h2>
+
+    <div id="loginBox">
+      <p style="line-height:1.9">
+        هذه اللوحة مخصّصة لصاحب الموقع لمتابعة <strong>الزوار</strong>، و<strong>التعليقات</strong>،
+        والإعجابات، ونشر التعليقات أو رفضها.
+      </p>
+      <input type="password" id="adminCode" placeholder="رمز الإدارة" autocomplete="off">
+      <button type="button" id="adminLogin">دخول</button>
+      <div id="adminMessage" class="status" aria-live="polite"></div>
+    </div>
+
+    <div id="adminPanel" hidden>
+      <div class="mode-note">
+        🔐 أنت داخل لوحة الإدارة. البيانات تُحفظ في متصفحك (localStorage) — نسخة تعمل بالكامل دون إنترنت.
+      </div>
+
+      <div class="stats">
+        <div class="stat"><span id="stVisits">0</span><small>زيارة للموقع</small></div>
+        <div class="stat"><span id="stLikes">0</span><small>إعجاب</small></div>
+        <div class="stat"><span id="stPending">0</span><small>بانتظار المراجعة</small></div>
+        <div class="stat"><span id="stPublished">0</span><small>منشور</small></div>
+        <div class="stat"><span id="stRejected">0</span><small>مرفوض</small></div>
+      </div>
+
+      <div class="tabs" id="adminTabs">
+        <button type="button" class="tab active" data-tab="pending">⏳ بانتظار المراجعة</button>
+        <button type="button" class="tab" data-tab="published">✅ منشورة</button>
+        <button type="button" class="tab" data-tab="rejected">🚫 مرفوضة</button>
+        <button type="button" class="tab" data-tab="visits">👀 الزوار</button>
+      </div>
+
+      <div id="adminList"></div>
+
+      <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+        <button type="button" id="logoutBtn" class="no">🔒 خروج من الإدارة</button>
+        <button type="button" id="clearVisits" class="del">🧹 مسح سجل الزيارات</button>
+      </div>
+    </div>
+  </section>
 
 </main>
 
 <footer>
-<p>براهيمي يوسف | حزب صوت الشعب</p>
-<p>شكرًا لكل من زار هذا الموقع</p>
-<p>تحيات المترشح براهيمي يوسف</p>
-<p>تصميم وتطوير: براهيمي يوسف</p>
+  <p>براهيمي يوسف | حزب صوت الشعب</p>
+  <p>شكرًا لكل من زار هذا الموقع</p>
+  <p>تحيات المترشح براهيمي يوسف</p>
+  <p>تصميم وتطوير: براهيمي يوسف</p>
 </footer>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+<script>
+(function () {
+  'use strict';
 
-import {
- getDatabase, ref, get, set, push, onValue, update
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+  /* ---------- أدوات مساعدة ---------- */
+  const $  = (s) => document.querySelector(s);
+  const $$ = (s) => Array.from(document.querySelectorAll(s));
 
-const firebaseConfig = {
- apiKey: "AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
- authDomain: "workdz-web.firebaseapp.com",
- databaseURL: "https://workdz-web-default-rtdb.firebaseio.com",
- projectId: "workdz-web",
- storageBucket: "workdz-web.firebasestorage.app",
- messagingSenderId: "980881321562",
- appId: "1:980881321562:web:5046cc8bfe27749a73f263",
- measurementId: "G-NWPYNZT489"
-};
+  // تخزين آمن: localStorage مع بديل في الذاكرة إن كان محظورًا
+  const store = (function () {
+    try {
+      localStorage.setItem('__test__', '1');
+      localStorage.removeItem('__test__');
+      return localStorage;
+    } catch (e) {
+      const mem = {};
+      return {
+        getItem: (k) => (k in mem ? mem[k] : null),
+        setItem: (k, v) => { mem[k] = String(v); },
+        removeItem: (k) => { delete mem[k]; }
+      };
+    }
+  })();
 
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+  // جلسة الإدارة (تُنسى عند إغلاق التبويب)
+  const session = (function () {
+    try {
+      sessionStorage.setItem('__t__', '1');
+      sessionStorage.removeItem('__t__');
+      return sessionStorage;
+    } catch (e) { return null; }
+  })();
 
-const message = document.getElementById("message");
-const publishedComments = document.getElementById("publishedComments");
-const likeCount = document.getElementById("likeCount");
+  const get = (k, d) => { try { const v = store.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } };
+  const set = (k, v) => { try { store.setItem(k, JSON.stringify(v)); } catch (e) {} };
+  const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  const fmt = (t) => {
+    try { return new Date(t).toLocaleString('ar', { dateStyle: 'medium', timeStyle: 'short' }); }
+    catch (e) { return new Date(t).toLocaleString(); }
+  };
 
-function status(element,text,success=false){
- element.textContent=text;
- element.style.color=success?"green":"#a93226";
-}
+  const KEYS = {
+    likes:    'by_likes',
+    liked:    'by_liked_me',
+    comments: 'by_comments',
+    visits:   'by_visits',
+    admin:    'by_admin_session'
+  };
 
-/* إرسال التعليقات للمراجعة */
-document.getElementById("commentForm").addEventListener("submit",async(e)=>{
- e.preventDefault();
+  /* ---------- تسجيل الزيارة ---------- */
+  (function trackVisit() {
+    try {
+      const visits = get(KEYS.visits, []);
+      visits.unshift({
+        id: uid(),
+        t: Date.now(),
+        ua: navigator.userAgent || '',
+        lang: navigator.language || '',
+        screen: (window.screen ? screen.width + '×' + screen.height : ''),
+        ref: document.referrer || 'زيارة مباشرة',
+        page: location.href
+      });
+      set(KEYS.visits, visits.slice(0, 500));
+    } catch (e) {}
+  })();
 
- const name=document.getElementById("commentName").value.trim();
- const content=document.getElementById("commentText").value.trim();
- const button=document.getElementById("sendComment");
+  /* ---------- زر الإعجاب ---------- */
+  const likeBtn   = $('#likeBtn');
+  const likeCount = $('#likeCount');
+  let likes = Number(get(KEYS.likes, 0)) || 0;
+  let liked = store.getItem(KEYS.liked) === '1';
 
- if(!name||!content){
-  status(message,"يرجى ملء جميع الحقول.");
-  return;
- }
-
- button.disabled=true;
- status(message,"جارٍ إرسال التعليق...");
-
- try{
-  await push(ref(db,"commentInbox"),{
-   name:name,
-   message:content,
-   createdAt:Date.now(),
-   status:"pending"
-  });
-
-  e.target.reset();
-  status(message,"تم إرسال تعليقك وهو قيد المراجعة.",true);
-
- }catch(error){
-  console.error(error);
-  status(message,"تعذر إرسال التعليق. تحقق من اتصال Firebase وصلاحيات قاعدة البيانات.");
- }finally{
-  button.disabled=false;
- }
-});
-
-/* عرض التعليقات المنشورة */
-onValue(ref(db,"publishedComments"),(snapshot)=>{
- publishedComments.replaceChildren();
-
- if(!snapshot.exists()){
-  publishedComments.textContent="لا توجد تعليقات منشورة حاليًا.";
-  return;
- }
-
- snapshot.forEach((item)=>{
-  const data=item.val();
-
-  const box=document.createElement("div");
-  box.className="comment";
-
-  const name=document.createElement("strong");
-  name.textContent=data.name||"زائر";
-
-  const content=document.createElement("p");
-  content.textContent=data.message||"";
-
-  const date=document.createElement("small");
-  date.textContent=data.createdAt
-   ?new Date(data.createdAt).toLocaleString("ar-DZ")
-   :"";
-
-  box.append(name,content,date);
-  publishedComments.prepend(box);
- });
-
-},(error)=>{
- console.error(error);
- publishedComments.textContent="تعذر تحميل التعليقات. تحقق من صلاحيات القراءة في Firebase.";
-});
-
-/* عدد الإعجابات */
-onValue(ref(db,"siteStats/likes"),(snapshot)=>{
- likeCount.textContent=snapshot.exists()?snapshot.val():0;
-},(error)=>{
- console.error(error);
- status(document.getElementById("likeStatus"),"تعذر تحميل عدد الإعجابات.");
-});
-
-/* تسجيل الإعجاب */
-document.getElementById("likeBtn").addEventListener("click",async()=>{
- const button=document.getElementById("likeBtn");
- button.disabled=true;
-
- try{
-  const likesRef=ref(db,"siteStats/likes");
-  const snapshot=await get(likesRef);
-  const current=Number(snapshot.val()||0);
-
-  await set(likesRef,current+1);
-  status(document.getElementById("likeStatus"),"تم تسجيل إعجابك.",true);
-
- }catch(error){
-  console.error(error);
-  status(document.getElementById("likeStatus"),"تعذر تسجيل الإعجاب. تحقق من صلاحيات Firebase.");
- }finally{
-  button.disabled=false;
- }
-});
-
-/* واجهة مراجعة التعليقات */
-const adminPanel=document.getElementById("adminPanel");
-const adminMessage=document.getElementById("adminMessage");
-const pendingComments=document.getElementById("pendingComments");
-
-document.getElementById("adminLogin").addEventListener("click",()=>{
- const code=document.getElementById("adminCode").value;
-
- if(code==="sss"){
-  adminPanel.style.display="block";
-  status(adminMessage,"تم فتح واجهة الإدارة.",true);
-  loadPendingComments();
- }else{
-  status(adminMessage,"رمز الدخول غير صحيح.");
- }
-});
-
-function loadPendingComments(){
- onValue(ref(db,"commentInbox"),(snapshot)=>{
-  pendingComments.replaceChildren();
-
-  if(!snapshot.exists()){
-   pendingComments.textContent="لا توجد تعليقات واردة.";
-   return;
+  function paintLikes() {
+    likeCount.textContent = likes;
+    likeBtn.textContent = liked ? '👍 أعجبني (مُفعّل)' : '👍 أعجبني';
+    likeBtn.classList.toggle('ok', liked);
   }
 
-  snapshot.forEach((item)=>{
-   const id=item.key;
-   const data=item.val();
+  likeBtn.addEventListener('click', function () {
+    liked = !liked;
+    likes = Math.max(0, likes + (liked ? 1 : -1));
+    set(KEYS.likes, likes);
+    store.setItem(KEYS.liked, liked ? '1' : '0');
+    paintLikes();
+    renderAdmin();
+  });
+  paintLikes();
 
-   if(data.status!=="pending")return;
+  /* ---------- نموذج التعليقات ---------- */
+  const form = $('#commentForm');
+  const msgEl = $('#message');
 
-   const box=document.createElement("div");
-   box.className="adminItem";
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = $('#commentName').value.trim();
+    const text = $('#commentText').value.trim();
 
-   const name=document.createElement("strong");
-   name.textContent=data.name||"زائر";
-
-   const content=document.createElement("p");
-   content.textContent=data.message||"";
-
-   const approve=document.createElement("button");
-   approve.textContent="نشر التعليق";
-
-   approve.addEventListener("click",async()=>{
-    try{
-     await push(ref(db,"publishedComments"),{
-      name:data.name||"زائر",
-      message:data.message||"",
-      createdAt:data.createdAt||Date.now()
-     });
-
-     await update(ref(db,"commentInbox/"+id),{
-      status:"published"
-     });
-
-    }catch(error){
-     console.error(error);
-     alert("تعذر نشر التعليق. تحقق من صلاحيات Firebase.");
+    if (name.length < 2) {
+      msgEl.textContent = '⚠️ يرجى إدخال الاسم (حرفان على الأقل).';
+      return;
     }
-   });
-
-   const reject=document.createElement("button");
-   reject.textContent="رفض";
-   reject.style.marginRight="8px";
-   reject.style.background="#a93226";
-   reject.style.color="white";
-
-   reject.addEventListener("click",async()=>{
-    try{
-     await update(ref(db,"commentInbox/"+id),{
-      status:"rejected"
-     });
-    }catch(error){
-     console.error(error);
-     alert("تعذر رفض التعليق.");
+    if (text.length < 3) {
+      msgEl.textContent = '⚠️ يرجى كتابة تعليق أطول قليلاً.';
+      return;
     }
-   });
 
-   box.append(name,content,approve,reject);
-   pendingComments.appendChild(box);
+    const comments = get(KEYS.comments, []);
+    comments.unshift({
+      id: uid(),
+      name: name.slice(0, 60),
+      message: text.slice(0, 1000),
+      status: 'pending',
+      createdAt: Date.now()
+    });
+    set(KEYS.comments, comments);
+
+    form.reset();
+    msgEl.textContent = '✅ تم إرسال تعليقك بنجاح، وسيُنشر بعد مراجعة الإدارة.';
+    setTimeout(function () { msgEl.textContent = ''; }, 6000);
+
+    renderAdmin();
   });
 
- },(error)=>{
-  console.error(error);
-  pendingComments.textContent="تعذر تحميل التعليقات الواردة.";
- });
-}
+  /* ---------- عرض التعليقات المنشورة ---------- */
+  function renderPublished() {
+    const box = $('#publishedComments');
+    const list = get(KEYS.comments, []).filter((c) => c.status === 'published');
+    box.replaceChildren();
+
+    if (!list.length) {
+      const d = document.createElement('div');
+      d.className = 'empty';
+      d.textContent = 'لا توجد تعليقات منشورة بعد.';
+      box.appendChild(d);
+      return;
+    }
+
+    list.forEach(function (c) {
+      const el = document.createElement('div');
+      el.className = 'comment';
+
+      const head = document.createElement('div');
+      const name = document.createElement('strong');
+      name.textContent = c.name || 'زائر';
+      const time = document.createElement('small');
+      time.textContent = ' — ' + fmt(c.createdAt);
+      head.append(name, time);
+
+      const body = document.createElement('p');
+      body.textContent = c.message || '';
+
+      el.append(head, body);
+      box.appendChild(el);
+    });
+  }
+
+  /* ---------- لوحة الإدارة ---------- */
+  const loginBox  = $('#loginBox');
+  const panel     = $('#adminPanel');
+  const adminMsg  = $('#adminMessage');
+  const adminList = $('#adminList');
+  let tab = 'pending';
+
+  const isUnlocked = () => !!(session && session.getItem(KEYS.admin) === '1');
+
+  function openPanel(scroll) {
+    loginBox.hidden = true;
+    panel.hidden = false;
+    renderAdmin();
+    if (scroll) {
+      try { panel.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
+    }
+  }
+
+  function closePanel(message) {
+    if (session) session.removeItem(KEYS.admin);
+    panel.hidden = true;
+    loginBox.hidden = false;
+    $('#adminCode').value = '';
+    adminMsg.textContent = message || '';
+  }
+
+  $('#adminLogin').addEventListener('click', function () {
+    const code = $('#adminCode').value.trim();
+    if (code === 'sss') {
+      if (session) session.setItem(KEYS.admin, '1');
+      adminMsg.textContent = '';
+      openPanel(true);
+    } else {
+      adminMsg.textContent = '❌ رمز الدخول غير صحيح.';
+    }
+  });
+
+  $('#adminCode').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); $('#adminLogin').click(); }
+  });
+
+  $('#logoutBtn').addEventListener('click', function () {
+    closePanel('🔒 تم الخروج من لوحة الإدارة.');
+    location.hash = '#admin';
+  });
+
+  $('#clearVisits').addEventListener('click', function () {
+    if (!confirm('هل تريد مسح كل سجل الزيارات؟')) return;
+    set(KEYS.visits, []);
+    renderAdmin();
+  });
+
+  // تبويبات اللوحة
+  $('#adminTabs').addEventListener('click', function (e) {
+    const b = e.target.closest('button[data-tab]');
+    if (!b) return;
+    tab = b.dataset.tab;
+    $$('#adminTabs .tab').forEach(function (t) {
+      t.classList.toggle('active', t === b);
+    });
+    renderAdmin();
+  });
+
+  /* ---------- أدوات العرض داخل اللوحة ---------- */
+  function makeButton(label, cls, onClick) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = cls || '';
+    b.textContent = label;
+    b.addEventListener('click', onClick);
+    return b;
+  }
+
+  function setStatus(id, status) {
+    const comments = get(KEYS.comments, []);
+    const c = comments.find(function (x) { return x.id === id; });
+    if (!c) return;
+    c.status = status;
+    set(KEYS.comments, comments);
+    renderPublished();
+    renderAdmin();
+  }
+
+  function removeComment(id) {
+    if (!confirm('هل تريد حذف هذا التعليق نهائيًا؟')) return;
+    set(KEYS.comments, get(KEYS.comments, []).filter(function (x) { return x.id !== id; }));
+    renderPublished();
+    renderAdmin();
+  }
+
+  function commentCard(c) {
+    const box = document.createElement('div');
+    box.className = 'admin-card';
+
+    const head = document.createElement('div');
+    head.className = 'c-head';
+    const name = document.createElement('strong');
+    name.textContent = c.name || 'زائر';
+    const time = document.createElement('small');
+    time.textContent = fmt(c.createdAt);
+    head.append(name, time);
+
+    const body = document.createElement('div');
+    body.className = 'c-body';
+    body.textContent = c.message || '';
+
+    const acts = document.createElement('div');
+    acts.className = 'c-actions';
+
+    if (c.status === 'pending' || c.status === 'rejected') {
+      acts.appendChild(makeButton('✅ نشر', 'ok', function () { setStatus(c.id, 'published'); }));
+    }
+    if (c.status === 'pending' || c.status === 'published') {
+      acts.appendChild(makeButton('🚫 رفض', 'no', function () { setStatus(c.id, 'rejected'); }));
+    }
+    acts.appendChild(makeButton('🗑️ حذف', 'del', function () { removeComment(c.id); }));
+
+    box.append(head, body, acts);
+    return box;
+  }
+
+  function deviceName(ua) {
+    ua = ua || '';
+    const mobile = /Mobi|Android|iPhone|iPad|iPod/i.test(ua);
+    let br = 'متصفح';
+    if (/Edg\//.test(ua)) br = 'Edge';
+    else if (/OPR\//.test(ua)) br = 'Opera';
+    else if (/Chrome\//.test(ua)) br = 'Chrome';
+    else if (/Firefox\//.test(ua)) br = 'Firefox';
+    else if (/Safari\//.test(ua)) br = 'Safari';
+
+    let os = '';
+    if (/Windows/.test(ua)) os = 'Windows';
+    else if (/Android/.test(ua)) os = 'Android';
+    else if (/iPhone|iPad|iPod/.test(ua)) os = 'iOS';
+    else if (/Mac OS/.test(ua)) os = 'macOS';
+    else if (/Linux/.test(ua)) os = 'Linux';
+
+    return (mobile ? '📱 ' : '💻 ') + br + (os ? ' — ' + os : '');
+  }
+
+  function visitCard(v) {
+    const box = document.createElement('div');
+    box.className = 'admin-card';
+
+    const head = document.createElement('div');
+    head.className = 'c-head';
+    const name = document.createElement('strong');
+    name.textContent = deviceName(v.ua);
+    const time = document.createElement('small');
+    time.textContent = fmt(v.t);
+    head.append(name, time);
+
+    const body = document.createElement('div');
+    body.className = 'c-body';
+    body.textContent =
+      'اللغة: ' + (v.lang || '-') + '\n' +
+      'الشاشة: ' + (v.screen || '-') + '\n' +
+      'المصدر: ' + (v.ref || '-');
+
+    box.append(head, body);
+    return box;
+  }
+
+  /* ---------- رسم اللوحة ---------- */
+  function renderAdmin() {
+    if (!panel || panel.hidden) return;
+
+    const comments = get(KEYS.comments, []);
+    const visits   = get(KEYS.visits, []);
+
+    $('#stVisits').textContent    = visits.length;
+    $('#stLikes').textContent     = likes;
+    $('#stPending').textContent   = comments.filter(function (c) { return c.status === 'pending'; }).length;
+    $('#stPublished').textContent = comments.filter(function (c) { return c.status === 'published'; }).length;
+    $('#stRejected').textContent  = comments.filter(function (c) { return c.status === 'rejected'; }).length;
+
+    adminList.replaceChildren();
+
+    if (tab === 'visits') {
+      if (!visits.length) {
+        adminList.innerHTML = '<div class="empty">لا توجد زيارات مسجلة بعد.</div>';
+        return;
+      }
+      visits.forEach(function (v) { adminList.appendChild(visitCard(v)); });
+      return;
+    }
+
+    const filtered = comments.filter(function (c) { return c.status === tab; });
+    if (!filtered.length) {
+      const txt = tab === 'pending'   ? 'لا توجد تعليقات بانتظار المراجعة.'
+                : tab === 'published' ? 'لا توجد تعليقات منشورة.'
+                                      : 'لا توجد تعليقات مرفوضة.';
+      adminList.innerHTML = '<div class="empty">' + txt + '</div>';
+      return;
+    }
+    filtered.forEach(function (c) { adminList.appendChild(commentCard(c)); });
+  }
+
+  /* ---------- تمييز زر التنقل النشط ---------- */
+  (function navHighlight() {
+    const links = $$('nav a.nav-btn');
+    const map = new Map();
+    links.forEach(function (a) {
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) map.set(el, a);
+    });
+
+    if (!('IntersectionObserver' in window)) return;
+
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        links.forEach(function (a) { a.classList.remove('active'); });
+        const a = map.get(en.target);
+        if (a) a.classList.add('active');
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+    map.forEach(function (a, el) { io.observe(el); });
+  })();
+
+  /* ---------- تشغيل أولي ---------- */
+  renderPublished();
+  if (isUnlocked()) {
+    openPanel(false);
+  } else {
+    panel.hidden = true;
+    loginBox.hidden = false;
+  }
+
+  // إبقاء الإحصائيات محدّثة عند فتح اللوحة من زر الترس
+  $('#settingsBtn').addEventListener('click', function () {
+    if (isUnlocked()) openPanel(false);
+  });
+
+})();
 </script>
 
 </body>
