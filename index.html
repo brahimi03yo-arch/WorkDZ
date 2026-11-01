@@ -1,812 +1,305 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>اعرف مترشحك | براهيمي يوسف</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-[hidden]{display:none!important}
-body{margin:0;background:#f8f3e9;color:#30251d;font-family:Cairo,sans-serif}
-header{background:#30251d;color:#fff;text-align:center;padding:15px;font-size:21px;font-weight:900}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>براهيمي يوسف - حزب صوت الشعب</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* (نفس التصميم السابق مع إضافة التعديلات الجديدة) */
+        :root { --primary-green: #006233; --primary-red: #D21034; --gold: #d4af37; --light-bg: #f4f7f6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        body { background-color: var(--light-bg); color: #333; line-height: 1.6; }
+        
+        nav { background: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        nav .logo { font-size: 1.3rem; font-weight: 900; color: var(--primary-green); }
+        
+        .hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 5% 50px 5%; background: linear-gradient(135deg, #ffffff, #e8f5e9); }
+        .hero h1 { font-size: 2.5rem; color: var(--primary-green); }
+        .hero p { font-size: 1.2rem; font-weight: 700; color: #555; }
 
-/* شريط التنقل: أزرار أيقونات */
-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;padding:12px;background:#49382a;position:sticky;top:0;z-index:20}
-nav a.nav-btn{width:48px;height:48px;display:grid;place-items:center;font-size:22px;line-height:1;border-radius:50%;background:#5d4936;color:#fff;text-decoration:none;border:2px solid #6f5943;transition:.2s;position:relative}
-nav a.nav-btn:hover,nav a.nav-btn:focus-visible{background:#c49a52;color:#24190e;transform:translateY(-2px)}
-nav a.nav-btn.active{background:#c49a52;color:#24190e;box-shadow:0 0 0 3px #c49a5240}
-nav a.nav-btn::after{content:attr(data-label);position:absolute;top:110%;right:50%;transform:translateX(50%);background:#24190e;color:#fff;font-size:11px;padding:4px 8px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:.2s;z-index:30}
-nav a.nav-btn:hover::after{opacity:1}
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .section-title { font-size: 1.8rem; color: var(--primary-green); margin-bottom: 20px; border-right: 4px solid var(--gold); padding-right: 10px; }
+        
+        .card-list { display: flex; flex-direction: column; gap: 15px; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 15px; }
+        .card i { font-size: 1.5rem; color: var(--gold); }
+        
+        /* قسم التفاعل والتعليقات */
+        .interaction-section { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-top: 40px; }
+        .btn-like { background: var(--primary-green); color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 10px; font-family: 'Cairo'; }
+        .btn-like:hover { background: #004d28; }
+        
+        .comment-form input, .comment-form textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Cairo'; }
+        .comment-form button { background: var(--primary-red); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-family: 'Cairo'; font-weight: bold; }
+        
+        .comment-item { background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 10px; border-right: 3px solid var(--primary-green); }
+        
+        /* لوحة الإدارة */
+        .admin-panel { display: none; background: #222; color: white; padding: 20px; border-radius: 10px; margin-top: 20px; }
+        .admin-panel h3 { color: var(--gold); margin-bottom: 15px; }
+        .admin-panel button { background: var(--primary-red); color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin: 5px; font-family: 'Cairo'; }
+        .admin-panel button.approve { background: var(--primary-green); }
 
-.notice{margin:12px auto;padding:14px;max-width:1100px;background:#fff1d7;border-right:5px solid #c49a52;border-radius:8px;text-align:center;font-weight:800;line-height:2}
-.hero{min-height:420px;background:linear-gradient(#20170a66,#20170acc),url('https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:30px}
-.hero h1{font-size:clamp(30px,6vw,48px);margin:10px}
-.hero p{font-size:18px}
-.party{color:#f4d49e;border:1px solid #c49a52;padding:8px 24px;border-radius:30px;display:inline-block}
-.container{max-width:1100px;margin:auto;padding:20px}
-section{margin:25px 0;padding:25px;background:white;border-radius:16px;box-shadow:0 5px 20px #0000000c;scroll-margin-top:90px}
-h2{color:#8b642e;border-bottom:2px solid #e9d8b8;padding-bottom:12px}
-.profile{display:grid;grid-template-columns:260px 1fr;gap:25px;align-items:center}
-.profile img{width:100%;border-radius:15px;border:5px solid #ead8b8}
-.info{line-height:2.2}
-.info strong{color:#8b642e}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
-.card{background:#fbf6ed;border:1px solid #eadbc1;padding:18px;border-radius:12px;text-align:center;line-height:2}
-button{font-family:inherit;border:0;background:#c49a52;color:#24190e;padding:11px 20px;border-radius:8px;cursor:pointer;font-weight:800;transition:.2s}
-button:hover{filter:brightness(1.07)}
-button:disabled{opacity:.6;cursor:not-allowed}
-input,textarea{font-family:inherit;width:100%;padding:12px;margin:7px 0;border:1px solid #d9cbb6;border-radius:8px}
-textarea{min-height:110px}
-.actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
-.comment{padding:14px;margin:10px 0;background:#faf6ee;border-radius:9px;border-right:4px solid #c49a52}
-.comment small{color:#8a7864;font-size:12px}
-.comment p{margin:6px 0 0;line-height:1.9;white-space:pre-wrap;word-break:break-word}
-.status{font-size:14px;margin:10px 0;min-height:20px;font-weight:700}
-.status.err{color:#a93226}
-.status.okc{color:#2e7d32}
-
-/* لوحة الإدارة */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin:15px 0}
-.stat{background:#fbf6ed;border:1px solid #eadbc1;border-radius:12px;padding:12px;text-align:center}
-.stat span{display:block;font-size:24px;font-weight:900;color:#8b642e}
-.stat small{color:#6b5a49;font-size:12px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
-.tab{background:#e9dcc5;color:#3a2c1f;padding:9px 16px;border-radius:22px;font-weight:800;font-size:14px}
-.tab.active{background:#c49a52;color:#24190e}
-.admin-card{background:#faf6ee;border-right:4px solid #c49a52;border-radius:10px;padding:12px;margin:10px 0}
-.c-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
-.c-head small{color:#8a7864;font-size:12px}
-.c-body{margin:6px 0 10px;line-height:1.9;white-space:pre-wrap;word-break:break-word}
-.c-actions{display:flex;gap:8px;flex-wrap:wrap}
-.c-actions button{font-size:13px;padding:8px 14px}
-button.ok{background:#2e7d32;color:#fff}
-button.no{background:#a93226;color:#fff}
-button.del{background:#8a6d3b;color:#fff}
-.empty{text-align:center;color:#8a7864;padding:15px}
-.note{background:#fff1d7;border-right:4px solid #c49a52;border-radius:8px;padding:10px 14px;font-size:13px;line-height:1.9;margin-bottom:12px}
-.note.bad{background:#fdecea;border-right-color:#a93226;color:#7a1f18}
-.note.good{background:#eaf6ea;border-right-color:#2e7d32;color:#1c4f1f}
-details{background:#faf6ee;border:1px solid #eadbc1;border-radius:10px;padding:12px;margin:12px 0;font-size:14px}
-summary{cursor:pointer;font-weight:800;color:#8b642e}
-pre{background:#24190e;color:#f4d49e;padding:12px;border-radius:8px;overflow:auto;direction:ltr;text-align:left;font-size:13px;line-height:1.6}
-code{font-family:monospace}
-.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#c0392b;margin-left:6px}
-.dot.on{background:#2e7d32}
-
-footer{text-align:center;background:#30251d;color:white;padding:25px;margin-top:35px;line-height:2}
-@media(max-width:650px){
-.profile{grid-template-columns:1fr}
-.profile img{max-width:260px;display:block;margin:auto}
-.hero h1{font-size:30px}
-section{padding:17px}
-nav a.nav-btn{width:44px;height:44px;font-size:20px}
-}
-</style>
+        /* إعدادات Firebase */
+        .firebase-warning { background: #fff3cd; color: #856404; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; border: 1px solid #ffeeba; }
+    </style>
 </head>
 <body>
 
-<header>اعرف مترشحك</header>
+    <!-- الترويسة -->
+    <nav>
+        <div class="logo">براهيمي يوسف | حزب صوت الشعب</div>
+        <div>
+            <button onclick="toggleAdmin()" style="background:none; border:none; font-size: 1.5rem; cursor:pointer; color: #555;">⚙️</button>
+        </div>
+    </nav>
 
-<nav aria-label="التنقل الرئيسي">
-  <a href="#home"       class="nav-btn" data-label="الرئيسية"     aria-label="الرئيسية"     title="الرئيسية">🏠</a>
-  <a href="#profile"    class="nav-btn" data-label="التعريف"       aria-label="التعريف"       title="التعريف بالمترشح">👤</a>
-  <a href="#experience" class="nav-btn" data-label="المسار المهني" aria-label="المسار المهني" title="المسار المهني">💼</a>
-  <a href="#education"  class="nav-btn" data-label="المؤهلات"      aria-label="المؤهلات"      title="المؤهلات والشهادات">🎓</a>
-  <a href="#program"    class="nav-btn" data-label="البرنامج"      aria-label="البرنامج"      title="البرنامج الانتخابي">📋</a>
-  <a href="#comments"   class="nav-btn" data-label="التعليقات"     aria-label="التعليقات"     title="التعليقات والتفاعل">💬</a>
-  <a href="#admin"      class="nav-btn" data-label="الإعدادات"     aria-label="الإعدادات"     title="الإعدادات / لوحة الإدارة">⚙️</a>
-</nav>
+    <div class="container" style="margin-top: 80px;">
+        
+        <!-- تنبيه Firebase -->
+        <div id="firebase-warning" class="firebase-warning">
+            ⚠️ تنبيه: يرجى إدخال إعدادات Firebase في الكود لكي تعمل التعليقات والإعجابات.
+        </div>
 
-<div class="notice">
-سيتم نشر البرنامج الانتخابي فور استيفاء الآجال القانونية، ونضعه بين أيديكم في حينه.
-</div>
+        <!-- بطاقة المترشح -->
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h1 style="color: var(--primary-green);">براهيمي يوسف</h1>
+            <p style="font-size: 1.2rem; color: var(--primary-red); font-weight: bold;">مترشح عن حزب صوت الشعب - المجلس الشعبي الولائي (أفلو)</p>
+            <p style="margin-top: 15px; font-size: 1.1rem;">
+                متصرف إداري بمقر الولاية حاليًا.<br>
+                هذا الموقع للتعريف بالمسار المهني والتكويني للمترشح والتواصل مع الزوار.<br>
+                <strong>"نسمعكم، ونوصل صوتكم بكل حب وتواضع."</strong>
+            </p>
+        </div>
 
-<div class="hero" id="home">
-  <div>
-    <div class="party">حزب صوت الشعب</div>
-    <h1>براهيمي يوسف</h1>
-    <p>متصرف إداري بمقر الولاية حاليًا</p>
-  </div>
-</div>
+        <!-- المسار المهني -->
+        <h2 class="section-title">المسار المهني</h2>
+        <div class="card-list">
+            <div class="card"><i class="fas fa-building"></i> <div><h3>متصرف إداري</h3><p>مقر الولاية حاليًا.</p></div></div>
+            <div class="card"><i class="fas fa-city"></i> <div><h3>العمل بالبلدية</h3><p>موظف سابق بالبلدية.</p></div></div>
+            <div class="card"><i class="fas fa-book"></i> <div><h3>التكوين المهني والتمهين</h3><p>موظف سابق بالقطاع.</p></div></div>
+        </div>
 
-<main class="container">
+        <!-- المؤهلات -->
+        <h2 class="section-title" style="margin-top: 40px;">المؤهلات والشهادات</h2>
+        <div class="card-list">
+            <div class="card"><i class="fas fa-graduation-cap"></i> <div><h3>ماستر</h3><p>تنظيم وعمل.</p></div></div>
+            <div class="card"><i class="fas fa-laptop-code"></i> <div><h3>الإعلام الآلي</h3><p>شهادات في الإعلام الآلي.</p></div></div>
+            <div class="card"><i class="fas fa-globe"></i> <div><h3>اللغة الإنجليزية</h3><p>صنف ب.</p></div></div>
+        </div>
 
-  <section id="profile">
-    <h2>التعريف بالمترشح</h2>
-    <div class="profile">
-      <img src="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png" alt="براهيمي يوسف">
-      <div class="info">
-        <h3>براهيمي يوسف</h3>
-        <p>مترشح عن حزب صوت الشعب.</p>
-        <p>متصرف إداري بمقر الولاية حاليًا.</p>
-        <p>هذا الموقع للتعريف بالمسار المهني والتكويني للمترشح والتواصل مع الزوار.</p>
-      </div>
+        <!-- البرنامج الانتخابي -->
+        <h2 class="section-title" style="margin-top: 40px;">البرنامج الانتخابي</h2>
+        <div class="card" style="border-right: 4px solid var(--gold);">
+            <p>سيتم نشر البرنامج الانتخابي فور استيفاء الآجال القانونية، ونضعه بين أيديكم في حينه.</p>
+        </div>
+
+        <!-- التفاعل والتعليقات -->
+        <div class="interaction-section">
+            <h2 class="section-title">التعليقات والتفاعل</h2>
+            
+            <!-- الإعجابات -->
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                <button class="btn-like" onclick="addLike()">
+                    <i class="fas fa-thumbs-up"></i> أعجبني
+                </button>
+                <span id="likeCount" style="font-weight: bold; font-size: 1.2rem;">0</span> إعجاب
+            </div>
+
+            <!-- إضافة تعليق -->
+            <div class="comment-form">
+                <h3>أضف تعليقك</h3>
+                <input type="text" id="commentName" placeholder="اسمك" required>
+                <textarea id="commentText" placeholder="اكتب تعليقك هنا..." required></textarea>
+                <button onclick="submitComment()">إرسال التعليق</button>
+                <p id="commentMsg" style="color: var(--primary-green); font-weight: bold; margin-top: 10px;"></p>
+            </div>
+
+            <!-- عرض التعليقات المنشورة -->
+            <h3 style="margin-top: 30px; margin-bottom: 15px;">التعليقات المنشورة</h3>
+            <div id="commentsList">
+                <p style="color: #777;">جارٍ الاتصال بقاعدة البيانات...</p>
+            </div>
+        </div>
+
+        <!-- لوحة الإدارة (مخفية) -->
+        <div id="adminPanel" class="admin-panel">
+            <h3>⚙️ لوحة الإدارة</h3>
+            <div id="adminLogin">
+                <p>أدخل كلمة المرور للدخول (افتراضياً: admin123)</p>
+                <input type="password" id="adminPass" style="padding: 8px; border-radius: 5px; border: none; width: 100%; margin-bottom: 10px;">
+                <button onclick="loginAdmin()">دخول</button>
+            </div>
+            <div id="adminControls" style="display: none;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <span>الزوار: <b id="visitCount">0</b></span>
+                    <button onclick="logoutAdmin()" style="background: #555;">خروج</button>
+                </div>
+                <h4>التعليقات بانتظار المراجعة:</h4>
+                <div id="pendingComments"></div>
+            </div>
+        </div>
+
     </div>
-  </section>
 
-  <section id="experience">
-    <h2>المسار المهني</h2>
-    <div class="cards">
-      <div class="card"><div>🏛️</div><h3>متصرف إداري</h3><p>مقر الولاية حاليًا.</p></div>
-      <div class="card"><div>🏢</div><h3>العمل بالبلدية</h3><p>موظف سابق بالبلدية.</p></div>
-      <div class="card"><div>📚</div><h3>التكوين المهني والتمهين</h3><p>موظف سابق بالقطاع.</p></div>
-    </div>
-  </section>
-
-  <section id="education">
-    <h2>المؤهلات والشهادات</h2>
-    <div class="cards">
-      <div class="card"><h3>🎓 ماستر</h3><p>تنظيم وعمل.</p></div>
-      <div class="card"><h3>💻 الإعلام الآلي</h3><p>شهادات في الإعلام الآلي.</p></div>
-      <div class="card"><h3>🌐 اللغة الإنجليزية</h3><p>صنف ب.</p></div>
-    </div>
-  </section>
-
-  <section id="program">
-    <h2>البرنامج الانتخابي</h2>
-    <p style="text-align:center;font-weight:bold;line-height:2.3">
-      سيتم نشر البرنامج الانتخابي فور استيفاء الآجال القانونية، ونضعه بين أيديكم في حينه.
-    </p>
-  </section>
-
-  <section id="comments">
-    <h2>التعليقات والتفاعل</h2>
-
-    <div class="actions">
-      <button id="likeBtn" type="button">👍 أعجبني</button>
-      <strong>عدد الإعجابات: <span id="likeCount">…</span></strong>
-    </div>
-
-    <h3>أضف تعليقك</h3>
-    <form id="commentForm" novalidate>
-      <input id="commentName" maxlength="60" placeholder="اسمك" required autocomplete="name">
-      <textarea id="commentText" maxlength="1000" placeholder="اكتب تعليقك هنا..." required></textarea>
-      <button type="submit">إرسال التعليق</button>
-    </form>
-
-    <div id="message" class="status" aria-live="polite"></div>
-
-    <h3>التعليقات المنشورة</h3>
-    <div id="publishedComments"><div class="empty">جارٍ التحميل…</div></div>
-  </section>
-
-  <section id="admin">
-    <h2>⚙️ الإعدادات ولوحة الإدارة</h2>
-
-    <div id="loginBox">
-      <p style="line-height:1.9">لوحة صاحب الموقع: متابعة <strong>الزوار</strong> و<strong>التعليقات</strong> والإعجابات، ونشر التعليقات أو رفضها.</p>
-      <input type="password" id="adminCode" placeholder="رمز الإدارة" autocomplete="off">
-      <button type="button" id="adminLogin">دخول</button>
-      <div id="adminMessage" class="status" aria-live="polite"></div>
-    </div>
-
-    <div id="adminPanel" hidden>
-      <div id="connNote" class="note">جارٍ فحص الاتصال بقاعدة البيانات…</div>
-
-      <div class="stats">
-        <div class="stat"><span id="stVisits">0</span><small>زيارة</small></div>
-        <div class="stat"><span id="stLikes">0</span><small>إعجاب</small></div>
-        <div class="stat"><span id="stPending">0</span><small>بانتظار المراجعة</small></div>
-        <div class="stat"><span id="stPublished">0</span><small>منشورة</small></div>
-        <div class="stat"><span id="stRejected">0</span><small>مرفوضة</small></div>
-      </div>
-
-      <div class="tabs" id="adminTabs">
-        <button type="button" class="tab active" data-tab="pending">⏳ بانتظار المراجعة</button>
-        <button type="button" class="tab" data-tab="published">✅ منشورة</button>
-        <button type="button" class="tab" data-tab="rejected">🚫 مرفوضة</button>
-        <button type="button" class="tab" data-tab="visits">👀 الزوار</button>
-      </div>
-
-      <div id="adminList"></div>
-
-      <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
-        <button type="button" id="logoutBtn" class="no">🔒 خروج من الإدارة</button>
-        <button type="button" id="clearVisits" class="del">🧹 مسح سجل الزيارات</button>
-      </div>
-
-      <details>
-        <summary>🛠️ إذا ظهر خطأ «Permission denied» — إعدادات قاعدة البيانات</summary>
-        <p>في Firebase → Realtime Database → Rules ضع القواعد التالية ثم اضغط Publish:</p>
-        <pre>{
-  "rules": {
-    "likes":             { ".read": true, ".write": true },
-    "publishedComments": { ".read": true, ".write": true },
-    "commentInbox":      { ".read": true, ".write": true },
-    "visits":            { ".read": true, ".write": true }
-  }
-}</pre>
-        <p>هذه القواعد مفتوحة (مناسبة لموقع حملة صغير). لاحقًا يمكن تشديدها باستخدام Firebase Authentication.</p>
-      </details>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <p>براهيمي يوسف | حزب صوت الشعب</p>
-  <p>شكرًا لكل من زار هذا الموقع</p>
-  <p>تحيات المترشح براهيمي يوسف</p>
-  <p>تصميم وتطوير: براهيمي يوسف</p>
-</footer>
-
-<!-- ===== Firebase SDK (compat) ===== -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-
-<script>
-(function () {
-'use strict';
-
-const $  = (s) => document.querySelector(s);
-const $$ = (s) => Array.from(document.querySelectorAll(s));
-
-/* ==========================================================
-   1) إعدادات Firebase — استبدل القيم التالية بقيم مشروعك
-   ========================================================== */
-const firebaseConfig = {
-  apiKey:            "PASTE_API_KEY",
-  authDomain:        "PASTE_PROJECT.firebaseapp.com",
-  databaseURL:       "https://PASTE_PROJECT-default-rtdb.firebaseio.com",
-  projectId:         "PASTE_PROJECT",
-  storageBucket:     "PASTE_PROJECT.appspot.com",
-  messagingSenderId: "PASTE_SENDER_ID",
-  appId:             "PASTE_APP_ID"
-};
-
-/* ==========================================================
-   2) التهيئة
-   ========================================================== */
-let db = null;
-let fbReady = false;
-let fbError = '';
-
-(function initFirebase(){
-  if (typeof firebase === 'undefined') {
-    fbError = 'لم يتم تحميل مكتبة Firebase (تحقق من الاتصال بالإنترنت).';
-    return;
-  }
-  if (!firebaseConfig.databaseURL || /PASTE|YOUR_/i.test(firebaseConfig.databaseURL)) {
-    fbError = 'لم تُدخل إعدادات Firebase بعد. استبدل قيم PASTE_... بإعدادات مشروعك.';
-    return;
-  }
-  try {
-    firebase.initializeApp(firebaseConfig);
-    db = firebase.database();
-    fbReady = true;
-  } catch (e) {
-    fbError = 'خطأ في تهيئة Firebase: ' + e.message;
-  }
-})();
-
-const R = {
-  likes:     () => db.ref('likes'),
-  inbox:     () => db.ref('commentInbox'),
-  published: () => db.ref('publishedComments'),
-  visits:    () => db.ref('visits'),
-  connected: () => db.ref('.info/connected')
-};
-
-const fmt = (t) => {
-  try { return new Date(t || Date.now()).toLocaleString('ar', { dateStyle:'medium', timeStyle:'short' }); }
-  catch (e) { return new Date(t || Date.now()).toLocaleString(); }
-};
-const esc = (s) => String(s == null ? '' : s);
-
-/* ==========================================================
-   3) تسجيل الزيارة (مرة لكل تحميل صفحة)
-   ========================================================== */
-(function logVisit(){
-  if (!fbReady) return;
-  try {
-    R.visits().push({
-      t: Date.now(),
-      ua: navigator.userAgent || '',
-      lang: navigator.language || '',
-      screen: (window.screen ? screen.width + '×' + screen.height : ''),
-      ref: document.referrer || 'زيارة مباشرة',
-      page: location.href
-    }).catch(function(){ /* نتجاهل أخطاء الصلاحيات */ });
-  } catch (e) {}
-})();
-
-/* ==========================================================
-   4) الإعجابات (مشتركة بين الجميع)
-   ========================================================== */
-const likeBtn   = $('#likeBtn');
-const likeCount = $('#likeCount');
-const LIKED_KEY = 'by_liked';
-
-let likes = 0;
-
-function paintLikes(){
-  likeCount.textContent = likes;
-  const liked = localStorage.getItem(LIKED_KEY) === '1';
-  likeBtn.textContent = liked ? '👍 أعجبني (مُفعّل)' : '👍 أعجبني';
-  likeBtn.classList.toggle('ok', liked);
-}
-paintLikes();
-
-if (fbReady) {
-  R.likes().on('value', function (snap) {
-    likes = Number(snap.val()) || 0;
-    state.likes = likes;
-    paintLikes();
-    renderAdmin();
-  }, function (err) {
-    setConnNote('bad', 'تعذر قراءة الإعجابات: ' + err.message);
-  });
-}
-
-likeBtn.addEventListener('click', function () {
-  if (!fbReady) { showMsg('⚠️ قاعدة البيانات غير متصلة. راجع إعدادات Firebase.', true); return; }
-
-  const liked = localStorage.getItem(LIKED_KEY) === '1';
-  likeBtn.disabled = true;
-
-  R.likes().transaction(function (cur) {
-    return Math.max(0, (Number(cur) || 0) + (liked ? -1 : 1));
-  }, function (err) {
-    likeBtn.disabled = false;
-    if (err) { showMsg('تعذر تحديث الإعجابات: ' + err.message, true); return; }
-    localStorage.setItem(LIKED_KEY, liked ? '0' : '1');
-    paintLikes();
-  });
-});
-
-/* ==========================================================
-   5) إرسال التعليقات
-   ========================================================== */
-const form  = $('#commentForm');
-const msgEl = $('#message');
-
-function showMsg(text, isError){
-  msgEl.textContent = text;
-  msgEl.className = 'status ' + (isError ? 'err' : 'okc');
-  clearTimeout(showMsg._t);
-  showMsg._t = setTimeout(function () { msgEl.textContent = ''; }, 7000);
-}
-
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  if (!fbReady) { showMsg('⚠️ تعذر الإرسال: ' + fbError, true); return; }
-
-  const name = $('#commentName').value.trim();
-  const text = $('#commentText').value.trim();
-
-  if (name.length < 2) { showMsg('⚠️ يرجى إدخال الاسم (حرفان على الأقل).', true); return; }
-  if (text.length < 3) { showMsg('⚠️ يرجى كتابة تعليق أطول قليلًا.', true); return; }
-
-  const submitBtn = form.querySelector('button[type="submit"]');
-  submitBtn.disabled = true;
-
-  R.inbox().push({
-    name: name.slice(0, 60),
-    message: text.slice(0, 1000),
-    status: 'pending',
-    createdAt: Date.now()
-  }).then(function () {
-    form.reset();
-    showMsg('✅ تم إرسال تعليقك، وسيُنشر بعد مراجعة الإدارة.');
-  }).catch(function (err) {
-    showMsg('تعذر الإرسال: ' + err.message, true);
-  }).then(function () {
-    submitBtn.disabled = false;
-  });
-});
-
-/* ==========================================================
-   6) عرض التعليقات المنشورة (للجميع مباشرة)
-   ========================================================== */
-const state = { inbox: {}, published: {}, visits: [], likes: 0 };
-const publishedBox = $('#publishedComments');
-
-function renderPublished(){
-  const arr = Object.entries(state.published).map(function (e) {
-    return Object.assign({ id: e[0] }, e[1] || {});
-  }).sort(function (a, b) { return (b.createdAt || 0) - (a.createdAt || 0); });
-
-  publishedBox.replaceChildren();
-
-  if (!arr.length) {
-    const d = document.createElement('div');
-    d.className = 'empty';
-    d.textContent = fbReady ? 'لا توجد تعليقات منشورة بعد.' : 'جارٍ الاتصال بقاعدة البيانات…';
-    publishedBox.appendChild(d);
-    return;
-  }
-
-  arr.forEach(function (c) {
-    const el = document.createElement('div');
-    el.className = 'comment';
-
-    const head = document.createElement('div');
-    const n = document.createElement('strong');
-    n.textContent = esc(c.name) || 'زائر';
-    const t = document.createElement('small');
-    t.textContent = ' — ' + fmt(c.createdAt);
-    head.append(n, t);
-
-    const p = document.createElement('p');
-    p.textContent = esc(c.message);
-
-    el.append(head, p);
-    publishedBox.appendChild(el);
-  });
-}
-renderPublished();
-
-if (fbReady) {
-  R.published().on('value', function (snap) {
-    state.published = snap.val() || {};
-    renderPublished();
-    renderAdmin();
-  }, function (err) {
-    setConnNote('bad', 'تعذر تحميل التعليقات: ' + err.message);
-  });
-}
-
-/* ==========================================================
-   7) لوحة الإدارة
-   ========================================================== */
-const loginBox  = $('#loginBox');
-const panel     = $('#adminPanel');
-const adminMsg  = $('#adminMessage');
-const adminList = $('#adminList');
-const connNote  = $('#connNote');
-
-const ADMIN_CODE = 'sss';         // ← غيّر رمز الإدارة من هنا
-const SESSION_KEY = 'by_admin_session';
-
-let tab = 'pending';
-let listening = false;
-
-function setConnNote(kind, text){
-  if (!connNote) return;
-  connNote.className = 'note ' + (kind === 'good' ? 'good' : kind === 'bad' ? 'bad' : '');
-  connNote.innerHTML = text;
-}
-
-function showAdminMsg(text, isError){
-  adminMsg.textContent = text;
-  adminMsg.className = 'status ' + (isError ? 'err' : 'okc');
-}
-
-function isUnlocked(){
-  try { return sessionStorage.getItem(SESSION_KEY) === '1'; } catch (e) { return false; }
-}
-function lock(){ try { sessionStorage.removeItem(SESSION_KEY); } catch (e) {} }
-
-function openPanel(scroll){
-  loginBox.hidden = true;
-  panel.hidden = false;
-
-  if (!fbReady) {
-    setConnNote('bad', '❌ ' + fbError + '<br>لن تُحفظ التعليقات ولا الإعجابات حتى تُدخل إعدادات Firebase.');
-  } else {
-    setConnNote('', '🟢 متصل بقاعدة البيانات. كل التعليقات والإعجابات مشتركة بين جميع الزوار مباشرة.');
-    attachAdminListeners();
-  }
-
-  renderAdmin();
-  if (scroll) { try { panel.scrollIntoView({ behavior:'smooth', block:'start' }); } catch (e) {} }
-}
-
-function closePanel(message){
-  lock();
-  detachAdminListeners();
-  panel.hidden = true;
-  loginBox.hidden = false;
-  $('#adminCode').value = '';
-  showAdminMsg(message || '');
-}
-
-$('#adminLogin').addEventListener('click', function () {
-  const code = $('#adminCode').value.trim();
-  if (!code) { showAdminMsg('⚠️ أدخل رمز الإدارة.', true); return; }
-  if (code === ADMIN_CODE) {
-    try { sessionStorage.setItem(SESSION_KEY, '1'); } catch (e) {}
-    showAdminMsg('');
-    openPanel(true);
-  } else {
-    showAdminMsg('❌ رمز الدخول غير صحيح.', true);
-  }
-});
-
-$('#adminCode').addEventListener('keydown', function (e) {
-  if (e.key === 'Enter') { e.preventDefault(); $('#adminLogin').click(); }
-});
-
-$('#logoutBtn').addEventListener('click', function () {
-  closePanel('🔒 تم الخروج من لوحة الإدارة.');
-  location.hash = '#admin';
-});
-
-$('#clearVisits').addEventListener('click', function () {
-  if (!fbReady) { alert('قاعدة البيانات غير متصلة.'); return; }
-  if (!confirm('هل تريد مسح كل سجل الزيارات؟')) return;
-  R.visits().remove().catch(function (err) { alert('تعذر المسح: ' + err.message); });
-});
-
-$('#adminTabs').addEventListener('click', function (e) {
-  const b = e.target.closest('button[data-tab]');
-  if (!b) return;
-  tab = b.dataset.tab;
-  $$('#adminTabs .tab').forEach(function (t) { t.classList.toggle('active', t === b); });
-  renderAdmin();
-});
-
-/* --- مستمعو الإدارة (يُفعّلون عند الدخول فقط) --- */
-function attachAdminListeners(){
-  if (!fbReady || listening) return;
-  listening = true;
-
-  R.inbox().on('value', function (snap) {
-    state.inbox = snap.val() || {};
-    renderAdmin();
-  }, function (err) {
-    setConnNote('bad', 'تعذر قراءة التعليقات الواردة: ' + err.message);
-  });
-
-  R.visits().limitToLast(300).on('value', function (snap) {
-    const arr = [];
-    snap.forEach(function (c) { arr.push(Object.assign({ id: c.key }, c.val() || {})); });
-    state.visits = arr.reverse();
-    renderAdmin();
-  }, function (err) {
-    setConnNote('bad', 'تعذر قراءة سجل الزوار: ' + err.message);
-  });
-
-  R.connected().on('value', function (snap) {
-    const on = !!snap.val();
-    if (on) setConnNote('good', '<span class="dot on"></span> متصل بقاعدة البيانات — التحديثات مباشرة.');
-    else    setConnNote('bad',  '<span class="dot"></span> غير متصل… جارٍ إعادة المحاولة.');
-  });
-}
-
-function detachAdminListeners(){
-  if (!fbReady || !listening) return;
-  listening = false;
-  try {
-    R.inbox().off();
-    R.visits().off();
-    R.connected().off();
-  } catch (e) {}
-}
-
-/* --- أدوات بناء البطاقات --- */
-function mkBtn(label, cls, fn){
-  const b = document.createElement('button');
-  b.type = 'button';
-  b.className = cls || '';
-  b.textContent = label;
-  b.addEventListener('click', fn);
-  return b;
-}
-
-function mkCard(title, time, body, buttons){
-  const box = document.createElement('div');
-  box.className = 'admin-card';
-
-  const head = document.createElement('div');
-  head.className = 'c-head';
-  const n = document.createElement('strong'); n.textContent = title;
-  const t = document.createElement('small'); t.textContent = time;
-  head.append(n, t);
-
-  const bd = document.createElement('div');
-  bd.className = 'c-body';
-  bd.textContent = body;
-
-  const acts = document.createElement('div');
-  acts.className = 'c-actions';
-  buttons.forEach(function (b) { acts.appendChild(b); });
-
-  box.append(head, bd, acts);
-  return box;
-}
-
-/* --- عمليات التعليقات --- */
-function approveComment(id, data){
-  if (!confirm('نشر هذا التعليق للجميع؟')) return;
-
-  R.published().push({
-    name: data.name || 'زائر',
-    message: data.message || '',
-    createdAt: data.createdAt || Date.now()
-  }).then(function (ref) {
-    return R.inbox().child(id).update({ status: 'published', publishedKey: ref.key });
-  }).catch(function (err) {
-    alert('تعذر نشر التعليق: ' + err.message);
-  });
-}
-
-function rejectComment(id){
-  if (!confirm('رفض هذا التعليق؟')) return;
-  R.inbox().child(id).update({ status: 'rejected' })
-    .catch(function (err) { alert('تعذر الرفض: ' + err.message); });
-}
-
-function restoreComment(id){
-  R.inbox().child(id).update({ status: 'pending' })
-    .catch(function (err) { alert('تعذر الاسترجاع: ' + err.message); });
-}
-
-function deleteInbox(id, data){
-  if (!confirm('حذف هذا التعليق نهائيًا؟')) return;
-  const jobs = [R.inbox().child(id).remove()];
-  if (data && data.publishedKey) jobs.push(R.published().child(data.publishedKey).remove());
-  Promise.all(jobs).catch(function (err) { alert('تعذر الحذف: ' + err.message); });
-}
-
-function deletePublished(pid){
-  if (!confirm('حذف هذا التعليق المنشور؟')) return;
-
-  R.published().child(pid).remove().then(function () {
-    const entry = Object.entries(state.inbox).find(function (e) {
-      return e[1] && e[1].publishedKey === pid;
-    });
-    if (entry) return R.inbox().child(entry[0]).remove();
-  }).catch(function (err) {
-    alert('تعذر الحذف: ' + err.message);
-  });
-}
-
-/* --- عرض الزوار --- */
-function deviceName(ua){
-  ua = ua || '';
-  const mobile = /Mobi|Android|iPhone|iPad|iPod/i.test(ua);
-  let br = 'متصفح';
-  if (/Edg\//.test(ua)) br = 'Edge';
-  else if (/OPR\//.test(ua)) br = 'Opera';
-  else if (/Chrome\//.test(ua)) br = 'Chrome';
-  else if (/Firefox\//.test(ua)) br = 'Firefox';
-  else if (/Safari\//.test(ua)) br = 'Safari';
-
-  let os = '';
-  if (/Windows/.test(ua)) os = 'Windows';
-  else if (/Android/.test(ua)) os = 'Android';
-  else if (/iPhone|iPad|iPod/.test(ua)) os = 'iOS';
-  else if (/Mac OS/.test(ua)) os = 'macOS';
-  else if (/Linux/.test(ua)) os = 'Linux';
-
-  return (mobile ? '📱 ' : '💻 ') + br + (os ? ' — ' + os : '');
-}
-
-/* --- رسم اللوحة --- */
-function renderAdmin(){
-  if (!panel || panel.hidden) return;
-
-  const inboxArr = Object.entries(state.inbox).map(function (e) {
-    return Object.assign({ id: e[0] }, e[1] || {});
-  });
-
-  const pending   = inboxArr.filter(function (c) { return c.status === 'pending'; });
-  const rejected  = inboxArr.filter(function (c) { return c.status === 'rejected'; });
-  const published = Object.entries(state.published).map(function (e) {
-    return Object.assign({ id: e[0] }, e[1] || {});
-  }).sort(function (a, b) { return (b.createdAt || 0) - (a.createdAt || 0); });
-
-  $('#stVisits').textContent    = state.visits.length;
-  $('#stLikes').textContent     = state.likes || likes || 0;
-  $('#stPending').textContent   = pending.length;
-  $('#stPublished').textContent = published.length;
-  $('#stRejected').textContent  = rejected.length;
-
-  adminList.replaceChildren();
-
-  if (!fbReady) {
-    adminList.innerHTML = '<div class="empty">قاعدة البيانات غير مهيأة — راجع الإعدادات أعلاه.</div>';
-    return;
-  }
-
-  if (tab === 'visits') {
-    if (!state.visits.length) { adminList.innerHTML = '<div class="empty">لا توجد زيارات مسجلة.</div>'; return; }
-    state.visits.forEach(function (v) {
-      const body = 'اللغة: ' + (v.lang || '-') + '\n' +
-                   'الشاشة: ' + (v.screen || '-') + '\n' +
-                   'المصدر: ' + (v.ref || '-');
-      adminList.appendChild(mkCard(deviceName(v.ua), fmt(v.t), body, []));
-    });
-    return;
-  }
-
-  if (tab === 'pending') {
-    if (!pending.length) { adminList.innerHTML = '<div class="empty">لا توجد تعليقات بانتظار المراجعة.</div>'; return; }
-    pending.sort(function (a, b) { return (b.createdAt || 0) - (a.createdAt || 0); });
-    pending.forEach(function (c) {
-      adminList.appendChild(mkCard(
-        esc(c.name) || 'زائر',
-        fmt(c.createdAt),
-        esc(c.message),
-        [
-          mkBtn('✅ نشر', 'ok', function () { approveComment(c.id, c); }),
-          mkBtn('🚫 رفض', 'no', function () { rejectComment(c.id); }),
-          mkBtn('🗑️ حذف', 'del', function () { deleteInbox(c.id, c); })
-        ]
-      ));
-    });
-    return;
-  }
-
-  if (tab === 'rejected') {
-    if (!rejected.length) { adminList.innerHTML = '<div class="empty">لا توجد تعليقات مرفوضة.</div>'; return; }
-    rejected.sort(function (a, b) { return (b.createdAt || 0) - (a.createdAt || 0); });
-    rejected.forEach(function (c) {
-      adminList.appendChild(mkCard(
-        esc(c.name) || 'زائر',
-        fmt(c.createdAt),
-        esc(c.message),
-        [
-          mkBtn('↩️ استرجاع', 'ok', function () { restoreComment(c.id); }),
-          mkBtn('🗑️ حذف', 'del', function () { deleteInbox(c.id, c); })
-        ]
-      ));
-    });
-    return;
-  }
-
-  if (tab === 'published') {
-    if (!published.length) { adminList.innerHTML = '<div class="empty">لا توجد تعليقات منشورة.</div>'; return; }
-    published.forEach(function (c) {
-      adminList.appendChild(mkCard(
-        esc(c.name) || 'زائر',
-        fmt(c.createdAt),
-        esc(c.message),
-        [ mkBtn('🗑️ حذف', 'del', function () { deletePublished(c.id); }) ]
-      ));
-    });
-    return;
-  }
-}
-
-/* فتح اللوحة مباشرة عند الضغط على زر الترس إن كانت الجلسة مفتوحة */
-$('#settingsBtn').addEventListener('click', function () {
-  if (isUnlocked()) openPanel(false);
-});
-
-/* استرجاع الجلسة إن كانت مفتوحة */
-if (isUnlocked()) {
-  openPanel(false);
-} else {
-  panel.hidden = true;
-  loginBox.hidden = false;
-  if (!fbReady) {
-    adminMsg.textContent = '⚠️ ' + fbError;
-    adminMsg.className = 'status err';
-  }
-}
-
-/* ==========================================================
-   8) تمييز زر التنقل النشط
-   ========================================================== */
-(function navHighlight(){
-  const links = $$('nav a.nav-btn');
-  if (!('IntersectionObserver' in window)) return;
-
-  const map = new Map();
-  links.forEach(function (a) {
-    const id = a.getAttribute('href').slice(1);
-    const el = document.getElementById(id);
-    if (el) map.set(el, a);
-  });
-
-  const io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) {
-      if (!en.isIntersecting) return;
-      links.forEach(function (a) { a.classList.remove('active'); });
-      const a = map.get(en.target);
-      if (a) a.classList.add('active');
-    });
-  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-
-  map.forEach(function (a, el) { io.observe(el); });
-})();
-
-})();
-</script>
+    <footer style="text-align: center; padding: 20px; background: #222; color: white; margin-top: 50px;">
+        <p>براهيمي يوسف | حزب صوت الشعب</p>
+        <p style="font-size: 0.9rem; color: #aaa;">شكرًا لكل من زار هذا الموقع. تحيات المترشح براهيمي يوسف.</p>
+    </footer>
+
+    <!-- سكريبت Firebase (الإصدار 8) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+        // ==========================================
+        // 🛑 هنا يجب أن تضع إعدادات Firebase الخاصة بك 🛑
+        // ==========================================
+        const firebaseConfig = {
+            apiKey: "PASTE_API_KEY",
+            authDomain: "PASTE_AUTH_DOMAIN",
+            projectId: "PASTE_PROJECT_ID",
+            storageBucket: "PASTE_STORAGE_BUCKET",
+            messagingSenderId: "PASTE_MESSAGING_SENDER_ID",
+            appId: "PASTE_APP_ID"
+        };
+
+        let db;
+        let isFirebaseReady = false;
+
+        // محاولة تهيئة Firebase
+        try {
+            if (firebaseConfig.apiKey !== "PASTE_API_KEY") {
+                firebase.initializeApp(firebaseConfig);
+                db = firebase.firestore();
+                isFirebaseReady = true;
+                document.getElementById('firebase-warning').style.display = 'none';
+                loadStats();
+                loadPublishedComments();
+            } else {
+                document.getElementById('commentsList').innerHTML = "<p style='color: red;'>قاعدة البيانات غير مهيأة — راجع إعدادات Firebase في الكود.</p>";
+            }
+        } catch (e) {
+            console.error("Firebase Error:", e);
+        }
+
+        // --- الإحصائيات (الزوار والإعجابات) ---
+        async function loadStats() {
+            if(!isFirebaseReady) return;
+            // عداد الزوار
+            const visitRef = db.collection('stats').doc('visits');
+            await visitRef.set({ count: firebase.firestore.FieldValue.increment(1) }, { merge: true });
+            visitRef.onSnapshot(doc => {
+                document.getElementById('visitCount').innerText = doc.data()?.count || 0;
+            });
+
+            // عداد الإعجابات
+            const likeRef = db.collection('stats').doc('likes');
+            likeRef.onSnapshot(doc => {
+                document.getElementById('likeCount').innerText = doc.data()?.count || 0;
+            });
+        }
+
+        async function addLike() {
+            if(!isFirebaseReady) return alert("قاعدة البيانات غير مهيأة.");
+            await db.collection('stats').doc('likes').set({ count: firebase.firestore.FieldValue.increment(1) }, { merge: true });
+        }
+
+        // --- التعليقات ---
+        async function submitComment() {
+            if(!isFirebaseReady) return alert("قاعدة البيانات غير مهيأة.");
+            const name = document.getElementById('commentName').value;
+            const text = document.getElementById('commentText').value;
+            
+            if(!name || !text) return alert("يرجى ملء جميع الحقول.");
+
+            await db.collection('comments').add({
+                name: name,
+                text: text,
+                status: 'pending', // بانتظار المراجعة
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            });
+
+            document.getElementById('commentName').value = '';
+            document.getElementById('commentText').value = '';
+            document.getElementById('commentMsg').innerText = "تم إرسال تعليقك، وسيتم نشره بعد المراجعة.";
+            setTimeout(() => document.getElementById('commentMsg').innerText = '', 3000);
+        }
+
+        function loadPublishedComments() {
+            if(!isFirebaseReady) return;
+            db.collection('comments').where('status', '==', 'published').orderBy('timestamp', 'desc')
+            .onSnapshot(snapshot => {
+                const list = document.getElementById('commentsList');
+                list.innerHTML = '';
+                if(snapshot.empty) {
+                    list.innerHTML = '<p>لا توجد تعليقات منشورة بعد.</p>';
+                    return;
+                }
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    list.innerHTML += `
+                        <div class="comment-item">
+                            <strong>${data.name}</strong>
+                            <p>${data.text}</p>
+                        </div>
+                    `;
+                });
+            });
+        }
+
+        // --- لوحة الإدارة ---
+        function toggleAdmin() {
+            const panel = document.getElementById('adminPanel');
+            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function loginAdmin() {
+            const pass = document.getElementById('adminPass').value;
+            if(pass === 'admin123') { // يمكنك تغيير كلمة المرور هنا
+                document.getElementById('adminLogin').style.display = 'none';
+                document.getElementById('adminControls').style.display = 'block';
+                loadPendingComments();
+            } else {
+                alert("كلمة المرور خاطئة!");
+            }
+        }
+
+        function logoutAdmin() {
+            document.getElementById('adminLogin').style.display = 'block';
+            document.getElementById('adminControls').style.display = 'none';
+            document.getElementById('adminPass').value = '';
+        }
+
+        function loadPendingComments() {
+            if(!isFirebaseReady) return;
+            db.collection('comments').where('status', '==', 'pending').orderBy('timestamp', 'desc')
+            .onSnapshot(snapshot => {
+                const pendingDiv = document.getElementById('pendingComments');
+                pendingDiv.innerHTML = '';
+                if(snapshot.empty) {
+                    pendingDiv.innerHTML = '<p>لا توجد تعليقات بانتظار المراجعة.</p>';
+                    return;
+                }
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    pendingDiv.innerHTML += `
+                        <div style="background: #333; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                            <p><b>${data.name}:</b> ${data.text}</p>
+                            <button class="approve" onclick="updateCommentStatus('${doc.id}', 'published')">✅ نشر</button>
+                            <button onclick="updateCommentStatus('${doc.id}', 'rejected')">🚫 رفض</button>
+                        </div>
+                    `;
+                });
+            });
+        }
+
+        async function updateCommentStatus(id, status) {
+            if(!isFirebaseReady) return;
+            await db.collection('comments').doc(id).update({ status: status });
+        }
+    </script>
 </body>
 </html>
