@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -5,99 +6,157 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>اعرف مترشحك | براهيمي يوسف</title>
 <meta name="description" content="المسار المهني والبرنامج المحلي لبراهيمي يوسف">
+
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_DZ">
 <meta property="og:title" content="براهيمي يوسف | اعرف مترشحك">
 <meta property="og:description" content="برنامج ورؤية لخدمة ولاية أفلو والصالح العام.">
-<meta property="og:image" content="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png?v=2">
+<meta property="og:image" content="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png">
 <meta property="og:url" content="https://workdz-u7oo.onrender.com/">
 
 <style>
-:root{--bg:#e0f2fe;--surface:#fff;--surface-soft:#e0f2fe;--brown:#0369a1;--brown-dark:#075985;--brown-mid:#0ea5e9;--gold:#7dd3fc;--text:#0c4a6e;--border:#7dd3fc;--shadow:rgba(3,105,161,.15)}
+:root{
+ --bg:#eee4d5;--surface:#fffaf3;--brown:#795638;
+ --dark:#493729;--gold:#bd9865;--border:#d8c3a7;
+ --muted:#806b56;--shadow:rgba(90,60,35,.13);
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:Tahoma,Arial,sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden}
-#welcome-overlay{position:fixed;inset:0;background:#e0f2fe;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;transition:opacity .6s,visibility .6s;padding:20px}
-#welcome-overlay.hidden{opacity:0;visibility:hidden;pointer-events:none}
-.welcome-img{max-width:90%;max-height:75vh;border-radius:20px;border:4px solid var(--gold);box-shadow:0 0 45px rgba(3,105,161,.25);object-fit:contain}
-.welcome-text{margin-top:25px;color:var(--brown);font-size:20px;font-weight:bold;text-align:center;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
-#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.35}
-header{position:sticky;top:0;z-index:20;background:rgba(224,242,254,.96);border-bottom:1px solid var(--gold);padding:13px 10px;backdrop-filter:blur(12px);box-shadow:0 3px 12px var(--shadow)}
+body{
+ margin:0;font-family:Tahoma,Arial,sans-serif;color:var(--dark);
+ background:linear-gradient(145deg,#eee4d5,#f8f0e5);
+ overflow-x:hidden
+}
+button,input,textarea{font-family:inherit}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.3}
+#welcome-overlay{
+ position:fixed;inset:0;background:#e8dcc9;z-index:9999;
+ display:flex;flex-direction:column;justify-content:center;
+ align-items:center;cursor:pointer;padding:20px;
+ transition:.8s
+}
+#welcome-overlay.hidden{opacity:0;visibility:hidden}
+.welcome-img{
+ max-width:90%;max-height:75vh;object-fit:contain;
+ border:4px solid var(--gold);border-radius:20px;
+ box-shadow:0 0 45px rgba(130,91,54,.25)
+}
+.welcome-text{margin-top:22px;color:var(--brown);font-weight:bold;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.5}}
+header{
+ position:sticky;top:0;z-index:20;padding:13px 10px;
+ background:rgba(239,228,211,.96);backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--gold);box-shadow:0 3px 12px var(--shadow)
+}
 .brand{text-align:center;color:var(--brown);font-size:23px;font-weight:bold;margin-bottom:12px}
-.developer-top{text-align:center;color:var(--brown);padding:8px;font-size:13px;background:rgba(255,255,255,.35);border-bottom:1px solid var(--border)}
-.developer-top strong{color:var(--brown-dark)}
-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:9px}
-nav a{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 15px;border:1px solid var(--gold);border-radius:12px;color:var(--brown-dark);text-decoration:none;font-size:13px;font-weight:bold;background:linear-gradient(145deg,#fff,#e0f2fe);transition:.25s;box-shadow:0 3px 10px var(--shadow)}
-nav a:hover,nav a.active{background:linear-gradient(135deg,#7dd3fc,#0ea5e9);color:#fff;transform:translateY(-2px)}
-.ticker{overflow:hidden;background:#bae6fd;color:#0c4a6e;white-space:nowrap;padding:11px 0;font-weight:bold}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
+nav a{
+ padding:10px 14px;border:1px solid var(--gold);border-radius:12px;
+ color:var(--dark);text-decoration:none;font-size:13px;font-weight:bold;
+ background:linear-gradient(145deg,#fffaf2,#e8d9c5);transition:.2s
+}
+nav a:hover,nav a.active{background:var(--brown);color:white}
+.developer-top{text-align:center;padding:8px;font-size:13px;color:var(--brown)}
+.ticker{overflow:hidden;background:#c6a47b;color:#382719;white-space:nowrap;padding:11px 0;font-weight:bold}
 .ticker span{display:inline-block;padding-right:100%;animation:move 22s linear infinite}
 @keyframes move{from{transform:translateX(0)}to{transform:translateX(100%)}}
-.hero{min-height:570px;padding:45px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg,rgba(186,230,253,.65),rgba(224,242,254,.95))}
-.profile{width:300px;height:360px;max-width:90%;object-fit:cover;border:4px solid var(--gold);border-radius:22px;box-shadow:0 0 35px rgba(3,105,161,.2);background:#bae6fd}
+.hero{
+ min-height:570px;padding:45px 18px;display:flex;flex-direction:column;
+ align-items:center;justify-content:center;text-align:center;
+ background:linear-gradient(180deg,rgba(214,190,160,.65),rgba(238,228,213,.95))
+}
+.profile{
+ width:300px;height:360px;max-width:90%;object-fit:cover;
+ border:4px solid var(--gold);border-radius:22px;
+ box-shadow:0 0 35px rgba(130,91,54,.2)
+}
 h1{color:var(--brown);font-size:clamp(30px,6vw,48px);margin:20px 0 8px}
-.hero p{color:#155e75;font-size:18px;line-height:1.9}
-.tag{display:inline-block;padding:10px 20px;border:1px solid var(--gold);border-radius:30px;color:var(--brown);margin-top:10px;background:rgba(255,255,255,.45)}
+.hero p{font-size:18px;line-height:1.9}
+.tag{display:inline-block;padding:10px 20px;border:1px solid var(--gold);border-radius:30px;color:var(--brown);margin:5px;background:#ffffff70}
 section{max-width:1100px;margin:auto;padding:55px 18px;scroll-margin-top:145px}
 .section-title{text-align:center;color:var(--brown);font-size:29px;margin-bottom:30px}
-.intro{text-align:center;max-width:800px;margin:auto;line-height:2.2;color:#155e75}
+.intro{text-align:center;max-width:800px;margin:auto;line-height:2.2}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
-.card{background:rgba(255,255,255,.65);border:1px solid var(--border);border-radius:17px;padding:25px 18px;text-align:center;box-shadow:0 8px 24px var(--shadow);transition:.3s;opacity:1;transform:none}
-.card:hover{transform:translateY(-5px);border-color:var(--gold);background:#fff}
+.card{
+ background:#ffffffa8;backdrop-filter:blur(10px);border:1px solid var(--border);
+ border-radius:17px;padding:25px 18px;text-align:center;
+ box-shadow:0 8px 24px var(--shadow);transition:.3s
+}
+.card:hover{transform:translateY(-5px);background:#fffaf2}
 .icon{font-size:38px;margin-bottom:10px}
-.card h3{color:var(--brown);margin:10px 0}
-.card p{line-height:2;color:#155e75;font-size:14px}
-.coming-soon{text-align:center;background:rgba(255,255,255,.65);border:1px solid var(--gold);border-radius:20px;padding:60px 20px;max-width:700px;margin:0 auto;box-shadow:0 10px 30px var(--shadow)}
-.coming-soon-icon{font-size:70px;margin-bottom:20px;animation:float 3s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
-.coming-soon h3{color:var(--brown);font-size:32px;margin-bottom:15px}
-.coming-soon p{color:#155e75;font-size:18px;line-height:1.8}
+.card h3{color:var(--brown)}
+.card p{line-height:2;font-size:14px}
+.coming-soon,.message,.visitor-box,.interaction{
+ text-align:center;background:#ffffffa8;border:1px solid var(--gold);
+ border-radius:20px;padding:35px 20px;box-shadow:0 8px 25px var(--shadow)
+}
+.coming-soon{max-width:700px;margin:auto;padding:60px 20px}
+.coming-soon-icon{font-size:65px;animation:float 3s infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+.coming-soon h3{color:var(--brown);font-size:30px}
+.coming-soon p,.message p,.visitor-box p,.interaction p{line-height:2}
 .timeline{max-width:750px;margin:auto;border-right:3px solid var(--gold);padding-right:22px}
-.timeline-item{position:relative;background:rgba(255,255,255,.55);border:1px solid var(--border);padding:20px;border-radius:13px;margin-bottom:18px;line-height:2;color:#155e75;box-shadow:0 4px 12px var(--shadow)}
-.timeline-item:before{content:"";position:absolute;right:-31px;top:25px;width:13px;height:13px;background:var(--brown-mid);border-radius:50%}
+.timeline-item{position:relative;background:#ffffff90;border:1px solid var(--border);padding:20px;border-radius:13px;margin-bottom:18px;line-height:2}
+.timeline-item:before{content:"";position:absolute;right:-31px;top:25px;width:13px;height:13px;background:var(--brown);border-radius:50%}
 .timeline-item strong{color:var(--brown)}
-.message{text-align:center;padding:35px 20px;border:1px solid var(--border);border-radius:20px;background:rgba(255,255,255,.55);line-height:2.2;box-shadow:0 8px 25px var(--shadow)}
-.message h2{color:var(--brown)}
-.visitor-box{margin-top:25px;padding:30px 22px;border:1px solid var(--gold);border-radius:20px;background:rgba(255,255,255,.55);text-align:center;line-height:2.2;box-shadow:0 8px 25px var(--shadow)}
-.visitor-box h3{color:var(--brown);font-size:23px}
-.visitor-box p{color:#155e75}
-.interaction{margin-top:25px;padding:28px 20px;border:1px solid var(--border);border-radius:20px;background:rgba(255,255,255,.55);text-align:center;box-shadow:0 8px 25px var(--shadow)}
-.interaction h3{color:var(--brown);font-size:23px}
-.interaction p{line-height:2;color:#155e75}
 .action-buttons{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:20px 0}
-.action-btn{border:1px solid var(--brown-mid);border-radius:30px;padding:12px 25px;background:linear-gradient(135deg,#7dd3fc,#0ea5e9);color:#fff;font-size:15px;font-weight:bold;cursor:pointer;font-family:Tahoma,Arial,sans-serif;transition:.25s}
-.action-btn:hover{transform:translateY(-3px);box-shadow:0 5px 15px var(--shadow)}
-#likeCount{color:var(--brown);font-size:18px;font-weight:bold}
-.comment-form{max-width:650px;margin:20px auto 0;display:grid;gap:12px}
-.comment-form input,.comment-form textarea{width:100%;padding:13px;border:1px solid var(--gold);border-radius:10px;background:#fff;color:var(--brown-dark);font-family:Tahoma,Arial,sans-serif;font-size:14px;outline:none}
+.action-btn{
+ border:1px solid var(--brown);border-radius:30px;padding:12px 24px;
+ background:linear-gradient(135deg,#c8a477,#a77b4d);color:white;
+ font-size:15px;font-weight:bold;cursor:pointer;transition:.2s
+}
+.action-btn:hover{transform:translateY(-3px)}
+.action-btn:disabled{opacity:.6;cursor:not-allowed}
+#likeCount{color:var(--brown);font-weight:bold;font-size:18px}
+.comment-form{max-width:650px;margin:20px auto;display:grid;gap:12px}
+.comment-form input,.comment-form textarea,.login-form input{
+ width:100%;padding:13px;border:1px solid var(--gold);border-radius:10px;
+ background:#fffaf2;color:var(--dark);font-size:14px;outline:none
+}
 .comment-form textarea{min-height:100px;resize:vertical}
-.comment-form input:focus,.comment-form textarea:focus{border-color:var(--brown);box-shadow:0 0 0 3px rgba(14,165,233,.12)}
-.comment-list{max-width:650px;margin:20px auto 0;text-align:right}
-.comment-item{padding:14px;margin:10px 0;background:rgba(255,255,255,.75);border:1px solid var(--border);border-radius:12px;overflow-wrap:anywhere}
+.comment-list{max-width:650px;margin:20px auto;text-align:right}
+.comment-item{padding:14px;margin:10px 0;background:#ffffffc9;border:1px solid var(--border);border-radius:12px;overflow-wrap:anywhere}
 .comment-item strong{color:var(--brown)}
-.comment-item p{line-height:1.9;margin-bottom:0;color:var(--brown-dark)}
-footer{text-align:center;padding:30px 15px;background:#bae6fd;border-top:1px solid var(--gold);line-height:2;color:#155e75}
+.comment-item p{line-height:1.9;margin-bottom:0}
+.comment-item small{color:var(--muted)}
+footer{text-align:center;padding:30px 15px;background:#dfcfb9;border-top:1px solid var(--gold);line-height:2}
 footer strong{color:var(--brown)}
-@media(max-width:600px){header{padding:10px 7px}nav{gap:6px}nav a{padding:9px 10px;font-size:12px}.hero{padding:35px 14px}.profile{width:260px;height:320px}section{padding:38px 14px}.section-title{font-size:25px}}
-#dashboard{display:none;position:fixed;inset:0;background:rgba(224,242,254,.98);z-index:10000;padding:20px;overflow-y:auto;direction:rtl}
-#dashboard .dash-container{max-width:1000px;margin:20px auto;background:#fff;border-radius:20px;padding:30px;box-shadow:0 0 50px rgba(3,105,161,.2);border:2px solid var(--gold)}
-#dashboard h2{color:var(--brown);text-align:center;margin-bottom:20px}
-#dashboard h3{color:var(--brown-dark);margin-top:25px;border-bottom:2px solid var(--gold);padding-bottom:5px}
-.dash-table{width:100%;border-collapse:collapse;margin-top:15px;font-size:14px}
-.dash-table th,.dash-table td{border:1px solid var(--border);padding:10px;text-align:right}
-.dash-table th{background:var(--surface-soft);color:var(--brown-dark)}
-.dash-table tr:nth-child(even){background:#f8fafc}
-#closeDash{display:block;margin:20px auto 0;background:#ef4444;color:#fff;border:none;padding:10px 20px;border-radius:10px;cursor:pointer;font-size:16px}
-#status-banner{position:fixed;bottom:0;left:0;right:0;padding:8px;text-align:center;font-size:12px;z-index:9997;display:none;transition:opacity .3s}
-#status-banner.show{display:block}
-#status-banner.error{background:#fee2e2;color:#991b1b;display:block}
-#status-banner.success{background:#dcfce7;color:#166534;display:block}
+#adminButton{
+ position:fixed;left:14px;bottom:14px;z-index:50;
+ border:1px solid var(--gold);border-radius:50px;padding:11px 16px;
+ background:var(--dark);color:white;cursor:pointer;box-shadow:0 4px 15px var(--shadow)
+}
+#adminPanel{
+ display:none;position:fixed;inset:0;z-index:10000;
+ background:#0009;overflow:auto;padding:20px
+}
+.admin-box{
+ max-width:700px;margin:35px auto;background:var(--surface);
+ border:1px solid var(--gold);border-radius:18px;padding:22px;
+ box-shadow:0 15px 50px #0004
+}
+.admin-box h2,.admin-box h3{color:var(--brown)}
+.admin-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.admin-stat{background:#f0e3d1;padding:16px;border-radius:12px;margin:10px 0}
+.admin-comment{padding:12px;background:#f5ecdf;border-radius:10px;margin:10px 0;overflow-wrap:anywhere}
+.delete-btn,.close-btn{
+ border:0;border-radius:8px;padding:9px 13px;cursor:pointer;
+ background:#795638;color:white;margin:5px
+}
+.login-form{display:grid;gap:12px;margin-top:20px}
+.status{font-size:13px;color:var(--muted);text-align:center;margin:12px}
+@media(max-width:600px){
+ nav{gap:6px}nav a{padding:9px 10px;font-size:12px}
+ .hero{padding:35px 14px}.profile{width:260px;height:320px}
+ section{padding:38px 14px}.section-title{font-size:25px}
+ .coming-soon h3{font-size:25px}
+}
 </style>
 </head>
 <body>
 
-<div id="welcome-overlay">
- <img src="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png" alt="اضغط للدخول" class="welcome-img" onerror="this.style.display='none'">
+<div id="welcome-overlay" onclick="enterSite()">
+ <img src="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png" alt="اضغط للدخول" class="welcome-img">
  <div class="welcome-text">اضغط في أي مكان للدخول إلى الموقع</div>
 </div>
 
@@ -107,6 +166,7 @@ footer strong{color:var(--brown)}
  <div class="brand">اعرف مترشحك</div>
  <nav>
   <a href="#home">🏠 الرئيسية</a>
+  <a href="#about">👤 من أنا</a>
   <a href="#program">📋 برنامجي</a>
   <a href="#experience">🏛️ المسار المهني</a>
   <a href="#education">🎓 الشهادات</a>
@@ -115,12 +175,11 @@ footer strong{color:var(--brown)}
 </header>
 
 <div class="developer-top">✦ تصميم وتطوير: <strong>براهيمي يوسف</strong> ✦</div>
-
 <div class="ticker"><span>براهيمي يوسف | معًا للتغيير والنهوض بالوطن | خدمة المواطن | التنمية المتوازنة | حماية المصلحة العامة</span></div>
 
 <main>
 <div class="hero" id="home">
- <img class="profile" src="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png" alt="الصورة الشخصية" onerror="this.style.background='#bae6fd'">
+ <img class="profile" src="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png" alt="الصورة الشخصية لبراهيمي يوسف">
  <h1>براهيمي يوسف</h1>
  <p>معًا للتغيير والنهوض بالوطن</p>
  <div class="tag">المجلس الشعبي الولائي – ولاية أفلو</div>
@@ -137,7 +196,7 @@ footer strong{color:var(--brown)}
  <div class="coming-soon">
   <div class="coming-soon-icon">⏳</div>
   <h3>سنوافيكم به بعد قليل</h3>
-  <p>نعمل حالياً على إعداد ودراسة البرنامج الانتخابي الشامل الذي يلبي تطلعاتكم ويلامس انشغالاتكم الحقيقية.</p>
+  <p>نعمل حاليًا على إعداد ودراسة البرنامج الشامل الذي يلبي تطلعاتكم ويلامس انشغالاتكم الحقيقية.</p>
  </div>
 </section>
 
@@ -172,29 +231,28 @@ footer strong{color:var(--brown)}
  <div class="message">
   <h2>شكرًا لزيارتكم</h2>
   <p>شكرًا لكل من خصص وقتًا للتعرف على مساري المهني والتكويني ورؤيتي لخدمة الصالح العام. نسأل الله التوفيق والسداد، وأن يحفظ وطننا ويوفق الجميع لما فيه الخير.</p>
-  <h3 style="color:#0369a1">معًا للتغيير والنهوض بالوطن</h3>
+  <h3 style="color:#795638">معًا للتغيير والنهوض بالوطن</h3>
  </div>
-
  <div class="visitor-box">
   <h3>إلى زوار صفحتي الكرام 🌹</h3>
-  <p>أهلًا وسهلًا ومرحبًا بكل من زار هذا الفضاء التعريفي، من أفلو، ومن جميع بلديات الولاية، ومن كل ربوع الجزائر.</p>
-  <p>وجودكم محل تقدير واحترام، وزيارتكم تسعدني. إذا أعجبتكم الصفحة، لا تبخلوا علينا بترك إعجاب 👍 أو تعليق تعبّرون فيه عن رأيكم.</p>
+  <p>أهلًا وسهلًا بكل من زار هذا الفضاء التعريفي، من أفلو ومن جميع بلديات الولاية ومن كل ربوع الجزائر.</p>
+  <p>وجودكم محل تقدير واحترام. إذا أعجبتكم الصفحة، يمكنكم ترك إعجاب أو تعليق تعبّرون فيه عن رأيكم.</p>
   <h3>بكل احترام وتقدير، براهيمي يوسف</h3>
  </div>
-
  <div class="interaction">
   <h3>رأيكم يهمنا ❤️</h3>
-  <p>إذا أعجبتكم الصفحة، يمكنكم الضغط على زر الإعجاب أو كتابة تعليق.</p>
+  <p>يمكنكم الضغط على زر الإعجاب أو كتابة تعليق.</p>
   <div class="action-buttons">
    <button class="action-btn" id="likeButton" type="button">👍 أعجبني</button>
-   <span id="likeCount">…</span>
+   <span id="likeCount">جارٍ التحميل...</span>
   </div>
   <form class="comment-form" id="commentForm">
-   <input type="text" id="visitorName" maxlength="50" placeholder="اسمك (اختياري)">
+   <input id="visitorName" maxlength="50" placeholder="اسمك (اختياري)">
    <textarea id="visitorComment" maxlength="500" placeholder="اكتب تعليقك أو تحيتك هنا..." required></textarea>
-   <button class="action-btn" type="submit">✉️ إضافة التعليق</button>
+   <button class="action-btn" id="commentButton" type="submit">✉️ إضافة التعليق</button>
   </form>
   <div class="comment-list" id="commentList"></div>
+  <p class="status" id="firebaseStatus">جاري الاتصال بقاعدة البيانات...</p>
  </div>
 </section>
 </main>
@@ -202,293 +260,305 @@ footer strong{color:var(--brown)}
 <footer>
  <strong>براهيمي يوسف</strong><br>
  المجلس الشعبي الولائي – حزب صوت الشعب – ولاية أفلو<br>
- <span style="color:#0369a1">تصميم وتطوير: براهيمي يوسف</span><br>
- <a href="#" id="dashLink" style="font-size:11px;color:#64748b;text-decoration:none;">لوحة التحكم</a>
+ <span style="color:#795638">تصميم وتطوير: براهيمي يوسف</span>
 </footer>
 
-<div id="dashboard">
- <div class="dash-container">
-  <h2>📊 لوحة التحكم</h2>
-  <h3>👥 الزوار المسجلون</h3>
-  <div id="visitorsTableContainer"><p style="text-align:center;color:#64748b;">جاري التحميل...</p></div>
-  <h3>💬 التعليقات</h3>
-  <div id="dashCommentsContainer"><p style="text-align:center;color:#64748b;">جاري التحميل...</p></div>
-  <button id="closeDash">إغلاق لوحة التحكم</button>
+<button id="adminButton" type="button">🔐 لوحة التحكم</button>
+
+<div id="adminPanel">
+ <div class="admin-box">
+  <div class="admin-top">
+   <h2>لوحة التحكم الإدارية</h2>
+   <button class="close-btn" id="closeAdmin">إغلاق ✕</button>
+  </div>
+  <div id="loginArea">
+   <p>تسجيل دخول المسؤول</p>
+   <form id="loginForm" class="login-form">
+    <input type="email" id="adminEmail" placeholder="البريد الإلكتروني" required>
+    <input type="password" id="adminPassword" placeholder="كلمة المرور" required>
+    <button class="action-btn" type="submit">دخول</button>
+   </form>
+   <p class="status" id="loginStatus"></p>
+  </div>
+  <div id="dashboard" hidden>
+   <h3>الإحصائيات</h3>
+   <div class="admin-stat">إجمالي الإعجابات: <strong id="adminLikes">0</strong></div>
+   <div class="admin-stat">عدد التعليقات: <strong id="adminCommentsCount">0</strong></div>
+   <h3>إدارة التعليقات</h3>
+   <div id="adminCommentList"></div>
+   <button class="action-btn" id="logoutButton" type="button">تسجيل الخروج</button>
+  </div>
  </div>
 </div>
 
-<div id="status-banner"></div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import {
+ getFirestore,doc,collection,addDoc,onSnapshot,
+ runTransaction,serverTimestamp,query,orderBy,deleteDoc
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+import {
+ getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
-<!-- === الجزء 1: يشتغل فوراً (لا يعتمد على Firebase) === -->
-<script>
-(function() {
-  var overlay = document.getElementById('welcome-overlay');
-  if (overlay) {
-    var closed = false;
-    function closeOverlay() {
-      if (closed) return;
-      closed = true;
-      overlay.classList.add('hidden');
-      setTimeout(function() { overlay.style.display = 'none'; }, 700);
-    }
-    overlay.addEventListener('click', closeOverlay);
-    overlay.addEventListener('touchstart', closeOverlay, {passive:true});
-    setTimeout(closeOverlay, 15000);
+/* استبدل القيم التالية بإعدادات مشروع Firebase */
+const firebaseConfig = {
+ apiKey: "ضع_API_KEY_هنا",
+ authDomain: "ضع_AUTH_DOMAIN_هنا",
+ projectId: "ضع_PROJECT_ID_هنا",
+ storageBucket: "ضع_STORAGE_BUCKET_هنا",
+ messagingSenderId: "ضع_MESSAGING_SENDER_ID_هنا",
+ appId: "ضع_APP_ID_هنا"
+};
+
+const statusEl=document.getElementById("firebaseStatus");
+const likeButton=document.getElementById("likeButton");
+const likeCount=document.getElementById("likeCount");
+const commentForm=document.getElementById("commentForm");
+const commentList=document.getElementById("commentList");
+const commentButton=document.getElementById("commentButton");
+const adminPanel=document.getElementById("adminPanel");
+const loginArea=document.getElementById("loginArea");
+const dashboard=document.getElementById("dashboard");
+
+let db,auth,unsubscribeComments=null;
+let currentLikes=0;
+let adminLoggedIn=false;
+
+const deviceIdKey="aflouFirebaseDeviceId";
+let deviceId=localStorage.getItem(deviceIdKey);
+if(!deviceId){
+ deviceId=crypto.randomUUID();
+ localStorage.setItem(deviceIdKey,deviceId);
+}
+
+function setStatus(message){statusEl.textContent=message;}
+
+function addText(parent,tag,text,className){
+ const element=document.createElement(tag);
+ element.textContent=text;
+ if(className)element.className=className;
+ parent.appendChild(element);
+ return element;
+}
+
+function renderPublicComment(id,data){
+ const item=document.createElement("div");
+ item.className="comment-item";
+ addText(item,"strong",data.name||"زائر");
+ addText(item,"p",data.message||"");
+ if(data.createdAt?.toDate){
+  addText(item,"small",data.createdAt.toDate().toLocaleString("ar-DZ"));
+ }
+ commentList.appendChild(item);
+}
+
+try{
+ if(firebaseConfig.apiKey.startsWith("ضع_") ||
+    firebaseConfig.projectId.startsWith("ضع_")){
+  throw new Error("أدخل إعدادات Firebase في firebaseConfig أولًا.");
+ }
+
+ const app=initializeApp(firebaseConfig);
+ db=getFirestore(app);
+ auth=getAuth(app);
+
+ const likesRef=doc(db,"siteStats","main");
+ const myLikeRef=doc(db,"siteLikes",deviceId);
+
+ /* متابعة عدد الإعجابات */
+ onSnapshot(likesRef,snap=>{
+  currentLikes=snap.exists()?Number(snap.data().likes||0):0;
+  likeCount.textContent=currentLikes+" إعجاب";
+  if(dashboard.hidden===false){
+   document.getElementById("adminLikes").textContent=currentLikes;
   }
+ },error=>setStatus("تعذر قراءة الإعجابات: "+error.message));
 
-  var canvas = document.getElementById('stars');
-  if (canvas && canvas.getContext) {
-    var ctx = canvas.getContext('2d');
-    var stars = [];
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      stars = [];
-      for (var i = 0; i < 90; i++) {
-        stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.8+.3,speed:Math.random()*.35+.1});
-      }
-    }
-    function animate() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      ctx.fillStyle = '#0ea5e9';
-      for (var i = 0; i < stars.length; i++) {
-        var s = stars[i];
-        ctx.beginPath();
-        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-        ctx.fill();
-        s.y -= s.speed;
-        if (s.y < 0) { s.y = canvas.height; s.x = Math.random()*canvas.width; }
-      }
-      requestAnimationFrame(animate);
-    }
-    window.addEventListener('resize', resize);
-    resize();
-    animate();
+ /* معرفة هل سبق للزائر الإعجاب */
+ onSnapshot(myLikeRef,snap=>{
+  likeButton.textContent=snap.exists()?"❤️ سجلت إعجابك":"👍 أعجبني";
+  likeButton.disabled=snap.exists();
+ },error=>console.error(error));
+
+ /* تسجيل إعجاب واحد لكل معرّف جهاز */
+ likeButton.addEventListener("click",async()=>{
+  likeButton.disabled=true;
+  try{
+   await runTransaction(db,async transaction=>{
+    const [likeSnap,statsSnap]=await Promise.all([
+     transaction.get(myLikeRef),transaction.get(likesRef)
+    ]);
+    if(likeSnap.exists())return;
+    const total=statsSnap.exists()?Number(statsSnap.data().likes||0):0;
+    transaction.set(myLikeRef,{createdAt:serverTimestamp()});
+    transaction.set(likesRef,{likes:total+1},{merge:true});
+   });
+  }catch(error){
+   alert("تعذر تسجيل الإعجاب: "+error.message);
+   likeButton.disabled=false;
   }
+ });
 
-  var links = document.querySelectorAll('nav a');
-  if ('IntersectionObserver' in window) {
-    var navObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          links.forEach(function(l) {
-            l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id);
-          });
-        }
-      });
-    }, {rootMargin:'-25% 0px -60% 0px'});
-    document.querySelectorAll('main section, .hero').forEach(function(s) {
-      if (s.id) navObs.observe(s);
+ /* إضافة تعليق */
+ commentForm.addEventListener("submit",async event=>{
+  event.preventDefault();
+  const name=document.getElementById("visitorName").value.trim().slice(0,50)||"زائر";
+  const message=document.getElementById("visitorComment").value.trim();
+  if(!message)return;
+  commentButton.disabled=true;
+  try{
+   await addDoc(collection(db,"siteComments"),{
+    name,message:message.slice(0,500),
+    createdAt:serverTimestamp(),approved:false
+   });
+   commentForm.reset();
+   alert("تم إرسال تعليقك، وسيظهر بعد موافقة الإدارة.");
+  }catch(error){
+   alert("تعذر إرسال التعليق: "+error.message);
+  }finally{
+   commentButton.disabled=false;
+  }
+ });
+
+ /* عرض التعليقات المقبولة فقط */
+ const publicCommentsQuery=query(collection(db,"siteComments"),orderBy("createdAt","desc"));
+ onSnapshot(publicCommentsQuery,snapshot=>{
+  commentList.replaceChildren();
+  snapshot.forEach(comment=>{
+   if(comment.data().approved===true){
+    renderPublicComment(comment.id,comment.data());
+   }
+  });
+ },error=>setStatus("تعذر تحميل التعليقات: "+error.message));
+
+ /* لوحة الإدارة */
+ document.getElementById("adminButton").addEventListener("click",()=>{
+  adminPanel.style.display="block";
+ });
+ document.getElementById("closeAdmin").addEventListener("click",()=>{
+  adminPanel.style.display="none";
+ });
+
+ onAuthStateChanged(auth,user=>{
+  adminLoggedIn=!!user;
+  loginArea.hidden=!!user;
+  dashboard.hidden=!user;
+  if(user)loadAdminDashboard();
+  else if(unsubscribeComments){unsubscribeComments();unsubscribeComments=null;}
+ });
+
+ document.getElementById("loginForm").addEventListener("submit",async event=>{
+  event.preventDefault();
+  const email=document.getElementById("adminEmail").value.trim();
+  const password=document.getElementById("adminPassword").value;
+  const output=document.getElementById("loginStatus");
+  output.textContent="جارٍ تسجيل الدخول...";
+  try{
+   await signInWithEmailAndPassword(auth,email,password);
+   output.textContent="";
+  }catch(error){
+   output.textContent="فشل الدخول. تحقق من البريد وكلمة المرور.";
+  }
+ });
+
+ function loadAdminDashboard(){
+  if(unsubscribeComments)unsubscribeComments();
+  const q=query(collection(db,"siteComments"),orderBy("createdAt","desc"));
+  unsubscribeComments=onSnapshot(q,snapshot=>{
+   document.getElementById("adminLikes").textContent=currentLikes;
+   document.getElementById("adminCommentsCount").textContent=snapshot.size;
+   const list=document.getElementById("adminCommentList");
+   list.replaceChildren();
+
+   snapshot.forEach(comment=>{
+    const data=comment.data();
+    const item=document.createElement("div");
+    item.className="admin-comment";
+    addText(item,"strong",data.name||"زائر");
+    addText(item,"p",data.message||"");
+    addText(item,"small",data.approved?"منشور":"بانتظار الموافقة");
+
+    const approve=document.createElement("button");
+    approve.className="delete-btn";
+    approve.textContent=data.approved?"إلغاء النشر":"موافقة ونشر";
+    approve.addEventListener("click",async()=>{
+     try{
+      const {updateDoc}=await import("https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js");
+      await updateDoc(doc(db,"siteComments",comment.id),{approved:!data.approved});
+     }catch(error){alert("تعذر تعديل التعليق: "+error.message);}
     });
-  }
-})();
+
+    const remove=document.createElement("button");
+    remove.className="delete-btn";
+    remove.textContent="حذف";
+    remove.addEventListener("click",async()=>{
+     if(!confirm("هل تريد حذف هذا التعليق؟"))return;
+     try{await deleteDoc(doc(db,"siteComments",comment.id));}
+     catch(error){alert("تعذر الحذف: "+error.message);}
+    });
+    item.append(approve,remove);
+    list.appendChild(item);
+   });
+  },error=>console.error(error));
+ }
+
+ document.getElementById("logoutButton").addEventListener("click",()=>signOut(auth));
+
+ setStatus("تم الاتصال بقاعدة Firebase.");
+}catch(error){
+ console.error(error);
+ setStatus(error.message);
+ likeCount.textContent="Firebase غير مهيأ";
+ likeButton.disabled=true;
+ commentButton.disabled=true;
+}
 </script>
 
-<!-- === الجزء 2: Firebase SDK === -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-
-<!-- === الجزء 3: منطق Firebase (محمي) === -->
 <script>
-(function() {
-  var statusBanner = document.getElementById('status-banner');
-  function showStatus(msg, type) {
-    if (!statusBanner) return;
-    statusBanner.textContent = msg;
-    statusBanner.className = type;
-    setTimeout(function() { statusBanner.className = ''; }, 6000);
+function enterSite(){
+ const overlay=document.getElementById("welcome-overlay");
+ overlay.classList.add("hidden");
+ setTimeout(()=>overlay.style.display="none",800);
+}
+
+/* خلفية النجوم */
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+let stars=[];
+function resize(){
+ canvas.width=innerWidth;
+ canvas.height=innerHeight;
+ stars=Array.from({length:90},()=>({
+  x:Math.random()*canvas.width,y:Math.random()*canvas.height,
+  r:Math.random()*1.8+.3,speed:Math.random()*.35+.1
+ }));
+}
+function animate(){
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+ ctx.fillStyle="#a77b4d";
+ stars.forEach(s=>{
+  ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();
+  s.y-=s.speed;
+  if(s.y<0){s.y=canvas.height;s.x=Math.random()*canvas.width;}
+ });
+ requestAnimationFrame(animate);
+}
+addEventListener("resize",resize);resize();animate();
+
+/* تمييز روابط الأقسام */
+const links=document.querySelectorAll("nav a");
+const sections=document.querySelectorAll("main section,.hero");
+const navObserver=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   links.forEach(link=>link.classList.toggle(
+    "active",link.getAttribute("href")==="#"+entry.target.id
+   ));
   }
-
-  var db = null, rtdb = null, firebaseReady = false;
-
-  try {
-    if (typeof firebase === 'undefined') throw new Error('Firebase SDK not loaded');
-
-    var firebaseConfig = {
-      apiKey: "AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
-      authDomain: "workdz-web.firebaseapp.com",
-      databaseURL: "https://workdz-web-default-rtdb.firebaseio.com",
-      projectId: "workdz-web",
-      storageBucket: "workdz-web.firebasestorage.app",
-      messagingSenderId: "980881321562",
-      appId: "1:980881321562:web:5046cc8bfe27749a73f263"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    db = firebase.firestore();
-    rtdb = firebase.database();
-    firebaseReady = true;
-    console.log('✅ Firebase ready');
-    showStatus('✅ متصل بقاعدة البيانات', 'success');
-  } catch (err) {
-    console.error('❌ Firebase init error:', err);
-    showStatus('⚠️ الموقع يعمل لكن التفاعلات معطلة', 'error');
-  }
-
-  function trackVisitor() {
-    if (!firebaseReady) return;
-    try {
-      var sessionId = sessionStorage.getItem('visitor_session_id');
-      if (!sessionId) {
-        sessionId = 'visitor_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-        sessionStorage.setItem('visitor_session_id', sessionId);
-      }
-      rtdb.ref('visitors/' + sessionId).set({
-        timestamp: firebase.database.ServerValue.TIMESTAMP,
-        userAgent: navigator.userAgent,
-        page: window.location.pathname,
-        language: navigator.language
-      }).catch(function(e) { console.error('trackVisitor:', e); });
-    } catch (e) { console.error(e); }
-  }
-
-  var likeButton = document.getElementById('likeButton');
-  var likeCountSpan = document.getElementById('likeCount');
-  var liked = localStorage.getItem('aflouLiked') === 'true';
-
-  function fetchLikes() {
-    if (!firebaseReady) { likeCountSpan.textContent = '—'; return; }
-    db.collection('stats').doc('likes').get()
-      .then(function(doc) {
-        if (doc.exists) likeCountSpan.textContent = (doc.data().count || 0) + ' إعجاب';
-        else { db.collection('stats').doc('likes').set({count: 0}); likeCountSpan.textContent = '0 إعجاب'; }
-      })
-      .catch(function(e) { console.error('fetchLikes:', e); likeCountSpan.textContent = '—'; });
-  }
-
-  if (likeButton) {
-    likeButton.addEventListener('click', function() {
-      if (!firebaseReady) { alert('قاعدة البيانات غير متاحة حالياً.'); return; }
-      var likeDocRef = db.collection('stats').doc('likes');
-      var delta = liked ? -1 : 1;
-      likeDocRef.set({count: firebase.firestore.FieldValue.increment(delta)}, {merge: true})
-        .then(function() {
-          liked = !liked;
-          localStorage.setItem('aflouLiked', liked ? 'true' : 'false');
-          likeButton.textContent = liked ? '❤️ أعجبني' : '👍 أعجبني';
-          fetchLikes();
-        })
-        .catch(function(e) { console.error('like:', e); alert('تعذر تنفيذ الإعجاب.'); });
-    });
-  }
-  fetchLikes();
-
-  var commentForm = document.getElementById('commentForm');
-  var commentList = document.getElementById('commentList');
-
-  function loadComments() {
-    if (!firebaseReady) { commentList.innerHTML = '<p style="color:#64748b;text-align:center;">التعليقات معطلة مؤقتاً.</p>'; return; }
-    db.collection('comments').orderBy('timestamp', 'desc').limit(20).get()
-      .then(function(snapshot) {
-        commentList.replaceChildren();
-        if (snapshot.empty) {
-          commentList.innerHTML = '<p style="color:#64748b;text-align:center;">كن أول من يترك تعليقاً.</p>';
-          return;
-        }
-        snapshot.forEach(function(doc) {
-          var data = doc.data();
-          var item = document.createElement('div');
-          item.className = 'comment-item';
-          var name = document.createElement('strong');
-          name.textContent = data.name || 'زائر';
-          var message = document.createElement('p');
-          message.textContent = data.message;
-          item.appendChild(name);
-          item.appendChild(message);
-          commentList.appendChild(item);
-        });
-      })
-      .catch(function(e) { console.error('loadComments:', e); });
-  }
-
-  if (commentForm) {
-    commentForm.addEventListener('submit', function(event) {
-      event.preventDefault();
-      if (!firebaseReady) { alert('قاعدة البيانات غير متاحة حالياً.'); return; }
-      var name = document.getElementById('visitorName').value.trim();
-      var message = document.getElementById('visitorComment').value.trim();
-      if (!message) return;
-      db.collection('comments').add({
-        name: name || 'زائر',
-        message: message,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-      })
-      .then(function() {
-        commentForm.reset();
-        alert('تم إرسال تعليقك بنجاح. شكراً لك!');
-        loadComments();
-      })
-      .catch(function(e) { console.error('addComment:', e); alert('تعذر إرسال التعليق.'); });
-    });
-  }
-  loadComments();
-
-  var dashLink = document.getElementById('dashLink');
-  var dashboard = document.getElementById('dashboard');
-  var closeDash = document.getElementById('closeDash');
-
-  if (dashLink) {
-    dashLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      var c1 = prompt('أدخل كود الدخول الأول:');
-      if (c1 !== '03') { if (c1 !== null) alert('كود أول غير صحيح'); return; }
-      var c2 = prompt('أدخل كود الدخول الثاني:');
-      if (c2 !== '1984') { if (c2 !== null) alert('كود ثانٍ غير صحيح'); return; }
-      dashboard.style.display = 'block';
-      document.body.style.overflow = 'hidden';
-      loadDashboard();
-    });
-  }
-  if (closeDash) {
-    closeDash.addEventListener('click', function() {
-      dashboard.style.display = 'none';
-      document.body.style.overflow = '';
-    });
-  }
-
-  function loadDashboard() {
-    var vc = document.getElementById('visitorsTableContainer');
-    var cc = document.getElementById('dashCommentsContainer');
-    if (!firebaseReady) {
-      vc.innerHTML = cc.innerHTML = '<p style="color:red;text-align:center;">قاعدة البيانات غير متاحة.</p>';
-      return;
-    }
-
-    vc.innerHTML = '<p style="text-align:center;">جاري التحميل...</p>';
-    rtdb.ref('visitors').orderByChild('timestamp').limitToLast(50).once('value')
-      .then(function(snap) {
-        var arr = [];
-        snap.forEach(function(c) { arr.push(c.val()); });
-        arr.reverse();
-        if (!arr.length) { vc.innerHTML = '<p style="text-align:center;">لا زوار بعد.</p>'; return; }
-        var html = '<table class="dash-table"><thead><tr><th>#</th><th>التاريخ</th><th>المتصفح</th><th>اللغة</th></tr></thead><tbody>';
-        arr.forEach(function(v, i) {
-          var d = v.timestamp ? new Date(v.timestamp).toLocaleString('ar-DZ') : '-';
-          html += '<tr><td>'+(i+1)+'</td><td>'+d+'</td><td style="direction:ltr;text-align:left;font-size:11px;">'+(v.userAgent||'-')+'</td><td>'+(v.language||'-')+'</td></tr>';
-        });
-        vc.innerHTML = html + '</tbody></table>';
-      })
-      .catch(function(e) { vc.innerHTML = '<p style="color:red;">خطأ: ' + e.message + '</p>'; });
-
-    cc.innerHTML = '<p style="text-align:center;">جاري التحميل...</p>';
-    db.collection('comments').orderBy('timestamp', 'desc').get()
-      .then(function(snap) {
-        if (snap.empty) { cc.innerHTML = '<p style="text-align:center;">لا تعليقات بعد.</p>'; return; }
-        var html = '<table class="dash-table"><thead><tr><th>#</th><th>الاسم</th><th>التعليق</th><th>التاريخ</th></tr></thead><tbody>';
-        var i = 1;
-        snap.forEach(function(doc) {
-          var d = doc.data();
-          var dt = d.timestamp ? d.timestamp.toDate().toLocaleString('ar-DZ') : '-';
-          html += '<tr><td>'+(i++)+'</td><td>'+(d.name||'زائر')+'</td><td>'+d.message+'</td><td>'+dt+'</td></tr>';
-        });
-        cc.innerHTML = html + '</tbody></table>';
-      })
-      .catch(function(e) { cc.innerHTML = '<p style="color:red;">خطأ: ' + e.message + '</p>'; });
-  }
-
-  window.addEventListener('load', function() { setTimeout(trackVisitor, 500); });
-})();
+ });
+},{rootMargin:"-25% 0px -60% 0px"});
+sections.forEach(section=>{if(section.id)navObserver.observe(section);});
 </script>
 </body>
 </html>
