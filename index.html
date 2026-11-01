@@ -12,7 +12,8 @@ html{scroll-behavior:smooth}
 body{margin:0;background:#f8f3e9;color:#30251d;font-family:Cairo,sans-serif}
 header{background:#30251d;color:white;text-align:center;padding:18px;font-size:22px;font-weight:900}
 nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:13px;background:#49382a;position:sticky;top:0;z-index:10}
-nav button{background:#f8f3e9;color:#49382a;padding:9px 15px;border-radius:22px}
+button{font-family:inherit;border:0;background:#c49a52;color:#24190e;padding:10px 17px;border-radius:8px;cursor:pointer;font-weight:800}
+nav button{background:#f8f3e9;border-radius:22px}
 nav button.active,nav button:hover{background:#c49a52;color:#24190e}
 .notice{margin:14px auto;padding:15px;max-width:1100px;background:#fff1d7;border-right:5px solid #c49a52;border-radius:9px;text-align:center;font-weight:800;line-height:2}
 .hero{min-height:420px;background:linear-gradient(#20170a66,#20170acc),url('https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:30px}
@@ -20,7 +21,7 @@ nav button.active,nav button:hover{background:#c49a52;color:#24190e}
 .hero p{font-size:19px}
 .party{color:#f4d49e;border:1px solid #c49a52;padding:8px 24px;border-radius:30px;display:inline-block}
 .container{max-width:1100px;margin:auto;padding:20px}
-section{margin:25px 0;padding:25px;background:white;border-radius:16px;box-shadow:0 5px 20px #0000000c}
+section{margin:25px 0;padding:25px;background:white;border-radius:16px;box-shadow:0 5px 20px #0000000c;scroll-margin-top:90px}
 h2{color:#8b642e;border-bottom:2px solid #e9d8b8;padding-bottom:12px}
 .profile{display:grid;grid-template-columns:260px 1fr;gap:25px;align-items:center}
 .profile img{width:100%;border-radius:15px;border:5px solid #ead8b8}
@@ -28,11 +29,10 @@ h2{color:#8b642e;border-bottom:2px solid #e9d8b8;padding-bottom:12px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
 .card{background:#fbf6ed;border:1px solid #eadbc1;padding:18px;border-radius:12px;text-align:center;line-height:2}
 .symbol{font-size:30px}
-button{font-family:inherit;border:0;background:#c49a52;color:#24190e;padding:11px 18px;border-radius:8px;cursor:pointer;font-weight:800}
-button:disabled{opacity:.5;cursor:not-allowed}
-input,textarea{font-family:inherit;width:100%;padding:12px;margin:7px 0;border:1px solid #d9cbb6;border-radius:8px;font-size:15px}
-textarea{min-height:110px}
-.comment,.adminItem{padding:14px;margin:10px 0;background:#faf6ee;border-radius:9px;border-right:3px solid #c49a52}
+input,textarea{font-family:inherit;width:100%;padding:11px;margin:7px 0;border:1px solid #d9cbb6;border-radius:8px;font-size:15px}
+textarea{min-height:75px;resize:vertical}
+.comment,.adminItem{padding:14px;margin:10px 0;background:#faf6ee;border-radius:9px;border-right:3px solid #c49a52;line-height:2}
+.reply{margin:10px 15px 0;padding:10px;background:#eee6d8;border-radius:8px}
 .status{font-size:14px;margin:10px 0;line-height:2}
 .program{text-align:center;line-height:2.4;font-weight:800}
 footer{text-align:center;background:#30251d;color:white;padding:25px;margin-top:35px;line-height:2}
@@ -45,6 +45,7 @@ footer{text-align:center;background:#30251d;color:white;padding:25px;margin-top:
 .green{background:#39765a;color:white}
 .small{font-size:12px;color:#76695b}
 .hidden{display:none!important}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
 @media(max-width:650px){
 .profile{grid-template-columns:1fr}
 .profile img{max-width:260px;display:block;margin:auto}
@@ -117,70 +118,64 @@ section{padding:17px}
 </section>
 
 <section id="comments">
-<h2>التعليقات والتفاعل</h2>
+<h2>التفاعل والتعليقات</h2>
 
 <div class="card">
-<h3>الإعجاب بالموقع</h3>
-<input id="likeName" maxlength="60" placeholder="اكتب اسمك قبل الإعجاب">
-<button id="likeBtn" type="button">👍 أعجبني</button>
+<h3>رأيك يهمنا</h3>
 <p>عدد الإعجابات: <strong id="likeCount">0</strong></p>
+<button id="likeBtn">👍 أعجبني</button>
 <div id="likeStatus" class="status"></div>
 </div>
 
-<h3>أضف تعليقك</h3>
+<h3>اكتب تعليقك</h3>
 <form id="commentForm">
-<input id="commentName" maxlength="60" placeholder="اسمك" required>
 <textarea id="commentText" maxlength="1000" placeholder="اكتب تعليقك هنا..." required></textarea>
-<button type="submit" id="sendComment">إرسال التعليق</button>
+<button id="sendComment" type="submit">إرسال التعليق</button>
 </form>
 <div id="message" class="status"></div>
 
-<h3>التعليقات المنشورة</h3>
+<h3>التعليقات</h3>
 <div id="publishedComments">جارٍ تحميل التعليقات...</div>
 </section>
 
 <section id="admin">
 <h2>لوحة تحكم الإدارة</h2>
-<p>الدخول إلى واجهة إدارة الموقع.</p>
 <input type="password" id="adminCode" placeholder="رمز الإدارة">
-<button id="adminLogin" type="button">دخول لوحة التحكم</button>
+<button id="adminLogin">دخول</button>
 <div id="adminMessage" class="status"></div>
 
 <div id="adminPanel" class="panel hidden">
-<h3>لوحة التحكم الرئيسية</h3>
-
 <div class="cards">
-<div class="stat"><strong id="dashLikes">0</strong>إجمالي الإعجابات</div>
-<div class="stat"><strong id="dashPending">0</strong>تعليقات قيد المراجعة</div>
-<div class="stat"><strong id="dashPublished">0</strong>تعليقات منشورة</div>
+<div class="stat"><strong id="dashVisits">0</strong>الزيارات</div>
+<div class="stat"><strong id="dashLikes">0</strong>الإعجابات</div>
+<div class="stat"><strong id="dashComments">0</strong>التعليقات</div>
 </div>
 
 <div class="adminNav">
-<button data-admin="likes">أصحاب الإعجابات</button>
+<button data-admin="visitors">سجل الزوار</button>
 <button data-admin="pending">التعليقات الواردة</button>
 <button data-admin="published">التعليقات المنشورة</button>
-<button data-admin="all">تحديث البيانات</button>
+<button data-admin="refresh">تحديث</button>
 </div>
 
-<div id="adminLikes">
-<h3>أصحاب الإعجابات</h3>
-<div id="likeUsersList">لا توجد بيانات بعد.</div>
+<div id="adminVisitors">
+<h3>سجل الزوار والتفاعل</h3>
+<div id="visitorsList"></div>
 </div>
 
 <div id="adminPending" class="hidden">
-<h3>التعليقات الواردة للمراجعة</h3>
+<h3>التعليقات الواردة</h3>
 <div id="pendingComments"></div>
 </div>
 
 <div id="adminPublished" class="hidden">
-<h3>التعليقات المنشورة</h3>
+<h3>التعليقات المنشورة وإدارتها</h3>
 <div id="publishedAdmin"></div>
 </div>
 
-<button class="danger" id="adminLogout" type="button">تسجيل الخروج</button>
+<button class="danger" id="adminLogout">تسجيل الخروج</button>
 </div>
 </section>
-
 </main>
 
 <footer>
@@ -210,301 +205,304 @@ const firebaseConfig={
 
 const app=initializeApp(firebaseConfig);
 const db=getDatabase(app);
+const $=id=>document.getElementById(id);
 
 const likesRef=ref(db,"siteStats/likes");
-const likeUsersRef=ref(db,"siteStats/likeUsers");
+const visitorsRef=ref(db,"siteVisitors");
 const inboxRef=ref(db,"commentInbox");
 const publishedRef=ref(db,"publishedComments");
 
-const $=id=>document.getElementById(id);
-const safeText=value=>String(value??"");
 let adminLoggedIn=false;
-let latestInbox={};
-let latestPublished={};
-let latestLikeUsers={};
-let latestLikes=0;
+let visits={},inbox={},published={},likes=0;
+let visitorId=localStorage.getItem("siteVisitorId");
 
-function showStatus(element,text,success=false){
- element.textContent=text;
- element.style.color=success?"#39765a":"#a93226";
+if(!visitorId){
+ visitorId=crypto.randomUUID?crypto.randomUUID():Date.now()+"-"+Math.random().toString(36).slice(2);
+ localStorage.setItem("siteVisitorId",visitorId);
 }
 
-/* أزرار التنقل */
+/* تسجيل الزيارة */
+const myVisitorRef=ref(db,"siteVisitors/"+visitorId);
+const visitTime=Date.now();
+
+try{
+ await update(myVisitorRef,{
+  lastVisit:visitTime,
+  status:"زار الموقع",
+  userAgent:navigator.userAgent.slice(0,180)
+ });
+ const visitSnapshot=await new Promise((resolve,reject)=>{
+  onValue(myVisitorRef,resolve,reject,{onlyOnce:true});
+ });
+ const oldData=visitSnapshot.val()||{};
+ await update(myVisitorRef,{
+  firstVisit:oldData.firstVisit||visitTime,
+  visits:Number(oldData.visits||0)+1
+ });
+}catch(error){console.error("Visit:",error)}
+
+/* التنقل */
 document.querySelectorAll("#mainNav button").forEach(button=>{
  button.addEventListener("click",()=>{
   document.querySelectorAll("#mainNav button").forEach(b=>b.classList.remove("active"));
   button.classList.add("active");
-  $(button.dataset.target).scrollIntoView({behavior:"smooth",block:"start"});
+  $(button.dataset.target).scrollIntoView({behavior:"smooth"});
  });
 });
 
-/* الإعجابات المشتركة */
-onValue(likesRef,snapshot=>{
- latestLikes=Number(snapshot.val()||0);
- $("likeCount").textContent=latestLikes;
- $("dashLikes").textContent=latestLikes;
-},error=>{
- console.error(error);
- showStatus($("likeStatus"),"خطأ تحميل الإعجابات: "+error.message);
+/* قراءة البيانات */
+onValue(likesRef,s=>{
+ likes=Number(s.val()||0);
+ $("likeCount").textContent=likes;
+ $("dashLikes").textContent=likes;
 });
 
-/* قائمة أصحاب الإعجابات */
-onValue(likeUsersRef,snapshot=>{
- latestLikeUsers=snapshot.val()||{};
- renderLikeUsers();
-},error=>console.error("Like users:",error));
+onValue(visitorsRef,s=>{
+ visits=s.val()||{};
+ renderVisitors();
+});
 
-function renderLikeUsers(){
- const box=$("likeUsersList");
- box.replaceChildren();
- const entries=Object.entries(latestLikeUsers);
- if(!entries.length){
-  box.textContent="لا توجد إعجابات مسجلة بالاسم حتى الآن.";
-  return;
- }
- entries.sort((a,b)=>(Number(b[1].createdAt)||0)-(Number(a[1].createdAt)||0));
- entries.forEach(([id,data])=>{
-  const item=document.createElement("div");
-  item.className="adminItem";
-  const name=document.createElement("strong");
-  name.textContent=data.name||"زائر";
-  const date=document.createElement("p");
-  date.className="small";
-  date.textContent=data.createdAt?new Date(data.createdAt).toLocaleString("ar-DZ"):"";
-  item.append(name,date);
-  box.appendChild(item);
- });
+onValue(inboxRef,s=>{
+ inbox=s.val()||{};
+ renderPending();
+ updateStats();
+});
+
+onValue(publishedRef,s=>{
+ published=s.val()||{};
+ renderPublished();
+ renderPublishedAdmin();
+ updateStats();
+});
+
+function statusMessage(id,text,ok=false){
+ $(id).textContent=text;
+ $(id).style.color=ok?"#39765a":"#a93226";
 }
 
-/* تسجيل الإعجاب مع اسم صاحبه */
+/* الإعجاب */
 $("likeBtn").addEventListener("click",async()=>{
- const name=$("likeName").value.trim();
- if(!name){
-  showStatus($("likeStatus"),"اكتب اسمك أولًا.");
-  $("likeName").focus();
-  return;
- }
  const button=$("likeBtn");
  button.disabled=true;
- showStatus($("likeStatus"),"جارٍ تسجيل الإعجاب...");
  try{
-  const userRecord=push(likeUsersRef);
-  await runTransaction(likesRef,current=>(Number(current)||0)+1);
-  await update(ref(db),{
-   ["siteStats/likeUsers/"+userRecord.key]:{
-    name:name,
-    createdAt:Date.now()
-   }
+  await runTransaction(likesRef,n=>(Number(n)||0)+1);
+  await update(myVisitorRef,{
+   status:"أعجب بالموقع",
+   liked:true,
+   likedAt:Date.now()
   });
-  $("likeName").value="";
-  showStatus($("likeStatus"),"تم تسجيل الإعجاب.",true);
- }catch(error){
-  console.error(error);
-  showStatus($("likeStatus"),"تعذر تسجيل الإعجاب: "+error.message);
- }finally{
+  statusMessage("likeStatus","تم تسجيل إعجابك.",true);
+  button.textContent="تم تسجيل الإعجاب ✓";
+ }catch(e){
+  statusMessage("likeStatus","تعذر تسجيل الإعجاب: "+e.message);
   button.disabled=false;
  }
 });
 
-/* إرسال التعليقات */
-$("commentForm").addEventListener("submit",async event=>{
- event.preventDefault();
- const name=$("commentName").value.trim();
- const content=$("commentText").value.trim();
- if(!name||!content)return;
- const button=$("sendComment");
- button.disabled=true;
- showStatus($("message"),"جارٍ إرسال التعليق...");
+/* إرسال التعليق */
+$("commentForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const message=$("commentText").value.trim();
+ if(!message)return;
+ $("sendComment").disabled=true;
  try{
   await push(inboxRef,{
-   name:name,
-   message:content,
+   visitorId,
+   message,
    createdAt:Date.now(),
    status:"pending"
   });
-  event.target.reset();
-  showStatus($("message"),"تم استلام تعليقك، وسيظهر بعد المراجعة.",true);
+  await update(myVisitorRef,{
+   status:"علّق على الموقع",
+   commented:true,
+   commentedAt:Date.now()
+  });
+  $("commentText").value="";
+  statusMessage("message","تم إرسال تعليقك للمراجعة.",true);
  }catch(error){
-  console.error(error);
-  showStatus($("message"),"تعذر إرسال التعليق: "+error.message);
+  statusMessage("message","تعذر إرسال التعليق: "+error.message);
  }finally{
-  button.disabled=false;
+  $("sendComment").disabled=false;
  }
 });
 
-/* عرض التعليقات المنشورة */
-onValue(publishedRef,snapshot=>{
- latestPublished=snapshot.val()||{};
- renderPublished();
- updateDashboard();
-},error=>{
- console.error(error);
- $("publishedComments").textContent="تعذر تحميل التعليقات: "+error.message;
-});
-
+/* التعليقات المنشورة */
 function renderPublished(){
  const box=$("publishedComments");
  box.replaceChildren();
- const entries=Object.entries(latestPublished);
- if(!entries.length){
-  box.textContent="لا توجد تعليقات منشورة حاليًا.";
-  return;
- }
- entries.sort((a,b)=>(Number(b[1].createdAt)||0)-(Number(a[1].createdAt)||0));
- entries.forEach(([id,data])=>{
-  const item=document.createElement("div");
-  item.className="comment";
-  const name=document.createElement("strong");
-  name.textContent=data.name||"زائر";
-  const content=document.createElement("p");
-  content.textContent=data.message||"";
-  const date=document.createElement("small");
-  date.className="small";
-  date.textContent=data.createdAt?new Date(data.createdAt).toLocaleString("ar-DZ"):"";
-  item.append(name,content,date);
-  box.appendChild(item);
- });
- if(adminLoggedIn)renderPublishedAdmin();
-}
-
-/* متابعة التعليقات الواردة */
-onValue(inboxRef,snapshot=>{
- latestInbox=snapshot.val()||{};
- updateDashboard();
- if(adminLoggedIn)renderPending();
-},error=>{
- console.error(error);
- if(adminLoggedIn)showStatus($("adminMessage"),"خطأ قراءة التعليقات: "+error.message);
-});
-
-function updateDashboard(){
- const pending=Object.values(latestInbox).filter(x=>x.status==="pending").length;
- $("dashPending").textContent=pending;
- $("dashPublished").textContent=Object.values(latestPublished).length;
-}
-
-function renderPending(){
- const box=$("pendingComments");
- box.replaceChildren();
- const entries=Object.entries(latestInbox).filter(([id,data])=>data.status==="pending");
- if(!entries.length){
-  box.textContent="لا توجد تعليقات قيد المراجعة.";
-  return;
- }
- entries.sort((a,b)=>(Number(b[1].createdAt)||0)-(Number(a[1].createdAt)||0));
- entries.forEach(([id,data])=>{
-  const item=document.createElement("div");
-  item.className="adminItem";
-  const name=document.createElement("strong");
-  name.textContent=data.name||"زائر";
-  const content=document.createElement("p");
-  content.textContent=data.message||"";
-  const date=document.createElement("p");
-  date.className="small";
-  date.textContent=data.createdAt?new Date(data.createdAt).toLocaleString("ar-DZ"):"";
-  const publish=document.createElement("button");
-  publish.className="green";
-  publish.textContent="نشر";
-  publish.onclick=()=>publishComment(id,data);
-  const reject=document.createElement("button");
-  reject.className="danger";
-  reject.textContent="رفض";
-  reject.style.marginRight="8px";
-  reject.onclick=()=>rejectComment(id);
-  item.append(name,content,date,publish,reject);
-  box.appendChild(item);
- });
-}
-
-async function publishComment(id,data){
- if(!adminLoggedIn)return;
- try{
-  const newRef=push(publishedRef);
-  const changes={};
-  changes["publishedComments/"+newRef.key]={
-   name:data.name||"زائر",
-   message:data.message||"",
-   createdAt:data.createdAt||Date.now()
-  };
-  changes["commentInbox/"+id+"/status"]="published";
-  await update(ref(db),changes);
-  showStatus($("adminMessage"),"تم نشر التعليق.",true);
- }catch(error){
-  console.error(error);
-  showStatus($("adminMessage"),"تعذر النشر: "+error.message);
- }
-}
-
-async function rejectComment(id){
- if(!adminLoggedIn)return;
- try{
-  await update(ref(db,"commentInbox/"+id),{status:"rejected"});
-  showStatus($("adminMessage"),"تم رفض التعليق.",true);
- }catch(error){
-  showStatus($("adminMessage"),"تعذر رفض التعليق: "+error.message);
- }
-}
-
-function renderPublishedAdmin(){
- const box=$("publishedAdmin");
- box.replaceChildren();
- const entries=Object.entries(latestPublished);
+ const entries=Object.entries(published).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
  if(!entries.length){
   box.textContent="لا توجد تعليقات منشورة.";
   return;
  }
  entries.forEach(([id,data])=>{
   const item=document.createElement("div");
-  item.className="adminItem";
-  const name=document.createElement("strong");
-  name.textContent=data.name||"زائر";
-  const content=document.createElement("p");
-  content.textContent=data.message||"";
-  const del=document.createElement("button");
-  del.className="danger";
-  del.textContent="حذف التعليق";
-  del.onclick=async()=>{
-   if(!confirm("هل تريد حذف هذا التعليق؟"))return;
-   try{
-    await remove(ref(db,"publishedComments/"+id));
-    showStatus($("adminMessage"),"تم حذف التعليق.",true);
-   }catch(error){
-    showStatus($("adminMessage"),"تعذر الحذف: "+error.message);
-   }
-  };
-  item.append(name,content,del);
+  item.className="comment";
+  const message=document.createElement("p");
+  message.textContent=data.message||"";
+  item.appendChild(message);
+  if(data.reply){
+   const reply=document.createElement("div");
+   reply.className="reply";
+   reply.textContent="الرد: "+data.reply;
+   item.appendChild(reply);
+  }
   box.appendChild(item);
  });
 }
 
-/* تسجيل الدخول */
+/* الزوار */
+function renderVisitors(){
+ if(!adminLoggedIn)return;
+ const box=$("visitorsList");
+ box.replaceChildren();
+ const entries=Object.entries(visits).sort((a,b)=>(b[1].lastVisit||0)-(a[1].lastVisit||0));
+ if(!entries.length){box.textContent="لا توجد زيارات مسجلة.";return}
+ entries.forEach(([id,data])=>{
+  const item=document.createElement("div");
+  item.className="adminItem";
+  const title=document.createElement("strong");
+  title.textContent="زائر "+id.slice(0,12);
+  const details=document.createElement("p");
+  details.textContent="الحالة: "+(data.status||"زار الموقع");
+  const count=document.createElement("p");
+  count.textContent="عدد الزيارات: "+(data.visits||1);
+  const date=document.createElement("p");
+  date.className="small";
+  date.textContent="آخر زيارة: "+new Date(data.lastVisit||0).toLocaleString("ar-DZ");
+  item.append(title,details,count,date);
+  box.appendChild(item);
+ });
+}
+
+/* التعليقات الواردة */
+function renderPending(){
+ if(!adminLoggedIn)return;
+ const box=$("pendingComments");
+ box.replaceChildren();
+ const entries=Object.entries(inbox).filter(([id,d])=>d.status==="pending");
+ if(!entries.length){box.textContent="لا توجد تعليقات تنتظر المراجعة.";return}
+ entries.forEach(([id,data])=>{
+  const item=document.createElement("div");
+  item.className="adminItem";
+  const message=document.createElement("p");
+  message.textContent=data.message||"";
+  const date=document.createElement("p");
+  date.className="small";
+  date.textContent=new Date(data.createdAt||0).toLocaleString("ar-DZ");
+  const actions=document.createElement("div");
+  actions.className="actions";
+  const publishBtn=document.createElement("button");
+  publishBtn.className="green";
+  publishBtn.textContent="نشر";
+  publishBtn.onclick=()=>publishComment(id,data);
+  const deleteBtn=document.createElement("button");
+  deleteBtn.className="danger";
+  deleteBtn.textContent="حذف";
+  deleteBtn.onclick=()=>deleteComment(id);
+  actions.append(publishBtn,deleteBtn);
+  item.append(message,date,actions);
+  box.appendChild(item);
+ });
+}
+
+/* نشر التعليق */
+async function publishComment(id,data){
+ try{
+  const newId=push(publishedRef).key;
+  const changes={};
+  changes["publishedComments/"+newId]={
+   message:data.message,
+   visitorId:data.visitorId||"",
+   createdAt:data.createdAt||Date.now()
+  };
+  changes["commentInbox/"+id+"/status"]="published";
+  await update(ref(db),changes);
+  statusMessage("adminMessage","تم نشر التعليق.",true);
+ }catch(e){statusMessage("adminMessage","فشل النشر: "+e.message)}
+}
+
+/* حذف التعليق الوارد */
+async function deleteComment(id){
+ if(!confirm("حذف هذا التعليق؟"))return;
+ try{
+  await remove(ref(db,"commentInbox/"+id));
+  statusMessage("adminMessage","تم الحذف.",true);
+ }catch(e){statusMessage("adminMessage","تعذر الحذف: "+e.message)}
+}
+
+/* إدارة المنشور والردود */
+function renderPublishedAdmin(){
+ if(!adminLoggedIn)return;
+ const box=$("publishedAdmin");
+ box.replaceChildren();
+ const entries=Object.entries(published);
+ if(!entries.length){box.textContent="لا توجد تعليقات منشورة.";return}
+ entries.forEach(([id,data])=>{
+  const item=document.createElement("div");
+  item.className="adminItem";
+  const message=document.createElement("p");
+  message.textContent=data.message||"";
+  const replyInput=document.createElement("input");
+  replyInput.placeholder="اكتب ردك هنا";
+  replyInput.value=data.reply||"";
+  const actions=document.createElement("div");
+  actions.className="actions";
+  const replyBtn=document.createElement("button");
+  replyBtn.className="green";
+  replyBtn.textContent="حفظ الرد";
+  replyBtn.onclick=async()=>{
+   try{
+    await update(ref(db,"publishedComments/"+id),{reply:replyInput.value.trim()});
+    statusMessage("adminMessage","تم حفظ الرد.",true);
+   }catch(e){statusMessage("adminMessage","تعذر حفظ الرد: "+e.message)}
+  };
+  const deleteBtn=document.createElement("button");
+  deleteBtn.className="danger";
+  deleteBtn.textContent="حذف";
+  deleteBtn.onclick=async()=>{
+   if(!confirm("هل تريد حذف التعليق؟"))return;
+   try{
+    await remove(ref(db,"publishedComments/"+id));
+    statusMessage("adminMessage","تم حذف التعليق.",true);
+   }catch(e){statusMessage("adminMessage","تعذر الحذف: "+e.message)}
+  };
+  actions.append(replyBtn,deleteBtn);
+  item.append(message,replyInput,actions);
+  box.appendChild(item);
+ });
+}
+
+/* الإحصائيات */
+function updateStats(){
+ $("dashVisits").textContent=Object.keys(visits).length;
+ $("dashComments").textContent=Object.keys(published).length;
+}
+
+/* الدخول */
 $("adminLogin").addEventListener("click",()=>{
  if($("adminCode").value!=="sss"){
-  showStatus($("adminMessage"),"رمز الإدارة غير صحيح.");
+  statusMessage("adminMessage","رمز الإدارة غير صحيح.");
   return;
  }
  adminLoggedIn=true;
  $("adminPanel").classList.remove("hidden");
- showStatus($("adminMessage"),"تم فتح لوحة التحكم.",true);
- renderLikeUsers();
+ renderVisitors();
  renderPending();
  renderPublishedAdmin();
- updateDashboard();
+ updateStats();
+ statusMessage("adminMessage","تم الدخول إلى لوحة الإدارة.",true);
 });
 
-/* أزرار أقسام لوحة الإدارة */
 document.querySelectorAll("[data-admin]").forEach(button=>{
  button.addEventListener("click",()=>{
-  const target=button.dataset.admin;
-  $("adminLikes").classList.toggle("hidden",target!=="likes"&&target!=="all");
-  $("adminPending").classList.toggle("hidden",target!=="pending"&&target!=="all");
-  $("adminPublished").classList.toggle("hidden",target!=="published"&&target!=="all");
-  if(target==="all"){
-   renderLikeUsers();
-   renderPending();
-   renderPublishedAdmin();
-   updateDashboard();
-   showStatus($("adminMessage"),"تم تحديث العرض.",true);
+  const key=button.dataset.admin;
+  $("adminVisitors").classList.toggle("hidden",key!=="visitors"&&key!=="refresh");
+  $("adminPending").classList.toggle("hidden",key!=="pending"&&key!=="refresh");
+  $("adminPublished").classList.toggle("hidden",key!=="published"&&key!=="refresh");
+  if(key==="refresh"){
+   renderVisitors();renderPending();renderPublishedAdmin();updateStats();
+   statusMessage("adminMessage","تم تحديث البيانات.",true);
   }
  });
 });
@@ -513,7 +511,7 @@ $("adminLogout").addEventListener("click",()=>{
  adminLoggedIn=false;
  $("adminPanel").classList.add("hidden");
  $("adminCode").value="";
- showStatus($("adminMessage"),"تم تسجيل الخروج.",true);
+ statusMessage("adminMessage","تم تسجيل الخروج.",true);
 });
 </script>
 </body>
