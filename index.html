@@ -1,11 +1,34 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>اعرف مترشحك | براهيمي يوسف</title>
+<meta name="description" content="تعرف على براهيمي يوسف، مترشح حزب صوت الشعب للمجلس الشعبي الولائي.">
+
+<!-- صورة المعاينة الخارجية عند مشاركة الرابط -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_DZ">
+<meta property="og:site_name" content="اعرف مترشحك">
+<meta property="og:title" content="اعرف مترشحك | براهيمي يوسف">
+<meta property="og:description" content="براهيمي يوسف - حزب صوت الشعب - مترشح للمجلس الشعبي الولائي">
+<meta property="og:url" content="https://workdz-u7oo.onrender.com/">
+<meta property="og:image" content="https://i.postimg.cc/gJpgRTzn/file-00000000d81c81f4bebc43a36fe37d0c.png">
+<meta property="og:image:secure_url" content="https://i.postimg.cc/gJpgRTzn/file-00000000d81c81f4bebc43a36fe37d0c.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="اعرف مترشحك - براهيمي يوسف">
+
+<!-- معاينة X وTwitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="اعرف مترشحك | براهيمي يوسف">
+<meta name="twitter:description" content="حزب صوت الشعب - مترشح للمجلس الشعبي الولائي">
+<meta name="twitter:image" content="https://i.postimg.cc/gJpgRTzn/file-00000000d81c81f4bebc43a36fe37d0c.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -54,6 +77,7 @@ section{padding:17px}
 }
 </style>
 </head>
+
 <body>
 <header>اعرف مترشحك | براهيمي يوسف</header>
 
@@ -207,7 +231,7 @@ const publishedRef=ref(db,"publishedComments");
 let adminLoggedIn=false;
 let visits={},inbox={},published={},likes=0;
 
-/* معرّف ثابت للمتصفح، لا يكشف الاسم الحقيقي */
+/* معرّف ثابت للمتصفح */
 let visitorId=localStorage.getItem("siteVisitorId");
 if(!visitorId){
  visitorId=crypto.randomUUID?crypto.randomUUID():
@@ -216,7 +240,7 @@ if(!visitorId){
 }
 const myVisitorRef=ref(db,"siteVisitors/"+visitorId);
 
-/* تسجيل الزيارة دون سؤال */
+/* تسجيل الزيارة */
 async function recordVisit(){
  const now=Date.now();
  try{
@@ -232,7 +256,11 @@ async function recordVisit(){
     browser:navigator.userAgent.slice(0,160)
    };
   });
- }catch(error){console.error("Visit error:",error)}
+ }catch(error){
+  console.error("Visit error:",error);
+  const box=$("adminMessage");
+  if(box)box.textContent="خطأ تسجيل الزيارة: "+error.code+" - "+error.message;
+ }
 }
 recordVisit();
 
@@ -256,6 +284,9 @@ onValue(likesRef,s=>{
 onValue(visitorsRef,s=>{
  visits=s.val()||{};
  renderVisitors();
+},error=>{
+ console.error("Visitors read error:",error);
+ statusMessage("adminMessage","خطأ قراءة سجل الزوار: "+error.message);
 });
 
 /* قراءة التعليقات */
@@ -419,7 +450,7 @@ async function deleteComment(id){
  }catch(e){statusMessage("adminMessage","تعذر الحذف: "+e.message)}
 }
 
-/* إدارة المنشور والردود */
+/* إدارة التعليقات المنشورة والردود */
 function renderPublishedAdmin(){
  if(!adminLoggedIn)return;
  const box=$("publishedAdmin");
@@ -502,4 +533,3 @@ $("adminLogout").addEventListener("click",()=>{
 </script>
 </body>
 </html>
-
