@@ -1,22 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>اعرف مترشحك | براهيمي يوسف</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:#f8f3e9;color:#30251d;font-family:Cairo,sans-serif}
-header{background:#30251d;color:white;text-align:center;padding:15px;font-size:21px;font-weight:900}
-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;padding:12px;background:#49382a;position:sticky;top:0;z-index:20}
+header{background:#30251d;color:#fff;text-align:center;padding:17px;font-size:22px;font-weight:900}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;padding:12px;background:#49382a;position:sticky;top:0;z-index:10}
 nav a{color:white;text-decoration:none;padding:8px 13px;border-radius:20px;font-size:13px}
 nav a:hover{background:#c49a52;color:#24190e}
-.notice{margin:12px auto;padding:14px;max-width:1100px;background:#fff1d7;border-right:5px solid #c49a52;border-radius:8px;text-align:center;font-weight:800;line-height:2}
+.notice{margin:14px auto;padding:15px;max-width:1100px;background:#fff1d7;border-right:5px solid #c49a52;border-radius:9px;text-align:center;font-weight:800;line-height:2}
 .hero{min-height:420px;background:linear-gradient(#20170a66,#20170acc),url('https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:30px}
-.hero h1{font-size:clamp(30px,6vw,48px);margin:10px}
-.hero p{font-size:18px}
+.hero h1{font-size:clamp(32px,6vw,50px);margin:12px}
+.hero p{font-size:19px}
 .party{color:#f4d49e;border:1px solid #c49a52;padding:8px 24px;border-radius:30px;display:inline-block}
 .container{max-width:1100px;margin:auto;padding:20px}
 section{margin:25px 0;padding:25px;background:white;border-radius:16px;box-shadow:0 5px 20px #0000000c}
@@ -24,27 +26,30 @@ h2{color:#8b642e;border-bottom:2px solid #e9d8b8;padding-bottom:12px}
 .profile{display:grid;grid-template-columns:260px 1fr;gap:25px;align-items:center}
 .profile img{width:100%;border-radius:15px;border:5px solid #ead8b8}
 .info{line-height:2.2}
-.info strong{color:#8b642e}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
 .card{background:#fbf6ed;border:1px solid #eadbc1;padding:18px;border-radius:12px;text-align:center;line-height:2}
+.card .symbol{font-size:30px}
 button{font-family:inherit;border:0;background:#c49a52;color:#24190e;padding:11px 20px;border-radius:8px;cursor:pointer;font-weight:800}
-input,textarea{font-family:inherit;width:100%;padding:12px;margin:7px 0;border:1px solid #d9cbb6;border-radius:8px}
+button:disabled{opacity:.5;cursor:not-allowed}
+input,textarea{font-family:inherit;width:100%;padding:12px;margin:7px 0;border:1px solid #d9cbb6;border-radius:8px;font-size:15px}
 textarea{min-height:110px}
-.comment{padding:14px;margin:10px 0;background:#faf6ee;border-radius:9px;border-right:3px solid #c49a52}
-.status{font-size:14px;margin:10px 0}
+.comment,.adminItem{padding:14px;margin:10px 0;background:#faf6ee;border-radius:9px;border-right:3px solid #c49a52}
+.status{font-size:14px;margin:10px 0;line-height:2}
 #adminPanel{display:none;background:#f7f0e3;padding:18px;border-radius:12px}
 footer{text-align:center;background:#30251d;color:white;padding:25px;margin-top:35px;line-height:2}
+.program{text-align:center;line-height:2.4;font-weight:800}
 @media(max-width:650px){
 .profile{grid-template-columns:1fr}
 .profile img{max-width:260px;display:block;margin:auto}
-.hero h1{font-size:30px}
+.hero{min-height:340px}
 section{padding:17px}
 }
 </style>
 </head>
+
 <body>
 
-<header>اعرف مترشحك</header>
+<header>اعرف مترشحك | براهيمي يوسف</header>
 
 <nav>
 <a href="#home">الرئيسية</a>
@@ -61,9 +66,9 @@ section{padding:17px}
 
 <div class="hero" id="home">
 <div>
-<div class="party">حزب صوت الشعب</div>
+<span class="party">حزب صوت الشعب</span>
 <h1>براهيمي يوسف</h1>
-<p>متصرف إداري بمقر الولاية حاليًا</p>
+<p>اعرف مترشحك</p>
 </div>
 </div>
 
@@ -86,17 +91,17 @@ section{padding:17px}
 <h2>المسار المهني</h2>
 <div class="cards">
 <div class="card">
-<div>🏛️</div>
+<div class="symbol">🏛️</div>
 <h3>متصرف إداري</h3>
 <p>مقر الولاية حاليًا.</p>
 </div>
 <div class="card">
-<div>🏢</div>
+<div class="symbol">🏢</div>
 <h3>العمل بالبلدية</h3>
 <p>موظف سابق بالبلدية.</p>
 </div>
 <div class="card">
-<div>📚</div>
+<div class="symbol">📚</div>
 <h3>التكوين المهني والتمهين</h3>
 <p>موظف سابق بالقطاع.</p>
 </div>
@@ -107,15 +112,18 @@ section{padding:17px}
 <h2>المؤهلات والشهادات</h2>
 <div class="cards">
 <div class="card">
-<h3>🎓 ماستر</h3>
+<div class="symbol">🎓</div>
+<h3>ماستر</h3>
 <p>تنظيم وعمل.</p>
 </div>
 <div class="card">
-<h3>💻 الإعلام الآلي</h3>
+<div class="symbol">💻</div>
+<h3>الإعلام الآلي</h3>
 <p>شهادات في الإعلام الآلي.</p>
 </div>
 <div class="card">
-<h3>🌐 اللغة الإنجليزية</h3>
+<div class="symbol">🌐</div>
+<h3>اللغة الإنجليزية</h3>
 <p>صنف ب.</p>
 </div>
 </div>
@@ -123,18 +131,19 @@ section{padding:17px}
 
 <section id="program">
 <h2>البرنامج الانتخابي</h2>
-<p style="text-align:center;font-weight:bold;line-height:2.3">
+<div class="program">
 سيتم نشر البرنامج الانتخابي فور استيفاء الآجال القانونية، ونضعه بين أيديكم في حينه.
-</p>
+</div>
 </section>
 
 <section id="comments">
 <h2>التعليقات والتفاعل</h2>
 
-<div class="actions">
-<button id="likeBtn" type="button">👍 أعجبني</button>
+<div>
+<button type="button" id="likeBtn">👍 أعجبني</button>
 <strong>عدد الإعجابات: <span id="likeCount">0</span></strong>
 </div>
+<div id="likeStatus" class="status"></div>
 
 <h3>أضف تعليقك</h3>
 <form id="commentForm">
@@ -143,20 +152,20 @@ section{padding:17px}
 <button type="submit" id="sendComment">إرسال التعليق</button>
 </form>
 
-<div id="message" class="status" aria-live="polite"></div>
-
+<div id="message" class="status"></div>
 <h3>التعليقات المنشورة</h3>
 <div id="publishedComments">جارٍ تحميل التعليقات...</div>
 </section>
 
-<section>
-<h2>لوحة الإدارة</h2>
+<section id="admin">
+<h2>إدارة التعليقات</h2>
+<p>الدخول إلى واجهة مراجعة التعليقات.</p>
 <input type="password" id="adminCode" placeholder="رمز الإدارة">
 <button type="button" id="adminLogin">دخول</button>
 <div id="adminMessage" class="status"></div>
 <div id="adminPanel">
 <h3>التعليقات الواردة للمراجعة</h3>
-<div id="pendingComments">جارٍ التحميل...</div>
+<div id="pendingComments"></div>
 </div>
 </section>
 
@@ -169,91 +178,221 @@ section{padding:17px}
 <p>تصميم وتطوير: براهيمي يوسف</p>
 </footer>
 
-const adminPanel = document.getElementById("adminPanel");
-const adminMessage = document.getElementById("adminMessage");
-const pendingComments = document.getElementById("pendingComments");
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 
-document.getElementById("adminLogin").addEventListener("click", () => {
- const code = document.getElementById("adminCode").value;
+import {
+ getDatabase, ref, get, set, push, onValue, update
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
- if (code === "sss") {
-  adminPanel.style.display = "block";
-  status(adminMessage, "تم فتح واجهة الإدارة.", true);
-  loadPendingComments();
- } else {
-  status(adminMessage, "رمز الدخول غير صحيح.");
+const firebaseConfig = {
+ apiKey: "AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
+ authDomain: "workdz-web.firebaseapp.com",
+ databaseURL: "https://workdz-web-default-rtdb.firebaseio.com",
+ projectId: "workdz-web",
+ storageBucket: "workdz-web.firebasestorage.app",
+ messagingSenderId: "980881321562",
+ appId: "1:980881321562:web:5046cc8bfe27749a73f263",
+ measurementId: "G-NWPYNZT489"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const message = document.getElementById("message");
+const publishedComments = document.getElementById("publishedComments");
+const likeCount = document.getElementById("likeCount");
+
+function status(element,text,success=false){
+ element.textContent=text;
+ element.style.color=success?"green":"#a93226";
+}
+
+/* إرسال التعليقات للمراجعة */
+document.getElementById("commentForm").addEventListener("submit",async(e)=>{
+ e.preventDefault();
+
+ const name=document.getElementById("commentName").value.trim();
+ const content=document.getElementById("commentText").value.trim();
+ const button=document.getElementById("sendComment");
+
+ if(!name||!content){
+  status(message,"يرجى ملء جميع الحقول.");
+  return;
+ }
+
+ button.disabled=true;
+ status(message,"جارٍ إرسال التعليق...");
+
+ try{
+  await push(ref(db,"commentInbox"),{
+   name:name,
+   message:content,
+   createdAt:Date.now(),
+   status:"pending"
+  });
+
+  e.target.reset();
+  status(message,"تم إرسال تعليقك وهو قيد المراجعة.",true);
+
+ }catch(error){
+  console.error(error);
+  status(message,"تعذر إرسال التعليق. تحقق من اتصال Firebase وصلاحيات قاعدة البيانات.");
+ }finally{
+  button.disabled=false;
  }
 });
 
-function loadPendingComments() {
- onValue(ref(db, "commentInbox"), (snapshot) => {
+/* عرض التعليقات المنشورة */
+onValue(ref(db,"publishedComments"),(snapshot)=>{
+ publishedComments.replaceChildren();
+
+ if(!snapshot.exists()){
+  publishedComments.textContent="لا توجد تعليقات منشورة حاليًا.";
+  return;
+ }
+
+ snapshot.forEach((item)=>{
+  const data=item.val();
+
+  const box=document.createElement("div");
+  box.className="comment";
+
+  const name=document.createElement("strong");
+  name.textContent=data.name||"زائر";
+
+  const content=document.createElement("p");
+  content.textContent=data.message||"";
+
+  const date=document.createElement("small");
+  date.textContent=data.createdAt
+   ?new Date(data.createdAt).toLocaleString("ar-DZ")
+   :"";
+
+  box.append(name,content,date);
+  publishedComments.prepend(box);
+ });
+
+},(error)=>{
+ console.error(error);
+ publishedComments.textContent="تعذر تحميل التعليقات. تحقق من صلاحيات القراءة في Firebase.";
+});
+
+/* عدد الإعجابات */
+onValue(ref(db,"siteStats/likes"),(snapshot)=>{
+ likeCount.textContent=snapshot.exists()?snapshot.val():0;
+},(error)=>{
+ console.error(error);
+ status(document.getElementById("likeStatus"),"تعذر تحميل عدد الإعجابات.");
+});
+
+/* تسجيل الإعجاب */
+document.getElementById("likeBtn").addEventListener("click",async()=>{
+ const button=document.getElementById("likeBtn");
+ button.disabled=true;
+
+ try{
+  const likesRef=ref(db,"siteStats/likes");
+  const snapshot=await get(likesRef);
+  const current=Number(snapshot.val()||0);
+
+  await set(likesRef,current+1);
+  status(document.getElementById("likeStatus"),"تم تسجيل إعجابك.",true);
+
+ }catch(error){
+  console.error(error);
+  status(document.getElementById("likeStatus"),"تعذر تسجيل الإعجاب. تحقق من صلاحيات Firebase.");
+ }finally{
+  button.disabled=false;
+ }
+});
+
+/* واجهة مراجعة التعليقات */
+const adminPanel=document.getElementById("adminPanel");
+const adminMessage=document.getElementById("adminMessage");
+const pendingComments=document.getElementById("pendingComments");
+
+document.getElementById("adminLogin").addEventListener("click",()=>{
+ const code=document.getElementById("adminCode").value;
+
+ if(code==="sss"){
+  adminPanel.style.display="block";
+  status(adminMessage,"تم فتح واجهة الإدارة.",true);
+  loadPendingComments();
+ }else{
+  status(adminMessage,"رمز الدخول غير صحيح.");
+ }
+});
+
+function loadPendingComments(){
+ onValue(ref(db,"commentInbox"),(snapshot)=>{
   pendingComments.replaceChildren();
 
-  if (!snapshot.exists()) {
-   pendingComments.textContent = "لا توجد تعليقات واردة.";
+  if(!snapshot.exists()){
+   pendingComments.textContent="لا توجد تعليقات واردة.";
    return;
   }
 
-  snapshot.forEach((item) => {
-   const id = item.key;
-   const data = item.val();
+  snapshot.forEach((item)=>{
+   const id=item.key;
+   const data=item.val();
 
-   if (data.status !== "pending") return;
+   if(data.status!=="pending")return;
 
-   const box = document.createElement("div");
-   box.className = "adminItem";
+   const box=document.createElement("div");
+   box.className="adminItem";
 
-   const name = document.createElement("strong");
-   name.textContent = data.name || "زائر";
+   const name=document.createElement("strong");
+   name.textContent=data.name||"زائر";
 
-   const content = document.createElement("p");
-   content.textContent = data.message || "";
+   const content=document.createElement("p");
+   content.textContent=data.message||"";
 
-   const approve = document.createElement("button");
-   approve.textContent = "نشر التعليق";
+   const approve=document.createElement("button");
+   approve.textContent="نشر التعليق";
 
-   approve.addEventListener("click", async () => {
-    try {
-     await push(ref(db, "publishedComments"), {
-      name: data.name || "زائر",
-      message: data.message || "",
-      createdAt: data.createdAt || Date.now()
+   approve.addEventListener("click",async()=>{
+    try{
+     await push(ref(db,"publishedComments"),{
+      name:data.name||"زائر",
+      message:data.message||"",
+      createdAt:data.createdAt||Date.now()
      });
 
-     await update(ref(db, "commentInbox/" + id), {
-      status: "published"
+     await update(ref(db,"commentInbox/"+id),{
+      status:"published"
      });
 
-    } catch (error) {
+    }catch(error){
      console.error(error);
      alert("تعذر نشر التعليق. تحقق من صلاحيات Firebase.");
     }
    });
 
-   const reject = document.createElement("button");
-   reject.textContent = "رفض";
-   reject.style.marginRight = "8px";
-   reject.style.background = "#a93226";
-   reject.style.color = "white";
+   const reject=document.createElement("button");
+   reject.textContent="رفض";
+   reject.style.marginRight="8px";
+   reject.style.background="#a93226";
+   reject.style.color="white";
 
-   reject.addEventListener("click", async () => {
-    try {
-     await update(ref(db, "commentInbox/" + id), {
-      status: "rejected"
+   reject.addEventListener("click",async()=>{
+    try{
+     await update(ref(db,"commentInbox/"+id),{
+      status:"rejected"
      });
-    } catch (error) {
+    }catch(error){
      console.error(error);
      alert("تعذر رفض التعليق.");
     }
    });
 
-   box.append(name, content, approve, reject);
+   box.append(name,content,approve,reject);
    pendingComments.appendChild(box);
   });
 
- }, (error) => {
+ },(error)=>{
   console.error(error);
-  pendingComments.textContent = "تعذر تحميل التعليقات الواردة.";
+  pendingComments.textContent="تعذر تحميل التعليقات الواردة.";
  });
 }
 </script>
