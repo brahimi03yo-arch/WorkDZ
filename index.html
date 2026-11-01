@@ -55,7 +55,6 @@ section{padding:17px}
 </style>
 </head>
 <body>
-
 <header>اعرف مترشحك | براهيمي يوسف</header>
 
 <nav id="mainNav">
@@ -80,7 +79,6 @@ section{padding:17px}
 </div>
 
 <main class="container">
-
 <section id="profile">
 <h2>التعريف بالمترشح</h2>
 <div class="profile">
@@ -119,7 +117,6 @@ section{padding:17px}
 
 <section id="comments">
 <h2>التفاعل والتعليقات</h2>
-
 <div class="card">
 <h3>رأيك يهمنا</h3>
 <p>عدد الإعجابات: <strong id="likeCount">0</strong></p>
@@ -133,7 +130,6 @@ section{padding:17px}
 <button id="sendComment" type="submit">إرسال التعليق</button>
 </form>
 <div id="message" class="status"></div>
-
 <h3>التعليقات</h3>
 <div id="publishedComments">جارٍ تحميل التعليقات...</div>
 </section>
@@ -146,9 +142,9 @@ section{padding:17px}
 
 <div id="adminPanel" class="panel hidden">
 <div class="cards">
-<div class="stat"><strong id="dashVisits">0</strong>الزيارات</div>
+<div class="stat"><strong id="dashVisits">0</strong>الزوار المسجلون</div>
 <div class="stat"><strong id="dashLikes">0</strong>الإعجابات</div>
-<div class="stat"><strong id="dashComments">0</strong>التعليقات</div>
+<div class="stat"><strong id="dashComments">0</strong>التعليقات المنشورة</div>
 </div>
 
 <div class="adminNav">
@@ -159,20 +155,17 @@ section{padding:17px}
 </div>
 
 <div id="adminVisitors">
-<h3>سجل الزوار والتفاعل</h3>
+<h3>سجل الزوار</h3>
 <div id="visitorsList"></div>
 </div>
-
 <div id="adminPending" class="hidden">
 <h3>التعليقات الواردة</h3>
 <div id="pendingComments"></div>
 </div>
-
 <div id="adminPublished" class="hidden">
 <h3>التعليقات المنشورة وإدارتها</h3>
 <div id="publishedAdmin"></div>
 </div>
-
 <button class="danger" id="adminLogout">تسجيل الخروج</button>
 </div>
 </section>
@@ -188,8 +181,7 @@ section{padding:17px}
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import {
- getDatabase,ref,push,onValue,update,remove,
- runTransaction
+ getDatabase,ref,push,onValue,update,remove,runTransaction
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
 const firebaseConfig={
@@ -214,32 +206,35 @@ const publishedRef=ref(db,"publishedComments");
 
 let adminLoggedIn=false;
 let visits={},inbox={},published={},likes=0;
-let visitorId=localStorage.getItem("siteVisitorId");
 
+/* معرّف ثابت للمتصفح، لا يكشف الاسم الحقيقي */
+let visitorId=localStorage.getItem("siteVisitorId");
 if(!visitorId){
- visitorId=crypto.randomUUID?crypto.randomUUID():Date.now()+"-"+Math.random().toString(36).slice(2);
+ visitorId=crypto.randomUUID?crypto.randomUUID():
+ Date.now()+"-"+Math.random().toString(36).slice(2);
  localStorage.setItem("siteVisitorId",visitorId);
 }
-
-/* تسجيل الزيارة */
 const myVisitorRef=ref(db,"siteVisitors/"+visitorId);
-const visitTime=Date.now();
 
-try{
- await update(myVisitorRef,{
-  lastVisit:visitTime,
-  status:"زار الموقع",
-  userAgent:navigator.userAgent.slice(0,180)
- });
- const visitSnapshot=await new Promise((resolve,reject)=>{
-  onValue(myVisitorRef,resolve,reject,{onlyOnce:true});
- });
- const oldData=visitSnapshot.val()||{};
- await update(myVisitorRef,{
-  firstVisit:oldData.firstVisit||visitTime,
-  visits:Number(oldData.visits||0)+1
- });
-}catch(error){console.error("Visit:",error)}
+/* تسجيل الزيارة دون سؤال */
+async function recordVisit(){
+ const now=Date.now();
+ try{
+  await runTransaction(myVisitorRef,current=>{
+   current=current||{};
+   return {
+    ...current,
+    firstVisit:current.firstVisit||now,
+    lastVisit:now,
+    visits:(Number(current.visits)||0)+1,
+    status:current.liked?"أعجب بالموقع":
+           current.commented?"علّق على الموقع":"زار الموقع فقط",
+    browser:navigator.userAgent.slice(0,160)
+   };
+  });
+ }catch(error){console.error("Visit error:",error)}
+}
+recordVisit();
 
 /* التنقل */
 document.querySelectorAll("#mainNav button").forEach(button=>{
@@ -250,24 +245,25 @@ document.querySelectorAll("#mainNav button").forEach(button=>{
  });
 });
 
-/* قراءة البيانات */
+/* قراءة الإعجابات */
 onValue(likesRef,s=>{
  likes=Number(s.val()||0);
  $("likeCount").textContent=likes;
  $("dashLikes").textContent=likes;
 });
 
+/* قراءة الزوار */
 onValue(visitorsRef,s=>{
  visits=s.val()||{};
  renderVisitors();
 });
 
+/* قراءة التعليقات */
 onValue(inboxRef,s=>{
  inbox=s.val()||{};
  renderPending();
  updateStats();
 });
-
 onValue(publishedRef,s=>{
  published=s.val()||{};
  renderPublished();
@@ -286,20 +282,17 @@ $("likeBtn").addEventListener("click",async()=>{
  button.disabled=true;
  try{
   await runTransaction(likesRef,n=>(Number(n)||0)+1);
-  await update(myVisitorRef,{
-   status:"أعجب بالموقع",
-   liked:true,
-   likedAt:Date.now()
+  await runTransaction(myVisitorRef,current=>{
+   current=current||{};
+   return {...current,liked:true,likedAt:Date.now(),status:"أعجب بالموقع"};
   });
   statusMessage("likeStatus","تم تسجيل إعجابك.",true);
-  button.textContent="تم تسجيل الإعجاب ✓";
  }catch(e){
   statusMessage("likeStatus","تعذر تسجيل الإعجاب: "+e.message);
-  button.disabled=false;
- }
+ }finally{button.disabled=false}
 });
 
-/* إرسال التعليق */
+/* التعليق */
 $("commentForm").addEventListener("submit",async e=>{
  e.preventDefault();
  const message=$("commentText").value.trim();
@@ -313,28 +306,23 @@ $("commentForm").addEventListener("submit",async e=>{
    status:"pending"
   });
   await update(myVisitorRef,{
-   status:"علّق على الموقع",
    commented:true,
-   commentedAt:Date.now()
+   commentedAt:Date.now(),
+   status:"علّق على الموقع"
   });
   $("commentText").value="";
   statusMessage("message","تم إرسال تعليقك للمراجعة.",true);
  }catch(error){
   statusMessage("message","تعذر إرسال التعليق: "+error.message);
- }finally{
-  $("sendComment").disabled=false;
- }
+ }finally{$("sendComment").disabled=false}
 });
 
-/* التعليقات المنشورة */
+/* عرض التعليقات */
 function renderPublished(){
  const box=$("publishedComments");
  box.replaceChildren();
  const entries=Object.entries(published).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
- if(!entries.length){
-  box.textContent="لا توجد تعليقات منشورة.";
-  return;
- }
+ if(!entries.length){box.textContent="لا توجد تعليقات منشورة.";return}
  entries.forEach(([id,data])=>{
   const item=document.createElement("div");
   item.className="comment";
@@ -351,26 +339,28 @@ function renderPublished(){
  });
 }
 
-/* الزوار */
+/* سجل الزوار */
 function renderVisitors(){
  if(!adminLoggedIn)return;
  const box=$("visitorsList");
  box.replaceChildren();
  const entries=Object.entries(visits).sort((a,b)=>(b[1].lastVisit||0)-(a[1].lastVisit||0));
+ $("dashVisits").textContent=entries.length;
  if(!entries.length){box.textContent="لا توجد زيارات مسجلة.";return}
  entries.forEach(([id,data])=>{
   const item=document.createElement("div");
   item.className="adminItem";
   const title=document.createElement("strong");
   title.textContent="زائر "+id.slice(0,12);
-  const details=document.createElement("p");
-  details.textContent="الحالة: "+(data.status||"زار الموقع");
+  const state=document.createElement("p");
+  state.textContent="الحالة: "+(data.status||"زار الموقع فقط");
   const count=document.createElement("p");
   count.textContent="عدد الزيارات: "+(data.visits||1);
-  const date=document.createElement("p");
-  date.className="small";
-  date.textContent="آخر زيارة: "+new Date(data.lastVisit||0).toLocaleString("ar-DZ");
-  item.append(title,details,count,date);
+  const first=document.createElement("p");
+  first.textContent="أول زيارة: "+new Date(data.firstVisit||0).toLocaleString("ar-DZ");
+  const last=document.createElement("p");
+  last.textContent="آخر زيارة: "+new Date(data.lastVisit||0).toLocaleString("ar-DZ");
+  item.append(title,state,count,first,last);
   box.appendChild(item);
  });
 }
@@ -406,7 +396,6 @@ function renderPending(){
  });
 }
 
-/* نشر التعليق */
 async function publishComment(id,data){
  try{
   const newId=push(publishedRef).key;
@@ -422,7 +411,6 @@ async function publishComment(id,data){
  }catch(e){statusMessage("adminMessage","فشل النشر: "+e.message)}
 }
 
-/* حذف التعليق الوارد */
 async function deleteComment(id){
  if(!confirm("حذف هذا التعليق؟"))return;
  try{
@@ -461,7 +449,7 @@ function renderPublishedAdmin(){
   deleteBtn.className="danger";
   deleteBtn.textContent="حذف";
   deleteBtn.onclick=async()=>{
-   if(!confirm("هل تريد حذف التعليق؟"))return;
+   if(!confirm("حذف التعليق؟"))return;
    try{
     await remove(ref(db,"publishedComments/"+id));
     statusMessage("adminMessage","تم حذف التعليق.",true);
@@ -473,13 +461,11 @@ function renderPublishedAdmin(){
  });
 }
 
-/* الإحصائيات */
 function updateStats(){
- $("dashVisits").textContent=Object.keys(visits).length;
  $("dashComments").textContent=Object.keys(published).length;
 }
 
-/* الدخول */
+/* لوحة الإدارة */
 $("adminLogin").addEventListener("click",()=>{
  if($("adminCode").value!=="sss"){
   statusMessage("adminMessage","رمز الإدارة غير صحيح.");
