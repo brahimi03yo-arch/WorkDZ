@@ -4,561 +4,1585 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>اعرف مترشحك | براهيمي يوسف</title>
-<meta name="description" content="المسار المهني والبرنامج المحلي لبراهيمي يوسف">
+<meta name="theme-color" content="#9b7048">
 
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ar_DZ">
-<meta property="og:title" content="براهيمي يوسف | اعرف مترشحك">
-<meta property="og:description" content="برنامج ورؤية لخدمة ولاية أفلو والصالح العام.">
+<title>اعرف مترشحك | براهيمي يوسف</title>
+<meta name="description" content="المسار المهني والبرنامج المحلي للمترشح براهيمي يوسف - حزب صوت الشعب - المجلس الشعبي الولائي لولاية أفلو.">
+
+<meta property="og:title" content="اعرف مترشحك | براهيمي يوسف">
+<meta property="og:description" content="تعرف على المسار المهني والبرنامج المحلي">
 <meta property="og:image" content="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png">
-<meta property="og:url" content="https://workdz-u7oo.onrender.com/">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-:root{
- --bg:#eee4d5;--surface:#fffaf3;--brown:#795638;
- --dark:#493729;--gold:#bd9865;--border:#d8c3a7;
- --muted:#806b56;--shadow:rgba(90,60,35,.13);
+:root {
+  --brown:#795334;
+  --brown-dark:#4c3322;
+  --brown-light:#b38a62;
+  --gold:#c59b61;
+  --cream:#f7f1e8;
+  --white:#fffdf9;
+  --text:#382d24;
+  --muted:#817467;
+  --border:#e9ddce;
+  --shadow:0 12px 35px rgba(77,52,30,.09);
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
- margin:0;font-family:Tahoma,Arial,sans-serif;color:var(--dark);
- background:linear-gradient(145deg,#eee4d5,#f8f0e5);
- overflow-x:hidden
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
-button,input,textarea{font-family:inherit}
-#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.3}
-#welcome-overlay{
- position:fixed;inset:0;background:#e8dcc9;z-index:9999;
- display:flex;flex-direction:column;justify-content:center;
- align-items:center;cursor:pointer;padding:20px;
- transition:.8s
+
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:90px;
 }
-#welcome-overlay.hidden{opacity:0;visibility:hidden}
-.welcome-img{
- max-width:90%;max-height:75vh;object-fit:contain;
- border:4px solid var(--gold);border-radius:20px;
- box-shadow:0 0 45px rgba(130,91,54,.25)
+
+body {
+  font-family:'Cairo',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.9;
+  overflow-x:hidden;
 }
-.welcome-text{margin-top:22px;color:var(--brown);font-weight:bold;animation:pulse 2s infinite}
-@keyframes pulse{50%{opacity:.5}}
-header{
- position:sticky;top:0;z-index:20;padding:13px 10px;
- background:rgba(239,228,211,.96);backdrop-filter:blur(12px);
- border-bottom:1px solid var(--gold);box-shadow:0 3px 12px var(--shadow)
+
+button,input,textarea {
+  font-family:inherit;
 }
-.brand{text-align:center;color:var(--brown);font-size:23px;font-weight:bold;margin-bottom:12px}
-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
-nav a{
- padding:10px 14px;border:1px solid var(--gold);border-radius:12px;
- color:var(--dark);text-decoration:none;font-size:13px;font-weight:bold;
- background:linear-gradient(145deg,#fffaf2,#e8d9c5);transition:.2s
+
+button {
+  cursor:pointer;
 }
-nav a:hover,nav a.active{background:var(--brown);color:white}
-.developer-top{text-align:center;padding:8px;font-size:13px;color:var(--brown)}
-.ticker{overflow:hidden;background:#c6a47b;color:#382719;white-space:nowrap;padding:11px 0;font-weight:bold}
-.ticker span{display:inline-block;padding-right:100%;animation:move 22s linear infinite}
-@keyframes move{from{transform:translateX(0)}to{transform:translateX(100%)}}
-.hero{
- min-height:570px;padding:45px 18px;display:flex;flex-direction:column;
- align-items:center;justify-content:center;text-align:center;
- background:linear-gradient(180deg,rgba(214,190,160,.65),rgba(238,228,213,.95))
+
+a {
+  color:inherit;
+  text-decoration:none;
 }
-.profile{
- width:300px;height:360px;max-width:90%;object-fit:cover;
- border:4px solid var(--gold);border-radius:22px;
- box-shadow:0 0 35px rgba(130,91,54,.2)
+
+.container {
+  width:min(1120px,92%);
+  margin:auto;
 }
-h1{color:var(--brown);font-size:clamp(30px,6vw,48px);margin:20px 0 8px}
-.hero p{font-size:18px;line-height:1.9}
-.tag{display:inline-block;padding:10px 20px;border:1px solid var(--gold);border-radius:30px;color:var(--brown);margin:5px;background:#ffffff70}
-section{max-width:1100px;margin:auto;padding:55px 18px;scroll-margin-top:145px}
-.section-title{text-align:center;color:var(--brown);font-size:29px;margin-bottom:30px}
-.intro{text-align:center;max-width:800px;margin:auto;line-height:2.2}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
-.card{
- background:#ffffffa8;backdrop-filter:blur(10px);border:1px solid var(--border);
- border-radius:17px;padding:25px 18px;text-align:center;
- box-shadow:0 8px 24px var(--shadow);transition:.3s
+
+header {
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,253,249,.94);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
 }
-.card:hover{transform:translateY(-5px);background:#fffaf2}
-.icon{font-size:38px;margin-bottom:10px}
-.card h3{color:var(--brown)}
-.card p{line-height:2;font-size:14px}
-.coming-soon,.message,.visitor-box,.interaction{
- text-align:center;background:#ffffffa8;border:1px solid var(--gold);
- border-radius:20px;padding:35px 20px;box-shadow:0 8px 25px var(--shadow)
+
+.nav {
+  min-height:75px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
 }
-.coming-soon{max-width:700px;margin:auto;padding:60px 20px}
-.coming-soon-icon{font-size:65px;animation:float 3s infinite}
-@keyframes float{50%{transform:translateY(-12px)}}
-.coming-soon h3{color:var(--brown);font-size:30px}
-.coming-soon p,.message p,.visitor-box p,.interaction p{line-height:2}
-.timeline{max-width:750px;margin:auto;border-right:3px solid var(--gold);padding-right:22px}
-.timeline-item{position:relative;background:#ffffff90;border:1px solid var(--border);padding:20px;border-radius:13px;margin-bottom:18px;line-height:2}
-.timeline-item:before{content:"";position:absolute;right:-31px;top:25px;width:13px;height:13px;background:var(--brown);border-radius:50%}
-.timeline-item strong{color:var(--brown)}
-.action-buttons{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:20px 0}
-.action-btn{
- border:1px solid var(--brown);border-radius:30px;padding:12px 24px;
- background:linear-gradient(135deg,#c8a477,#a77b4d);color:white;
- font-size:15px;font-weight:bold;cursor:pointer;transition:.2s
+
+.logo {
+  font-weight:900;
+  color:var(--brown-dark);
+  font-size:19px;
 }
-.action-btn:hover{transform:translateY(-3px)}
-.action-btn:disabled{opacity:.6;cursor:not-allowed}
-#likeCount{color:var(--brown);font-weight:bold;font-size:18px}
-.comment-form{max-width:650px;margin:20px auto;display:grid;gap:12px}
-.comment-form input,.comment-form textarea,.login-form input{
- width:100%;padding:13px;border:1px solid var(--gold);border-radius:10px;
- background:#fffaf2;color:var(--dark);font-size:14px;outline:none
+
+.logo span {
+  color:var(--gold);
 }
-.comment-form textarea{min-height:100px;resize:vertical}
-.comment-list{max-width:650px;margin:20px auto;text-align:right}
-.comment-item{padding:14px;margin:10px 0;background:#ffffffc9;border:1px solid var(--border);border-radius:12px;overflow-wrap:anywhere}
-.comment-item strong{color:var(--brown)}
-.comment-item p{line-height:1.9;margin-bottom:0}
-.comment-item small{color:var(--muted)}
-footer{text-align:center;padding:30px 15px;background:#dfcfb9;border-top:1px solid var(--gold);line-height:2}
-footer strong{color:var(--brown)}
-#adminButton{
- position:fixed;left:14px;bottom:14px;z-index:50;
- border:1px solid var(--gold);border-radius:50px;padding:11px 16px;
- background:var(--dark);color:white;cursor:pointer;box-shadow:0 4px 15px var(--shadow)
+
+.nav-links {
+  display:flex;
+  gap:20px;
+  align-items:center;
 }
-#adminPanel{
- display:none;position:fixed;inset:0;z-index:10000;
- background:#0009;overflow:auto;padding:20px
+
+.nav-links a {
+  font-size:13px;
+  font-weight:700;
+  color:#625142;
+  transition:.25s;
 }
-.admin-box{
- max-width:700px;margin:35px auto;background:var(--surface);
- border:1px solid var(--gold);border-radius:18px;padding:22px;
- box-shadow:0 15px 50px #0004
+
+.nav-links a:hover {
+  color:var(--gold);
 }
-.admin-box h2,.admin-box h3{color:var(--brown)}
-.admin-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.admin-stat{background:#f0e3d1;padding:16px;border-radius:12px;margin:10px 0}
-.admin-comment{padding:12px;background:#f5ecdf;border-radius:10px;margin:10px 0;overflow-wrap:anywhere}
-.delete-btn,.close-btn{
- border:0;border-radius:8px;padding:9px 13px;cursor:pointer;
- background:#795638;color:white;margin:5px
+
+.menu-button {
+  display:none;
+  background:var(--brown);
+  color:white;
+  border:0;
+  padding:8px 13px;
+  border-radius:9px;
 }
-.login-form{display:grid;gap:12px;margin-top:20px}
-.status{font-size:13px;color:var(--muted);text-align:center;margin:12px}
-@media(max-width:600px){
- nav{gap:6px}nav a{padding:9px 10px;font-size:12px}
- .hero{padding:35px 14px}.profile{width:260px;height:320px}
- section{padding:38px 14px}.section-title{font-size:25px}
- .coming-soon h3{font-size:25px}
+
+.hero {
+  min-height:590px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(54,36,23,.88),rgba(75,49,29,.58)),
+    url("https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png") center/cover;
+  color:white;
+}
+
+.hero::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 15% 20%,rgba(231,195,143,.22),transparent 40%);
+  pointer-events:none;
+}
+
+.hero-content {
+  position:relative;
+  z-index:2;
+  max-width:700px;
+  padding:80px 0;
+}
+
+.eyebrow {
+  display:inline-block;
+  color:#f3d7ae;
+  border:1px solid rgba(255,255,255,.35);
+  padding:5px 17px;
+  border-radius:30px;
+  font-size:13px;
+  margin-bottom:20px;
+}
+
+.hero h1 {
+  font-size:clamp(34px,6vw,65px);
+  font-weight:900;
+  line-height:1.4;
+  margin-bottom:12px;
+}
+
+.hero h1 span {
+  color:#e7c18c;
+}
+
+.hero p {
+  color:#f1e5d6;
+  font-size:17px;
+  max-width:590px;
+}
+
+.hero-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
+}
+
+.btn {
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  border:0;
+  padding:11px 23px;
+  border-radius:10px;
+  font-weight:800;
+  transition:.25s;
+}
+
+.btn:hover {
+  transform:translateY(-3px);
+}
+
+.btn-gold {
+  background:#d3a66c;
+  color:#382718;
+}
+
+.btn-light {
+  background:rgba(255,255,255,.13);
+  color:white;
+  border:1px solid rgba(255,255,255,.5);
+}
+
+.ticker {
+  background:var(--brown-dark);
+  color:#f6e7d3;
+  overflow:hidden;
+  white-space:nowrap;
+  padding:10px 0;
+  font-size:13px;
+}
+
+.ticker-track {
+  display:inline-block;
+  min-width:200%;
+  animation:marquee 28s linear infinite;
+}
+
+@keyframes marquee {
+  from {transform:translateX(-5%);}
+  to {transform:translateX(50%);}
+}
+
+section {
+  padding:80px 0;
+}
+
+.section-heading {
+  text-align:center;
+  margin-bottom:42px;
+}
+
+.section-heading small {
+  color:var(--gold);
+  font-weight:900;
+}
+
+.section-heading h2 {
+  font-size:clamp(25px,4vw,36px);
+  color:var(--brown-dark);
+  font-weight:900;
+  margin-top:5px;
+}
+
+.section-heading p {
+  color:var(--muted);
+  font-size:14px;
+}
+
+.about-grid {
+  display:grid;
+  grid-template-columns:340px 1fr;
+  gap:40px;
+  align-items:center;
+}
+
+.profile-card {
+  background:var(--white);
+  padding:15px;
+  border-radius:22px;
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+}
+
+.profile-card img {
+  width:100%;
+  height:390px;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:15px;
+}
+
+.profile-caption {
+  padding:15px 8px 5px;
+  text-align:center;
+}
+
+.profile-caption h3 {
+  color:var(--brown-dark);
+  font-weight:900;
+}
+
+.profile-caption p {
+  font-size:13px;
+  color:var(--muted);
+}
+
+.about-text h3 {
+  color:var(--brown);
+  font-size:25px;
+  margin-bottom:13px;
+}
+
+.about-text p {
+  color:#66594c;
+  margin-bottom:13px;
+}
+
+.info-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:13px;
+  margin-top:24px;
+}
+
+.info-box {
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:14px;
+  border-radius:12px;
+}
+
+.info-box strong {
+  display:block;
+  color:var(--brown);
+  font-size:13px;
+}
+
+.info-box span {
+  font-size:14px;
+}
+
+.soft-section {
+  background:#efe5d8;
+}
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.card {
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:24px;
+  box-shadow:0 7px 22px rgba(80,54,31,.05);
+  transition:.25s;
+}
+
+.card:hover {
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
+}
+
+.card-icon {
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  background:#f1e3d0;
+  color:var(--brown);
+  border-radius:13px;
+  font-size:22px;
+  margin-bottom:15px;
+}
+
+.card h3 {
+  font-size:17px;
+  color:var(--brown-dark);
+  margin-bottom:8px;
+}
+
+.card p {
+  color:var(--muted);
+  font-size:13px;
+}
+
+.timeline {
+  max-width:800px;
+  margin:auto;
+  border-right:3px solid #d7b88f;
+  padding-right:27px;
+}
+
+.timeline-item {
+  position:relative;
+  margin-bottom:27px;
+  background:var(--white);
+  padding:20px;
+  border-radius:14px;
+  border:1px solid var(--border);
+}
+
+.timeline-item::before {
+  content:"";
+  position:absolute;
+  right:-36px;
+  top:25px;
+  width:15px;
+  height:15px;
+  border-radius:50%;
+  background:var(--gold);
+  border:4px solid var(--cream);
+}
+
+.timeline-item h3 {
+  color:var(--brown);
+  font-size:17px;
+}
+
+.timeline-item p {
+  color:var(--muted);
+  font-size:14px;
+}
+
+.certificate-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.certificate {
+  text-align:center;
+  padding:24px 14px;
+  border-radius:15px;
+  background:var(--white);
+  border:1px solid var(--border);
+}
+
+.certificate .symbol {
+  font-size:32px;
+}
+
+.certificate h3 {
+  color:var(--brown);
+  font-size:16px;
+}
+
+.certificate p {
+  color:var(--muted);
+  font-size:13px;
+}
+
+.party {
+  display:inline-block;
+  margin-top:12px;
+  background:#f0e1cd;
+  color:var(--brown-dark);
+  padding:5px 18px;
+  border-radius:25px;
+  font-weight:800;
+  font-size:13px;
+}
+
+.contact-panel {
+  background:linear-gradient(135deg,#755035,#493020);
+  color:white;
+  text-align:center;
+  border-radius:22px;
+  padding:42px 22px;
+}
+
+.contact-panel h2 {
+  font-size:27px;
+  margin-bottom:10px;
+}
+
+.contact-panel p {
+  color:#eadbc9;
+  margin-bottom:20px;
+}
+
+.contact-panel a {
+  background:#d5ad7b;
+  color:#392719;
+}
+
+.interaction-section {
+  background:#f0e6da;
+}
+
+.interaction-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+  align-items:start;
+}
+
+.interaction-card {
+  background:var(--white);
+  padding:25px;
+  border:1px solid var(--border);
+  border-radius:17px;
+  box-shadow:var(--shadow);
+}
+
+.interaction-card h3 {
+  color:var(--brown-dark);
+  margin-bottom:15px;
+}
+
+.like-area {
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.like-button {
+  background:#8e5c43;
+  color:white;
+  border:0;
+  padding:12px 22px;
+  border-radius:12px;
+  font-weight:900;
+  font-size:15px;
+  transition:.2s;
+}
+
+.like-button:hover {
+  background:#67412f;
+  transform:scale(1.04);
+}
+
+.like-count {
+  font-size:30px;
+  color:var(--brown);
+  font-weight:900;
+}
+
+.form-control {
+  width:100%;
+  border:1px solid var(--border);
+  background:#fffdfa;
+  border-radius:10px;
+  padding:12px 14px;
+  outline:none;
+  margin-bottom:12px;
+  color:var(--text);
+}
+
+.form-control:focus {
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(197,155,97,.13);
+}
+
+textarea.form-control {
+  min-height:105px;
+  resize:vertical;
+}
+
+.comment-item {
+  border-bottom:1px solid var(--border);
+  padding:13px 0;
+}
+
+.comment-item:last-child {
+  border-bottom:0;
+}
+
+.comment-item strong {
+  color:var(--brown);
+}
+
+.comment-item p {
+  font-size:14px;
+  overflow-wrap:anywhere;
+}
+
+.comment-date {
+  color:#9b8b7a;
+  font-size:11px;
+}
+
+.empty-message {
+  color:var(--muted);
+  font-size:13px;
+  padding:12px 0;
+}
+
+footer {
+  background:#392a20;
+  color:#eadac8;
+  padding:30px 0;
+  text-align:center;
+}
+
+footer p {
+  font-size:13px;
+}
+
+footer .developer {
+  color:#d9b17f;
+  font-weight:800;
+  margin-top:8px;
+}
+
+.admin-trigger {
+  margin-top:13px;
+  color:#d8c3aa;
+  background:transparent;
+  border:1px solid #8d725a;
+  padding:6px 14px;
+  border-radius:8px;
+  font-size:12px;
+}
+
+.admin-modal {
+  position:fixed;
+  inset:0;
+  z-index:500;
+  background:rgba(28,20,14,.78);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+  overflow-y:auto;
+}
+
+.admin-modal.show {
+  display:flex;
+}
+
+.admin-box {
+  background:var(--white);
+  color:var(--text);
+  width:min(760px,100%);
+  max-height:92vh;
+  overflow-y:auto;
+  border-radius:18px;
+  padding:23px;
+  box-shadow:0 20px 70px #0005;
+}
+
+.admin-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  border-bottom:1px solid var(--border);
+  padding-bottom:13px;
+  margin-bottom:18px;
+}
+
+.close-admin {
+  border:0;
+  background:#eee2d5;
+  color:var(--brown);
+  border-radius:8px;
+  padding:5px 12px;
+  font-size:20px;
+}
+
+.admin-stats {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.stat-box {
+  background:#f1e5d7;
+  border-radius:12px;
+  padding:15px;
+  text-align:center;
+}
+
+.stat-box strong {
+  display:block;
+  color:var(--brown);
+  font-size:25px;
+}
+
+.admin-comment {
+  border:1px solid var(--border);
+  padding:13px;
+  border-radius:10px;
+  margin:10px 0;
+}
+
+.admin-comment p {
+  overflow-wrap:anywhere;
+  font-size:14px;
+}
+
+.admin-actions {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.small-button {
+  border:0;
+  border-radius:7px;
+  padding:6px 12px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.approve-button {
+  background:#dcebdc;
+  color:#275d32;
+}
+
+.delete-button {
+  background:#f4dede;
+  color:#9c3333;
+}
+
+.logout-button {
+  background:#eee2d5;
+  color:var(--brown);
+}
+
+.hidden {
+  display:none !important;
+}
+
+.status-message {
+  font-size:13px;
+  margin:8px 0;
+  color:var(--brown);
+}
+
+@media(max-width:800px) {
+  .nav-links {
+    display:none;
+    position:absolute;
+    top:75px;
+    right:0;
+    left:0;
+    padding:18px 5%;
+    background:var(--white);
+    border-bottom:1px solid var(--border);
+    flex-direction:column;
+    align-items:stretch;
+    gap:12px;
+  }
+
+  .nav-links.open {
+    display:flex;
+  }
+
+  .menu-button {
+    display:block;
+  }
+
+  .about-grid {
+    grid-template-columns:1fr;
+  }
+
+  .profile-card {
+    max-width:360px;
+    margin:auto;
+  }
+
+  .cards {
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .certificate-grid {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:560px) {
+  section {
+    padding:58px 0;
+  }
+
+  .hero {
+    min-height:520px;
+  }
+
+  .hero p {
+    font-size:15px;
+  }
+
+  .cards,
+  .certificate-grid,
+  .interaction-grid {
+    grid-template-columns:1fr;
+  }
+
+  .info-grid {
+    grid-template-columns:1fr;
+  }
+
+  .admin-box {
+    padding:15px;
+  }
 }
 </style>
 </head>
+
 <body>
 
-<div id="welcome-overlay" onclick="enterSite()">
- <img src="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png" alt="اضغط للدخول" class="welcome-img">
- <div class="welcome-text">اضغط في أي مكان للدخول إلى الموقع</div>
-</div>
-
-<canvas id="stars"></canvas>
-
 <header>
- <div class="brand">اعرف مترشحك</div>
- <nav>
-  <a href="#home">🏠 الرئيسية</a>
-  <a href="#about">👤 من أنا</a>
-  <a href="#program">📋 برنامجي</a>
-  <a href="#experience">🏛️ المسار المهني</a>
-  <a href="#education">🎓 الشهادات</a>
-  <a href="#message">✉️ تواصل</a>
- </nav>
+  <div class="container nav">
+    <a class="logo" href="#home">اعرف <span>مترشحك</span></a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">الرئيسية</a>
+      <a href="#about">من أنا</a>
+      <a href="#program">البرنامج</a>
+      <a href="#career">المسار المهني</a>
+      <a href="#certificates">الشهادات</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+
+    <button class="menu-button" id="menuButton">☰ القائمة</button>
+  </div>
 </header>
 
-<div class="developer-top">✦ تصميم وتطوير: <strong>براهيمي يوسف</strong> ✦</div>
-<div class="ticker"><span>براهيمي يوسف | معًا للتغيير والنهوض بالوطن | خدمة المواطن | التنمية المتوازنة | حماية المصلحة العامة</span></div>
-
 <main>
-<div class="hero" id="home">
- <img class="profile" src="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png" alt="الصورة الشخصية لبراهيمي يوسف">
- <h1>براهيمي يوسف</h1>
- <p>معًا للتغيير والنهوض بالوطن</p>
- <div class="tag">المجلس الشعبي الولائي – ولاية أفلو</div>
- <div class="tag">حزب صوت الشعب</div>
+
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow">المجلس الشعبي الولائي – ولاية أفلو</span>
+      <h1>براهيمي <span>يوسف</span></h1>
+      <p>
+        التعريف بالمسار المهني والكفاءات والتصورات المتعلقة بالتنمية المحلية،
+        والعمل من أجل المصلحة العامة في إطار الصلاحيات القانونية للمجلس الشعبي الولائي.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="#about">تعرف عليّ</a>
+        <a class="btn btn-light" href="#program">اكتشف البرنامج</a>
+      </div>
+
+      <span class="party">حزب صوت الشعب</span>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    ✦ شكرًا لكل من زار الموقع واهتم بالتعرف على المسار والبرنامج ✦
+    تحياتي وتقديري لجميع الزوار ✦ مصلحة الجميع لا مصلحة الفرد ✦
+    شكرًا لثقتكم واهتمامكم ✦
+  </div>
 </div>
 
 <section id="about">
- <h2 class="section-title">من أنا؟</h2>
- <p class="intro">براهيمي يوسف، متصرف إداري بمقر الولاية حاليًا، صاحب مسار مهني متنوع وخبرة في العمل الإداري والبلدي وقطاع التكوين المهني والتمهين. أؤمن بأهمية العمل الجاد والتكوين المستمر وخدمة المواطن والمساهمة في تنمية المنطقة.</p>
-</section>
+  <div class="container">
+    <div class="section-heading">
+      <small>نبذة تعريفية</small>
+      <h2>من هو براهيمي يوسف؟</h2>
+      <p>مسار مهني وتكوين علمي وتجربة في قطاعات إدارية مختلفة</p>
+    </div>
 
-<section id="program">
- <h2 class="section-title">برنامجي لخدمة الصالح العام</h2>
- <div class="coming-soon">
-  <div class="coming-soon-icon">⏳</div>
-  <h3>سنوافيكم به بعد قليل</h3>
-  <p>نعمل حاليًا على إعداد ودراسة البرنامج الشامل الذي يلبي تطلعاتكم ويلامس انشغالاتكم الحقيقية.</p>
- </div>
-</section>
+    <div class="about-grid">
+      <div class="profile-card">
+        <img
+          src="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png"
+          alt="صورة براهيمي يوسف">
+        <div class="profile-caption">
+          <h3>براهيمي يوسف</h3>
+          <p>متصرف إداري – مقر الولاية</p>
+        </div>
+      </div>
 
-<section id="experience">
- <h2 class="section-title">المسار المهني</h2>
- <div class="cards">
-  <div class="card"><div class="icon">🏛️</div><h3>مقر الولاية</h3><p>متصرف إداري حاليًا بمقر الولاية.</p></div>
-  <div class="card"><div class="icon">🏢</div><h3>العمل البلدي</h3><p>موظف سابق في البلدية، مع تجربة في العمل الإداري المحلي.</p></div>
-  <div class="card"><div class="icon">📚</div><h3>التكوين المهني</h3><p>موظف سابق في قطاع التكوين المهني والتمهين.</p></div>
- </div>
-</section>
+      <div class="about-text">
+        <h3>التعريف والمسار</h3>
+        <p>
+          براهيمي يوسف، متصرف إداري بمقر الولاية حاليًا، سبق له العمل في
+          البلدية وقطاع التكوين المهني والتمهين.
+        </p>
+        <p>
+          يهتم بالشأن الإداري والتنظيمي وبقضايا التنمية المحلية،
+          مع التركيز على المتابعة والتنسيق والشفافية والاستماع لانشغالات المواطنين.
+        </p>
 
-<section>
- <h2 class="section-title">محطات المسار المهني</h2>
- <div class="timeline">
-  <div class="timeline-item"><strong>العمل البلدي</strong><br>تجربة مهنية سابقة في البلدية.</div>
-  <div class="timeline-item"><strong>التكوين المهني والتمهين</strong><br>تجربة مهنية سابقة في قطاع التكوين المهني.</div>
-  <div class="timeline-item"><strong>مقر الولاية</strong><br>متصرف إداري حاليًا.</div>
- </div>
-</section>
-
-<section id="education">
- <h2 class="section-title">الشهادات والتكوين</h2>
- <div class="cards">
-  <div class="card"><div class="icon">🎓</div><h3>ماستر تنظيم وعمل</h3><p>شهادة ماستر في تخصص تنظيم وعمل.</p></div>
-  <div class="card"><div class="icon">💻</div><h3>الإعلام الآلي</h3><p>شهادات في الإعلام الآلي.</p></div>
-  <div class="card"><div class="icon">🌐</div><h3>اللغة الإنجليزية</h3><p>اللغة الإنجليزية – صنف ب.</p></div>
- </div>
-</section>
-
-<section id="message">
- <div class="message">
-  <h2>شكرًا لزيارتكم</h2>
-  <p>شكرًا لكل من خصص وقتًا للتعرف على مساري المهني والتكويني ورؤيتي لخدمة الصالح العام. نسأل الله التوفيق والسداد، وأن يحفظ وطننا ويوفق الجميع لما فيه الخير.</p>
-  <h3 style="color:#795638">معًا للتغيير والنهوض بالوطن</h3>
- </div>
- <div class="visitor-box">
-  <h3>إلى زوار صفحتي الكرام 🌹</h3>
-  <p>أهلًا وسهلًا بكل من زار هذا الفضاء التعريفي، من أفلو ومن جميع بلديات الولاية ومن كل ربوع الجزائر.</p>
-  <p>وجودكم محل تقدير واحترام. إذا أعجبتكم الصفحة، يمكنكم ترك إعجاب أو تعليق تعبّرون فيه عن رأيكم.</p>
-  <h3>بكل احترام وتقدير، براهيمي يوسف</h3>
- </div>
- <div class="interaction">
-  <h3>رأيكم يهمنا ❤️</h3>
-  <p>يمكنكم الضغط على زر الإعجاب أو كتابة تعليق.</p>
-  <div class="action-buttons">
-   <button class="action-btn" id="likeButton" type="button">👍 أعجبني</button>
-   <span id="likeCount">جارٍ التحميل...</span>
+        <div class="info-grid">
+          <div class="info-box">
+            <strong>الصفة المهنية</strong>
+            <span>متصرف إداري</span>
+          </div>
+          <div class="info-box">
+            <strong>الحزب</strong>
+            <span>صوت الشعب</span>
+          </div>
+          <div class="info-box">
+            <strong>المستوى العلمي</strong>
+            <span>ماستر تنظيم وعمل</span>
+          </div>
+          <div class="info-box">
+            <strong>مجال الاهتمام</strong>
+            <span>التنمية المحلية والإدارة</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <form class="comment-form" id="commentForm">
-   <input id="visitorName" maxlength="50" placeholder="اسمك (اختياري)">
-   <textarea id="visitorComment" maxlength="500" placeholder="اكتب تعليقك أو تحيتك هنا..." required></textarea>
-   <button class="action-btn" id="commentButton" type="submit">✉️ إضافة التعليق</button>
-  </form>
-  <div class="comment-list" id="commentList"></div>
-  <p class="status" id="firebaseStatus">جاري الاتصال بقاعدة البيانات...</p>
- </div>
 </section>
+
+<section class="soft-section" id="program">
+  <div class="container">
+    <div class="section-heading">
+      <small>التصورات والمقترحات</small>
+      <h2>محاور البرنامج المحلي</h2>
+      <p>أولويات قابلة للنقاش والمتابعة في إطار صلاحيات المجلس الشعبي الولائي</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="card-icon">🏗️</div>
+        <h3>التنمية والبنية التحتية</h3>
+        <p>متابعة مشاريع الطرق والتهيئة وتحسين الربط بين المناطق والتجمعات السكانية.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">💧</div>
+        <h3>المياه والموارد</h3>
+        <p>نقل انشغالات المواطنين بشأن التزود بالمياه ومتابعة المشاريع ذات الصلة.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">🏥</div>
+        <h3>الصحة</h3>
+        <p>متابعة احتياجات الهياكل الصحية والدفاع عن تحسين الخدمات والتغطية الصحية.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">🎓</div>
+        <h3>التربية والتكوين</h3>
+        <p>دعم الاهتمام بالمؤسسات التربوية والتكوين المهني وربط التكوين باحتياجات المنطقة.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">🌱</div>
+        <h3>البيئة والمحيط</h3>
+        <p>متابعة النظافة والمساحات الخضراء وتحسين المحيط الحضري والريفي.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">⚽</div>
+        <h3>الشباب والرياضة</h3>
+        <p>الاهتمام بالمنشآت الرياضية والثقافية وفضاءات الشباب والمبادرات المحلية.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">🚍</div>
+        <h3>النقل وفك العزلة</h3>
+        <p>طرح انشغالات النقل والربط بين البلديات والتجمعات السكانية.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">🌾</div>
+        <h3>الفلاحة والتنمية الريفية</h3>
+        <p>الاهتمام بانشغالات الفلاحين ومتابعة احتياجات المناطق الريفية.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">⚖️</div>
+        <h3>الشفافية والمتابعة</h3>
+        <p>تشجيع المتابعة الجادة للمشاريع وتوضيح الانشغالات ونقلها إلى الجهات المختصة.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="career">
+  <div class="container">
+    <div class="section-heading">
+      <small>التجربة المهنية</small>
+      <h2>المسار المهني</h2>
+      <p>تجربة في الإدارة والخدمات العمومية</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>متصرف إداري – مقر الولاية</h3>
+        <p>العمل الحالي في المجال الإداري على مستوى مقر الولاية.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>قطاع التكوين المهني والتمهين</h3>
+        <p>تجربة مهنية سابقة في قطاع التكوين المهني والتمهين.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>العمل بالبلدية</h3>
+        <p>تجربة سابقة في الإدارة المحلية والعمل البلدي.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soft-section" id="certificates">
+  <div class="container">
+    <div class="section-heading">
+      <small>المؤهلات العلمية</small>
+      <h2>الشهادات والتكوين</h2>
+      <p>التكوين العلمي والمهارات المكتسبة</p>
+    </div>
+
+    <div class="certificate-grid">
+      <div class="certificate">
+        <div class="symbol">🎓</div>
+        <h3>ماستر تنظيم وعمل</h3>
+        <p>التنظيم والعمل والإدارة</p>
+      </div>
+
+      <div class="certificate">
+        <div class="symbol">💻</div>
+        <h3>شهادات الإعلام الآلي</h3>
+        <p>مهارات وتقنيات الإعلام الآلي</p>
+      </div>
+
+      <div class="certificate">
+        <div class="symbol">🌐</div>
+        <h3>اللغة الإنجليزية – صنف ب</h3>
+        <p>تكوين في اللغة الإنجليزية</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-panel">
+      <h2>التواصل والاستماع للانشغالات</h2>
+      <p>
+        نرحب بالملاحظات والمقترحات المتعلقة بالتنمية المحلية
+        وبالقضايا التي تهم المواطن.
+      </p>
+      <a class="btn" href="#comments">أرسل مقترحك</a>
+    </div>
+  </div>
+</section>
+
+<section class="interaction-section" id="comments">
+  <div class="container">
+    <div class="section-heading">
+      <small>مشاركة الزوار</small>
+      <h2>رأيكم يهمنا</h2>
+      <p>يمكنكم تسجيل إعجابكم وإرسال مقترحاتكم وملاحظاتكم</p>
+    </div>
+
+    <div class="interaction-grid">
+
+      <div class="interaction-card">
+        <h3>❤️ أعجبك الموقع؟</h3>
+        <p style="color:var(--muted);font-size:13px;margin-bottom:18px">
+          يمكنك الضغط على زر الإعجاب أكثر من مرة.
+        </p>
+
+        <div class="like-area">
+          <button class="like-button" id="likeButton">❤️ أعجبني</button>
+          <div>
+            <div class="like-count" id="likeCount">0</div>
+            <small style="color:var(--muted)">إعجاب</small>
+          </div>
+        </div>
+
+        <p class="status-message" id="likeStatus" aria-live="polite"></p>
+      </div>
+
+      <div class="interaction-card">
+        <h3>✍️ أرسل تعليقًا أو مقترحًا</h3>
+
+        <form id="commentForm">
+          <input class="form-control" id="commentName"
+            type="text" maxlength="50" placeholder="اسمك" required>
+
+          <textarea class="form-control" id="commentText"
+            maxlength="1000" placeholder="اكتب تعليقك أو مقترحك..." required></textarea>
+
+          <button class="btn btn-gold" type="submit" id="commentSubmit">
+            إرسال التعليق
+          </button>
+
+          <p class="status-message" id="commentStatus" aria-live="polite"></p>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="interaction-card" style="margin-top:25px">
+      <h3>💬 تعليقات الزوار المنشورة</h3>
+      <div id="publicComments">
+        <p class="empty-message">جارٍ تحميل التعليقات...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer>
- <strong>براهيمي يوسف</strong><br>
- المجلس الشعبي الولائي – حزب صوت الشعب – ولاية أفلو<br>
- <span style="color:#795638">تصميم وتطوير: براهيمي يوسف</span>
+  <div class="container">
+    <p>براهيمي يوسف | حزب صوت الشعب</p>
+    <p>المجلس الشعبي الولائي – ولاية أفلو</p>
+    <p class="developer">تصميم وتطوير: براهيمي يوسف</p>
+    <button class="admin-trigger" id="openAdmin">إدارة الموقع</button>
+    <p style="margin-top:12px;color:#bca58e">
+      جميع الحقوق محفوظة © <span id="year"></span>
+    </p>
+  </div>
 </footer>
 
-<button id="adminButton" type="button">🔐 لوحة التحكم</button>
+<!-- لوحة الإدارة -->
+<div class="admin-modal" id="adminModal">
+  <div class="admin-box">
 
-<div id="adminPanel">
- <div class="admin-box">
-  <div class="admin-top">
-   <h2>لوحة التحكم الإدارية</h2>
-   <button class="close-btn" id="closeAdmin">إغلاق ✕</button>
+    <div class="admin-header">
+      <div>
+        <h2 style="color:var(--brown)">لوحة إدارة الموقع</h2>
+        <small style="color:var(--muted)">إدارة التعليقات والإحصائيات</small>
+      </div>
+      <button class="close-admin" id="closeAdmin" aria-label="إغلاق">×</button>
+    </div>
+
+    <div id="loginArea">
+      <h3 style="margin-bottom:12px">تسجيل دخول المدير</h3>
+
+      <form id="adminLoginForm">
+        <input class="form-control" id="adminEmail"
+          type="email" placeholder="البريد الإلكتروني" required>
+
+        <input class="form-control" id="adminPassword"
+          type="password" placeholder="كلمة المرور" required>
+
+        <button class="btn btn-gold" type="submit" id="loginButton">
+          تسجيل الدخول
+        </button>
+
+        <p class="status-message" id="loginStatus" aria-live="polite"></p>
+      </form>
+    </div>
+
+    <div id="dashboardArea" class="hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+        <h3>مرحبًا بالمدير</h3>
+        <button class="small-button logout-button" id="logoutButton">تسجيل الخروج</button>
+      </div>
+
+      <div class="admin-stats">
+        <div class="stat-box">
+          <span>الإعجابات</span>
+          <strong id="adminLikes">0</strong>
+        </div>
+        <div class="stat-box">
+          <span>التعليقات قيد المراجعة</span>
+          <strong id="pendingCount">0</strong>
+        </div>
+      </div>
+
+      <h3 style="color:var(--brown);margin:15px 0">التعليقات المعلقة</h3>
+      <div id="pendingComments">
+        <p class="empty-message">لا توجد تعليقات معلقة.</p>
+      </div>
+    </div>
+
   </div>
-  <div id="loginArea">
-   <p>تسجيل دخول المسؤول</p>
-   <form id="loginForm" class="login-form">
-    <input type="email" id="adminEmail" placeholder="البريد الإلكتروني" required>
-    <input type="password" id="adminPassword" placeholder="كلمة المرور" required>
-    <button class="action-btn" type="submit">دخول</button>
-   </form>
-   <p class="status" id="loginStatus"></p>
-  </div>
-  <div id="dashboard" hidden>
-   <h3>الإحصائيات</h3>
-   <div class="admin-stat">إجمالي الإعجابات: <strong id="adminLikes">0</strong></div>
-   <div class="admin-stat">عدد التعليقات: <strong id="adminCommentsCount">0</strong></div>
-   <h3>إدارة التعليقات</h3>
-   <div id="adminCommentList"></div>
-   <button class="action-btn" id="logoutButton" type="button">تسجيل الخروج</button>
-  </div>
- </div>
 </div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import {
- getFirestore,doc,collection,addDoc,onSnapshot,
- runTransaction,serverTimestamp,query,orderBy,deleteDoc
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-import {
- getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+import { initializeApp } from
+"https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 
-/* استبدل القيم التالية بإعدادات مشروع Firebase */
+import {
+  getDatabase,
+  ref,
+  onValue,
+  runTransaction,
+  push,
+  set,
+  get,
+  remove
+} from
+"https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from
+"https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+/* =====================================
+   1. إعدادات Firebase
+===================================== */
+
 const firebaseConfig = {
- apiKey: "ضع_API_KEY_هنا",
- authDomain: "ضع_AUTH_DOMAIN_هنا",
- projectId: "ضع_PROJECT_ID_هنا",
- storageBucket: "ضع_STORAGE_BUCKET_هنا",
- messagingSenderId: "ضع_MESSAGING_SENDER_ID_هنا",
- appId: "ضع_APP_ID_هنا"
+  apiKey: "AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
+  authDomain: "workdz-web.firebaseapp.com",
+  databaseURL: "https://workdz-web-default-rtdb.firebaseio.com",
+  projectId: "workdz-web",
+  storageBucket: "workdz-web.firebasestorage.app",
+  messagingSenderId: "980881321562",
+  appId: "1:980881321562:web:5046cc8bfe27749a73f263",
+  measurementId: "G-NWPYNZT489"
 };
 
-const statusEl=document.getElementById("firebaseStatus");
-const likeButton=document.getElementById("likeButton");
-const likeCount=document.getElementById("likeCount");
-const commentForm=document.getElementById("commentForm");
-const commentList=document.getElementById("commentList");
-const commentButton=document.getElementById("commentButton");
-const adminPanel=document.getElementById("adminPanel");
-const loginArea=document.getElementById("loginArea");
-const dashboard=document.getElementById("dashboard");
+/* غيّر هذا البريد إلى بريد المدير نفسه */
+const ADMIN_EMAIL = "ضع_بريد_المدير_هنا@example.com";
 
-let db,auth,unsubscribeComments=null;
-let currentLikes=0;
-let adminLoggedIn=false;
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const auth = getAuth(app);
 
-const deviceIdKey="aflouFirebaseDeviceId";
-let deviceId=localStorage.getItem(deviceIdKey);
-if(!deviceId){
- deviceId=crypto.randomUUID();
- localStorage.setItem(deviceIdKey,deviceId);
-}
+/* مراجع قاعدة البيانات */
+const likesRef = ref(db, "siteStats/likes");
+const publishedRef = ref(db, "publishedComments");
+const inboxRef = ref(db, "commentInbox");
 
-function setStatus(message){statusEl.textContent=message;}
+/* =====================================
+   2. عناصر الصفحة
+===================================== */
 
-function addText(parent,tag,text,className){
- const element=document.createElement(tag);
- element.textContent=text;
- if(className)element.className=className;
- parent.appendChild(element);
- return element;
-}
+const likeButton = document.getElementById("likeButton");
+const likeCount = document.getElementById("likeCount");
+const likeStatus = document.getElementById("likeStatus");
 
-function renderPublicComment(id,data){
- const item=document.createElement("div");
- item.className="comment-item";
- addText(item,"strong",data.name||"زائر");
- addText(item,"p",data.message||"");
- if(data.createdAt?.toDate){
-  addText(item,"small",data.createdAt.toDate().toLocaleString("ar-DZ"));
- }
- commentList.appendChild(item);
-}
+const commentForm = document.getElementById("commentForm");
+const commentName = document.getElementById("commentName");
+const commentText = document.getElementById("commentText");
+const commentStatus = document.getElementById("commentStatus");
+const commentSubmit = document.getElementById("commentSubmit");
 
-try{
- if(firebaseConfig.apiKey.startsWith("ضع_") ||
-    firebaseConfig.projectId.startsWith("ضع_")){
-  throw new Error("أدخل إعدادات Firebase في firebaseConfig أولًا.");
- }
+const adminModal = document.getElementById("adminModal");
+const loginArea = document.getElementById("loginArea");
+const dashboardArea = document.getElementById("dashboardArea");
+const loginStatus = document.getElementById("loginStatus");
 
- const app=initializeApp(firebaseConfig);
- db=getFirestore(app);
- auth=getAuth(app);
+let isAdmin = false;
+let stopAdminLikes = null;
+let stopPending = null;
 
- const likesRef=doc(db,"siteStats","main");
- const myLikeRef=doc(db,"siteLikes",deviceId);
+/* =====================================
+   3. الإعجابات المتكررة
+===================================== */
 
- /* متابعة عدد الإعجابات */
- onSnapshot(likesRef,snap=>{
-  currentLikes=snap.exists()?Number(snap.data().likes||0):0;
-  likeCount.textContent=currentLikes+" إعجاب";
-  if(dashboard.hidden===false){
-   document.getElementById("adminLikes").textContent=currentLikes;
+onValue(likesRef, (snapshot) => {
+  const count = Number(snapshot.val() || 0);
+  likeCount.textContent = count.toLocaleString("ar-DZ");
+  document.getElementById("adminLikes").textContent =
+    count.toLocaleString("ar-DZ");
+}, (error) => {
+  console.error("Likes read error:", error);
+  likeStatus.textContent = "تعذر تحميل عدد الإعجابات.";
+});
+
+likeButton.addEventListener("click", async () => {
+  likeButton.disabled = true;
+  likeStatus.textContent = "جارٍ تسجيل إعجابك...";
+
+  try {
+    const result = await runTransaction(likesRef, (current) => {
+      return (Number(current) || 0) + 1;
+    });
+
+    if (result.committed) {
+      likeStatus.textContent = "تم تسجيل إعجابك بنجاح ❤️";
+    } else {
+      likeStatus.textContent = "لم يتم تسجيل الإعجاب.";
+    }
+  } catch (error) {
+    console.error(error);
+    likeStatus.textContent = "تعذر تسجيل الإعجاب. تحقق من الاتصال.";
+  } finally {
+    likeButton.disabled = false;
   }
- },error=>setStatus("تعذر قراءة الإعجابات: "+error.message));
+});
 
- /* معرفة هل سبق للزائر الإعجاب */
- onSnapshot(myLikeRef,snap=>{
-  likeButton.textContent=snap.exists()?"❤️ سجلت إعجابك":"👍 أعجبني";
-  likeButton.disabled=snap.exists();
- },error=>console.error(error));
+/* =====================================
+   4. إرسال التعليقات للمراجعة
+===================================== */
 
- /* تسجيل إعجاب واحد لكل معرّف جهاز */
- likeButton.addEventListener("click",async()=>{
-  likeButton.disabled=true;
-  try{
-   await runTransaction(db,async transaction=>{
-    const [likeSnap,statsSnap]=await Promise.all([
-     transaction.get(myLikeRef),transaction.get(likesRef)
-    ]);
-    if(likeSnap.exists())return;
-    const total=statsSnap.exists()?Number(statsSnap.data().likes||0):0;
-    transaction.set(myLikeRef,{createdAt:serverTimestamp()});
-    transaction.set(likesRef,{likes:total+1},{merge:true});
-   });
-  }catch(error){
-   alert("تعذر تسجيل الإعجاب: "+error.message);
-   likeButton.disabled=false;
-  }
- });
-
- /* إضافة تعليق */
- commentForm.addEventListener("submit",async event=>{
+commentForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-  const name=document.getElementById("visitorName").value.trim().slice(0,50)||"زائر";
-  const message=document.getElementById("visitorComment").value.trim();
-  if(!message)return;
-  commentButton.disabled=true;
-  try{
-   await addDoc(collection(db,"siteComments"),{
-    name,message:message.slice(0,500),
-    createdAt:serverTimestamp(),approved:false
-   });
-   commentForm.reset();
-   alert("تم إرسال تعليقك، وسيظهر بعد موافقة الإدارة.");
-  }catch(error){
-   alert("تعذر إرسال التعليق: "+error.message);
-  }finally{
-   commentButton.disabled=false;
-  }
- });
 
- /* عرض التعليقات المقبولة فقط */
- const publicCommentsQuery=query(collection(db,"siteComments"),orderBy("createdAt","desc"));
- onSnapshot(publicCommentsQuery,snapshot=>{
-  commentList.replaceChildren();
-  snapshot.forEach(comment=>{
-   if(comment.data().approved===true){
-    renderPublicComment(comment.id,comment.data());
-   }
+  const name = commentName.value.trim();
+  const message = commentText.value.trim();
+
+  if (!name || !message) {
+    commentStatus.textContent = "يرجى ملء جميع الحقول.";
+    return;
+  }
+
+  if (name.length > 50 || message.length > 1000) {
+    commentStatus.textContent = "تجاوزت الحد المسموح به.";
+    return;
+  }
+
+  commentSubmit.disabled = true;
+  commentStatus.textContent = "جارٍ إرسال التعليق...";
+
+  try {
+    const newComment = push(inboxRef);
+
+    await set(newComment, {
+      name: name,
+      text: message,
+      createdAt: Date.now()
+    });
+
+    commentForm.reset();
+    commentStatus.textContent =
+      "تم إرسال تعليقك. سيظهر بعد مراجعته والموافقة عليه.";
+  } catch (error) {
+    console.error(error);
+    commentStatus.textContent =
+      "تعذر إرسال التعليق. تحقق من إعدادات قاعدة البيانات.";
+  } finally {
+    commentSubmit.disabled = false;
+  }
+});
+
+/* =====================================
+   5. عرض التعليقات الموافق عليها
+===================================== */
+
+function makeCommentElement(comment) {
+  const article = document.createElement("article");
+  article.className = "comment-item";
+
+  const name = document.createElement("strong");
+  name.textContent = comment.name || "زائر";
+
+  const text = document.createElement("p");
+  text.textContent = comment.text || "";
+
+  const date = document.createElement("small");
+  date.className = "comment-date";
+
+  if (comment.createdAt) {
+    date.textContent = new Date(comment.createdAt).toLocaleString("ar-DZ");
+  }
+
+  article.append(name, text, date);
+  return article;
+}
+
+onValue(publishedRef, (snapshot) => {
+  const container = document.getElementById("publicComments");
+  container.replaceChildren();
+
+  if (!snapshot.exists()) {
+    const empty = document.createElement("p");
+    empty.className = "empty-message";
+    empty.textContent = "لا توجد تعليقات منشورة حتى الآن.";
+    container.appendChild(empty);
+    return;
+  }
+
+  const comments = Object.entries(snapshot.val())
+    .map(([id, value]) => ({id, ...value}))
+    .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+
+  comments.forEach((comment) => {
+    container.appendChild(makeCommentElement(comment));
   });
- },error=>setStatus("تعذر تحميل التعليقات: "+error.message));
+}, (error) => {
+  console.error("Comments read error:", error);
+  document.getElementById("publicComments").textContent =
+    "تعذر تحميل التعليقات.";
+});
 
- /* لوحة الإدارة */
- document.getElementById("adminButton").addEventListener("click",()=>{
-  adminPanel.style.display="block";
- });
- document.getElementById("closeAdmin").addEventListener("click",()=>{
-  adminPanel.style.display="none";
- });
+/* =====================================
+   6. فتح وإغلاق لوحة الإدارة
+===================================== */
 
- onAuthStateChanged(auth,user=>{
-  adminLoggedIn=!!user;
-  loginArea.hidden=!!user;
-  dashboard.hidden=!user;
-  if(user)loadAdminDashboard();
-  else if(unsubscribeComments){unsubscribeComments();unsubscribeComments=null;}
- });
+document.getElementById("openAdmin").addEventListener("click", () => {
+  adminModal.classList.add("show");
+});
 
- document.getElementById("loginForm").addEventListener("submit",async event=>{
+document.getElementById("closeAdmin").addEventListener("click", () => {
+  adminModal.classList.remove("show");
+});
+
+adminModal.addEventListener("click", (event) => {
+  if (event.target === adminModal) {
+    adminModal.classList.remove("show");
+  }
+});
+
+/* =====================================
+   7. تسجيل دخول المدير
+===================================== */
+
+document.getElementById("adminLoginForm")
+.addEventListener("submit", async (event) => {
   event.preventDefault();
-  const email=document.getElementById("adminEmail").value.trim();
-  const password=document.getElementById("adminPassword").value;
-  const output=document.getElementById("loginStatus");
-  output.textContent="جارٍ تسجيل الدخول...";
-  try{
-   await signInWithEmailAndPassword(auth,email,password);
-   output.textContent="";
-  }catch(error){
-   output.textContent="فشل الدخول. تحقق من البريد وكلمة المرور.";
+
+  const email = document.getElementById("adminEmail").value.trim();
+  const password = document.getElementById("adminPassword").value;
+
+  if (email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
+    loginStatus.textContent = "هذا البريد غير مخول لإدارة الموقع.";
+    return;
   }
- });
 
- function loadAdminDashboard(){
-  if(unsubscribeComments)unsubscribeComments();
-  const q=query(collection(db,"siteComments"),orderBy("createdAt","desc"));
-  unsubscribeComments=onSnapshot(q,snapshot=>{
-   document.getElementById("adminLikes").textContent=currentLikes;
-   document.getElementById("adminCommentsCount").textContent=snapshot.size;
-   const list=document.getElementById("adminCommentList");
-   list.replaceChildren();
+  loginStatus.textContent = "جارٍ التحقق من بيانات الدخول...";
 
-   snapshot.forEach(comment=>{
-    const data=comment.data();
-    const item=document.createElement("div");
-    item.className="admin-comment";
-    addText(item,"strong",data.name||"زائر");
-    addText(item,"p",data.message||"");
-    addText(item,"small",data.approved?"منشور":"بانتظار الموافقة");
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    loginStatus.textContent = "";
+  } catch (error) {
+    console.error(error);
+    loginStatus.textContent = "فشل تسجيل الدخول. تحقق من البريد وكلمة المرور.";
+  }
+});
 
-    const approve=document.createElement("button");
-    approve.className="delete-btn";
-    approve.textContent=data.approved?"إلغاء النشر":"موافقة ونشر";
-    approve.addEventListener("click",async()=>{
-     try{
-      const {updateDoc}=await import("https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js");
-      await updateDoc(doc(db,"siteComments",comment.id),{approved:!data.approved});
-     }catch(error){alert("تعذر تعديل التعليق: "+error.message);}
+/* =====================================
+   8. التحقق من حساب المدير
+===================================== */
+
+onAuthStateChanged(auth, (user) => {
+  isAdmin = !!user &&
+    user.email &&
+    user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
+
+  if (isAdmin) {
+    loginArea.classList.add("hidden");
+    dashboardArea.classList.remove("hidden");
+    startAdminDashboard();
+  } else {
+    loginArea.classList.remove("hidden");
+    dashboardArea.classList.add("hidden");
+    stopAdminDashboard();
+
+    if (user) {
+      signOut(auth).catch(console.error);
+      loginStatus.textContent = "هذا الحساب غير مخول للإدارة.";
+    }
+  }
+});
+
+/* =====================================
+   9. لوحة التحكم
+===================================== */
+
+function stopAdminDashboard() {
+  if (stopAdminLikes) {
+    stopAdminLikes();
+    stopAdminLikes = null;
+  }
+
+  if (stopPending) {
+    stopPending();
+    stopPending = null;
+  }
+}
+
+function startAdminDashboard() {
+  stopAdminDashboard();
+
+  stopAdminLikes = onValue(likesRef, (snapshot) => {
+    document.getElementById("adminLikes").textContent =
+      Number(snapshot.val() || 0).toLocaleString("ar-DZ");
+  });
+
+  stopPending = onValue(inboxRef, (snapshot) => {
+    renderPendingComments(snapshot);
+  }, (error) => {
+    console.error(error);
+    document.getElementById("pendingComments").textContent =
+      "تعذر تحميل التعليقات المعلقة. تحقق من قواعد الأمان.";
+  });
+}
+
+function renderPendingComments(snapshot) {
+  const container = document.getElementById("pendingComments");
+  container.replaceChildren();
+
+  if (!snapshot.exists()) {
+    document.getElementById("pendingCount").textContent = "0";
+
+    const empty = document.createElement("p");
+    empty.className = "empty-message";
+    empty.textContent = "لا توجد تعليقات معلقة.";
+    container.appendChild(empty);
+    return;
+  }
+
+  const comments = Object.entries(snapshot.val())
+    .map(([id, value]) => ({id, ...value}))
+    .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+
+  document.getElementById("pendingCount").textContent = comments.length;
+
+  comments.forEach((comment) => {
+    const box = document.createElement("div");
+    box.className = "admin-comment";
+
+    const name = document.createElement("strong");
+    name.textContent = comment.name || "زائر";
+
+    const message = document.createElement("p");
+    message.textContent = comment.text || "";
+
+    const date = document.createElement("small");
+    date.className = "comment-date";
+    date.textContent = comment.createdAt
+      ? new Date(comment.createdAt).toLocaleString("ar-DZ")
+      : "";
+
+    const actions = document.createElement("div");
+    actions.className = "admin-actions";
+
+    const approve = document.createElement("button");
+    approve.className = "small-button approve-button";
+    approve.textContent = "موافقة ونشر";
+
+    approve.addEventListener("click", async () => {
+      if (!isAdmin) return;
+
+      approve.disabled = true;
+
+      try {
+        const publishedComment = push(publishedRef);
+
+        await set(publishedComment, {
+          name: comment.name,
+          text: comment.text,
+          createdAt: comment.createdAt || Date.now()
+        });
+
+        await remove(ref(db, "commentInbox/" + comment.id));
+      } catch (error) {
+        console.error(error);
+        alert("تعذر نشر التعليق.");
+        approve.disabled = false;
+      }
     });
 
-    const remove=document.createElement("button");
-    remove.className="delete-btn";
-    remove.textContent="حذف";
-    remove.addEventListener("click",async()=>{
-     if(!confirm("هل تريد حذف هذا التعليق؟"))return;
-     try{await deleteDoc(doc(db,"siteComments",comment.id));}
-     catch(error){alert("تعذر الحذف: "+error.message);}
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "small-button delete-button";
+    deleteButton.textContent = "حذف";
+
+    deleteButton.addEventListener("click", async () => {
+      if (!isAdmin) return;
+      if (!confirm("هل تريد حذف هذا التعليق نهائيًا؟")) return;
+
+      try {
+        await remove(ref(db, "commentInbox/" + comment.id));
+      } catch (error) {
+        console.error(error);
+        alert("تعذر حذف التعليق.");
+      }
     });
-    item.append(approve,remove);
-    list.appendChild(item);
-   });
-  },error=>console.error(error));
- }
 
- document.getElementById("logoutButton").addEventListener("click",()=>signOut(auth));
-
- setStatus("تم الاتصال بقاعدة Firebase.");
-}catch(error){
- console.error(error);
- setStatus(error.message);
- likeCount.textContent="Firebase غير مهيأ";
- likeButton.disabled=true;
- commentButton.disabled=true;
-}
-</script>
-
-<script>
-function enterSite(){
- const overlay=document.getElementById("welcome-overlay");
- overlay.classList.add("hidden");
- setTimeout(()=>overlay.style.display="none",800);
+    actions.append(approve, deleteButton);
+    box.append(name, message, date, actions);
+    container.appendChild(box);
+  });
 }
 
-/* خلفية النجوم */
-const canvas=document.getElementById("stars");
-const ctx=canvas.getContext("2d");
-let stars=[];
-function resize(){
- canvas.width=innerWidth;
- canvas.height=innerHeight;
- stars=Array.from({length:90},()=>({
-  x:Math.random()*canvas.width,y:Math.random()*canvas.height,
-  r:Math.random()*1.8+.3,speed:Math.random()*.35+.1
- }));
-}
-function animate(){
- ctx.clearRect(0,0,canvas.width,canvas.height);
- ctx.fillStyle="#a77b4d";
- stars.forEach(s=>{
-  ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();
-  s.y-=s.speed;
-  if(s.y<0){s.y=canvas.height;s.x=Math.random()*canvas.width;}
- });
- requestAnimationFrame(animate);
-}
-addEventListener("resize",resize);resize();animate();
+/* =====================================
+   10. تسجيل الخروج
+===================================== */
 
-/* تمييز روابط الأقسام */
-const links=document.querySelectorAll("nav a");
-const sections=document.querySelectorAll("main section,.hero");
-const navObserver=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){
-   links.forEach(link=>link.classList.toggle(
-    "active",link.getAttribute("href")==="#"+entry.target.id
-   ));
+document.getElementById("logoutButton").addEventListener("click", async () => {
+  try {
+    await signOut(auth);
+    stopAdminDashboard();
+  } catch (error) {
+    console.error(error);
+    alert("تعذر تسجيل الخروج.");
   }
- });
-},{rootMargin:"-25% 0px -60% 0px"});
-sections.forEach(section=>{if(section.id)navObserver.observe(section);});
+});
+
+/* =====================================
+   11. القائمة والتاريخ
+===================================== */
+
+document.getElementById("menuButton").addEventListener("click", () => {
+  document.getElementById("navLinks").classList.toggle("open");
+});
+
+document.querySelectorAll("#navLinks a").forEach((link) => {
+  link.addEventListener("click", () => {
+    document.getElementById("navLinks").classList.remove("open");
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
 </script>
+
 </body>
 </html>
