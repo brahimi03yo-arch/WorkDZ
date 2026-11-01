@@ -7,13 +7,11 @@
 <title>اعرف مترشحك | براهيمي يوسف</title>
 <meta name="description" content="المسار المهني والبرنامج المحلي لبراهيمي يوسف">
 
-<!-- 👇 أكواد معاينة الرابط في فيسبوك وواتساب 👇 -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_DZ">
 <meta property="og:site_name" content="اعرف مترشحك">
 <meta property="og:title" content="براهيمي يوسف | اعرف مترشحك">
 <meta property="og:description" content="برنامج ورؤية لخدمة ولاية أفلو والصالح العام. اضغط لزيارة الموقع.">
-<!-- رابط الصورة المباشر (تم إضافة علامة استفهام لكسر التخزين المؤقت لفيسبوك) -->
 <meta property="og:image" content="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png?v=2">
 <meta property="og:image:secure_url" content="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png?v=2">
 <meta property="og:image:type" content="image/png">
@@ -27,140 +25,185 @@
 <meta name="twitter:image" content="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png?v=2">
 
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
+:root {
+ --bg:#eee4d5;
+ --bg-light:#f7f1e8;
+ --surface:#fffaf3;
+ --surface-soft:#f5ecdf;
+ --brown:#795638;
+ --brown-dark:#493729;
+ --brown-mid:#98724e;
+ --gold:#bd9865;
+ --gold-light:#dfc49b;
+ --text:#493729;
+ --muted:#806b56;
+ --border:#d8c3a7;
+ --shadow:rgba(90,60,35,.12);
+}
+
+* {
+ box-sizing:border-box;
+}
+
+html {
+ scroll-behavior:smooth;
+}
+
+body {
  margin:0;
  font-family:Tahoma,Arial,sans-serif;
- color:#f8f4e8;
- /* اللون الجديد: أخضر زمردي أفتح وأكثر إشراقاً */
- background:#0f2a20;
+ color:var(--text);
+ background:var(--bg);
  overflow-x:hidden;
 }
 
-/* 👇 تنسيقات صفحة الغلاف (شاشة الدخول) 👇 */
+/* شاشة الغلاف */
 #welcome-overlay {
- position: fixed;
- inset: 0;
- background: #0f2a20;
- z-index: 9999;
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
- cursor: pointer;
- transition: opacity 0.8s ease, visibility 0.8s;
+ position:fixed;
+ inset:0;
+ background:#e8dcc9;
+ z-index:9999;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+ cursor:pointer;
+ transition:opacity .8s ease,visibility .8s;
+ padding:20px;
 }
-#welcome-overlay.hidden {
- opacity: 0;
- visibility: hidden;
-}
-.welcome-img {
- max-width: 90%;
- max-height: 75vh;
- border-radius: 20px;
- border: 4px solid #e8c76e;
- box-shadow: 0 0 60px rgba(232, 199, 110, 0.5);
- object-fit: contain;
- transition: transform 0.3s;
-}
-.welcome-img:hover { transform: scale(1.02); }
-.welcome-text {
- margin-top: 25px;
- color: #f0cf78;
- font-size: 20px;
- font-weight: bold;
- animation: pulse 2s infinite;
-}
-@keyframes pulse {
- 0% { opacity: 0.5; }
- 50% { opacity: 1; }
- 100% { opacity: 0.5; }
-}
-/* 👆 نهاية تنسيقات الغلاف 👆 */
 
-#stars{
+#welcome-overlay.hidden {
+ opacity:0;
+ visibility:hidden;
+}
+
+.welcome-img {
+ max-width:90%;
+ max-height:75vh;
+ border-radius:20px;
+ border:4px solid var(--gold);
+ box-shadow:0 0 45px rgba(130,91,54,.25);
+ object-fit:contain;
+ transition:transform .3s;
+}
+
+.welcome-img:hover {
+ transform:scale(1.02);
+}
+
+.welcome-text {
+ margin-top:25px;
+ color:var(--brown);
+ font-size:20px;
+ font-weight:bold;
+ text-align:center;
+ animation:pulse 2s infinite;
+}
+
+@keyframes pulse {
+ 0%,100% {opacity:.55}
+ 50% {opacity:1}
+}
+
+/* خلفية النجوم */
+#stars {
  position:fixed;
  inset:0;
  width:100%;
  height:100%;
  z-index:-1;
  pointer-events:none;
+ opacity:.35;
 }
-header{
+
+/* رأس الموقع */
+header {
  position:sticky;
  top:0;
  z-index:20;
- background:rgba(15, 42, 32, 0.95);
- border-bottom:1px solid #b99a4a;
+ background:rgba(239,228,211,.96);
+ border-bottom:1px solid var(--gold);
  padding:13px 10px;
  backdrop-filter:blur(12px);
+ box-shadow:0 3px 12px var(--shadow);
 }
-.brand{
+
+.brand {
  text-align:center;
- color:#e8c76e;
- font-size:22px;
+ color:var(--brown);
+ font-size:23px;
  font-weight:bold;
  margin-bottom:12px;
 }
-.developer-top{
+
+.developer-top {
  text-align:center;
- color:#e9c66d;
+ color:var(--brown);
  padding:8px;
  font-size:13px;
- background:rgba(0,0,0,0.2);
- border-bottom:1px solid #806a36;
+ background:rgba(255,255,255,.35);
+ border-bottom:1px solid var(--border);
 }
-.developer-top strong{color:white}
 
-nav{
+.developer-top strong {
+ color:var(--brown-dark);
+}
+
+nav {
  display:flex;
  justify-content:center;
  flex-wrap:wrap;
  gap:9px;
 }
-nav a{
+
+nav a {
  display:inline-flex;
  align-items:center;
  justify-content:center;
  gap:7px;
  padding:10px 15px;
- border:1px solid #a88943;
+ border:1px solid var(--gold);
  border-radius:12px;
- color:#fff4d7;
+ color:var(--brown-dark);
  text-decoration:none;
  font-size:13px;
  font-weight:bold;
- background:linear-gradient(145deg,#1a4732,#0f2a20);
+ background:linear-gradient(145deg,#fffaf2,#e8d9c5);
  transition:.25s;
- box-shadow:0 3px 10px #0003;
-}
-nav a:hover,nav a.active{
- background:linear-gradient(135deg,#d7b55d,#a47c2f);
- color:#10251a;
- transform:translateY(-2px);
- box-shadow:0 5px 15px #c5a34b33;
+ box-shadow:0 3px 10px var(--shadow);
 }
 
-.ticker{
+nav a:hover,
+nav a.active {
+ background:linear-gradient(135deg,#c59b6d,#a77b4d);
+ color:white;
+ transform:translateY(-2px);
+ box-shadow:0 5px 15px rgba(130,91,54,.2);
+}
+
+/* الشريط المتحرك */
+.ticker {
  overflow:hidden;
- background:#b8943f;
- color:#172a1d;
+ background:#c6a47b;
+ color:#382719;
  white-space:nowrap;
  padding:11px 0;
  font-weight:bold;
 }
-.ticker span{
+
+.ticker span {
  display:inline-block;
  padding-right:100%;
  animation:move 22s linear infinite;
 }
-@keyframes move{
- from{transform:translateX(0)}
- to{transform:translateX(100%)}
+
+@keyframes move {
+ from {transform:translateX(0)}
+ to {transform:translateX(100%)}
 }
 
-.hero{
+/* الواجهة الرئيسية */
+.hero {
  min-height:570px;
  padding:45px 18px;
  display:flex;
@@ -168,299 +211,417 @@ nav a:hover,nav a.active{
  align-items:center;
  justify-content:center;
  text-align:center;
- background:linear-gradient(180deg,rgba(26, 71, 50, 0.6),rgba(15, 42, 32, 0.9));
+ background:linear-gradient(
+  180deg,
+  rgba(214,190,160,.65),
+  rgba(238,228,213,.95)
+ );
 }
-.profile{
+
+.profile {
  width:300px;
  height:360px;
  max-width:90%;
  object-fit:cover;
- border:4px solid #d8b65d;
+ border:4px solid var(--gold);
  border-radius:22px;
- box-shadow:0 0 40px rgba(197, 163, 75, 0.4);
+ box-shadow:0 0 35px rgba(130,91,54,.2);
 }
-h1{
- color:#f0cf78;
+
+h1 {
+ color:var(--brown);
  font-size:clamp(30px,6vw,48px);
  margin:20px 0 8px;
 }
-.hero p{
- color:#eee2c1;
+
+.hero p {
+ color:#594637;
  font-size:18px;
  line-height:1.9;
 }
-.tag{
+
+.tag {
  display:inline-block;
  padding:10px 20px;
- border:1px solid #c7a34c;
+ border:1px solid var(--gold);
  border-radius:30px;
- color:#f1d47f;
+ color:var(--brown);
  margin-top:10px;
- background: rgba(0,0,0,0.2);
+ background:rgba(255,255,255,.45);
 }
 
-section{
+/* الأقسام */
+section {
  max-width:1100px;
  margin:auto;
  padding:55px 18px;
  scroll-margin-top:145px;
 }
-.section-title{
+
+.section-title {
  text-align:center;
- color:#e9c66d;
+ color:var(--brown);
  font-size:29px;
  margin-bottom:30px;
 }
-.intro{
+
+.intro {
  text-align:center;
  max-width:800px;
  margin:auto;
  line-height:2.2;
- color:#eee8d8;
+ color:#594637;
 }
-.cards{
+
+/* البطاقات */
+.cards {
  display:grid;
  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
  gap:18px;
 }
-.card{
- /* بطاقات بلمسة زجاجية شفافة تناسب الخلفية الجديدة */
- background:rgba(255,255,255,0.05);
- backdrop-filter: blur(10px);
- border:1px solid rgba(232, 199, 110, 0.3);
+
+.card {
+ background:rgba(255,255,255,.65);
+ backdrop-filter:blur(10px);
+ border:1px solid var(--border);
  border-radius:17px;
  padding:25px 18px;
  text-align:center;
- box-shadow:0 8px 24px rgba(0,0,0,0.2);
+ box-shadow:0 8px 24px var(--shadow);
  transition:.3s;
  opacity:0;
  transform:translateY(20px);
 }
-.card.show{opacity:1;transform:translateY(0)}
-.card:hover{
+
+.card.show {
+ opacity:1;
+ transform:translateY(0);
+}
+
+.card:hover {
  transform:translateY(-5px);
- border-color:#f1d47f;
- background:rgba(255,255,255,0.08);
+ border-color:var(--gold);
+ background:#fffaf2;
 }
-.icon{font-size:38px;margin-bottom:10px}
-.card h3{color:#e9c66d;margin:10px 0}
-.card p{line-height:2;color:#e8e4d8;font-size:14px}
 
-/* 👇 تنسيق قسم "سنوافيكم به بعد قليل" 👇 */
+.icon {
+ font-size:38px;
+ margin-bottom:10px;
+}
+
+.card h3 {
+ color:var(--brown);
+ margin:10px 0;
+}
+
+.card p {
+ line-height:2;
+ color:#594637;
+ font-size:14px;
+}
+
+/* البرنامج */
 .coming-soon {
- text-align: center;
- background: rgba(255,255,255,0.05);
- backdrop-filter: blur(10px);
- border: 1px solid #a88943;
- border-radius: 20px;
- padding: 60px 20px;
- max-width: 700px;
- margin: 0 auto;
- box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-.coming-soon-icon {
- font-size: 70px;
- margin-bottom: 20px;
- animation: float 3s ease-in-out infinite;
-}
-@keyframes float {
- 0% { transform: translateY(0px); }
- 50% { transform: translateY(-15px); }
- 100% { transform: translateY(0px); }
-}
-.coming-soon h3 {
- color: #f0cf78;
- font-size: 32px;
- margin-bottom: 15px;
-}
-.coming-soon p {
- color: #eee8d8;
- font-size: 18px;
- line-height: 1.8;
+ text-align:center;
+ background:rgba(255,255,255,.65);
+ backdrop-filter:blur(10px);
+ border:1px solid var(--gold);
+ border-radius:20px;
+ padding:60px 20px;
+ max-width:700px;
+ margin:0 auto;
+ box-shadow:0 10px 30px var(--shadow);
 }
 
-.timeline{
+.coming-soon-icon {
+ font-size:70px;
+ margin-bottom:20px;
+ animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+ 0%,100% {transform:translateY(0)}
+ 50% {transform:translateY(-15px)}
+}
+
+.coming-soon h3 {
+ color:var(--brown);
+ font-size:32px;
+ margin-bottom:15px;
+}
+
+.coming-soon p {
+ color:#594637;
+ font-size:18px;
+ line-height:1.8;
+}
+
+/* المسار المهني */
+.timeline {
  max-width:750px;
  margin:auto;
- border-right:3px solid #c9a64f;
+ border-right:3px solid var(--gold);
  padding-right:22px;
 }
-.timeline-item{
+
+.timeline-item {
  position:relative;
- background:rgba(255,255,255,0.03);
- border:1px solid rgba(255,255,255,0.1);
+ background:rgba(255,255,255,.55);
+ border:1px solid var(--border);
  padding:20px;
  border-radius:13px;
  margin-bottom:18px;
  line-height:2;
+ color:#594637;
+ box-shadow:0 4px 12px var(--shadow);
 }
-.timeline-item:before{
+
+.timeline-item:before {
  content:"";
  position:absolute;
  right:-31px;
  top:25px;
  width:13px;
  height:13px;
- background:#e4c46c;
+ background:var(--brown-mid);
  border-radius:50%;
 }
-.timeline-item strong{color:#e9c66d}
 
-.message{
+.timeline-item strong {
+ color:var(--brown);
+}
+
+/* رسالة الشكر */
+.message {
  text-align:center;
  padding:35px 20px;
- border:1px solid rgba(232, 199, 110, 0.3);
+ border:1px solid var(--border);
  border-radius:20px;
- background:rgba(255,255,255,0.03);
+ background:rgba(255,255,255,.55);
  line-height:2.2;
+ box-shadow:0 8px 25px var(--shadow);
 }
-.message h2{color:#e9c66d}
 
-/* تحية الزوار */
-.visitor-box{
+.message h2 {
+ color:var(--brown);
+}
+
+/* صندوق الزوار */
+.visitor-box {
  margin-top:25px;
  padding:30px 22px;
- border:1px solid #c6a34d;
+ border:1px solid var(--gold);
  border-radius:20px;
- background:rgba(255,255,255,0.05);
+ background:rgba(255,255,255,.55);
  text-align:center;
  line-height:2.2;
- box-shadow:0 8px 25px #0004;
+ box-shadow:0 8px 25px var(--shadow);
 }
-.visitor-box h3{
- color:#f0cf78;
+
+.visitor-box h3 {
+ color:var(--brown);
  font-size:23px;
 }
-.visitor-box p{
- color:#f0eadb;
+
+.visitor-box p {
+ color:#594637;
 }
 
 /* التفاعل */
-.interaction{
+.interaction {
  margin-top:25px;
  padding:28px 20px;
- border:1px solid rgba(232, 199, 110, 0.3);
+ border:1px solid var(--border);
  border-radius:20px;
- background:rgba(0,0,0,0.15);
+ background:rgba(255,255,255,.55);
  text-align:center;
+ box-shadow:0 8px 25px var(--shadow);
 }
-.interaction h3{
- color:#e9c66d;
+
+.interaction h3 {
+ color:var(--brown);
  font-size:23px;
 }
-.interaction p{
+
+.interaction p {
  line-height:2;
- color:#eee8d8;
+ color:#594637;
 }
-.action-buttons{
+
+.action-buttons {
  display:flex;
  justify-content:center;
  flex-wrap:wrap;
  gap:12px;
  margin:20px 0;
 }
-.action-btn{
- border:1px solid #d8b65d;
+
+.action-btn {
+ border:1px solid var(--brown-mid);
  border-radius:30px;
  padding:12px 25px;
- background:linear-gradient(135deg,#e4c46c,#a77d30);
- color:#17291d;
+ background:linear-gradient(135deg,#c8a477,#a77b4d);
+ color:white;
  font-size:15px;
  font-weight:bold;
  cursor:pointer;
  font-family:Tahoma,Arial,sans-serif;
  transition:.25s;
 }
-.action-btn:hover{
+
+.action-btn:hover {
  transform:translateY(-3px);
- box-shadow:0 5px 15px #0005;
+ box-shadow:0 5px 15px var(--shadow);
 }
-#likeCount{
- color:#f0cf78;
+
+.action-btn:active {
+ transform:scale(.97);
+}
+
+#likeCount {
+ color:var(--brown);
  font-size:18px;
  font-weight:bold;
 }
-.comment-form{
+
+/* نموذج التعليقات */
+.comment-form {
  max-width:650px;
  margin:20px auto 0;
  display:grid;
  gap:12px;
 }
+
 .comment-form input,
-.comment-form textarea{
+.comment-form textarea {
  width:100%;
  padding:13px;
- border:1px solid #a88943;
+ border:1px solid var(--gold);
  border-radius:10px;
- background:rgba(0,0,0,0.3);
- color:white;
+ background:#fffaf2;
+ color:var(--brown-dark);
  font-family:Tahoma,Arial,sans-serif;
  font-size:14px;
  outline:none;
 }
-.comment-form textarea{
+
+.comment-form textarea {
  min-height:100px;
  resize:vertical;
 }
+
 .comment-form input:focus,
-.comment-form textarea:focus{
- border-color:#f0cf78;
+.comment-form textarea:focus {
+ border-color:var(--brown);
+ box-shadow:0 0 0 3px rgba(165,125,77,.12);
 }
-.comment-list{
+
+.comment-form input::placeholder,
+.comment-form textarea::placeholder {
+ color:#967d64;
+}
+
+.comment-list {
  max-width:650px;
  margin:20px auto 0;
  text-align:right;
 }
-.comment-item{
+
+.comment-item {
  padding:14px;
  margin:10px 0;
- background:rgba(255,255,255,0.05);
- border:1px solid rgba(255,255,255,0.1);
+ background:rgba(255,255,255,.75);
+ border:1px solid var(--border);
  border-radius:12px;
  overflow-wrap:anywhere;
 }
-.comment-item strong{color:#e9c66d}
-.comment-item p{
+
+.comment-item strong {
+ color:var(--brown);
+}
+
+.comment-item p {
  line-height:1.9;
  margin-bottom:0;
+ color:var(--brown-dark);
 }
 
-footer{
+/* نهاية الصفحة */
+footer {
  text-align:center;
  padding:30px 15px;
- background:rgba(0,0,0,0.4);
- border-top:1px solid #a88943;
+ background:#dfcfb9;
+ border-top:1px solid var(--gold);
  line-height:2;
- color:#d8d0b9;
+ color:#594637;
 }
-footer strong{color:#e9c66d}
 
-@media(max-width:600px){
- header{padding:10px 7px}
- nav{gap:6px}
- nav a{padding:9px 10px;font-size:12px}
- .hero{padding:35px 14px}
- .profile{width:260px;height:320px}
- section{padding:38px 14px}
- .section-title{font-size:25px}
- .coming-soon h3 {font-size: 26px;}
+footer strong {
+ color:var(--brown);
+}
+
+/* الهاتف */
+@media(max-width:600px) {
+ header {
+  padding:10px 7px;
+ }
+
+ nav {
+  gap:6px;
+ }
+
+ nav a {
+  padding:9px 10px;
+  font-size:12px;
+ }
+
+ .hero {
+  padding:35px 14px;
+ }
+
+ .profile {
+  width:260px;
+  height:320px;
+ }
+
+ section {
+  padding:38px 14px;
+ }
+
+ .section-title {
+  font-size:25px;
+ }
+
+ .coming-soon h3 {
+  font-size:26px;
+ }
+
+ .coming-soon p {
+  font-size:16px;
+ }
+
+ .welcome-text {
+  font-size:17px;
+ }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 👇 شاشة الغلاف (تظهر أولاً وتطلب من الزائر الضغط للدخول) 👇 -->
 <div id="welcome-overlay" onclick="enterSite()">
- <img src="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png" alt="اضغط للدخول" class="welcome-img">
+ <img
+  src="https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png"
+  alt="اضغط للدخول"
+  class="welcome-img">
  <div class="welcome-text">اضغط في أي مكان للدخول إلى الموقع</div>
 </div>
-<!-- 👆 نهاية الغلاف 👆 -->
 
 <canvas id="stars"></canvas>
 
 <header>
  <div class="brand">اعرف مترشحك</div>
+
  <nav>
   <a href="#home">🏠 الرئيسية</a>
   <a href="#program">📋 برنامجي</a>
@@ -484,15 +645,21 @@ footer strong{color:#e9c66d}
 <main>
 
 <div class="hero" id="home">
- <img class="profile" src="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png" alt="الصورة الشخصية لبراهيمي يوسف">
+ <img
+  class="profile"
+  src="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png"
+  alt="الصورة الشخصية لبراهيمي يوسف">
+
  <h1>براهيمي يوسف</h1>
  <p>معًا للتغيير والنهوض بالوطن</p>
+
  <div class="tag">المجلس الشعبي الولائي – ولاية أفلو</div>
  <div class="tag">حزب صوت الشعب</div>
 </div>
 
 <section id="about">
  <h2 class="section-title">من أنا؟</h2>
+
  <p class="intro">
  براهيمي يوسف، متصرف إداري بمقر الولاية حاليًا،
  صاحب مسار مهني متنوع وخبرة في العمل الإداري
@@ -502,102 +669,195 @@ footer strong{color:#e9c66d}
  </p>
 </section>
 
-<!-- قسم البرنامج المحدث -->
 <section id="program">
  <h2 class="section-title">برنامجي لخدمة الصالح العام</h2>
- 
+
  <div class="coming-soon">
   <div class="coming-soon-icon">⏳</div>
   <h3>سنوافيكم به بعد قليل</h3>
-  <p>نعمل حالياً على إعداد ودراسة البرنامج الانتخابي الشامل الذي يلبي تطلعاتكم ويلامس انشغالاتكم الحقيقية.</p>
+  <p>
+   نعمل حالياً على إعداد ودراسة البرنامج الانتخابي الشامل
+   الذي يلبي تطلعاتكم ويلامس انشغالاتكم الحقيقية.
+  </p>
  </div>
-
 </section>
 
 <section id="experience">
  <h2 class="section-title">المسار المهني</h2>
+
  <div class="cards">
-  <div class="card"><div class="icon">🏛️</div><h3>مقر الولاية</h3><p>متصرف إداري حاليًا بمقر الولاية.</p></div>
-  <div class="card"><div class="icon">🏢</div><h3>العمل البلدي</h3><p>موظف سابق في البلدية، مع تجربة في العمل الإداري المحلي.</p></div>
-  <div class="card"><div class="icon">📚</div><h3>التكوين المهني</h3><p>موظف سابق في قطاع التكوين المهني والتمهين.</p></div>
+  <div class="card">
+   <div class="icon">🏛️</div>
+   <h3>مقر الولاية</h3>
+   <p>متصرف إداري حاليًا بمقر الولاية.</p>
+  </div>
+
+  <div class="card">
+   <div class="icon">🏢</div>
+   <h3>العمل البلدي</h3>
+   <p>موظف سابق في البلدية، مع تجربة في العمل الإداري المحلي.</p>
+  </div>
+
+  <div class="card">
+   <div class="icon">📚</div>
+   <h3>التكوين المهني</h3>
+   <p>موظف سابق في قطاع التكوين المهني والتمهين.</p>
+  </div>
  </div>
 </section>
 
 <section>
  <h2 class="section-title">محطات المسار المهني</h2>
+
  <div class="timeline">
-  <div class="timeline-item"><strong>العمل البلدي</strong><br>تجربة مهنية سابقة في البلدية.</div>
-  <div class="timeline-item"><strong>التكوين المهني والتمهين</strong><br>تجربة مهنية سابقة في قطاع التكوين المهني.</div>
-  <div class="timeline-item"><strong>مقر الولاية</strong><br>متصرف إداري حاليًا.</div>
+  <div class="timeline-item">
+   <strong>العمل البلدي</strong><br>
+   تجربة مهنية سابقة في البلدية.
+  </div>
+
+  <div class="timeline-item">
+   <strong>التكوين المهني والتمهين</strong><br>
+   تجربة مهنية سابقة في قطاع التكوين المهني.
+  </div>
+
+  <div class="timeline-item">
+   <strong>مقر الولاية</strong><br>
+   متصرف إداري حاليًا.
+  </div>
  </div>
 </section>
 
 <section id="education">
  <h2 class="section-title">الشهادات والتكوين</h2>
+
  <div class="cards">
-  <div class="card"><div class="icon">🎓</div><h3>ماستر تنظيم وعمل</h3><p>شهادة ماستر في تخصص تنظيم وعمل.</p></div>
-  <div class="card"><div class="icon">💻</div><h3>الإعلام الآلي</h3><p>شهادات في الإعلام الآلي.</p></div>
-  <div class="card"><div class="icon">🌐</div><h3>اللغة الإنجليزية</h3><p>اللغة الإنجليزية – صنف ب.</p></div>
+  <div class="card">
+   <div class="icon">🎓</div>
+   <h3>ماستر تنظيم وعمل</h3>
+   <p>شهادة ماستر في تخصص تنظيم وعمل.</p>
+  </div>
+
+  <div class="card">
+   <div class="icon">💻</div>
+   <h3>الإعلام الآلي</h3>
+   <p>شهادات في الإعلام الآلي.</p>
+  </div>
+
+  <div class="card">
+   <div class="icon">🌐</div>
+   <h3>اللغة الإنجليزية</h3>
+   <p>اللغة الإنجليزية – صنف ب.</p>
+  </div>
  </div>
 </section>
 
 <section id="message">
+
  <div class="message">
   <h2>شكرًا لزيارتكم</h2>
-  <p>شكرًا لكل من خصص وقتًا للتعرف على مساري المهني والتكويني ورؤيتي لخدمة الصالح العام. نسأل الله التوفيق والسداد، وأن يحفظ وطننا ويوفق الجميع لما فيه الخير.</p>
-  <h3 style="color:#e9c66d">معًا للتغيير والنهوض بالوطن</h3>
+
+  <p>
+   شكرًا لكل من خصص وقتًا للتعرف على مساري المهني والتكويني
+   ورؤيتي لخدمة الصالح العام. نسأل الله التوفيق والسداد،
+   وأن يحفظ وطننا ويوفق الجميع لما فيه الخير.
+  </p>
+
+  <h3 style="color:#795638">
+   معًا للتغيير والنهوض بالوطن
+  </h3>
  </div>
 
  <div class="visitor-box">
   <h3>إلى زوار صفحتي الكرام 🌹</h3>
-  <p>أهلًا وسهلًا ومرحبًا بكل من زار هذا الفضاء التعريفي، من أفلو، ومن جميع بلديات الولاية، ومن كل ربوع الجزائر.</p>
-  <p>وجودكم محل تقدير واحترام، وزيارتكم تسعدني. إذا أعجبتكم الصفحة، لا تبخلوا علينا بترك إعجاب 👍 أو تعليق تعبّرون فيه عن رأيكم.</p>
+
+  <p>
+   أهلًا وسهلًا ومرحبًا بكل من زار هذا الفضاء التعريفي،
+   من أفلو، ومن جميع بلديات الولاية، ومن كل ربوع الجزائر.
+  </p>
+
+  <p>
+   وجودكم محل تقدير واحترام، وزيارتكم تسعدني.
+   إذا أعجبتكم الصفحة، لا تبخلوا علينا بترك إعجاب 👍
+   أو تعليق تعبّرون فيه عن رأيكم.
+  </p>
+
   <h3>بكل احترام وتقدير، براهيمي يوسف</h3>
  </div>
 
  <div class="interaction">
   <h3>رأيكم يهمنا ❤️</h3>
-  <p>إذا أعجبتكم الصفحة، يمكنكم الضغط على زر الإعجاب أو كتابة تعليق.</p>
+
+  <p>
+   إذا أعجبتكم الصفحة، يمكنكم الضغط على زر الإعجاب
+   أو كتابة تعليق.
+  </p>
+
   <div class="action-buttons">
-   <button class="action-btn" id="likeButton" type="button">👍 أعجبني</button>
+   <button class="action-btn" id="likeButton" type="button">
+    👍 أعجبني
+   </button>
+
    <span id="likeCount">0 إعجاب</span>
   </div>
+
   <form class="comment-form" id="commentForm">
-   <input type="text" id="visitorName" maxlength="50" placeholder="اسمك (اختياري)">
-   <textarea id="visitorComment" maxlength="500" placeholder="اكتب تعليقك أو تحيتك هنا..." required></textarea>
-   <button class="action-btn" type="submit">✉️ إضافة التعليق</button>
+   <input
+    type="text"
+    id="visitorName"
+    maxlength="50"
+    placeholder="اسمك (اختياري)">
+
+   <textarea
+    id="visitorComment"
+    maxlength="500"
+    placeholder="اكتب تعليقك أو تحيتك هنا..."
+    required></textarea>
+
+   <button class="action-btn" type="submit">
+    ✉️ إضافة التعليق
+   </button>
   </form>
+
   <div class="comment-list" id="commentList"></div>
-  <p style="font-size:12px;color:#c7b98f">ملاحظة: التفاعلات محفوظة محليًا على نفس المتصفح فقط.</p>
+
+  <p style="font-size:12px;color:#806b56">
+   ملاحظة: التفاعلات محفوظة محليًا على نفس المتصفح فقط.
+  </p>
  </div>
 </section>
+
 </main>
 
 <footer>
  <strong>براهيمي يوسف</strong><br>
  المجلس الشعبي الولائي – حزب صوت الشعب – ولاية أفلو
- <br><span style="color:#e9c66d">تصميم وتطوير: براهيمي يوسف</span>
+ <br>
+ <span style="color:#795638">
+  تصميم وتطوير: براهيمي يوسف
+ </span>
 </footer>
 
 <script>
-// دالة إخفاء شاشة الغلاف عند الضغط
+/* شاشة الدخول */
 function enterSite() {
- const overlay = document.getElementById('welcome-overlay');
- overlay.classList.add('hidden');
+ const overlay = document.getElementById("welcome-overlay");
+ overlay.classList.add("hidden");
+
  setTimeout(() => {
-  overlay.style.display = 'none';
- }, 800); 
+  overlay.style.display = "none";
+ }, 800);
 }
 
-// خلفية النجوم
-const canvas=document.getElementById("stars");
-const ctx=canvas.getContext("2d");
-let stars=[];
+/* خلفية النجوم */
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+let stars = [];
 
-function resize(){
- canvas.width=window.innerWidth;
- canvas.height=window.innerHeight;
- stars=Array.from({length:90},()=>({
+function resize() {
+ canvas.width = window.innerWidth;
+ canvas.height = window.innerHeight;
+
+ stars = Array.from({length:90}, () => ({
   x:Math.random()*canvas.width,
   y:Math.random()*canvas.height,
   r:Math.random()*1.8+.3,
@@ -605,19 +865,23 @@ function resize(){
  }));
 }
 
-function animate(){
+function animate() {
  ctx.clearRect(0,0,canvas.width,canvas.height);
- ctx.fillStyle="#d8bd72";
- stars.forEach(s=>{
+ ctx.fillStyle = "#a77b4d";
+
+ stars.forEach(s => {
   ctx.beginPath();
   ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
   ctx.fill();
-  s.y-=s.speed;
-  if(s.y<0){
-   s.y=canvas.height;
-   s.x=Math.random()*canvas.width;
+
+  s.y -= s.speed;
+
+  if(s.y < 0) {
+   s.y = canvas.height;
+   s.x = Math.random()*canvas.width;
   }
  });
+
  requestAnimationFrame(animate);
 }
 
@@ -625,73 +889,119 @@ window.addEventListener("resize",resize);
 resize();
 animate();
 
-// ظهور البطاقات تدريجيًا
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){ entry.target.classList.add("show"); }
+/* ظهور البطاقات */
+const observer = new IntersectionObserver(entries => {
+ entries.forEach(entry => {
+  if(entry.isIntersecting) {
+   entry.target.classList.add("show");
+  }
  });
 },{threshold:.12});
-document.querySelectorAll(".card").forEach(card=>{ observer.observe(card); });
 
-// تمييز زر القسم المفتوح
-const links=document.querySelectorAll("nav a");
-const sections=document.querySelectorAll("main section, .hero");
-const navObserver=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){
-   links.forEach(link=>{
-    link.classList.toggle("active", link.getAttribute("href")==="#"+entry.target.id);
+document.querySelectorAll(".card").forEach(card => {
+ observer.observe(card);
+});
+
+/* تمييز القسم المفتوح */
+const links = document.querySelectorAll("nav a");
+const sections = document.querySelectorAll("main section, .hero");
+
+const navObserver = new IntersectionObserver(entries => {
+ entries.forEach(entry => {
+  if(entry.isIntersecting) {
+   links.forEach(link => {
+    link.classList.toggle(
+     "active",
+     link.getAttribute("href") === "#" + entry.target.id
+    );
    });
   }
  });
 },{rootMargin:"-25% 0px -60% 0px"});
-sections.forEach(section=>{ if(section.id) navObserver.observe(section); });
 
-// الإعجابات المحلية
-const likeButton=document.getElementById("likeButton");
-const likeCount=document.getElementById("likeCount");
-let likes=Number(localStorage.getItem("aflouLikes") || 0);
-let liked=localStorage.getItem("aflouLiked")==="true";
+sections.forEach(section => {
+ if(section.id) navObserver.observe(section);
+});
 
-function renderLikes(){
- likeCount.textContent=likes+" إعجاب";
- likeButton.textContent=liked?"❤️ أعجبني":"👍 أعجبني";
+/* الإعجابات المحلية */
+const likeButton = document.getElementById("likeButton");
+const likeCount = document.getElementById("likeCount");
+
+let likes = Number(localStorage.getItem("aflouLikes") || 0);
+let liked = localStorage.getItem("aflouLiked") === "true";
+
+function renderLikes() {
+ likeCount.textContent = likes + " إعجاب";
+ likeButton.textContent = liked ? "❤️ أعجبني" : "👍 أعجبني";
 }
-likeButton.addEventListener("click",()=>{
- if(!liked){ likes++; liked=true; } 
- else { likes=Math.max(0,likes-1); liked=false; }
+
+likeButton.addEventListener("click",() => {
+ if(!liked) {
+  likes++;
+  liked = true;
+ } else {
+  likes = Math.max(0,likes-1);
+  liked = false;
+ }
+
  localStorage.setItem("aflouLikes",likes);
  localStorage.setItem("aflouLiked",liked);
  renderLikes();
 });
+
 renderLikes();
 
-// التعليقات المحلية
-const commentForm=document.getElementById("commentForm");
-const commentList=document.getElementById("commentList");
-let comments=[];
-try{ comments=JSON.parse(localStorage.getItem("aflouComments") || "[]"); if(!Array.isArray(comments)) comments=[]; }catch{ comments=[]; }
+/* التعليقات المحلية */
+const commentForm = document.getElementById("commentForm");
+const commentList = document.getElementById("commentList");
 
-function displayComments(){
+let comments = [];
+
+try {
+ comments = JSON.parse(localStorage.getItem("aflouComments") || "[]");
+ if(!Array.isArray(comments)) comments = [];
+} catch {
+ comments = [];
+}
+
+function displayComments() {
  commentList.replaceChildren();
- comments.forEach(comment=>{
-  const item=document.createElement("div"); item.className="comment-item";
-  const name=document.createElement("strong"); name.textContent=comment.name || "زائر";
-  const message=document.createElement("p"); message.textContent=comment.message;
-  item.append(name,message); commentList.appendChild(item);
+
+ comments.forEach(comment => {
+  const item = document.createElement("div");
+  item.className = "comment-item";
+
+  const name = document.createElement("strong");
+  name.textContent = comment.name || "زائر";
+
+  const message = document.createElement("p");
+  message.textContent = comment.message;
+
+  item.append(name,message);
+  commentList.appendChild(item);
  });
 }
-commentForm.addEventListener("submit",event=>{
+
+commentForm.addEventListener("submit",event => {
  event.preventDefault();
- const name=document.getElementById("visitorName").value.trim();
- const message=document.getElementById("visitorComment").value.trim();
+
+ const name = document.getElementById("visitorName").value.trim();
+ const message = document.getElementById("visitorComment").value.trim();
+
  if(!message) return;
+
  comments.push({name,message});
+
  localStorage.setItem("aflouComments",JSON.stringify(comments));
- commentForm.reset(); displayComments();
+
+ commentForm.reset();
+ displayComments();
+
  alert("تم حفظ تعليقك على هذا الجهاز.");
 });
+
 displayComments();
 </script>
+
 </body>
 </html>
