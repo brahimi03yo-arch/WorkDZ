@@ -7,7 +7,7 @@
 <title>اعرف مترشحك | براهيمي يوسف</title>
 <meta name="description" content="براهيمي يوسف، المترشح رقم 15 ضمن قائمة حزب صوت الشعب رقم 6 للمجلس الشعبي الولائي.">
 
-<!-- 👇 صورة المعاينة (فيسبوك/واتساب) هي صورتك الجديدة 👇 -->
+<!-- صورة المعاينة (فيسبوك/واتساب) -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_DZ">
 <meta property="og:site_name" content="اعرف مترشحك">
@@ -32,13 +32,14 @@
 
 <style>
 :root{
- --bg: #050505;           /* أسود عميق */
- --surface: rgba(255,255,255,.05);
- --border: rgba(255,255,255,.15);
- --text: #ffffff;         /* أبيض ناصع */
- --muted: #a3a3a3;        /* رمادي فاتح */
- --accent: #ffffff;       /* الأزرار ستكون بيضاء */
- --accent-text: #000000;  /* نص الأزرار أسود */
+ --bg: #f8f9fa;           /* رمادي فاتح جداً للخلفية */
+ --surface: #ffffff;      /* أبيض للبطاقات */
+ --border: #e2e8f0;       /* حدود رمادية فاتحة */
+ --text: #1e293b;         /* نص داكن مريح */
+ --muted: #64748b;        /* نص رمادي ثانوي */
+ --accent: #0f172a;       /* أزرار داكنة */
+ --accent-text: #ffffff;  /* نص الأزرار أبيض */
+ --gold: #b45309;         /* لون ذهبي/برونزي للعناوين */
 }
 
 *{box-sizing:border-box}
@@ -52,8 +53,8 @@ body{
  line-height:1.9;
  overflow-x:hidden;
  background:
-  radial-gradient(720px 720px at 88% -8%, rgba(255,255,255,.08), transparent 62%),
-  radial-gradient(620px 620px at -10% 18%, rgba(255,255,255,.05), transparent 62%),
+  radial-gradient(720px 720px at 88% -8%, rgba(0,0,0,.03), transparent 62%),
+  radial-gradient(620px 620px at -10% 18%, rgba(0,0,0,.02), transparent 62%),
   var(--bg);
  background-attachment:fixed;
 }
@@ -67,31 +68,32 @@ header{
  padding:15px 22px;
  font-size:19px;
  font-weight:900;
- background:rgba(0,0,0,.8);
+ background:rgba(255,255,255,.9);
  border-bottom:1px solid var(--border);
  backdrop-filter:blur(14px);
  -webkit-backdrop-filter:blur(14px);
+ box-shadow: 0 4px 15px rgba(0,0,0,.03);
 }
 .brand{display:flex;align-items:center;gap:11px}
 .brand-mark{
  width:38px;height:38px;display:grid;place-items:center;
  border-radius:12px;font-size:20px;font-weight:900;
- color:#000;
- background:#fff;
- box-shadow:0 10px 26px rgba(255,255,255,.15);
+ color:#fff;
+ background:var(--accent);
+ box-shadow:0 10px 26px rgba(0,0,0,.15);
 }
 .brand-name{
- font-size:14px;font-weight:800;color:var(--text);
+ font-size:14px;font-weight:800;color:var(--accent);
  padding:6px 15px;border-radius:999px;
  border:1px solid var(--border);
- background:rgba(255,255,255,.1);
+ background:rgba(0,0,0,.04);
 }
 
 nav{
  position:sticky;top:0;z-index:60;
  display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
  padding:12px 14px;
- background:rgba(5,5,5,.8);
+ background:rgba(255,255,255,.85);
  backdrop-filter:blur(18px);
  -webkit-backdrop-filter:blur(18px);
  border-bottom:1px solid var(--border);
@@ -106,7 +108,7 @@ button{
  font-size:15px;
  color:var(--accent-text);
  background:var(--accent);
- box-shadow:0 10px 26px rgba(255,255,255,.1);
+ box-shadow:0 10px 26px rgba(0,0,0,.1);
  transition:transform .25s ease, filter .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
 }
 button:hover{filter:brightness(0.8);transform:translateY(-2px)}
@@ -121,12 +123,12 @@ nav button{
  font-size:14px;
  box-shadow:none;
 }
-nav button:hover{color:#fff;border-color:#fff;background:rgba(255,255,255,.1)}
+nav button:hover{color:var(--accent);border-color:var(--accent);background:rgba(0,0,0,.04)}
 nav button.active{
  background:var(--accent);
  color:var(--accent-text);
  border-color:transparent;
- box-shadow:0 10px 26px rgba(255,255,255,.2);
+ box-shadow:0 10px 26px rgba(0,0,0,.15);
 }
 
 .notice{
@@ -136,11 +138,12 @@ nav button.active{
  text-align:center;
  font-weight:800;
  font-size:14px;
- color:#fff;
+ color:var(--text);
  border-radius:18px;
- background:rgba(255,255,255,.08);
+ background:var(--surface);
  border:1px solid var(--border);
  backdrop-filter:blur(10px);
+ box-shadow: 0 4px 15px rgba(0,0,0,.03);
 }
 
 .hero{
@@ -153,8 +156,8 @@ nav button.active{
  text-align:center;
  padding:70px 18px;
  background:
-  linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,.95)),
-  /* 👇 صورة الخلفية في الأعلى هي الصورة القديمة (التي تعجبك) 👇 */
+  linear-gradient(180deg, rgba(255,255,255,.85), rgba(248,249,250,.95)),
+  /* صورة الخلفية في الأعلى هي الصورة القديمة */
   url('https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png') center/cover no-repeat;
 }
 .hero::after{
@@ -171,12 +174,12 @@ nav button.active{
  font-weight:900;
  letter-spacing:-1px;
  line-height:1.25;
- color:#ffffff;
- filter:drop-shadow(0 12px 40px rgba(0,0,0,.8));
+ color:var(--accent);
+ filter:drop-shadow(0 12px 40px rgba(0,0,0,.1));
 }
 .hero p{
  font-size:19px;
- color:#d4d4d4;
+ color:var(--muted);
  margin:6px 0;
 }
 .party{
@@ -186,9 +189,10 @@ nav button.active{
  font-weight:900;
  font-size:14px;
  letter-spacing:.6px;
- color:#fff;
- border:1px solid rgba(255,255,255,.4);
- background:rgba(255,255,255,.15);
+ color:var(--accent);
+ border:1px solid var(--border);
+ background:rgba(255,255,255,.8);
+ box-shadow: 0 4px 15px rgba(0,0,0,.05);
 }
 
 .candidate-numbers{
@@ -202,27 +206,27 @@ nav button.active{
  min-width:152px;
  padding:15px 22px;
  border-radius:20px;
- background:rgba(0,0,0,.6);
- border:1px solid rgba(255,255,255,.2);
+ background:var(--surface);
+ border:1px solid var(--border);
  backdrop-filter:blur(12px);
- box-shadow:0 20px 44px rgba(0,0,0,.8);
+ box-shadow:0 20px 44px rgba(0,0,0,.08);
  transition:transform .3s ease, border-color .3s ease;
 }
 .number-box:hover{
  transform:translateY(-6px);
- border-color:#fff;
+ border-color:var(--accent);
 }
 .number-box strong{
  display:block;
  font-size:46px;
  line-height:1.15;
  font-weight:900;
- color:#fff;
+ color:var(--gold);
 }
 .number-box span{
  font-size:12.5px;
  font-weight:800;
- color:#a3a3a3;
+ color:var(--muted);
 }
 
 .candidate-label{
@@ -232,9 +236,9 @@ nav button.active{
  border-radius:999px;
  font-weight:900;
  font-size:14px;
- color:#000;
- background:#fff;
- box-shadow:0 14px 32px rgba(255,255,255,.2);
+ color:#fff;
+ background:var(--accent);
+ box-shadow:0 14px 32px rgba(0,0,0,.15);
 }
 
 .container{
@@ -248,11 +252,9 @@ section{
  margin:28px 0;
  padding:30px;
  border-radius:26px;
- background:rgba(255,255,255,.03);
+ background:var(--surface);
  border:1px solid var(--border);
- backdrop-filter:blur(16px);
- -webkit-backdrop-filter:blur(16px);
- box-shadow:0 26px 64px rgba(0,0,0,.5);
+ box-shadow:0 10px 30px rgba(0,0,0,.04);
  scroll-margin-top:110px;
 }
 
@@ -263,15 +265,14 @@ h2{
  margin:0 0 24px;
  font-size:clamp(22px,3.4vw,30px);
  font-weight:900;
- color:#fff;
+ color:var(--accent);
 }
 h2::before{
  content:"";
  width:6px;
  height:30px;
  border-radius:6px;
- background:#fff;
- box-shadow:0 0 20px rgba(255,255,255,.5);
+ background:var(--gold);
 }
 
 .profile{
@@ -284,13 +285,12 @@ h2::before{
  width:100%;
  border-radius:24px;
  padding:6px;
- background:rgba(255,255,255,.1);
- border:1px solid rgba(255,255,255,.2);
- box-shadow:0 22px 50px rgba(0,0,0,.8);
- filter: grayscale(100%); /* تحويل الصورة لأبيض وأسود */
+ background:var(--bg);
+ border:1px solid var(--border);
+ box-shadow:0 15px 35px rgba(0,0,0,.1);
 }
-.info{line-height:2.1;color:#d4d4d4}
-.info h3{color:#fff;font-size:22px;margin:0 0 12px}
+.info{line-height:2.1;color:var(--muted)}
+.info h3{color:var(--accent);font-size:22px;margin:0 0 12px}
 .profile-number{
  display:inline-block;
  margin:6px 0;
@@ -298,9 +298,9 @@ h2::before{
  border-radius:12px;
  font-weight:900;
  font-size:14px;
- color:#fff;
- background:rgba(255,255,255,.15);
- border:1px solid rgba(255,255,255,.3);
+ color:var(--accent);
+ background:var(--bg);
+ border:1px solid var(--border);
 }
 
 .cards{
@@ -313,22 +313,21 @@ h2::before{
  text-align:center;
  line-height:1.9;
  border-radius:18px;
- background:rgba(255,255,255,.04);
+ background:var(--bg);
  border:1px solid var(--border);
  transition:transform .3s ease, border-color .3s ease, background .3s ease;
 }
 .card:hover{
  transform:translateY(-6px);
- border-color:#fff;
- background:rgba(255,255,255,.1);
- box-shadow:0 20px 44px rgba(0,0,0,.6);
+ border-color:var(--accent);
+ background:var(--surface);
+ box-shadow:0 15px 35px rgba(0,0,0,.08);
 }
-.card h3{color:#fff;margin:12px 0 6px;font-size:18px}
-.card p{color:#a3a3a3;margin:0}
+.card h3{color:var(--accent);margin:12px 0 6px;font-size:18px}
+.card p{color:var(--muted);margin:0}
 .symbol{
  font-size:32px;
  display:inline-block;
- filter: grayscale(100%);
 }
 
 .program-intro{
@@ -337,9 +336,9 @@ h2::before{
  text-align:center;
  font-weight:800;
  font-size:15px;
- color:#e5e5e5;
+ color:var(--accent);
  border-radius:18px;
- background:rgba(255,255,255,.08);
+ background:var(--bg);
  border:1px solid var(--border);
 }
 
@@ -347,23 +346,24 @@ h2::before{
  text-align: center;
  padding: 25px 20px;
  border-radius: 18px;
- background: rgba(255,255,255,.04);
+ background: var(--bg);
  border: 1px solid var(--border);
- border-right: 3px solid rgba(255,255,255,.5);
+ border-right: 4px solid var(--gold);
  transition: .3s;
 }
 .program-card-short:hover {
- background: rgba(255,255,255,.1);
- border-right-color: #fff;
+ background: var(--surface);
+ border-right-color: var(--accent);
  transform: translateY(-4px);
+ box-shadow: 0 10px 25px rgba(0,0,0,.05);
 }
 .program-card-short h3 {
- color: #fff;
+ color: var(--accent);
  font-size: 18px;
  margin: 0 0 10px;
 }
 .program-card-short p {
- color: #a3a3a3;
+ color: var(--muted);
  font-size: 14px;
  line-height: 1.7;
  margin: 0;
@@ -375,13 +375,13 @@ h2::before{
  border-radius:22px;
  text-align:center;
  line-height:2.15;
- color:#d4d4d4;
- background: rgba(255,255,255,.05);
- border:1px solid rgba(255,255,255,.2);
- box-shadow:0 26px 64px rgba(0,0,0,.5);
+ color:var(--accent);
+ background: var(--bg);
+ border:1px solid var(--border);
+ box-shadow:0 10px 30px rgba(0,0,0,.05);
 }
-.commitment h3{color:#fff;font-size:22px;margin:0 0 14px}
-.commitment strong{color:#fff}
+.commitment h3{color:var(--gold);font-size:22px;margin:0 0 14px}
+.commitment strong{color:var(--accent)}
 
 .section-note{
  margin-top:18px;
@@ -396,17 +396,17 @@ input,textarea{
  margin:8px 0;
  padding:12px 15px;
  font-size:15px;
- color:#fff;
+ color:var(--accent);
  border-radius:12px;
  border:1px solid var(--border);
- background:rgba(0,0,0,.5);
+ background:var(--surface);
  transition:border-color .25s ease, background .25s ease;
 }
-input::placeholder,textarea::placeholder{color:#737373}
+input::placeholder,textarea::placeholder{color:#94a3b8}
 input:focus,textarea:focus{
  outline:none;
- border-color:#fff;
- background:rgba(255,255,255,.1);
+ border-color:var(--accent);
+ background:var(--bg);
 }
 textarea{min-height:92px;resize:vertical}
 
@@ -415,19 +415,19 @@ textarea{min-height:92px;resize:vertical}
  margin:12px 0;
  border-radius:14px;
  line-height:1.95;
- color:#d4d4d4;
- background:rgba(255,255,255,.05);
+ color:var(--text);
+ background:var(--bg);
  border:1px solid var(--border);
- border-right:3px solid #fff;
+ border-right:4px solid var(--gold);
 }
 .comment p,.adminItem p{margin:6px 0}
 .reply{
  margin:12px 16px 0;
  padding:12px 15px;
  border-radius:12px;
- color:#fff;
- background:rgba(255,255,255,.08);
- border:1px dashed rgba(255,255,255,.3);
+ color:var(--accent);
+ background:var(--surface);
+ border:1px dashed var(--border);
 }
 
 .status{
@@ -441,7 +441,7 @@ textarea{min-height:92px;resize:vertical}
  margin-top:18px;
  padding:20px;
  border-radius:20px;
- background:rgba(255,255,255,.03);
+ background:var(--bg);
  border:1px solid var(--border);
 }
 .adminNav{
@@ -454,40 +454,41 @@ textarea{min-height:92px;resize:vertical}
  padding:9px 17px;
  font-size:14px;
  border-radius:999px;
- color:#fff;
- background:rgba(255,255,255,.1);
+ color:var(--muted);
+ background:var(--surface);
  border:1px solid var(--border);
  box-shadow:none;
 }
 .adminNav button:hover{
- background:rgba(255,255,255,.2);
- border-color:#fff;
+ background:var(--bg);
+ border-color:var(--accent);
+ color:var(--accent);
 }
 
 .stat{
  padding:22px 16px;
  border-radius:16px;
  text-align:center;
- background:rgba(255,255,255,.05);
+ background:var(--surface);
  border:1px solid var(--border);
 }
 .stat strong{
  display:block;
  font-size:30px;
  font-weight:900;
- color:#fff;
+ color:var(--gold);
 }
 
-.danger{background:#fff;color:#000;box-shadow:0 10px 26px rgba(255,255,255,.2)}
-.green{background:#fff;color:#000;box-shadow:0 10px 26px rgba(255,255,255,.2)}
+.danger{background:#fee2e2;color:#991b1b;box-shadow:0 10px 26px rgba(239,83,80,.1)}
+.green{background:#dcfce7;color:#166534;box-shadow:0 10px 26px rgba(16,185,129,.1)}
 .small{font-size:12.5px;color:var(--muted)}
 .hidden{display:none!important}
 .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 
 #likeBtn{
- background:#fff;
- color:#000;
- box-shadow:0 12px 30px rgba(255,255,255,.2);
+ background:var(--gold);
+ color:#fff;
+ box-shadow:0 12px 30px rgba(180,83,9,.2);
 }
 
 footer{
@@ -498,10 +499,10 @@ footer{
  font-size:14px;
  color:var(--muted);
  border-top:1px solid var(--border);
- background:rgba(0,0,0,.5);
+ background:var(--surface);
 }
 footer p{margin:4px 0}
-footer p:first-child{color:#fff;font-weight:900;font-size:16px}
+footer p:first-child{color:var(--accent);font-weight:900;font-size:16px}
 
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
 .reveal.visible{opacity:1;transform:none}
@@ -572,7 +573,7 @@ footer p:first-child{color:#fff;font-weight:900;font-size:16px}
  <h2>التعريف بالمترشح</h2>
 
  <div class="profile">
-  <!-- 👇 هنا تم إرجاع الصورة القديمة التي كانت موجودة في موقعك 👇 -->
+  <!-- الصورة الشخصية الأصلية -->
   <img
    src="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png"
    alt="براهيمي يوسف">
@@ -656,7 +657,7 @@ footer p:first-child{color:#fff;font-weight:900;font-size:16px}
  </div>
 </section>
 
-<!-- 👇 قسم البرنامج المختصر والواقعي 👇 -->
+<!-- قسم البرنامج المختصر والواقعي -->
 <section id="program">
  <h2>برنامج العمل والتصور التمثيلي</h2>
 
@@ -986,7 +987,7 @@ function statusMessage(id,text,ok=false){
  $(id).textContent=text;
 
  $(id).style.color=
-  ok?"#4ade80":"#f87171";
+  ok?"#166534":"#991b1b";
 
 }
 
