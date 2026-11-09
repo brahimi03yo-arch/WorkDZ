@@ -7,7 +7,7 @@
 <title>اعرف مترشحك | براهيمي يوسف</title>
 <meta name="description" content="براهيمي يوسف، المترشح رقم 15 ضمن قائمة حزب صوت الشعب رقم 6 للمجلس الشعبي الولائي.">
 
-<!-- 👇 تم تحديث روابط الصورة هنا 👇 -->
+<!-- معاينة الرابط الخارجية -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_DZ">
 <meta property="og:site_name" content="اعرف مترشحك">
@@ -154,7 +154,6 @@ nav button.active{
  justify-content:center;
  text-align:center;
  padding:70px 18px;
- /* 👇 تم تغيير صورة الخلفية هنا أيضاً لتكون صورتك الجديدة 👇 */
  background:
   radial-gradient(820px 420px at 50% -6%, rgba(16,185,129,.34), transparent 70%),
   linear-gradient(180deg, rgba(7,11,20,.72), rgba(7,11,20,.96)),
@@ -352,29 +351,33 @@ h2::before{
  background:linear-gradient(135deg, rgba(16,185,129,.15), rgba(34,211,238,.07));
  border:1px solid rgba(16,185,129,.32);
 }
-.program-card{
- position:relative;
- padding:20px 22px;
- margin:14px 0;
- border-radius:18px;
- background:rgba(255,255,255,.035);
- border:1px solid var(--border);
- border-right:3px solid rgba(16,185,129,.55);
- transition:background .3s ease, border-color .3s ease, transform .3s ease;
+
+/* 👇 تنسيقات البطاقات المختصرة للبرنامج 👇 */
+.program-card-short {
+ text-align: center;
+ padding: 25px 20px;
+ border-radius: 18px;
+ background: rgba(255,255,255,.04);
+ border: 1px solid var(--border);
+ border-right: 3px solid rgba(16,185,129,.55);
+ transition: .3s;
 }
-.program-card:hover{
- background:rgba(255,255,255,.062);
- border-right-color:var(--cyan);
- transform:translateX(-4px);
+.program-card-short:hover {
+ background: rgba(255,255,255,.07);
+ border-right-color: var(--cyan);
+ transform: translateY(-4px);
 }
-.program-card h3{
- color:#a7f3d0;
- font-size:18px;
- margin:0 0 10px;
+.program-card-short h3 {
+ color: #a7f3d0;
+ font-size: 18px;
+ margin: 0 0 10px;
 }
-.program-card ul{padding-right:20px;margin:0}
-.program-card li{margin:7px 0;color:#c6d3e4}
-.program-card li::marker{color:var(--emerald)}
+.program-card-short p {
+ color: #b9c8db;
+ font-size: 14px;
+ line-height: 1.7;
+ margin: 0;
+}
 
 .commitment{
  margin-top:26px;
@@ -585,7 +588,6 @@ footer p:first-child{color:#a7f3d0;font-weight:900;font-size:16px}
  <h2>التعريف بالمترشح</h2>
 
  <div class="profile">
-  <!-- 👇 تم تغيير صورة التعريف أيضاً 👇 -->
   <img
    src="https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg"
    alt="براهيمي يوسف">
@@ -669,101 +671,40 @@ footer p:first-child{color:#a7f3d0;font-weight:900;font-size:16px}
  </div>
 </section>
 
+<!-- 👇 قسم البرنامج المختصر والواقعي 👇 -->
 <section id="program">
- <h2>برنامج العمل والتصور التمثيلي والرقابي</h2>
+ <h2>برنامج العمل والتصور التمثيلي</h2>
 
  <div class="program-intro">
-  صوت المواطن أمانة، والانشغال مسؤولية، والمتابعة واجب.
-  <br>
-  برنامج يقوم على الاستماع والتوثيق والمتابعة والرقابة في حدود الصلاحيات القانونية.
+  التزامي هو العمل التمثيلي والرقابي في حدود القانون، دون وعود لا أملك صلاحية تنفيذها.
  </div>
 
- <div class="program-card">
-  <h3>1. نقل انشغالات المواطنين إلى الجهات المعنية</h3>
-  <ul>
-   <li>الاستماع إلى انشغالات المواطنين وتسجيل مطالبهم بدقة.</li>
-   <li>تصنيف الملفات حسب طبيعتها والقطاع المعني بها.</li>
-   <li>إيصال الانشغالات إلى السلطات والمصالح المختصة عبر القنوات الرسمية.</li>
-   <li>متابعة مآل الملفات وعدم الاكتفاء بمجرد نقلها.</li>
-   <li>إبلاغ المواطنين بما توفر من ردود وتوضيحات رسمية.</li>
-  </ul>
- </div>
+ <div class="cards" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+  
+  <div class="program-card-short">
+   <div class="symbol" style="font-size:40px; margin-bottom:10px;">🤝</div>
+   <h3>الإنصات للمواطن</h3>
+   <p>الاستماع لانشغالات المواطنين وتوثيقها بكل شفافية.</p>
+  </div>
 
- <div class="program-card">
-  <h3>2. متابعة المشاريع التنموية</h3>
-  <ul>
-   <li>متابعة المشاريع المسجلة عبر إقليم الولاية.</li>
-   <li>رصد التأخر في الإنجاز والنقائص المسجلة ميدانيًا.</li>
-   <li>متابعة أسباب توقف المشاريع أو تعثرها وطرحها على الجهات المختصة.</li>
-   <li>الاهتمام بجودة الأشغال واحترام المواصفات والآجال المعلنة.</li>
-   <li>المطالبة بتوضيح وضعية المشاريع عند الحاجة وفي حدود الإجراءات القانونية.</li>
-  </ul>
- </div>
+  <div class="program-card-short">
+   <div class="symbol" style="font-size:40px; margin-bottom:10px;">📢</div>
+   <h3>توصيل الانشغالات</h3>
+   <p>إيصال مطالب السكان إلى الجهات المعنية في حدود ما يسمح به القانون.</p>
+  </div>
 
- <div class="program-card">
-  <h3>3. رصد النقائص في البلديات والمناطق الريفية</h3>
-  <ul>
-   <li>الطرقات والمسالك المتضررة أو غير المهيأة.</li>
-   <li>نقص الإنارة العمومية ومشاكل شبكات المياه والصرف الصحي.</li>
-   <li>مشاكل النقل المدرسي وسلامة التلاميذ.</li>
-   <li>الأعمدة الكهربائية والوديان والنقاط السوداء المرورية.</li>
-   <li>النقائص المتعلقة بالمرافق الصحية والتربوية والرياضية.</li>
-   <li>توثيق النقائص وإحالتها إلى المصالح المختصة لمتابعتها.</li>
-  </ul>
- </div>
+  <div class="program-card-short">
+   <div class="symbol" style="font-size:40px; margin-bottom:10px;">🏗️</div>
+   <h3>متابعة المشاريع</h3>
+   <p>المراقبة والمطالبة بتحسين الخدمات والمرافق الأساسية.</p>
+  </div>
 
- <div class="program-card">
-  <h3>4. متابعة القطاعات والمديريات التنفيذية</h3>
-  <ul>
-   <li>نقل الانشغالات القطاعية إلى المديريات التنفيذية المختصة.</li>
-   <li>متابعة الملفات المتعلقة بالمياه والأشغال العمومية والتربية والصحة وغيرها.</li>
-   <li>طلب التوضيحات والمعلومات المتعلقة بالملفات وفق الإجراءات القانونية.</li>
-   <li>متابعة الردود والتوصيات والاقتراحات.</li>
-   <li>إثارة النقائص المتكررة خلال اجتماعات اللجان ودورات المجلس.</li>
-  </ul>
- </div>
+  <div class="program-card-short">
+   <div class="symbol" style="font-size:40px; margin-bottom:10px;">⚖️</div>
+   <h3>الشفافية والعدالة</h3>
+   <p>السعي لتوزيع عادل للتنمية والمشاريع بين جميع البلديات.</p>
+  </div>
 
- <div class="program-card">
-  <h3>5. الرقابة والمتابعة والمساهمة في المداولات</h3>
-  <ul>
-   <li>المساهمة في دراسة الملفات والميزانيات والمشاريع المعروضة على المجلس.</li>
-   <li>متابعة تنفيذ المداولات والتوصيات ضمن صلاحيات المجلس.</li>
-   <li>الاهتمام بمدى احترام آجال الإنجاز وجودة الأشغال.</li>
-   <li>طرح التساؤلات حول أسباب التأخر والنقائص المسجلة.</li>
-   <li>المساهمة في تقديم اقتراحات مبنية على احتياجات المواطنين والإمكانيات المتاحة.</li>
-  </ul>
- </div>
-
- <div class="program-card">
-  <h3>6. التنمية المتوازنة بين البلديات</h3>
-  <ul>
-   <li>الاهتمام بالمناطق النائية والريفية إلى جانب مراكز البلديات.</li>
-   <li>نقل احتياجات كل منطقة حسب أولوياتها الفعلية.</li>
-   <li>متابعة توزيع المشاريع والتجهيزات وفق الاحتياجات والإمكانيات المتاحة.</li>
-   <li>دعم الاقتراحات التي تخدم التنمية المحلية المتوازنة.</li>
-  </ul>
- </div>
-
- <div class="program-card">
-  <h3>7. الصحة والتربية والتكوين والشباب</h3>
-  <ul>
-   <li>نقل انشغالات المؤسسات الصحية إلى الجهات المختصة.</li>
-   <li>متابعة احتياجات المدارس والمطاعم والنقل المدرسي.</li>
-   <li>الاهتمام بمرافق التكوين المهني والتجهيزات الضرورية.</li>
-   <li>متابعة احتياجات الشباب في مجالات الرياضة والثقافة والمرافق العمومية.</li>
-   <li>دعم المقترحات التي تحسن ظروف الاستفادة من الخدمات العمومية.</li>
-  </ul>
- </div>
-
- <div class="program-card">
-  <h3>8. التواصل والشفافية مع المواطنين</h3>
-  <ul>
-   <li>إبقاء قنوات التواصل مفتوحة مع المواطنين.</li>
-   <li>تسجيل الانشغالات ومتابعتها حسب الأولوية والاستعجال.</li>
-   <li>توضيح الملفات التي تمت متابعتها والجهات التي أحيلت إليها.</li>
-   <li>تقديم حصيلة دورية للانشغالات والنتائج والملفات التي لا تزال قيد المتابعة.</li>
-   <li>التعامل مع جميع المواطنين دون تمييز أو محاباة.</li>
-  </ul>
  </div>
 
  <div class="commitment">
