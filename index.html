@@ -2,834 +2,1602 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>اعرف مترشحك | براهيمي يوسف</title>
-<meta name="description" content="المسار المهني والبرنامج المحلي لبراهيمي يوسف">
+<meta name="description" content="براهيمي يوسف، المترشح رقم 15 ضمن قائمة حزب صوت الشعب رقم 6 للمجلس الشعبي الولائي.">
 
-<!-- 👇 تم تغيير رابط صورة المعاينة (فيسبوك/واتساب) إلى الصورة التي أعطيتني إياها 👇 -->
+<!-- 👇 تم تحديث روابط الصورة هنا 👇 -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_DZ">
 <meta property="og:site_name" content="اعرف مترشحك">
-<meta property="og:title" content="براهيمي يوسف | اعرف مترشحك">
-<meta property="og:description" content="برنامج ورؤية لخدمة ولاية أفلو والصالح العام">
+<meta property="og:title" content="براهيمي يوسف | المترشح رقم 15">
+<meta property="og:description" content="حزب صوت الشعب - القائمة رقم 6 - المترشح رقم 15">
 <meta property="og:url" content="https://workdz-u7oo.onrender.com/">
 <meta property="og:image" content="https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg">
 <meta property="og:image:secure_url" content="https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg">
 <meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="براهيمي يوسف - القائمة 6 - الرقم 15">
+
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="براهيمي يوسف - رقم 15">
+<meta name="twitter:description" content="حزب صوت الشعب - القائمة رقم 6">
 <meta name="twitter:image" content="https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
 <style>
+:root{
+ --bg:#070b14;
+ --surface:rgba(255,255,255,.05);
+ --surface-2:rgba(255,255,255,.08);
+ --border:rgba(255,255,255,.09);
+ --text:#e9eff8;
+ --muted:#93a4bd;
+ --emerald:#10b981;
+ --cyan:#22d3ee;
+ --amber:#f5b544;
+}
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+
 body{
  margin:0;
- font-family:Tahoma,Arial,sans-serif;
- color:#f8f4e8;
- background:#071d16;
+ min-height:100vh;
+ color:var(--text);
+ font-family:Tajawal,Cairo,sans-serif;
+ line-height:1.9;
  overflow-x:hidden;
+ background:
+  radial-gradient(720px 720px at 88% -8%, rgba(16,185,129,.22), transparent 62%),
+  radial-gradient(620px 620px at -10% 18%, rgba(34,211,238,.16), transparent 62%),
+  radial-gradient(760px 620px at 50% 112%, rgba(245,181,68,.10), transparent 62%),
+  var(--bg);
+ background-attachment:fixed;
 }
-#stars{
- position:fixed;
- inset:0;
- width:100%;
- height:100%;
- z-index:-1;
- pointer-events:none;
-}
+
 header{
- position:sticky;
- top:0;
- z-index:20;
- background:rgba(5,29,21,.97);
- border-bottom:1px solid #b99a4a;
- padding:13px 10px;
- backdrop-filter:blur(12px);
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:14px;
+ flex-wrap:wrap;
+ padding:15px 22px;
+ font-size:19px;
+ font-weight:900;
+ background:linear-gradient(90deg, rgba(16,185,129,.16), rgba(34,211,238,.10));
+ border-bottom:1px solid var(--border);
+ backdrop-filter:blur(14px);
+ -webkit-backdrop-filter:blur(14px);
 }
-.brand{
- text-align:center;
- color:#e8c76e;
- font-size:21px;
- font-weight:bold;
- margin-bottom:12px;
+.brand{display:flex;align-items:center;gap:11px}
+.brand-mark{
+ width:38px;height:38px;display:grid;place-items:center;
+ border-radius:12px;font-size:20px;font-weight:900;color:#04140f;
+ background:linear-gradient(135deg,var(--emerald),var(--cyan));
+ box-shadow:0 10px 26px rgba(16,185,129,.38);
 }
-.developer-top{
- text-align:center;
- color:#e9c66d;
- padding:8px;
- font-size:13px;
- background:#0b291f;
- border-bottom:1px solid #806a36;
+.brand-name{
+ font-size:14px;font-weight:800;color:var(--amber);
+ padding:6px 15px;border-radius:999px;
+ border:1px solid rgba(245,181,68,.35);
+ background:rgba(245,181,68,.09);
 }
-.developer-top strong{color:white}
 
 nav{
- display:flex;
- justify-content:center;
- flex-wrap:wrap;
- gap:9px;
-}
-nav a{
- display:inline-flex;
- align-items:center;
- justify-content:center;
- gap:7px;
- padding:10px 15px;
- border:1px solid #a88943;
- border-radius:12px;
- color:#fff4d7;
- text-decoration:none;
- font-size:13px;
- font-weight:bold;
- background:linear-gradient(145deg,#16432e,#0b291f);
- transition:.25s;
- box-shadow:0 3px 10px #0003;
-}
-nav a:hover,nav a.active{
- background:linear-gradient(135deg,#d7b55d,#a47c2f);
- color:#10251a;
- transform:translateY(-2px);
- box-shadow:0 5px 15px #c5a34b33;
+ position:sticky;top:0;z-index:60;
+ display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
+ padding:12px 14px;
+ background:rgba(7,11,20,.74);
+ backdrop-filter:blur(18px);
+ -webkit-backdrop-filter:blur(18px);
+ border-bottom:1px solid var(--border);
 }
 
-.ticker{
- overflow:hidden;
- background:#b8943f;
- color:#172a1d;
- white-space:nowrap;
- padding:11px 0;
- font-weight:bold;
+button{
+ font-family:inherit;
+ border:0;cursor:pointer;
+ padding:11px 20px;
+ border-radius:12px;
+ font-weight:800;
+ font-size:15px;
+ color:#04140f;
+ background:linear-gradient(135deg,var(--emerald),var(--cyan));
+ box-shadow:0 10px 26px rgba(16,185,129,.22);
+ transition:transform .25s ease, filter .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
 }
-.ticker span{
- display:inline-block;
- padding-right:100%;
- animation:move 22s linear infinite;
+button:hover{filter:brightness(1.07);transform:translateY(-2px)}
+button:disabled{opacity:.55;cursor:not-allowed;transform:none}
+
+nav button{
+ background:transparent;
+ border:1px solid var(--border);
+ color:var(--muted);
+ border-radius:999px;
+ padding:9px 18px;
+ font-size:14px;
+ box-shadow:none;
 }
-@keyframes move{
- from{transform:translateX(0)}
- to{transform:translateX(100%)}
+nav button:hover{color:#fff;border-color:rgba(16,185,129,.55);background:rgba(16,185,129,.08)}
+nav button.active{
+ background:linear-gradient(135deg,var(--emerald),var(--cyan));
+ color:#04140f;
+ border-color:transparent;
+ box-shadow:0 10px 26px rgba(16,185,129,.38);
+}
+
+.notice{
+ max-width:1100px;
+ margin:20px auto 0;
+ padding:15px 22px;
+ text-align:center;
+ font-weight:800;
+ font-size:14px;
+ color:#d5f7ea;
+ border-radius:18px;
+ background:linear-gradient(135deg, rgba(16,185,129,.15), rgba(34,211,238,.07));
+ border:1px solid rgba(16,185,129,.30);
+ backdrop-filter:blur(10px);
 }
 
 .hero{
- min-height:570px;
- padding:45px 18px;
+ position:relative;
+ overflow:hidden;
+ min-height:540px;
  display:flex;
- flex-direction:column;
  align-items:center;
  justify-content:center;
  text-align:center;
- background:linear-gradient(180deg,#0b3324aa,#071d16cc);
+ padding:70px 18px;
+ /* 👇 تم تغيير صورة الخلفية هنا أيضاً لتكون صورتك الجديدة 👇 */
+ background:
+  radial-gradient(820px 420px at 50% -6%, rgba(16,185,129,.34), transparent 70%),
+  linear-gradient(180deg, rgba(7,11,20,.72), rgba(7,11,20,.96)),
+  url('https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg') center/cover no-repeat;
 }
-.profile{
- width:300px;
- height:360px;
- max-width:90%;
- object-fit:cover;
- border:4px solid #d8b65d;
- border-radius:22px;
- box-shadow:0 0 35px #c5a34b55;
+.hero::after{
+ content:"";
+ position:absolute;
+ inset:auto 0 0 0;
+ height:120px;
+ background:linear-gradient(180deg, transparent, var(--bg));
+ pointer-events:none;
 }
-h1{
- color:#f0cf78;
- font-size:clamp(30px,6vw,48px);
- margin:20px 0 8px;
+.hero h1{
+ margin:16px 0 4px;
+ font-size:clamp(34px,7vw,66px);
+ font-weight:900;
+ letter-spacing:-1px;
+ line-height:1.25;
+ background:linear-gradient(120deg,#ffffff,#a7f3d0 45%,#67e8f9);
+ -webkit-background-clip:text;
+ background-clip:text;
+ color:transparent;
+ filter:drop-shadow(0 12px 40px rgba(16,185,129,.35));
 }
 .hero p{
- color:#eee2c1;
- font-size:18px;
- line-height:1.9;
+ font-size:19px;
+ color:#c7d6e8;
+ margin:6px 0;
 }
-.tag{
+.party{
  display:inline-block;
- padding:10px 20px;
- border:1px solid #c7a34c;
- border-radius:30px;
- color:#f1d47f;
- margin-top:10px;
+ padding:8px 28px;
+ border-radius:999px;
+ font-weight:900;
+ font-size:14px;
+ letter-spacing:.6px;
+ color:#a7f3d0;
+ border:1px solid rgba(16,185,129,.45);
+ background:rgba(16,185,129,.12);
+ box-shadow:inset 0 0 34px rgba(16,185,129,.16);
+}
+
+.candidate-numbers{
+ display:flex;
+ justify-content:center;
+ gap:16px;
+ flex-wrap:wrap;
+ margin:32px auto 14px;
+}
+.number-box{
+ min-width:152px;
+ padding:15px 22px;
+ border-radius:20px;
+ background:rgba(255,255,255,.06);
+ border:1px solid var(--border);
+ backdrop-filter:blur(12px);
+ box-shadow:0 20px 44px rgba(0,0,0,.38);
+ transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+.number-box:hover{
+ transform:translateY(-6px);
+ border-color:rgba(34,211,238,.55);
+ box-shadow:0 26px 54px rgba(0,0,0,.5);
+}
+.number-box strong{
+ display:block;
+ font-size:46px;
+ line-height:1.15;
+ font-weight:900;
+ background:linear-gradient(135deg,var(--amber),#ffe0a8);
+ -webkit-background-clip:text;
+ background-clip:text;
+ color:transparent;
+}
+.number-box span{
+ font-size:12.5px;
+ font-weight:800;
+ color:var(--muted);
+}
+
+.candidate-label{
+ display:inline-block;
+ margin-top:18px;
+ padding:10px 24px;
+ border-radius:999px;
+ font-weight:900;
+ font-size:14px;
+ color:#24190e;
+ background:linear-gradient(135deg,var(--amber),#ffd98a);
+ box-shadow:0 14px 32px rgba(245,181,68,.30);
+}
+
+.container{
+ max-width:1100px;
+ margin:auto;
+ padding:30px 18px 10px;
 }
 
 section{
- max-width:1100px;
- margin:auto;
- padding:55px 18px;
- scroll-margin-top:145px;
+ position:relative;
+ margin:28px 0;
+ padding:30px;
+ border-radius:26px;
+ background:linear-gradient(160deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
+ border:1px solid var(--border);
+ backdrop-filter:blur(16px);
+ -webkit-backdrop-filter:blur(16px);
+ box-shadow:0 26px 64px rgba(0,0,0,.38);
+ scroll-margin-top:110px;
 }
-.section-title{
- text-align:center;
- color:#e9c66d;
- font-size:29px;
- margin-bottom:30px;
+
+h2{
+ display:flex;
+ align-items:center;
+ gap:13px;
+ margin:0 0 24px;
+ font-size:clamp(22px,3.4vw,30px);
+ font-weight:900;
+ color:#f2f8ff;
 }
-.intro{
- text-align:center;
- max-width:800px;
- margin:auto;
- line-height:2.2;
- color:#eee8d8;
+h2::before{
+ content:"";
+ width:6px;
+ height:30px;
+ border-radius:6px;
+ background:linear-gradient(180deg,var(--emerald),var(--cyan));
+ box-shadow:0 0 20px rgba(16,185,129,.65);
 }
+
+.profile{
+ display:grid;
+ grid-template-columns:250px 1fr;
+ gap:30px;
+ align-items:center;
+}
+.profile img{
+ width:100%;
+ border-radius:24px;
+ padding:6px;
+ background:rgba(255,255,255,.05);
+ border:1px solid rgba(255,255,255,.13);
+ box-shadow:0 22px 50px rgba(0,0,0,.5);
+}
+.info{line-height:2.1;color:#cfdaea}
+.info h3{color:#a7f3d0;font-size:22px;margin:0 0 12px}
+.profile-number{
+ display:inline-block;
+ margin:6px 0;
+ padding:8px 17px;
+ border-radius:12px;
+ font-weight:900;
+ font-size:14px;
+ color:#a7f3d0;
+ background:rgba(16,185,129,.12);
+ border:1px solid rgba(16,185,129,.32);
+}
+
 .cards{
  display:grid;
- grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
- gap:18px;
+ grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+ gap:16px;
 }
 .card{
- background:linear-gradient(145deg,#123b2b,#0b291f);
- border:1px solid #a88943;
- border-radius:17px;
- padding:25px 18px;
+ padding:24px 18px;
  text-align:center;
- box-shadow:0 8px 24px #0004;
- transition:.3s;
- opacity:0;
- transform:translateY(20px);
+ line-height:1.9;
+ border-radius:18px;
+ background:linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.015));
+ border:1px solid var(--border);
+ transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease, background .3s ease;
 }
-.card.show{opacity:1;transform:translateY(0)}
 .card:hover{
- transform:translateY(-5px);
- border-color:#f1d47f;
+ transform:translateY(-6px);
+ border-color:rgba(34,211,238,.45);
+ background:linear-gradient(160deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
+ box-shadow:0 20px 44px rgba(0,0,0,.45);
 }
-.icon{font-size:38px;margin-bottom:10px}
-.card h3{color:#e9c66d;margin:10px 0}
-.card p{line-height:2;color:#e8e4d8;font-size:14px}
+.card h3{color:#eaf6ff;margin:12px 0 6px;font-size:18px}
+.card p{color:#b9c8db;margin:0}
+.symbol{
+ font-size:32px;
+ display:inline-block;
+ filter:drop-shadow(0 8px 16px rgba(16,185,129,.5));
+}
 
 .program-intro{
- text-align:center;
- line-height:2.1;
- color:#eee8d8;
- max-width:850px;
- margin:0 auto 30px;
-}
-.program-card{text-align:right}
-.program-card h3{font-size:18px}
-.program-card p{font-size:14px}
-.program-card .icon{text-align:center}
-.program-note{
- margin-top:28px;
- border:1px solid #b79649;
- background:#102f22;
- border-radius:15px;
  padding:22px;
+ margin-bottom:22px;
  text-align:center;
- line-height:2;
- color:#f3e9d1;
-}
-
-.timeline{
- max-width:750px;
- margin:auto;
- border-right:3px solid #c9a64f;
- padding-right:22px;
-}
-.timeline-item{
- position:relative;
- background:#103324;
- border:1px solid #856d37;
- padding:20px;
- border-radius:13px;
- margin-bottom:18px;
- line-height:2;
-}
-.timeline-item:before{
- content:"";
- position:absolute;
- right:-31px;
- top:25px;
- width:13px;
- height:13px;
- background:#e4c46c;
- border-radius:50%;
-}
-.timeline-item strong{color:#e9c66d}
-
-.message{
- text-align:center;
- padding:35px 20px;
- border:1px solid #b79649;
- border-radius:20px;
- background:linear-gradient(135deg,#123c2a,#0a251b);
- line-height:2.2;
-}
-.message h2{color:#e9c66d}
-
-.visitor-box{
- margin-top:25px;
- padding:30px 22px;
- border:1px solid #c6a34d;
- border-radius:20px;
- background:linear-gradient(145deg,#173f2c,#092319);
- text-align:center;
- line-height:2.2;
- box-shadow:0 8px 25px #0004;
-}
-.visitor-box h3{
- color:#f0cf78;
- font-size:23px;
-}
-.visitor-box p{
- color:#f0eadb;
-}
-
-.interaction{
- margin-top:25px;
- padding:28px 20px;
- border:1px solid #b79649;
- border-radius:20px;
- background:#0d3022;
- text-align:center;
-}
-.interaction h3{
- color:#e9c66d;
- font-size:23px;
-}
-.interaction p{
- line-height:2;
- color:#eee8d8;
-}
-.action-buttons{
- display:flex;
- justify-content:center;
- flex-wrap:wrap;
- gap:12px;
- margin:20px 0;
-}
-.action-btn{
- border:1px solid #d8b65d;
- border-radius:30px;
- padding:12px 25px;
- background:linear-gradient(135deg,#e4c46c,#a77d30);
- color:#17291d;
+ font-weight:800;
  font-size:15px;
- font-weight:bold;
- cursor:pointer;
- font-family:Tahoma,Arial,sans-serif;
- transition:.25s;
+ color:#d8f6ea;
+ border-radius:18px;
+ background:linear-gradient(135deg, rgba(16,185,129,.15), rgba(34,211,238,.07));
+ border:1px solid rgba(16,185,129,.32);
 }
-.action-btn:hover{
- transform:translateY(-3px);
- box-shadow:0 5px 15px #0005;
+.program-card{
+ position:relative;
+ padding:20px 22px;
+ margin:14px 0;
+ border-radius:18px;
+ background:rgba(255,255,255,.035);
+ border:1px solid var(--border);
+ border-right:3px solid rgba(16,185,129,.55);
+ transition:background .3s ease, border-color .3s ease, transform .3s ease;
 }
-.action-btn.secondary{
- background:transparent;
- color:#f0cf78;
+.program-card:hover{
+ background:rgba(255,255,255,.062);
+ border-right-color:var(--cyan);
+ transform:translateX(-4px);
 }
-#likeCount{
- color:#f0cf78;
+.program-card h3{
+ color:#a7f3d0;
  font-size:18px;
- font-weight:bold;
+ margin:0 0 10px;
 }
-.comment-form{
- max-width:650px;
- margin:20px auto 0;
- display:grid;
- gap:12px;
+.program-card ul{padding-right:20px;margin:0}
+.program-card li{margin:7px 0;color:#c6d3e4}
+.program-card li::marker{color:var(--emerald)}
+
+.commitment{
+ margin-top:26px;
+ padding:30px 22px;
+ border-radius:22px;
+ text-align:center;
+ line-height:2.15;
+ color:#dbe7f5;
+ background:
+  radial-gradient(520px 250px at 50% 0%, rgba(245,181,68,.17), transparent 72%),
+  linear-gradient(160deg,#0d1526,#0a101c);
+ border:1px solid rgba(245,181,68,.30);
+ box-shadow:0 26px 64px rgba(0,0,0,.5);
 }
-.comment-form input,
-.comment-form textarea{
+.commitment h3{color:var(--amber);font-size:22px;margin:0 0 14px}
+.commitment strong{color:#ffe0a8}
+
+.section-note{
+ margin-top:18px;
+ text-align:center;
+ font-size:13px;
+ color:var(--muted);
+}
+
+input,textarea{
+ font-family:inherit;
  width:100%;
- padding:13px;
- border:1px solid #a88943;
- border-radius:10px;
- background:#071d16;
- color:white;
- font-family:Tahoma,Arial,sans-serif;
- font-size:14px;
- outline:none;
-}
-.comment-form textarea{
- min-height:100px;
- resize:vertical;
-}
-.comment-form input:focus,
-.comment-form textarea:focus{
- border-color:#f0cf78;
-}
-.comment-list{
- max-width:650px;
- margin:20px auto 0;
- text-align:right;
-}
-.comment-item{
- padding:14px;
- margin:10px 0;
- background:#173c2b;
- border:1px solid #806a36;
+ margin:8px 0;
+ padding:12px 15px;
+ font-size:15px;
+ color:var(--text);
  border-radius:12px;
- overflow-wrap:anywhere;
+ border:1px solid var(--border);
+ background:rgba(255,255,255,.05);
+ transition:border-color .25s ease, box-shadow .25s ease, background .25s ease;
 }
-.comment-item strong{color:#e9c66d}
-.comment-item p{
- line-height:1.9;
- margin-bottom:0;
+input::placeholder,textarea::placeholder{color:#7b8aa3}
+input:focus,textarea:focus{
+ outline:none;
+ border-color:rgba(16,185,129,.65);
+ background:rgba(255,255,255,.08);
+ box-shadow:0 0 0 4px rgba(16,185,129,.13);
+}
+textarea{min-height:92px;resize:vertical}
+
+.comment,.adminItem{
+ padding:16px 18px;
+ margin:12px 0;
+ border-radius:14px;
+ line-height:1.95;
+ color:#d3dfee;
+ background:rgba(255,255,255,.04);
+ border:1px solid var(--border);
+ border-right:3px solid rgba(16,185,129,.6);
+}
+.comment p,.adminItem p{margin:6px 0}
+.reply{
+ margin:12px 16px 0;
+ padding:12px 15px;
+ border-radius:12px;
+ color:#bdf1ff;
+ background:rgba(34,211,238,.09);
+ border:1px dashed rgba(34,211,238,.38);
+}
+
+.status{
+ margin:12px 0;
+ min-height:20px;
+ font-size:14px;
+ font-weight:800;
+}
+
+.panel{
+ margin-top:18px;
+ padding:20px;
+ border-radius:20px;
+ background:rgba(255,255,255,.035);
+ border:1px solid var(--border);
+}
+.adminNav{
+ display:flex;
+ gap:9px;
+ flex-wrap:wrap;
+ margin:18px 0;
+}
+.adminNav button{
+ padding:9px 17px;
+ font-size:14px;
+ border-radius:999px;
+ color:var(--text);
+ background:rgba(255,255,255,.06);
+ border:1px solid var(--border);
+ box-shadow:none;
+}
+.adminNav button:hover{
+ background:rgba(16,185,129,.14);
+ border-color:rgba(16,185,129,.5);
+}
+
+.stat{
+ padding:22px 16px;
+ border-radius:16px;
+ text-align:center;
+ background:linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+ border:1px solid var(--border);
+}
+.stat strong{
+ display:block;
+ font-size:30px;
+ font-weight:900;
+ background:linear-gradient(135deg,var(--emerald),var(--cyan));
+ -webkit-background-clip:text;
+ background-clip:text;
+ color:transparent;
+}
+
+.danger{background:linear-gradient(135deg,#ef5350,#b3202a);color:#fff;box-shadow:0 10px 26px rgba(239,83,80,.25)}
+.green{background:linear-gradient(135deg,#10b981,#059669);color:#04140f;box-shadow:0 10px 26px rgba(16,185,129,.25)}
+.small{font-size:12.5px;color:var(--muted)}
+.hidden{display:none!important}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+
+#likeBtn{
+ background:linear-gradient(135deg,var(--amber),#ffd98a);
+ color:#24190e;
+ box-shadow:0 12px 30px rgba(245,181,68,.28);
 }
 
 footer{
+ margin-top:56px;
+ padding:38px 20px;
  text-align:center;
- padding:30px 15px;
- background:#04140f;
- border-top:1px solid #a88943;
- line-height:2;
- color:#d8d0b9;
+ line-height:2.1;
+ font-size:14px;
+ color:var(--muted);
+ border-top:1px solid var(--border);
+ background:linear-gradient(180deg, transparent, rgba(16,185,129,.07));
 }
-footer strong{color:#e9c66d}
+footer p{margin:4px 0}
+footer p:first-child{color:#a7f3d0;font-weight:900;font-size:16px}
 
-@media(max-width:600px){
- header{padding:10px 7px}
- nav{gap:6px}
- nav a{padding:9px 10px;font-size:12px}
- .hero{padding:35px 14px}
- .profile{width:260px;height:320px}
- section{padding:38px 14px}
- .section-title{font-size:25px}
- .visitor-box{padding:23px 15px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:650px){
+ .profile{grid-template-columns:1fr}
+ .profile img{max-width:250px;display:block;margin:auto}
+ .hero{min-height:430px;padding:50px 15px}
+ section{padding:20px}
+ .number-box{min-width:126px;padding:12px 16px}
+ .number-box strong{font-size:38px}
+ header{font-size:17px;padding:13px 16px}
+ .brand-name{font-size:12.5px}
 }
 </style>
 </head>
 
 <body>
-<canvas id="stars"></canvas>
 
 <header>
- <div class="brand">اعرف مترشحك</div>
- <nav>
-  <a href="#home">🏠 الرئيسية</a>
-  <a href="#program">📋 برنامجي</a>
-  <a href="#experience">🏛️ المسار المهني</a>
-  <a href="#education">🎓 الشهادات</a>
-  <a href="#message">✉️ تواصل</a>
- </nav>
+ <div class="brand">
+  <span class="brand-mark">ص</span>
+  <span>اعرف مترشحك</span>
+ </div>
+ <span class="brand-name">براهيمي يوسف</span>
 </header>
 
-<div class="developer-top">
- ✦ تصميم وتطوير: <strong>براهيمي يوسف</strong> ✦
+<nav id="mainNav">
+ <button class="active" data-target="home">الرئيسية</button>
+ <button data-target="profile">التعريف</button>
+ <button data-target="experience">المسار المهني</button>
+ <button data-target="education">الشهادات</button>
+ <button data-target="program">برنامج العمل</button>
+ <button data-target="comments">التعليقات</button>
+</nav>
+
+<div class="notice">
+ هذا الموقع للتعريف بالمترشح ومساره المهني والتكويني وطرح تصوره للعمل التمثيلي والرقابي.
 </div>
 
-<div class="ticker">
- <span>
- براهيمي يوسف | معًا للتغيير والنهوض بالوطن |
- خدمة المواطن | التنمية المتوازنة | حماية المصلحة العامة
- </span>
-</div>
-
-<main>
-
-<!-- الرئيسية -->
 <div class="hero" id="home">
- <img class="profile"
- src="https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg"
- alt="الصورة الشخصية لبراهيمي يوسف">
+ <div>
+  <span class="party">حزب صوت الشعب</span>
+  <h1>براهيمي يوسف</h1>
+  <p>اعرف مترشحك</p>
 
- <h1>براهيمي يوسف</h1>
- <p>معًا للتغيير والنهوض بالوطن</p>
- <div class="tag">المجلس الشعبي الولائي – ولاية أفلو</div>
- <div class="tag">حزب صوت الشعب</div>
+  <div class="candidate-numbers">
+   <div class="number-box">
+    <strong>6</strong>
+    <span>رقم قائمة حزب صوت الشعب</span>
+   </div>
+
+   <div class="number-box">
+    <strong>15</strong>
+    <span>رقم المترشح براهيمي يوسف</span>
+   </div>
+  </div>
+
+  <div class="candidate-label">
+   القائمة رقم 6 | المترشح رقم 15
+  </div>
+ </div>
 </div>
 
-<!-- من أنا -->
-<section id="about">
- <h2 class="section-title">من أنا؟</h2>
- <p class="intro">
- براهيمي يوسف، متصرف إداري بمقر الولاية حاليًا،
- صاحب مسار مهني متنوع وخبرة في العمل الإداري
- والبلدي وقطاع التكوين المهني والتمهين.
- أؤمن بأهمية العمل الجاد والتكوين المستمر
- وخدمة المواطن والمساهمة في تنمية المنطقة.
- </p>
-</section>
+<main class="container">
 
-<!-- البرنامج -->
-<section id="program">
- <h2 class="section-title">برنامجي لخدمة الصالح العام</h2>
- <p class="program-intro">
- رؤيتي تقوم على متابعة انشغالات المواطنين،
- والمساهمة في اقتراح الحلول الواقعية،
- والعمل داخل المجلس وفق الصلاحيات القانونية
- وبالتنسيق مع القطاعات والهيئات المعنية.
- </p>
+<section id="profile">
+ <h2>التعريف بالمترشح</h2>
 
- <div class="cards">
+ <div class="profile">
+  <!-- 👇 تم تغيير صورة التعريف أيضاً 👇 -->
+  <img
+   src="https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg"
+   alt="براهيمي يوسف">
 
-  <div class="card program-card">
-   <div class="icon">🏗️</div>
-   <h3>تنمية متوازنة بين البلديات</h3>
-   <p>العمل على إيصال احتياجات البلديات والقرى، والدفاع عن توزيع عادل للمشاريع والتجهيزات وفق الأولويات والكثافة السكانية والحاجات الفعلية.</p>
+  <div class="info">
+   <h3>براهيمي يوسف</h3>
+
+   <p>مترشح عن حزب صوت الشعب للمجلس الشعبي الولائي.</p>
+
+   <p>متصرف إداري بمقر الولاية حاليًا.</p>
+
+   <p>
+    موظف سابق بالبلدية، وموظف سابق بقطاع التكوين المهني والتمهين.
+   </p>
+
+   <div class="profile-number">
+    رقم القائمة: 6
+   </div>
+
+   <div class="profile-number">
+    رقم المترشح: 15
+   </div>
+
+   <p>
+    هذا الموقع للتعريف بالمسار المهني والتكويني والتواصل مع الزوار،
+    وعرض تصور عملي للعمل التمثيلي والمتابعة والرقابة.
+   </p>
   </div>
-
-  <div class="card program-card">
-   <div class="icon">🔎</div>
-   <h3>متابعة المشاريع العمومية</h3>
-   <p>متابعة تقدم المشاريع المسجلة، وطرح الانشغالات المتعلقة بالتأخر أو ضعف الإنجاز، والمطالبة بتوضيح أسباب التعثر واقتراح المعالجة.</p>
-  </div>
-
-  <div class="card program-card">
-   <div class="icon">💧</div>
-   <h3>المياه والتهيئة والطرقات</h3>
-   <p>نقل انشغالات المواطنين بشأن التزود بالمياه، وصيانة الطرقات، والإنارة العمومية، والتهيئة الحضرية وتحسين المحيط.</p>
-  </div>
-
-  <div class="card program-card">
-   <div class="icon">🏥</div>
-   <h3>الصحة والخدمات الأساسية</h3>
-   <p>متابعة النقائص التي تمس المؤسسات الصحية، والمساهمة في نقل احتياجات المناطق النائية والدفاع عن تحسين ظروف التكفل بالمواطن.</p>
-  </div>
-
-  <div class="card program-card">
-   <div class="icon">📚</div>
-   <h3>التربية والتكوين</h3>
-   <p>الاهتمام بظروف المؤسسات التربوية، والنقل المدرسي، والتدفئة والإطعام، والتكوين المهني وربطه باحتياجات المنطقة.</p>
-  </div>
-
-  <div class="card program-card">
-   <div class="icon">🌱</div>
-   <h3>البيئة والنظافة</h3>
-   <p>دعم المبادرات المتعلقة بالنظافة، ومكافحة الرمي العشوائي للنفايات، وحماية المساحات الخضراء والموارد الطبيعية.</p>
-  </div>
-
-  <div class="card program-card">
-   <div class="icon">🚍</div>
-   <h3>النقل وفك العزلة</h3>
-   <p>نقل انشغالات السكان بشأن النقل بين البلديات، وتحسين الربط بالمرافق الأساسية، والمطالبة بدراسة احتياجات المناطق المعزولة.</p>
-  </div>
-
-  <div class="card program-card">
-   <div class="icon">🌾</div>
-   <h3>الفلاحة والموارد المحلية</h3>
-   <p>الاهتمام بانشغالات الفلاحين ومربي المواشي، والمساهمة في طرح قضايا المياه الفلاحية والمسالك الريفية وحماية الثروة الطبيعية.</p>
-  </div>
-
-  <div class="card program-card">
-   <div class="icon">⚽</div>
-   <h3>الشباب والرياضة والثقافة</h3>
-   <p>دعم الاهتمام بالمرافق الرياضية والثقافية، وتشجيع المبادرات المحلية والأنشطة التي تتيح للشباب المشاركة والإبداع.</p>
-  </div>
-
-  <div class="card program-card">
-   <div class="icon">📊</div>
-   <h3>الشفافية في تسيير الشأن العام</h3>
-   <p>المطالبة بتوضيح الأولويات ومتابعة تنفيذ المداولات والمشاريع، واحترام المال العام وتغليب المصلحة العامة.</p>
-  </div>
-
-  <div class="card program-card">
-   <div class="icon">🤝</div>
-   <h3>الإنصات للمواطن</h3>
-   <p>استقبال الانشغالات ونقلها إلى الجهات المختصة، ومتابعة الملفات وفق الإجراءات القانونية، وإعطاء الأولوية للقضايا الجماعية.</p>
-  </div>
-
-  <div class="card program-card">
-   <div class="icon">⚖️</div>
-   <h3>العدالة في توزيع التنمية</h3>
-   <p>الدفاع عن أخذ احتياجات جميع المناطق بعين الاعتبار، وعدم تهميش أي بلدية أو تجمع سكاني في اقتراح الأولويات.</p>
-  </div>
-
- </div>
-
- <div class="program-note">
-  <strong>مبدأ العمل:</strong>
-  لا أعد بما لا أملك صلاحية تحقيقه،
-  بل ألتزم بالمساهمة في الاقتراح والنقاش
-  والمتابعة والرقابة والتنسيق في حدود
-  صلاحيات عضو المجلس الشعبي الولائي.
  </div>
 </section>
 
-<!-- المسار المهني -->
 <section id="experience">
- <h2 class="section-title">المسار المهني</h2>
+ <h2>المسار المهني</h2>
 
  <div class="cards">
+
   <div class="card">
-   <div class="icon">🏛️</div>
-   <h3>مقر الولاية</h3>
-   <p>متصرف إداري حاليًا بمقر الولاية.</p>
+   <div class="symbol">🏛️</div>
+   <h3>متصرف إداري</h3>
+   <p>مقر الولاية حاليًا.</p>
   </div>
 
   <div class="card">
-   <div class="icon">🏢</div>
-   <h3>العمل البلدي</h3>
-   <p>موظف سابق في البلدية، مع تجربة في العمل الإداري المحلي.</p>
+   <div class="symbol">🏢</div>
+   <h3>العمل بالبلدية</h3>
+   <p>موظف سابق بالبلدية.</p>
   </div>
 
   <div class="card">
-   <div class="icon">📚</div>
-   <h3>التكوين المهني</h3>
-   <p>موظف سابق في قطاع التكوين المهني والتمهين.</p>
+   <div class="symbol">📚</div>
+   <h3>التكوين المهني والتمهين</h3>
+   <p>موظف سابق بالقطاع.</p>
   </div>
+
  </div>
 </section>
 
-<section>
- <h2 class="section-title">محطات المسار المهني</h2>
-
- <div class="timeline">
-  <div class="timeline-item">
-   <strong>العمل البلدي</strong><br>
-   تجربة مهنية سابقة في البلدية.
-  </div>
-
-  <div class="timeline-item">
-   <strong>التكوين المهني والتمهين</strong><br>
-   تجربة مهنية سابقة في قطاع التكوين المهني.
-  </div>
-
-  <div class="timeline-item">
-   <strong>مقر الولاية</strong><br>
-   متصرف إداري حاليًا.
-  </div>
- </div>
-</section>
-
-<!-- الشهادات -->
 <section id="education">
- <h2 class="section-title">الشهادات والتكوين</h2>
+ <h2>المؤهلات والشهادات</h2>
 
  <div class="cards">
+
   <div class="card">
-   <div class="icon">🎓</div>
-   <h3>ماستر تنظيم وعمل</h3>
-   <p>شهادة ماستر في تخصص تنظيم وعمل.</p>
+   <div class="symbol">🎓</div>
+   <h3>ماستر</h3>
+   <p>تنظيم وعمل.</p>
   </div>
 
   <div class="card">
-   <div class="icon">💻</div>
+   <div class="symbol">💻</div>
    <h3>الإعلام الآلي</h3>
    <p>شهادات في الإعلام الآلي.</p>
   </div>
 
   <div class="card">
-   <div class="icon">🌐</div>
+   <div class="symbol">🌐</div>
    <h3>اللغة الإنجليزية</h3>
-   <p>اللغة الإنجليزية – صنف ب.</p>
+   <p>صنف ب.</p>
   </div>
+
  </div>
 </section>
 
-<!-- التواصل وتحيات الزوار -->
-<section id="message">
- <div class="message">
-  <h2>شكرًا لزيارتكم</h2>
-  <p>
-   شكرًا لكل من خصص وقتًا للتعرف على مساري
-   المهني والتكويني ورؤيتي لخدمة الصالح العام.
-   نسأل الله التوفيق والسداد، وأن يحفظ وطننا
-   ويوفق الجميع لما فيه الخير.
-  </p>
-  <h3 style="color:#e9c66d">
-   معًا للتغيير والنهوض بالوطن
-  </h3>
+<section id="program">
+ <h2>برنامج العمل والتصور التمثيلي والرقابي</h2>
+
+ <div class="program-intro">
+  صوت المواطن أمانة، والانشغال مسؤولية، والمتابعة واجب.
+  <br>
+  برنامج يقوم على الاستماع والتوثيق والمتابعة والرقابة في حدود الصلاحيات القانونية.
  </div>
 
- <div class="visitor-box">
-  <h3>إلى زوار صفحتي الكرام 🌹</h3>
-  <p>
-   أهلًا وسهلًا ومرحبًا بكل من زار هذا الفضاء
-   التعريفي، من أفلو، ومن جميع بلديات الولاية،
-   ومن كل ربوع الجزائر.
-  </p>
-  <p>
-   وجودكم محل تقدير واحترام، وزيارتكم تسعدني.
-   إذا أعجبتكم الصفحة، لا تبخلوا علينا بترك
-   إعجاب 👍 أو تعليق تعبّرون فيه عن رأيكم.
-  </p>
-  <p>
-   تحية تقدير واعتزاز لكل زائر وزائرة،
-   ولكل من يساهم بكلمة طيبة أو اقتراح بنّاء.
-   دمتم بخير، وحفظ الله الجزائر وأهلها.
-  </p>
-  <h3>بكل احترام وتقدير، براهيمي يوسف</h3>
+ <div class="program-card">
+  <h3>1. نقل انشغالات المواطنين إلى الجهات المعنية</h3>
+  <ul>
+   <li>الاستماع إلى انشغالات المواطنين وتسجيل مطالبهم بدقة.</li>
+   <li>تصنيف الملفات حسب طبيعتها والقطاع المعني بها.</li>
+   <li>إيصال الانشغالات إلى السلطات والمصالح المختصة عبر القنوات الرسمية.</li>
+   <li>متابعة مآل الملفات وعدم الاكتفاء بمجرد نقلها.</li>
+   <li>إبلاغ المواطنين بما توفر من ردود وتوضيحات رسمية.</li>
+  </ul>
  </div>
 
- <div class="interaction">
-  <h3>رأيكم يهمنا ❤️</h3>
-  <p>إذا أعجبتكم الصفحة، يمكنكم الضغط على زر الإعجاب أو كتابة تعليق.</p>
+ <div class="program-card">
+  <h3>2. متابعة المشاريع التنموية</h3>
+  <ul>
+   <li>متابعة المشاريع المسجلة عبر إقليم الولاية.</li>
+   <li>رصد التأخر في الإنجاز والنقائص المسجلة ميدانيًا.</li>
+   <li>متابعة أسباب توقف المشاريع أو تعثرها وطرحها على الجهات المختصة.</li>
+   <li>الاهتمام بجودة الأشغال واحترام المواصفات والآجال المعلنة.</li>
+   <li>المطالبة بتوضيح وضعية المشاريع عند الحاجة وفي حدود الإجراءات القانونية.</li>
+  </ul>
+ </div>
 
-  <div class="action-buttons">
-   <button class="action-btn" id="likeButton" type="button">
-    👍 أعجبني
-   </button>
-   <span id="likeCount">0 إعجاب</span>
+ <div class="program-card">
+  <h3>3. رصد النقائص في البلديات والمناطق الريفية</h3>
+  <ul>
+   <li>الطرقات والمسالك المتضررة أو غير المهيأة.</li>
+   <li>نقص الإنارة العمومية ومشاكل شبكات المياه والصرف الصحي.</li>
+   <li>مشاكل النقل المدرسي وسلامة التلاميذ.</li>
+   <li>الأعمدة الكهربائية والوديان والنقاط السوداء المرورية.</li>
+   <li>النقائص المتعلقة بالمرافق الصحية والتربوية والرياضية.</li>
+   <li>توثيق النقائص وإحالتها إلى المصالح المختصة لمتابعتها.</li>
+  </ul>
+ </div>
+
+ <div class="program-card">
+  <h3>4. متابعة القطاعات والمديريات التنفيذية</h3>
+  <ul>
+   <li>نقل الانشغالات القطاعية إلى المديريات التنفيذية المختصة.</li>
+   <li>متابعة الملفات المتعلقة بالمياه والأشغال العمومية والتربية والصحة وغيرها.</li>
+   <li>طلب التوضيحات والمعلومات المتعلقة بالملفات وفق الإجراءات القانونية.</li>
+   <li>متابعة الردود والتوصيات والاقتراحات.</li>
+   <li>إثارة النقائص المتكررة خلال اجتماعات اللجان ودورات المجلس.</li>
+  </ul>
+ </div>
+
+ <div class="program-card">
+  <h3>5. الرقابة والمتابعة والمساهمة في المداولات</h3>
+  <ul>
+   <li>المساهمة في دراسة الملفات والميزانيات والمشاريع المعروضة على المجلس.</li>
+   <li>متابعة تنفيذ المداولات والتوصيات ضمن صلاحيات المجلس.</li>
+   <li>الاهتمام بمدى احترام آجال الإنجاز وجودة الأشغال.</li>
+   <li>طرح التساؤلات حول أسباب التأخر والنقائص المسجلة.</li>
+   <li>المساهمة في تقديم اقتراحات مبنية على احتياجات المواطنين والإمكانيات المتاحة.</li>
+  </ul>
+ </div>
+
+ <div class="program-card">
+  <h3>6. التنمية المتوازنة بين البلديات</h3>
+  <ul>
+   <li>الاهتمام بالمناطق النائية والريفية إلى جانب مراكز البلديات.</li>
+   <li>نقل احتياجات كل منطقة حسب أولوياتها الفعلية.</li>
+   <li>متابعة توزيع المشاريع والتجهيزات وفق الاحتياجات والإمكانيات المتاحة.</li>
+   <li>دعم الاقتراحات التي تخدم التنمية المحلية المتوازنة.</li>
+  </ul>
+ </div>
+
+ <div class="program-card">
+  <h3>7. الصحة والتربية والتكوين والشباب</h3>
+  <ul>
+   <li>نقل انشغالات المؤسسات الصحية إلى الجهات المختصة.</li>
+   <li>متابعة احتياجات المدارس والمطاعم والنقل المدرسي.</li>
+   <li>الاهتمام بمرافق التكوين المهني والتجهيزات الضرورية.</li>
+   <li>متابعة احتياجات الشباب في مجالات الرياضة والثقافة والمرافق العمومية.</li>
+   <li>دعم المقترحات التي تحسن ظروف الاستفادة من الخدمات العمومية.</li>
+  </ul>
+ </div>
+
+ <div class="program-card">
+  <h3>8. التواصل والشفافية مع المواطنين</h3>
+  <ul>
+   <li>إبقاء قنوات التواصل مفتوحة مع المواطنين.</li>
+   <li>تسجيل الانشغالات ومتابعتها حسب الأولوية والاستعجال.</li>
+   <li>توضيح الملفات التي تمت متابعتها والجهات التي أحيلت إليها.</li>
+   <li>تقديم حصيلة دورية للانشغالات والنتائج والملفات التي لا تزال قيد المتابعة.</li>
+   <li>التعامل مع جميع المواطنين دون تمييز أو محاباة.</li>
+  </ul>
+ </div>
+
+ <div class="commitment">
+  <h3>التزامي أمام المواطنين</h3>
+
+  لا أقدم وعودًا بالتوظيف أو السكن أو توزيع الامتيازات،
+  ولا أدعي امتلاك صلاحيات ليست من اختصاص عضو المجلس الشعبي الولائي.
+
+  <br><br>
+
+  <strong>
+   ألتزم بالاستماع، والتوثيق، ونقل الانشغالات،
+   والمساهمة في الرقابة والمداولات،
+   ومتابعة الملفات عبر القنوات القانونية،
+   بكل جدية وشفافية.
+  </strong>
+
+  <br><br>
+  براهيمي يوسف
+  <br>
+  حزب صوت الشعب | القائمة رقم 6 | المترشح رقم 15
+ </div>
+
+ <p class="section-note">
+  هذا التصور مرتبط بالاختصاصات القانونية للمجلس الشعبي الولائي
+  ولا يمثل تعهدًا بتنفيذ مشاريع أو قرارات من اختصاص جهات أخرى.
+ </p>
+</section>
+
+<section id="comments">
+ <h2>التفاعل والتعليقات</h2>
+
+ <div class="card">
+  <h3>رأيك يهمنا</h3>
+  <p>
+   عدد الإعجابات:
+   <strong id="likeCount">0</strong>
+  </p>
+  <button id="likeBtn">👍 أعجبني</button>
+  <div id="likeStatus" class="status"></div>
+ </div>
+
+ <h3>اكتب تعليقك</h3>
+
+ <form id="commentForm">
+  <textarea
+   id="commentText"
+   maxlength="1000"
+   placeholder="اكتب تعليقك هنا..."
+   required></textarea>
+
+  <button id="sendComment" type="submit">
+   إرسال التعليق
+  </button>
+ </form>
+
+ <div id="message" class="status"></div>
+
+ <h3>التعليقات المنشورة</h3>
+ <div id="publishedComments">جارٍ تحميل التعليقات...</div>
+</section>
+
+<section id="admin">
+ <h2>لوحة تحكم الإدارة</h2>
+
+ <input
+  type="password"
+  id="adminCode"
+  placeholder="رمز الإدارة">
+
+ <button id="adminLogin">دخول</button>
+
+ <div id="adminMessage" class="status"></div>
+
+ <div id="adminPanel" class="panel hidden">
+
+  <div class="cards">
+
+   <div class="stat">
+    <strong id="dashVisits">0</strong>
+    الزوار المسجلون
+   </div>
+
+   <div class="stat">
+    <strong id="dashLikes">0</strong>
+    الإعجابات
+   </div>
+
+   <div class="stat">
+    <strong id="dashComments">0</strong>
+    التعليقات المنشورة
+   </div>
+
   </div>
 
-  <form class="comment-form" id="commentForm">
-   <input
-    type="text"
-    id="visitorName"
-    maxlength="50"
-    placeholder="اسمك (اختياري)"
-   >
-   <textarea
-    id="visitorComment"
-    maxlength="500"
-    placeholder="اكتب تعليقك أو تحيتك هنا..."
-    required
-   ></textarea>
-   <button class="action-btn" type="submit">
-    ✉️ إضافة التعليق
-   </button>
-  </form>
+  <div class="adminNav">
+   <button data-admin="visitors">سجل الزوار</button>
+   <button data-admin="pending">التعليقات الواردة</button>
+   <button data-admin="published">التعليقات المنشورة</button>
+   <button data-admin="refresh">تحديث</button>
+  </div>
 
-  <div class="comment-list" id="commentList"></div>
+  <div id="adminVisitors">
+   <h3>سجل الزوار</h3>
+   <div id="visitorsList"></div>
+  </div>
 
-  <p style="font-size:12px;color:#c7b98f">
-   ملاحظة: التفاعلات في هذه النسخة محفوظة محليًا على نفس المتصفح فقط.
-  </p>
+  <div id="adminPending" class="hidden">
+   <h3>التعليقات الواردة</h3>
+   <div id="pendingComments"></div>
+  </div>
+
+  <div id="adminPublished" class="hidden">
+   <h3>التعليقات المنشورة وإدارتها</h3>
+   <div id="publishedAdmin"></div>
+  </div>
+
+  <button class="danger" id="adminLogout">
+   تسجيل الخروج
+  </button>
+
  </div>
 </section>
 
 </main>
 
 <footer>
- <strong>براهيمي يوسف</strong><br>
- المجلس الشعبي الولائي – حزب صوت الشعب – ولاية أفلو
- <br>
- <span style="color:#e9c66d">تصميم وتطوير: براهيمي يوسف</span>
+ <p>براهيمي يوسف | حزب صوت الشعب</p>
+ <p>القائمة رقم 6 | المترشح رقم 15</p>
+ <p>شكرًا لكل من زار هذا الموقع</p>
+ <p>تصميم وتطوير: براهيمي يوسف</p>
 </footer>
 
-<script>
-// خلفية النجوم
-const canvas=document.getElementById("stars");
-const ctx=canvas.getContext("2d");
-let stars=[];
+<script type="module">
 
-function resize(){
- canvas.width=window.innerWidth;
- canvas.height=window.innerHeight;
- stars=Array.from({length:90},()=>({
-  x:Math.random()*canvas.width,
-  y:Math.random()*canvas.height,
-  r:Math.random()*1.8+.3,
-  speed:Math.random()*.35+.1
- }));
+import {
+ initializeApp
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+
+import {
+ getDatabase,
+ ref,
+ push,
+ onValue,
+ update,
+ remove,
+ runTransaction
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+
+const firebaseConfig={
+ apiKey:"AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
+ authDomain:"workdz-web.firebaseapp.com",
+ databaseURL:"https://workdz-web-default-rtdb.firebaseio.com",
+ projectId:"workdz-web",
+ storageBucket:"workdz-web.firebasestorage.app",
+ messagingSenderId:"980881321562",
+ appId:"1:980881321562:web:5046cc8bfe27749a73f263",
+ measurementId:"G-NWPYNZT489"
+};
+
+const app=initializeApp(firebaseConfig);
+const db=getDatabase(app);
+const $=id=>document.getElementById(id);
+
+const likesRef=ref(db,"siteStats/likes");
+const visitorsRef=ref(db,"siteVisitors");
+const inboxRef=ref(db,"commentInbox");
+const publishedRef=ref(db,"publishedComments");
+
+let adminLoggedIn=false;
+let visits={};
+let inbox={};
+let published={};
+let likes=0;
+
+let visitorId=localStorage.getItem("siteVisitorId");
+
+if(!visitorId){
+ visitorId=crypto.randomUUID?
+  crypto.randomUUID():
+  Date.now()+"-"+Math.random().toString(36).slice(2);
+
+ localStorage.setItem("siteVisitorId",visitorId);
 }
 
-function animate(){
- ctx.clearRect(0,0,canvas.width,canvas.height);
- ctx.fillStyle="#d8bd72";
- stars.forEach(s=>{
-  ctx.beginPath();
-  ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-  ctx.fill();
-  s.y-=s.speed;
-  if(s.y<0){
-   s.y=canvas.height;
-   s.x=Math.random()*canvas.width;
+const myVisitorRef=ref(db,"siteVisitors/"+visitorId);
+
+async function recordVisit(){
+
+ const now=Date.now();
+
+ try{
+
+  await runTransaction(myVisitorRef,current=>{
+
+   current=current||{};
+
+   return {
+    ...current,
+    firstVisit:current.firstVisit||now,
+    lastVisit:now,
+    visits:(Number(current.visits)||0)+1,
+    status:current.liked?
+      "أعجب بالموقع":
+      current.commented?
+      "علّق على الموقع":
+      "زار الموقع فقط",
+    browser:navigator.userAgent.slice(0,160)
+   };
+
+  });
+
+ }catch(error){
+
+  console.error("Visit error:",error);
+
+  const box=$("adminMessage");
+
+  if(box){
+   box.textContent=
+    "خطأ تسجيل الزيارة: "+
+    error.code+" - "+error.message;
   }
- });
- requestAnimationFrame(animate);
-}
 
-window.addEventListener("resize",resize);
-resize();
-animate();
-
-// ظهور البطاقات تدريجيًا
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){
-   entry.target.classList.add("show");
-  }
- });
-},{threshold:.12});
-
-document.querySelectorAll(".card").forEach(card=>{
- observer.observe(card);
-});
-
-// تمييز زر القسم المفتوح
-const links=document.querySelectorAll("nav a");
-const sections=document.querySelectorAll("main section, .hero");
-
-const navObserver=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){
-   links.forEach(link=>{
-    link.classList.toggle(
-     "active",
-     link.getAttribute("href")==="#"+entry.target.id
-    );
-   });
-  }
- });
-},{rootMargin:"-25% 0px -60% 0px"});
-
-sections.forEach(section=>{
- if(section.id) navObserver.observe(section);
-});
-
-// الإعجابات المحلية
-const likeButton=document.getElementById("likeButton");
-const likeCount=document.getElementById("likeCount");
-
-let likes=Number(localStorage.getItem("aflouLikes") || 0);
-let liked=localStorage.getItem("aflouLiked")==="true";
-
-function renderLikes(){
- likeCount.textContent=likes+" إعجاب";
- likeButton.textContent=liked?"❤️ أعجبني":"👍 أعجبني";
-}
-
-likeButton.addEventListener("click",()=>{
- if(!liked){
-  likes++;
-  liked=true;
- }else{
-  likes=Math.max(0,likes-1);
-  liked=false;
  }
- localStorage.setItem("aflouLikes",likes);
- localStorage.setItem("aflouLiked",liked);
- renderLikes();
-});
 
-renderLikes();
-
-// التعليقات المحلية
-const commentForm=document.getElementById("commentForm");
-const commentList=document.getElementById("commentList");
-
-let comments=[];
-try{
- comments=JSON.parse(localStorage.getItem("aflouComments") || "[]");
- if(!Array.isArray(comments)) comments=[];
-}catch{
- comments=[];
 }
 
-function displayComments(){
- commentList.replaceChildren();
+recordVisit();
 
- comments.forEach(comment=>{
+document.querySelectorAll("#mainNav button").forEach(button=>{
+
+ button.addEventListener("click",()=>{
+
+  document.querySelectorAll("#mainNav button")
+   .forEach(b=>b.classList.remove("active"));
+
+  button.classList.add("active");
+
+  $(button.dataset.target).scrollIntoView({
+   behavior:"smooth"
+  });
+
+ });
+
+});
+
+onValue(likesRef,s=>{
+
+ likes=Number(s.val()||0);
+
+ $("likeCount").textContent=likes;
+ $("dashLikes").textContent=likes;
+
+});
+
+onValue(visitorsRef,s=>{
+
+ visits=s.val()||{};
+ renderVisitors();
+
+},error=>{
+
+ console.error("Visitors read error:",error);
+
+ statusMessage(
+  "adminMessage",
+  "خطأ قراءة سجل الزوار: "+error.message
+ );
+
+});
+
+onValue(inboxRef,s=>{
+
+ inbox=s.val()||{};
+
+ renderPending();
+ updateStats();
+
+});
+
+onValue(publishedRef,s=>{
+
+ published=s.val()||{};
+
+ renderPublished();
+ renderPublishedAdmin();
+ updateStats();
+
+});
+
+function statusMessage(id,text,ok=false){
+
+ $(id).textContent=text;
+
+ $(id).style.color=
+  ok?"#4ade80":"#f87171";
+
+}
+
+$("likeBtn").addEventListener("click",async()=>{
+
+ const button=$("likeBtn");
+
+ button.disabled=true;
+
+ try{
+
+  await runTransaction(
+   likesRef,
+   n=>(Number(n)||0)+1
+  );
+
+  await runTransaction(myVisitorRef,current=>{
+
+   current=current||{};
+
+   return {
+    ...current,
+    liked:true,
+    likedAt:Date.now(),
+    status:"أعجب بالموقع"
+   };
+
+  });
+
+  statusMessage(
+   "likeStatus",
+   "تم تسجيل إعجابك.",
+   true
+  );
+
+ }catch(e){
+
+  statusMessage(
+   "likeStatus",
+   "تعذر تسجيل الإعجاب: "+e.message
+  );
+
+ }finally{
+
+  button.disabled=false;
+
+ }
+
+});
+
+$("commentForm").addEventListener("submit",async e=>{
+
+ e.preventDefault();
+
+ const message=$("commentText").value.trim();
+
+ if(!message)return;
+
+ $("sendComment").disabled=true;
+
+ try{
+
+  await push(inboxRef,{
+
+   visitorId,
+   message,
+   createdAt:Date.now(),
+   status:"pending"
+
+  });
+
+  await update(myVisitorRef,{
+
+   commented:true,
+   commentedAt:Date.now(),
+   status:"علّق على الموقع"
+
+  });
+
+  $("commentText").value="";
+
+  statusMessage(
+   "message",
+   "تم إرسال تعليقك للمراجعة.",
+   true
+  );
+
+ }catch(error){
+
+  statusMessage(
+   "message",
+   "تعذر إرسال التعليق: "+error.message
+  );
+
+ }finally{
+
+  $("sendComment").disabled=false;
+
+ }
+
+});
+
+function renderPublished(){
+
+ const box=$("publishedComments");
+
+ box.replaceChildren();
+
+ const entries=Object.entries(published)
+  .sort((a,b)=>
+   (b[1].createdAt||0)-(a[1].createdAt||0)
+  );
+
+ if(!entries.length){
+
+  box.textContent="لا توجد تعليقات منشورة.";
+  return;
+
+ }
+
+ entries.forEach(([id,data])=>{
+
   const item=document.createElement("div");
-  item.className="comment-item";
-
-  const name=document.createElement("strong");
-  name.textContent=comment.name || "زائر";
+  item.className="comment";
 
   const message=document.createElement("p");
-  message.textContent=comment.message;
+  message.textContent=data.message||"";
 
-  item.append(name,message);
-  commentList.appendChild(item);
+  item.appendChild(message);
+
+  if(data.reply){
+
+   const reply=document.createElement("div");
+
+   reply.className="reply";
+
+   reply.textContent="الرد: "+data.reply;
+
+   item.appendChild(reply);
+
+  }
+
+  box.appendChild(item);
+
  });
+
 }
 
-commentForm.addEventListener("submit",event=>{
- event.preventDefault();
+function renderVisitors(){
 
- const name=document.getElementById("visitorName").value.trim();
- const message=document.getElementById("visitorComment").value.trim();
+ if(!adminLoggedIn)return;
 
- if(!message) return;
+ const box=$("visitorsList");
 
- comments.push({name,message});
- localStorage.setItem("aflouComments",JSON.stringify(comments));
+ box.replaceChildren();
 
- commentForm.reset();
- displayComments();
+ const entries=Object.entries(visits)
+  .sort((a,b)=>
+   (b[1].lastVisit||0)-(a[1].lastVisit||0)
+  );
 
- alert("تم حفظ تعليقك على هذا الجهاز.");
+ $("dashVisits").textContent=entries.length;
+
+ if(!entries.length){
+
+  box.textContent="لا توجد زيارات مسجلة.";
+  return;
+
+ }
+
+ entries.forEach(([id,data])=>{
+
+  const item=document.createElement("div");
+  item.className="adminItem";
+
+  const title=document.createElement("strong");
+  title.textContent="زائر "+id.slice(0,12);
+
+  const state=document.createElement("p");
+  state.textContent=
+   "الحالة: "+(data.status||"زار الموقع فقط");
+
+  const count=document.createElement("p");
+  count.textContent=
+   "عدد الزيارات: "+(data.visits||1);
+
+  const first=document.createElement("p");
+  first.textContent=
+   "أول زيارة: "+
+   new Date(data.firstVisit||0).toLocaleString("ar-DZ");
+
+  const last=document.createElement("p");
+  last.textContent=
+   "آخر زيارة: "+
+   new Date(data.lastVisit||0).toLocaleString("ar-DZ");
+
+  item.append(title,state,count,first,last);
+
+  box.appendChild(item);
+
+ });
+
+}
+
+function renderPending(){
+
+ if(!adminLoggedIn)return;
+
+ const box=$("pendingComments");
+
+ box.replaceChildren();
+
+ const entries=Object.entries(inbox)
+  .filter(([id,d])=>d.status==="pending");
+
+ if(!entries.length){
+
+  box.textContent="لا توجد تعليقات تنتظر المراجعة.";
+  return;
+
+ }
+
+ entries.forEach(([id,data])=>{
+
+  const item=document.createElement("div");
+  item.className="adminItem";
+
+  const message=document.createElement("p");
+  message.textContent=data.message||"";
+
+  const date=document.createElement("p");
+  date.className="small";
+  date.textContent=
+   new Date(data.createdAt||0).toLocaleString("ar-DZ");
+
+  const actions=document.createElement("div");
+  actions.className="actions";
+
+  const publishBtn=document.createElement("button");
+  publishBtn.className="green";
+  publishBtn.textContent="نشر";
+  publishBtn.onclick=()=>publishComment(id,data);
+
+  const deleteBtn=document.createElement("button");
+  deleteBtn.className="danger";
+  deleteBtn.textContent="حذف";
+  deleteBtn.onclick=()=>deleteComment(id);
+
+  actions.append(publishBtn,deleteBtn);
+
+  item.append(message,date,actions);
+
+  box.appendChild(item);
+
+ });
+
+}
+
+async function publishComment(id,data){
+
+ try{
+
+  const newId=push(publishedRef).key;
+
+  const changes={};
+
+  changes["publishedComments/"+newId]={
+
+   message:data.message,
+   visitorId:data.visitorId||"",
+   createdAt:data.createdAt||Date.now()
+
+  };
+
+  changes["commentInbox/"+id+"/status"]="published";
+
+  await update(ref(db),changes);
+
+  statusMessage(
+   "adminMessage",
+   "تم نشر التعليق.",
+   true
+  );
+
+ }catch(e){
+
+  statusMessage(
+   "adminMessage",
+   "فشل النشر: "+e.message
+  );
+
+ }
+
+}
+
+async function deleteComment(id){
+
+ if(!confirm("حذف هذا التعليق؟"))return;
+
+ try{
+
+  await remove(ref(db,"commentInbox/"+id));
+
+  statusMessage(
+   "adminMessage",
+   "تم الحذف.",
+   true
+  );
+
+ }catch(e){
+
+  statusMessage(
+   "adminMessage",
+   "تعذر الحذف: "+e.message
+  );
+
+ }
+
+}
+
+function renderPublishedAdmin(){
+
+ if(!adminLoggedIn)return;
+
+ const box=$("publishedAdmin");
+
+ box.replaceChildren();
+
+ const entries=Object.entries(published);
+
+ if(!entries.length){
+
+  box.textContent="لا توجد تعليقات منشورة.";
+  return;
+
+ }
+
+ entries.forEach(([id,data])=>{
+
+  const item=document.createElement("div");
+  item.className="adminItem";
+
+  const message=document.createElement("p");
+  message.textContent=data.message||"";
+
+  const replyInput=document.createElement("input");
+  replyInput.placeholder="اكتب ردك هنا";
+  replyInput.value=data.reply||"";
+
+  const actions=document.createElement("div");
+  actions.className="actions";
+
+  const replyBtn=document.createElement("button");
+  replyBtn.className="green";
+  replyBtn.textContent="حفظ الرد";
+
+  replyBtn.onclick=async()=>{
+
+   try{
+
+    await update(
+     ref(db,"publishedComments/"+id),
+     {reply:replyInput.value.trim()}
+    );
+
+    statusMessage(
+     "adminMessage",
+     "تم حفظ الرد.",
+     true
+    );
+
+   }catch(e){
+
+    statusMessage(
+     "adminMessage",
+     "تعذر حفظ الرد: "+e.message
+    );
+
+   }
+
+  };
+
+  const deleteBtn=document.createElement("button");
+  deleteBtn.className="danger";
+  deleteBtn.textContent="حذف التعليق";
+
+  deleteBtn.onclick=async()=>{
+
+   if(!confirm("حذف التعليق؟"))return;
+
+   try{
+
+    await remove(
+     ref(db,"publishedComments/"+id)
+    );
+
+    statusMessage(
+     "adminMessage",
+     "تم حذف التعليق.",
+     true
+    );
+
+   }catch(e){
+
+    statusMessage(
+     "adminMessage",
+     "تعذر الحذف: "+e.message
+    );
+
+   }
+
+  };
+
+  actions.append(replyBtn,deleteBtn);
+
+  item.append(message,replyInput,actions);
+
+  box.appendChild(item);
+
+ });
+
+}
+
+function updateStats(){
+
+ $("dashComments").textContent=
+  Object.keys(published).length;
+
+}
+
+$("adminLogin").addEventListener("click",()=>{
+
+ if($("adminCode").value!=="sss"){
+
+  statusMessage(
+   "adminMessage",
+   "رمز الإدارة غير صحيح."
+  );
+
+  return;
+
+ }
+
+ adminLoggedIn=true;
+
+ $("adminPanel").classList.remove("hidden");
+
+ renderVisitors();
+ renderPending();
+ renderPublishedAdmin();
+ updateStats();
+
+ statusMessage(
+  "adminMessage",
+  "تم الدخول إلى لوحة الإدارة.",
+  true
+ );
+
 });
 
-displayComments();
+document.querySelectorAll("[data-admin]").forEach(button=>{
+
+ button.addEventListener("click",()=>{
+
+  const key=button.dataset.admin;
+
+  $("adminVisitors").classList.toggle(
+   "hidden",
+   key!=="visitors"&&key!=="refresh"
+  );
+
+  $("adminPending").classList.toggle(
+   "hidden",
+   key!=="pending"&&key!=="refresh"
+  );
+
+  $("adminPublished").classList.toggle(
+   "hidden",
+   key!=="published"&&key!=="refresh"
+  );
+
+  if(key==="refresh"){
+
+   renderVisitors();
+   renderPending();
+   renderPublishedAdmin();
+   updateStats();
+
+   statusMessage(
+    "adminMessage",
+    "تم تحديث البيانات.",
+    true
+   );
+
+  }
+
+ });
+
+});
+
+$("adminLogout").addEventListener("click",()=>{
+
+ adminLoggedIn=false;
+
+ $("adminPanel").classList.add("hidden");
+
+ $("adminCode").value="";
+
+ statusMessage(
+  "adminMessage",
+  "تم تسجيل الخروج.",
+  true
+ );
+
+});
+
+document.querySelectorAll("section").forEach(sec=>{
+ sec.classList.add("reveal");
+});
+
+const observer=new IntersectionObserver(entries=>{
+
+ entries.forEach(entry=>{
+
+  if(entry.isIntersecting){
+
+   entry.target.classList.add("visible");
+   observer.unobserve(entry.target);
+
+  }
+
+ });
+
+},{threshold:.12});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
 </script>
 
 </body>
