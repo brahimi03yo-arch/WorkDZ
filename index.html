@@ -1,1601 +1,1445 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>  
+<html lang="ar" dir="rtl">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width,initial-scale=1">  
+<title>نادر | سوق الكتب</title>  
 
-<title>اعرف مترشحك | براهيمي يوسف</title>
-<meta name="description" content="براهيمي يوسف، المترشح رقم 15 ضمن قائمة حزب صوت الشعب رقم 6 للمجلس الشعبي الولائي.">
-
+<!-- الصورة الأولى: تظهر كمعاينة عند مشاركة الرابط -->
+<meta property="og:title" content="نادر | سوق الكتب النادرة">
+<meta property="og:description" content="منصة نادر لتبادل وبيع الكتب النادرة - جامعة أفلو">
+<meta property="og:image" content="https://i.postimg.cc/L5M0HLVd/IMG-20261018-WA0000.jpg">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="ar_DZ">
-<meta property="og:site_name" content="اعرف مترشحك">
-<meta property="og:title" content="براهيمي يوسف | المترشح رقم 15">
-<meta property="og:description" content="حزب صوت الشعب - القائمة رقم 6 - المترشح رقم 15">
-<meta property="og:url" content="https://workdz-u7oo.onrender.com/">
-<meta property="og:image" content="https://i.postimg.cc/gJpgRTzn/file-00000000d81c81f4bebc43a36fe37d0c.png">
-<meta property="og:image:secure_url" content="https://i.postimg.cc/gJpgRTzn/file-00000000d81c81f4bebc43a36fe37d0c.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="براهيمي يوسف - القائمة 6 - الرقم 15">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="براهيمي يوسف - رقم 15">
-<meta name="twitter:description" content="حزب صوت الشعب - القائمة رقم 6">
-<meta name="twitter:image" content="https://i.postimg.cc/gJpgRTzn/file-00000000d81c81f4bebc43a36fe37d0c.png">
+<style>  
+*{box-sizing:border-box;margin:0;padding:0}  
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-:root{
- --bg:#070b14;
- --surface:rgba(255,255,255,.05);
- --surface-2:rgba(255,255,255,.08);
- --border:rgba(255,255,255,.09);
- --text:#e9eff8;
- --muted:#93a4bd;
- --emerald:#10b981;
- --cyan:#22d3ee;
- --amber:#f5b544;
+/* ==================================================== */
+/* إعدادات الخلفية الأساسية (الصورة الجديدة) */
+/* ==================================================== */
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
 
 body{
- margin:0;
- min-height:100vh;
- color:var(--text);
- font-family:Tajawal,Cairo,sans-serif;
- line-height:1.9;
- overflow-x:hidden;
- background:
-  radial-gradient(720px 720px at 88% -8%, rgba(16,185,129,.22), transparent 62%),
-  radial-gradient(620px 620px at -10% 18%, rgba(34,211,238,.16), transparent 62%),
-  radial-gradient(760px 620px at 50% 112%, rgba(245,181,68,.10), transparent 62%),
-  var(--bg);
- background-attachment:fixed;
+  /* الصورة الجديدة كخلفية كاملة */
+  background-image: url('https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #0a2540; /* لون بديل يظهر أثناء تحميل الصورة */
+  color: #0f1e33;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.7;
+  position: relative;
 }
 
-header{
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:14px;
- flex-wrap:wrap;
- padding:15px 22px;
- font-size:19px;
- font-weight:900;
- background:linear-gradient(90deg, rgba(16,185,129,.16), rgba(34,211,238,.10));
- border-bottom:1px solid var(--border);
- backdrop-filter:blur(14px);
- -webkit-backdrop-filter:blur(14px);
-}
-.brand{display:flex;align-items:center;gap:11px}
-.brand-mark{
- width:38px;height:38px;display:grid;place-items:center;
- border-radius:12px;font-size:20px;font-weight:900;color:#04140f;
- background:linear-gradient(135deg,var(--emerald),var(--cyan));
- box-shadow:0 10px 26px rgba(16,185,129,.38);
-}
-.brand-name{
- font-size:14px;font-weight:800;color:var(--amber);
- padding:6px 15px;border-radius:999px;
- border:1px solid rgba(245,181,68,.35);
- background:rgba(245,181,68,.09);
+/* طبقة تظليل خفيفة جداً لضمان رؤية النصوص */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(10, 37, 64, 0.15); 
+  z-index: -1;
+  pointer-events: none;
 }
 
-nav{
- position:sticky;top:0;z-index:60;
- display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
- padding:12px 14px;
- background:rgba(7,11,20,.74);
- backdrop-filter:blur(18px);
- -webkit-backdrop-filter:blur(18px);
- border-bottom:1px solid var(--border);
+button,input,textarea,select{font:inherit}  
+button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;  
+  background:#123c68;color:#fff;font-weight:700;transition:.2s}  
+button:hover{filter:brightness(1.1)}  
+button:disabled{opacity:.5;cursor:wait}  
+.sec{background:rgba(234,241,250,0.9);color:#123c68}  
+.dng{background:#fdecec;color:#b3261e}  
+.gold{background:linear-gradient(135deg,#d4a017,#f5c542);color:#0a2540}  
+
+input,textarea,select{
+  width:100%;padding:11px 13px;
+  border:1.5px solid rgba(255,255,255,0.5);  
+  border-radius:10px;
+  background:rgba(255,255,255,0.85); 
+  outline:none;font-size:.94rem
+}  
+input:focus,textarea:focus,select:focus{border-color:#236eaa;box-shadow:0 0 0 3px rgba(35,110,170,.2)}  
+textarea{min-height:80px;resize:vertical}  
+label{display:block;font-weight:700;font-size:.85rem;margin:8px 0 5px;color:#0a2540; text-shadow: 0 1px 2px rgba(255,255,255,0.8);}  
+.hid{display:none!important}  
+.wrap{max-width:1100px;margin:auto;padding:16px}  
+
+/* Splash 1 */  
+#sp1{position:fixed;inset:0;z-index:9999;
+background: linear-gradient(rgba(8,25,46,0.85), rgba(8,25,46,0.95)), url('https://i.postimg.cc/L5M0HLVd/IMG-20261018-WA0000.jpg') center/cover no-repeat;
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+padding:24px;text-align:center;color:#fff}
+.sp1-ic{font-size:70px;margin-bottom:12px;animation:pu 2.6s ease-in-out infinite}
+@keyframes pu{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.sp1-t{font-size:2.4rem;font-weight:900;letter-spacing:3px;
+background:linear-gradient(90deg,#f5c542,#fff,#f5c542,#d4a017,#f5c542);
+background-size:300% 100%;-webkit-background-clip:text;background-clip:text;
+color:transparent;animation:sn 4s linear infinite}
+@keyframes sn{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+.sp1-s{font-size:.95rem;color:#c9dcf0;margin:6px 0 24px}
+.sp1-sup{display:flex;flex-direction:column;gap:5px;font-size:1rem;font-weight:800;
+color:#f5c542;margin-bottom:8px}
+.sp1-sup .l{padding:5px 16px;border-radius:10px;background:rgba(245,197,66,.08);
+border:1px solid rgba(245,197,66,.25)}
+.sp1-sup .a{color:#4ecdc4;background:rgba(78,205,196,.08);border-color:rgba(78,205,196,.3)}
+.mq{width:100%;max-width:460px;overflow:hidden;background:rgba(255,255,255,.06);
+border:1px solid rgba(245,197,66,.35);border-radius:99px;padding:10px 0;margin:20px 0}
+.mq-t{display:inline-block;white-space:nowrap;font-size:1.1rem;font-weight:900;
+background:linear-gradient(90deg,#f5c542,#ff6b6b,#4ecdc4,#a78bfa,#f5c542);
+background-size:400% 100%;-webkit-background-clip:text;background-clip:text;
+color:transparent;animation:mq 8s linear infinite}
+@keyframes mq{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+.pb{width:240px;height:5px;background:rgba(255,255,255,.12);border-radius:99px;
+overflow:hidden;margin-bottom:20px}
+.pb>div{height:100%;width:0%;background:linear-gradient(90deg,#f5c542,#ff6b6b,#4ecdc4,#f5c542);
+animation:pg 6s linear forwards}
+@keyframes pg{from{width:0%}to{width:100%}}
+.sp1-b{padding:12px 32px;font-size:.95rem;font-weight:900;border-radius:99px;
+background:linear-gradient(135deg,#d4a017,#f5c542);color:#0a2540}
+
+/* Splash 2 */
+#sp2{position:fixed;inset:0;z-index:9998;background:
+radial-gradient(circle at 30% 30%,rgba(212,160,23,.15),transparent 60%),
+radial-gradient(circle at 70% 70%,rgba(167,139,250,.18),transparent 60%),
+linear-gradient(135deg,#1a0a2e,#2d1b4e 45%,#4c1d95);
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+padding:24px;text-align:center;color:#fff;cursor:pointer}
+.sp2-logo{width:180px;height:180px;border-radius:50%;
+background:radial-gradient(circle at 30% 30%,#f5c542,#a78bfa 50%,#4c1d95);
+display:flex;align-items:center;justify-content:center;
+font-size:4rem;font-weight:900;color:#fff;
+box-shadow:0 0 60px rgba(167,139,250,.6),0 0 100px rgba(245,197,66,.3),
+inset 0 0 40px rgba(255,255,255,.1);
+margin-bottom:24px;animation:lp 3s ease-in-out infinite;
+position:relative;border:4px solid rgba(255,255,255,.15)}
+.sp2-logo::before{content:'';position:absolute;inset:-12px;border-radius:50%;
+background:conic-gradient(from 0deg,#f5c542,#4ecdc4,#a78bfa,#f5c542);
+animation:spin 8s linear infinite;z-index:-1;filter:blur(20px);opacity:.7}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes lp{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.sp2-title{font-size:3rem;font-weight:900;letter-spacing:8px;
+background:linear-gradient(90deg,#f5c542,#fff,#a78bfa,#f5c542);
+background-size:300% 100%;-webkit-background-clip:text;background-clip:text;
+color:transparent;animation:sn 3s linear infinite;margin-bottom:8px}
+.sp2-sub{font-size:1rem;color:#c9dcf0;margin-bottom:32px;letter-spacing:2px}
+.sp2-crew{display:flex;flex-direction:column;gap:10px;padding:22px 32px;
+background:rgba(255,255,255,.06);border:1px solid rgba(245,197,66,.35);
+border-radius:20px;backdrop-filter:blur(10px);margin-bottom:24px;
+max-width:400px;width:100%}
+.sp2-crew .member{font-size:1.05rem;font-weight:800;color:#f5c542;padding:6px 0}
+.sp2-crew .member .role{color:#a78bfa;font-size:.85rem;font-weight:600}
+.sp2-crew .supervisor{font-size:.92rem;color:#c9dcf0;padding-top:10px;margin-top:6px;
+border-top:1px dashed rgba(255,255,255,.2);font-weight:600}
+.sp2-enter{color:#c9dcf0;font-size:.85rem;animation:blink 2s ease-in-out infinite;margin-bottom:40px}
+@keyframes blink{0%,100%{opacity:.5}50%{opacity:1}}
+.sp2-credit{position:absolute;bottom:20px;left:0;right:0;text-align:center;
+color:rgba(255,255,255,.5);font-size:.78rem;letter-spacing:1px;padding:0 20px}
+.sp2-credit b{color:#f5c542;font-weight:800}
+
+/* Header زجاجي */
+.top{
+  background: rgba(10, 37, 64, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  color:#fff;
+  padding:14px 0;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 6px 24px rgba(10,37,64,.2)
+}
+.top-in{max-width:1100px;padding:0 16px;margin:auto;display:flex;
+align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:1.3rem;font-weight:900; text-shadow: 0 2px 4px rgba(0,0,0,0.5);}
+.brand small{display:block;font-size:.7rem;font-weight:400;opacity:.85}
+.ai-lights{display:flex;gap:6px;padding:5px 10px;border-radius:50px;
+background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15)}
+.ai-l{display:flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;
+color:rgba(255,255,255,.7)}
+.ai-l i{width:9px;height:9px;border-radius:50%;background:#666}
+.ai-l.on{color:#fff}
+.ai-l.on i{background:#22c55e;box-shadow:0 0 0 2px rgba(34,197,94,.25),
+0 0 10px rgba(34,197,94,.9);animation:pl 2s ease-in-out infinite}
+.ai-l.off i{background:#ef4444}
+@keyframes pl{0%,100%{box-shadow:0 0 0 2px rgba(34,197,94,.25),0 0 10px rgba(34,197,94,.9)}
+50%{box-shadow:0 0 0 5px rgba(34,197,94,.15),0 0 18px rgba(34,197,94,1)}}
+
+.nav-btn{position:relative}
+.badge{position:absolute;top:4px;left:4px;background:#ef4444;color:#fff;
+min-width:18px;height:18px;border-radius:99px;font-size:.68rem;font-weight:900;
+display:flex;align-items:center;justify-content:center;padding:0 5px;
+box-shadow:0 2px 8px rgba(239,68,68,.6);animation:bg 1.5s ease-in-out infinite}
+@keyframes bg{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+
+/* زجاجية شاشة الدخول */
+.auth{max-width:420px;margin:6vh auto;padding:0 16px}
+.auth-c{
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius:20px;
+  padding:32px 26px;
+  box-shadow:0 10px 30px rgba(10,37,64,.15);
+  position:relative;
+  overflow:hidden;
+}
+.auth-c::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;
+background:linear-gradient(90deg,#0a2540,#f5c542,#0a2540);background-size:200% 100%;
+animation:sh 4s linear infinite}
+@keyframes sh{0%{background-position:-100% 0}100%{background-position:200% 0}}
+.auth-h{text-align:center;margin-bottom:20px}
+.auth-h .i{font-size:48px}
+.auth-h h1{font-size:1.5rem;font-weight:900;margin-top:6px;color:#0a2540}
+.tabs{display:flex;gap:5px;padding:4px;background:rgba(234,241,250,0.6);border-radius:12px;margin-bottom:16px}
+.tabs button{flex:1;background:transparent;color:#4a5b73;font-weight:700;
+font-size:.88rem;padding:9px;border-radius:9px}
+.tabs button.active{background:#fff;color:#0a2540; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+
+/* زجاجية البطاقات */
+.pan{
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 8px 32px rgba(10,37,64,.1);
+  margin:14px 0;
+}
+.tit{margin:0 0 8px;font-size:1.2rem;font-weight:900;color:#0a2540}
+.mut{color:#2c3e50;font-size:.88rem; font-weight: 600;}
+.spl{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+.nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+.nav button{
+  min-height:70px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255,255,255,0.9);
+  color:#123c68;
+  padding:10px 6px;
+  border-radius:14px;
+  font-weight:700;
+  font-size:.78rem;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  box-shadow:0 4px 12px rgba(10,37,64,.08);
+}
+.nav button.active{
+  background: rgba(10, 37, 64, 0.85);
+  color:#fff;
+  border-color:rgba(255,255,255,0.2);
+}
+.nav .e{font-size:1.4rem}
+
+.top-search{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.top-search .tb{
+  display:flex;gap:6px;
+  background:rgba(255,255,255,0.8);
+  backdrop-filter: blur(8px);
+  border:1.5px solid rgba(255,255,255,0.9);
+  border-radius:12px;padding:8px;
+  box-shadow:0 4px 12px rgba(10,37,64,.05)
+}
+.top-search .tb input{border:0;padding:8px 10px;font-size:.85rem; background: transparent;}
+.top-search .tb input:focus{box-shadow:none}
+.top-search .tb button{padding:8px 12px;font-size:.8rem}
+@media(max-width:820px){.top-search{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.top-search{grid-template-columns:1fr}}
+
+.bg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+gap:12px;margin-top:12px}
+
+/* بطاقة الكتاب الزجاجية */
+.bk{
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius:14px;
+  overflow:hidden;
+  transition:.25s;
+  display:flex;
+  flex-direction:column;
+}
+.bk:hover{box-shadow:0 12px 30px rgba(10,37,64,.2); background: rgba(255, 255, 255, 0.9);}
+.bk-head{display:flex;gap:10px;padding:12px;border-bottom:1px solid rgba(0,0,0,0.05)}
+.bk-img{width:70px;height:95px;flex-shrink:0;background:rgba(237,242,247,0.8);
+border-radius:6px;overflow:hidden;display:flex;align-items:center;
+justify-content:center;font-size:1.8rem}
+.bk-img img{width:100%;height:100%;object-fit:cover}
+.bk-info{flex:1;min-width:0}
+.bk-info h3{font-size:.92rem;font-weight:800;color:#0a2540;line-height:1.35;
+display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bk-info small{color:#4a5b73;font-size:.75rem;display:block;margin-top:3px}
+.bk-tag{display:inline-block;padding:2px 9px;border-radius:99px;background:rgba(234,241,250,0.9);
+color:#123c68;font-size:.68rem;font-weight:700;margin-top:5px}
+.bk-lock{background:#fff3cd;color:#7a5a00;border-color:#f0c419}
+
+.bk-actions{display:flex;gap:5px;flex-wrap:wrap;padding:8px 12px;
+border-top:1px solid rgba(0,0,0,0.05)}
+.bk-ai{padding:8px 12px;background:rgba(248,251,255,0.5);border-top:1px solid rgba(0,0,0,0.05)}
+.bk-ai-btn{width:100%;padding:9px;border-radius:10px;
+background:linear-gradient(135deg,#0a2540,#123c68);color:#fff;
+font-weight:800;font-size:.82rem;display:flex;align-items:center;
+justify-content:center;gap:6px}
+.bk-ai-panel{margin-top:10px;padding-top:10px;border-top:1px dashed #c8dcf0;
+animation:fu .3s ease}
+@keyframes fu{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.ai-fns{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.ai-fn{padding:8px 4px;background:rgba(255,255,255,0.9);color:#123c68;border:1.5px solid #c8dcf0;
+border-radius:10px;font-size:.72rem;font-weight:700;display:flex;
+flex-direction:column;align-items:center;gap:3px;cursor:pointer;transition:.2s}
+.ai-fn:hover{background:linear-gradient(135deg,#123c68,#0a2540);color:#fff;
+border-color:transparent}
+.ai-fn .e{font-size:1.1rem}
+.ai-res{margin-top:10px;padding:12px;background:rgba(255,255,255,0.95);border:1.5px solid #c8dcf0;
+border-radius:10px;font-size:.85rem;line-height:1.8;white-space:pre-wrap;
+max-height:400px;overflow-y:auto}
+.ai-res .head{display:flex;justify-content:space-between;align-items:center;
+margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #e2e9f2;
+font-size:.75rem;font-weight:800;color:#0a2540}
+.ai-res .badge2{background:#d4f4e3;color:#0f5c39;padding:2px 8px;border-radius:99px;
+font-size:.65rem}
+.ai-res .badge3{background:#fff3cd;color:#7a5a00;padding:2px 8px;border-radius:99px;
+font-size:.65rem}
+.ai-err{padding:10px;background:#fdecec;color:#8c1d17;border-radius:10px;
+font-size:.85rem;font-weight:600}
+.ai-load{padding:20px;text-align:center;color:#236eaa;font-weight:700}
+
+.msg{border-radius:10px;padding:10px 14px;margin:10px 0;background:rgba(233,246,238,0.9);
+color:#0f5c39;font-weight:600;font-size:.85rem;border-right:3px solid #0f7a4d}
+.msg.err{background:rgba(253,236,236,0.9);color:#8c1d17;border-right-color:#b3261e}
+.msg.warn{background:rgba(255,243,205,0.9);color:#7a5a00;border-right-color:#f0c419}
+
+.ur{
+  display:flex;align-items:center;gap:12px;padding:12px;
+  background:rgba(255,255,255,0.8);
+  backdrop-filter: blur(8px);
+  border:1.5px solid rgba(255,255,255,0.9);
+  border-radius:12px;margin:8px 0;cursor:pointer;transition:.2s
+}
+.ur:hover{border-color:#236eaa; background: rgba(255,255,255,1);}
+.av{width:44px;height:44px;border-radius:50%;
+background:linear-gradient(135deg,#123c68,#0a2540);
+color:#fff;display:flex;align-items:center;justify-content:center;
+font-weight:900;flex-shrink:0}
+.ur .i{flex:1}
+.ur .i b{display:block;color:#0a2540;font-size:.9rem}
+.ur .i small{color:#4a5b73;font-size:.75rem}
+.ur .cnt{background:#ef4444;color:#fff;border-radius:99px;padding:2px 9px;
+font-size:.72rem;font-weight:900}
+
+.em{
+  text-align:center;padding:36px 20px;color:#2c3e50;
+  background:rgba(248,250,253,0.6);
+  backdrop-filter: blur(5px);
+  border-radius:12px;border:1.5px dashed rgba(200,220,240,0.9);
 }
 
-button{
- font-family:inherit;
- border:0;cursor:pointer;
- padding:11px 20px;
- border-radius:12px;
- font-weight:800;
- font-size:15px;
- color:#04140f;
- background:linear-gradient(135deg,var(--emerald),var(--cyan));
- box-shadow:0 10px 26px rgba(16,185,129,.22);
- transition:transform .25s ease, filter .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
-}
-button:hover{filter:brightness(1.07);transform:translateY(-2px)}
-button:disabled{opacity:.55;cursor:not-allowed;transform:none}
+#cm{position:fixed;inset:0;background:rgba(10,37,64,.7);z-index:9800;
+display:flex;align-items:center;justify-content:center;padding:16px}
+.cm-c{background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-radius:18px;width:100%;max-width:520px;height:75vh;
+display:flex;flex-direction:column;overflow:hidden}
+.cm-h{padding:12px 16px;background:linear-gradient(135deg,#0a2540,#123c68);color:#fff;
+display:flex;justify-content:space-between;align-items:center;font-weight:800}
+.cm-m{flex:1;overflow-y:auto;padding:14px;background:rgba(244,247,251,0.5);display:flex;
+flex-direction:column;gap:6px}
+.cm-i{padding:10px;border-top:1px solid #e2e9f2;display:flex;gap:6px}
+.mg{max-width:78%;padding:9px 13px;border-radius:14px;font-size:.9rem;word-wrap:break-word}
+.mg.me{background:linear-gradient(135deg,#236eaa,#123c68);color:#fff;align-self:flex-end}
+.mg.th{background:#fff;border:1px solid #e2e9f2;align-self:flex-start}
 
-nav button{
- background:transparent;
- border:1px solid var(--border);
- color:var(--muted);
- border-radius:999px;
- padding:9px 18px;
- font-size:14px;
- box-shadow:none;
-}
-nav button:hover{color:#fff;border-color:rgba(16,185,129,.55);background:rgba(16,185,129,.08)}
-nav button.active{
- background:linear-gradient(135deg,var(--emerald),var(--cyan));
- color:#04140f;
- border-color:transparent;
- box-shadow:0 10px 26px rgba(16,185,129,.38);
-}
-
-.notice{
- max-width:1100px;
- margin:20px auto 0;
- padding:15px 22px;
- text-align:center;
- font-weight:800;
- font-size:14px;
- color:#d5f7ea;
- border-radius:18px;
- background:linear-gradient(135deg, rgba(16,185,129,.15), rgba(34,211,238,.07));
- border:1px solid rgba(16,185,129,.30);
- backdrop-filter:blur(10px);
-}
-
-.hero{
- position:relative;
- overflow:hidden;
- min-height:540px;
- display:flex;
- align-items:center;
- justify-content:center;
- text-align:center;
- padding:70px 18px;
- background:
-  radial-gradient(820px 420px at 50% -6%, rgba(16,185,129,.34), transparent 70%),
-  linear-gradient(180deg, rgba(7,11,20,.72), rgba(7,11,20,.96)),
-  url('https://i.postimg.cc/NfXg1fcr/file-00000000d81c81f4bebc43a36fe37d0c.png') center/cover no-repeat;
-}
-.hero::after{
- content:"";
- position:absolute;
- inset:auto 0 0 0;
- height:120px;
- background:linear-gradient(180deg, transparent, var(--bg));
- pointer-events:none;
-}
-.hero h1{
- margin:16px 0 4px;
- font-size:clamp(34px,7vw,66px);
- font-weight:900;
- letter-spacing:-1px;
- line-height:1.25;
- background:linear-gradient(120deg,#ffffff,#a7f3d0 45%,#67e8f9);
- -webkit-background-clip:text;
- background-clip:text;
- color:transparent;
- filter:drop-shadow(0 12px 40px rgba(16,185,129,.35));
-}
-.hero p{
- font-size:19px;
- color:#c7d6e8;
- margin:6px 0;
-}
-.party{
- display:inline-block;
- padding:8px 28px;
- border-radius:999px;
- font-weight:900;
- font-size:14px;
- letter-spacing:.6px;
- color:#a7f3d0;
- border:1px solid rgba(16,185,129,.45);
- background:rgba(16,185,129,.12);
- box-shadow:inset 0 0 34px rgba(16,185,129,.16);
-}
-
-.candidate-numbers{
- display:flex;
- justify-content:center;
- gap:16px;
- flex-wrap:wrap;
- margin:32px auto 14px;
-}
-.number-box{
- min-width:152px;
- padding:15px 22px;
- border-radius:20px;
- background:rgba(255,255,255,.06);
- border:1px solid var(--border);
- backdrop-filter:blur(12px);
- box-shadow:0 20px 44px rgba(0,0,0,.38);
- transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
-}
-.number-box:hover{
- transform:translateY(-6px);
- border-color:rgba(34,211,238,.55);
- box-shadow:0 26px 54px rgba(0,0,0,.5);
-}
-.number-box strong{
- display:block;
- font-size:46px;
- line-height:1.15;
- font-weight:900;
- background:linear-gradient(135deg,var(--amber),#ffe0a8);
- -webkit-background-clip:text;
- background-clip:text;
- color:transparent;
-}
-.number-box span{
- font-size:12.5px;
- font-weight:800;
- color:var(--muted);
-}
-
-.candidate-label{
- display:inline-block;
- margin-top:18px;
- padding:10px 24px;
- border-radius:999px;
- font-weight:900;
- font-size:14px;
- color:#24190e;
- background:linear-gradient(135deg,var(--amber),#ffd98a);
- box-shadow:0 14px 32px rgba(245,181,68,.30);
-}
-
-.container{
- max-width:1100px;
- margin:auto;
- padding:30px 18px 10px;
-}
-
-section{
- position:relative;
- margin:28px 0;
- padding:30px;
- border-radius:26px;
- background:linear-gradient(160deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
- border:1px solid var(--border);
- backdrop-filter:blur(16px);
- -webkit-backdrop-filter:blur(16px);
- box-shadow:0 26px 64px rgba(0,0,0,.38);
- scroll-margin-top:110px;
-}
-
-h2{
- display:flex;
- align-items:center;
- gap:13px;
- margin:0 0 24px;
- font-size:clamp(22px,3.4vw,30px);
- font-weight:900;
- color:#f2f8ff;
-}
-h2::before{
- content:"";
- width:6px;
- height:30px;
- border-radius:6px;
- background:linear-gradient(180deg,var(--emerald),var(--cyan));
- box-shadow:0 0 20px rgba(16,185,129,.65);
-}
-
-.profile{
- display:grid;
- grid-template-columns:250px 1fr;
- gap:30px;
- align-items:center;
-}
-.profile img{
- width:100%;
- border-radius:24px;
- padding:6px;
- background:rgba(255,255,255,.05);
- border:1px solid rgba(255,255,255,.13);
- box-shadow:0 22px 50px rgba(0,0,0,.5);
-}
-.info{line-height:2.1;color:#cfdaea}
-.info h3{color:#a7f3d0;font-size:22px;margin:0 0 12px}
-.profile-number{
- display:inline-block;
- margin:6px 0;
- padding:8px 17px;
- border-radius:12px;
- font-weight:900;
- font-size:14px;
- color:#a7f3d0;
- background:rgba(16,185,129,.12);
- border:1px solid rgba(16,185,129,.32);
-}
-
-.cards{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
- gap:16px;
-}
-.card{
- padding:24px 18px;
- text-align:center;
- line-height:1.9;
- border-radius:18px;
- background:linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.015));
- border:1px solid var(--border);
- transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease, background .3s ease;
-}
-.card:hover{
- transform:translateY(-6px);
- border-color:rgba(34,211,238,.45);
- background:linear-gradient(160deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
- box-shadow:0 20px 44px rgba(0,0,0,.45);
-}
-.card h3{color:#eaf6ff;margin:12px 0 6px;font-size:18px}
-.card p{color:#b9c8db;margin:0}
-.symbol{
- font-size:32px;
- display:inline-block;
- filter:drop-shadow(0 8px 16px rgba(16,185,129,.5));
-}
-
-.program-intro{
- padding:22px;
- margin-bottom:22px;
- text-align:center;
- font-weight:800;
- font-size:15px;
- color:#d8f6ea;
- border-radius:18px;
- background:linear-gradient(135deg, rgba(16,185,129,.15), rgba(34,211,238,.07));
- border:1px solid rgba(16,185,129,.32);
-}
-.program-card{
- position:relative;
- padding:20px 22px;
- margin:14px 0;
- border-radius:18px;
- background:rgba(255,255,255,.035);
- border:1px solid var(--border);
- border-right:3px solid rgba(16,185,129,.55);
- transition:background .3s ease, border-color .3s ease, transform .3s ease;
-}
-.program-card:hover{
- background:rgba(255,255,255,.062);
- border-right-color:var(--cyan);
- transform:translateX(-4px);
-}
-.program-card h3{
- color:#a7f3d0;
- font-size:18px;
- margin:0 0 10px;
-}
-.program-card ul{padding-right:20px;margin:0}
-.program-card li{margin:7px 0;color:#c6d3e4}
-.program-card li::marker{color:var(--emerald)}
-
-.commitment{
- margin-top:26px;
- padding:30px 22px;
- border-radius:22px;
- text-align:center;
- line-height:2.15;
- color:#dbe7f5;
- background:
-  radial-gradient(520px 250px at 50% 0%, rgba(245,181,68,.17), transparent 72%),
-  linear-gradient(160deg,#0d1526,#0a101c);
- border:1px solid rgba(245,181,68,.30);
- box-shadow:0 26px 64px rgba(0,0,0,.5);
-}
-.commitment h3{color:var(--amber);font-size:22px;margin:0 0 14px}
-.commitment strong{color:#ffe0a8}
-
-.section-note{
- margin-top:18px;
- text-align:center;
- font-size:13px;
- color:var(--muted);
-}
-
-input,textarea{
- font-family:inherit;
- width:100%;
- margin:8px 0;
- padding:12px 15px;
- font-size:15px;
- color:var(--text);
- border-radius:12px;
- border:1px solid var(--border);
- background:rgba(255,255,255,.05);
- transition:border-color .25s ease, box-shadow .25s ease, background .25s ease;
-}
-input::placeholder,textarea::placeholder{color:#7b8aa3}
-input:focus,textarea:focus{
- outline:none;
- border-color:rgba(16,185,129,.65);
- background:rgba(255,255,255,.08);
- box-shadow:0 0 0 4px rgba(16,185,129,.13);
-}
-textarea{min-height:92px;resize:vertical}
-
-.comment,.adminItem{
- padding:16px 18px;
- margin:12px 0;
- border-radius:14px;
- line-height:1.95;
- color:#d3dfee;
- background:rgba(255,255,255,.04);
- border:1px solid var(--border);
- border-right:3px solid rgba(16,185,129,.6);
-}
-.comment p,.adminItem p{margin:6px 0}
-.reply{
- margin:12px 16px 0;
- padding:12px 15px;
- border-radius:12px;
- color:#bdf1ff;
- background:rgba(34,211,238,.09);
- border:1px dashed rgba(34,211,238,.38);
-}
-
-.status{
- margin:12px 0;
- min-height:20px;
- font-size:14px;
- font-weight:800;
-}
-
-.panel{
- margin-top:18px;
- padding:20px;
- border-radius:20px;
- background:rgba(255,255,255,.035);
- border:1px solid var(--border);
-}
-.adminNav{
- display:flex;
- gap:9px;
- flex-wrap:wrap;
- margin:18px 0;
-}
-.adminNav button{
- padding:9px 17px;
- font-size:14px;
- border-radius:999px;
- color:var(--text);
- background:rgba(255,255,255,.06);
- border:1px solid var(--border);
- box-shadow:none;
-}
-.adminNav button:hover{
- background:rgba(16,185,129,.14);
- border-color:rgba(16,185,129,.5);
-}
-
-.stat{
- padding:22px 16px;
- border-radius:16px;
- text-align:center;
- background:linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
- border:1px solid var(--border);
-}
-.stat strong{
- display:block;
- font-size:30px;
- font-weight:900;
- background:linear-gradient(135deg,var(--emerald),var(--cyan));
- -webkit-background-clip:text;
- background-clip:text;
- color:transparent;
-}
-
-.danger{background:linear-gradient(135deg,#ef5350,#b3202a);color:#fff;box-shadow:0 10px 26px rgba(239,83,80,.25)}
-.green{background:linear-gradient(135deg,#10b981,#059669);color:#04140f;box-shadow:0 10px 26px rgba(16,185,129,.25)}
-.small{font-size:12.5px;color:var(--muted)}
-.hidden{display:none!important}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-
-#likeBtn{
- background:linear-gradient(135deg,var(--amber),#ffd98a);
- color:#24190e;
- box-shadow:0 12px 30px rgba(245,181,68,.28);
-}
+.sct{position:fixed;bottom:12px;left:12px;z-index:9000;width:34px;height:34px;
+border-radius:50%;background:rgba(10,37,64,.75);color:#fff;font-size:.95rem;
+display:flex;align-items:center;justify-content:center;opacity:.4;transition:.3s;cursor:pointer}
+.sct:hover{opacity:1}
+#smod{position:fixed;inset:0;background:rgba(10,37,64,.85);z-index:9950;
+display:flex;align-items:center;justify-content:center;padding:16px}
+#smod>div{background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-radius:18px;padding:26px 22px;width:100%;
+max-width:400px;text-align:center}
+#smod h2{color:#0a2540;margin-bottom:12px;font-size:1.2rem}
+.sc-in{font-family:monospace;font-size:1.4rem;letter-spacing:6px;text-align:center;
+padding:12px;border:2px solid #e2e9f2;border-radius:12px}
 
 footer{
- margin-top:56px;
- padding:38px 20px;
- text-align:center;
- line-height:2.1;
- font-size:14px;
- color:var(--muted);
- border-top:1px solid var(--border);
- background:linear-gradient(180deg, transparent, rgba(16,185,129,.07));
+  text-align:center;color:#fff;font-weight: bold; padding:24px 16px;font-size:.82rem;
+  margin-top:24px; backdrop-filter: blur(10px); 
+  background: rgba(10, 37, 64, 0.6); 
+  border-top: 1px solid rgba(255,255,255,0.2);
 }
-footer p{margin:4px 0}
-footer p:first-child{color:#a7f3d0;font-weight:900;font-size:16px}
 
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
-.reveal.visible{opacity:1;transform:none}
-
-@media(max-width:650px){
- .profile{grid-template-columns:1fr}
- .profile img{max-width:250px;display:block;margin:auto}
- .hero{min-height:430px;padding:50px 15px}
- section{padding:20px}
- .number-box{min-width:126px;padding:12px 16px}
- .number-box strong{font-size:38px}
- header{font-size:17px;padding:13px 16px}
- .brand-name{font-size:12.5px}
+@media(max-width:600px){
+.bg{grid-template-columns:1fr}
+.nav{grid-template-columns:repeat(3,1fr)}
+.ai-fns{grid-template-columns:repeat(2,1fr)}
+.sp2-title{font-size:2.2rem;letter-spacing:5px}
+.sp2-logo{width:140px;height:140px;font-size:3rem}
 }
 </style>
-</head>
 
-<body>
+</head>  
+<body>  
+<!-- Splash 1 -->  
+<div id="sp1" class="hid">  
+  <div class="sp1-ic">📚</div>  
+  <div class="sp1-t">نادر</div>  
+  <div class="sp1-s">سوق الكتب النادرة</div>  
+  <div class="sp1-sup">  
+    <span class="l">إعداد طلبة د. ريحانة</span>  
+    <span class="l a">ق. ملاك</span>  
+  </div>  
+  <div class="mq"><div class="mq-t">✨ جامعة أفلو ✨</div></div>  
+  <div class="pb"><div></div></div>  
+  <button id="sp1b" class="sp1-b">دخول ←</button>  
+</div>  
 
-<header>
- <div class="brand">
-  <span class="brand-mark">ص</span>
-  <span>اعرف مترشحك</span>
- </div>
- <span class="brand-name">براهيمي يوسف</span>
-</header>
+<!-- Splash 2 -->  
+<div id="sp2" class="hid">  
+  <div class="sp2-logo">ن</div>  
+  <div class="sp2-title">نادر</div>  
+  <div class="sp2-sub">منصة الكتب</div>  
+  <div class="sp2-crew">  
+    <div class="member">دناقة ريحانة <span class="role">— طالبة</span></div>  
+    <div class="member">قرقيط فتيحة <span class="role">— طالبة</span></div>  
+    <div class="supervisor">تحت إشراف د. أحمد دناقة</div>  
+  </div>  
+  <div class="sp2-enter">👆 انقر في أي مكان للدخول</div>  
+  <div class="sp2-credit">برمجة وتطوير: <b>براهيمي يوسف</b></div>  
+</div>  
 
-<nav id="mainNav">
- <button class="active" data-target="home">الرئيسية</button>
- <button data-target="profile">التعريف</button>
- <button data-target="experience">المسار المهني</button>
- <button data-target="education">الشهادات</button>
- <button data-target="program">برنامج العمل</button>
- <button data-target="comments">التعليقات</button>
-</nav>
+<header class="top">  
+  <div class="top-in">  
+    <div class="brand">📚 نادر <small>سوق الكتب النادرة</small></div>  
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">  
+      <div id="ails" class="ai-lights"></div>  
+      <div id="hu" class="hid" style="display:flex;gap:8px;align-items:center;  
+        padding:5px 5px 5px 12px;border-radius:50px;background:rgba(255,255,255,.08);  
+        border:1px solid rgba(255,255,255,.15)">  
+        <span id="ul" style="font-size:.85rem;font-weight:600"></span>  
+        <button id="lo" class="sec" style="padding:5px 10px;font-size:.78rem">خروج</button>  
+      </div>  
+    </div>  
+  </div>  
+</header>  
 
-<div class="notice">
- هذا الموقع للتعريف بالمترشح ومساره المهني والتكويني وطرح تصوره للعمل التمثيلي والرقابي.
+<main class="wrap">  
+<section id="ap" class="auth">  
+  <div class="auth-c">  
+    <div class="auth-h"><div class="i">📚</div><h1>مرحبًا بك في نادر</h1></div>  
+    <div id="am" class="msg hid"></div>  
+    <div class="tabs">  
+      <button id="lt" class="active">دخول</button>  
+      <button id="rt">حساب جديد</button>  
+    </div>  
+    <form id="lf">  
+      <label>البريد الإلكتروني</label><input id="le" type="email" required>  
+      <label>كلمة المرور</label><input id="lp" type="password" required>  
+      <button style="width:100%;margin-top:14px;padding:12px" type="submit" id="ls">دخول</button>  
+    </form>  
+    <form id="rf" class="hid">  
+      <label>الاسم</label><input id="rn" required>  
+      <label>البريد الإلكتروني</label><input id="re" type="email" required>  
+      <label>كلمة المرور (4+)</label><input id="rp" type="password" minlength="4" required>  
+      <button style="width:100%;margin-top:14px;padding:12px" type="submit" id="rs">إنشاء</button>  
+    </form>  
+  </div>  
+</section>  
+
+<section id="pp" class="hid">  
+  <div id="gm" class="msg hid"></div>  
+
+  <div class="pan spl">  
+    <div><h1 class="tit">سوق الكتب</h1><div class="mut">اختر من الأزرار</div></div>  
+    <span id="fbs" class="mut">…</span>  
+  </div>  
+
+  <nav class="nav">  
+    <button class="active nav-btn" data-p="s"><span class="e">🔎</span>بحث</button>  
+    <button data-p="v" class="nav-btn"><span class="e">📚</span>الخزانة</button>  
+    <button data-p="sl" class="nav-btn"><span class="e">🏷️</span>نشر</button>  
+    <button data-p="w" class="nav-btn"><span class="e">📝</span>طلبات</button>  
+    <button data-p="u" class="nav-btn"><span class="e">👥</span>المستخدمون</button>  
+    <button data-p="n" class="nav-btn" id="notifBtn">  
+      <span class="e">🔔</span>إشعارات  
+      <span id="notifBadge" class="badge hid">0</span>  
+    </button>  
+    <button data-p="m" class="nav-btn" id="msgBtn">  
+      <span class="e">💬</span>الرسائل  
+      <span id="msgBadge" class="badge hid">0</span>  
+    </button>  
+    <button data-p="pr" class="nav-btn" id="permBtn">  
+      <span class="e">🔒</span>طلبات شراء  
+      <span id="permBadge" class="badge hid">0</span>  
+    </button>  
+  </nav>  
+
+  <section id="pg-s" class="page pan">  
+    <h2 class="tit">🔎 البحث</h2>  
+    <div class="top-search">  
+      <form class="tb" id="sf">  
+        <input id="sq" placeholder="🔎 كتب الزبائن" style="flex:1">  
+        <button type="submit">بحث</button>  
+      </form>  
+      <form class="tb" id="gf">  
+        <input id="gq" placeholder="📖 Google Books" required style="flex:1">  
+        <button type="submit">بحث</button>  
+      </form>  
+      <form class="tb" id="ffSearch">  
+        <input id="fq" placeholder="🌐 كتب مجانية" required style="flex:1">  
+        <button type="submit">بحث</button>  
+      </form>  
+      <form class="tb" id="libSearch">  
+        <input id="libQ" placeholder="📚 بحث في مكتبتي" required style="flex:1">  
+        <button type="submit">فتح</button>  
+      </form>  
+    </div>  
+    <div id="sr" class="bg"></div>  
+    <div id="gr" class="bg"></div>  
+    <div id="fr" class="bg"></div>  
+  </section>  
+
+  <section id="pg-v" class="page pan hid">  
+    <div class="spl"><h2 class="tit">📚 الخزانة</h2>  
+      <button id="rv" class="sec">🔄</button></div>  
+    <div id="vr" class="bg"></div>  
+  </section>  
+
+  <section id="pg-sl" class="page pan hid">  
+    <h2 class="tit">🏷️ نشر كتاب</h2>  
+    <div id="upMsg" class="msg hid"></div>  
+    <form id="sf2" style="margin-top:12px">  
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">  
+        <div><label>العنوان *</label><input name="title" required></div>  
+        <div><label>المؤلف</label><input name="author"></div>  
+        <div><label>النوع</label>  
+          <select name="type"><option>مشاركة</option><option>تبرع</option>  
+            <option>تبادل</option><option>بيع</option></select></div>  
+        <div><label>السعر</label><input name="price" type="number" value="0" min="0"></div>  
+        <div><label>الحالة</label>  
+          <select name="condition"><option>جديد</option><option selected>جيد</option>  
+            <option>مقبول</option><option>قديم ونادر</option></select></div>  
+        <div><label>التصنيف</label>  
+          <select name="category"><option>كتب عربية</option><option>جامعية</option>  
+            <option>أدب وروايات</option><option>تاريخ</option><option>علوم</option>  
+            <option>أخرى</option></select></div>  
+        <div><label>المكان</label><input name="location"></div>  
+        <div><label>التواصل</label><input name="contact"></div>  
+        <div><label>رابط الغلاف</label><input name="cover_url" type="url"></div>  
+        <div><label>ملف الكتاب (حتى 100MB)</label>  
+          <input name="file" type="file"  
+            accept=".pdf,.epub,.txt,.docx,.jpg,.jpeg,.png,.webp"></div>  
+      </div>  
+      <label>الوصف</label>  
+      <textarea name="description" maxlength="3000"></textarea>  
+      <button type="submit" style="margin-top:10px;padding:11px 20px"  
+        id="submitBook">📤 نشر الكتاب</button>  
+    </form>  
+  </section>  
+
+  <section id="pg-w" class="page pan hid">  
+    <h2 class="tit">📝 طلبات الكتب</h2>  
+    <p class="mut">اطلب كتاباً لم تجده — سيصلك إشعار عند توفره</p>  
+    <form id="wf" style="margin-top:12px">  
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">  
+        <div><label>العنوان *</label><input name="title" required></div>  
+        <div><label>المؤلف</label><input name="author"></div>  
+      </div>  
+      <button type="submit" style="margin-top:10px;padding:11px 20px">📝 اطلب</button>  
+    </form>  
+    <hr style="margin:20px 0;border:0;border-top:1px solid rgba(255,255,255,0.5)">  
+    <div class="spl"><h3 style="color:#0a2540;font-size:1rem">الطلبات الحالية</h3>  
+      <button id="rw" class="sec">🔄</button></div>  
+    <div id="wr" style="margin-top:10px"></div>  
+  </section>  
+
+  <section id="pg-u" class="page pan hid">  
+    <div class="spl"><div><h2 class="tit">👥 المستخدمون</h2>  
+      <p class="mut" id="ut">—</p></div>  
+      <button id="ru" class="sec">🔄</button></div>  
+    <div id="ur" style="margin-top:10px"></div>  
+  </section>  
+
+  <section id="pg-n" class="page pan hid">  
+    <div class="spl"><h2 class="tit">🔔 الإشعارات</h2>  
+      <button id="rn" class="sec">🔄</button></div>  
+    <div id="nr" style="margin-top:10px"></div>  
+  </section>  
+
+  <section id="pg-m" class="page pan hid">  
+    <div class="spl"><h2 class="tit">💬 الرسائل</h2>  
+      <button id="rc" class="sec">🔄</button></div>  
+    <div id="cr" style="margin-top:10px"></div>  
+  </section>  
+
+  <section id="pg-pr" class="page pan hid">  
+    <div class="spl"><h2 class="tit">🔒 طلبات شراء كتبي</h2>  
+      <button id="rpr" class="sec">🔄</button></div>  
+    <div id="prr" style="margin-top:10px"></div>  
+  </section>  
+</section>  
+</main>  
+
+<footer>نادر | سوق الكتب</footer>  
+
+<div id="cm" class="hid">  
+  <div class="cm-c">  
+    <div class="cm-h">  
+      <span id="ct">محادثة</span>  
+      <button id="cc" style="background:transparent;color:#fff;font-size:1.3rem;padding:0 6px">✕</button>  
+    </div>  
+    <div id="cmm" class="cm-m"></div>  
+    <div class="cm-i">  
+      <input id="ci" placeholder="اكتب..." style="flex:1">  
+      <button id="cs">إرسال</button>  
+    </div>  
+  </div>  
+</div>  
+
+<div class="sct" id="sct">⚙️</div>  
+<div id="smod" class="hid">  
+  <div>  
+    <h2>🔐 الإعدادات</h2>  
+    <input id="sc" class="sc-in" type="password" maxlength="6" placeholder="••••••">  
+    <button id="ss2" style="width:100%;margin-top:12px;padding:11px">دخول</button>  
+    <button id="scl" class="sec" style="width:100%;margin-top:6px;padding:9px">إلغاء</button>  
+    <div id="smg" class="mut" style="margin-top:10px;font-size:.8rem"></div>  
+  </div>  
+</div>  
+
+<script>  
+const $ = s => document.querySelector(s);  
+const $$ = s => [...document.querySelectorAll(s)];  
+const esc = s => String(s ?? '').replace(/[&<>"']/g,  
+  c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));  
+  
+let ME = null, CID = null;  
+let timerUnread = null, timerNotif = null, timerPerm = null;  
+  
+function toast(t, err) {  
+  const d = document.createElement('div');  
+  d.textContent = t;  
+  d.style.cssText = `position:fixed;bottom:20px;left:50%;transform:translateX(-50%);  
+    background:${err?'#b3261e':'#0a2540'};color:#fff;padding:10px 20px;border-radius:99px;  
+    font-weight:700;z-index:99999;box-shadow:0 10px 25px rgba(0,0,0,.3);font-size:.88rem`;  
+  document.body.appendChild(d);  
+  setTimeout(() => d.remove(), 2800);  
+}  
+  
+async function api(url, o = {}) {  
+  const opt = { credentials: 'same-origin', ...o };  
+  if (opt.body && !(opt.body instanceof FormData) && typeof opt.body !== 'string') {  
+    opt.headers = { ...(opt.headers || {}), 'Content-Type': 'application/json' };  
+    opt.body = JSON.stringify(opt.body);  
+  }  
+  const res = await fetch(url, opt);  
+  let d = {};  
+  try { d = await res.json(); } catch {}  
+  if (!res.ok || d.ok === false) throw new Error(d.error || `خطأ ${res.status}`);  
+  return d;  
+}  
+  
+async function loadLights() {  
+  try {  
+    const d = await api('/api/ai/light');  
+    $('#ails').innerHTML = (d.providers || []).map(p => `  
+      <div class="ai-l ${p.ok ? 'on' : 'off'}"><i></i> ${esc(p.name)}</div>  
+    `).join('');  
+  } catch {}  
+}  
+  
+async function refreshUnread() {  
+  try {  
+    const d = await api('/api/messages/unread');  
+    const b = $('#msgBadge');  
+    if (d.total > 0) { b.textContent = d.total > 99 ? '99+' : d.total; b.classList.remove('hid'); }  
+    else b.classList.add('hid');  
+  } catch {}  
+}  
+  
+async function refreshNotif() {  
+  try {  
+    const d = await api('/api/notifications');  
+    const b = $('#notifBadge');  
+    if (d.unread > 0) { b.textContent = d.unread > 99 ? '99+' : d.unread; b.classList.remove('hid'); }  
+    else b.classList.add('hid');  
+  } catch {}  
+}  
+  
+async function refreshPerm() {  
+  try {  
+    const d = await api('/api/permission-requests');  
+    const pending = (d.items || []).filter(r => r.status === 'pending').length;  
+    const b = $('#permBadge');  
+    if (pending > 0) { b.textContent = pending; b.classList.remove('hid'); }  
+    else b.classList.add('hid');  
+  } catch {}  
+}  
+  
+function showAuth(reg = false) {  
+  $('#ap').classList.remove('hid');  
+  $('#pp').classList.add('hid');  
+  $('#hu').classList.add('hid');  
+  $('#sp1').classList.add('hid');  
+  $('#sp2').classList.add('hid');  
+  $('#lf').classList.toggle('hid', reg);  
+  $('#rf').classList.toggle('hid', !reg);  
+  $('#lt').className = reg ? '' : 'active';  
+  $('#rt').className = reg ? 'active' : '';  
+  $('#am').classList.add('hid');  
+  clearTimers();  
+}  
+  
+function clearTimers() {  
+  [timerUnread, timerNotif, timerPerm].forEach(t => { if (t) clearInterval(t); });  
+  timerUnread = timerNotif = timerPerm = null;  
+}  
+  
+function splash1(user) {  
+  const sp = $('#sp1');  
+  sp.classList.remove('hid');  
+  const bar = sp.querySelector('.pb > div');  
+  const track = sp.querySelector('.mq-t');  
+  [bar, track].forEach(el => { if (el) { el.style.animation = 'none'; void el.offsetHeight; el.style.animation = ''; } });  
+  let done = false;  
+  const go = () => { if (done) return; done = true; sp.classList.add('hid'); splash2(user); };  
+  $('#sp1b').onclick = go;  
+  setTimeout(go, 5500);  
+}  
+  
+function splash2(user) {  
+  const sp = $('#sp2');  
+  sp.classList.remove('hid');  
+  let done = false;  
+  const go = () => { if (done) return; done = true; sp.classList.add('hid'); showApp(user); };  
+  sp.onclick = go;  
+}  
+  
+function showApp(user) {  
+  ME = user;  
+  $('#ap').classList.add('hid');  
+  $('#pp').classList.remove('hid');  
+  $('#hu').classList.remove('hid');  
+  const num = user.number ? `<span style="width:26px;height:26px;border-radius:50%;  
+    background:linear-gradient(135deg,#d4a017,#f5c542);color:#000;display:inline-flex;  
+    align-items:center;justify-content:center;font-weight:900;font-size:.78rem">  
+    ${user.number}</span>` : '';  
+  $('#ul').innerHTML = `${num} <b>${esc(user.name || user.email)}</b>`;  
+  init();  
+}  
+  
+function app(user) { splash1(user); }  
+  
+function page(n) {  
+  $$('.page').forEach(p => p.classList.add('hid'));  
+  const t = $('#pg-' + n);  
+  if (t) t.classList.remove('hid');  
+  $$('.nav button').forEach(b => b.classList.toggle('active', b.dataset.p === n));  
+  if (n === 'v') loadB('#vr');  
+  if (n === 'u') loadU();  
+  if (n === 'm') loadC();  
+  if (n === 'w') loadW();  
+  if (n === 'n') loadNotif();  
+  if (n === 'pr') loadPerms();  
+}  
+  
+$('#lt').onclick = () => showAuth(false);  
+$('#rt').onclick = () => showAuth(true);  
+$$('.nav button').forEach(b => b.onclick = () => page(b.dataset.p));  
+  
+$('#lf').addEventListener('submit', async e => {  
+  e.preventDefault();  
+  const b = $('#ls'); b.disabled = true; b.textContent = '…';  
+  try {  
+    const d = await api('/api/login', { method: 'POST',  
+      body: { email: $('#le').value, password: $('#lp').value }});  
+    app(d.user);  
+  } catch (err) {  
+    $('#am').textContent = err.message;  
+    $('#am').classList.remove('hid');  
+    b.disabled = false; b.textContent = 'دخول';  
+  }  
+});  
+  
+$('#rf').addEventListener('submit', async e => {  
+  e.preventDefault();  
+  const b = $('#rs'); b.disabled = true; b.textContent = '…';  
+  try {  
+    const d = await api('/api/register', { method: 'POST',  
+      body: { name: $('#rn').value, email: $('#re').value, password: $('#rp').value }});  
+    app(d.user);  
+  } catch (err) {  
+    $('#am').textContent = err.message;  
+    $('#am').classList.remove('hid');  
+    b.disabled = false; b.textContent = 'إنشاء';  
+  }  
+});  
+  
+$('#lo').onclick = async () => {  
+  if (!confirm('خروج؟')) return;  
+  try { await api('/api/logout', { method: 'POST' }); } catch {}  
+  ME = null;  
+  showAuth(false);  
+};  
+  
+// ============ Book Card ============  
+function card(b, google = false, free = false) {  
+  const title = esc(b.title || 'بدون عنوان');  
+  const author = esc(google ? (b.authors || []).join('، ') : (b.author || b.authors || ''));  
+  const img = google || free ? (b.thumbnail || '') : (b.cover_url || '');  
+  const bid = b.id || '';  
+  const type = esc(b.type || (google ? 'Google Books' : free ? 'مجاني' : 'عرض'));  
+  const uid = 'bk-' + Math.random().toString(36).slice(2, 9);  
+  const isLocked = !google && !free && b.needs_permission;  
+  
+  const bookData = JSON.stringify({  
+    id: bid, title: b.title || '',  
+    author: google ? (b.authors || []).join(', ') : (b.author || b.authors || ''),  
+    description: b.description || '',  
+  });  
+  
+  let actions = '';  
+  
+  function dlUrl(url) {  
+    if (!url) return '';  
+    if (url.includes("cloudinary.com") && url.includes("/upload/")) {  
+      return url.replace("/upload/", "/upload/fl_attachment/");  
+    }  
+    return url;  
+  }  
+  
+  if (google) {  
+    if (b.previewLink) actions += `<a href="${esc(b.previewLink)}" target="_blank" rel="noopener"><button class="sec" style="font-size:.72rem;padding:5px 10px">👁️ معاينة</button></a>`;  
+    if (b.pdfDownloadLink) actions += `<a href="${esc(b.pdfDownloadLink)}" target="_blank" rel="noopener"><button class="gold" style="font-size:.72rem;padding:5px 10px">⬇️ PDF</button></a>`;  
+    else if (b.epubDownloadLink) actions += `<a href="${esc(b.epubDownloadLink)}" target="_blank" rel="noopener"><button class="gold" style="font-size:.72rem;padding:5px 10px">⬇️ EPUB</button></a>`;  
+    if (b.infoLink) actions += `<a href="${esc(b.infoLink)}" target="_blank" rel="noopener"><button class="sec" style="font-size:.72rem;padding:5px 10px">📖 صفحة</button></a>`;  
+    actions += `<button class="sec" style="font-size:.72rem;padding:5px 10px"  
+      onclick="searchLib('${encodeURIComponent(b.title || '')}')">📚 مكتبتي</button>`;  
+  } else if (free) {  
+    if (b.pdf_url) actions += `<a href="${esc(dlUrl(b.pdf_url))}" target="_blank" rel="noopener" download><button class="gold" style="font-size:.72rem;padding:5px 10px">⬇️ PDF</button></a>`;  
+    if (b.epub_url) actions += `<a href="${esc(dlUrl(b.epub_url))}" target="_blank" rel="noopener" download><button class="gold" style="font-size:.72rem;padding:5px 10px">⬇️ EPUB</button></a>`;  
+    if (b.read_url) actions += `<a href="${esc(b.read_url)}" target="_blank" rel="noopener"><button class="sec" style="font-size:.72rem;padding:5px 10px">👁️ قراءة</button></a>`;  
+    actions += `<button class="sec" style="font-size:.72rem;padding:5px 10px"  
+      onclick="searchLib('${encodeURIComponent(b.title || '')}')">📚 مكتبتي</button>`;  
+  } else {  
+    if (b.file_url) {  
+      const downloadLink = dlUrl(b.file_url);  
+      actions += `<a href="${esc(downloadLink)}" target="_blank" rel="noopener" download><button class="gold" style="font-size:.72rem;padding:5px 10px">⬇️ تنزيل</button></a>`;  
+      actions += `<a href="${esc(b.file_url)}" target="_blank" rel="noopener"><button class="sec" style="font-size:.72rem;padding:5px 10px">👁️ قراءة</button></a>`;  
+    } else if (isLocked) {  
+      actions += `<button class="gold" style="font-size:.72rem;padding:5px 10px"  
+        onclick="requestBook('${bid}')">🔒 اطلب من المالك</button>`;  
+    }  
+    if (b.owner_id && b.owner_id !== ME?.id) {  
+      actions += `<button class="sec" style="font-size:.72rem;padding:5px 10px"  
+        onclick="contact('${b.owner_id}','${esc(b.owner_name || '')}')">✉️ تواصل</button>`;  
+    }  
+    actions += `<button class="sec" style="font-size:.72rem;padding:5px 10px"  
+      onclick="searchLib('${encodeURIComponent(b.title || '')}')">📚 مكتبتي</button>`;  
+  }  
+  
+  return `<article class="bk" id="${uid}">  
+    <div class="bk-head">  
+      <div class="bk-img">  
+        ${img ? `<img loading="lazy" src="${esc(img)}" onerror="this.style.display='none'">` : '📖'}  
+      </div>  
+      <div class="bk-info">  
+        <h3>${title}</h3>  
+        <small>${author}</small>  
+        <span class="bk-tag ${isLocked ? 'bk-lock' : ''}">${isLocked ? '🔒 ' + type : type}</span>  
+      </div>  
+    </div>  
+    ${actions ? `<div class="bk-actions">${actions}</div>` : ''}  
+    <div class="bk-ai">  
+      <button class="bk-ai-btn" onclick="toggleAI('${uid}')">🤖 المساعد</button>  
+      <div class="bk-ai-panel hid" data-panel>  
+        <div class="ai-fns">  
+          <div class="ai-fn" onclick="runAI('${uid}','${encodeURIComponent(bookData)}','summarize')"><span class="e">📝</span>لخّص</div>  
+          <div class="ai-fn" onclick="runAI('${uid}','${encodeURIComponent(bookData)}','digest')"><span class="e">📋</span>حوصلة</div>  
+          <div class="ai-fn" onclick="runAI('${uid}','${encodeURIComponent(bookData)}','ideas')"><span class="e">💡</span>أفكار</div>  
+          <div class="ai-fn" onclick="runAI('${uid}','${encodeURIComponent(bookData)}','explain')"><span class="e">🔍</span>اشرح</div>  
+          <div class="ai-fn" onclick="runAI('${uid}','${encodeURIComponent(bookData)}','translate')"><span class="e">🌐</span>ترجم</div>  
+          <div class="ai-fn" onclick="askAI('${uid}','${encodeURIComponent(bookData)}')"><span class="e">❓</span>اسأل</div>  
+        </div>  
+        <div data-result></div>  
+      </div>  
+    </div>  
+  </article>`;  
+}  
+  
+function searchLib(title) {  
+  const q = decodeURIComponent(title);  
+  if (!q) return;  
+  window.open(`https://maktbapdf.com/?s=${encodeURIComponent(q)}`, '_blank', 'noopener');  
+  toast('📚 جارٍ البحث...');  
+}  
+  
+async function requestBook(bid) {  
+  if (!confirm('سيتم إرسال طلبك للمالك. متابعة؟')) return;  
+  try {  
+    const d = await api('/api/books/' + bid + '/request', { method: 'POST' });  
+    toast('✅ ' + d.message);  
+  } catch (e) { toast(e.message, true); }  
+}  
+  
+function toggleAI(uid) {  
+  const card = document.getElementById(uid);  
+  if (!card) return;  
+  card.querySelector('[data-panel]').classList.toggle('hid');  
+}  
+  
+async function runAI(uid, bookEnc, fn) {  
+  const card = document.getElementById(uid);  
+  const result = card.querySelector('[data-result]');  
+  result.innerHTML = '<div class="ai-load">🤔 جارٍ التحليل…</div>';  
+  const book = JSON.parse(decodeURIComponent(bookEnc));  
+  try {  
+    const d = await api('/api/book/function', {  
+      method: 'POST',  
+      body: { function: fn, title: book.title, author: book.author,  
+              description: book.description, book_id: book.id }});  
+    const badge = d.from_file  
+      ? `<span class="badge2">📎 من الملف</span>`  
+      : `<span class="badge3">💡 عام</span>`;  
+    result.innerHTML = `  
+      <div class="ai-res">  
+        <div class="head"><span>${esc(book.title)}</span>  
+          ${badge}</div>  
+        <div>${esc(d.result)}</div>  
+        <div style="margin-top:8px;font-size:.7rem;color:#6b7c93">  
+          🎯 ${esc(d.provider)}</div>  
+      </div>`;  
+  } catch (e) {  
+    result.innerHTML = `<div class="ai-err">❌ ${esc(e.message)}</div>`;  
+  }  
+}  
+  
+async function askAI(uid, bookEnc) {  
+  const q = prompt('سؤالك:');  
+  if (!q) return;  
+  const card = document.getElementById(uid);  
+  const result = card.querySelector('[data-result]');  
+  result.innerHTML = '<div class="ai-load">🤔 جارٍ التفكير…</div>';  
+  const book = JSON.parse(decodeURIComponent(bookEnc));  
+  try {  
+    const d = await api('/api/book/function', {  
+      method: 'POST',  
+      body: { function: 'ask', title: book.title, author: book.author,  
+              description: book.description, book_id: book.id, question: q }});  
+    result.innerHTML = `  
+      <div class="ai-res">  
+        <div class="head"><span>❓ ${esc(q)}</span>  
+          <span class="badge2">${esc(d.provider)}</span></div>  
+        <div>${esc(d.result)}</div>  
+      </div>`;  
+  } catch (e) {  
+    result.innerHTML = `<div class="ai-err">❌ ${esc(e.message)}</div>`;  
+  }  
+}  
+  
+$('#sf').onsubmit = async e => {  
+  e.preventDefault();  
+  const t = $('#sr');  
+  $('#gr').innerHTML = ''; $('#fr').innerHTML = '';  
+  t.innerHTML = '<div class="em">جارٍ…</div>';  
+  try {  
+    const d = await api('/api/books?q=' + encodeURIComponent($('#sq').value));  
+    t.innerHTML = d.books.length ? d.books.map(b => card(b)).join('') : '<div class="em">لا نتائج</div>';  
+  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
+};  
+  
+$('#gf').onsubmit = async e => {  
+  e.preventDefault();  
+  const t = $('#gr');  
+  $('#sr').innerHTML = ''; $('#fr').innerHTML = '';  
+  t.innerHTML = '<div class="em">جارٍ…</div>';  
+  try {  
+    const d = await api('/api/google-books?q=' + encodeURIComponent($('#gq').value));  
+    t.innerHTML = d.items.length ? d.items.map(b => card(b, true, false)).join('') : '<div class="em">لا نتائج</div>';  
+  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
+};  
+  
+$('#ffSearch').onsubmit = async e => {  
+  e.preventDefault();  
+  const t = $('#fr');  
+  $('#sr').innerHTML = ''; $('#gr').innerHTML = '';  
+  t.innerHTML = '<div class="em">جارٍ…</div>';  
+  try {  
+    const d = await api('/api/search/free?q=' + encodeURIComponent($('#fq').value));  
+    let h = '';  
+    for (const [k, arr] of Object.entries(d.results || {})) {  
+      if (!arr.length) continue;  
+      h += `<h4 style="color:#0a2540;margin:12px 0 6px">${k} (${arr.length})</h4>`;  
+      h += `<div class="bg">${arr.map(g => card(g, false, true)).join('')}</div>`;  
+    }  
+    t.innerHTML = h || '<div class="em">لا نتائج</div>';  
+  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
+};  
+  
+$('#libSearch').onsubmit = e => {  
+  e.preventDefault();  
+  const q = $('#libQ').value.trim();  
+  if (!q) return;  
+  window.open(`https://maktbapdf.com/?s=${encodeURIComponent(q)}`, '_blank', 'noopener');  
+  toast('📚 جارٍ البحث...');  
+};  
+  
+async function loadB(target) {  
+  const t = typeof target === 'string' ? $(target) : target;  
+  t.innerHTML = '<div class="em">جارٍ…</div>';  
+  try {  
+    const d = await api('/api/books');  
+    t.innerHTML = d.books.length ? d.books.map(b => card(b)).join('') : '<div class="em">لا كتب</div>';  
+  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
+}  
+$('#rv').onclick = () => loadB('#vr');  
+  
+$('#sf2').onsubmit = async e => {  
+  e.preventDefault();  
+  const btn = $('#submitBook');  
+  const msg = $('#upMsg');  
+  msg.classList.add('hid');  
+  btn.disabled = true;  
+  btn.textContent = '⏳ جارٍ الرفع…';  
+  
+  const fd = new FormData(e.currentTarget);  
+  const fileInput = e.currentTarget.querySelector('input[name="file"]');  
+  const file = fileInput?.files?.[0];  
+  
+  if (file) {  
+    const sizeMB = (file.size / 1024 / 1024).toFixed(1);  
+    if (file.size > 100 * 1024 * 1024) {  
+      msg.className = 'msg err';  
+      msg.textContent = `❌ الملف ${sizeMB}MB — الحد 100MB`;  
+      msg.classList.remove('hid');  
+      btn.disabled = false; btn.textContent = '📤 نشر الكتاب';  
+      return;  
+    }  
+    btn.textContent = `⏳ رفع ${sizeMB}MB…`;  
+  }  
+  
+  try {  
+    const d = await api('/api/books', { method: 'POST', body: fd });  
+    msg.className = 'msg';  
+    msg.innerHTML = `✅ تم رفع "<b>${esc(d.book.title)}</b>" بنجاح<br>  
+      <small style="opacity:.8">${d.book.file_url ? '📎 ملف مرفق' : 'بدون ملف'} — رقم الكتاب: ${d.book.id.slice(0, 8)}</small>`;  
+    msg.classList.remove('hid');  
+    toast('✅ تم النشر — الكتاب في الخزانة');  
+    e.currentTarget.reset();  
+    await loadB('#vr');  
+    setTimeout(() => page('v'), 1500);  
+  } catch (err) {  
+    msg.className = 'msg err';  
+    msg.textContent = '❌ ' + err.message;  
+    msg.classList.remove('hid');  
+    toast(err.message, true);  
+  } finally {  
+    btn.disabled = false;  
+    btn.textContent = '📤 نشر الكتاب';  
+  }  
+};  
+  
+$('#wf').onsubmit = async e => {  
+  e.preventDefault();  
+  const o = Object.fromEntries(new FormData(e.currentTarget).entries());  
+  try {  
+    await api('/api/wanted', { method: 'POST', body: o });  
+    toast('✅ تم تسجيل طلبك');  
+    e.currentTarget.reset();  
+    loadW();  
+  } catch (err) { toast(err.message, true); }  
+};  
+  
+async function loadW() {  
+  const t = $('#wr');  
+  t.innerHTML = '<div class="em">…</div>';  
+  try {  
+    const d = await api('/api/wanted');  
+    t.innerHTML = d.items.length ? d.items.map(x => `  
+      <div class="pan" style="padding:12px;margin:8px 0">  
+        <b style="color:#0a2540">${esc(x.title)}</b>  
+        <div class="mut" style="font-size:.8rem">  
+          ${esc(x.author || '')} · 👤 ${esc(x.user_name || '')}</div>  
+      </div>`).join('') : '<div class="em">لا طلبات</div>';  
+  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
+}  
+$('#rw').onclick = loadW;  
+  
+async function loadNotif() {  
+  const t = $('#nr');  
+  t.innerHTML = '<div class="em">…</div>';  
+  try {  
+    const d = await api('/api/notifications');  
+    t.innerHTML = d.items.length ? d.items.map(n => {  
+      const isAvail = n.type === 'book_available';  
+      const icon = isAvail ? '📚' : '🔒';  
+      const msg = isAvail  
+        ? `الكتاب "${esc(n.book_title)}" الذي طلبته أصبح متوفراً!`  
+        : `شخص يريد كتابك "${esc(n.book_title)}" — ${esc(n.from_user || '')}`;  
+      return `<div class="ur" style="${n.read ? 'opacity:.7' : 'border-color:#236eaa'}">  
+        <div class="av">${icon}</div>  
+        <div class="i"><b>${msg}</b>  
+          <small>${esc((n.created_at || '').slice(0, 16).replace('T', ' '))}</small></div>  
+        ${!n.read ? `<button class="sec" onclick="markRead('${n.id}')" style="font-size:.72rem;padding:5px 10px">✓</button>` : ''}  
+      </div>`;  
+    }).join('') : '<div class="em">لا إشعارات</div>';  
+  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
+  refreshNotif();  
+}  
+$('#rn').onclick = loadNotif;  
+  
+async function markRead(nid) {  
+  try { await api('/api/notifications/' + nid + '/read', { method: 'POST' }); loadNotif(); } catch {}  
+}  
+  
+async function loadPerms() {  
+  const t = $('#prr');  
+  t.innerHTML = '<div class="em">…</div>';  
+  try {  
+    const d = await api('/api/permission-requests');  
+    t.innerHTML = d.items.length ? d.items.map(r => `  
+      <div class="pan" style="padding:12px;margin:8px 0">  
+        <b style="color:#0a2540">${esc(r.book_title)}</b>  
+        <div class="mut" style="font-size:.85rem;margin-top:4px">  
+          يطلبها: <b>${esc(r.requester_name)}</b> #${r.requester_number || ''}</div>  
+        <div class="mut" style="font-size:.75rem">  
+          الحالة: ${r.status === 'pending' ? '⏳ بانتظار قرارك' :  
+                    r.status === 'approved' ? '✅ قبلت' : '❌ رفضت'}</div>  
+        ${r.status === 'pending' ? `<div style="display:flex;gap:6px;margin-top:8px">  
+          <button onclick="grantPerm('${r.book_id}','${r.requester_id}')"   
+            style="background:#0f7a4d;font-size:.8rem;padding:6px 12px">✅ اقبل</button>  
+          <button onclick="contact('${r.requester_id}','${esc(r.requester_name)}')"  
+            class="sec" style="font-size:.8rem;padding:6px 12px">✉️ تواصل</button>  
+        </div>` : ''}  
+      </div>`).join('') : '<div class="em">لا طلبات شراء</div>';  
+  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
+  refreshPerm();  
+}  
+$('#rpr').onclick = loadPerms;  
+  
+async function grantPerm(bid, uid) {  
+  try {  
+    await api('/api/books/' + bid + '/grant', { method: 'POST', body: { user_id: uid }});  
+    toast('✅ تم منح الإذن');  
+    loadPerms();  
+  } catch (e) { toast(e.message, true); }  
+}  
+  
+async function loadU() {  
+  const t = $('#ur');  
+  t.innerHTML = '<div class="em">…</div>';  
+  try {  
+    const d = await api('/api/users/list');  
+    $('#ut').textContent = `إجمالي: ${d.total}`;  
+    t.innerHTML = d.items.length ? d.items.map(u => `  
+      <div class="ur">  
+        <div class="av">${u.number}</div>  
+        <div class="i">  
+          <b>${esc(u.name || 'مستخدم')}</b>  
+          <small>#${u.number} · 🙏 ${u.thanks || 0} · ${'⭐'.repeat(Math.min(u.stars, 5))}</small>  
+        </div>  
+        ${u.id !== ME?.id ? `<button class="sec" style="font-size:.75rem;padding:6px 10px"  
+          onclick="contact('${u.id}','${esc(u.name)}')">✉️</button>` : '<small class="mut">(أنت)</small>'}  
+      </div>`).join('') : '<div class="em">لا مستخدمين</div>';  
+  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
+}  
+$('#ru').onclick = loadU;  
+  
+async function contact(uid, name) {  
+  try {  
+    const d = await api('/api/contact/start', { method: 'POST', body: { user_id: uid }});  
+    CID = d.conversation_id;  
+    $('#ct').textContent = '✉️ ' + (d.other_name || name);  
+    $('#cm').classList.remove('hid');  
+    await loadMsgs();  
+    refreshUnread();  
+  } catch (e) { toast(e.message, true); }  
+}  
+  
+async function loadMsgs() {  
+  if (!CID) return;  
+  const b = $('#cmm');  
+  b.innerHTML = '<div class="em">…</div>';  
+  try {  
+    const d = await api('/api/conversations/' + CID + '/messages');  
+    b.innerHTML = d.items.length ? d.items.map(m => `  
+      <div class="mg ${m.mine ? 'me' : 'th'}">${esc(m.text)}</div>`).join('')  
+      : '<div class="em">ابدأ الحديث</div>';  
+    b.scrollTop = b.scrollHeight;  
+  } catch (e) { b.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
+}  
+  
+$('#cs').onclick = async () => {  
+  const t = $('#ci').value.trim();  
+  if (!t || !CID) return;  
+  $('#ci').value = '';  
+  try {  
+    await api('/api/conversations/' + CID + '/send', { method: 'POST', body: { text: t }});  
+    loadMsgs();  
+  } catch (e) { toast(e.message, true); }  
+};  
+$('#ci').addEventListener('keydown', e => {  
+  if (e.key === 'Enter') { e.preventDefault(); $('#cs').click(); }  
+});  
+$('#cc').onclick = () => { $('#cm').classList.add('hid'); CID = null; };  
+  
+async function loadC() {  
+  const t = $('#cr');  
+  t.innerHTML = '<div class="em">…</div>';  
+  try {  
+    const d = await api('/api/conversations');  
+    t.innerHTML = d.items?.length ? d.items.map(c => `  
+      <div class="ur" onclick="openConv('${c.id}','${esc(c.other_name)}')">  
+        <div class="av">${esc((c.other_name || '؟')[0])}</div>  
+        <div class="i">  
+          <b>${esc(c.other_name)}</b>  
+          <small>${esc(c.last_message || 'لا رسائل')}</small>  
+        </div>  
+        ${c.unread ? `<span class="cnt">${c.unread}</span>` : ''}  
+      </div>`).join('') : '<div class="em">لا محادثات</div>';  
+  } catch {}  
+  refreshUnread();  
+}  
+$('#rc').onclick = loadC;  
+  
+async function openConv(cid, name) {  
+  CID = cid;  
+  $('#ct').textContent = '✉️ ' + name;  
+  $('#cm').classList.remove('hid');  
+  await loadMsgs();  
+  refreshUnread();  
+}  
+  
+// ============ Secret Admin ============  
+const CODE = '031984';  
+$('#sct').onclick = () => {  
+  $('#smod').classList.remove('hid');  
+  $('#sc').value = '';  
+  $('#smg').textContent = '';  
+  setTimeout(() => $('#sc').focus(), 100);  
+};  
+$('#scl').onclick = () => $('#smod').classList.add('hid');  
+$('#ss2').onclick = async () => {  
+  if ($('#sc').value.trim() !== CODE) {  
+    $('#smg').textContent = '❌ كود خاطئ';  
+    $('#smg').style.color = '#b3261e';  
+    return;  
+  }  
+  try {  
+    await api('/api/secret/login', { method: 'POST', body: { code: CODE }});  
+    toast('✅ تم الدخول');  
+    $('#smod').classList.add('hid');  
+    showSecret();  
+  } catch (e) { $('#smg').textContent = e.message; }  
+};  
+  
+async function showSecret() {  
+  const w = document.createElement('div');  
+  w.style.cssText = `position:fixed;inset:0;background:rgba(244,247,251,0.9);z-index:9900;  
+    overflow-y:auto;padding:20px`;  
+  w.innerHTML = `  
+    <div style="max-width:900px;margin:auto">  
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px">  
+        <h2 style="color:#0a2540">⚙️ لوحة الإدارة</h2>  
+        <div style="display:flex;gap:6px;flex-wrap:wrap">  
+          <button class="sec" onclick="loadAdminTab('users')">👥 المستخدمون</button>  
+          <button class="sec" onclick="loadAdminTab('books')">📚 الكتب</button>  
+          <button class="dng" onclick="this.closest('div').parentElement.parentElement.parentElement.remove();api('/api/secret/logout',{method:'POST'})">✕</button>  
+        </div>  
+      </div>  
+      <div id="adminContent"></div>  
+    </div>`;  
+  document.body.appendChild(w);  
+  loadAdminTab('users');  
+}  
+  
+async function loadAdminTab(tab) {  
+  const c = document.getElementById('adminContent');  
+  c.innerHTML = '<div class="em">جارٍ…</div>';  
+  try {  
+    if (tab === 'users') {  
+      const d = await api('/api/secret/users');  
+      c.innerHTML = d.items.length ? d.items.map(u => `  
+        <div style="padding:12px;background:rgba(255,255,255,0.9);border:1.5px solid ${u.banned ? '#f5b8b5' : '#e2e9f2'};  
+          border-radius:12px;margin:8px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap">  
+          <div style="flex:1;min-width:180px">  
+            <b style="color:#0a2540">${esc(u.name)} #${u.number}</b>  
+            <div style="font-size:.75rem;color:#6b7c93">${esc(u.email)}  
+              ${u.banned ? ' · ⛔' : ''}${u.role === 'admin' ? ' · 👑' : ''}</div>  
+          </div>  
+          <button class="sec" onclick="adminMsgs('${u.id}','${esc(u.name)}')"   
+            style="font-size:.72rem;padding:5px 10px">✉️ رسائله</button>  
+          <button class="sec" onclick="adminResetPw('${u.id}','${esc(u.name)}')"   
+            style="font-size:.72rem;padding:5px 10px">🔑 كلمة المرور</button>  
+          <button class="sec" onclick="sStar('${u.id}',1)"   
+            style="font-size:.72rem;padding:5px 10px">⭐+</button>  
+          <button class="sec" onclick="sStar('${u.id}',-1)"   
+            style="font-size:.72rem;padding:5px 10px">⭐−</button>  
+          ${u.banned  
+            ? `<button class="gold" onclick="sBan('${u.id}',false)"   
+                style="font-size:.72rem;padding:5px 10px">✅</button>`  
+            : `<button class="dng" onclick="sBan('${u.id}',true)"   
+                style="font-size:.72rem;padding:5px 10px">⛔</button>`}  
+          <button class="dng" onclick="sDel('${u.id}','${esc(u.name)}')"   
+            style="font-size:.72rem;padding:5px 10px">🗑️</button>  
+        </div>`).join('') : '<div class="em">لا مستخدمين</div>';  
+    } else if (tab === 'books') {  
+      const d = await api('/api/secret/books');  
+      c.innerHTML = d.items.length ? d.items.map(b => `  
+        <div style="padding:12px;background:rgba(255,255,255,0.9);border:1.5px solid #e2e9f2;  
+          border-radius:12px;margin:8px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap">  
+          <div style="flex:1;min-width:180px">  
+            <b style="color:#0a2540">${esc(b.title)}</b>  
+            <div style="font-size:.75rem;color:#6b7c93">  
+              ${esc(b.author || '')} · 👤 ${esc(b.owner_name || '')} · ${esc(b.type || '')}</div>  
+          </div>  
+          ${b.file_url ? `<a href="${esc(b.file_url)}" target="_blank"   
+            style="color:#236eaa;font-size:.75rem">📄 الملف</a>` : ''}  
+          <button class="dng" onclick="adminDelBook('${b.id}','${esc(b.title)}')"   
+            style="font-size:.72rem;padding:5px 10px">🗑️ حذف</button>  
+        </div>`).join('') : '<div class="em">لا كتب</div>';  
+    }  
+  } catch (e) { c.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
+}  
+  
+async function adminDelBook(bid, title) {  
+  if (!confirm(`حذف "${title}"؟`)) return;  
+  try {  
+    await api('/api/secret/books/' + bid + '/delete', { method: 'POST' });  
+    toast('🗑️ تم الحذف');  
+    loadAdminTab('books');  
+  } catch (e) { toast(e.message, true); }  
+}  
+  
+async function adminMsgs(uid, name) {  
+  const w = document.createElement('div');  
+  w.style.cssText = `position:fixed;inset:0;background:rgba(10,37,64,.85);z-index:9990;  
+    padding:20px;display:flex;align-items:center;justify-content:center`;  
+  w.innerHTML = `  
+    <div style="background:#fff;border-radius:16px;padding:20px;max-width:600px;  
+      width:100%;max-height:80vh;overflow-y:auto">  
+      <div style="display:flex;justify-content:space-between;margin-bottom:12px">  
+        <h3 style="color:#0a2540">✉️ رسائل: ${esc(name)}</h3>  
+        <button class="dng" onclick="this.closest('div').parentElement.parentElement.remove()">✕</button>  
+      </div>  
+      <div id="msgsBox">…</div>  
+    </div>`;  
+  document.body.appendChild(w);  
+  try {  
+    const d = await api('/api/secret/users/' + uid + '/messages');  
+    document.getElementById('msgsBox').innerHTML = d.items.length ? d.items.map(m => `  
+      <div style="padding:8px 12px;background:${m.direction === 'sent' ? '#eaf1fa' : '#f0faf4'};  
+        border-radius:8px;margin:5px 0;font-size:.85rem">  
+        <b style="color:#0a2540;font-size:.75rem">  
+          ${m.direction === 'sent' ? '↗️ أرسل' : '↙️ استقبل'}</b>  
+        <div>${esc(m.text || m.body || '')}</div>  
+        <small style="color:#6b7c93;font-size:.7rem">  
+          ${esc((m.created_at || '').slice(0, 16).replace('T', ' '))}</small>  
+      </div>`).join('') : '<div class="em">لا رسائل</div>';  
+  } catch (e) {  
+    document.getElementById('msgsBox').innerHTML = `<div class="em">${esc(e.message)}</div>`;  
+  }  
+}  
+  
+async function adminResetPw(uid, name) {  
+  const np = prompt(`كلمة مرور جديدة لـ "${name}":\n(4 أحرف على الأقل)`);  
+  if (!np || np.length < 4) return;  
+  try {  
+    await api('/api/secret/users/' + uid + '/reset-password', {  
+      method: 'POST', body: { password: np }  
+    });  
+    toast('🔑 تم تغيير كلمة المرور');  
+  } catch (e) { toast(e.message, true); }  
+}  
+  
+async function sStar(uid, d) {  
+  try { await api('/api/secret/users/' + uid + '/star', { method: 'POST', body: { delta: d }}); toast('✅'); } catch {}  
+}  
+async function sBan(uid, ban) {  
+  try { await api('/api/secret/users/' + uid + '/ban', { method: 'POST', body: { ban }}); toast('✅'); loadAdminTab('users'); } catch {}  
+}  
+async function sDel(uid, name) {  
+  if (!confirm(`حذف "${name}"؟`)) return;  
+  try { await api('/api/secret/users/' + uid + '/delete', { method: 'POST' }); toast('🗑️'); loadAdminTab('users'); } catch {}  
+}  
+  
+async function init() {  
+  try {  
+    const d = await api('/api/status');  
+    $('#fbs').textContent = d.firebase_connected ? '● متصل' : '● غير متصل';  
+    $('#fbs').style.color = d.firebase_connected ? '#0f7a4d' : '#b3261e';  
+  } catch {}  
+  loadB('#sr');  
+  refreshUnread();  
+  refreshNotif();  
+  refreshPerm();  
+  clearTimers();  
+  timerUnread = setInterval(refreshUnread, 4000);  
+  timerNotif = setInterval(refreshNotif, 6000);  
+  timerPerm = setInterval(refreshPerm, 8000);  
+}  
+  
+(async () => {  
+  loadLights();  
+  setInterval(loadLights, 60000);  
+  try {  
+    const d = await api('/api/me');  
+    if (d.user) app(d.user); else showAuth(false);  
+  } catch { showAuth(false); }  
+})();  
+</script>  
+
+<!-- ========================================== -->
+<!-- كود صفحة الصيانة - يمنع الدخول للموقع -->
+<!-- ========================================== -->
+<style>
+  @keyframes maint-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+</style>
+<div id="maintenance-screen" style="
+    position: fixed;
+    inset: 0;
+    z-index: 9999999;
+    background: rgba(10, 37, 64, 0.90); 
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 24px;
+    font-family: Tahoma, Arial, sans-serif;
+    border: 4px solid rgba(255,255,255,0.1);
+    box-sizing: border-box;
+">
+    <div style="font-size: 80px; margin-bottom: 20px; animation: maint-pulse 2s infinite;">🛠️</div>
+    <h1 style="font-size: 2.5rem; margin-bottom: 15px; color: #f5c542; text-shadow: 0 2px 10px rgba(245,197,66,0.3);">الموقع قيد الصيانة</h1>
+    <p style="font-size: 1.2rem; line-height: 1.8; max-width: 500px; color: #c9dcf0; font-weight: bold;">
+        نعتذر عن الإزعاج، نقوم حالياً ببعض التحسينات والتحديثات لتقديم تجربة أفضل لكم. <br>
+        سنعود قريباً جداً بإذن الله.
+    </p>
+    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; color: #a0b2c6; width: 100%; max-width: 400px;">
+        برمجة وتطوير: <b style="color:#f5c542;">براهيمي يوسف</b>
+    </div>
 </div>
-
-<div class="hero" id="home">
- <div>
-  <span class="party">حزب صوت الشعب</span>
-  <h1>براهيمي يوسف</h1>
-  <p>اعرف مترشحك</p>
-
-  <div class="candidate-numbers">
-   <div class="number-box">
-    <strong>6</strong>
-    <span>رقم قائمة حزب صوت الشعب</span>
-   </div>
-
-   <div class="number-box">
-    <strong>15</strong>
-    <span>رقم المترشح براهيمي يوسف</span>
-   </div>
-  </div>
-
-  <div class="candidate-label">
-   القائمة رقم 6 | المترشح رقم 15
-  </div>
- </div>
-</div>
-
-<main class="container">
-
-<section id="profile">
- <h2>التعريف بالمترشح</h2>
-
- <div class="profile">
-  <img
-   src="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png"
-   alt="براهيمي يوسف">
-
-  <div class="info">
-   <h3>براهيمي يوسف</h3>
-
-   <p>مترشح عن حزب صوت الشعب للمجلس الشعبي الولائي.</p>
-
-   <p>متصرف إداري بمقر الولاية حاليًا.</p>
-
-   <p>
-    موظف سابق بالبلدية، وموظف سابق بقطاع التكوين المهني والتمهين.
-   </p>
-
-   <div class="profile-number">
-    رقم القائمة: 6
-   </div>
-
-   <div class="profile-number">
-    رقم المترشح: 15
-   </div>
-
-   <p>
-    هذا الموقع للتعريف بالمسار المهني والتكويني والتواصل مع الزوار،
-    وعرض تصور عملي للعمل التمثيلي والمتابعة والرقابة.
-   </p>
-  </div>
- </div>
-</section>
-
-<section id="experience">
- <h2>المسار المهني</h2>
-
- <div class="cards">
-
-  <div class="card">
-   <div class="symbol">🏛️</div>
-   <h3>متصرف إداري</h3>
-   <p>مقر الولاية حاليًا.</p>
-  </div>
-
-  <div class="card">
-   <div class="symbol">🏢</div>
-   <h3>العمل بالبلدية</h3>
-   <p>موظف سابق بالبلدية.</p>
-  </div>
-
-  <div class="card">
-   <div class="symbol">📚</div>
-   <h3>التكوين المهني والتمهين</h3>
-   <p>موظف سابق بالقطاع.</p>
-  </div>
-
- </div>
-</section>
-
-<section id="education">
- <h2>المؤهلات والشهادات</h2>
-
- <div class="cards">
-
-  <div class="card">
-   <div class="symbol">🎓</div>
-   <h3>ماستر</h3>
-   <p>تنظيم وعمل.</p>
-  </div>
-
-  <div class="card">
-   <div class="symbol">💻</div>
-   <h3>الإعلام الآلي</h3>
-   <p>شهادات في الإعلام الآلي.</p>
-  </div>
-
-  <div class="card">
-   <div class="symbol">🌐</div>
-   <h3>اللغة الإنجليزية</h3>
-   <p>صنف ب.</p>
-  </div>
-
- </div>
-</section>
-
-<section id="program">
- <h2>برنامج العمل والتصور التمثيلي والرقابي</h2>
-
- <div class="program-intro">
-  صوت المواطن أمانة، والانشغال مسؤولية، والمتابعة واجب.
-  <br>
-  برنامج يقوم على الاستماع والتوثيق والمتابعة والرقابة في حدود الصلاحيات القانونية.
- </div>
-
- <div class="program-card">
-  <h3>1. نقل انشغالات المواطنين إلى الجهات المعنية</h3>
-  <ul>
-   <li>الاستماع إلى انشغالات المواطنين وتسجيل مطالبهم بدقة.</li>
-   <li>تصنيف الملفات حسب طبيعتها والقطاع المعني بها.</li>
-   <li>إيصال الانشغالات إلى السلطات والمصالح المختصة عبر القنوات الرسمية.</li>
-   <li>متابعة مآل الملفات وعدم الاكتفاء بمجرد نقلها.</li>
-   <li>إبلاغ المواطنين بما توفر من ردود وتوضيحات رسمية.</li>
-  </ul>
- </div>
-
- <div class="program-card">
-  <h3>2. متابعة المشاريع التنموية</h3>
-  <ul>
-   <li>متابعة المشاريع المسجلة عبر إقليم الولاية.</li>
-   <li>رصد التأخر في الإنجاز والنقائص المسجلة ميدانيًا.</li>
-   <li>متابعة أسباب توقف المشاريع أو تعثرها وطرحها على الجهات المختصة.</li>
-   <li>الاهتمام بجودة الأشغال واحترام المواصفات والآجال المعلنة.</li>
-   <li>المطالبة بتوضيح وضعية المشاريع عند الحاجة وفي حدود الإجراءات القانونية.</li>
-  </ul>
- </div>
-
- <div class="program-card">
-  <h3>3. رصد النقائص في البلديات والمناطق الريفية</h3>
-  <ul>
-   <li>الطرقات والمسالك المتضررة أو غير المهيأة.</li>
-   <li>نقص الإنارة العمومية ومشاكل شبكات المياه والصرف الصحي.</li>
-   <li>مشاكل النقل المدرسي وسلامة التلاميذ.</li>
-   <li>الأعمدة الكهربائية والوديان والنقاط السوداء المرورية.</li>
-   <li>النقائص المتعلقة بالمرافق الصحية والتربوية والرياضية.</li>
-   <li>توثيق النقائص وإحالتها إلى المصالح المختصة لمتابعتها.</li>
-  </ul>
- </div>
-
- <div class="program-card">
-  <h3>4. متابعة القطاعات والمديريات التنفيذية</h3>
-  <ul>
-   <li>نقل الانشغالات القطاعية إلى المديريات التنفيذية المختصة.</li>
-   <li>متابعة الملفات المتعلقة بالمياه والأشغال العمومية والتربية والصحة وغيرها.</li>
-   <li>طلب التوضيحات والمعلومات المتعلقة بالملفات وفق الإجراءات القانونية.</li>
-   <li>متابعة الردود والتوصيات والاقتراحات.</li>
-   <li>إثارة النقائص المتكررة خلال اجتماعات اللجان ودورات المجلس.</li>
-  </ul>
- </div>
-
- <div class="program-card">
-  <h3>5. الرقابة والمتابعة والمساهمة في المداولات</h3>
-  <ul>
-   <li>المساهمة في دراسة الملفات والميزانيات والمشاريع المعروضة على المجلس.</li>
-   <li>متابعة تنفيذ المداولات والتوصيات ضمن صلاحيات المجلس.</li>
-   <li>الاهتمام بمدى احترام آجال الإنجاز وجودة الأشغال.</li>
-   <li>طرح التساؤلات حول أسباب التأخر والنقائص المسجلة.</li>
-   <li>المساهمة في تقديم اقتراحات مبنية على احتياجات المواطنين والإمكانيات المتاحة.</li>
-  </ul>
- </div>
-
- <div class="program-card">
-  <h3>6. التنمية المتوازنة بين البلديات</h3>
-  <ul>
-   <li>الاهتمام بالمناطق النائية والريفية إلى جانب مراكز البلديات.</li>
-   <li>نقل احتياجات كل منطقة حسب أولوياتها الفعلية.</li>
-   <li>متابعة توزيع المشاريع والتجهيزات وفق الاحتياجات والإمكانيات المتاحة.</li>
-   <li>دعم الاقتراحات التي تخدم التنمية المحلية المتوازنة.</li>
-  </ul>
- </div>
-
- <div class="program-card">
-  <h3>7. الصحة والتربية والتكوين والشباب</h3>
-  <ul>
-   <li>نقل انشغالات المؤسسات الصحية إلى الجهات المختصة.</li>
-   <li>متابعة احتياجات المدارس والمطاعم والنقل المدرسي.</li>
-   <li>الاهتمام بمرافق التكوين المهني والتجهيزات الضرورية.</li>
-   <li>متابعة احتياجات الشباب في مجالات الرياضة والثقافة والمرافق العمومية.</li>
-   <li>دعم المقترحات التي تحسن ظروف الاستفادة من الخدمات العمومية.</li>
-  </ul>
- </div>
-
- <div class="program-card">
-  <h3>8. التواصل والشفافية مع المواطنين</h3>
-  <ul>
-   <li>إبقاء قنوات التواصل مفتوحة مع المواطنين.</li>
-   <li>تسجيل الانشغالات ومتابعتها حسب الأولوية والاستعجال.</li>
-   <li>توضيح الملفات التي تمت متابعتها والجهات التي أحيلت إليها.</li>
-   <li>تقديم حصيلة دورية للانشغالات والنتائج والملفات التي لا تزال قيد المتابعة.</li>
-   <li>التعامل مع جميع المواطنين دون تمييز أو محاباة.</li>
-  </ul>
- </div>
-
- <div class="commitment">
-  <h3>التزامي أمام المواطنين</h3>
-
-  لا أقدم وعودًا بالتوظيف أو السكن أو توزيع الامتيازات،
-  ولا أدعي امتلاك صلاحيات ليست من اختصاص عضو المجلس الشعبي الولائي.
-
-  <br><br>
-
-  <strong>
-   ألتزم بالاستماع، والتوثيق، ونقل الانشغالات،
-   والمساهمة في الرقابة والمداولات،
-   ومتابعة الملفات عبر القنوات القانونية،
-   بكل جدية وشفافية.
-  </strong>
-
-  <br><br>
-  براهيمي يوسف
-  <br>
-  حزب صوت الشعب | القائمة رقم 6 | المترشح رقم 15
- </div>
-
- <p class="section-note">
-  هذا التصور مرتبط بالاختصاصات القانونية للمجلس الشعبي الولائي
-  ولا يمثل تعهدًا بتنفيذ مشاريع أو قرارات من اختصاص جهات أخرى.
- </p>
-</section>
-
-<section id="comments">
- <h2>التفاعل والتعليقات</h2>
-
- <div class="card">
-  <h3>رأيك يهمنا</h3>
-  <p>
-   عدد الإعجابات:
-   <strong id="likeCount">0</strong>
-  </p>
-  <button id="likeBtn">👍 أعجبني</button>
-  <div id="likeStatus" class="status"></div>
- </div>
-
- <h3>اكتب تعليقك</h3>
-
- <form id="commentForm">
-  <textarea
-   id="commentText"
-   maxlength="1000"
-   placeholder="اكتب تعليقك هنا..."
-   required></textarea>
-
-  <button id="sendComment" type="submit">
-   إرسال التعليق
-  </button>
- </form>
-
- <div id="message" class="status"></div>
-
- <h3>التعليقات المنشورة</h3>
- <div id="publishedComments">جارٍ تحميل التعليقات...</div>
-</section>
-
-<section id="admin">
- <h2>لوحة تحكم الإدارة</h2>
-
- <input
-  type="password"
-  id="adminCode"
-  placeholder="رمز الإدارة">
-
- <button id="adminLogin">دخول</button>
-
- <div id="adminMessage" class="status"></div>
-
- <div id="adminPanel" class="panel hidden">
-
-  <div class="cards">
-
-   <div class="stat">
-    <strong id="dashVisits">0</strong>
-    الزوار المسجلون
-   </div>
-
-   <div class="stat">
-    <strong id="dashLikes">0</strong>
-    الإعجابات
-   </div>
-
-   <div class="stat">
-    <strong id="dashComments">0</strong>
-    التعليقات المنشورة
-   </div>
-
-  </div>
-
-  <div class="adminNav">
-   <button data-admin="visitors">سجل الزوار</button>
-   <button data-admin="pending">التعليقات الواردة</button>
-   <button data-admin="published">التعليقات المنشورة</button>
-   <button data-admin="refresh">تحديث</button>
-  </div>
-
-  <div id="adminVisitors">
-   <h3>سجل الزوار</h3>
-   <div id="visitorsList"></div>
-  </div>
-
-  <div id="adminPending" class="hidden">
-   <h3>التعليقات الواردة</h3>
-   <div id="pendingComments"></div>
-  </div>
-
-  <div id="adminPublished" class="hidden">
-   <h3>التعليقات المنشورة وإدارتها</h3>
-   <div id="publishedAdmin"></div>
-  </div>
-
-  <button class="danger" id="adminLogout">
-   تسجيل الخروج
-  </button>
-
- </div>
-</section>
-
-</main>
-
-<footer>
- <p>براهيمي يوسف | حزب صوت الشعب</p>
- <p>القائمة رقم 6 | المترشح رقم 15</p>
- <p>شكرًا لكل من زار هذا الموقع</p>
- <p>تصميم وتطوير: براهيمي يوسف</p>
-</footer>
-
-<script type="module">
-
-import {
- initializeApp
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-
-import {
- getDatabase,
- ref,
- push,
- onValue,
- update,
- remove,
- runTransaction
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
-
-const firebaseConfig={
- apiKey:"AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
- authDomain:"workdz-web.firebaseapp.com",
- databaseURL:"https://workdz-web-default-rtdb.firebaseio.com",
- projectId:"workdz-web",
- storageBucket:"workdz-web.firebasestorage.app",
- messagingSenderId:"980881321562",
- appId:"1:980881321562:web:5046cc8bfe27749a73f263",
- measurementId:"G-NWPYNZT489"
-};
-
-const app=initializeApp(firebaseConfig);
-const db=getDatabase(app);
-const $=id=>document.getElementById(id);
-
-const likesRef=ref(db,"siteStats/likes");
-const visitorsRef=ref(db,"siteVisitors");
-const inboxRef=ref(db,"commentInbox");
-const publishedRef=ref(db,"publishedComments");
-
-let adminLoggedIn=false;
-let visits={};
-let inbox={};
-let published={};
-let likes=0;
-
-let visitorId=localStorage.getItem("siteVisitorId");
-
-if(!visitorId){
- visitorId=crypto.randomUUID?
-  crypto.randomUUID():
-  Date.now()+"-"+Math.random().toString(36).slice(2);
-
- localStorage.setItem("siteVisitorId",visitorId);
-}
-
-const myVisitorRef=ref(db,"siteVisitors/"+visitorId);
-
-async function recordVisit(){
-
- const now=Date.now();
-
- try{
-
-  await runTransaction(myVisitorRef,current=>{
-
-   current=current||{};
-
-   return {
-    ...current,
-    firstVisit:current.firstVisit||now,
-    lastVisit:now,
-    visits:(Number(current.visits)||0)+1,
-    status:current.liked?
-      "أعجب بالموقع":
-      current.commented?
-      "علّق على الموقع":
-      "زار الموقع فقط",
-    browser:navigator.userAgent.slice(0,160)
-   };
-
-  });
-
- }catch(error){
-
-  console.error("Visit error:",error);
-
-  const box=$("adminMessage");
-
-  if(box){
-   box.textContent=
-    "خطأ تسجيل الزيارة: "+
-    error.code+" - "+error.message;
-  }
-
- }
-
-}
-
-recordVisit();
-
-document.querySelectorAll("#mainNav button").forEach(button=>{
-
- button.addEventListener("click",()=>{
-
-  document.querySelectorAll("#mainNav button")
-   .forEach(b=>b.classList.remove("active"));
-
-  button.classList.add("active");
-
-  $(button.dataset.target).scrollIntoView({
-   behavior:"smooth"
-  });
-
- });
-
-});
-
-onValue(likesRef,s=>{
-
- likes=Number(s.val()||0);
-
- $("likeCount").textContent=likes;
- $("dashLikes").textContent=likes;
-
-});
-
-onValue(visitorsRef,s=>{
-
- visits=s.val()||{};
- renderVisitors();
-
-},error=>{
-
- console.error("Visitors read error:",error);
-
- statusMessage(
-  "adminMessage",
-  "خطأ قراءة سجل الزوار: "+error.message
- );
-
-});
-
-onValue(inboxRef,s=>{
-
- inbox=s.val()||{};
-
- renderPending();
- updateStats();
-
-});
-
-onValue(publishedRef,s=>{
-
- published=s.val()||{};
-
- renderPublished();
- renderPublishedAdmin();
- updateStats();
-
-});
-
-function statusMessage(id,text,ok=false){
-
- $(id).textContent=text;
-
- $(id).style.color=
-  ok?"#4ade80":"#f87171";
-
-}
-
-$("likeBtn").addEventListener("click",async()=>{
-
- const button=$("likeBtn");
-
- button.disabled=true;
-
- try{
-
-  await runTransaction(
-   likesRef,
-   n=>(Number(n)||0)+1
-  );
-
-  await runTransaction(myVisitorRef,current=>{
-
-   current=current||{};
-
-   return {
-    ...current,
-    liked:true,
-    likedAt:Date.now(),
-    status:"أعجب بالموقع"
-   };
-
-  });
-
-  statusMessage(
-   "likeStatus",
-   "تم تسجيل إعجابك.",
-   true
-  );
-
- }catch(e){
-
-  statusMessage(
-   "likeStatus",
-   "تعذر تسجيل الإعجاب: "+e.message
-  );
-
- }finally{
-
-  button.disabled=false;
-
- }
-
-});
-
-$("commentForm").addEventListener("submit",async e=>{
-
- e.preventDefault();
-
- const message=$("commentText").value.trim();
-
- if(!message)return;
-
- $("sendComment").disabled=true;
-
- try{
-
-  await push(inboxRef,{
-
-   visitorId,
-   message,
-   createdAt:Date.now(),
-   status:"pending"
-
-  });
-
-  await update(myVisitorRef,{
-
-   commented:true,
-   commentedAt:Date.now(),
-   status:"علّق على الموقع"
-
-  });
-
-  $("commentText").value="";
-
-  statusMessage(
-   "message",
-   "تم إرسال تعليقك للمراجعة.",
-   true
-  );
-
- }catch(error){
-
-  statusMessage(
-   "message",
-   "تعذر إرسال التعليق: "+error.message
-  );
-
- }finally{
-
-  $("sendComment").disabled=false;
-
- }
-
-});
-
-function renderPublished(){
-
- const box=$("publishedComments");
-
- box.replaceChildren();
-
- const entries=Object.entries(published)
-  .sort((a,b)=>
-   (b[1].createdAt||0)-(a[1].createdAt||0)
-  );
-
- if(!entries.length){
-
-  box.textContent="لا توجد تعليقات منشورة.";
-  return;
-
- }
-
- entries.forEach(([id,data])=>{
-
-  const item=document.createElement("div");
-  item.className="comment";
-
-  const message=document.createElement("p");
-  message.textContent=data.message||"";
-
-  item.appendChild(message);
-
-  if(data.reply){
-
-   const reply=document.createElement("div");
-
-   reply.className="reply";
-
-   reply.textContent="الرد: "+data.reply;
-
-   item.appendChild(reply);
-
-  }
-
-  box.appendChild(item);
-
- });
-
-}
-
-function renderVisitors(){
-
- if(!adminLoggedIn)return;
-
- const box=$("visitorsList");
-
- box.replaceChildren();
-
- const entries=Object.entries(visits)
-  .sort((a,b)=>
-   (b[1].lastVisit||0)-(a[1].lastVisit||0)
-  );
-
- $("dashVisits").textContent=entries.length;
-
- if(!entries.length){
-
-  box.textContent="لا توجد زيارات مسجلة.";
-  return;
-
- }
-
- entries.forEach(([id,data])=>{
-
-  const item=document.createElement("div");
-  item.className="adminItem";
-
-  const title=document.createElement("strong");
-  title.textContent="زائر "+id.slice(0,12);
-
-  const state=document.createElement("p");
-  state.textContent=
-   "الحالة: "+(data.status||"زار الموقع فقط");
-
-  const count=document.createElement("p");
-  count.textContent=
-   "عدد الزيارات: "+(data.visits||1);
-
-  const first=document.createElement("p");
-  first.textContent=
-   "أول زيارة: "+
-   new Date(data.firstVisit||0).toLocaleString("ar-DZ");
-
-  const last=document.createElement("p");
-  last.textContent=
-   "آخر زيارة: "+
-   new Date(data.lastVisit||0).toLocaleString("ar-DZ");
-
-  item.append(title,state,count,first,last);
-
-  box.appendChild(item);
-
- });
-
-}
-
-function renderPending(){
-
- if(!adminLoggedIn)return;
-
- const box=$("pendingComments");
-
- box.replaceChildren();
-
- const entries=Object.entries(inbox)
-  .filter(([id,d])=>d.status==="pending");
-
- if(!entries.length){
-
-  box.textContent="لا توجد تعليقات تنتظر المراجعة.";
-  return;
-
- }
-
- entries.forEach(([id,data])=>{
-
-  const item=document.createElement("div");
-  item.className="adminItem";
-
-  const message=document.createElement("p");
-  message.textContent=data.message||"";
-
-  const date=document.createElement("p");
-  date.className="small";
-  date.textContent=
-   new Date(data.createdAt||0).toLocaleString("ar-DZ");
-
-  const actions=document.createElement("div");
-  actions.className="actions";
-
-  const publishBtn=document.createElement("button");
-  publishBtn.className="green";
-  publishBtn.textContent="نشر";
-  publishBtn.onclick=()=>publishComment(id,data);
-
-  const deleteBtn=document.createElement("button");
-  deleteBtn.className="danger";
-  deleteBtn.textContent="حذف";
-  deleteBtn.onclick=()=>deleteComment(id);
-
-  actions.append(publishBtn,deleteBtn);
-
-  item.append(message,date,actions);
-
-  box.appendChild(item);
-
- });
-
-}
-
-async function publishComment(id,data){
-
- try{
-
-  const newId=push(publishedRef).key;
-
-  const changes={};
-
-  changes["publishedComments/"+newId]={
-
-   message:data.message,
-   visitorId:data.visitorId||"",
-   createdAt:data.createdAt||Date.now()
-
-  };
-
-  changes["commentInbox/"+id+"/status"]="published";
-
-  await update(ref(db),changes);
-
-  statusMessage(
-   "adminMessage",
-   "تم نشر التعليق.",
-   true
-  );
-
- }catch(e){
-
-  statusMessage(
-   "adminMessage",
-   "فشل النشر: "+e.message
-  );
-
- }
-
-}
-
-async function deleteComment(id){
-
- if(!confirm("حذف هذا التعليق؟"))return;
-
- try{
-
-  await remove(ref(db,"commentInbox/"+id));
-
-  statusMessage(
-   "adminMessage",
-   "تم الحذف.",
-   true
-  );
-
- }catch(e){
-
-  statusMessage(
-   "adminMessage",
-   "تعذر الحذف: "+e.message
-  );
-
- }
-
-}
-
-function renderPublishedAdmin(){
-
- if(!adminLoggedIn)return;
-
- const box=$("publishedAdmin");
-
- box.replaceChildren();
-
- const entries=Object.entries(published);
-
- if(!entries.length){
-
-  box.textContent="لا توجد تعليقات منشورة.";
-  return;
-
- }
-
- entries.forEach(([id,data])=>{
-
-  const item=document.createElement("div");
-  item.className="adminItem";
-
-  const message=document.createElement("p");
-  message.textContent=data.message||"";
-
-  const replyInput=document.createElement("input");
-  replyInput.placeholder="اكتب ردك هنا";
-  replyInput.value=data.reply||"";
-
-  const actions=document.createElement("div");
-  actions.className="actions";
-
-  const replyBtn=document.createElement("button");
-  replyBtn.className="green";
-  replyBtn.textContent="حفظ الرد";
-
-  replyBtn.onclick=async()=>{
-
-   try{
-
-    await update(
-     ref(db,"publishedComments/"+id),
-     {reply:replyInput.value.trim()}
-    );
-
-    statusMessage(
-     "adminMessage",
-     "تم حفظ الرد.",
-     true
-    );
-
-   }catch(e){
-
-    statusMessage(
-     "adminMessage",
-     "تعذر حفظ الرد: "+e.message
-    );
-
-   }
-
-  };
-
-  const deleteBtn=document.createElement("button");
-  deleteBtn.className="danger";
-  deleteBtn.textContent="حذف التعليق";
-
-  deleteBtn.onclick=async()=>{
-
-   if(!confirm("حذف التعليق؟"))return;
-
-   try{
-
-    await remove(
-     ref(db,"publishedComments/"+id)
-    );
-
-    statusMessage(
-     "adminMessage",
-     "تم حذف التعليق.",
-     true
-    );
-
-   }catch(e){
-
-    statusMessage(
-     "adminMessage",
-     "تعذر الحذف: "+e.message
-    );
-
-   }
-
-  };
-
-  actions.append(replyBtn,deleteBtn);
-
-  item.append(message,replyInput,actions);
-
-  box.appendChild(item);
-
- });
-
-}
-
-function updateStats(){
-
- $("dashComments").textContent=
-  Object.keys(published).length;
-
-}
-
-$("adminLogin").addEventListener("click",()=>{
-
- if($("adminCode").value!=="sss"){
-
-  statusMessage(
-   "adminMessage",
-   "رمز الإدارة غير صحيح."
-  );
-
-  return;
-
- }
-
- adminLoggedIn=true;
-
- $("adminPanel").classList.remove("hidden");
-
- renderVisitors();
- renderPending();
- renderPublishedAdmin();
- updateStats();
-
- statusMessage(
-  "adminMessage",
-  "تم الدخول إلى لوحة الإدارة.",
-  true
- );
-
-});
-
-document.querySelectorAll("[data-admin]").forEach(button=>{
-
- button.addEventListener("click",()=>{
-
-  const key=button.dataset.admin;
-
-  $("adminVisitors").classList.toggle(
-   "hidden",
-   key!=="visitors"&&key!=="refresh"
-  );
-
-  $("adminPending").classList.toggle(
-   "hidden",
-   key!=="pending"&&key!=="refresh"
-  );
-
-  $("adminPublished").classList.toggle(
-   "hidden",
-   key!=="published"&&key!=="refresh"
-  );
-
-  if(key==="refresh"){
-
-   renderVisitors();
-   renderPending();
-   renderPublishedAdmin();
-   updateStats();
-
-   statusMessage(
-    "adminMessage",
-    "تم تحديث البيانات.",
-    true
-   );
-
-  }
-
- });
-
-});
-
-$("adminLogout").addEventListener("click",()=>{
-
- adminLoggedIn=false;
-
- $("adminPanel").classList.add("hidden");
-
- $("adminCode").value="";
-
- statusMessage(
-  "adminMessage",
-  "تم تسجيل الخروج.",
-  true
- );
-
-});
-
-document.querySelectorAll("section").forEach(sec=>{
- sec.classList.add("reveal");
-});
-
-const observer=new IntersectionObserver(entries=>{
-
- entries.forEach(entry=>{
-
-  if(entry.isIntersecting){
-
-   entry.target.classList.add("visible");
-   observer.unobserve(entry.target);
-
-  }
-
- });
-
-},{threshold:.12});
-
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
-
-</script>
-
-</body>
+<!-- ========================================== -->
+<!-- نهاية كود صفحة الصيانة -->
+<!-- ========================================== -->
+
+</body >
 </html>
