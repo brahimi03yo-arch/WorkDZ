@@ -7,7 +7,7 @@
 <title>اعرف مترشحك | براهيمي يوسف</title>
 <meta name="description" content="براهيمي يوسف، المترشح رقم 15 ضمن قائمة حزب صوت الشعب رقم 6 للمجلس الشعبي الولائي.">
 
-<!-- معاينة الرابط الخارجية -->
+<!-- 👇 صورة المعاينة (فيسبوك/واتساب) هي صورتك الجديدة 👇 -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_DZ">
 <meta property="og:site_name" content="اعرف مترشحك">
@@ -32,15 +32,13 @@
 
 <style>
 :root{
- --bg:#070b14;
- --surface:rgba(255,255,255,.05);
- --surface-2:rgba(255,255,255,.08);
- --border:rgba(255,255,255,.09);
- --text:#e9eff8;
- --muted:#93a4bd;
- --emerald:#10b981;
- --cyan:#22d3ee;
- --amber:#f5b544;
+ --bg: #050505;           /* أسود عميق */
+ --surface: rgba(255,255,255,.05);
+ --border: rgba(255,255,255,.15);
+ --text: #ffffff;         /* أبيض ناصع */
+ --muted: #a3a3a3;        /* رمادي فاتح */
+ --accent: #ffffff;       /* الأزرار ستكون بيضاء */
+ --accent-text: #000000;  /* نص الأزرار أسود */
 }
 
 *{box-sizing:border-box}
@@ -54,9 +52,8 @@ body{
  line-height:1.9;
  overflow-x:hidden;
  background:
-  radial-gradient(720px 720px at 88% -8%, rgba(16,185,129,.22), transparent 62%),
-  radial-gradient(620px 620px at -10% 18%, rgba(34,211,238,.16), transparent 62%),
-  radial-gradient(760px 620px at 50% 112%, rgba(245,181,68,.10), transparent 62%),
+  radial-gradient(720px 720px at 88% -8%, rgba(255,255,255,.08), transparent 62%),
+  radial-gradient(620px 620px at -10% 18%, rgba(255,255,255,.05), transparent 62%),
   var(--bg);
  background-attachment:fixed;
 }
@@ -70,7 +67,7 @@ header{
  padding:15px 22px;
  font-size:19px;
  font-weight:900;
- background:linear-gradient(90deg, rgba(16,185,129,.16), rgba(34,211,238,.10));
+ background:rgba(0,0,0,.8);
  border-bottom:1px solid var(--border);
  backdrop-filter:blur(14px);
  -webkit-backdrop-filter:blur(14px);
@@ -78,22 +75,23 @@ header{
 .brand{display:flex;align-items:center;gap:11px}
 .brand-mark{
  width:38px;height:38px;display:grid;place-items:center;
- border-radius:12px;font-size:20px;font-weight:900;color:#04140f;
- background:linear-gradient(135deg,var(--emerald),var(--cyan));
- box-shadow:0 10px 26px rgba(16,185,129,.38);
+ border-radius:12px;font-size:20px;font-weight:900;
+ color:#000;
+ background:#fff;
+ box-shadow:0 10px 26px rgba(255,255,255,.15);
 }
 .brand-name{
- font-size:14px;font-weight:800;color:var(--amber);
+ font-size:14px;font-weight:800;color:var(--text);
  padding:6px 15px;border-radius:999px;
- border:1px solid rgba(245,181,68,.35);
- background:rgba(245,181,68,.09);
+ border:1px solid var(--border);
+ background:rgba(255,255,255,.1);
 }
 
 nav{
  position:sticky;top:0;z-index:60;
  display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
  padding:12px 14px;
- background:rgba(7,11,20,.74);
+ background:rgba(5,5,5,.8);
  backdrop-filter:blur(18px);
  -webkit-backdrop-filter:blur(18px);
  border-bottom:1px solid var(--border);
@@ -106,12 +104,12 @@ button{
  border-radius:12px;
  font-weight:800;
  font-size:15px;
- color:#04140f;
- background:linear-gradient(135deg,var(--emerald),var(--cyan));
- box-shadow:0 10px 26px rgba(16,185,129,.22);
+ color:var(--accent-text);
+ background:var(--accent);
+ box-shadow:0 10px 26px rgba(255,255,255,.1);
  transition:transform .25s ease, filter .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
 }
-button:hover{filter:brightness(1.07);transform:translateY(-2px)}
+button:hover{filter:brightness(0.8);transform:translateY(-2px)}
 button:disabled{opacity:.55;cursor:not-allowed;transform:none}
 
 nav button{
@@ -123,12 +121,12 @@ nav button{
  font-size:14px;
  box-shadow:none;
 }
-nav button:hover{color:#fff;border-color:rgba(16,185,129,.55);background:rgba(16,185,129,.08)}
+nav button:hover{color:#fff;border-color:#fff;background:rgba(255,255,255,.1)}
 nav button.active{
- background:linear-gradient(135deg,var(--emerald),var(--cyan));
- color:#04140f;
+ background:var(--accent);
+ color:var(--accent-text);
  border-color:transparent;
- box-shadow:0 10px 26px rgba(16,185,129,.38);
+ box-shadow:0 10px 26px rgba(255,255,255,.2);
 }
 
 .notice{
@@ -138,10 +136,10 @@ nav button.active{
  text-align:center;
  font-weight:800;
  font-size:14px;
- color:#d5f7ea;
+ color:#fff;
  border-radius:18px;
- background:linear-gradient(135deg, rgba(16,185,129,.15), rgba(34,211,238,.07));
- border:1px solid rgba(16,185,129,.30);
+ background:rgba(255,255,255,.08);
+ border:1px solid var(--border);
  backdrop-filter:blur(10px);
 }
 
@@ -155,9 +153,9 @@ nav button.active{
  text-align:center;
  padding:70px 18px;
  background:
-  radial-gradient(820px 420px at 50% -6%, rgba(16,185,129,.34), transparent 70%),
-  linear-gradient(180deg, rgba(7,11,20,.72), rgba(7,11,20,.96)),
-  url('https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg') center/cover no-repeat;
+  linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,.95)),
+  /* 👇 صورة الخلفية في الأعلى هي الصورة القديمة (التي تعجبك) 👇 */
+  url('https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png') center/cover no-repeat;
 }
 .hero::after{
  content:"";
@@ -173,15 +171,12 @@ nav button.active{
  font-weight:900;
  letter-spacing:-1px;
  line-height:1.25;
- background:linear-gradient(120deg,#ffffff,#a7f3d0 45%,#67e8f9);
- -webkit-background-clip:text;
- background-clip:text;
- color:transparent;
- filter:drop-shadow(0 12px 40px rgba(16,185,129,.35));
+ color:#ffffff;
+ filter:drop-shadow(0 12px 40px rgba(0,0,0,.8));
 }
 .hero p{
  font-size:19px;
- color:#c7d6e8;
+ color:#d4d4d4;
  margin:6px 0;
 }
 .party{
@@ -191,10 +186,9 @@ nav button.active{
  font-weight:900;
  font-size:14px;
  letter-spacing:.6px;
- color:#a7f3d0;
- border:1px solid rgba(16,185,129,.45);
- background:rgba(16,185,129,.12);
- box-shadow:inset 0 0 34px rgba(16,185,129,.16);
+ color:#fff;
+ border:1px solid rgba(255,255,255,.4);
+ background:rgba(255,255,255,.15);
 }
 
 .candidate-numbers{
@@ -208,31 +202,27 @@ nav button.active{
  min-width:152px;
  padding:15px 22px;
  border-radius:20px;
- background:rgba(255,255,255,.06);
- border:1px solid var(--border);
+ background:rgba(0,0,0,.6);
+ border:1px solid rgba(255,255,255,.2);
  backdrop-filter:blur(12px);
- box-shadow:0 20px 44px rgba(0,0,0,.38);
- transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+ box-shadow:0 20px 44px rgba(0,0,0,.8);
+ transition:transform .3s ease, border-color .3s ease;
 }
 .number-box:hover{
  transform:translateY(-6px);
- border-color:rgba(34,211,238,.55);
- box-shadow:0 26px 54px rgba(0,0,0,.5);
+ border-color:#fff;
 }
 .number-box strong{
  display:block;
  font-size:46px;
  line-height:1.15;
  font-weight:900;
- background:linear-gradient(135deg,var(--amber),#ffe0a8);
- -webkit-background-clip:text;
- background-clip:text;
- color:transparent;
+ color:#fff;
 }
 .number-box span{
  font-size:12.5px;
  font-weight:800;
- color:var(--muted);
+ color:#a3a3a3;
 }
 
 .candidate-label{
@@ -242,9 +232,9 @@ nav button.active{
  border-radius:999px;
  font-weight:900;
  font-size:14px;
- color:#24190e;
- background:linear-gradient(135deg,var(--amber),#ffd98a);
- box-shadow:0 14px 32px rgba(245,181,68,.30);
+ color:#000;
+ background:#fff;
+ box-shadow:0 14px 32px rgba(255,255,255,.2);
 }
 
 .container{
@@ -258,11 +248,11 @@ section{
  margin:28px 0;
  padding:30px;
  border-radius:26px;
- background:linear-gradient(160deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
+ background:rgba(255,255,255,.03);
  border:1px solid var(--border);
  backdrop-filter:blur(16px);
  -webkit-backdrop-filter:blur(16px);
- box-shadow:0 26px 64px rgba(0,0,0,.38);
+ box-shadow:0 26px 64px rgba(0,0,0,.5);
  scroll-margin-top:110px;
 }
 
@@ -273,15 +263,15 @@ h2{
  margin:0 0 24px;
  font-size:clamp(22px,3.4vw,30px);
  font-weight:900;
- color:#f2f8ff;
+ color:#fff;
 }
 h2::before{
  content:"";
  width:6px;
  height:30px;
  border-radius:6px;
- background:linear-gradient(180deg,var(--emerald),var(--cyan));
- box-shadow:0 0 20px rgba(16,185,129,.65);
+ background:#fff;
+ box-shadow:0 0 20px rgba(255,255,255,.5);
 }
 
 .profile{
@@ -294,12 +284,13 @@ h2::before{
  width:100%;
  border-radius:24px;
  padding:6px;
- background:rgba(255,255,255,.05);
- border:1px solid rgba(255,255,255,.13);
- box-shadow:0 22px 50px rgba(0,0,0,.5);
+ background:rgba(255,255,255,.1);
+ border:1px solid rgba(255,255,255,.2);
+ box-shadow:0 22px 50px rgba(0,0,0,.8);
+ filter: grayscale(100%); /* تحويل الصورة لأبيض وأسود */
 }
-.info{line-height:2.1;color:#cfdaea}
-.info h3{color:#a7f3d0;font-size:22px;margin:0 0 12px}
+.info{line-height:2.1;color:#d4d4d4}
+.info h3{color:#fff;font-size:22px;margin:0 0 12px}
 .profile-number{
  display:inline-block;
  margin:6px 0;
@@ -307,9 +298,9 @@ h2::before{
  border-radius:12px;
  font-weight:900;
  font-size:14px;
- color:#a7f3d0;
- background:rgba(16,185,129,.12);
- border:1px solid rgba(16,185,129,.32);
+ color:#fff;
+ background:rgba(255,255,255,.15);
+ border:1px solid rgba(255,255,255,.3);
 }
 
 .cards{
@@ -322,22 +313,22 @@ h2::before{
  text-align:center;
  line-height:1.9;
  border-radius:18px;
- background:linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.015));
+ background:rgba(255,255,255,.04);
  border:1px solid var(--border);
- transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease, background .3s ease;
+ transition:transform .3s ease, border-color .3s ease, background .3s ease;
 }
 .card:hover{
  transform:translateY(-6px);
- border-color:rgba(34,211,238,.45);
- background:linear-gradient(160deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
- box-shadow:0 20px 44px rgba(0,0,0,.45);
+ border-color:#fff;
+ background:rgba(255,255,255,.1);
+ box-shadow:0 20px 44px rgba(0,0,0,.6);
 }
-.card h3{color:#eaf6ff;margin:12px 0 6px;font-size:18px}
-.card p{color:#b9c8db;margin:0}
+.card h3{color:#fff;margin:12px 0 6px;font-size:18px}
+.card p{color:#a3a3a3;margin:0}
 .symbol{
  font-size:32px;
  display:inline-block;
- filter:drop-shadow(0 8px 16px rgba(16,185,129,.5));
+ filter: grayscale(100%);
 }
 
 .program-intro{
@@ -346,34 +337,33 @@ h2::before{
  text-align:center;
  font-weight:800;
  font-size:15px;
- color:#d8f6ea;
+ color:#e5e5e5;
  border-radius:18px;
- background:linear-gradient(135deg, rgba(16,185,129,.15), rgba(34,211,238,.07));
- border:1px solid rgba(16,185,129,.32);
+ background:rgba(255,255,255,.08);
+ border:1px solid var(--border);
 }
 
-/* 👇 تنسيقات البطاقات المختصرة للبرنامج 👇 */
 .program-card-short {
  text-align: center;
  padding: 25px 20px;
  border-radius: 18px;
  background: rgba(255,255,255,.04);
  border: 1px solid var(--border);
- border-right: 3px solid rgba(16,185,129,.55);
+ border-right: 3px solid rgba(255,255,255,.5);
  transition: .3s;
 }
 .program-card-short:hover {
- background: rgba(255,255,255,.07);
- border-right-color: var(--cyan);
+ background: rgba(255,255,255,.1);
+ border-right-color: #fff;
  transform: translateY(-4px);
 }
 .program-card-short h3 {
- color: #a7f3d0;
+ color: #fff;
  font-size: 18px;
  margin: 0 0 10px;
 }
 .program-card-short p {
- color: #b9c8db;
+ color: #a3a3a3;
  font-size: 14px;
  line-height: 1.7;
  margin: 0;
@@ -385,15 +375,13 @@ h2::before{
  border-radius:22px;
  text-align:center;
  line-height:2.15;
- color:#dbe7f5;
- background:
-  radial-gradient(520px 250px at 50% 0%, rgba(245,181,68,.17), transparent 72%),
-  linear-gradient(160deg,#0d1526,#0a101c);
- border:1px solid rgba(245,181,68,.30);
+ color:#d4d4d4;
+ background: rgba(255,255,255,.05);
+ border:1px solid rgba(255,255,255,.2);
  box-shadow:0 26px 64px rgba(0,0,0,.5);
 }
-.commitment h3{color:var(--amber);font-size:22px;margin:0 0 14px}
-.commitment strong{color:#ffe0a8}
+.commitment h3{color:#fff;font-size:22px;margin:0 0 14px}
+.commitment strong{color:#fff}
 
 .section-note{
  margin-top:18px;
@@ -408,18 +396,17 @@ input,textarea{
  margin:8px 0;
  padding:12px 15px;
  font-size:15px;
- color:var(--text);
+ color:#fff;
  border-radius:12px;
  border:1px solid var(--border);
- background:rgba(255,255,255,.05);
- transition:border-color .25s ease, box-shadow .25s ease, background .25s ease;
+ background:rgba(0,0,0,.5);
+ transition:border-color .25s ease, background .25s ease;
 }
-input::placeholder,textarea::placeholder{color:#7b8aa3}
+input::placeholder,textarea::placeholder{color:#737373}
 input:focus,textarea:focus{
  outline:none;
- border-color:rgba(16,185,129,.65);
- background:rgba(255,255,255,.08);
- box-shadow:0 0 0 4px rgba(16,185,129,.13);
+ border-color:#fff;
+ background:rgba(255,255,255,.1);
 }
 textarea{min-height:92px;resize:vertical}
 
@@ -428,19 +415,19 @@ textarea{min-height:92px;resize:vertical}
  margin:12px 0;
  border-radius:14px;
  line-height:1.95;
- color:#d3dfee;
- background:rgba(255,255,255,.04);
+ color:#d4d4d4;
+ background:rgba(255,255,255,.05);
  border:1px solid var(--border);
- border-right:3px solid rgba(16,185,129,.6);
+ border-right:3px solid #fff;
 }
 .comment p,.adminItem p{margin:6px 0}
 .reply{
  margin:12px 16px 0;
  padding:12px 15px;
  border-radius:12px;
- color:#bdf1ff;
- background:rgba(34,211,238,.09);
- border:1px dashed rgba(34,211,238,.38);
+ color:#fff;
+ background:rgba(255,255,255,.08);
+ border:1px dashed rgba(255,255,255,.3);
 }
 
 .status{
@@ -454,7 +441,7 @@ textarea{min-height:92px;resize:vertical}
  margin-top:18px;
  padding:20px;
  border-radius:20px;
- background:rgba(255,255,255,.035);
+ background:rgba(255,255,255,.03);
  border:1px solid var(--border);
 }
 .adminNav{
@@ -467,43 +454,40 @@ textarea{min-height:92px;resize:vertical}
  padding:9px 17px;
  font-size:14px;
  border-radius:999px;
- color:var(--text);
- background:rgba(255,255,255,.06);
+ color:#fff;
+ background:rgba(255,255,255,.1);
  border:1px solid var(--border);
  box-shadow:none;
 }
 .adminNav button:hover{
- background:rgba(16,185,129,.14);
- border-color:rgba(16,185,129,.5);
+ background:rgba(255,255,255,.2);
+ border-color:#fff;
 }
 
 .stat{
  padding:22px 16px;
  border-radius:16px;
  text-align:center;
- background:linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+ background:rgba(255,255,255,.05);
  border:1px solid var(--border);
 }
 .stat strong{
  display:block;
  font-size:30px;
  font-weight:900;
- background:linear-gradient(135deg,var(--emerald),var(--cyan));
- -webkit-background-clip:text;
- background-clip:text;
- color:transparent;
+ color:#fff;
 }
 
-.danger{background:linear-gradient(135deg,#ef5350,#b3202a);color:#fff;box-shadow:0 10px 26px rgba(239,83,80,.25)}
-.green{background:linear-gradient(135deg,#10b981,#059669);color:#04140f;box-shadow:0 10px 26px rgba(16,185,129,.25)}
+.danger{background:#fff;color:#000;box-shadow:0 10px 26px rgba(255,255,255,.2)}
+.green{background:#fff;color:#000;box-shadow:0 10px 26px rgba(255,255,255,.2)}
 .small{font-size:12.5px;color:var(--muted)}
 .hidden{display:none!important}
 .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 
 #likeBtn{
- background:linear-gradient(135deg,var(--amber),#ffd98a);
- color:#24190e;
- box-shadow:0 12px 30px rgba(245,181,68,.28);
+ background:#fff;
+ color:#000;
+ box-shadow:0 12px 30px rgba(255,255,255,.2);
 }
 
 footer{
@@ -514,10 +498,10 @@ footer{
  font-size:14px;
  color:var(--muted);
  border-top:1px solid var(--border);
- background:linear-gradient(180deg, transparent, rgba(16,185,129,.07));
+ background:rgba(0,0,0,.5);
 }
 footer p{margin:4px 0}
-footer p:first-child{color:#a7f3d0;font-weight:900;font-size:16px}
+footer p:first-child{color:#fff;font-weight:900;font-size:16px}
 
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
 .reveal.visible{opacity:1;transform:none}
@@ -588,8 +572,9 @@ footer p:first-child{color:#a7f3d0;font-weight:900;font-size:16px}
  <h2>التعريف بالمترشح</h2>
 
  <div class="profile">
+  <!-- 👇 هنا تم إرجاع الصورة القديمة التي كانت موجودة في موقعك 👇 -->
   <img
-   src="https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg"
+   src="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png"
    alt="براهيمي يوسف">
 
   <div class="info">
