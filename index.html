@@ -1,1445 +1,692 @@
-<!DOCTYPE html>  
-<html lang="ar" dir="rtl">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width,initial-scale=1">  
-<title>نادر | سوق الكتب</title>  
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- الصورة الأولى: تظهر كمعاينة عند مشاركة الرابط -->
-<meta property="og:title" content="نادر | سوق الكتب النادرة">
-<meta property="og:description" content="منصة نادر لتبادل وبيع الكتب النادرة - جامعة أفلو">
-<meta property="og:image" content="https://i.postimg.cc/L5M0HLVd/IMG-20261018-WA0000.jpg">
+<title>اعرف مترشحك | براهيمي يوسف</title>
+<meta name="description" content="المسار المهني والبرنامج المحلي لبراهيمي يوسف">
+
+<!-- 👇 رابط صورتك الجديدة (مع ?v=5 لكسر ذاكرة فيسبوك) 👇 -->
 <meta property="og:type" content="website">
+<meta property="og:locale" content="ar_DZ">
+<meta property="og:site_name" content="اعرف مترشحك">
+<meta property="og:title" content="براهيمي يوسف | اعرف مترشحك">
+<meta property="og:description" content="برنامج ورؤية لخدمة ولاية أفلو والصالح العام. اضغط لزيارة الموقع.">
+<meta property="og:image" content="https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg?v=5">
+<meta property="og:image:secure_url" content="https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg?v=5">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://workdz-u7oo.onrender.com/">
 
-<style>  
-*{box-sizing:border-box;margin:0;padding:0}  
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="براهيمي يوسف | اعرف مترشحك">
+<meta name="twitter:description" content="برنامج ورؤية لخدمة ولاية أفلو والصالح العام.">
+<meta name="twitter:image" content="https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg?v=5">
 
-/* ==================================================== */
-/* إعدادات الخلفية الأساسية (الصورة الجديدة) */
-/* ==================================================== */
-html, body {
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  /* الصورة الجديدة كخلفية كاملة */
-  background-image: url('https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-color: #0a2540; /* لون بديل يظهر أثناء تحميل الصورة */
-  color: #0f1e33;
-  font-family: Tahoma, Arial, sans-serif;
-  line-height: 1.7;
-  position: relative;
+ margin:0;
+ font-family:Tahoma,Arial,sans-serif;
+ color:#f8f4e8;
+ background:#0f2a20;
+ overflow-x:hidden;
 }
 
-/* طبقة تظليل خفيفة جداً لضمان رؤية النصوص */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(10, 37, 64, 0.15); 
-  z-index: -1;
-  pointer-events: none;
+/* 👇 تنسيقات صفحة الغلاف (شاشة الدخول) 👇 */
+#welcome-overlay {
+ position: fixed;
+ inset: 0;
+ background: #0f2a20;
+ z-index: 9999;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ cursor: pointer;
+ transition: opacity 0.8s ease, visibility 0.8s;
+}
+#welcome-overlay.hidden {
+ opacity: 0;
+ visibility: hidden;
+}
+.welcome-img {
+ max-width: 90%;
+ max-height: 75vh;
+ border-radius: 20px;
+ border: 4px solid #e8c76e;
+ box-shadow: 0 0 60px rgba(232, 199, 110, 0.5);
+ object-fit: contain;
+ transition: transform 0.3s;
+}
+.welcome-img:hover { transform: scale(1.02); }
+.welcome-text {
+ margin-top: 25px;
+ color: #f0cf78;
+ font-size: 20px;
+ font-weight: bold;
+ animation: pulse 2s infinite;
+}
+@keyframes pulse {
+ 0% { opacity: 0.5; }
+ 50% { opacity: 1; }
+ 100% { opacity: 0.5; }
 }
 
-button,input,textarea,select{font:inherit}  
-button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;  
-  background:#123c68;color:#fff;font-weight:700;transition:.2s}  
-button:hover{filter:brightness(1.1)}  
-button:disabled{opacity:.5;cursor:wait}  
-.sec{background:rgba(234,241,250,0.9);color:#123c68}  
-.dng{background:#fdecec;color:#b3261e}  
-.gold{background:linear-gradient(135deg,#d4a017,#f5c542);color:#0a2540}  
-
-input,textarea,select{
-  width:100%;padding:11px 13px;
-  border:1.5px solid rgba(255,255,255,0.5);  
-  border-radius:10px;
-  background:rgba(255,255,255,0.85); 
-  outline:none;font-size:.94rem
-}  
-input:focus,textarea:focus,select:focus{border-color:#236eaa;box-shadow:0 0 0 3px rgba(35,110,170,.2)}  
-textarea{min-height:80px;resize:vertical}  
-label{display:block;font-weight:700;font-size:.85rem;margin:8px 0 5px;color:#0a2540; text-shadow: 0 1px 2px rgba(255,255,255,0.8);}  
-.hid{display:none!important}  
-.wrap{max-width:1100px;margin:auto;padding:16px}  
-
-/* Splash 1 */  
-#sp1{position:fixed;inset:0;z-index:9999;
-background: linear-gradient(rgba(8,25,46,0.85), rgba(8,25,46,0.95)), url('https://i.postimg.cc/L5M0HLVd/IMG-20261018-WA0000.jpg') center/cover no-repeat;
-display:flex;flex-direction:column;align-items:center;justify-content:center;
-padding:24px;text-align:center;color:#fff}
-.sp1-ic{font-size:70px;margin-bottom:12px;animation:pu 2.6s ease-in-out infinite}
-@keyframes pu{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
-.sp1-t{font-size:2.4rem;font-weight:900;letter-spacing:3px;
-background:linear-gradient(90deg,#f5c542,#fff,#f5c542,#d4a017,#f5c542);
-background-size:300% 100%;-webkit-background-clip:text;background-clip:text;
-color:transparent;animation:sn 4s linear infinite}
-@keyframes sn{0%{background-position:0% 50%}100%{background-position:300% 50%}}
-.sp1-s{font-size:.95rem;color:#c9dcf0;margin:6px 0 24px}
-.sp1-sup{display:flex;flex-direction:column;gap:5px;font-size:1rem;font-weight:800;
-color:#f5c542;margin-bottom:8px}
-.sp1-sup .l{padding:5px 16px;border-radius:10px;background:rgba(245,197,66,.08);
-border:1px solid rgba(245,197,66,.25)}
-.sp1-sup .a{color:#4ecdc4;background:rgba(78,205,196,.08);border-color:rgba(78,205,196,.3)}
-.mq{width:100%;max-width:460px;overflow:hidden;background:rgba(255,255,255,.06);
-border:1px solid rgba(245,197,66,.35);border-radius:99px;padding:10px 0;margin:20px 0}
-.mq-t{display:inline-block;white-space:nowrap;font-size:1.1rem;font-weight:900;
-background:linear-gradient(90deg,#f5c542,#ff6b6b,#4ecdc4,#a78bfa,#f5c542);
-background-size:400% 100%;-webkit-background-clip:text;background-clip:text;
-color:transparent;animation:mq 8s linear infinite}
-@keyframes mq{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
-.pb{width:240px;height:5px;background:rgba(255,255,255,.12);border-radius:99px;
-overflow:hidden;margin-bottom:20px}
-.pb>div{height:100%;width:0%;background:linear-gradient(90deg,#f5c542,#ff6b6b,#4ecdc4,#f5c542);
-animation:pg 6s linear forwards}
-@keyframes pg{from{width:0%}to{width:100%}}
-.sp1-b{padding:12px 32px;font-size:.95rem;font-weight:900;border-radius:99px;
-background:linear-gradient(135deg,#d4a017,#f5c542);color:#0a2540}
-
-/* Splash 2 */
-#sp2{position:fixed;inset:0;z-index:9998;background:
-radial-gradient(circle at 30% 30%,rgba(212,160,23,.15),transparent 60%),
-radial-gradient(circle at 70% 70%,rgba(167,139,250,.18),transparent 60%),
-linear-gradient(135deg,#1a0a2e,#2d1b4e 45%,#4c1d95);
-display:flex;flex-direction:column;align-items:center;justify-content:center;
-padding:24px;text-align:center;color:#fff;cursor:pointer}
-.sp2-logo{width:180px;height:180px;border-radius:50%;
-background:radial-gradient(circle at 30% 30%,#f5c542,#a78bfa 50%,#4c1d95);
-display:flex;align-items:center;justify-content:center;
-font-size:4rem;font-weight:900;color:#fff;
-box-shadow:0 0 60px rgba(167,139,250,.6),0 0 100px rgba(245,197,66,.3),
-inset 0 0 40px rgba(255,255,255,.1);
-margin-bottom:24px;animation:lp 3s ease-in-out infinite;
-position:relative;border:4px solid rgba(255,255,255,.15)}
-.sp2-logo::before{content:'';position:absolute;inset:-12px;border-radius:50%;
-background:conic-gradient(from 0deg,#f5c542,#4ecdc4,#a78bfa,#f5c542);
-animation:spin 8s linear infinite;z-index:-1;filter:blur(20px);opacity:.7}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes lp{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-.sp2-title{font-size:3rem;font-weight:900;letter-spacing:8px;
-background:linear-gradient(90deg,#f5c542,#fff,#a78bfa,#f5c542);
-background-size:300% 100%;-webkit-background-clip:text;background-clip:text;
-color:transparent;animation:sn 3s linear infinite;margin-bottom:8px}
-.sp2-sub{font-size:1rem;color:#c9dcf0;margin-bottom:32px;letter-spacing:2px}
-.sp2-crew{display:flex;flex-direction:column;gap:10px;padding:22px 32px;
-background:rgba(255,255,255,.06);border:1px solid rgba(245,197,66,.35);
-border-radius:20px;backdrop-filter:blur(10px);margin-bottom:24px;
-max-width:400px;width:100%}
-.sp2-crew .member{font-size:1.05rem;font-weight:800;color:#f5c542;padding:6px 0}
-.sp2-crew .member .role{color:#a78bfa;font-size:.85rem;font-weight:600}
-.sp2-crew .supervisor{font-size:.92rem;color:#c9dcf0;padding-top:10px;margin-top:6px;
-border-top:1px dashed rgba(255,255,255,.2);font-weight:600}
-.sp2-enter{color:#c9dcf0;font-size:.85rem;animation:blink 2s ease-in-out infinite;margin-bottom:40px}
-@keyframes blink{0%,100%{opacity:.5}50%{opacity:1}}
-.sp2-credit{position:absolute;bottom:20px;left:0;right:0;text-align:center;
-color:rgba(255,255,255,.5);font-size:.78rem;letter-spacing:1px;padding:0 20px}
-.sp2-credit b{color:#f5c542;font-weight:800}
-
-/* Header زجاجي */
-.top{
-  background: rgba(10, 37, 64, 0.6);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-  color:#fff;
-  padding:14px 0;
-  position:sticky;
-  top:0;
-  z-index:100;
-  box-shadow:0 6px 24px rgba(10,37,64,.2)
+#stars{
+ position:fixed;
+ inset:0;
+ width:100%;
+ height:100%;
+ z-index:-1;
+ pointer-events:none;
 }
-.top-in{max-width:1100px;padding:0 16px;margin:auto;display:flex;
-align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.brand{font-size:1.3rem;font-weight:900; text-shadow: 0 2px 4px rgba(0,0,0,0.5);}
-.brand small{display:block;font-size:.7rem;font-weight:400;opacity:.85}
-.ai-lights{display:flex;gap:6px;padding:5px 10px;border-radius:50px;
-background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15)}
-.ai-l{display:flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;
-color:rgba(255,255,255,.7)}
-.ai-l i{width:9px;height:9px;border-radius:50%;background:#666}
-.ai-l.on{color:#fff}
-.ai-l.on i{background:#22c55e;box-shadow:0 0 0 2px rgba(34,197,94,.25),
-0 0 10px rgba(34,197,94,.9);animation:pl 2s ease-in-out infinite}
-.ai-l.off i{background:#ef4444}
-@keyframes pl{0%,100%{box-shadow:0 0 0 2px rgba(34,197,94,.25),0 0 10px rgba(34,197,94,.9)}
-50%{box-shadow:0 0 0 5px rgba(34,197,94,.15),0 0 18px rgba(34,197,94,1)}}
-
-.nav-btn{position:relative}
-.badge{position:absolute;top:4px;left:4px;background:#ef4444;color:#fff;
-min-width:18px;height:18px;border-radius:99px;font-size:.68rem;font-weight:900;
-display:flex;align-items:center;justify-content:center;padding:0 5px;
-box-shadow:0 2px 8px rgba(239,68,68,.6);animation:bg 1.5s ease-in-out infinite}
-@keyframes bg{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-
-/* زجاجية شاشة الدخول */
-.auth{max-width:420px;margin:6vh auto;padding:0 16px}
-.auth-c{
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.8);
-  border-radius:20px;
-  padding:32px 26px;
-  box-shadow:0 10px 30px rgba(10,37,64,.15);
-  position:relative;
-  overflow:hidden;
+header{
+ position:sticky;
+ top:0;
+ z-index:20;
+ background:rgba(15, 42, 32, 0.95);
+ border-bottom:1px solid #b99a4a;
+ padding:13px 10px;
+ backdrop-filter:blur(12px);
 }
-.auth-c::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;
-background:linear-gradient(90deg,#0a2540,#f5c542,#0a2540);background-size:200% 100%;
-animation:sh 4s linear infinite}
-@keyframes sh{0%{background-position:-100% 0}100%{background-position:200% 0}}
-.auth-h{text-align:center;margin-bottom:20px}
-.auth-h .i{font-size:48px}
-.auth-h h1{font-size:1.5rem;font-weight:900;margin-top:6px;color:#0a2540}
-.tabs{display:flex;gap:5px;padding:4px;background:rgba(234,241,250,0.6);border-radius:12px;margin-bottom:16px}
-.tabs button{flex:1;background:transparent;color:#4a5b73;font-weight:700;
-font-size:.88rem;padding:9px;border-radius:9px}
-.tabs button.active{background:#fff;color:#0a2540; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
-
-/* زجاجية البطاقات */
-.pan{
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius:16px;
-  padding:18px;
-  box-shadow:0 8px 32px rgba(10,37,64,.1);
-  margin:14px 0;
+.brand{
+ text-align:center;
+ color:#e8c76e;
+ font-size:22px;
+ font-weight:bold;
+ margin-bottom:12px;
 }
-.tit{margin:0 0 8px;font-size:1.2rem;font-weight:900;color:#0a2540}
-.mut{color:#2c3e50;font-size:.88rem; font-weight: 600;}
-.spl{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-
-.nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
-.nav button{
-  min-height:70px;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1.5px solid rgba(255,255,255,0.9);
-  color:#123c68;
-  padding:10px 6px;
-  border-radius:14px;
-  font-weight:700;
-  font-size:.78rem;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:4px;
-  box-shadow:0 4px 12px rgba(10,37,64,.08);
+.developer-top{
+ text-align:center;
+ color:#e9c66d;
+ padding:8px;
+ font-size:13px;
+ background:rgba(0,0,0,0.2);
+ border-bottom:1px solid #806a36;
 }
-.nav button.active{
-  background: rgba(10, 37, 64, 0.85);
-  color:#fff;
-  border-color:rgba(255,255,255,0.2);
+.developer-top strong{color:white}
+
+nav{
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:9px;
 }
-.nav .e{font-size:1.4rem}
-
-.top-search{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
-.top-search .tb{
-  display:flex;gap:6px;
-  background:rgba(255,255,255,0.8);
-  backdrop-filter: blur(8px);
-  border:1.5px solid rgba(255,255,255,0.9);
-  border-radius:12px;padding:8px;
-  box-shadow:0 4px 12px rgba(10,37,64,.05)
+nav a{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:7px;
+ padding:10px 15px;
+ border:1px solid #a88943;
+ border-radius:12px;
+ color:#fff4d7;
+ text-decoration:none;
+ font-size:13px;
+ font-weight:bold;
+ background:linear-gradient(145deg,#1a4732,#0f2a20);
+ transition:.25s;
+ box-shadow:0 3px 10px #0003;
 }
-.top-search .tb input{border:0;padding:8px 10px;font-size:.85rem; background: transparent;}
-.top-search .tb input:focus{box-shadow:none}
-.top-search .tb button{padding:8px 12px;font-size:.8rem}
-@media(max-width:820px){.top-search{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.top-search{grid-template-columns:1fr}}
-
-.bg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-gap:12px;margin-top:12px}
-
-/* بطاقة الكتاب الزجاجية */
-.bk{
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius:14px;
-  overflow:hidden;
-  transition:.25s;
-  display:flex;
-  flex-direction:column;
-}
-.bk:hover{box-shadow:0 12px 30px rgba(10,37,64,.2); background: rgba(255, 255, 255, 0.9);}
-.bk-head{display:flex;gap:10px;padding:12px;border-bottom:1px solid rgba(0,0,0,0.05)}
-.bk-img{width:70px;height:95px;flex-shrink:0;background:rgba(237,242,247,0.8);
-border-radius:6px;overflow:hidden;display:flex;align-items:center;
-justify-content:center;font-size:1.8rem}
-.bk-img img{width:100%;height:100%;object-fit:cover}
-.bk-info{flex:1;min-width:0}
-.bk-info h3{font-size:.92rem;font-weight:800;color:#0a2540;line-height:1.35;
-display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.bk-info small{color:#4a5b73;font-size:.75rem;display:block;margin-top:3px}
-.bk-tag{display:inline-block;padding:2px 9px;border-radius:99px;background:rgba(234,241,250,0.9);
-color:#123c68;font-size:.68rem;font-weight:700;margin-top:5px}
-.bk-lock{background:#fff3cd;color:#7a5a00;border-color:#f0c419}
-
-.bk-actions{display:flex;gap:5px;flex-wrap:wrap;padding:8px 12px;
-border-top:1px solid rgba(0,0,0,0.05)}
-.bk-ai{padding:8px 12px;background:rgba(248,251,255,0.5);border-top:1px solid rgba(0,0,0,0.05)}
-.bk-ai-btn{width:100%;padding:9px;border-radius:10px;
-background:linear-gradient(135deg,#0a2540,#123c68);color:#fff;
-font-weight:800;font-size:.82rem;display:flex;align-items:center;
-justify-content:center;gap:6px}
-.bk-ai-panel{margin-top:10px;padding-top:10px;border-top:1px dashed #c8dcf0;
-animation:fu .3s ease}
-@keyframes fu{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
-.ai-fns{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.ai-fn{padding:8px 4px;background:rgba(255,255,255,0.9);color:#123c68;border:1.5px solid #c8dcf0;
-border-radius:10px;font-size:.72rem;font-weight:700;display:flex;
-flex-direction:column;align-items:center;gap:3px;cursor:pointer;transition:.2s}
-.ai-fn:hover{background:linear-gradient(135deg,#123c68,#0a2540);color:#fff;
-border-color:transparent}
-.ai-fn .e{font-size:1.1rem}
-.ai-res{margin-top:10px;padding:12px;background:rgba(255,255,255,0.95);border:1.5px solid #c8dcf0;
-border-radius:10px;font-size:.85rem;line-height:1.8;white-space:pre-wrap;
-max-height:400px;overflow-y:auto}
-.ai-res .head{display:flex;justify-content:space-between;align-items:center;
-margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #e2e9f2;
-font-size:.75rem;font-weight:800;color:#0a2540}
-.ai-res .badge2{background:#d4f4e3;color:#0f5c39;padding:2px 8px;border-radius:99px;
-font-size:.65rem}
-.ai-res .badge3{background:#fff3cd;color:#7a5a00;padding:2px 8px;border-radius:99px;
-font-size:.65rem}
-.ai-err{padding:10px;background:#fdecec;color:#8c1d17;border-radius:10px;
-font-size:.85rem;font-weight:600}
-.ai-load{padding:20px;text-align:center;color:#236eaa;font-weight:700}
-
-.msg{border-radius:10px;padding:10px 14px;margin:10px 0;background:rgba(233,246,238,0.9);
-color:#0f5c39;font-weight:600;font-size:.85rem;border-right:3px solid #0f7a4d}
-.msg.err{background:rgba(253,236,236,0.9);color:#8c1d17;border-right-color:#b3261e}
-.msg.warn{background:rgba(255,243,205,0.9);color:#7a5a00;border-right-color:#f0c419}
-
-.ur{
-  display:flex;align-items:center;gap:12px;padding:12px;
-  background:rgba(255,255,255,0.8);
-  backdrop-filter: blur(8px);
-  border:1.5px solid rgba(255,255,255,0.9);
-  border-radius:12px;margin:8px 0;cursor:pointer;transition:.2s
-}
-.ur:hover{border-color:#236eaa; background: rgba(255,255,255,1);}
-.av{width:44px;height:44px;border-radius:50%;
-background:linear-gradient(135deg,#123c68,#0a2540);
-color:#fff;display:flex;align-items:center;justify-content:center;
-font-weight:900;flex-shrink:0}
-.ur .i{flex:1}
-.ur .i b{display:block;color:#0a2540;font-size:.9rem}
-.ur .i small{color:#4a5b73;font-size:.75rem}
-.ur .cnt{background:#ef4444;color:#fff;border-radius:99px;padding:2px 9px;
-font-size:.72rem;font-weight:900}
-
-.em{
-  text-align:center;padding:36px 20px;color:#2c3e50;
-  background:rgba(248,250,253,0.6);
-  backdrop-filter: blur(5px);
-  border-radius:12px;border:1.5px dashed rgba(200,220,240,0.9);
+nav a:hover,nav a.active{
+ background:linear-gradient(135deg,#d7b55d,#a47c2f);
+ color:#10251a;
+ transform:translateY(-2px);
+ box-shadow:0 5px 15px #c5a34b33;
 }
 
-#cm{position:fixed;inset:0;background:rgba(10,37,64,.7);z-index:9800;
-display:flex;align-items:center;justify-content:center;padding:16px}
-.cm-c{background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-radius:18px;width:100%;max-width:520px;height:75vh;
-display:flex;flex-direction:column;overflow:hidden}
-.cm-h{padding:12px 16px;background:linear-gradient(135deg,#0a2540,#123c68);color:#fff;
-display:flex;justify-content:space-between;align-items:center;font-weight:800}
-.cm-m{flex:1;overflow-y:auto;padding:14px;background:rgba(244,247,251,0.5);display:flex;
-flex-direction:column;gap:6px}
-.cm-i{padding:10px;border-top:1px solid #e2e9f2;display:flex;gap:6px}
-.mg{max-width:78%;padding:9px 13px;border-radius:14px;font-size:.9rem;word-wrap:break-word}
-.mg.me{background:linear-gradient(135deg,#236eaa,#123c68);color:#fff;align-self:flex-end}
-.mg.th{background:#fff;border:1px solid #e2e9f2;align-self:flex-start}
+.ticker{
+ overflow:hidden;
+ background:#b8943f;
+ color:#172a1d;
+ white-space:nowrap;
+ padding:11px 0;
+ font-weight:bold;
+}
+.ticker span{
+ display:inline-block;
+ padding-right:100%;
+ animation:move 22s linear infinite;
+}
+@keyframes move{
+ from{transform:translateX(0)}
+ to{transform:translateX(100%)}
+}
 
-.sct{position:fixed;bottom:12px;left:12px;z-index:9000;width:34px;height:34px;
-border-radius:50%;background:rgba(10,37,64,.75);color:#fff;font-size:.95rem;
-display:flex;align-items:center;justify-content:center;opacity:.4;transition:.3s;cursor:pointer}
-.sct:hover{opacity:1}
-#smod{position:fixed;inset:0;background:rgba(10,37,64,.85);z-index:9950;
-display:flex;align-items:center;justify-content:center;padding:16px}
-#smod>div{background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-radius:18px;padding:26px 22px;width:100%;
-max-width:400px;text-align:center}
-#smod h2{color:#0a2540;margin-bottom:12px;font-size:1.2rem}
-.sc-in{font-family:monospace;font-size:1.4rem;letter-spacing:6px;text-align:center;
-padding:12px;border:2px solid #e2e9f2;border-radius:12px}
+.hero{
+ min-height:570px;
+ padding:45px 18px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ background:linear-gradient(180deg,rgba(26, 71, 50, 0.6),rgba(15, 42, 32, 0.9));
+}
+.profile{
+ width:300px;
+ height:360px;
+ max-width:90%;
+ object-fit:cover;
+ border:4px solid #d8b65d;
+ border-radius:22px;
+ box-shadow:0 0 40px rgba(197, 163, 75, 0.4);
+}
+h1{
+ color:#f0cf78;
+ font-size:clamp(30px,6vw,48px);
+ margin:20px 0 8px;
+}
+.hero p{
+ color:#eee2c1;
+ font-size:18px;
+ line-height:1.9;
+}
+.tag{
+ display:inline-block;
+ padding:10px 20px;
+ border:1px solid #c7a34c;
+ border-radius:30px;
+ color:#f1d47f;
+ margin-top:10px;
+ background: rgba(0,0,0,0.2);
+}
+
+section{
+ max-width:1100px;
+ margin:auto;
+ padding:55px 18px;
+ scroll-margin-top:145px;
+}
+.section-title{
+ text-align:center;
+ color:#e9c66d;
+ font-size:29px;
+ margin-bottom:30px;
+}
+.intro{
+ text-align:center;
+ max-width:800px;
+ margin:auto;
+ line-height:2.2;
+ color:#eee8d8;
+}
+.cards{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+ gap:18px;
+}
+.card{
+ background:rgba(255,255,255,0.05);
+ backdrop-filter: blur(10px);
+ border:1px solid rgba(232, 199, 110, 0.3);
+ border-radius:17px;
+ padding:25px 18px;
+ text-align:center;
+ box-shadow:0 8px 24px rgba(0,0,0,0.2);
+ transition:.3s;
+ opacity:0;
+ transform:translateY(20px);
+}
+.card.show{opacity:1;transform:translateY(0)}
+.card:hover{
+ transform:translateY(-5px);
+ border-color:#f1d47f;
+ background:rgba(255,255,255,0.08);
+}
+.icon{font-size:38px;margin-bottom:10px}
+.card h3{color:#e9c66d;margin:10px 0}
+.card p{line-height:2;color:#e8e4d8;font-size:14px}
+
+.coming-soon {
+ text-align: center;
+ background: rgba(255,255,255,0.05);
+ backdrop-filter: blur(10px);
+ border: 1px solid #a88943;
+ border-radius: 20px;
+ padding: 60px 20px;
+ max-width: 700px;
+ margin: 0 auto;
+ box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.coming-soon-icon {
+ font-size: 70px;
+ margin-bottom: 20px;
+ animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+ 0% { transform: translateY(0px); }
+ 50% { transform: translateY(-15px); }
+ 100% { transform: translateY(0px); }
+}
+.coming-soon h3 {
+ color: #f0cf78;
+ font-size: 32px;
+ margin-bottom: 15px;
+}
+.coming-soon p {
+ color: #eee8d8;
+ font-size: 18px;
+ line-height: 1.8;
+}
+
+.timeline{
+ max-width:750px;
+ margin:auto;
+ border-right:3px solid #c9a64f;
+ padding-right:22px;
+}
+.timeline-item{
+ position:relative;
+ background:rgba(255,255,255,0.03);
+ border:1px solid rgba(255,255,255,0.1);
+ padding:20px;
+ border-radius:13px;
+ margin-bottom:18px;
+ line-height:2;
+}
+.timeline-item:before{
+ content:"";
+ position:absolute;
+ right:-31px;
+ top:25px;
+ width:13px;
+ height:13px;
+ background:#e4c46c;
+ border-radius:50%;
+}
+.timeline-item strong{color:#e9c66d}
+
+.message{
+ text-align:center;
+ padding:35px 20px;
+ border:1px solid rgba(232, 199, 110, 0.3);
+ border-radius:20px;
+ background:rgba(255,255,255,0.03);
+ line-height:2.2;
+}
+.message h2{color:#e9c66d}
+
+.visitor-box{
+ margin-top:25px;
+ padding:30px 22px;
+ border:1px solid #c6a34d;
+ border-radius:20px;
+ background:rgba(255,255,255,0.05);
+ text-align:center;
+ line-height:2.2;
+ box-shadow:0 8px 25px #0004;
+}
+.visitor-box h3{
+ color:#f0cf78;
+ font-size:23px;
+}
+.visitor-box p{
+ color:#f0eadb;
+}
+
+.interaction{
+ margin-top:25px;
+ padding:28px 20px;
+ border:1px solid rgba(232, 199, 110, 0.3);
+ border-radius:20px;
+ background:rgba(0,0,0,0.15);
+ text-align:center;
+}
+.interaction h3{
+ color:#e9c66d;
+ font-size:23px;
+}
+.interaction p{
+ line-height:2;
+ color:#eee8d8;
+}
+.action-buttons{
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:12px;
+ margin:20px 0;
+}
+.action-btn{
+ border:1px solid #d8b65d;
+ border-radius:30px;
+ padding:12px 25px;
+ background:linear-gradient(135deg,#e4c46c,#a77d30);
+ color:#17291d;
+ font-size:15px;
+ font-weight:bold;
+ cursor:pointer;
+ font-family:Tahoma,Arial,sans-serif;
+ transition:.25s;
+}
+.action-btn:hover{
+ transform:translateY(-3px);
+ box-shadow:0 5px 15px #0005;
+}
+#likeCount{
+ color:#f0cf78;
+ font-size:18px;
+ font-weight:bold;
+}
+.comment-form{
+ max-width:650px;
+ margin:20px auto 0;
+ display:grid;
+ gap:12px;
+}
+.comment-form input,
+.comment-form textarea{
+ width:100%;
+ padding:13px;
+ border:1px solid #a88943;
+ border-radius:10px;
+ background:rgba(0,0,0,0.3);
+ color:white;
+ font-family:Tahoma,Arial,sans-serif;
+ font-size:14px;
+ outline:none;
+}
+.comment-form textarea{
+ min-height:100px;
+ resize:vertical;
+}
+.comment-form input:focus,
+.comment-form textarea:focus{
+ border-color:#f0cf78;
+}
+.comment-list{
+ max-width:650px;
+ margin:20px auto 0;
+ text-align:right;
+}
+.comment-item{
+ padding:14px;
+ margin:10px 0;
+ background:rgba(255,255,255,0.05);
+ border:1px solid rgba(255,255,255,0.1);
+ border-radius:12px;
+ overflow-wrap:anywhere;
+}
+.comment-item strong{color:#e9c66d}
+.comment-item p{
+ line-height:1.9;
+ margin-bottom:0;
+}
 
 footer{
-  text-align:center;color:#fff;font-weight: bold; padding:24px 16px;font-size:.82rem;
-  margin-top:24px; backdrop-filter: blur(10px); 
-  background: rgba(10, 37, 64, 0.6); 
-  border-top: 1px solid rgba(255,255,255,0.2);
+ text-align:center;
+ padding:30px 15px;
+ background:rgba(0,0,0,0.4);
+ border-top:1px solid #a88943;
+ line-height:2;
+ color:#d8d0b9;
 }
+footer strong{color:#e9c66d}
 
 @media(max-width:600px){
-.bg{grid-template-columns:1fr}
-.nav{grid-template-columns:repeat(3,1fr)}
-.ai-fns{grid-template-columns:repeat(2,1fr)}
-.sp2-title{font-size:2.2rem;letter-spacing:5px}
-.sp2-logo{width:140px;height:140px;font-size:3rem}
+ header{padding:10px 7px}
+ nav{gap:6px}
+ nav a{padding:9px 10px;font-size:12px}
+ .hero{padding:35px 14px}
+ .profile{width:260px;height:320px}
+ section{padding:38px 14px}
+ .section-title{font-size:25px}
+ .coming-soon h3 {font-size: 26px;}
 }
 </style>
+</head>
 
-</head>  
-<body>  
-<!-- Splash 1 -->  
-<div id="sp1" class="hid">  
-  <div class="sp1-ic">📚</div>  
-  <div class="sp1-t">نادر</div>  
-  <div class="sp1-s">سوق الكتب النادرة</div>  
-  <div class="sp1-sup">  
-    <span class="l">إعداد طلبة د. ريحانة</span>  
-    <span class="l a">ق. ملاك</span>  
-  </div>  
-  <div class="mq"><div class="mq-t">✨ جامعة أفلو ✨</div></div>  
-  <div class="pb"><div></div></div>  
-  <button id="sp1b" class="sp1-b">دخول ←</button>  
-</div>  
+<body>
 
-<!-- Splash 2 -->  
-<div id="sp2" class="hid">  
-  <div class="sp2-logo">ن</div>  
-  <div class="sp2-title">نادر</div>  
-  <div class="sp2-sub">منصة الكتب</div>  
-  <div class="sp2-crew">  
-    <div class="member">دناقة ريحانة <span class="role">— طالبة</span></div>  
-    <div class="member">قرقيط فتيحة <span class="role">— طالبة</span></div>  
-    <div class="supervisor">تحت إشراف د. أحمد دناقة</div>  
-  </div>  
-  <div class="sp2-enter">👆 انقر في أي مكان للدخول</div>  
-  <div class="sp2-credit">برمجة وتطوير: <b>براهيمي يوسف</b></div>  
-</div>  
-
-<header class="top">  
-  <div class="top-in">  
-    <div class="brand">📚 نادر <small>سوق الكتب النادرة</small></div>  
-    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">  
-      <div id="ails" class="ai-lights"></div>  
-      <div id="hu" class="hid" style="display:flex;gap:8px;align-items:center;  
-        padding:5px 5px 5px 12px;border-radius:50px;background:rgba(255,255,255,.08);  
-        border:1px solid rgba(255,255,255,.15)">  
-        <span id="ul" style="font-size:.85rem;font-weight:600"></span>  
-        <button id="lo" class="sec" style="padding:5px 10px;font-size:.78rem">خروج</button>  
-      </div>  
-    </div>  
-  </div>  
-</header>  
-
-<main class="wrap">  
-<section id="ap" class="auth">  
-  <div class="auth-c">  
-    <div class="auth-h"><div class="i">📚</div><h1>مرحبًا بك في نادر</h1></div>  
-    <div id="am" class="msg hid"></div>  
-    <div class="tabs">  
-      <button id="lt" class="active">دخول</button>  
-      <button id="rt">حساب جديد</button>  
-    </div>  
-    <form id="lf">  
-      <label>البريد الإلكتروني</label><input id="le" type="email" required>  
-      <label>كلمة المرور</label><input id="lp" type="password" required>  
-      <button style="width:100%;margin-top:14px;padding:12px" type="submit" id="ls">دخول</button>  
-    </form>  
-    <form id="rf" class="hid">  
-      <label>الاسم</label><input id="rn" required>  
-      <label>البريد الإلكتروني</label><input id="re" type="email" required>  
-      <label>كلمة المرور (4+)</label><input id="rp" type="password" minlength="4" required>  
-      <button style="width:100%;margin-top:14px;padding:12px" type="submit" id="rs">إنشاء</button>  
-    </form>  
-  </div>  
-</section>  
-
-<section id="pp" class="hid">  
-  <div id="gm" class="msg hid"></div>  
-
-  <div class="pan spl">  
-    <div><h1 class="tit">سوق الكتب</h1><div class="mut">اختر من الأزرار</div></div>  
-    <span id="fbs" class="mut">…</span>  
-  </div>  
-
-  <nav class="nav">  
-    <button class="active nav-btn" data-p="s"><span class="e">🔎</span>بحث</button>  
-    <button data-p="v" class="nav-btn"><span class="e">📚</span>الخزانة</button>  
-    <button data-p="sl" class="nav-btn"><span class="e">🏷️</span>نشر</button>  
-    <button data-p="w" class="nav-btn"><span class="e">📝</span>طلبات</button>  
-    <button data-p="u" class="nav-btn"><span class="e">👥</span>المستخدمون</button>  
-    <button data-p="n" class="nav-btn" id="notifBtn">  
-      <span class="e">🔔</span>إشعارات  
-      <span id="notifBadge" class="badge hid">0</span>  
-    </button>  
-    <button data-p="m" class="nav-btn" id="msgBtn">  
-      <span class="e">💬</span>الرسائل  
-      <span id="msgBadge" class="badge hid">0</span>  
-    </button>  
-    <button data-p="pr" class="nav-btn" id="permBtn">  
-      <span class="e">🔒</span>طلبات شراء  
-      <span id="permBadge" class="badge hid">0</span>  
-    </button>  
-  </nav>  
-
-  <section id="pg-s" class="page pan">  
-    <h2 class="tit">🔎 البحث</h2>  
-    <div class="top-search">  
-      <form class="tb" id="sf">  
-        <input id="sq" placeholder="🔎 كتب الزبائن" style="flex:1">  
-        <button type="submit">بحث</button>  
-      </form>  
-      <form class="tb" id="gf">  
-        <input id="gq" placeholder="📖 Google Books" required style="flex:1">  
-        <button type="submit">بحث</button>  
-      </form>  
-      <form class="tb" id="ffSearch">  
-        <input id="fq" placeholder="🌐 كتب مجانية" required style="flex:1">  
-        <button type="submit">بحث</button>  
-      </form>  
-      <form class="tb" id="libSearch">  
-        <input id="libQ" placeholder="📚 بحث في مكتبتي" required style="flex:1">  
-        <button type="submit">فتح</button>  
-      </form>  
-    </div>  
-    <div id="sr" class="bg"></div>  
-    <div id="gr" class="bg"></div>  
-    <div id="fr" class="bg"></div>  
-  </section>  
-
-  <section id="pg-v" class="page pan hid">  
-    <div class="spl"><h2 class="tit">📚 الخزانة</h2>  
-      <button id="rv" class="sec">🔄</button></div>  
-    <div id="vr" class="bg"></div>  
-  </section>  
-
-  <section id="pg-sl" class="page pan hid">  
-    <h2 class="tit">🏷️ نشر كتاب</h2>  
-    <div id="upMsg" class="msg hid"></div>  
-    <form id="sf2" style="margin-top:12px">  
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">  
-        <div><label>العنوان *</label><input name="title" required></div>  
-        <div><label>المؤلف</label><input name="author"></div>  
-        <div><label>النوع</label>  
-          <select name="type"><option>مشاركة</option><option>تبرع</option>  
-            <option>تبادل</option><option>بيع</option></select></div>  
-        <div><label>السعر</label><input name="price" type="number" value="0" min="0"></div>  
-        <div><label>الحالة</label>  
-          <select name="condition"><option>جديد</option><option selected>جيد</option>  
-            <option>مقبول</option><option>قديم ونادر</option></select></div>  
-        <div><label>التصنيف</label>  
-          <select name="category"><option>كتب عربية</option><option>جامعية</option>  
-            <option>أدب وروايات</option><option>تاريخ</option><option>علوم</option>  
-            <option>أخرى</option></select></div>  
-        <div><label>المكان</label><input name="location"></div>  
-        <div><label>التواصل</label><input name="contact"></div>  
-        <div><label>رابط الغلاف</label><input name="cover_url" type="url"></div>  
-        <div><label>ملف الكتاب (حتى 100MB)</label>  
-          <input name="file" type="file"  
-            accept=".pdf,.epub,.txt,.docx,.jpg,.jpeg,.png,.webp"></div>  
-      </div>  
-      <label>الوصف</label>  
-      <textarea name="description" maxlength="3000"></textarea>  
-      <button type="submit" style="margin-top:10px;padding:11px 20px"  
-        id="submitBook">📤 نشر الكتاب</button>  
-    </form>  
-  </section>  
-
-  <section id="pg-w" class="page pan hid">  
-    <h2 class="tit">📝 طلبات الكتب</h2>  
-    <p class="mut">اطلب كتاباً لم تجده — سيصلك إشعار عند توفره</p>  
-    <form id="wf" style="margin-top:12px">  
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">  
-        <div><label>العنوان *</label><input name="title" required></div>  
-        <div><label>المؤلف</label><input name="author"></div>  
-      </div>  
-      <button type="submit" style="margin-top:10px;padding:11px 20px">📝 اطلب</button>  
-    </form>  
-    <hr style="margin:20px 0;border:0;border-top:1px solid rgba(255,255,255,0.5)">  
-    <div class="spl"><h3 style="color:#0a2540;font-size:1rem">الطلبات الحالية</h3>  
-      <button id="rw" class="sec">🔄</button></div>  
-    <div id="wr" style="margin-top:10px"></div>  
-  </section>  
-
-  <section id="pg-u" class="page pan hid">  
-    <div class="spl"><div><h2 class="tit">👥 المستخدمون</h2>  
-      <p class="mut" id="ut">—</p></div>  
-      <button id="ru" class="sec">🔄</button></div>  
-    <div id="ur" style="margin-top:10px"></div>  
-  </section>  
-
-  <section id="pg-n" class="page pan hid">  
-    <div class="spl"><h2 class="tit">🔔 الإشعارات</h2>  
-      <button id="rn" class="sec">🔄</button></div>  
-    <div id="nr" style="margin-top:10px"></div>  
-  </section>  
-
-  <section id="pg-m" class="page pan hid">  
-    <div class="spl"><h2 class="tit">💬 الرسائل</h2>  
-      <button id="rc" class="sec">🔄</button></div>  
-    <div id="cr" style="margin-top:10px"></div>  
-  </section>  
-
-  <section id="pg-pr" class="page pan hid">  
-    <div class="spl"><h2 class="tit">🔒 طلبات شراء كتبي</h2>  
-      <button id="rpr" class="sec">🔄</button></div>  
-    <div id="prr" style="margin-top:10px"></div>  
-  </section>  
-</section>  
-</main>  
-
-<footer>نادر | سوق الكتب</footer>  
-
-<div id="cm" class="hid">  
-  <div class="cm-c">  
-    <div class="cm-h">  
-      <span id="ct">محادثة</span>  
-      <button id="cc" style="background:transparent;color:#fff;font-size:1.3rem;padding:0 6px">✕</button>  
-    </div>  
-    <div id="cmm" class="cm-m"></div>  
-    <div class="cm-i">  
-      <input id="ci" placeholder="اكتب..." style="flex:1">  
-      <button id="cs">إرسال</button>  
-    </div>  
-  </div>  
-</div>  
-
-<div class="sct" id="sct">⚙️</div>  
-<div id="smod" class="hid">  
-  <div>  
-    <h2>🔐 الإعدادات</h2>  
-    <input id="sc" class="sc-in" type="password" maxlength="6" placeholder="••••••">  
-    <button id="ss2" style="width:100%;margin-top:12px;padding:11px">دخول</button>  
-    <button id="scl" class="sec" style="width:100%;margin-top:6px;padding:9px">إلغاء</button>  
-    <div id="smg" class="mut" style="margin-top:10px;font-size:.8rem"></div>  
-  </div>  
-</div>  
-
-<script>  
-const $ = s => document.querySelector(s);  
-const $$ = s => [...document.querySelectorAll(s)];  
-const esc = s => String(s ?? '').replace(/[&<>"']/g,  
-  c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));  
-  
-let ME = null, CID = null;  
-let timerUnread = null, timerNotif = null, timerPerm = null;  
-  
-function toast(t, err) {  
-  const d = document.createElement('div');  
-  d.textContent = t;  
-  d.style.cssText = `position:fixed;bottom:20px;left:50%;transform:translateX(-50%);  
-    background:${err?'#b3261e':'#0a2540'};color:#fff;padding:10px 20px;border-radius:99px;  
-    font-weight:700;z-index:99999;box-shadow:0 10px 25px rgba(0,0,0,.3);font-size:.88rem`;  
-  document.body.appendChild(d);  
-  setTimeout(() => d.remove(), 2800);  
-}  
-  
-async function api(url, o = {}) {  
-  const opt = { credentials: 'same-origin', ...o };  
-  if (opt.body && !(opt.body instanceof FormData) && typeof opt.body !== 'string') {  
-    opt.headers = { ...(opt.headers || {}), 'Content-Type': 'application/json' };  
-    opt.body = JSON.stringify(opt.body);  
-  }  
-  const res = await fetch(url, opt);  
-  let d = {};  
-  try { d = await res.json(); } catch {}  
-  if (!res.ok || d.ok === false) throw new Error(d.error || `خطأ ${res.status}`);  
-  return d;  
-}  
-  
-async function loadLights() {  
-  try {  
-    const d = await api('/api/ai/light');  
-    $('#ails').innerHTML = (d.providers || []).map(p => `  
-      <div class="ai-l ${p.ok ? 'on' : 'off'}"><i></i> ${esc(p.name)}</div>  
-    `).join('');  
-  } catch {}  
-}  
-  
-async function refreshUnread() {  
-  try {  
-    const d = await api('/api/messages/unread');  
-    const b = $('#msgBadge');  
-    if (d.total > 0) { b.textContent = d.total > 99 ? '99+' : d.total; b.classList.remove('hid'); }  
-    else b.classList.add('hid');  
-  } catch {}  
-}  
-  
-async function refreshNotif() {  
-  try {  
-    const d = await api('/api/notifications');  
-    const b = $('#notifBadge');  
-    if (d.unread > 0) { b.textContent = d.unread > 99 ? '99+' : d.unread; b.classList.remove('hid'); }  
-    else b.classList.add('hid');  
-  } catch {}  
-}  
-  
-async function refreshPerm() {  
-  try {  
-    const d = await api('/api/permission-requests');  
-    const pending = (d.items || []).filter(r => r.status === 'pending').length;  
-    const b = $('#permBadge');  
-    if (pending > 0) { b.textContent = pending; b.classList.remove('hid'); }  
-    else b.classList.add('hid');  
-  } catch {}  
-}  
-  
-function showAuth(reg = false) {  
-  $('#ap').classList.remove('hid');  
-  $('#pp').classList.add('hid');  
-  $('#hu').classList.add('hid');  
-  $('#sp1').classList.add('hid');  
-  $('#sp2').classList.add('hid');  
-  $('#lf').classList.toggle('hid', reg);  
-  $('#rf').classList.toggle('hid', !reg);  
-  $('#lt').className = reg ? '' : 'active';  
-  $('#rt').className = reg ? 'active' : '';  
-  $('#am').classList.add('hid');  
-  clearTimers();  
-}  
-  
-function clearTimers() {  
-  [timerUnread, timerNotif, timerPerm].forEach(t => { if (t) clearInterval(t); });  
-  timerUnread = timerNotif = timerPerm = null;  
-}  
-  
-function splash1(user) {  
-  const sp = $('#sp1');  
-  sp.classList.remove('hid');  
-  const bar = sp.querySelector('.pb > div');  
-  const track = sp.querySelector('.mq-t');  
-  [bar, track].forEach(el => { if (el) { el.style.animation = 'none'; void el.offsetHeight; el.style.animation = ''; } });  
-  let done = false;  
-  const go = () => { if (done) return; done = true; sp.classList.add('hid'); splash2(user); };  
-  $('#sp1b').onclick = go;  
-  setTimeout(go, 5500);  
-}  
-  
-function splash2(user) {  
-  const sp = $('#sp2');  
-  sp.classList.remove('hid');  
-  let done = false;  
-  const go = () => { if (done) return; done = true; sp.classList.add('hid'); showApp(user); };  
-  sp.onclick = go;  
-}  
-  
-function showApp(user) {  
-  ME = user;  
-  $('#ap').classList.add('hid');  
-  $('#pp').classList.remove('hid');  
-  $('#hu').classList.remove('hid');  
-  const num = user.number ? `<span style="width:26px;height:26px;border-radius:50%;  
-    background:linear-gradient(135deg,#d4a017,#f5c542);color:#000;display:inline-flex;  
-    align-items:center;justify-content:center;font-weight:900;font-size:.78rem">  
-    ${user.number}</span>` : '';  
-  $('#ul').innerHTML = `${num} <b>${esc(user.name || user.email)}</b>`;  
-  init();  
-}  
-  
-function app(user) { splash1(user); }  
-  
-function page(n) {  
-  $$('.page').forEach(p => p.classList.add('hid'));  
-  const t = $('#pg-' + n);  
-  if (t) t.classList.remove('hid');  
-  $$('.nav button').forEach(b => b.classList.toggle('active', b.dataset.p === n));  
-  if (n === 'v') loadB('#vr');  
-  if (n === 'u') loadU();  
-  if (n === 'm') loadC();  
-  if (n === 'w') loadW();  
-  if (n === 'n') loadNotif();  
-  if (n === 'pr') loadPerms();  
-}  
-  
-$('#lt').onclick = () => showAuth(false);  
-$('#rt').onclick = () => showAuth(true);  
-$$('.nav button').forEach(b => b.onclick = () => page(b.dataset.p));  
-  
-$('#lf').addEventListener('submit', async e => {  
-  e.preventDefault();  
-  const b = $('#ls'); b.disabled = true; b.textContent = '…';  
-  try {  
-    const d = await api('/api/login', { method: 'POST',  
-      body: { email: $('#le').value, password: $('#lp').value }});  
-    app(d.user);  
-  } catch (err) {  
-    $('#am').textContent = err.message;  
-    $('#am').classList.remove('hid');  
-    b.disabled = false; b.textContent = 'دخول';  
-  }  
-});  
-  
-$('#rf').addEventListener('submit', async e => {  
-  e.preventDefault();  
-  const b = $('#rs'); b.disabled = true; b.textContent = '…';  
-  try {  
-    const d = await api('/api/register', { method: 'POST',  
-      body: { name: $('#rn').value, email: $('#re').value, password: $('#rp').value }});  
-    app(d.user);  
-  } catch (err) {  
-    $('#am').textContent = err.message;  
-    $('#am').classList.remove('hid');  
-    b.disabled = false; b.textContent = 'إنشاء';  
-  }  
-});  
-  
-$('#lo').onclick = async () => {  
-  if (!confirm('خروج؟')) return;  
-  try { await api('/api/logout', { method: 'POST' }); } catch {}  
-  ME = null;  
-  showAuth(false);  
-};  
-  
-// ============ Book Card ============  
-function card(b, google = false, free = false) {  
-  const title = esc(b.title || 'بدون عنوان');  
-  const author = esc(google ? (b.authors || []).join('، ') : (b.author || b.authors || ''));  
-  const img = google || free ? (b.thumbnail || '') : (b.cover_url || '');  
-  const bid = b.id || '';  
-  const type = esc(b.type || (google ? 'Google Books' : free ? 'مجاني' : 'عرض'));  
-  const uid = 'bk-' + Math.random().toString(36).slice(2, 9);  
-  const isLocked = !google && !free && b.needs_permission;  
-  
-  const bookData = JSON.stringify({  
-    id: bid, title: b.title || '',  
-    author: google ? (b.authors || []).join(', ') : (b.author || b.authors || ''),  
-    description: b.description || '',  
-  });  
-  
-  let actions = '';  
-  
-  function dlUrl(url) {  
-    if (!url) return '';  
-    if (url.includes("cloudinary.com") && url.includes("/upload/")) {  
-      return url.replace("/upload/", "/upload/fl_attachment/");  
-    }  
-    return url;  
-  }  
-  
-  if (google) {  
-    if (b.previewLink) actions += `<a href="${esc(b.previewLink)}" target="_blank" rel="noopener"><button class="sec" style="font-size:.72rem;padding:5px 10px">👁️ معاينة</button></a>`;  
-    if (b.pdfDownloadLink) actions += `<a href="${esc(b.pdfDownloadLink)}" target="_blank" rel="noopener"><button class="gold" style="font-size:.72rem;padding:5px 10px">⬇️ PDF</button></a>`;  
-    else if (b.epubDownloadLink) actions += `<a href="${esc(b.epubDownloadLink)}" target="_blank" rel="noopener"><button class="gold" style="font-size:.72rem;padding:5px 10px">⬇️ EPUB</button></a>`;  
-    if (b.infoLink) actions += `<a href="${esc(b.infoLink)}" target="_blank" rel="noopener"><button class="sec" style="font-size:.72rem;padding:5px 10px">📖 صفحة</button></a>`;  
-    actions += `<button class="sec" style="font-size:.72rem;padding:5px 10px"  
-      onclick="searchLib('${encodeURIComponent(b.title || '')}')">📚 مكتبتي</button>`;  
-  } else if (free) {  
-    if (b.pdf_url) actions += `<a href="${esc(dlUrl(b.pdf_url))}" target="_blank" rel="noopener" download><button class="gold" style="font-size:.72rem;padding:5px 10px">⬇️ PDF</button></a>`;  
-    if (b.epub_url) actions += `<a href="${esc(dlUrl(b.epub_url))}" target="_blank" rel="noopener" download><button class="gold" style="font-size:.72rem;padding:5px 10px">⬇️ EPUB</button></a>`;  
-    if (b.read_url) actions += `<a href="${esc(b.read_url)}" target="_blank" rel="noopener"><button class="sec" style="font-size:.72rem;padding:5px 10px">👁️ قراءة</button></a>`;  
-    actions += `<button class="sec" style="font-size:.72rem;padding:5px 10px"  
-      onclick="searchLib('${encodeURIComponent(b.title || '')}')">📚 مكتبتي</button>`;  
-  } else {  
-    if (b.file_url) {  
-      const downloadLink = dlUrl(b.file_url);  
-      actions += `<a href="${esc(downloadLink)}" target="_blank" rel="noopener" download><button class="gold" style="font-size:.72rem;padding:5px 10px">⬇️ تنزيل</button></a>`;  
-      actions += `<a href="${esc(b.file_url)}" target="_blank" rel="noopener"><button class="sec" style="font-size:.72rem;padding:5px 10px">👁️ قراءة</button></a>`;  
-    } else if (isLocked) {  
-      actions += `<button class="gold" style="font-size:.72rem;padding:5px 10px"  
-        onclick="requestBook('${bid}')">🔒 اطلب من المالك</button>`;  
-    }  
-    if (b.owner_id && b.owner_id !== ME?.id) {  
-      actions += `<button class="sec" style="font-size:.72rem;padding:5px 10px"  
-        onclick="contact('${b.owner_id}','${esc(b.owner_name || '')}')">✉️ تواصل</button>`;  
-    }  
-    actions += `<button class="sec" style="font-size:.72rem;padding:5px 10px"  
-      onclick="searchLib('${encodeURIComponent(b.title || '')}')">📚 مكتبتي</button>`;  
-  }  
-  
-  return `<article class="bk" id="${uid}">  
-    <div class="bk-head">  
-      <div class="bk-img">  
-        ${img ? `<img loading="lazy" src="${esc(img)}" onerror="this.style.display='none'">` : '📖'}  
-      </div>  
-      <div class="bk-info">  
-        <h3>${title}</h3>  
-        <small>${author}</small>  
-        <span class="bk-tag ${isLocked ? 'bk-lock' : ''}">${isLocked ? '🔒 ' + type : type}</span>  
-      </div>  
-    </div>  
-    ${actions ? `<div class="bk-actions">${actions}</div>` : ''}  
-    <div class="bk-ai">  
-      <button class="bk-ai-btn" onclick="toggleAI('${uid}')">🤖 المساعد</button>  
-      <div class="bk-ai-panel hid" data-panel>  
-        <div class="ai-fns">  
-          <div class="ai-fn" onclick="runAI('${uid}','${encodeURIComponent(bookData)}','summarize')"><span class="e">📝</span>لخّص</div>  
-          <div class="ai-fn" onclick="runAI('${uid}','${encodeURIComponent(bookData)}','digest')"><span class="e">📋</span>حوصلة</div>  
-          <div class="ai-fn" onclick="runAI('${uid}','${encodeURIComponent(bookData)}','ideas')"><span class="e">💡</span>أفكار</div>  
-          <div class="ai-fn" onclick="runAI('${uid}','${encodeURIComponent(bookData)}','explain')"><span class="e">🔍</span>اشرح</div>  
-          <div class="ai-fn" onclick="runAI('${uid}','${encodeURIComponent(bookData)}','translate')"><span class="e">🌐</span>ترجم</div>  
-          <div class="ai-fn" onclick="askAI('${uid}','${encodeURIComponent(bookData)}')"><span class="e">❓</span>اسأل</div>  
-        </div>  
-        <div data-result></div>  
-      </div>  
-    </div>  
-  </article>`;  
-}  
-  
-function searchLib(title) {  
-  const q = decodeURIComponent(title);  
-  if (!q) return;  
-  window.open(`https://maktbapdf.com/?s=${encodeURIComponent(q)}`, '_blank', 'noopener');  
-  toast('📚 جارٍ البحث...');  
-}  
-  
-async function requestBook(bid) {  
-  if (!confirm('سيتم إرسال طلبك للمالك. متابعة؟')) return;  
-  try {  
-    const d = await api('/api/books/' + bid + '/request', { method: 'POST' });  
-    toast('✅ ' + d.message);  
-  } catch (e) { toast(e.message, true); }  
-}  
-  
-function toggleAI(uid) {  
-  const card = document.getElementById(uid);  
-  if (!card) return;  
-  card.querySelector('[data-panel]').classList.toggle('hid');  
-}  
-  
-async function runAI(uid, bookEnc, fn) {  
-  const card = document.getElementById(uid);  
-  const result = card.querySelector('[data-result]');  
-  result.innerHTML = '<div class="ai-load">🤔 جارٍ التحليل…</div>';  
-  const book = JSON.parse(decodeURIComponent(bookEnc));  
-  try {  
-    const d = await api('/api/book/function', {  
-      method: 'POST',  
-      body: { function: fn, title: book.title, author: book.author,  
-              description: book.description, book_id: book.id }});  
-    const badge = d.from_file  
-      ? `<span class="badge2">📎 من الملف</span>`  
-      : `<span class="badge3">💡 عام</span>`;  
-    result.innerHTML = `  
-      <div class="ai-res">  
-        <div class="head"><span>${esc(book.title)}</span>  
-          ${badge}</div>  
-        <div>${esc(d.result)}</div>  
-        <div style="margin-top:8px;font-size:.7rem;color:#6b7c93">  
-          🎯 ${esc(d.provider)}</div>  
-      </div>`;  
-  } catch (e) {  
-    result.innerHTML = `<div class="ai-err">❌ ${esc(e.message)}</div>`;  
-  }  
-}  
-  
-async function askAI(uid, bookEnc) {  
-  const q = prompt('سؤالك:');  
-  if (!q) return;  
-  const card = document.getElementById(uid);  
-  const result = card.querySelector('[data-result]');  
-  result.innerHTML = '<div class="ai-load">🤔 جارٍ التفكير…</div>';  
-  const book = JSON.parse(decodeURIComponent(bookEnc));  
-  try {  
-    const d = await api('/api/book/function', {  
-      method: 'POST',  
-      body: { function: 'ask', title: book.title, author: book.author,  
-              description: book.description, book_id: book.id, question: q }});  
-    result.innerHTML = `  
-      <div class="ai-res">  
-        <div class="head"><span>❓ ${esc(q)}</span>  
-          <span class="badge2">${esc(d.provider)}</span></div>  
-        <div>${esc(d.result)}</div>  
-      </div>`;  
-  } catch (e) {  
-    result.innerHTML = `<div class="ai-err">❌ ${esc(e.message)}</div>`;  
-  }  
-}  
-  
-$('#sf').onsubmit = async e => {  
-  e.preventDefault();  
-  const t = $('#sr');  
-  $('#gr').innerHTML = ''; $('#fr').innerHTML = '';  
-  t.innerHTML = '<div class="em">جارٍ…</div>';  
-  try {  
-    const d = await api('/api/books?q=' + encodeURIComponent($('#sq').value));  
-    t.innerHTML = d.books.length ? d.books.map(b => card(b)).join('') : '<div class="em">لا نتائج</div>';  
-  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
-};  
-  
-$('#gf').onsubmit = async e => {  
-  e.preventDefault();  
-  const t = $('#gr');  
-  $('#sr').innerHTML = ''; $('#fr').innerHTML = '';  
-  t.innerHTML = '<div class="em">جارٍ…</div>';  
-  try {  
-    const d = await api('/api/google-books?q=' + encodeURIComponent($('#gq').value));  
-    t.innerHTML = d.items.length ? d.items.map(b => card(b, true, false)).join('') : '<div class="em">لا نتائج</div>';  
-  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
-};  
-  
-$('#ffSearch').onsubmit = async e => {  
-  e.preventDefault();  
-  const t = $('#fr');  
-  $('#sr').innerHTML = ''; $('#gr').innerHTML = '';  
-  t.innerHTML = '<div class="em">جارٍ…</div>';  
-  try {  
-    const d = await api('/api/search/free?q=' + encodeURIComponent($('#fq').value));  
-    let h = '';  
-    for (const [k, arr] of Object.entries(d.results || {})) {  
-      if (!arr.length) continue;  
-      h += `<h4 style="color:#0a2540;margin:12px 0 6px">${k} (${arr.length})</h4>`;  
-      h += `<div class="bg">${arr.map(g => card(g, false, true)).join('')}</div>`;  
-    }  
-    t.innerHTML = h || '<div class="em">لا نتائج</div>';  
-  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
-};  
-  
-$('#libSearch').onsubmit = e => {  
-  e.preventDefault();  
-  const q = $('#libQ').value.trim();  
-  if (!q) return;  
-  window.open(`https://maktbapdf.com/?s=${encodeURIComponent(q)}`, '_blank', 'noopener');  
-  toast('📚 جارٍ البحث...');  
-};  
-  
-async function loadB(target) {  
-  const t = typeof target === 'string' ? $(target) : target;  
-  t.innerHTML = '<div class="em">جارٍ…</div>';  
-  try {  
-    const d = await api('/api/books');  
-    t.innerHTML = d.books.length ? d.books.map(b => card(b)).join('') : '<div class="em">لا كتب</div>';  
-  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
-}  
-$('#rv').onclick = () => loadB('#vr');  
-  
-$('#sf2').onsubmit = async e => {  
-  e.preventDefault();  
-  const btn = $('#submitBook');  
-  const msg = $('#upMsg');  
-  msg.classList.add('hid');  
-  btn.disabled = true;  
-  btn.textContent = '⏳ جارٍ الرفع…';  
-  
-  const fd = new FormData(e.currentTarget);  
-  const fileInput = e.currentTarget.querySelector('input[name="file"]');  
-  const file = fileInput?.files?.[0];  
-  
-  if (file) {  
-    const sizeMB = (file.size / 1024 / 1024).toFixed(1);  
-    if (file.size > 100 * 1024 * 1024) {  
-      msg.className = 'msg err';  
-      msg.textContent = `❌ الملف ${sizeMB}MB — الحد 100MB`;  
-      msg.classList.remove('hid');  
-      btn.disabled = false; btn.textContent = '📤 نشر الكتاب';  
-      return;  
-    }  
-    btn.textContent = `⏳ رفع ${sizeMB}MB…`;  
-  }  
-  
-  try {  
-    const d = await api('/api/books', { method: 'POST', body: fd });  
-    msg.className = 'msg';  
-    msg.innerHTML = `✅ تم رفع "<b>${esc(d.book.title)}</b>" بنجاح<br>  
-      <small style="opacity:.8">${d.book.file_url ? '📎 ملف مرفق' : 'بدون ملف'} — رقم الكتاب: ${d.book.id.slice(0, 8)}</small>`;  
-    msg.classList.remove('hid');  
-    toast('✅ تم النشر — الكتاب في الخزانة');  
-    e.currentTarget.reset();  
-    await loadB('#vr');  
-    setTimeout(() => page('v'), 1500);  
-  } catch (err) {  
-    msg.className = 'msg err';  
-    msg.textContent = '❌ ' + err.message;  
-    msg.classList.remove('hid');  
-    toast(err.message, true);  
-  } finally {  
-    btn.disabled = false;  
-    btn.textContent = '📤 نشر الكتاب';  
-  }  
-};  
-  
-$('#wf').onsubmit = async e => {  
-  e.preventDefault();  
-  const o = Object.fromEntries(new FormData(e.currentTarget).entries());  
-  try {  
-    await api('/api/wanted', { method: 'POST', body: o });  
-    toast('✅ تم تسجيل طلبك');  
-    e.currentTarget.reset();  
-    loadW();  
-  } catch (err) { toast(err.message, true); }  
-};  
-  
-async function loadW() {  
-  const t = $('#wr');  
-  t.innerHTML = '<div class="em">…</div>';  
-  try {  
-    const d = await api('/api/wanted');  
-    t.innerHTML = d.items.length ? d.items.map(x => `  
-      <div class="pan" style="padding:12px;margin:8px 0">  
-        <b style="color:#0a2540">${esc(x.title)}</b>  
-        <div class="mut" style="font-size:.8rem">  
-          ${esc(x.author || '')} · 👤 ${esc(x.user_name || '')}</div>  
-      </div>`).join('') : '<div class="em">لا طلبات</div>';  
-  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
-}  
-$('#rw').onclick = loadW;  
-  
-async function loadNotif() {  
-  const t = $('#nr');  
-  t.innerHTML = '<div class="em">…</div>';  
-  try {  
-    const d = await api('/api/notifications');  
-    t.innerHTML = d.items.length ? d.items.map(n => {  
-      const isAvail = n.type === 'book_available';  
-      const icon = isAvail ? '📚' : '🔒';  
-      const msg = isAvail  
-        ? `الكتاب "${esc(n.book_title)}" الذي طلبته أصبح متوفراً!`  
-        : `شخص يريد كتابك "${esc(n.book_title)}" — ${esc(n.from_user || '')}`;  
-      return `<div class="ur" style="${n.read ? 'opacity:.7' : 'border-color:#236eaa'}">  
-        <div class="av">${icon}</div>  
-        <div class="i"><b>${msg}</b>  
-          <small>${esc((n.created_at || '').slice(0, 16).replace('T', ' '))}</small></div>  
-        ${!n.read ? `<button class="sec" onclick="markRead('${n.id}')" style="font-size:.72rem;padding:5px 10px">✓</button>` : ''}  
-      </div>`;  
-    }).join('') : '<div class="em">لا إشعارات</div>';  
-  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
-  refreshNotif();  
-}  
-$('#rn').onclick = loadNotif;  
-  
-async function markRead(nid) {  
-  try { await api('/api/notifications/' + nid + '/read', { method: 'POST' }); loadNotif(); } catch {}  
-}  
-  
-async function loadPerms() {  
-  const t = $('#prr');  
-  t.innerHTML = '<div class="em">…</div>';  
-  try {  
-    const d = await api('/api/permission-requests');  
-    t.innerHTML = d.items.length ? d.items.map(r => `  
-      <div class="pan" style="padding:12px;margin:8px 0">  
-        <b style="color:#0a2540">${esc(r.book_title)}</b>  
-        <div class="mut" style="font-size:.85rem;margin-top:4px">  
-          يطلبها: <b>${esc(r.requester_name)}</b> #${r.requester_number || ''}</div>  
-        <div class="mut" style="font-size:.75rem">  
-          الحالة: ${r.status === 'pending' ? '⏳ بانتظار قرارك' :  
-                    r.status === 'approved' ? '✅ قبلت' : '❌ رفضت'}</div>  
-        ${r.status === 'pending' ? `<div style="display:flex;gap:6px;margin-top:8px">  
-          <button onclick="grantPerm('${r.book_id}','${r.requester_id}')"   
-            style="background:#0f7a4d;font-size:.8rem;padding:6px 12px">✅ اقبل</button>  
-          <button onclick="contact('${r.requester_id}','${esc(r.requester_name)}')"  
-            class="sec" style="font-size:.8rem;padding:6px 12px">✉️ تواصل</button>  
-        </div>` : ''}  
-      </div>`).join('') : '<div class="em">لا طلبات شراء</div>';  
-  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
-  refreshPerm();  
-}  
-$('#rpr').onclick = loadPerms;  
-  
-async function grantPerm(bid, uid) {  
-  try {  
-    await api('/api/books/' + bid + '/grant', { method: 'POST', body: { user_id: uid }});  
-    toast('✅ تم منح الإذن');  
-    loadPerms();  
-  } catch (e) { toast(e.message, true); }  
-}  
-  
-async function loadU() {  
-  const t = $('#ur');  
-  t.innerHTML = '<div class="em">…</div>';  
-  try {  
-    const d = await api('/api/users/list');  
-    $('#ut').textContent = `إجمالي: ${d.total}`;  
-    t.innerHTML = d.items.length ? d.items.map(u => `  
-      <div class="ur">  
-        <div class="av">${u.number}</div>  
-        <div class="i">  
-          <b>${esc(u.name || 'مستخدم')}</b>  
-          <small>#${u.number} · 🙏 ${u.thanks || 0} · ${'⭐'.repeat(Math.min(u.stars, 5))}</small>  
-        </div>  
-        ${u.id !== ME?.id ? `<button class="sec" style="font-size:.75rem;padding:6px 10px"  
-          onclick="contact('${u.id}','${esc(u.name)}')">✉️</button>` : '<small class="mut">(أنت)</small>'}  
-      </div>`).join('') : '<div class="em">لا مستخدمين</div>';  
-  } catch (e) { t.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
-}  
-$('#ru').onclick = loadU;  
-  
-async function contact(uid, name) {  
-  try {  
-    const d = await api('/api/contact/start', { method: 'POST', body: { user_id: uid }});  
-    CID = d.conversation_id;  
-    $('#ct').textContent = '✉️ ' + (d.other_name || name);  
-    $('#cm').classList.remove('hid');  
-    await loadMsgs();  
-    refreshUnread();  
-  } catch (e) { toast(e.message, true); }  
-}  
-  
-async function loadMsgs() {  
-  if (!CID) return;  
-  const b = $('#cmm');  
-  b.innerHTML = '<div class="em">…</div>';  
-  try {  
-    const d = await api('/api/conversations/' + CID + '/messages');  
-    b.innerHTML = d.items.length ? d.items.map(m => `  
-      <div class="mg ${m.mine ? 'me' : 'th'}">${esc(m.text)}</div>`).join('')  
-      : '<div class="em">ابدأ الحديث</div>';  
-    b.scrollTop = b.scrollHeight;  
-  } catch (e) { b.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
-}  
-  
-$('#cs').onclick = async () => {  
-  const t = $('#ci').value.trim();  
-  if (!t || !CID) return;  
-  $('#ci').value = '';  
-  try {  
-    await api('/api/conversations/' + CID + '/send', { method: 'POST', body: { text: t }});  
-    loadMsgs();  
-  } catch (e) { toast(e.message, true); }  
-};  
-$('#ci').addEventListener('keydown', e => {  
-  if (e.key === 'Enter') { e.preventDefault(); $('#cs').click(); }  
-});  
-$('#cc').onclick = () => { $('#cm').classList.add('hid'); CID = null; };  
-  
-async function loadC() {  
-  const t = $('#cr');  
-  t.innerHTML = '<div class="em">…</div>';  
-  try {  
-    const d = await api('/api/conversations');  
-    t.innerHTML = d.items?.length ? d.items.map(c => `  
-      <div class="ur" onclick="openConv('${c.id}','${esc(c.other_name)}')">  
-        <div class="av">${esc((c.other_name || '؟')[0])}</div>  
-        <div class="i">  
-          <b>${esc(c.other_name)}</b>  
-          <small>${esc(c.last_message || 'لا رسائل')}</small>  
-        </div>  
-        ${c.unread ? `<span class="cnt">${c.unread}</span>` : ''}  
-      </div>`).join('') : '<div class="em">لا محادثات</div>';  
-  } catch {}  
-  refreshUnread();  
-}  
-$('#rc').onclick = loadC;  
-  
-async function openConv(cid, name) {  
-  CID = cid;  
-  $('#ct').textContent = '✉️ ' + name;  
-  $('#cm').classList.remove('hid');  
-  await loadMsgs();  
-  refreshUnread();  
-}  
-  
-// ============ Secret Admin ============  
-const CODE = '031984';  
-$('#sct').onclick = () => {  
-  $('#smod').classList.remove('hid');  
-  $('#sc').value = '';  
-  $('#smg').textContent = '';  
-  setTimeout(() => $('#sc').focus(), 100);  
-};  
-$('#scl').onclick = () => $('#smod').classList.add('hid');  
-$('#ss2').onclick = async () => {  
-  if ($('#sc').value.trim() !== CODE) {  
-    $('#smg').textContent = '❌ كود خاطئ';  
-    $('#smg').style.color = '#b3261e';  
-    return;  
-  }  
-  try {  
-    await api('/api/secret/login', { method: 'POST', body: { code: CODE }});  
-    toast('✅ تم الدخول');  
-    $('#smod').classList.add('hid');  
-    showSecret();  
-  } catch (e) { $('#smg').textContent = e.message; }  
-};  
-  
-async function showSecret() {  
-  const w = document.createElement('div');  
-  w.style.cssText = `position:fixed;inset:0;background:rgba(244,247,251,0.9);z-index:9900;  
-    overflow-y:auto;padding:20px`;  
-  w.innerHTML = `  
-    <div style="max-width:900px;margin:auto">  
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px">  
-        <h2 style="color:#0a2540">⚙️ لوحة الإدارة</h2>  
-        <div style="display:flex;gap:6px;flex-wrap:wrap">  
-          <button class="sec" onclick="loadAdminTab('users')">👥 المستخدمون</button>  
-          <button class="sec" onclick="loadAdminTab('books')">📚 الكتب</button>  
-          <button class="dng" onclick="this.closest('div').parentElement.parentElement.parentElement.remove();api('/api/secret/logout',{method:'POST'})">✕</button>  
-        </div>  
-      </div>  
-      <div id="adminContent"></div>  
-    </div>`;  
-  document.body.appendChild(w);  
-  loadAdminTab('users');  
-}  
-  
-async function loadAdminTab(tab) {  
-  const c = document.getElementById('adminContent');  
-  c.innerHTML = '<div class="em">جارٍ…</div>';  
-  try {  
-    if (tab === 'users') {  
-      const d = await api('/api/secret/users');  
-      c.innerHTML = d.items.length ? d.items.map(u => `  
-        <div style="padding:12px;background:rgba(255,255,255,0.9);border:1.5px solid ${u.banned ? '#f5b8b5' : '#e2e9f2'};  
-          border-radius:12px;margin:8px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap">  
-          <div style="flex:1;min-width:180px">  
-            <b style="color:#0a2540">${esc(u.name)} #${u.number}</b>  
-            <div style="font-size:.75rem;color:#6b7c93">${esc(u.email)}  
-              ${u.banned ? ' · ⛔' : ''}${u.role === 'admin' ? ' · 👑' : ''}</div>  
-          </div>  
-          <button class="sec" onclick="adminMsgs('${u.id}','${esc(u.name)}')"   
-            style="font-size:.72rem;padding:5px 10px">✉️ رسائله</button>  
-          <button class="sec" onclick="adminResetPw('${u.id}','${esc(u.name)}')"   
-            style="font-size:.72rem;padding:5px 10px">🔑 كلمة المرور</button>  
-          <button class="sec" onclick="sStar('${u.id}',1)"   
-            style="font-size:.72rem;padding:5px 10px">⭐+</button>  
-          <button class="sec" onclick="sStar('${u.id}',-1)"   
-            style="font-size:.72rem;padding:5px 10px">⭐−</button>  
-          ${u.banned  
-            ? `<button class="gold" onclick="sBan('${u.id}',false)"   
-                style="font-size:.72rem;padding:5px 10px">✅</button>`  
-            : `<button class="dng" onclick="sBan('${u.id}',true)"   
-                style="font-size:.72rem;padding:5px 10px">⛔</button>`}  
-          <button class="dng" onclick="sDel('${u.id}','${esc(u.name)}')"   
-            style="font-size:.72rem;padding:5px 10px">🗑️</button>  
-        </div>`).join('') : '<div class="em">لا مستخدمين</div>';  
-    } else if (tab === 'books') {  
-      const d = await api('/api/secret/books');  
-      c.innerHTML = d.items.length ? d.items.map(b => `  
-        <div style="padding:12px;background:rgba(255,255,255,0.9);border:1.5px solid #e2e9f2;  
-          border-radius:12px;margin:8px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap">  
-          <div style="flex:1;min-width:180px">  
-            <b style="color:#0a2540">${esc(b.title)}</b>  
-            <div style="font-size:.75rem;color:#6b7c93">  
-              ${esc(b.author || '')} · 👤 ${esc(b.owner_name || '')} · ${esc(b.type || '')}</div>  
-          </div>  
-          ${b.file_url ? `<a href="${esc(b.file_url)}" target="_blank"   
-            style="color:#236eaa;font-size:.75rem">📄 الملف</a>` : ''}  
-          <button class="dng" onclick="adminDelBook('${b.id}','${esc(b.title)}')"   
-            style="font-size:.72rem;padding:5px 10px">🗑️ حذف</button>  
-        </div>`).join('') : '<div class="em">لا كتب</div>';  
-    }  
-  } catch (e) { c.innerHTML = `<div class="em">${esc(e.message)}</div>`; }  
-}  
-  
-async function adminDelBook(bid, title) {  
-  if (!confirm(`حذف "${title}"؟`)) return;  
-  try {  
-    await api('/api/secret/books/' + bid + '/delete', { method: 'POST' });  
-    toast('🗑️ تم الحذف');  
-    loadAdminTab('books');  
-  } catch (e) { toast(e.message, true); }  
-}  
-  
-async function adminMsgs(uid, name) {  
-  const w = document.createElement('div');  
-  w.style.cssText = `position:fixed;inset:0;background:rgba(10,37,64,.85);z-index:9990;  
-    padding:20px;display:flex;align-items:center;justify-content:center`;  
-  w.innerHTML = `  
-    <div style="background:#fff;border-radius:16px;padding:20px;max-width:600px;  
-      width:100%;max-height:80vh;overflow-y:auto">  
-      <div style="display:flex;justify-content:space-between;margin-bottom:12px">  
-        <h3 style="color:#0a2540">✉️ رسائل: ${esc(name)}</h3>  
-        <button class="dng" onclick="this.closest('div').parentElement.parentElement.remove()">✕</button>  
-      </div>  
-      <div id="msgsBox">…</div>  
-    </div>`;  
-  document.body.appendChild(w);  
-  try {  
-    const d = await api('/api/secret/users/' + uid + '/messages');  
-    document.getElementById('msgsBox').innerHTML = d.items.length ? d.items.map(m => `  
-      <div style="padding:8px 12px;background:${m.direction === 'sent' ? '#eaf1fa' : '#f0faf4'};  
-        border-radius:8px;margin:5px 0;font-size:.85rem">  
-        <b style="color:#0a2540;font-size:.75rem">  
-          ${m.direction === 'sent' ? '↗️ أرسل' : '↙️ استقبل'}</b>  
-        <div>${esc(m.text || m.body || '')}</div>  
-        <small style="color:#6b7c93;font-size:.7rem">  
-          ${esc((m.created_at || '').slice(0, 16).replace('T', ' '))}</small>  
-      </div>`).join('') : '<div class="em">لا رسائل</div>';  
-  } catch (e) {  
-    document.getElementById('msgsBox').innerHTML = `<div class="em">${esc(e.message)}</div>`;  
-  }  
-}  
-  
-async function adminResetPw(uid, name) {  
-  const np = prompt(`كلمة مرور جديدة لـ "${name}":\n(4 أحرف على الأقل)`);  
-  if (!np || np.length < 4) return;  
-  try {  
-    await api('/api/secret/users/' + uid + '/reset-password', {  
-      method: 'POST', body: { password: np }  
-    });  
-    toast('🔑 تم تغيير كلمة المرور');  
-  } catch (e) { toast(e.message, true); }  
-}  
-  
-async function sStar(uid, d) {  
-  try { await api('/api/secret/users/' + uid + '/star', { method: 'POST', body: { delta: d }}); toast('✅'); } catch {}  
-}  
-async function sBan(uid, ban) {  
-  try { await api('/api/secret/users/' + uid + '/ban', { method: 'POST', body: { ban }}); toast('✅'); loadAdminTab('users'); } catch {}  
-}  
-async function sDel(uid, name) {  
-  if (!confirm(`حذف "${name}"؟`)) return;  
-  try { await api('/api/secret/users/' + uid + '/delete', { method: 'POST' }); toast('🗑️'); loadAdminTab('users'); } catch {}  
-}  
-  
-async function init() {  
-  try {  
-    const d = await api('/api/status');  
-    $('#fbs').textContent = d.firebase_connected ? '● متصل' : '● غير متصل';  
-    $('#fbs').style.color = d.firebase_connected ? '#0f7a4d' : '#b3261e';  
-  } catch {}  
-  loadB('#sr');  
-  refreshUnread();  
-  refreshNotif();  
-  refreshPerm();  
-  clearTimers();  
-  timerUnread = setInterval(refreshUnread, 4000);  
-  timerNotif = setInterval(refreshNotif, 6000);  
-  timerPerm = setInterval(refreshPerm, 8000);  
-}  
-  
-(async () => {  
-  loadLights();  
-  setInterval(loadLights, 60000);  
-  try {  
-    const d = await api('/api/me');  
-    if (d.user) app(d.user); else showAuth(false);  
-  } catch { showAuth(false); }  
-})();  
-</script>  
-
-<!-- ========================================== -->
-<!-- كود صفحة الصيانة - يمنع الدخول للموقع -->
-<!-- ========================================== -->
-<style>
-  @keyframes maint-pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-  }
-</style>
-<div id="maintenance-screen" style="
-    position: fixed;
-    inset: 0;
-    z-index: 9999999;
-    background: rgba(10, 37, 64, 0.90); 
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    padding: 24px;
-    font-family: Tahoma, Arial, sans-serif;
-    border: 4px solid rgba(255,255,255,0.1);
-    box-sizing: border-box;
-">
-    <div style="font-size: 80px; margin-bottom: 20px; animation: maint-pulse 2s infinite;">🛠️</div>
-    <h1 style="font-size: 2.5rem; margin-bottom: 15px; color: #f5c542; text-shadow: 0 2px 10px rgba(245,197,66,0.3);">الموقع قيد الصيانة</h1>
-    <p style="font-size: 1.2rem; line-height: 1.8; max-width: 500px; color: #c9dcf0; font-weight: bold;">
-        نعتذر عن الإزعاج، نقوم حالياً ببعض التحسينات والتحديثات لتقديم تجربة أفضل لكم. <br>
-        سنعود قريباً جداً بإذن الله.
-    </p>
-    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; color: #a0b2c6; width: 100%; max-width: 400px;">
-        برمجة وتطوير: <b style="color:#f5c542;">براهيمي يوسف</b>
-    </div>
+<!-- 👇 شاشة الغلاف (تظهر أولاً وتطلب من الزائر الضغط للدخول) 👇 -->
+<div id="welcome-overlay" onclick="enterSite()">
+ <!-- تم وضع رابط صورتك الجديدة هنا -->
+ <img src="https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg" alt="اضغط للدخول" class="welcome-img">
+ <div class="welcome-text">اضغط في أي مكان للدخول إلى الموقع</div>
 </div>
-<!-- ========================================== -->
-<!-- نهاية كود صفحة الصيانة -->
-<!-- ========================================== -->
+<!-- 👆 نهاية الغلاف 👆 -->
 
-</body >
+<canvas id="stars"></canvas>
+
+<header>
+ <div class="brand">اعرف مترشحك</div>
+ <nav>
+  <a href="#home">🏠 الرئيسية</a>
+  <a href="#program">📋 برنامجي</a>
+  <a href="#experience">🏛️ المسار المهني</a>
+  <a href="#education">🎓 الشهادات</a>
+  <a href="#message">✉️ تواصل</a>
+ </nav>
+</header>
+
+<div class="developer-top">
+ ✦ تصميم وتطوير: <strong>براهيمي يوسف</strong> ✦
+</div>
+
+<div class="ticker">
+ <span>
+ براهيمي يوسف | معًا للتغيير والنهوض بالوطن |
+ خدمة المواطن | التنمية المتوازنة | حماية المصلحة العامة
+ </span>
+</div>
+
+<main>
+
+<div class="hero" id="home">
+ <!-- 👇 تم وضع رابط صورتك الجديدة هنا أيضاً 👇 -->
+ <img class="profile" src="https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg" alt="الصورة الشخصية لبراهيمي يوسف">
+ <h1>براهيمي يوسف</h1>
+ <p>معًا للتغيير والنهوض بالوطن</p>
+ <div class="tag">المجلس الشعبي الولائي – ولاية أفلو</div>
+ <div class="tag">حزب صوت الشعب</div>
+</div>
+
+<section id="about">
+ <h2 class="section-title">من أنا؟</h2>
+ <p class="intro">
+ براهيمي يوسف، متصرف إداري بمقر الولاية حاليًا،
+ صاحب مسار مهني متنوع وخبرة في العمل الإداري
+ والبلدي وقطاع التكوين المهني والتمهين.
+ أؤمن بأهمية العمل الجاد والتكوين المستمر
+ وخدمة المواطن والمساهمة في تنمية المنطقة.
+ </p>
+</section>
+
+<!-- قسم البرنامج المحدث -->
+<section id="program">
+ <h2 class="section-title">برنامجي لخدمة الصالح العام</h2>
+ 
+ <div class="coming-soon">
+  <div class="coming-soon-icon">⏳</div>
+  <h3>سنوافيكم به بعد قليل</h3>
+  <p>نعمل حالياً على إعداد ودراسة البرنامج الانتخابي الشامل الذي يلبي تطلعاتكم ويلامس انشغالاتكم الحقيقية.</p>
+ </div>
+
+</section>
+
+<section id="experience">
+ <h2 class="section-title">المسار المهني</h2>
+ <div class="cards">
+  <div class="card"><div class="icon">🏛️</div><h3>مقر الولاية</h3><p>متصرف إداري حاليًا بمقر الولاية.</p></div>
+  <div class="card"><div class="icon">🏢</div><h3>العمل البلدي</h3><p>موظف سابق في البلدية، مع تجربة في العمل الإداري المحلي.</p></div>
+  <div class="card"><div class="icon">📚</div><h3>التكوين المهني</h3><p>موظف سابق في قطاع التكوين المهني والتمهين.</p></div>
+ </div>
+</section>
+
+<section>
+ <h2 class="section-title">محطات المسار المهني</h2>
+ <div class="timeline">
+  <div class="timeline-item"><strong>العمل البلدي</strong><br>تجربة مهنية سابقة في البلدية.</div>
+  <div class="timeline-item"><strong>التكوين المهني والتمهين</strong><br>تجربة مهنية سابقة في قطاع التكوين المهني.</div>
+  <div class="timeline-item"><strong>مقر الولاية</strong><br>متصرف إداري حاليًا.</div>
+ </div>
+</section>
+
+<section id="education">
+ <h2 class="section-title">الشهادات والتكوين</h2>
+ <div class="cards">
+  <div class="card"><div class="icon">🎓</div><h3>ماستر تنظيم وعمل</h3><p>شهادة ماستر في تخصص تنظيم وعمل.</p></div>
+  <div class="card"><div class="icon">💻</div><h3>الإعلام الآلي</h3><p>شهادات في الإعلام الآلي.</p></div>
+  <div class="card"><div class="icon">🌐</div><h3>اللغة الإنجليزية</h3><p>اللغة الإنجليزية – صنف ب.</p></div>
+ </div>
+</section>
+
+<section id="message">
+ <div class="message">
+  <h2>شكرًا لزيارتكم</h2>
+  <p>شكرًا لكل من خصص وقتًا للتعرف على مساري المهني والتكويني ورؤيتي لخدمة الصالح العام. نسأل الله التوفيق والسداد، وأن يحفظ وطننا ويوفق الجميع لما فيه الخير.</p>
+  <h3 style="color:#e9c66d">معًا للتغيير والنهوض بالوطن</h3>
+ </div>
+
+ <div class="visitor-box">
+  <h3>إلى زوار صفحتي الكرام 🌹</h3>
+  <p>أهلًا وسهلًا ومرحبًا بكل من زار هذا الفضاء التعريفي، من أفلو، ومن جميع بلديات الولاية، ومن كل ربوع الجزائر.</p>
+  <p>وجودكم محل تقدير واحترام، وزيارتكم تسعدني. إذا أعجبتكم الصفحة، لا تبخلوا علينا بترك إعجاب 👍 أو تعليق تعبّرون فيه عن رأيكم.</p>
+  <h3>بكل احترام وتقدير، براهيمي يوسف</h3>
+ </div>
+
+ <div class="interaction">
+  <h3>رأيكم يهمنا ❤️</h3>
+  <p>إذا أعجبتكم الصفحة، يمكنكم الضغط على زر الإعجاب أو كتابة تعليق.</p>
+  <div class="action-buttons">
+   <button class="action-btn" id="likeButton" type="button">👍 أعجبني</button>
+   <span id="likeCount">0 إعجاب</span>
+  </div>
+  <form class="comment-form" id="commentForm">
+   <input type="text" id="visitorName" maxlength="50" placeholder="اسمك (اختياري)">
+   <textarea id="visitorComment" maxlength="500" placeholder="اكتب تعليقك أو تحيتك هنا..." required></textarea>
+   <button class="action-btn" type="submit">✉️ إضافة التعليق</button>
+  </form>
+  <div class="comment-list" id="commentList"></div>
+  <p style="font-size:12px;color:#c7b98f">ملاحظة: التفاعلات محفوظة محليًا على نفس المتصفح فقط.</p>
+ </div>
+</section>
+</main>
+
+<footer>
+ <strong>براهيمي يوسف</strong><br>
+ المجلس الشعبي الولائي – حزب صوت الشعب – ولاية أفلو
+ <br><span style="color:#e9c66d">تصميم وتطوير: براهيمي يوسف</span>
+</footer>
+
+<script>
+// دالة إخفاء شاشة الغلاف عند الضغط
+function enterSite() {
+ const overlay = document.getElementById('welcome-overlay');
+ overlay.classList.add('hidden');
+ setTimeout(() => {
+  overlay.style.display = 'none';
+ }, 800); 
+}
+
+// خلفية النجوم
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+let stars=[];
+
+function resize(){
+ canvas.width=window.innerWidth;
+ canvas.height=window.innerHeight;
+ stars=Array.from({length:90},()=>({
+  x:Math.random()*canvas.width,
+  y:Math.random()*canvas.height,
+  r:Math.random()*1.8+.3,
+  speed:Math.random()*.35+.1
+ }));
+}
+
+function animate(){
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+ ctx.fillStyle="#d8bd72";
+ stars.forEach(s=>{
+  ctx.beginPath();
+  ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+  ctx.fill();
+  s.y-=s.speed;
+  if(s.y<0){
+   s.y=canvas.height;
+   s.x=Math.random()*canvas.width;
+  }
+ });
+ requestAnimationFrame(animate);
+}
+
+window.addEventListener("resize",resize);
+resize();
+animate();
+
+// ظهور البطاقات تدريجيًا
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){ entry.target.classList.add("show"); }
+ });
+},{threshold:.12});
+document.querySelectorAll(".card").forEach(card=>{ observer.observe(card); });
+
+// تمييز زر القسم المفتوح
+const links=document.querySelectorAll("nav a");
+const sections=document.querySelectorAll("main section, .hero");
+const navObserver=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   links.forEach(link=>{
+    link.classList.toggle("active", link.getAttribute("href")==="#"+entry.target.id);
+   });
+  }
+ });
+},{rootMargin:"-25% 0px -60% 0px"});
+sections.forEach(section=>{ if(section.id) navObserver.observe(section); });
+
+// الإعجابات المحلية
+const likeButton=document.getElementById("likeButton");
+const likeCount=document.getElementById("likeCount");
+let likes=Number(localStorage.getItem("aflouLikes") || 0);
+let liked=localStorage.getItem("aflouLiked")==="true";
+
+function renderLikes(){
+ likeCount.textContent=likes+" إعجاب";
+ likeButton.textContent=liked?"❤️ أعجبني":"👍 أعجبني";
+}
+likeButton.addEventListener("click",()=>{
+ if(!liked){ likes++; liked=true; } 
+ else { likes=Math.max(0,likes-1); liked=false; }
+ localStorage.setItem("aflouLikes",likes);
+ localStorage.setItem("aflouLiked",liked);
+ renderLikes();
+});
+renderLikes();
+
+// التعليقات المحلية
+const commentForm=document.getElementById("commentForm");
+const commentList=document.getElementById("commentList");
+let comments=[];
+try{ comments=JSON.parse(localStorage.getItem("aflouComments") || "[]"); if(!Array.isArray(comments)) comments=[]; }catch{ comments=[]; }
+
+function displayComments(){
+ commentList.replaceChildren();
+ comments.forEach(comment=>{
+  const item=document.createElement("div"); item.className="comment-item";
+  const name=document.createElement("strong"); name.textContent=comment.name || "زائر";
+  const message=document.createElement("p"); message.textContent=comment.message;
+  item.append(name,message); commentList.appendChild(item);
+ });
+}
+commentForm.addEventListener("submit",event=>{
+ event.preventDefault();
+ const name=document.getElementById("visitorName").value.trim();
+ const message=document.getElementById("visitorComment").value.trim();
+ if(!message) return;
+ comments.push({name,message});
+ localStorage.setItem("aflouComments",JSON.stringify(comments));
+ commentForm.reset(); displayComments();
+ alert("تم حفظ تعليقك على هذا الجهاز.");
+});
+displayComments();
+</script>
+</body>
 </html>
