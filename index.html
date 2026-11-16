@@ -210,12 +210,18 @@ button.btn-like { background: var(--gold); }
 }
 .btn-back:hover { background: var(--border); }
 
-/* Admin Panel */
+/* Admin Panel & Edit Names */
 #adminSection { display: none; }
 .adminNav { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
 .adminNav button { background: var(--accent); color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; }
 .stat-box { background: white; padding: 20px; text-align: center; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; }
 .stat-box strong { font-size: 30px; color: var(--pvp-red); display: block; }
+
+/* Edit Table */
+.edit-grid { display: grid; gap: 10px; }
+.edit-row { display: flex; gap: 10px; align-items: center; background: white; padding: 10px; border-radius: 8px; border: 1px solid var(--border); }
+.edit-row span { font-weight: bold; width: 30px; text-align: center; }
+.edit-row input { margin: 0; padding: 8px; flex: 1; }
 
 .hidden { display: none !important; }
 
@@ -223,6 +229,8 @@ button.btn-like { background: var(--gold); }
  .info-grid { grid-template-columns: 1fr; }
  .profile-img { width: 120px; height: 120px; }
  .btn-main { width: 100%; justify-content: center; }
+ .edit-row { flex-direction: column; align-items: stretch; gap: 5px; }
+ .edit-row span { width: auto; text-align: right; }
 }
 </style>
 </head>
@@ -244,7 +252,11 @@ button.btn-like { background: var(--gold); }
   <span class="brand-mark">ص</span>
   <span>اعرف مترشحك</span>
  </div>
- <span class="brand-name">حزب صوت الشعب | أفلو</span>
+ <div style="display:flex; align-items:center; gap:10px;">
+  <span class="brand-name">حزب صوت الشعب | أفلو</span>
+  <!-- زر مخفي للإدارة -->
+  <button onclick="document.getElementById('adminSection').style.display='block'; window.scrollTo(0, document.body.scrollHeight);" style="background:none; border:none; font-size:18px; cursor:pointer; opacity:0.1;" title="الإدارة">⚙️</button>
+ </div>
 </header>
 
 <main class="container">
@@ -340,8 +352,10 @@ button.btn-like { background: var(--gold); }
 <!-- 6. لوحة الإدارة -->
 <section id="adminSection" class="page-section container" style="margin-top:50px; border-top:2px dashed var(--border); padding-top:20px;">
  <h2>لوحة تحكم الإدارة</h2>
+ 
  <div id="adminLoginBox">
-  <input type="password" id="adminCode" placeholder="أدخل رمز الإدارة (sss)" style="max-width:300px;">
+  <p>أدخل رمز الدخول لتعديل البيانات أو مراجعة التعليقات:</p>
+  <input type="password" id="adminCode" placeholder="رمز الإدارة" style="max-width:300px;">
   <button class="btn-action" id="adminLogin">دخول</button>
   <div id="adminMessage" style="font-size:14px; font-weight:bold; margin-top:5px;"></div>
  </div>
@@ -354,9 +368,21 @@ button.btn-like { background: var(--gold); }
   </div>
 
   <div class="adminNav">
+   <button onclick="toggleAdminView('names')" style="background:var(--pvp-green);">تعديل الأسماء والمهن</button>
    <button onclick="toggleAdminView('pending')">التعليقات الواردة</button>
    <button onclick="toggleAdminView('published')">التعليقات المنشورة</button>
    <button onclick="toggleAdminView('visitors')">سجل الزوار</button>
+  </div>
+
+  <!-- شاشة تعديل الأسماء -->
+  <div id="adminNamesView" class="hidden">
+   <h3>تعديل الأسماء والمهن (اضغط حفظ بعد الانتهاء)</h3>
+   <p style="font-size:14px; color:var(--muted);">ملاحظة: رقم 15 هو المترشح المميز (لن يتأثر بالتعديلات العامة).</p>
+   <div class="edit-grid" id="editNamesGrid">
+    <!-- يتم التوليد بالجافاسكريبت -->
+   </div>
+   <button class="btn-action" style="margin-top:20px; width:100%; font-size:18px; padding:15px;" onclick="saveAllNames()">💾 حفظ جميع التعديلات</button>
+   <div id="saveNamesMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
   </div>
 
   <div id="adminPendingView" class="hidden">
@@ -387,7 +413,7 @@ button.btn-like { background: var(--gold); }
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import { getDatabase, ref, push, onValue, update, remove, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+import { getDatabase, ref, push, onValue, update, remove, runTransaction, get, set } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
 const firebaseConfig = {
  apiKey: "AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
@@ -404,54 +430,69 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const $ = id => document.getElementById(id);
 
-// =====================================================================
-// ⚠️ هنا تضع الأسماء الصحيحة التي تريدها (لقد تركتها فارغة لك لتكتبها بدقة) ⚠️
-// =====================================================================
-const candidatesData = [
- { id: 1, name: "اسم المترشح 1", job: "المهنة" },
- { id: 2, name: "اسم المترشح 2", job: "المهنة" },
- { id: 3, name: "اسم المترشح 3", job: "المهنة" },
- { id: 4, name: "اسم المترشح 4", job: "المهنة" },
- { id: 5, name: "اسم المترشح 5", job: "المهنة" },
- { id: 6, name: "اسم المترشح 6", job: "المهنة" },
- { id: 7, name: "اسم المترشح 7", job: "المهنة" },
- { id: 8, name: "اسم المترشح 8", job: "المهنة" },
- { id: 9, name: "اسم المترشح 9", job: "المهنة" },
- { id: 10, name: "اسم المترشح 10", job: "المهنة" },
- { id: 11, name: "اسم المترشح 11", job: "المهنة" },
- { id: 12, name: "اسم المترشح 12", job: "المهنة" },
- { id: 13, name: "اسم المترشح 13", job: "المهنة" },
- { id: 14, name: "اسم المترشح 14", job: "المهنة" },
+// البيانات الافتراضية (تم استخراجها من صورتك)
+let candidatesData = [
+ { id: 1, name: "طافي بوشعبة صلاح الدين", job: "محامي" },
+ { id: 2, name: "نمار عبد العزيز", job: "أعمال حرة - نشاط تجاري" },
+ { id: 3, name: "بوكر بلقاسم", job: "مدير إندلاعية" },
+ { id: 4, name: "عمارة عبدالقادر", job: "ممثل التربية الوطنية" },
+ { id: 5, name: "زحروف أحمد", job: "مهندس" },
+ { id: 6, name: "خاشة عادل", job: "مساعد عملي" },
+ { id: 7, name: "بن حليمة عبدالغفار", job: "متصرف إقليمي بالخارج" },
+ { id: 8, name: "شريط دربال", job: "إطار بالمديرية التجارة" },
+ { id: 9, name: "خالدي رابح", job: "مهندس دولة في السكن والعمران" },
+ { id: 10, name: "بشر محمد", job: "متعدد في الجنس" },
+ { id: 11, name: "بركة عبدالله", job: "أعمال حرة" },
+ { id: 12, name: "لوقاري إبراهيم", job: "أساتذة متعاقد" },
+ { id: 13, name: "صافي أمحمد", job: "إطار في التربية" },
+ { id: 14, name: "كسامي أحمد", job: "أستاذ إبتدائي" },
  { id: 15, name: "براهيمي يوسف", job: "متصرف إداري بمقر الولاية", featured: true }, 
- { id: 16, name: "اسم المترشح 16", job: "المهنة" },
- { id: 17, name: "اسم المترشح 17", job: "المهنة" },
- { id: 18, name: "اسم المترشح 18", job: "المهنة" },
- { id: 19, name: "اسم المترشح 19", job: "المهنة" },
- { id: 20, name: "اسم المترشح 20", job: "المهنة" },
- { id: 21, name: "اسم المترشح 21", job: "المهنة" },
- { id: 22, name: "اسم المترشح 22", job: "المهنة" },
- { id: 23, name: "اسم المترشح 23", job: "المهنة" },
- { id: 24, name: "اسم المترشح 24", job: "المهنة" },
- { id: 25, name: "اسم المترشح 25", job: "المهنة" },
- { id: 26, name: "اسم المترشح 26", job: "المهنة" },
- { id: 27, name: "اسم المترشح 27", job: "المهنة" },
- { id: 28, name: "اسم المترشح 28", job: "المهنة" },
- { id: 29, name: "اسم المترشح 29", job: "المهنة" },
- { id: 30, name: "اسم المترشح 30", job: "المهنة" },
- { id: 31, name: "اسم المترشح 31", job: "المهنة" },
- { id: 32, name: "اسم المترشح 32", job: "المهنة" },
- { id: 33, name: "اسم المترشح 33", job: "المهنة" },
- { id: 34, name: "اسم المترشح 34", job: "المهنة" },
- { id: 35, name: "اسم المترشح 35", job: "المهنة" },
- { id: 36, name: "اسم المترشح 36", job: "المهنة" },
- { id: 37, name: "اسم المترشح 37", job: "المهنة" },
- { id: 38, name: "اسم المترشح 38", job: "المهنة" },
- { id: 39, name: "اسم المترشح 39", job: "المهنة" },
- { id: 40, name: "اسم المترشح 40", job: "المهنة" },
- { id: 41, name: "اسم المترشح 41", job: "المهنة" },
- { id: 42, name: "اسم المترشح 42", job: "المهنة" }
+ { id: 16, name: "عقون بوعالم", job: "موظف بالولاية" },
+ { id: 17, name: "ملسوري حكيم", job: "أستاذ تكوين" },
+ { id: 18, name: "جزي محمد", job: "مفتش التعليم المتوسط" },
+ { id: 19, name: "بركاني المشرّي", job: "مفتش التعليم المتوسط" },
+ { id: 20, name: "معروفي كمال", job: "موظف بالبلدية" },
+ { id: 21, name: "بغدادي عزير", job: "متعدد في الجنس" },
+ { id: 22, name: "روندالة خالد", job: "أستاذ تعليم متوسط" },
+ { id: 23, name: "بورحلة محمد", job: "متعدد في الجنس" },
+ { id: 24, name: "السعدي أمحمد", job: "موظف" },
+ { id: 25, name: "زداري يحي", job: "أستاذ تعليم متوسط" },
+ { id: 26, name: "قطاف الطيب", job: "موظف بالبلدية" },
+ { id: 27, name: "غبالي الياس الحسين", job: "أستاذ تعليم ثانوي" },
+ { id: 28, name: "شادي عبد الرحمان", job: "موظف بمكتب التوثيق" },
+ { id: 29, name: "رويش محمد الأمين", job: "أعمال حرة" },
+ { id: 30, name: "رواب بومدينة", job: "إطار بمديرية الموارد المالية" },
+ { id: 31, name: "طالبي إبراهيم", job: "أعمال حرة" },
+ { id: 32, name: "براهيمي العربي", job: "أعمال حرة" },
+ { id: 33, name: "زدك سعد", job: "أعمال حرة" },
+ { id: 34, name: "تركي خليل", job: "إطار ببنك BNA" },
+ { id: 35, name: "محمودي طيب", job: "أعمال حرة" },
+ { id: 36, name: "مصيبح صليحة", job: "أعمال حرة" },
+ { id: 37, name: "عليلي نجاة", job: "أعمال حرة" },
+ { id: 38, name: "رميت عمر", job: "إطار بشركة سوناطراك" },
+ { id: 39, name: "لور الدين", job: "أستاذ تعليم ثانوي" },
+ { id: 40, name: "شلوفي نصر الدين", job: "موظف بالجامعة" },
+ { id: 41, name: "معمري محمد الأمين", job: "موظف بمفتشية العمل" },
+ { id: 42, name: "عقون امبارك", job: "متصرف رئيسي بالتربية" }
 ];
-// =====================================================================
+
+// جلب التعديلات المحفوظة من Firebase (إن وجدت)
+const namesRef = ref(db, "siteSettings/candidateNames");
+onValue(namesRef, (snapshot) => {
+ const savedData = snapshot.val();
+ if(savedData) {
+  candidatesData = candidatesData.map(c => {
+   if(savedData[c.id]) {
+    return { ...c, name: savedData[c.id].name, job: savedData[c.id].job };
+   }
+   return c;
+  });
+  // تحديث الواجهة إذا كنا في صفحة المترشحين
+  if(document.getElementById('page-candidates-wilaya').classList.contains('active')){
+   renderCandidatesGrid();
+  }
+ }
+});
 
 window.showPage = function(pageId) {
  document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
@@ -629,6 +670,7 @@ document.getElementById('commentForm').addEventListener('submit', async e => {
  } finally { btn.disabled = false; }
 });
 
+// --- الإدارة (Admin) ---
 let adminLoggedIn = false;
 let allInbox = {}, allPublished = {}, allVisits = {};
 
@@ -637,27 +679,73 @@ onValue(ref(db, "candidateComments"), s => { allPublished = s.val() || {}; if(ad
 onValue(visitorsRef, s => { allVisits = s.val() || {}; if(adminLoggedIn) renderVisitors(); });
 
 document.getElementById('adminLogin').addEventListener('click', () => {
- if(document.getElementById('adminCode').value !== "sss") {
-  document.getElementById('adminMessage').textContent = "رمز خاطئ";
+ if(document.getElementById('adminCode').value !== "031984") {
+  document.getElementById('adminMessage').textContent = "الرمز السري خاطئ!";
   document.getElementById('adminMessage').style.color = "red";
   return;
  }
  adminLoggedIn = true;
  document.getElementById('adminLoginBox').style.display = "none";
  document.getElementById('adminPanel').classList.remove('hidden');
- toggleAdminView('pending');
+ toggleAdminView('names'); // فتح شاشة التعديل افتراضياً
 });
 
 window.toggleAdminView = function(view) {
- ['pending', 'published', 'visitors'].forEach(v => {
+ ['names', 'pending', 'published', 'visitors'].forEach(v => {
   document.getElementById('admin' + v.charAt(0).toUpperCase() + v.slice(1) + 'View').classList.add('hidden');
  });
  document.getElementById('admin' + view.charAt(0).toUpperCase() + view.slice(1) + 'View').classList.remove('hidden');
+ 
+ if(view === 'names') renderNamesEditor();
  if(view === 'pending') renderPending();
  if(view === 'published') renderPublishedAdmin();
  if(view === 'visitors') renderVisitors();
 }
 
+// --- شاشة تعديل الأسماء ---
+function renderNamesEditor() {
+ const grid = document.getElementById('editNamesGrid');
+ grid.innerHTML = '';
+ candidatesData.forEach(c => {
+  if(c.featured) return; // تخطي مترشحك
+  const div = document.createElement('div');
+  div.className = 'edit-row';
+  div.innerHTML = `
+   <span>${c.id}</span>
+   <input type="text" id="edit_name_${c.id}" value="${c.name}" placeholder="الاسم">
+   <input type="text" id="edit_job_${c.id}" value="${c.job}" placeholder="المهنة">
+  `;
+  grid.appendChild(div);
+ });
+}
+
+window.saveAllNames = async function() {
+ const btn = event.target;
+ btn.disabled = true;
+ btn.textContent = "جاري الحفظ...";
+ 
+ let updates = {};
+ candidatesData.forEach(c => {
+  if(c.featured) return;
+  const newName = document.getElementById(`edit_name_${c.id}`).value.trim();
+  const newJob = document.getElementById(`edit_job_${c.id}`).value.trim();
+  updates[c.id] = { name: newName, job: newJob };
+ });
+
+ try {
+  await set(namesRef, updates);
+  document.getElementById('saveNamesMsg').textContent = "تم حفظ التعديلات بنجاح! سيتم تحديث الصفحات تلقائياً.";
+  document.getElementById('saveNamesMsg').style.color = "green";
+ } catch(e) {
+  document.getElementById('saveNamesMsg').textContent = "خطأ أثناء الحفظ: " + e.message;
+  document.getElementById('saveNamesMsg').style.color = "red";
+ } finally {
+  btn.disabled = false;
+  btn.textContent = "💾 حفظ جميع التعديلات";
+ }
+}
+
+// --- باقي دوال الإدارة ---
 function updateDashStats() {
  let pubCount = 0;
  for(let cid in allPublished) {
@@ -761,19 +849,6 @@ function renderVisitors() {
   box.appendChild(div);
  });
 }
-
-// لفتح لوحة الإدارة عبر الرابط #
-if(window.location.hash === '#admin') {
- document.getElementById('adminSection').style.display = 'block';
- window.scrollTo(0, document.body.scrollHeight);
-}
-window.addEventListener('hashchange', () => {
- if(window.location.hash === '#admin') {
-  document.getElementById('adminSection').style.display = 'block';
-  window.scrollTo(0, document.body.scrollHeight);
- }
-});
-
 </script>
 </body>
 </html>
