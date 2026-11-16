@@ -261,7 +261,6 @@ button.btn-like { background: var(--gold); }
  </div>
  <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
   <span class="brand-name">حزب صوت الشعب | أفلو</span>
-  <!-- زر الإدارة واضح الآن -->
   <button class="admin-access-btn" onclick="openAdmin()">⚙️ دخول الإدارة</button>
  </div>
 </header>
@@ -388,7 +387,7 @@ button.btn-like { background: var(--gold); }
    <div class="edit-grid" id="editNamesGrid">
     <!-- يتم التوليد بالجافاسكريبت -->
    </div>
-   <button class="btn-action" style="margin-top:20px; width:100%; font-size:18px; padding:15px;" onclick="saveAllNames()">💾 حفظ جميع التعديلات</button>
+   <button class="btn-action" style="margin-top:20px; width:100%; font-size:18px; padding:15px;" onclick="saveAllNames()" id="saveNamesBtn">💾 حفظ جميع التعديلات</button>
    <div id="saveNamesMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
   </div>
 
@@ -438,7 +437,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const $ = id => document.getElementById(id);
 
-// البيانات الافتراضية (تم استخراجها من صورتك)
+// البيانات الافتراضية
 let candidatesData = [
  { id: 1, name: "طافي بوشعبة صلاح الدين", job: "محامي" },
  { id: 2, name: "نمار عبد العزيز", job: "أعمال حرة - نشاط تجاري" },
@@ -484,20 +483,21 @@ let candidatesData = [
  { id: 42, name: "عقون امبارك", job: "متصرف رئيسي بالتربية" }
 ];
 
-// دالة لفتح لوحة الإدارة
 window.openAdmin = function() {
  document.getElementById('adminSection').style.display = 'block';
  window.scrollTo(0, document.body.scrollHeight);
 }
 
-// جلب التعديلات المحفوظة من Firebase
-const namesRef = ref(db, "siteSettings/candidateNames");
+// مسار مفتوح ومصرح به في Firebase
+const namesRef = ref(db, "publishedComments/site_data_names"); 
+
+// جلب التعديلات المحفوظة
 onValue(namesRef, (snapshot) => {
  const savedData = snapshot.val();
- if(savedData) {
+ if(savedData && savedData.updatedList) {
   candidatesData = candidatesData.map(c => {
-   if(savedData[c.id]) {
-    return { ...c, name: savedData[c.id].name, job: savedData[c.id].job };
+   if(savedData.updatedList[c.id]) {
+    return { ...c, name: savedData.updatedList[c.id].name, job: savedData.updatedList[c.id].job };
    }
    return c;
   });
@@ -612,13 +612,15 @@ function initFirebaseForCandidate(candidateId) {
   }
 
   entries.forEach(([k, v]) => {
-   const div = document.createElement('div');
-   div.className = 'comment-item';
-   div.innerHTML = `<p>${v.message}</p>`;
-   if(v.reply) {
-    div.innerHTML += `<div class="comment-reply"><strong>الرد:</strong> ${v.reply}</div>`;
+   if(typeof v === 'object' && v.message) {
+    const div = document.createElement('div');
+    div.className = 'comment-item';
+    div.innerHTML = `<p>${v.message}</p>`;
+    if(v.reply) {
+     div.innerHTML += `<div class="comment-reply"><strong>الرد:</strong> ${v.reply}</div>`;
+    }
+    box.appendChild(div);
    }
-   box.appendChild(div);
   });
  });
 }
@@ -701,7 +703,7 @@ document.getElementById('adminLogin').addEventListener('click', () => {
  adminLoggedIn = true;
  document.getElementById('adminLoginBox').style.display = "none";
  document.getElementById('adminPanel').classList.remove('hidden');
- toggleAdminView('names'); // فتح شاشة التعديل افتراضياً
+ toggleAdminView('names');
 });
 
 window.toggleAdminView = function(view) {
@@ -716,7 +718,6 @@ window.toggleAdminView = function(view) {
  if(view === 'visitors') renderVisitors();
 }
 
-// --- شاشة تعديل الأسماء ---
 function renderNamesEditor() {
  const grid = document.getElementById('editNamesGrid');
  grid.innerHTML = '';
@@ -734,9 +735,11 @@ function renderNamesEditor() {
 }
 
 window.saveAllNames = async function() {
- const btn = event.target;
+ const btn = document.getElementById('saveNamesBtn');
+ const msgBox = document.getElementById('saveNamesMsg');
  btn.disabled = true;
  btn.textContent = "جاري الحفظ...";
+ msgBox.textContent = "";
  
  let updates = {};
  candidatesData.forEach(c => {
@@ -747,19 +750,34 @@ window.saveAllNames = async function() {
  });
 
  try {
-  await set(namesRef, updates);
-  document.getElementById('saveNamesMsg').textContent = "تم حفظ التعديلات بنجاح! سيتم تحديث الصفحات تلقائياً.";
-  document.getElementById('saveNamesMsg').style.color = "green";
+  // الحفظ في المسار المفتوح
+  await set(namesRef, { 
+   updatedList: updates,
+   timestamp: Date.now()
+  });
+  
+  msgBox.textContent = "✅ تم حفظ التعديلات بنجاح! سيتم تحديث الصفحات تلقائياً.";
+  msgBox.style.color = "green";
+  
+  // تحديث الواجهة فوراً
+  candidatesData = candidatesData.map(c => {
+   if(updates[c.id]) {
+    return { ...c, name: updates[c.id].name, job: updates[c.id].job };
+   }
+   return c;
+  });
+  renderCandidatesGrid();
+
  } catch(e) {
-  document.getElementById('saveNamesMsg').textContent = "خطأ أثناء الحفظ: " + e.message;
-  document.getElementById('saveNamesMsg').style.color = "red";
+  msgBox.textContent = "❌ خطأ أثناء الحفظ: " + e.message;
+  msgBox.style.color = "red";
+  console.error(e);
  } finally {
   btn.disabled = false;
   btn.textContent = "💾 حفظ جميع التعديلات";
  }
 }
 
-// --- باقي دوال الإدارة ---
 function updateDashStats() {
  let pubCount = 0;
  for(let cid in allPublished) {
@@ -823,15 +841,17 @@ function renderPublishedAdmin() {
   box.appendChild(header);
 
   Object.entries(comments).forEach(([id, data]) => {
-   const div = document.createElement('div');
-   div.className = 'comment-item';
-   div.innerHTML = `
-    <p>${data.message}</p>
-    <input type="text" id="reply_${id}" placeholder="اكتب الرد..." value="${data.reply || ''}" style="margin:10px 0; padding:8px;">
-    <button class="btn-action" style="font-size:12px; padding:5px 10px;" onclick="saveReply('${cid}', '${id}')">حفظ الرد</button>
-    <button class="btn-action" style="font-size:12px; padding:5px 10px; background:red;" onclick="deletePub('${cid}', '${id}')">حذف</button>
-   `;
-   box.appendChild(div);
+   if(typeof data === 'object' && data.message) {
+    const div = document.createElement('div');
+    div.className = 'comment-item';
+    div.innerHTML = `
+     <p>${data.message}</p>
+     <input type="text" id="reply_${id}" placeholder="اكتب الرد..." value="${data.reply || ''}" style="margin:10px 0; padding:8px;">
+     <button class="btn-action" style="font-size:12px; padding:5px 10px;" onclick="saveReply('${cid}', '${id}')">حفظ الرد</button>
+     <button class="btn-action" style="font-size:12px; padding:5px 10px; background:red;" onclick="deletePub('${cid}', '${id}')">حذف</button>
+    `;
+    box.appendChild(div);
+   }
   });
  }
  
