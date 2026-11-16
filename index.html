@@ -4,27 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>اعرف مترشحك | براهيمي يوسف</title>
-<meta name="description" content="براهيمي يوسف، المترشح رقم 15 ضمن قائمة حزب صوت الشعب رقم 6 للمجلس الشعبي الولائي.">
+<title>اعرف مترشحك | منصة براهيمي يوسف</title>
+<meta name="description" content="المنصة الانتخابية للتعريف بمترشحي حزب صوت الشعب - ولاية أفلو. تصميم وتطوير براهيمي يوسف.">
 
-<!-- صورة المعاينة (فيسبوك/واتساب) -->
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ar_DZ">
-<meta property="og:site_name" content="اعرف مترشحك">
-<meta property="og:title" content="براهيمي يوسف | المترشح رقم 15">
-<meta property="og:description" content="حزب صوت الشعب - القائمة رقم 6 - المترشح رقم 15">
-<meta property="og:url" content="https://workdz-u7oo.onrender.com/">
-<meta property="og:image" content="https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg">
-<meta property="og:image:secure_url" content="https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="براهيمي يوسف - القائمة 6 - الرقم 15">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="براهيمي يوسف - رقم 15">
-<meta name="twitter:description" content="حزب صوت الشعب - القائمة رقم 6">
-<meta name="twitter:image" content="https://i.postimg.cc/WpfX7YgM/540289633-1794256712724471.jpg">
+<meta property="og:title" content="اعرف مترشحك | حزب صوت الشعب - أفلو">
+<meta property="og:description" content="تعرف على قوائم ومترشحي المجلس الشعبي الولائي والبلدي. القائمة رقم 06.">
+<meta property="og:image" content="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,19 +17,22 @@
 
 <style>
 :root{
- --bg: #f8f9fa;           /* رمادي فاتح جداً للخلفية */
- --surface: #ffffff;      /* أبيض للبطاقات */
- --border: #e2e8f0;       /* حدود رمادية فاتحة */
- --text: #1e293b;         /* نص داكن مريح */
- --muted: #64748b;        /* نص رمادي ثانوي */
- --accent: #0f172a;       /* أزرار داكنة */
- --accent-text: #ffffff;  /* نص الأزرار أبيض */
- --gold: #b45309;         /* لون ذهبي/برونزي للعناوين */
+ --bg: #f8f9fa;
+ --surface: #ffffff;
+ --border: #e2e8f0;
+ --text: #1e293b;
+ --muted: #64748b;
+ --accent: #0f172a;
+ --accent-text: #ffffff;
+ --gold: #b45309;
+ --green: #166534;
+ --red: #991b1b;
+ --pvp-green: #146c43;
+ --pvp-red: #dc3545;
 }
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-
 body{
  margin:0;
  min-height:100vh;
@@ -52,11 +40,37 @@ body{
  font-family:Tajawal,Cairo,sans-serif;
  line-height:1.9;
  overflow-x:hidden;
- background:
-  radial-gradient(720px 720px at 88% -8%, rgba(0,0,0,.03), transparent 62%),
-  radial-gradient(620px 620px at -10% 18%, rgba(0,0,0,.02), transparent 62%),
-  var(--bg);
- background-attachment:fixed;
+ background: var(--bg);
+}
+
+/* الشريط الدوار (Marquee) */
+.marquee-container {
+ background: linear-gradient(90deg, var(--pvp-green), var(--green));
+ color: white;
+ padding: 8px 0;
+ overflow: hidden;
+ white-space: nowrap;
+ font-size: 14px;
+ font-weight: 700;
+ border-bottom: 2px solid var(--pvp-red);
+}
+.marquee-content {
+ display: inline-block;
+ animation: marquee 20s linear infinite;
+}
+.marquee-content span {
+ padding: 0 20px;
+}
+@keyframes marquee {
+ 0% { transform: translateX(0); }
+ 100% { transform: translateX(100%); }
+}
+html[dir="rtl"] .marquee-content {
+ animation: marquee-rtl 20s linear infinite;
+}
+@keyframes marquee-rtl {
+ 0% { transform: translateX(0); }
+ 100% { transform: translateX(100%); }
 }
 
 header{
@@ -68,1464 +82,702 @@ header{
  padding:15px 22px;
  font-size:19px;
  font-weight:900;
- background:rgba(255,255,255,.9);
+ background:rgba(255,255,255,.95);
  border-bottom:1px solid var(--border);
- backdrop-filter:blur(14px);
- -webkit-backdrop-filter:blur(14px);
- box-shadow: 0 4px 15px rgba(0,0,0,.03);
+ position:sticky; top:0; z-index:100;
+ box-shadow: 0 4px 15px rgba(0,0,0,.05);
 }
-.brand{display:flex;align-items:center;gap:11px}
+.brand{display:flex;align-items:center;gap:11px; cursor:pointer;}
 .brand-mark{
  width:38px;height:38px;display:grid;place-items:center;
  border-radius:12px;font-size:20px;font-weight:900;
- color:#fff;
- background:var(--accent);
+ color:#fff; background:var(--pvp-green);
  box-shadow:0 10px 26px rgba(0,0,0,.15);
 }
 .brand-name{
- font-size:14px;font-weight:800;color:var(--accent);
+ font-size:14px;font-weight:800;color:var(--pvp-green);
  padding:6px 15px;border-radius:999px;
- border:1px solid var(--border);
- background:rgba(0,0,0,.04);
-}
-
-nav{
- position:sticky;top:0;z-index:60;
- display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
- padding:12px 14px;
- background:rgba(255,255,255,.85);
- backdrop-filter:blur(18px);
- -webkit-backdrop-filter:blur(18px);
- border-bottom:1px solid var(--border);
-}
-
-button{
- font-family:inherit;
- border:0;cursor:pointer;
- padding:11px 20px;
- border-radius:12px;
- font-weight:800;
- font-size:15px;
- color:var(--accent-text);
- background:var(--accent);
- box-shadow:0 10px 26px rgba(0,0,0,.1);
- transition:transform .25s ease, filter .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
-}
-button:hover{filter:brightness(0.8);transform:translateY(-2px)}
-button:disabled{opacity:.55;cursor:not-allowed;transform:none}
-
-nav button{
- background:transparent;
- border:1px solid var(--border);
- color:var(--muted);
- border-radius:999px;
- padding:9px 18px;
- font-size:14px;
- box-shadow:none;
-}
-nav button:hover{color:var(--accent);border-color:var(--accent);background:rgba(0,0,0,.04)}
-nav button.active{
- background:var(--accent);
- color:var(--accent-text);
- border-color:transparent;
- box-shadow:0 10px 26px rgba(0,0,0,.15);
-}
-
-.notice{
- max-width:1100px;
- margin:20px auto 0;
- padding:15px 22px;
- text-align:center;
- font-weight:800;
- font-size:14px;
- color:var(--text);
- border-radius:18px;
- background:var(--surface);
- border:1px solid var(--border);
- backdrop-filter:blur(10px);
- box-shadow: 0 4px 15px rgba(0,0,0,.03);
-}
-
-.hero{
- position:relative;
- overflow:hidden;
- min-height:540px;
- display:flex;
- align-items:center;
- justify-content:center;
- text-align:center;
- padding:70px 18px;
- background:
-  linear-gradient(180deg, rgba(255,255,255,.85), rgba(248,249,250,.95)),
-  /* صورة الخلفية في الأعلى هي الصورة القديمة */
-  url('https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png') center/cover no-repeat;
-}
-.hero::after{
- content:"";
- position:absolute;
- inset:auto 0 0 0;
- height:120px;
- background:linear-gradient(180deg, transparent, var(--bg));
- pointer-events:none;
-}
-.hero h1{
- margin:16px 0 4px;
- font-size:clamp(34px,7vw,66px);
- font-weight:900;
- letter-spacing:-1px;
- line-height:1.25;
- color:var(--accent);
- filter:drop-shadow(0 12px 40px rgba(0,0,0,.1));
-}
-.hero p{
- font-size:19px;
- color:var(--muted);
- margin:6px 0;
-}
-.party{
- display:inline-block;
- padding:8px 28px;
- border-radius:999px;
- font-weight:900;
- font-size:14px;
- letter-spacing:.6px;
- color:var(--accent);
- border:1px solid var(--border);
- background:rgba(255,255,255,.8);
- box-shadow: 0 4px 15px rgba(0,0,0,.05);
-}
-
-.candidate-numbers{
- display:flex;
- justify-content:center;
- gap:16px;
- flex-wrap:wrap;
- margin:32px auto 14px;
-}
-.number-box{
- min-width:152px;
- padding:15px 22px;
- border-radius:20px;
- background:var(--surface);
- border:1px solid var(--border);
- backdrop-filter:blur(12px);
- box-shadow:0 20px 44px rgba(0,0,0,.08);
- transition:transform .3s ease, border-color .3s ease;
-}
-.number-box:hover{
- transform:translateY(-6px);
- border-color:var(--accent);
-}
-.number-box strong{
- display:block;
- font-size:46px;
- line-height:1.15;
- font-weight:900;
- color:var(--gold);
-}
-.number-box span{
- font-size:12.5px;
- font-weight:800;
- color:var(--muted);
-}
-
-.candidate-label{
- display:inline-block;
- margin-top:18px;
- padding:10px 24px;
- border-radius:999px;
- font-weight:900;
- font-size:14px;
- color:#fff;
- background:var(--accent);
- box-shadow:0 14px 32px rgba(0,0,0,.15);
+ border:1px solid var(--border); background:rgba(20,108,67,.1);
 }
 
 .container{
  max-width:1100px;
  margin:auto;
- padding:30px 18px 10px;
+ padding:30px 18px;
+ min-height: 70vh;
 }
 
-section{
- position:relative;
- margin:28px 0;
- padding:30px;
- border-radius:26px;
- background:var(--surface);
- border:1px solid var(--border);
- box-shadow:0 10px 30px rgba(0,0,0,.04);
- scroll-margin-top:110px;
-}
+/* أقسام التنقل (Pages) */
+.page-section { display: none; animation: fadeIn 0.4s ease; }
+.page-section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-h2{
- display:flex;
- align-items:center;
- gap:13px;
- margin:0 0 24px;
- font-size:clamp(22px,3.4vw,30px);
- font-weight:900;
- color:var(--accent);
-}
-h2::before{
- content:"";
- width:6px;
- height:30px;
- border-radius:6px;
- background:var(--gold);
-}
-
-.profile{
- display:grid;
- grid-template-columns:250px 1fr;
- gap:30px;
- align-items:center;
-}
-.profile img{
- width:100%;
- border-radius:24px;
- padding:6px;
- background:var(--bg);
- border:1px solid var(--border);
- box-shadow:0 15px 35px rgba(0,0,0,.1);
-}
-.info{line-height:2.1;color:var(--muted)}
-.info h3{color:var(--accent);font-size:22px;margin:0 0 12px}
-.profile-number{
- display:inline-block;
- margin:6px 0;
- padding:8px 17px;
- border-radius:12px;
- font-weight:900;
- font-size:14px;
- color:var(--accent);
- background:var(--bg);
- border:1px solid var(--border);
-}
-
-.cards{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
- gap:16px;
-}
-.card{
- padding:24px 18px;
- text-align:center;
- line-height:1.9;
- border-radius:18px;
- background:var(--bg);
- border:1px solid var(--border);
- transition:transform .3s ease, border-color .3s ease, background .3s ease;
-}
-.card:hover{
- transform:translateY(-6px);
- border-color:var(--accent);
- background:var(--surface);
- box-shadow:0 15px 35px rgba(0,0,0,.08);
-}
-.card h3{color:var(--accent);margin:12px 0 6px;font-size:18px}
-.card p{color:var(--muted);margin:0}
-.symbol{
- font-size:32px;
- display:inline-block;
-}
-
-.program-intro{
- padding:22px;
- margin-bottom:22px;
- text-align:center;
- font-weight:800;
- font-size:15px;
- color:var(--accent);
- border-radius:18px;
- background:var(--bg);
- border:1px solid var(--border);
-}
-
-.program-card-short {
+/* تنسيقات الصفحة الرئيسية */
+.hero-hub {
  text-align: center;
- padding: 25px 20px;
- border-radius: 18px;
- background: var(--bg);
- border: 1px solid var(--border);
- border-right: 4px solid var(--gold);
- transition: .3s;
+ padding: 40px 20px;
+ background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+ border-radius: 26px;
+ border: 1px solid #bbf7d0;
+ margin-bottom: 30px;
 }
-.program-card-short:hover {
- background: var(--surface);
- border-right-color: var(--accent);
- transform: translateY(-4px);
- box-shadow: 0 10px 25px rgba(0,0,0,.05);
+.hero-hub h1 { color: var(--pvp-green); font-size: clamp(30px, 6vw, 50px); margin-bottom: 10px; }
+.hero-hub p { color: var(--muted); font-size: 18px; margin-bottom: 30px; }
+.hub-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.btn-main {
+ padding: 20px 40px; font-size: 20px; font-weight: 800; border-radius: 16px;
+ border: none; cursor: pointer; color: white; transition: 0.3s;
+ box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+ display: flex; align-items: center; gap: 10px;
 }
-.program-card-short h3 {
- color: var(--accent);
- font-size: 18px;
- margin: 0 0 10px;
-}
-.program-card-short p {
- color: var(--muted);
- font-size: 14px;
- line-height: 1.7;
- margin: 0;
-}
+.btn-main:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
+.btn-wilaya { background: var(--pvp-green); }
+.btn-baladiya { background: var(--accent); }
 
-.commitment{
- margin-top:26px;
- padding:30px 22px;
- border-radius:22px;
- text-align:center;
- line-height:2.15;
- color:var(--accent);
- background: var(--bg);
- border:1px solid var(--border);
- box-shadow:0 10px 30px rgba(0,0,0,.05);
+/* بطاقات القوائم */
+.grid-lists {
+ display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
 }
-.commitment h3{color:var(--gold);font-size:22px;margin:0 0 14px}
-.commitment strong{color:var(--accent)}
+.list-card {
+ background: var(--surface); border: 2px solid var(--border); border-radius: 20px;
+ padding: 25px; text-align: center; cursor: pointer; transition: 0.3s;
+ position: relative; overflow: hidden;
+}
+.list-card:hover { border-color: var(--pvp-green); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+.list-card h2 { color: var(--pvp-green); margin: 10px 0; }
+.list-card .badge { background: var(--pvp-red); color: white; padding: 5px 15px; border-radius: 999px; font-weight: bold; display: inline-block; margin-bottom: 10px;}
+.list-card .header-info { background: var(--bg); padding: 10px; border-radius: 12px; font-weight: 700; }
 
-.section-note{
- margin-top:18px;
- text-align:center;
- font-size:13px;
- color:var(--muted);
+/* شبكة المترشحين */
+.candidates-grid {
+ display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;
 }
+.candidate-mini {
+ background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+ padding: 15px; text-align: center; cursor: pointer; transition: 0.2s;
+}
+.candidate-mini:hover { border-color: var(--pvp-green); background: #f8fafc; }
+.candidate-mini .number {
+ width: 30px; height: 30px; background: var(--pvp-green); color: white;
+ border-radius: 50%; display: grid; place-items: center; font-weight: bold; margin: 0 auto 10px;
+}
+.candidate-mini.featured .number { background: var(--pvp-red); transform: scale(1.2); box-shadow: 0 0 15px rgba(220,53,69,0.4); }
+.candidate-mini h4 { margin: 5px 0; color: var(--accent); font-size: 16px; }
+.candidate-mini p { margin: 0; font-size: 13px; color: var(--muted); }
+.candidate-mini.featured { border: 2px solid var(--pvp-red); background: #fef2f2; }
 
-input,textarea{
- font-family:inherit;
- width:100%;
- margin:8px 0;
- padding:12px 15px;
- font-size:15px;
- color:var(--accent);
- border-radius:12px;
- border:1px solid var(--border);
- background:var(--surface);
- transition:border-color .25s ease, background .25s ease;
+/* الصفحة الفنية للمترشح */
+.profile-card {
+ background: var(--surface); border-radius: 24px; overflow: hidden;
+ box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid var(--border);
 }
-input::placeholder,textarea::placeholder{color:#94a3b8}
-input:focus,textarea:focus{
- outline:none;
- border-color:var(--accent);
- background:var(--bg);
+.profile-header {
+ background: linear-gradient(135deg, var(--pvp-green) 50%, var(--pvp-red) 50%);
+ padding: 30px; text-align: center; position: relative;
 }
-textarea{min-height:92px;resize:vertical}
+.profile-header.featured-profile {
+ background: linear-gradient(135deg, #0f172a 50%, var(--pvp-green) 50%);
+}
+.profile-img {
+ width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
+ border: 5px solid white; background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.profile-body { padding: 30px; }
+.profile-title { text-align: center; margin-bottom: 20px; }
+.profile-title h2 { margin: 0; font-size: 28px; color: var(--accent); }
+.profile-title .job { color: var(--muted); font-size: 18px; font-weight: 700; }
+.profile-title .badge-list { background: var(--pvp-red); color: white; padding: 4px 15px; border-radius: 999px; font-size: 14px; display: inline-block; margin-top: 10px; }
 
-.comment,.adminItem{
- padding:16px 18px;
- margin:12px 0;
- border-radius:14px;
- line-height:1.95;
- color:var(--text);
- background:var(--bg);
- border:1px solid var(--border);
- border-right:4px solid var(--gold);
-}
-.comment p,.adminItem p{margin:6px 0}
-.reply{
- margin:12px 16px 0;
- padding:12px 15px;
- border-radius:12px;
- color:var(--accent);
- background:var(--surface);
- border:1px dashed var(--border);
-}
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+.info-item { background: var(--bg); padding: 15px; border-radius: 12px; border: 1px solid var(--border); }
+.info-item strong { display: block; color: var(--pvp-green); margin-bottom: 5px; }
 
-.status{
- margin:12px 0;
- min-height:20px;
- font-size:14px;
- font-weight:800;
+/* التعليقات والتفاعل */
+.interaction-box { margin-top: 30px; background: var(--bg); padding: 25px; border-radius: 20px; border: 1px solid var(--border); }
+input, textarea {
+ width: 100%; padding: 12px 15px; border-radius: 12px; border: 1px solid var(--border);
+ font-family: inherit; margin-bottom: 10px; font-size: 15px;
 }
+button.btn-action {
+ background: var(--pvp-green); color: white; border: none; padding: 10px 20px;
+ border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.2s;
+}
+button.btn-action:hover { background: var(--green); }
+button.btn-like { background: var(--gold); }
+.comment-item { background: white; padding: 15px; border-radius: 12px; margin-top: 15px; border: 1px solid var(--border); border-right: 4px solid var(--gold); }
+.comment-reply { background: #f1f5f9; padding: 10px; border-radius: 8px; margin-top: 10px; font-size: 14px; color: var(--accent); border-right: 3px solid var(--pvp-green); }
 
-.panel{
- margin-top:18px;
- padding:20px;
- border-radius:20px;
- background:var(--bg);
- border:1px solid var(--border);
+/* Back Button */
+.btn-back {
+ background: var(--bg); border: 1px solid var(--border); color: var(--text);
+ padding: 8px 15px; border-radius: 8px; cursor: pointer; margin-bottom: 20px;
+ font-weight: bold; display: inline-flex; align-items: center; gap: 5px;
 }
-.adminNav{
- display:flex;
- gap:9px;
- flex-wrap:wrap;
- margin:18px 0;
-}
-.adminNav button{
- padding:9px 17px;
- font-size:14px;
- border-radius:999px;
- color:var(--muted);
- background:var(--surface);
- border:1px solid var(--border);
- box-shadow:none;
-}
-.adminNav button:hover{
- background:var(--bg);
- border-color:var(--accent);
- color:var(--accent);
-}
+.btn-back:hover { background: var(--border); }
 
-.stat{
- padding:22px 16px;
- border-radius:16px;
- text-align:center;
- background:var(--surface);
- border:1px solid var(--border);
-}
-.stat strong{
- display:block;
- font-size:30px;
- font-weight:900;
- color:var(--gold);
-}
+/* Admin Panel */
+#adminSection { display: none; }
+.adminNav { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.adminNav button { background: var(--accent); color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; }
+.stat-box { background: white; padding: 20px; text-align: center; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; }
+.stat-box strong { font-size: 30px; color: var(--pvp-red); display: block; }
 
-.danger{background:#fee2e2;color:#991b1b;box-shadow:0 10px 26px rgba(239,83,80,.1)}
-.green{background:#dcfce7;color:#166534;box-shadow:0 10px 26px rgba(16,185,129,.1)}
-.small{font-size:12.5px;color:var(--muted)}
-.hidden{display:none!important}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-
-#likeBtn{
- background:var(--gold);
- color:#fff;
- box-shadow:0 12px 30px rgba(180,83,9,.2);
-}
-
-footer{
- margin-top:56px;
- padding:38px 20px;
- text-align:center;
- line-height:2.1;
- font-size:14px;
- color:var(--muted);
- border-top:1px solid var(--border);
- background:var(--surface);
-}
-footer p{margin:4px 0}
-footer p:first-child{color:var(--accent);font-weight:900;font-size:16px}
-
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
-.reveal.visible{opacity:1;transform:none}
+.hidden { display: none !important; }
 
 @media(max-width:650px){
- .profile{grid-template-columns:1fr}
- .profile img{max-width:250px;display:block;margin:auto}
- .hero{min-height:430px;padding:50px 15px}
- section{padding:20px}
- .number-box{min-width:126px;padding:12px 16px}
- .number-box strong{font-size:38px}
- header{font-size:17px;padding:13px 16px}
- .brand-name{font-size:12.5px}
+ .info-grid { grid-template-columns: 1fr; }
+ .profile-img { width: 120px; height: 120px; }
+ .btn-main { width: 100%; justify-content: center; }
 }
 </style>
 </head>
-
 <body>
 
+<!-- الشريط الدوار -->
+<div class="marquee-container">
+ <div class="marquee-content">
+  <span>✦ منصة انتخابية من تصميم وتطوير المترشح براهيمي يوسف ✦</span>
+  <span>حزب صوت الشعب - القائمة رقم 06 - ولاية أفلو ✦</span>
+  <span>صوتك أمانة ... وخدمتك شرف لنا ✦</span>
+  <span>منصة انتخابية من تصميم وتطوير المترشح براهيمي يوسف ✦</span>
+  <span>حزب صوت الشعب - القائمة رقم 06 - ولاية أفلو ✦</span>
+ </div>
+</div>
+
 <header>
- <div class="brand">
+ <div class="brand" onclick="window.location.hash=''; showPage('home');">
   <span class="brand-mark">ص</span>
   <span>اعرف مترشحك</span>
  </div>
- <span class="brand-name">براهيمي يوسف</span>
+ <span class="brand-name">حزب صوت الشعب | أفلو</span>
 </header>
-
-<nav id="mainNav">
- <button class="active" data-target="home">الرئيسية</button>
- <button data-target="profile">التعريف</button>
- <button data-target="experience">المسار المهني</button>
- <button data-target="education">الشهادات</button>
- <button data-target="program">برنامج العمل</button>
- <button data-target="comments">التعليقات</button>
-</nav>
-
-<div class="notice">
- هذا الموقع للتعريف بالمترشح ومساره المهني والتكويني وطرح تصوره للعمل التمثيلي والرقابي.
-</div>
-
-<div class="hero" id="home">
- <div>
-  <span class="party">حزب صوت الشعب</span>
-  <h1>براهيمي يوسف</h1>
-  <p>اعرف مترشحك</p>
-
-  <div class="candidate-numbers">
-   <div class="number-box">
-    <strong>6</strong>
-    <span>رقم قائمة حزب صوت الشعب</span>
-   </div>
-
-   <div class="number-box">
-    <strong>15</strong>
-    <span>رقم المترشح براهيمي يوسف</span>
-   </div>
-  </div>
-
-  <div class="candidate-label">
-   القائمة رقم 6 | المترشح رقم 15
-  </div>
- </div>
-</div>
 
 <main class="container">
 
-<section id="profile">
- <h2>التعريف بالمترشح</h2>
+<!-- 1. الرئيسية -->
+<section id="page-home" class="page-section active">
+ <div class="hero-hub">
+  <h1>اعرف مترشحك</h1>
+  <p>المنصة الرسمية للتعريف بمترشحي حزب صوت الشعب (PVP) بولاية أفلو</p>
+  <div class="hub-buttons">
+   <button class="btn-main btn-wilaya" onclick="showPage('lists-wilaya')">
+    🏛️ المجلس الشعبي الولائي
+   </button>
+   <button class="btn-main btn-baladiya" onclick="showPage('lists-baladiya')">
+    🏢 المجلس الشعبي البلدي
+   </button>
+  </div>
+ </div>
 
- <div class="profile">
-  <!-- الصورة الشخصية الأصلية -->
-  <img
-   src="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png"
-   alt="براهيمي يوسف">
+ <!-- بطاقة المترشح المميز في الرئيسية -->
+ <h2 style="text-align:center; color:var(--pvp-green); margin-bottom:20px;">⭐ المترشح المميز</h2>
+ <div class="list-card" onclick="openCandidate('15')" style="border-color: var(--pvp-red); max-width: 500px; margin: auto;">
+  <span class="badge" style="background:var(--gold)">المبرمج والمشرف</span>
+  <h2>براهيمي يوسف</h2>
+  <p class="job">متصرف إداري بمقر الولاية</p>
+  <div class="header-info">القائمة 06 | المترشح رقم 15</div>
+ </div>
+</section>
 
-  <div class="info">
-   <h3>براهيمي يوسف</h3>
-
-   <p>مترشح عن حزب صوت الشعب للمجلس الشعبي الولائي.</p>
-
-   <p>متصرف إداري بمقر الولاية حاليًا.</p>
-
-   <p>
-    موظف سابق بالبلدية، وموظف سابق بقطاع التكوين المهني والتمهين.
-   </p>
-
-   <div class="profile-number">
-    رقم القائمة: 6
-   </div>
-
-   <div class="profile-number">
-    رقم المترشح: 15
-   </div>
-
-   <p>
-    هذا الموقع للتعريف بالمسار المهني والتكويني والتواصل مع الزوار،
-    وعرض تصور عملي للعمل التمثيلي والمتابعة والرقابة.
-   </p>
+<!-- 2. قوائم الولاية -->
+<section id="page-lists-wilaya" class="page-section">
+ <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
+ <h2 style="color: var(--pvp-green); text-align: center; margin-bottom: 20px;">قوائم المجلس الشعبي الولائي - أفلو</h2>
+ <div class="grid-lists">
+  <div class="list-card" onclick="showPage('candidates-wilaya')">
+   <span class="badge">رقم القائمة: 06</span>
+   <h2>حزب صوت الشعب</h2>
+   <p>أفلو</p>
+   <div class="header-info">عدد المترشحين: 34</div>
   </div>
  </div>
 </section>
 
-<section id="experience">
- <h2>المسار المهني</h2>
-
- <div class="cards">
-
-  <div class="card">
-   <div class="symbol">🏛️</div>
-   <h3>متصرف إداري</h3>
-   <p>مقر الولاية حاليًا.</p>
+<!-- 3. قوائم البلدية (نموذج) -->
+<section id="page-lists-baladiya" class="page-section">
+ <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
+ <h2 style="color: var(--accent); text-align: center; margin-bottom: 20px;">قوائم المجلس الشعبي البلدي</h2>
+ <div class="grid-lists">
+  <div class="list-card" style="opacity: 0.6; cursor: not-allowed;">
+   <span class="badge" style="background:var(--muted)">قريباً</span>
+   <h2>قوائم البلديات</h2>
+   <p>جاري إضافة قوائم المجالس البلدية بولاية أفلو</p>
   </div>
-
-  <div class="card">
-   <div class="symbol">🏢</div>
-   <h3>العمل بالبلدية</h3>
-   <p>موظف سابق بالبلدية.</p>
-  </div>
-
-  <div class="card">
-   <div class="symbol">📚</div>
-   <h3>التكوين المهني والتمهين</h3>
-   <p>موظف سابق بالقطاع.</p>
-  </div>
-
  </div>
 </section>
 
-<section id="education">
- <h2>المؤهلات والشهادات</h2>
-
- <div class="cards">
-
-  <div class="card">
-   <div class="symbol">🎓</div>
-   <h3>ماستر</h3>
-   <p>تنظيم وعمل.</p>
-  </div>
-
-  <div class="card">
-   <div class="symbol">💻</div>
-   <h3>الإعلام الآلي</h3>
-   <p>شهادات في الإعلام الآلي.</p>
-  </div>
-
-  <div class="card">
-   <div class="symbol">🌐</div>
-   <h3>اللغة الإنجليزية</h3>
-   <p>صنف ب.</p>
-  </div>
-
+<!-- 4. مترشحي الولاية -->
+<section id="page-candidates-wilaya" class="page-section">
+ <button class="btn-back" onclick="showPage('lists-wilaya')">← العودة للقوائم</button>
+ <h2 style="text-align: center; color: var(--pvp-green); margin-bottom: 20px;">مترشحو القائمة 06 - ولاية أفلو</h2>
+ <div class="candidates-grid" id="candidatesGrid">
+  <!-- سيتم توليد المترشحين هنا عبر الجافاسكريبت -->
  </div>
 </section>
 
-<!-- قسم البرنامج المختصر والواقعي -->
-<section id="program">
- <h2>برنامج العمل والتصور التمثيلي</h2>
-
- <div class="program-intro">
-  التزامي هو العمل التمثيلي والرقابي في حدود القانون، دون وعود لا أملك صلاحية تنفيذها.
+<!-- 5. البطاقة الفنية للمترشح -->
+<section id="page-candidate-profile" class="page-section">
+ <button class="btn-back" onclick="showPage('candidates-wilaya')">← العودة للمترشحين</button>
+ 
+ <div class="profile-card" id="profileCard">
+  <!-- محتوى البطاقة الفنية الديناميكي -->
  </div>
 
- <div class="cards" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-  
-  <div class="program-card-short">
-   <div class="symbol" style="font-size:40px; margin-bottom:10px;">🤝</div>
-   <h3>الإنصات للمواطن</h3>
-   <p>الاستماع لانشغالات المواطنين وتوثيقها بكل شفافية.</p>
-  </div>
+ <!-- قسم التفاعل والتعليقات للمترشح -->
+ <div class="interaction-box">
+  <h3 style="color: var(--pvp-green);">رأيك يهمنا</h3>
+  <p>عدد الإعجابات لهذا المترشح: <strong id="likeCount">0</strong></p>
+  <button id="likeBtn" class="btn-action btn-like">👍 أعجبني</button>
+  <div id="likeStatus" style="font-size:14px; margin-top:5px; color:var(--pvp-green); font-weight:bold;"></div>
 
-  <div class="program-card-short">
-   <div class="symbol" style="font-size:40px; margin-bottom:10px;">📢</div>
-   <h3>توصيل الانشغالات</h3>
-   <p>إيصال مطالب السكان إلى الجهات المعنية في حدود ما يسمح به القانون.</p>
-  </div>
+  <hr style="border:0; border-top:1px solid var(--border); margin:20px 0;">
 
-  <div class="program-card-short">
-   <div class="symbol" style="font-size:40px; margin-bottom:10px;">🏗️</div>
-   <h3>متابعة المشاريع</h3>
-   <p>المراقبة والمطالبة بتحسين الخدمات والمرافق الأساسية.</p>
-  </div>
+  <h3 style="color: var(--pvp-green);">اكتب تعليقك</h3>
+  <form id="commentForm">
+   <textarea id="commentText" maxlength="500" placeholder="اكتب تعليقك بكل موضوعية..." required style="min-height:80px;"></textarea>
+   <button type="submit" class="btn-action" id="sendComment">إرسال التعليق</button>
+  </form>
+  <div id="message" style="font-size:14px; margin-top:5px; font-weight:bold;"></div>
 
-  <div class="program-card-short">
-   <div class="symbol" style="font-size:40px; margin-bottom:10px;">⚖️</div>
-   <h3>الشفافية والعدالة</h3>
-   <p>السعي لتوزيع عادل للتنمية والمشاريع بين جميع البلديات.</p>
-  </div>
-
+  <h3 style="margin-top:20px; color: var(--pvp-green);">التعليقات المنشورة</h3>
+  <div id="publishedComments"></div>
  </div>
-
- <div class="commitment">
-  <h3>التزامي أمام المواطنين</h3>
-
-  لا أقدم وعودًا بالتوظيف أو السكن أو توزيع الامتيازات،
-  ولا أدعي امتلاك صلاحيات ليست من اختصاص عضو المجلس الشعبي الولائي.
-
-  <br><br>
-
-  <strong>
-   ألتزم بالاستماع، والتوثيق، ونقل الانشغالات،
-   والمساهمة في الرقابة والمداولات،
-   ومتابعة الملفات عبر القنوات القانونية،
-   بكل جدية وشفافية.
-  </strong>
-
-  <br><br>
-  براهيمي يوسف
-  <br>
-  حزب صوت الشعب | القائمة رقم 6 | المترشح رقم 15
- </div>
-
- <p class="section-note">
-  هذا التصور مرتبط بالاختصاصات القانونية للمجلس الشعبي الولائي
-  ولا يمثل تعهدًا بتنفيذ مشاريع أو قرارات من اختصاص جهات أخرى.
- </p>
 </section>
 
-<section id="comments">
- <h2>التفاعل والتعليقات</h2>
-
- <div class="card">
-  <h3>رأيك يهمنا</h3>
-  <p>
-   عدد الإعجابات:
-   <strong id="likeCount">0</strong>
-  </p>
-  <button id="likeBtn">👍 أعجبني</button>
-  <div id="likeStatus" class="status"></div>
- </div>
-
- <h3>اكتب تعليقك</h3>
-
- <form id="commentForm">
-  <textarea
-   id="commentText"
-   maxlength="1000"
-   placeholder="اكتب تعليقك هنا..."
-   required></textarea>
-
-  <button id="sendComment" type="submit">
-   إرسال التعليق
-  </button>
- </form>
-
- <div id="message" class="status"></div>
-
- <h3>التعليقات المنشورة</h3>
- <div id="publishedComments">جارٍ تحميل التعليقات...</div>
-</section>
-
-<section id="admin">
+<!-- 6. لوحة الإدارة المخفية -->
+<section id="adminSection" class="page-section container" style="margin-top:50px; border-top:2px dashed var(--border); padding-top:20px;">
  <h2>لوحة تحكم الإدارة</h2>
+ <div id="adminLoginBox">
+  <input type="password" id="adminCode" placeholder="أدخل رمز الإدارة (sss)" style="max-width:300px;">
+  <button class="btn-action" id="adminLogin">دخول</button>
+  <div id="adminMessage" style="font-size:14px; font-weight:bold; margin-top:5px;"></div>
+ </div>
 
- <input
-  type="password"
-  id="adminCode"
-  placeholder="رمز الإدارة">
-
- <button id="adminLogin">دخول</button>
-
- <div id="adminMessage" class="status"></div>
-
- <div id="adminPanel" class="panel hidden">
-
-  <div class="cards">
-
-   <div class="stat">
-    <strong id="dashVisits">0</strong>
-    الزوار المسجلون
-   </div>
-
-   <div class="stat">
-    <strong id="dashLikes">0</strong>
-    الإعجابات
-   </div>
-
-   <div class="stat">
-    <strong id="dashComments">0</strong>
-    التعليقات المنشورة
-   </div>
-
+ <div id="adminPanel" class="hidden">
+  <div style="display:flex; gap:20px; flex-wrap:wrap; margin-bottom:20px;">
+   <div class="stat-box"><strong id="dashVisits">0</strong> زائر</div>
+   <div class="stat-box"><strong id="dashLikes">0</strong> إعجاب</div>
+   <div class="stat-box"><strong id="dashComments">0</strong> تعليق منشور</div>
   </div>
 
   <div class="adminNav">
-   <button data-admin="visitors">سجل الزوار</button>
-   <button data-admin="pending">التعليقات الواردة</button>
-   <button data-admin="published">التعليقات المنشورة</button>
-   <button data-admin="refresh">تحديث</button>
+   <button onclick="toggleAdminView('pending')">التعليقات الواردة</button>
+   <button onclick="toggleAdminView('published')">التعليقات المنشورة</button>
+   <button onclick="toggleAdminView('visitors')">سجل الزوار</button>
   </div>
 
-  <div id="adminVisitors">
-   <h3>سجل الزوار</h3>
-   <div id="visitorsList"></div>
-  </div>
-
-  <div id="adminPending" class="hidden">
-   <h3>التعليقات الواردة</h3>
+  <div id="adminPendingView" class="hidden">
+   <h3>التعليقات الواردة (تحتاج مراجعة)</h3>
    <div id="pendingComments"></div>
   </div>
 
-  <div id="adminPublished" class="hidden">
+  <div id="adminPublishedView" class="hidden">
    <h3>التعليقات المنشورة وإدارتها</h3>
    <div id="publishedAdmin"></div>
   </div>
 
-  <button class="danger" id="adminLogout">
-   تسجيل الخروج
-  </button>
+  <div id="adminVisitorsView" class="hidden">
+   <h3>سجل الزوار</h3>
+   <div id="visitorsList"></div>
+  </div>
 
+  <button class="btn-action" style="background:var(--red); margin-top:20px;" onclick="document.getElementById('adminPanel').classList.add('hidden'); document.getElementById('adminLoginBox').style.display='block';">تسجيل الخروج</button>
  </div>
 </section>
 
 </main>
 
-<footer>
- <p>براهيمي يوسف | حزب صوت الشعب</p>
- <p>القائمة رقم 6 | المترشح رقم 15</p>
- <p>شكرًا لكل من زار هذا الموقع</p>
- <p>تصميم وتطوير: براهيمي يوسف</p>
+<footer style="text-align:center; padding:30px; color:var(--muted); border-top:1px solid var(--border); background:white; margin-top:50px;">
+ <p><strong>حزب صوت الشعب</strong> - القائمة 06 - ولاية أفلو</p>
+ <p>تصميم وتطوير: <strong>براهيمي يوسف</strong></p>
 </footer>
 
+<!-- Firebase Scripts -->
 <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import { getDatabase, ref, push, onValue, update, remove, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
-import {
- initializeApp
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-
-import {
- getDatabase,
- ref,
- push,
- onValue,
- update,
- remove,
- runTransaction
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
-
-const firebaseConfig={
- apiKey:"AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
- authDomain:"workdz-web.firebaseapp.com",
- databaseURL:"https://workdz-web-default-rtdb.firebaseio.com",
- projectId:"workdz-web",
- storageBucket:"workdz-web.firebasestorage.app",
- messagingSenderId:"980881321562",
- appId:"1:980881321562:web:5046cc8bfe27749a73f263",
- measurementId:"G-NWPYNZT489"
+const firebaseConfig = {
+ apiKey: "AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
+ authDomain: "workdz-web.firebaseapp.com",
+ databaseURL: "https://workdz-web-default-rtdb.firebaseio.com",
+ projectId: "workdz-web",
+ storageBucket: "workdz-web.firebasestorage.app",
+ messagingSenderId: "980881321562",
+ appId: "1:980881321562:web:5046cc8bfe27749a73f263",
+ measurementId: "G-NWPYNZT489"
 };
 
-const app=initializeApp(firebaseConfig);
-const db=getDatabase(app);
-const $=id=>document.getElementById(id);
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const $ = id => document.getElementById(id);
 
-const likesRef=ref(db,"siteStats/likes");
-const visitorsRef=ref(db,"siteVisitors");
-const inboxRef=ref(db,"commentInbox");
-const publishedRef=ref(db,"publishedComments");
+// --- البيانات الوهمية للمترشحين (بناءً على الصورة التي أرسلتها) ---
+const candidatesData = [
+ { id: 1, name: "طافي بوشعبة صلاح الدين", job: "محامي" },
+ { id: 2, name: "نمار عبد العزيز", job: "أعمال حرة - نشاط تجاري" },
+ { id: 3, name: "بوكر بلقاسم", job: "مدير إندلاعية" },
+ { id: 4, name: "عمارة عبدالقادر", job: "ممثل التربية الوطنية" },
+ { id: 5, name: "زحروف أحمد", job: "مهندس" },
+ { id: 6, name: "خاشة عادل", job: "مساعد عملي" },
+ { id: 7, name: "بن حليمة عبدالغفار", job: "متصرف إقليمي بالخارج" },
+ { id: 8, name: "شريط دربال", job: "إطار بالمديرية التجارة" },
+ { id: 9, name: "خالدي رابح", job: "مهندس دولة في السكن والعمران" },
+ { id: 10, name: "بشر محمد", job: "متعدد في الجنس" },
+ { id: 11, name: "بركة عبدالله", job: "أعمال حرة" },
+ { id: 12, name: "لوقاري إبراهيم", job: "أساتذة متعاقد" },
+ { id: 13, name: "صافي أمحمد", job: "إطار في التربية" },
+ { id: 14, name: "كسامي أحمد", job: "أستاذ إبتدائي" },
+ { id: 15, name: "براهيمي يوسف", job: "متصرف إداري بمقر الولاية", featured: true }, // المترشح المميز
+ { id: 16, name: "عقون بوعالم", job: "موظف بالولاية" },
+ { id: 17, name: "ملسوري حكيم", job: "أستاذ تكوين" },
+ { id: 18, name: "جزي محمد", job: "مفتش التعليم المتوسط" },
+ { id: 19, name: "بركاني المشرّي", job: "مفتش التعليم المتوسط" },
+ { id: 20, name: "معروفي كمال", job: "موظف بالبلدية" },
+ { id: 21, name: "بغدادي عزير", job: "متعدد في الجنس" },
+ { id: 22, name: "روندالة خالد", job: "أستاذ تعليم متوسط" },
+ { id: 23, name: "بورحلة محمد", job: "متعدد في الجنس" },
+ { id: 24, name: "السعدي أمحمد", job: "موظف" },
+ { id: 25, name: "زداري يحي", job: "أستاذ تعليم متوسط" },
+ { id: 26, name: "قطاف الطيب", job: "موظف بالبلدية" },
+ { id: 27, name: "غبالي الياس الحسين", job: "أستاذ تعليم ثانوي" },
+ { id: 28, name: "شادي عبد الرحمان", job: "موظف بمكتب التوثيق" },
+ { id: 29, name: "رويش محمد الأمين", job: "أعمال حرة" },
+ { id: 30, name: "رواب بومدينة", job: "إطار بمديرية الموارد المالية" },
+ { id: 31, name: "طالبي إبراهيم", job: "أعمال حرة" },
+ { id: 32, name: "براهيمي العربي", job: "أعمال حرة" },
+ { id: 33, name: "زدك سعد", job: "أعمال حرة" },
+ { id: 34, name: "تركي خليل", job: "إطار ببنك BNA" },
+ { id: 35, name: "محمودي طيب", job: "أعمال حرة" },
+ { id: 36, name: "مصيبح صليحة", job: "أعمال حرة" },
+ { id: 37, name: "عليلي نجاة", job: "أعمال حرة" },
+ { id: 38, name: "رميت عمر", job: "إطار بشركة سوناطراك" },
+ { id: 39, name: "لور الدين", job: "أستاذ تعليم ثانوي" },
+ { id: 40, name: "شلوفي نصر الدين", job: "موظف بالجامعة" },
+ { id: 41, name: "معمري محمد الأمين", job: "موظف بمفتشية العمل" },
+ { id: 42, name: "عقون امبارك", job: "متصرف رئيسي بالتربية" }
+];
 
-let adminLoggedIn=false;
-let visits={};
-let inbox={};
-let published={};
-let likes=0;
-
-let visitorId=localStorage.getItem("siteVisitorId");
-
-if(!visitorId){
- visitorId=crypto.randomUUID?
-  crypto.randomUUID():
-  Date.now()+"-"+Math.random().toString(36).slice(2);
-
- localStorage.setItem("siteVisitorId",visitorId);
+// --- التنقل بين الصفحات ---
+window.showPage = function(pageId) {
+ document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
+ const target = $('page-' + pageId);
+ if(target) {
+  target.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+ }
+ if(pageId === 'candidates-wilaya') {
+  renderCandidatesGrid();
+ }
 }
 
-const myVisitorRef=ref(db,"siteVisitors/"+visitorId);
+// --- توليد شبكة المترشحين ---
+function renderCandidatesGrid() {
+ const grid = $('candidatesGrid');
+ grid.innerHTML = '';
+ candidatesData.forEach(c => {
+  const div = document.createElement('div');
+  div.className = `candidate-mini ${c.featured ? 'featured' : ''}`;
+  div.onclick = () => openCandidate(c.id);
+  div.innerHTML = `
+   <div class="number">${c.id}</div>
+   <h4>${c.name}</h4>
+   <p>${c.job}</p>
+   ${c.featured ? '<span style="color:var(--pvp-red); font-size:12px; font-weight:bold;">⭐ مميز</span>' : ''}
+  `;
+  grid.appendChild(div);
+ });
+}
 
-async function recordVisit(){
+// --- فتح البطاقة الفنية للمترشح ---
+let currentCandidateId = null;
+window.openCandidate = function(id) {
+ const candidate = candidatesData.find(c => c.id === id);
+ if(!candidate) return;
 
- const now=Date.now();
+ currentCandidateId = id;
+ const card = $('profileCard');
+ 
+ // إعادة تعيين حقول Firebase
+ document.getElementById('likeCount').textContent = "0";
+ document.getElementById('publishedComments').innerHTML = "جارٍ التحميل...";
+ document.getElementById('commentText').value = "";
+ document.getElementById('message').textContent = "";
+ 
+ card.innerHTML = `
+  <div class="profile-header ${candidate.featured ? 'featured-profile' : ''}">
+   <img src="${candidate.featured ? 'https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png' : 'https://ui-avatars.com/api/?name=' + encodeURIComponent(candidate.name) + '&background=random&size=150'}" 
+        alt="${candidate.name}" class="profile-img">
+  </div>
+  <div class="profile-body">
+   <div class="profile-title">
+    <span class="badge-list">القائمة 06 | المترشح رقم ${candidate.id}</span>
+    <h2 style="${candidate.featured ? 'color:var(--pvp-red)' : ''}">${candidate.name}</h2>
+    <p class="job">${candidate.job}</p>
+   </div>
+   
+   <div class="info-grid">
+    <div class="info-item">
+     <strong>الحزب</strong>
+     <span>حزب صوت الشعب (PVP)</span>
+    </div>
+    <div class="info-item">
+     <strong>الولاية</strong>
+     <span>أفلو</span>
+    </div>
+    ${candidate.featured ? `
+    <div class="info-item" style="grid-column: 1 / -1; border-color: var(--pvp-red);">
+     <strong style="color:var(--pvp-red)">نبذة</strong>
+     <span>متصرف إداري بمقر الولاية، ماستر في تنظيم وعمل، شهادات في الإعلام الآلي واللغة الإنجليزية. مبرمج ومشرف على هذه المنصة.</span>
+    </div>
+    ` : ''}
+   </div>
+  </div>
+ `;
 
- try{
+ showPage('candidate-profile');
+ initFirebaseForCandidate(id);
+}
 
-  await runTransaction(myVisitorRef,current=>{
+// --- إدارة Firebase (إعجابات وتعليقات خاصة بكل مترشح) ---
+let unsubLikes, unsubPublished, unsubInbox;
 
-   current=current||{};
+function initFirebaseForCandidate(candidateId) {
+ // إلغاء الاشتراكات السابقة
+ if(unsubLikes) unsubLikes();
+ if(unsubPublished) unsubPublished();
 
-   return {
-    ...current,
-    firstVisit:current.firstVisit||now,
-    lastVisit:now,
-    visits:(Number(current.visits)||0)+1,
-    status:current.liked?
-      "أعجب بالموقع":
-      current.commented?
-      "علّق على الموقع":
-      "زار الموقع فقط",
-    browser:navigator.userAgent.slice(0,160)
-   };
+ const likesRef = ref(db, `candidateStats/${candidateId}/likes`);
+ const publishedRef = ref(db, `candidateComments/${candidateId}`);
 
-  });
+ unsubLikes = onValue(likesRef, s => {
+  const val = Number(s.val() || 0);
+  document.getElementById('likeCount').textContent = val;
+  document.getElementById('dashLikes').textContent = val; // للإدارة
+ });
 
- }catch(error){
-
-  console.error("Visit error:",error);
-
-  const box=$("adminMessage");
-
-  if(box){
-   box.textContent=
-    "خطأ تسجيل الزيارة: "+
-    error.code+" - "+error.message;
+ unsubPublished = onValue(publishedRef, s => {
+  const data = s.val() || {};
+  const box = document.getElementById('publishedComments');
+  box.innerHTML = '';
+  const entries = Object.entries(data).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
+  
+  if(entries.length === 0) {
+   box.innerHTML = "<p style='color:var(--muted); font-size:14px;'>لا توجد تعليقات منشورة بعد.</p>";
+   return;
   }
 
- }
-
+  entries.forEach(([k, v]) => {
+   const div = document.createElement('div');
+   div.className = 'comment-item';
+   div.innerHTML = `<p>${v.message}</p>`;
+   if(v.reply) {
+    div.innerHTML += `<div class="comment-reply"><strong>الرد:</strong> ${v.reply}</div>`;
+   }
+   box.appendChild(div);
+  });
+ });
 }
 
+// --- تسجيل زيارة عامة للموقع ---
+const visitorsRef = ref(db, "siteVisitors");
+const inboxRef = ref(db, "commentInbox");
+
+let visitorId = localStorage.getItem("siteVisitorId") || (crypto.randomUUID ? crypto.randomUUID() : Date.now()+"-"+Math.random().toString(36).slice(2));
+localStorage.setItem("siteVisitorId", visitorId);
+const myVisitorRef = ref(db, "siteVisitors/" + visitorId);
+
+async function recordVisit() {
+ try {
+  await runTransaction(myVisitorRef, c => {
+   c = c || {};
+   return {
+    ...c, lastVisit: Date.now(), visits: (Number(c.visits)||0) + 1,
+    status: c.liked ? "أعجب بالموقع" : c.commented ? "علّق على الموقع" : "زار الموقع فقط"
+   };
+  });
+ } catch(e) { console.error(e); }
+}
 recordVisit();
 
-document.querySelectorAll("#mainNav button").forEach(button=>{
-
- button.addEventListener("click",()=>{
-
-  document.querySelectorAll("#mainNav button")
-   .forEach(b=>b.classList.remove("active"));
-
-  button.classList.add("active");
-
-  $(button.dataset.target).scrollIntoView({
-   behavior:"smooth"
-  });
-
- });
-
+// --- الأزرار ---
+document.getElementById('likeBtn').addEventListener('click', async () => {
+ if(!currentCandidateId) return;
+ const btn = document.getElementById('likeBtn');
+ btn.disabled = true;
+ try {
+  await runTransaction(ref(db, `candidateStats/${currentCandidateId}/likes`), n => (Number(n)||0) + 1);
+  await update(myVisitorRef, { liked: true });
+  document.getElementById('likeStatus').textContent = "تم تسجيل إعجابك!";
+  document.getElementById('likeStatus').style.color = "green";
+ } catch(e) {
+  document.getElementById('likeStatus').textContent = "خطأ: " + e.message;
+  document.getElementById('likeStatus').style.color = "red";
+ } finally { btn.disabled = false; }
 });
 
-onValue(likesRef,s=>{
-
- likes=Number(s.val()||0);
-
- $("likeCount").textContent=likes;
- $("dashLikes").textContent=likes;
-
-});
-
-onValue(visitorsRef,s=>{
-
- visits=s.val()||{};
- renderVisitors();
-
-},error=>{
-
- console.error("Visitors read error:",error);
-
- statusMessage(
-  "adminMessage",
-  "خطأ قراءة سجل الزوار: "+error.message
- );
-
-});
-
-onValue(inboxRef,s=>{
-
- inbox=s.val()||{};
-
- renderPending();
- updateStats();
-
-});
-
-onValue(publishedRef,s=>{
-
- published=s.val()||{};
-
- renderPublished();
- renderPublishedAdmin();
- updateStats();
-
-});
-
-function statusMessage(id,text,ok=false){
-
- $(id).textContent=text;
-
- $(id).style.color=
-  ok?"#166534":"#991b1b";
-
-}
-
-$("likeBtn").addEventListener("click",async()=>{
-
- const button=$("likeBtn");
-
- button.disabled=true;
-
- try{
-
-  await runTransaction(
-   likesRef,
-   n=>(Number(n)||0)+1
-  );
-
-  await runTransaction(myVisitorRef,current=>{
-
-   current=current||{};
-
-   return {
-    ...current,
-    liked:true,
-    likedAt:Date.now(),
-    status:"أعجب بالموقع"
-   };
-
-  });
-
-  statusMessage(
-   "likeStatus",
-   "تم تسجيل إعجابك.",
-   true
-  );
-
- }catch(e){
-
-  statusMessage(
-   "likeStatus",
-   "تعذر تسجيل الإعجاب: "+e.message
-  );
-
- }finally{
-
-  button.disabled=false;
-
- }
-
-});
-
-$("commentForm").addEventListener("submit",async e=>{
-
+document.getElementById('commentForm').addEventListener('submit', async e => {
  e.preventDefault();
+ if(!currentCandidateId) return;
+ const text = document.getElementById('commentText').value.trim();
+ if(!text) return;
 
- const message=$("commentText").value.trim();
+ const btn = document.getElementById('sendComment');
+ btn.disabled = true;
 
- if(!message)return;
-
- $("sendComment").disabled=true;
-
- try{
-
-  await push(inboxRef,{
-
-   visitorId,
-   message,
-   createdAt:Date.now(),
-   status:"pending"
-
+ try {
+  await push(inboxRef, {
+   candidateId: currentCandidateId,
+   visitorId: visitorId,
+   message: text,
+   createdAt: Date.now(),
+   status: "pending"
   });
+  await update(myVisitorRef, { commented: true });
+  document.getElementById('commentText').value = "";
+  document.getElementById('message').textContent = "تم إرسال تعليقك للمراجعة.";
+  document.getElementById('message').style.color = "green";
+ } catch(e) {
+  document.getElementById('message').textContent = "خطأ: " + e.message;
+  document.getElementById('message').style.color = "red";
+ } finally { btn.disabled = false; }
+});
 
-  await update(myVisitorRef,{
 
-   commented:true,
-   commentedAt:Date.now(),
-   status:"علّق على الموقع"
+// --- الإدارة (Admin) ---
+let adminLoggedIn = false;
+let allInbox = {}, allPublished = {}, allVisits = {};
 
+onValue(inboxRef, s => { allInbox = s.val() || {}; if(adminLoggedIn) renderPending(); });
+onValue(ref(db, "candidateComments"), s => { allPublished = s.val() || {}; if(adminLoggedIn) renderPublishedAdmin(); updateDashStats(); });
+onValue(visitorsRef, s => { allVisits = s.val() || {}; if(adminLoggedIn) renderVisitors(); });
+
+document.getElementById('adminLogin').addEventListener('click', () => {
+ if(document.getElementById('adminCode').value !== "sss") {
+  document.getElementById('adminMessage').textContent = "رمز خاطئ";
+  document.getElementById('adminMessage').style.color = "red";
+  return;
+ }
+ adminLoggedIn = true;
+ document.getElementById('adminLoginBox').style.display = "none";
+ document.getElementById('adminPanel').classList.remove('hidden');
+ toggleAdminView('pending');
+});
+
+window.toggleAdminView = function(view) {
+ ['pending', 'published', 'visitors'].forEach(v => {
+  document.getElementById('admin' + v.charAt(0).toUpperCase() + v.slice(1) + 'View').classList.add('hidden');
+ });
+ document.getElementById('admin' + view.charAt(0).toUpperCase() + view.slice(1) + 'View').classList.remove('hidden');
+ if(view === 'pending') renderPending();
+ if(view === 'published') renderPublishedAdmin();
+ if(view === 'visitors') renderVisitors();
+}
+
+function updateDashStats() {
+ let pubCount = 0;
+ for(let cid in allPublished) {
+  if(allPublished[cid]) pubCount += Object.keys(allPublished[cid]).length;
+ }
+ document.getElementById('dashComments').textContent = pubCount;
+ document.getElementById('dashVisits').textContent = Object.keys(allVisits).length;
+}
+
+function renderPending() {
+ const box = document.getElementById('pendingComments');
+ box.innerHTML = '';
+ const pending = Object.entries(allInbox).filter(([k,v]) => v.status === "pending");
+ if(pending.length === 0) { box.innerHTML = "<p>لا توجد تعليقات معلقة.</p>"; return; }
+
+ pending.forEach(([id, data]) => {
+  const cName = candidatesData.find(c => c.id === data.candidateId)?.name || "غير معروف";
+  const div = document.createElement('div');
+  div.className = 'comment-item';
+  div.innerHTML = `
+   <p><strong>للمترشح:</strong> ${cName} (رقم ${data.candidateId})</p>
+   <p>${data.message}</p>
+   <button class="btn-action" style="font-size:12px; padding:5px 10px;" onclick="publishComment('${id}')">نشر</button>
+   <button class="btn-action" style="font-size:12px; padding:5px 10px; background:red;" onclick="deleteInbox('${id}')">حذف</button>
+  `;
+  box.appendChild(div);
+ });
+}
+
+window.publishComment = async function(inboxId) {
+ const data = allInbox[inboxId];
+ if(!data) return;
+ const cid = data.candidateId;
+ try {
+  await push(ref(db, `candidateComments/${cid}`), {
+   message: data.message, createdAt: data.createdAt
   });
+  await update(ref(db, `commentInbox/${inboxId}`), { status: "published" });
+ } catch(e) { alert("خطأ: " + e.message); }
+}
 
-  $("commentText").value="";
+window.deleteInbox = async function(id) {
+ if(!confirm("حذف؟")) return;
+ await remove(ref(db, `commentInbox/${id}`));
+}
 
-  statusMessage(
-   "message",
-   "تم إرسال تعليقك للمراجعة.",
-   true
-  );
+function renderPublishedAdmin() {
+ const box = document.getElementById('publishedAdmin');
+ box.innerHTML = '';
+ let hasAny = false;
+ 
+ for(let cid in allPublished) {
+  const comments = allPublished[cid];
+  if(!comments || Object.keys(comments).length === 0) continue;
+  hasAny = true;
+  
+  const cName = candidatesData.find(c => c.id == cid)?.name || "غير معروف";
+  
+  const header = document.createElement('h4');
+  header.textContent = `المترشح: ${cName} (رقم ${cid})`;
+  box.appendChild(header);
 
- }catch(error){
-
-  statusMessage(
-   "message",
-   "تعذر إرسال التعليق: "+error.message
-  );
-
- }finally{
-
-  $("sendComment").disabled=false;
-
+  Object.entries(comments).forEach(([id, data]) => {
+   const div = document.createElement('div');
+   div.className = 'comment-item';
+   div.innerHTML = `
+    <p>${data.message}</p>
+    <input type="text" id="reply_${id}" placeholder="اكتب الرد..." value="${data.reply || ''}" style="margin:10px 0; padding:8px;">
+    <button class="btn-action" style="font-size:12px; padding:5px 10px;" onclick="saveReply('${cid}', '${id}')">حفظ الرد</button>
+    <button class="btn-action" style="font-size:12px; padding:5px 10px; background:red;" onclick="deletePub('${cid}', '${id}')">حذف</button>
+   `;
+   box.appendChild(div);
+  });
  }
+ 
+ if(!hasAny) box.innerHTML = "<p>لا توجد تعليقات منشورة.</p>";
+}
 
-});
+window.saveReply = async function(cid, id) {
+ const txt = document.getElementById('reply_' + id).value.trim();
+ await update(ref(db, `candidateComments/${cid}/${id}`), { reply: txt });
+ alert("تم الحفظ");
+}
 
-function renderPublished(){
+window.deletePub = async function(cid, id) {
+ if(!confirm("حذف نهائي؟")) return;
+ await remove(ref(db, `candidateComments/${cid}/${id}`));
+}
 
- const box=$("publishedComments");
-
- box.replaceChildren();
-
- const entries=Object.entries(published)
-  .sort((a,b)=>
-   (b[1].createdAt||0)-(a[1].createdAt||0)
-  );
-
- if(!entries.length){
-
-  box.textContent="لا توجد تعليقات منشورة.";
-  return;
-
- }
-
- entries.forEach(([id,data])=>{
-
-  const item=document.createElement("div");
-  item.className="comment";
-
-  const message=document.createElement("p");
-  message.textContent=data.message||"";
-
-  item.appendChild(message);
-
-  if(data.reply){
-
-   const reply=document.createElement("div");
-
-   reply.className="reply";
-
-   reply.textContent="الرد: "+data.reply;
-
-   item.appendChild(reply);
-
-  }
-
-  box.appendChild(item);
-
+function renderVisitors() {
+ const box = document.getElementById('visitorsList');
+ box.innerHTML = '';
+ const entries = Object.entries(allVisits).sort((a,b) => (b[1].lastVisit||0) - (a[1].lastVisit||0));
+ entries.forEach(([id, d]) => {
+  const div = document.createElement('div');
+  div.className = 'comment-item';
+  div.innerHTML = `
+   <strong>زائر: ${id.slice(0,10)}</strong><br>
+   <span style="font-size:12px;">الحالة: ${d.status || 'زار الموقع'}</span>
+  `;
+  box.appendChild(div);
  });
-
 }
-
-function renderVisitors(){
-
- if(!adminLoggedIn)return;
-
- const box=$("visitorsList");
-
- box.replaceChildren();
-
- const entries=Object.entries(visits)
-  .sort((a,b)=>
-   (b[1].lastVisit||0)-(a[1].lastVisit||0)
-  );
-
- $("dashVisits").textContent=entries.length;
-
- if(!entries.length){
-
-  box.textContent="لا توجد زيارات مسجلة.";
-  return;
-
- }
-
- entries.forEach(([id,data])=>{
-
-  const item=document.createElement("div");
-  item.className="adminItem";
-
-  const title=document.createElement("strong");
-  title.textContent="زائر "+id.slice(0,12);
-
-  const state=document.createElement("p");
-  state.textContent=
-   "الحالة: "+(data.status||"زار الموقع فقط");
-
-  const count=document.createElement("p");
-  count.textContent=
-   "عدد الزيارات: "+(data.visits||1);
-
-  const first=document.createElement("p");
-  first.textContent=
-   "أول زيارة: "+
-   new Date(data.firstVisit||0).toLocaleString("ar-DZ");
-
-  const last=document.createElement("p");
-  last.textContent=
-   "آخر زيارة: "+
-   new Date(data.lastVisit||0).toLocaleString("ar-DZ");
-
-  item.append(title,state,count,first,last);
-
-  box.appendChild(item);
-
- });
-
-}
-
-function renderPending(){
-
- if(!adminLoggedIn)return;
-
- const box=$("pendingComments");
-
- box.replaceChildren();
-
- const entries=Object.entries(inbox)
-  .filter(([id,d])=>d.status==="pending");
-
- if(!entries.length){
-
-  box.textContent="لا توجد تعليقات تنتظر المراجعة.";
-  return;
-
- }
-
- entries.forEach(([id,data])=>{
-
-  const item=document.createElement("div");
-  item.className="adminItem";
-
-  const message=document.createElement("p");
-  message.textContent=data.message||"";
-
-  const date=document.createElement("p");
-  date.className="small";
-  date.textContent=
-   new Date(data.createdAt||0).toLocaleString("ar-DZ");
-
-  const actions=document.createElement("div");
-  actions.className="actions";
-
-  const publishBtn=document.createElement("button");
-  publishBtn.className="green";
-  publishBtn.textContent="نشر";
-  publishBtn.onclick=()=>publishComment(id,data);
-
-  const deleteBtn=document.createElement("button");
-  deleteBtn.className="danger";
-  deleteBtn.textContent="حذف";
-  deleteBtn.onclick=()=>deleteComment(id);
-
-  actions.append(publishBtn,deleteBtn);
-
-  item.append(message,date,actions);
-
-  box.appendChild(item);
-
- });
-
-}
-
-async function publishComment(id,data){
-
- try{
-
-  const newId=push(publishedRef).key;
-
-  const changes={};
-
-  changes["publishedComments/"+newId]={
-
-   message:data.message,
-   visitorId:data.visitorId||"",
-   createdAt:data.createdAt||Date.now()
-
-  };
-
-  changes["commentInbox/"+id+"/status"]="published";
-
-  await update(ref(db),changes);
-
-  statusMessage(
-   "adminMessage",
-   "تم نشر التعليق.",
-   true
-  );
-
- }catch(e){
-
-  statusMessage(
-   "adminMessage",
-   "فشل النشر: "+e.message
-  );
-
- }
-
-}
-
-async function deleteComment(id){
-
- if(!confirm("حذف هذا التعليق؟"))return;
-
- try{
-
-  await remove(ref(db,"commentInbox/"+id));
-
-  statusMessage(
-   "adminMessage",
-   "تم الحذف.",
-   true
-  );
-
- }catch(e){
-
-  statusMessage(
-   "adminMessage",
-   "تعذر الحذف: "+e.message
-  );
-
- }
-
-}
-
-function renderPublishedAdmin(){
-
- if(!adminLoggedIn)return;
-
- const box=$("publishedAdmin");
-
- box.replaceChildren();
-
- const entries=Object.entries(published);
-
- if(!entries.length){
-
-  box.textContent="لا توجد تعليقات منشورة.";
-  return;
-
- }
-
- entries.forEach(([id,data])=>{
-
-  const item=document.createElement("div");
-  item.className="adminItem";
-
-  const message=document.createElement("p");
-  message.textContent=data.message||"";
-
-  const replyInput=document.createElement("input");
-  replyInput.placeholder="اكتب ردك هنا";
-  replyInput.value=data.reply||"";
-
-  const actions=document.createElement("div");
-  actions.className="actions";
-
-  const replyBtn=document.createElement("button");
-  replyBtn.className="green";
-  replyBtn.textContent="حفظ الرد";
-
-  replyBtn.onclick=async()=>{
-
-   try{
-
-    await update(
-     ref(db,"publishedComments/"+id),
-     {reply:replyInput.value.trim()}
-    );
-
-    statusMessage(
-     "adminMessage",
-     "تم حفظ الرد.",
-     true
-    );
-
-   }catch(e){
-
-    statusMessage(
-     "adminMessage",
-     "تعذر حفظ الرد: "+e.message
-    );
-
-   }
-
-  };
-
-  const deleteBtn=document.createElement("button");
-  deleteBtn.className="danger";
-  deleteBtn.textContent="حذف التعليق";
-
-  deleteBtn.onclick=async()=>{
-
-   if(!confirm("حذف التعليق؟"))return;
-
-   try{
-
-    await remove(
-     ref(db,"publishedComments/"+id)
-    );
-
-    statusMessage(
-     "adminMessage",
-     "تم حذف التعليق.",
-     true
-    );
-
-   }catch(e){
-
-    statusMessage(
-     "adminMessage",
-     "تعذر الحذف: "+e.message
-    );
-
-   }
-
-  };
-
-  actions.append(replyBtn,deleteBtn);
-
-  item.append(message,replyInput,actions);
-
-  box.appendChild(item);
-
- });
-
-}
-
-function updateStats(){
-
- $("dashComments").textContent=
-  Object.keys(published).length;
-
-}
-
-$("adminLogin").addEventListener("click",()=>{
-
- if($("adminCode").value!=="sss"){
-
-  statusMessage(
-   "adminMessage",
-   "رمز الإدارة غير صحيح."
-  );
-
-  return;
-
- }
-
- adminLoggedIn=true;
-
- $("adminPanel").classList.remove("hidden");
-
- renderVisitors();
- renderPending();
- renderPublishedAdmin();
- updateStats();
-
- statusMessage(
-  "adminMessage",
-  "تم الدخول إلى لوحة الإدارة.",
-  true
- );
-
-});
-
-document.querySelectorAll("[data-admin]").forEach(button=>{
-
- button.addEventListener("click",()=>{
-
-  const key=button.dataset.admin;
-
-  $("adminVisitors").classList.toggle(
-   "hidden",
-   key!=="visitors"&&key!=="refresh"
-  );
-
-  $("adminPending").classList.toggle(
-   "hidden",
-   key!=="pending"&&key!=="refresh"
-  );
-
-  $("adminPublished").classList.toggle(
-   "hidden",
-   key!=="published"&&key!=="refresh"
-  );
-
-  if(key==="refresh"){
-
-   renderVisitors();
-   renderPending();
-   renderPublishedAdmin();
-   updateStats();
-
-   statusMessage(
-    "adminMessage",
-    "تم تحديث البيانات.",
-    true
-   );
-
-  }
-
- });
-
-});
-
-$("adminLogout").addEventListener("click",()=>{
-
- adminLoggedIn=false;
-
- $("adminPanel").classList.add("hidden");
-
- $("adminCode").value="";
-
- statusMessage(
-  "adminMessage",
-  "تم تسجيل الخروج.",
-  true
- );
-
-});
-
-document.querySelectorAll("section").forEach(sec=>{
- sec.classList.add("reveal");
-});
-
-const observer=new IntersectionObserver(entries=>{
-
- entries.forEach(entry=>{
-
-  if(entry.isIntersecting){
-
-   entry.target.classList.add("visible");
-   observer.unobserve(entry.target);
-
-  }
-
- });
-
-},{threshold:.12});
-
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
 </script>
-
 </body>
 </html>
