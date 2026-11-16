@@ -7,10 +7,6 @@
 <title>اعرف مترشحك | منصة براهيمي يوسف</title>
 <meta name="description" content="المنصة الانتخابية للتعريف بمترشحي حزب صوت الشعب - ولاية أفلو. تصميم وتطوير براهيمي يوسف.">
 
-<meta property="og:title" content="اعرف مترشحك | حزب صوت الشعب - أفلو">
-<meta property="og:description" content="تعرف على قوائم ومترشحي المجلس الشعبي الولائي والبلدي. القائمة رقم 06.">
-<meta property="og:image" content="https://i.postimg.cc/nzKt7fHY/file-000000004d6481f4bcec8018af68acff.png">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
@@ -23,7 +19,6 @@
  --text: #1e293b;
  --muted: #64748b;
  --accent: #0f172a;
- --accent-text: #ffffff;
  --gold: #b45309;
  --green: #166534;
  --red: #991b1b;
@@ -43,7 +38,7 @@ body{
  background: var(--bg);
 }
 
-/* الشريط الدوار (Marquee) */
+/* الشريط الدوار */
 .marquee-container {
  background: linear-gradient(90deg, var(--pvp-green), var(--green));
  color: white;
@@ -56,7 +51,7 @@ body{
 }
 .marquee-content {
  display: inline-block;
- animation: marquee 20s linear infinite;
+ animation: marquee 25s linear infinite;
 }
 .marquee-content span {
  padding: 0 20px;
@@ -66,7 +61,7 @@ body{
  100% { transform: translateX(100%); }
 }
 html[dir="rtl"] .marquee-content {
- animation: marquee-rtl 20s linear infinite;
+ animation: marquee-rtl 25s linear infinite;
 }
 @keyframes marquee-rtl {
  0% { transform: translateX(0); }
@@ -107,7 +102,7 @@ header{
  min-height: 70vh;
 }
 
-/* أقسام التنقل (Pages) */
+/* أقسام التنقل */
 .page-section { display: none; animation: fadeIn 0.4s ease; }
 .page-section.active { display: block; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -245,7 +240,7 @@ button.btn-like { background: var(--gold); }
 </div>
 
 <header>
- <div class="brand" onclick="window.location.hash=''; showPage('home');">
+ <div class="brand" onclick="showPage('home')">
   <span class="brand-mark">ص</span>
   <span>اعرف مترشحك</span>
  </div>
@@ -269,9 +264,8 @@ button.btn-like { background: var(--gold); }
   </div>
  </div>
 
- <!-- بطاقة المترشح المميز في الرئيسية -->
  <h2 style="text-align:center; color:var(--pvp-green); margin-bottom:20px;">⭐ المترشح المميز</h2>
- <div class="list-card" onclick="openCandidate('15')" style="border-color: var(--pvp-red); max-width: 500px; margin: auto;">
+ <div class="list-card" onclick="openCandidate(15)" style="border-color: var(--pvp-red); max-width: 500px; margin: auto;">
   <span class="badge" style="background:var(--gold)">المبرمج والمشرف</span>
   <h2>براهيمي يوسف</h2>
   <p class="job">متصرف إداري بمقر الولاية</p>
@@ -288,12 +282,12 @@ button.btn-like { background: var(--gold); }
    <span class="badge">رقم القائمة: 06</span>
    <h2>حزب صوت الشعب</h2>
    <p>أفلو</p>
-   <div class="header-info">عدد المترشحين: 34</div>
+   <div class="header-info">عدد المترشحين: 42</div>
   </div>
  </div>
 </section>
 
-<!-- 3. قوائم البلدية (نموذج) -->
+<!-- 3. قوائم البلدية -->
 <section id="page-lists-baladiya" class="page-section">
  <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
  <h2 style="color: var(--accent); text-align: center; margin-bottom: 20px;">قوائم المجلس الشعبي البلدي</h2>
@@ -311,7 +305,7 @@ button.btn-like { background: var(--gold); }
  <button class="btn-back" onclick="showPage('lists-wilaya')">← العودة للقوائم</button>
  <h2 style="text-align: center; color: var(--pvp-green); margin-bottom: 20px;">مترشحو القائمة 06 - ولاية أفلو</h2>
  <div class="candidates-grid" id="candidatesGrid">
-  <!-- سيتم توليد المترشحين هنا عبر الجافاسكريبت -->
+  <!-- سيتم توليد المترشحين هنا -->
  </div>
 </section>
 
@@ -320,10 +314,9 @@ button.btn-like { background: var(--gold); }
  <button class="btn-back" onclick="showPage('candidates-wilaya')">← العودة للمترشحين</button>
  
  <div class="profile-card" id="profileCard">
-  <!-- محتوى البطاقة الفنية الديناميكي -->
+  <!-- محتوى البطاقة الديناميكي -->
  </div>
 
- <!-- قسم التفاعل والتعليقات للمترشح -->
  <div class="interaction-box">
   <h3 style="color: var(--pvp-green);">رأيك يهمنا</h3>
   <p>عدد الإعجابات لهذا المترشح: <strong id="likeCount">0</strong></p>
@@ -344,7 +337,7 @@ button.btn-like { background: var(--gold); }
  </div>
 </section>
 
-<!-- 6. لوحة الإدارة المخفية -->
+<!-- 6. لوحة الإدارة -->
 <section id="adminSection" class="page-section container" style="margin-top:50px; border-top:2px dashed var(--border); padding-top:20px;">
  <h2>لوحة تحكم الإدارة</h2>
  <div id="adminLoginBox">
@@ -356,7 +349,7 @@ button.btn-like { background: var(--gold); }
  <div id="adminPanel" class="hidden">
   <div style="display:flex; gap:20px; flex-wrap:wrap; margin-bottom:20px;">
    <div class="stat-box"><strong id="dashVisits">0</strong> زائر</div>
-   <div class="stat-box"><strong id="dashLikes">0</strong> إعجاب</div>
+   <div class="stat-box"><strong id="dashLikes">0</strong> إجمالي الإعجابات</div>
    <div class="stat-box"><strong id="dashComments">0</strong> تعليق منشور</div>
   </div>
 
@@ -392,7 +385,6 @@ button.btn-like { background: var(--gold); }
  <p>تصميم وتطوير: <strong>براهيمي يوسف</strong></p>
 </footer>
 
-<!-- Firebase Scripts -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import { getDatabase, ref, push, onValue, update, remove, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
@@ -412,53 +404,55 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const $ = id => document.getElementById(id);
 
-// --- البيانات الوهمية للمترشحين (بناءً على الصورة التي أرسلتها) ---
+// =====================================================================
+// ⚠️ هنا تضع الأسماء الصحيحة التي تريدها (لقد تركتها فارغة لك لتكتبها بدقة) ⚠️
+// =====================================================================
 const candidatesData = [
- { id: 1, name: "طافي بوشعبة صلاح الدين", job: "محامي" },
- { id: 2, name: "نمار عبد العزيز", job: "أعمال حرة - نشاط تجاري" },
- { id: 3, name: "بوكر بلقاسم", job: "مدير إندلاعية" },
- { id: 4, name: "عمارة عبدالقادر", job: "ممثل التربية الوطنية" },
- { id: 5, name: "زحروف أحمد", job: "مهندس" },
- { id: 6, name: "خاشة عادل", job: "مساعد عملي" },
- { id: 7, name: "بن حليمة عبدالغفار", job: "متصرف إقليمي بالخارج" },
- { id: 8, name: "شريط دربال", job: "إطار بالمديرية التجارة" },
- { id: 9, name: "خالدي رابح", job: "مهندس دولة في السكن والعمران" },
- { id: 10, name: "بشر محمد", job: "متعدد في الجنس" },
- { id: 11, name: "بركة عبدالله", job: "أعمال حرة" },
- { id: 12, name: "لوقاري إبراهيم", job: "أساتذة متعاقد" },
- { id: 13, name: "صافي أمحمد", job: "إطار في التربية" },
- { id: 14, name: "كسامي أحمد", job: "أستاذ إبتدائي" },
- { id: 15, name: "براهيمي يوسف", job: "متصرف إداري بمقر الولاية", featured: true }, // المترشح المميز
- { id: 16, name: "عقون بوعالم", job: "موظف بالولاية" },
- { id: 17, name: "ملسوري حكيم", job: "أستاذ تكوين" },
- { id: 18, name: "جزي محمد", job: "مفتش التعليم المتوسط" },
- { id: 19, name: "بركاني المشرّي", job: "مفتش التعليم المتوسط" },
- { id: 20, name: "معروفي كمال", job: "موظف بالبلدية" },
- { id: 21, name: "بغدادي عزير", job: "متعدد في الجنس" },
- { id: 22, name: "روندالة خالد", job: "أستاذ تعليم متوسط" },
- { id: 23, name: "بورحلة محمد", job: "متعدد في الجنس" },
- { id: 24, name: "السعدي أمحمد", job: "موظف" },
- { id: 25, name: "زداري يحي", job: "أستاذ تعليم متوسط" },
- { id: 26, name: "قطاف الطيب", job: "موظف بالبلدية" },
- { id: 27, name: "غبالي الياس الحسين", job: "أستاذ تعليم ثانوي" },
- { id: 28, name: "شادي عبد الرحمان", job: "موظف بمكتب التوثيق" },
- { id: 29, name: "رويش محمد الأمين", job: "أعمال حرة" },
- { id: 30, name: "رواب بومدينة", job: "إطار بمديرية الموارد المالية" },
- { id: 31, name: "طالبي إبراهيم", job: "أعمال حرة" },
- { id: 32, name: "براهيمي العربي", job: "أعمال حرة" },
- { id: 33, name: "زدك سعد", job: "أعمال حرة" },
- { id: 34, name: "تركي خليل", job: "إطار ببنك BNA" },
- { id: 35, name: "محمودي طيب", job: "أعمال حرة" },
- { id: 36, name: "مصيبح صليحة", job: "أعمال حرة" },
- { id: 37, name: "عليلي نجاة", job: "أعمال حرة" },
- { id: 38, name: "رميت عمر", job: "إطار بشركة سوناطراك" },
- { id: 39, name: "لور الدين", job: "أستاذ تعليم ثانوي" },
- { id: 40, name: "شلوفي نصر الدين", job: "موظف بالجامعة" },
- { id: 41, name: "معمري محمد الأمين", job: "موظف بمفتشية العمل" },
- { id: 42, name: "عقون امبارك", job: "متصرف رئيسي بالتربية" }
+ { id: 1, name: "اسم المترشح 1", job: "المهنة" },
+ { id: 2, name: "اسم المترشح 2", job: "المهنة" },
+ { id: 3, name: "اسم المترشح 3", job: "المهنة" },
+ { id: 4, name: "اسم المترشح 4", job: "المهنة" },
+ { id: 5, name: "اسم المترشح 5", job: "المهنة" },
+ { id: 6, name: "اسم المترشح 6", job: "المهنة" },
+ { id: 7, name: "اسم المترشح 7", job: "المهنة" },
+ { id: 8, name: "اسم المترشح 8", job: "المهنة" },
+ { id: 9, name: "اسم المترشح 9", job: "المهنة" },
+ { id: 10, name: "اسم المترشح 10", job: "المهنة" },
+ { id: 11, name: "اسم المترشح 11", job: "المهنة" },
+ { id: 12, name: "اسم المترشح 12", job: "المهنة" },
+ { id: 13, name: "اسم المترشح 13", job: "المهنة" },
+ { id: 14, name: "اسم المترشح 14", job: "المهنة" },
+ { id: 15, name: "براهيمي يوسف", job: "متصرف إداري بمقر الولاية", featured: true }, 
+ { id: 16, name: "اسم المترشح 16", job: "المهنة" },
+ { id: 17, name: "اسم المترشح 17", job: "المهنة" },
+ { id: 18, name: "اسم المترشح 18", job: "المهنة" },
+ { id: 19, name: "اسم المترشح 19", job: "المهنة" },
+ { id: 20, name: "اسم المترشح 20", job: "المهنة" },
+ { id: 21, name: "اسم المترشح 21", job: "المهنة" },
+ { id: 22, name: "اسم المترشح 22", job: "المهنة" },
+ { id: 23, name: "اسم المترشح 23", job: "المهنة" },
+ { id: 24, name: "اسم المترشح 24", job: "المهنة" },
+ { id: 25, name: "اسم المترشح 25", job: "المهنة" },
+ { id: 26, name: "اسم المترشح 26", job: "المهنة" },
+ { id: 27, name: "اسم المترشح 27", job: "المهنة" },
+ { id: 28, name: "اسم المترشح 28", job: "المهنة" },
+ { id: 29, name: "اسم المترشح 29", job: "المهنة" },
+ { id: 30, name: "اسم المترشح 30", job: "المهنة" },
+ { id: 31, name: "اسم المترشح 31", job: "المهنة" },
+ { id: 32, name: "اسم المترشح 32", job: "المهنة" },
+ { id: 33, name: "اسم المترشح 33", job: "المهنة" },
+ { id: 34, name: "اسم المترشح 34", job: "المهنة" },
+ { id: 35, name: "اسم المترشح 35", job: "المهنة" },
+ { id: 36, name: "اسم المترشح 36", job: "المهنة" },
+ { id: 37, name: "اسم المترشح 37", job: "المهنة" },
+ { id: 38, name: "اسم المترشح 38", job: "المهنة" },
+ { id: 39, name: "اسم المترشح 39", job: "المهنة" },
+ { id: 40, name: "اسم المترشح 40", job: "المهنة" },
+ { id: 41, name: "اسم المترشح 41", job: "المهنة" },
+ { id: 42, name: "اسم المترشح 42", job: "المهنة" }
 ];
+// =====================================================================
 
-// --- التنقل بين الصفحات ---
 window.showPage = function(pageId) {
  document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
  const target = $('page-' + pageId);
@@ -471,7 +465,6 @@ window.showPage = function(pageId) {
  }
 }
 
-// --- توليد شبكة المترشحين ---
 function renderCandidatesGrid() {
  const grid = $('candidatesGrid');
  grid.innerHTML = '';
@@ -489,7 +482,6 @@ function renderCandidatesGrid() {
  });
 }
 
-// --- فتح البطاقة الفنية للمترشح ---
 let currentCandidateId = null;
 window.openCandidate = function(id) {
  const candidate = candidatesData.find(c => c.id === id);
@@ -498,7 +490,6 @@ window.openCandidate = function(id) {
  currentCandidateId = id;
  const card = $('profileCard');
  
- // إعادة تعيين حقول Firebase
  document.getElementById('likeCount').textContent = "0";
  document.getElementById('publishedComments').innerHTML = "جارٍ التحميل...";
  document.getElementById('commentText').value = "";
@@ -539,11 +530,9 @@ window.openCandidate = function(id) {
  initFirebaseForCandidate(id);
 }
 
-// --- إدارة Firebase (إعجابات وتعليقات خاصة بكل مترشح) ---
-let unsubLikes, unsubPublished, unsubInbox;
+let unsubLikes, unsubPublished;
 
 function initFirebaseForCandidate(candidateId) {
- // إلغاء الاشتراكات السابقة
  if(unsubLikes) unsubLikes();
  if(unsubPublished) unsubPublished();
 
@@ -553,7 +542,7 @@ function initFirebaseForCandidate(candidateId) {
  unsubLikes = onValue(likesRef, s => {
   const val = Number(s.val() || 0);
   document.getElementById('likeCount').textContent = val;
-  document.getElementById('dashLikes').textContent = val; // للإدارة
+  document.getElementById('dashLikes').textContent = val; 
  });
 
  unsubPublished = onValue(publishedRef, s => {
@@ -579,7 +568,6 @@ function initFirebaseForCandidate(candidateId) {
  });
 }
 
-// --- تسجيل زيارة عامة للموقع ---
 const visitorsRef = ref(db, "siteVisitors");
 const inboxRef = ref(db, "commentInbox");
 
@@ -600,7 +588,6 @@ async function recordVisit() {
 }
 recordVisit();
 
-// --- الأزرار ---
 document.getElementById('likeBtn').addEventListener('click', async () => {
  if(!currentCandidateId) return;
  const btn = document.getElementById('likeBtn');
@@ -612,7 +599,6 @@ document.getElementById('likeBtn').addEventListener('click', async () => {
   document.getElementById('likeStatus').style.color = "green";
  } catch(e) {
   document.getElementById('likeStatus').textContent = "خطأ: " + e.message;
-  document.getElementById('likeStatus').style.color = "red";
  } finally { btn.disabled = false; }
 });
 
@@ -643,8 +629,6 @@ document.getElementById('commentForm').addEventListener('submit', async e => {
  } finally { btn.disabled = false; }
 });
 
-
-// --- الإدارة (Admin) ---
 let adminLoggedIn = false;
 let allInbox = {}, allPublished = {}, allVisits = {};
 
@@ -777,6 +761,18 @@ function renderVisitors() {
   box.appendChild(div);
  });
 }
+
+// لفتح لوحة الإدارة عبر الرابط #
+if(window.location.hash === '#admin') {
+ document.getElementById('adminSection').style.display = 'block';
+ window.scrollTo(0, document.body.scrollHeight);
+}
+window.addEventListener('hashchange', () => {
+ if(window.location.hash === '#admin') {
+  document.getElementById('adminSection').style.display = 'block';
+  window.scrollTo(0, document.body.scrollHeight);
+ }
+});
 
 </script>
 </body>
