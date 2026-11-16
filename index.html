@@ -225,6 +225,13 @@ button.btn-like { background: var(--gold); }
 
 .hidden { display: none !important; }
 
+/* أزرار الإدارة العلوية والسفلية */
+.admin-access-btn {
+ background: transparent; border: 1px solid var(--border); color: var(--muted);
+ padding: 5px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; font-family: inherit; transition: 0.2s;
+}
+.admin-access-btn:hover { background: var(--bg); color: var(--accent); border-color: var(--accent); }
+
 @media(max-width:650px){
  .info-grid { grid-template-columns: 1fr; }
  .profile-img { width: 120px; height: 120px; }
@@ -252,10 +259,10 @@ button.btn-like { background: var(--gold); }
   <span class="brand-mark">ص</span>
   <span>اعرف مترشحك</span>
  </div>
- <div style="display:flex; align-items:center; gap:10px;">
+ <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
   <span class="brand-name">حزب صوت الشعب | أفلو</span>
-  <!-- زر مخفي للإدارة -->
-  <button onclick="document.getElementById('adminSection').style.display='block'; window.scrollTo(0, document.body.scrollHeight);" style="background:none; border:none; font-size:18px; cursor:pointer; opacity:0.1;" title="الإدارة">⚙️</button>
+  <!-- زر الإدارة واضح الآن -->
+  <button class="admin-access-btn" onclick="openAdmin()">⚙️ دخول الإدارة</button>
  </div>
 </header>
 
@@ -409,11 +416,12 @@ button.btn-like { background: var(--gold); }
 <footer style="text-align:center; padding:30px; color:var(--muted); border-top:1px solid var(--border); background:white; margin-top:50px;">
  <p><strong>حزب صوت الشعب</strong> - القائمة 06 - ولاية أفلو</p>
  <p>تصميم وتطوير: <strong>براهيمي يوسف</strong></p>
+ <button class="admin-access-btn" style="margin-top:15px;" onclick="openAdmin()">⚙️ دخول الإدارة</button>
 </footer>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import { getDatabase, ref, push, onValue, update, remove, runTransaction, get, set } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+import { getDatabase, ref, push, onValue, update, remove, runTransaction, set } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
 const firebaseConfig = {
  apiKey: "AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
@@ -476,7 +484,13 @@ let candidatesData = [
  { id: 42, name: "عقون امبارك", job: "متصرف رئيسي بالتربية" }
 ];
 
-// جلب التعديلات المحفوظة من Firebase (إن وجدت)
+// دالة لفتح لوحة الإدارة
+window.openAdmin = function() {
+ document.getElementById('adminSection').style.display = 'block';
+ window.scrollTo(0, document.body.scrollHeight);
+}
+
+// جلب التعديلات المحفوظة من Firebase
 const namesRef = ref(db, "siteSettings/candidateNames");
 onValue(namesRef, (snapshot) => {
  const savedData = snapshot.val();
@@ -487,10 +501,10 @@ onValue(namesRef, (snapshot) => {
    }
    return c;
   });
-  // تحديث الواجهة إذا كنا في صفحة المترشحين
   if(document.getElementById('page-candidates-wilaya').classList.contains('active')){
    renderCandidatesGrid();
   }
+  if(adminLoggedIn) renderNamesEditor();
  }
 });
 
@@ -707,7 +721,7 @@ function renderNamesEditor() {
  const grid = document.getElementById('editNamesGrid');
  grid.innerHTML = '';
  candidatesData.forEach(c => {
-  if(c.featured) return; // تخطي مترشحك
+  if(c.featured) return;
   const div = document.createElement('div');
   div.className = 'edit-row';
   div.innerHTML = `
