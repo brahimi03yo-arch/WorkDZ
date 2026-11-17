@@ -5,26 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>اعرف مترشحك | حزب صوت الشعب - أفلو</title>
-<meta name="description" content="المنصة الانتخابية للتعريف بمترشحي القائمة 06 بولاية أفلو. تصميم وتطوير المترشح براهيمي يوسف.">
+<meta name="description" content="المنصة الانتخابية للتعريف بمترشحي حزب صوت الشعب (PVP) لولايات وأبلديات أفلو. تصميم وتطوير براهيمي يوسف.">
 
-<!-- صورة المعاينة (فيسبوك/واتساب) -->
+<!-- صورة المعاينة -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_DZ">
 <meta property="og:site_name" content="اعرف مترشحك">
 <meta property="og:title" content="اعرف مترشحك | حزب صوت الشعب - أفلو">
-<meta property="og:description" content="المنصة الانتخابية للتعريف بمترشحي القائمة 06 بولاية أفلو. تصميم وتطوير المترشح براهيمي يوسف.">
+<meta property="og:description" content="المنصة الانتخابية للتعريف بمترشحي القوائم. تصميم وتطوير المترشح براهيمي يوسف.">
 <meta property="og:url" content="https://workdz-u7oo.onrender.com/">
 <meta property="og:image" content="https://i.postimg.cc/Fzp3mx37/file-000000007fac81f4bfc40d244fc9529f.png">
 <meta property="og:image:secure_url" content="https://i.postimg.cc/Fzp3mx37/file-000000007fac81f4bfc40d244fc9529f.png">
 <meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="اعرف مترشحك - حزب صوت الشعب - القائمة 06">
-
-<!-- تويتر (X) -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="اعرف مترشحك | حزب صوت الشعب - أفلو">
-<meta name="twitter:description" content="المنصة الانتخابية للتعريف بمترشحي القائمة 06 بولاية أفلو.">
 <meta name="twitter:image" content="https://i.postimg.cc/Fzp3mx37/file-000000007fac81f4bfc40d244fc9529f.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,17 +26,15 @@
 
 <style>
 :root{
- --bg: #f8f9fa;
- --surface: #ffffff;
+ --bg: #f4f7f6;
+ --surface: rgba(255, 255, 255, 0.95);
  --border: #e2e8f0;
  --text: #1e293b;
  --muted: #64748b;
- --accent: #0f172a;
- --gold: #b45309;
- --green: #166534;
- --red: #991b1b;
- --pvp-green: #146c43;
- --pvp-red: #dc3545;
+ --pvp-green: #0f763b;
+ --pvp-green-dark: #0a5c2c;
+ --pvp-red: #d9232e;
+ --gold: #d97706;
 }
 
 *{box-sizing:border-box}
@@ -53,35 +44,35 @@ body{
  min-height:100vh;
  color:var(--text);
  font-family:Tajawal,Cairo,sans-serif;
- line-height:1.9;
+ line-height:1.8;
  overflow-x:hidden;
  background: var(--bg);
 }
 
 /* الشريط الدوار */
 .marquee-container {
- background: linear-gradient(90deg, var(--pvp-green), var(--green));
+ background: linear-gradient(90deg, var(--pvp-green), var(--pvp-green-dark));
  color: white;
- padding: 8px 0;
+ padding: 10px 0;
  overflow: hidden;
  white-space: nowrap;
- font-size: 14px;
+ font-size: 15px;
  font-weight: 700;
- border-bottom: 2px solid var(--pvp-red);
+ border-bottom: 3px solid var(--pvp-red);
 }
 .marquee-content {
  display: inline-block;
- animation: marquee 25s linear infinite;
+ animation: marquee 30s linear infinite;
 }
 .marquee-content span {
- padding: 0 20px;
+ padding: 0 30px;
 }
 @keyframes marquee {
  0% { transform: translateX(0); }
  100% { transform: translateX(100%); }
 }
 html[dir="rtl"] .marquee-content {
- animation: marquee-rtl 25s linear infinite;
+ animation: marquee-rtl 30s linear infinite;
 }
 @keyframes marquee-rtl {
  0% { transform: translateX(0); }
@@ -94,170 +85,192 @@ header{
  justify-content:space-between;
  gap:14px;
  flex-wrap:wrap;
- padding:15px 22px;
+ padding:15px 25px;
  font-size:19px;
  font-weight:900;
- background:rgba(255,255,255,.95);
+ background:rgba(255,255,255,.98);
  border-bottom:1px solid var(--border);
  position:sticky; top:0; z-index:100;
- box-shadow: 0 4px 15px rgba(0,0,0,.05);
+ box-shadow: 0 4px 20px rgba(0,0,0,.06);
 }
-.brand{display:flex;align-items:center;gap:11px; cursor:pointer;}
+.brand{display:flex;align-items:center;gap:12px; cursor:pointer;}
 .brand-mark{
- width:38px;height:38px;display:grid;place-items:center;
- border-radius:12px;font-size:20px;font-weight:900;
+ width:42px;height:42px;display:grid;place-items:center;
+ border-radius:14px;font-size:22px;font-weight:900;
  color:#fff; background:var(--pvp-green);
- box-shadow:0 10px 26px rgba(0,0,0,.15);
+ box-shadow:0 8px 20px rgba(15, 118, 59, 0.3);
 }
 .brand-name{
- font-size:14px;font-weight:800;color:var(--pvp-green);
- padding:6px 15px;border-radius:999px;
- border:1px solid var(--border); background:rgba(20,108,67,.1);
+ font-size:15px;font-weight:800;color:var(--pvp-green);
+ padding:8px 18px;border-radius:999px;
+ border:1px solid rgba(15, 118, 59, 0.2); background:rgba(15, 118, 59, 0.08);
 }
 
 .container{
- max-width:1100px;
+ max-width:1200px;
  margin:auto;
  padding:30px 18px;
- min-height: 70vh;
+ min-height: 75vh;
 }
 
 /* أقسام التنقل */
 .page-section { display: none; animation: fadeIn 0.4s ease; }
 .page-section.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-/* تنسيقات الصفحة الرئيسية */
+/* الصفحة الرئيسية */
 .hero-hub {
  text-align: center;
- padding: 40px 20px;
- background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
- border-radius: 26px;
- border: 1px solid #bbf7d0;
- margin-bottom: 30px;
+ padding: 50px 20px;
+ background: linear-gradient(135deg, rgba(15, 118, 59, 0.05) 0%, rgba(217, 35, 46, 0.05) 100%);
+ border-radius: 30px;
+ border: 1px solid rgba(15, 118, 59, 0.1);
+ margin-bottom: 40px;
+ position: relative;
+ overflow: hidden;
 }
-.hero-hub h1 { color: var(--pvp-green); font-size: clamp(30px, 6vw, 50px); margin-bottom: 10px; }
-.hero-hub p { color: var(--muted); font-size: 18px; margin-bottom: 30px; }
-.hub-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.hero-hub h1 { color: var(--pvp-green-dark); font-size: clamp(32px, 6vw, 54px); margin-bottom: 10px; font-weight: 900; letter-spacing: -1px;}
+.hero-hub p { color: var(--muted); font-size: 19px; margin-bottom: 40px; }
+.hub-buttons { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; }
 .btn-main {
- padding: 20px 40px; font-size: 20px; font-weight: 800; border-radius: 16px;
- border: none; cursor: pointer; color: white; transition: 0.3s;
- box-shadow: 0 10px 25px rgba(0,0,0,0.1);
- display: flex; align-items: center; gap: 10px;
+ padding: 22px 45px; font-size: 20px; font-weight: 800; border-radius: 18px;
+ border: none; cursor: pointer; color: white; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+ display: flex; align-items: center; gap: 12px;
 }
-.btn-main:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
+.btn-main:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.18); }
 .btn-wilaya { background: var(--pvp-green); }
-.btn-baladiya { background: var(--accent); }
+.btn-baladiya { background: var(--pvp-red); }
 
 /* بطاقات القوائم */
 .grid-lists {
- display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+ display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px;
 }
 .list-card {
- background: var(--surface); border: 2px solid var(--border); border-radius: 20px;
- padding: 25px; text-align: center; cursor: pointer; transition: 0.3s;
+ background: var(--surface); border: 2px solid var(--border); border-radius: 24px;
+ padding: 30px; text-align: center; cursor: pointer; transition: 0.3s;
  position: relative; overflow: hidden;
+ box-shadow: 0 10px 30px rgba(0,0,0,0.03);
 }
-.list-card:hover { border-color: var(--pvp-green); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
-.list-card h2 { color: var(--pvp-green); margin: 10px 0; }
-.list-card .badge { background: var(--pvp-red); color: white; padding: 5px 15px; border-radius: 999px; font-weight: bold; display: inline-block; margin-bottom: 10px;}
-.list-card .header-info { background: var(--bg); padding: 10px; border-radius: 12px; font-weight: 700; }
+.list-card:hover { border-color: var(--pvp-green); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+.list-card h2 { color: var(--pvp-green); margin: 15px 0; font-size: 26px; }
+.list-card .badge { background: var(--pvp-red); color: white; padding: 6px 20px; border-radius: 999px; font-weight: bold; display: inline-block; margin-bottom: 10px; font-size: 15px;}
+.list-card .header-info { background: var(--bg); padding: 12px; border-radius: 14px; font-weight: 700; font-size: 16px; margin-top: 15px;}
 
 /* شبكة المترشحين */
 .candidates-grid {
- display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;
+ display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px;
 }
 .candidate-mini {
- background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
- padding: 15px; text-align: center; cursor: pointer; transition: 0.2s;
+ background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+ padding: 20px 15px; text-align: center; cursor: pointer; transition: 0.25s;
+ position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
-.candidate-mini:hover { border-color: var(--pvp-green); background: #f8fafc; }
+.candidate-mini:hover { border-color: var(--pvp-green); background: #fff; transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
 .candidate-mini .number {
- width: 30px; height: 30px; background: var(--pvp-green); color: white;
- border-radius: 50%; display: grid; place-items: center; font-weight: bold; margin: 0 auto 10px;
+ width: 36px; height: 36px; background: var(--pvp-green); color: white;
+ border-radius: 12px; display: grid; place-items: center; font-weight: 900; margin: 0 auto 12px; font-size: 16px;
+ box-shadow: 0 4px 10px rgba(15, 118, 59, 0.3);
 }
-.candidate-mini.featured .number { background: var(--pvp-red); transform: scale(1.2); box-shadow: 0 0 15px rgba(220,53,69,0.4); }
-.candidate-mini h4 { margin: 5px 0; color: var(--accent); font-size: 16px; }
-.candidate-mini p { margin: 0; font-size: 13px; color: var(--muted); }
-.candidate-mini.featured { border: 2px solid var(--pvp-red); background: #fef2f2; }
+.candidate-mini.featured .number { background: var(--pvp-red); box-shadow: 0 0 15px rgba(217, 35, 46, 0.5); }
+.candidate-mini h4 { margin: 8px 0; color: var(--text); font-size: 17px; font-weight: 800; }
+.candidate-mini p { margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.4; }
+.candidate-mini.featured { border: 2px solid var(--pvp-red); background: #fffafa; }
 
 /* الصفحة الفنية للمترشح */
 .profile-card {
- background: var(--surface); border-radius: 24px; overflow: hidden;
- box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid var(--border);
+ background: var(--surface); border-radius: 30px; overflow: hidden;
+ box-shadow: 0 15px 40px rgba(0,0,0,0.08); border: 1px solid var(--border);
 }
 .profile-header {
- background: linear-gradient(135deg, var(--pvp-green) 50%, var(--pvp-red) 50%);
- padding: 30px; text-align: center; position: relative;
+ background: linear-gradient(135deg, var(--pvp-green) 50%, var(--pvp-green-dark) 100%);
+ padding: 40px 30px; text-align: center; position: relative;
 }
 .profile-header.featured-profile {
- background: linear-gradient(135deg, #0f172a 50%, var(--pvp-green) 50%);
+ background: linear-gradient(135deg, var(--pvp-red) 0%, #a3151e 100%);
+}
+.profile-header::after {
+ content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 30px;
+ background: linear-gradient(to top right, var(--surface) 49%, transparent 50%),
+             linear-gradient(to top left, var(--surface) 49%, transparent 50%);
+ background-size: 50% 100%; background-repeat: no-repeat; background-position: left, right;
 }
 .profile-img {
- width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
- border: 5px solid white; background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+ width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
+ border: 6px solid white; background: white; box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+ position: relative; z-index: 2;
 }
-.profile-body { padding: 30px; }
-.profile-title { text-align: center; margin-bottom: 20px; }
-.profile-title h2 { margin: 0; font-size: 28px; color: var(--accent); }
-.profile-title .job { color: var(--muted); font-size: 18px; font-weight: 700; }
-.profile-title .badge-list { background: var(--pvp-red); color: white; padding: 4px 15px; border-radius: 999px; font-size: 14px; display: inline-block; margin-top: 10px; }
+.profile-body { padding: 20px 30px 40px; }
+.profile-title { text-align: center; margin-bottom: 25px; }
+.profile-title h2 { margin: 0; font-size: 32px; color: var(--text); font-weight: 900; }
+.profile-title .job { color: var(--pvp-green); font-size: 19px; font-weight: 700; margin-top: 5px;}
+.profile-title .badge-list { background: var(--pvp-green-dark); color: white; padding: 6px 20px; border-radius: 999px; font-size: 15px; display: inline-block; margin-bottom: 15px; font-weight: bold;}
 
-.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-.info-item { background: var(--bg); padding: 15px; border-radius: 12px; border: 1px solid var(--border); }
-.info-item strong { display: block; color: var(--pvp-green); margin-bottom: 5px; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
+.info-item { background: var(--bg); padding: 18px; border-radius: 16px; border: 1px solid var(--border); }
+.info-item strong { display: block; color: var(--pvp-green); margin-bottom: 8px; font-size: 15px;}
 
 /* التعليقات والتفاعل */
-.interaction-box { margin-top: 30px; background: var(--bg); padding: 25px; border-radius: 20px; border: 1px solid var(--border); }
+.interaction-box { margin-top: 30px; background: var(--surface); padding: 30px; border-radius: 24px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03);}
+.interaction-box h3 { color: var(--pvp-green-dark); margin-top: 0; }
 input, textarea {
- width: 100%; padding: 12px 15px; border-radius: 12px; border: 1px solid var(--border);
- font-family: inherit; margin-bottom: 10px; font-size: 15px;
+ width: 100%; padding: 14px 18px; border-radius: 14px; border: 1px solid var(--border);
+ font-family: inherit; margin-bottom: 12px; font-size: 16px; background: var(--bg);
+ transition: 0.2s;
 }
+input:focus, textarea:focus { outline: none; border-color: var(--pvp-green); background: white; }
 button.btn-action {
- background: var(--pvp-green); color: white; border: none; padding: 10px 20px;
- border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.2s;
+ background: var(--pvp-green); color: white; border: none; padding: 12px 25px;
+ border-radius: 12px; font-weight: 800; cursor: pointer; transition: 0.2s; font-size: 16px;
 }
-button.btn-action:hover { background: var(--green); }
-button.btn-like { background: var(--gold); }
-.comment-item { background: white; padding: 15px; border-radius: 12px; margin-top: 15px; border: 1px solid var(--border); border-right: 4px solid var(--gold); }
-.comment-reply { background: #f1f5f9; padding: 10px; border-radius: 8px; margin-top: 10px; font-size: 14px; color: var(--accent); border-right: 3px solid var(--pvp-green); }
+button.btn-action:hover { background: var(--pvp-green-dark); transform: translateY(-2px); }
+button.btn-like { background: var(--pvp-red); font-size: 18px; padding: 15px 30px; border-radius: 50px; display: flex; align-items: center; justify-content: center; gap: 10px; margin: 15px auto; width: fit-content;}
+button.btn-like:hover { background: #b01c25; }
+.comment-item { background: var(--bg); padding: 18px; border-radius: 16px; margin-top: 15px; border: 1px solid var(--border); border-right: 5px solid var(--gold); }
+.comment-reply { background: white; padding: 12px 15px; border-radius: 12px; margin-top: 12px; font-size: 14.5px; color: var(--text); border-right: 3px solid var(--pvp-green); box-shadow: 0 2px 5px rgba(0,0,0,0.02);}
 
 /* Back Button */
 .btn-back {
- background: var(--bg); border: 1px solid var(--border); color: var(--text);
- padding: 8px 15px; border-radius: 8px; cursor: pointer; margin-bottom: 20px;
- font-weight: bold; display: inline-flex; align-items: center; gap: 5px;
+ background: white; border: 1px solid var(--border); color: var(--text);
+ padding: 10px 20px; border-radius: 12px; cursor: pointer; margin-bottom: 25px;
+ font-weight: bold; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s;
+ box-shadow: 0 4px 10px rgba(0,0,0,0.02);
 }
-.btn-back:hover { background: var(--border); }
+.btn-back:hover { background: var(--bg); border-color: var(--pvp-green); color: var(--pvp-green); }
 
 /* Admin Panel & Edit Names */
 #adminSection { display: none; }
-.adminNav { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-.adminNav button { background: var(--accent); color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; }
-.stat-box { background: white; padding: 20px; text-align: center; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; }
-.stat-box strong { font-size: 30px; color: var(--pvp-red); display: block; }
+.adminNav { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
+.adminNav button { background: var(--text); color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: bold; transition: 0.2s;}
+.adminNav button:hover { background: #000; }
+.stat-box { background: white; padding: 25px; text-align: center; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.02);}
+.stat-box strong { font-size: 38px; color: var(--pvp-red); display: block; margin-bottom: 5px;}
+.stat-box span { font-weight: bold; color: var(--muted); }
 
 /* Edit Table */
-.edit-grid { display: grid; gap: 10px; }
-.edit-row { display: flex; gap: 10px; align-items: center; background: white; padding: 10px; border-radius: 8px; border: 1px solid var(--border); }
-.edit-row span { font-weight: bold; width: 30px; text-align: center; }
-.edit-row input { margin: 0; padding: 8px; flex: 1; }
+.edit-grid { display: grid; gap: 12px; }
+.edit-row { display: flex; gap: 15px; align-items: center; background: white; padding: 12px 15px; border-radius: 12px; border: 1px solid var(--border); }
+.edit-row span { font-weight: 900; width: 40px; text-align: center; color: var(--pvp-green); }
+.edit-row input { margin: 0; padding: 10px; flex: 1; }
+.list-selector { margin-bottom: 20px; display: flex; gap: 10px; }
+.list-selector button { padding: 10px 20px; border: 1px solid var(--border); background: white; border-radius: 8px; cursor: pointer; font-weight: bold; }
+.list-selector button.active { background: var(--pvp-green); color: white; border-color: var(--pvp-green); }
 
 .hidden { display: none !important; }
 
-/* أزرار الإدارة العلوية والسفلية */
+/* أزرار الإدارة */
 .admin-access-btn {
  background: transparent; border: 1px solid var(--border); color: var(--muted);
- padding: 5px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; font-family: inherit; transition: 0.2s;
+ padding: 8px 16px; border-radius: 10px; cursor: pointer; font-weight: bold; font-family: inherit; transition: 0.2s;
 }
-.admin-access-btn:hover { background: var(--bg); color: var(--accent); border-color: var(--accent); }
+.admin-access-btn:hover { background: var(--bg); color: var(--pvp-green); border-color: var(--pvp-green); }
 
-@media(max-width:650px){
+@media(max-width:768px){
  .info-grid { grid-template-columns: 1fr; }
- .profile-img { width: 120px; height: 120px; }
+ .profile-img { width: 130px; height: 130px; }
  .btn-main { width: 100%; justify-content: center; }
- .edit-row { flex-direction: column; align-items: stretch; gap: 5px; }
- .edit-row span { width: auto; text-align: right; }
+ .edit-row { flex-direction: column; align-items: stretch; gap: 8px; }
+ .edit-row span { width: auto; text-align: right; margin-bottom: 5px;}
 }
 </style>
 </head>
@@ -267,10 +280,10 @@ button.btn-like { background: var(--gold); }
 <div class="marquee-container">
  <div class="marquee-content">
   <span>✦ منصة انتخابية من تصميم وتطوير المترشح براهيمي يوسف ✦</span>
-  <span>حزب صوت الشعب - القائمة رقم 06 - ولاية أفلو ✦</span>
+  <span>حزب صوت الشعب - انتخابات 28 نوفمبر 2026 ✦</span>
   <span>صوتك أمانة ... وخدمتك شرف لنا ✦</span>
   <span>منصة انتخابية من تصميم وتطوير المترشح براهيمي يوسف ✦</span>
-  <span>حزب صوت الشعب - القائمة رقم 06 - ولاية أفلو ✦</span>
+  <span>حزب صوت الشعب - انتخابات 28 نوفمبر 2026 ✦</span>
  </div>
 </div>
 
@@ -291,7 +304,7 @@ button.btn-like { background: var(--gold); }
 <section id="page-home" class="page-section active">
  <div class="hero-hub">
   <h1>اعرف مترشحك</h1>
-  <p>المنصة الرسمية للتعريف بمترشحي حزب صوت الشعب (PVP) بولاية أفلو</p>
+  <p>المنصة الرسمية للتعريف بمترشحي حزب صوت الشعب (PVP) - انتخابات 28 نوفمبر 2026</p>
   <div class="hub-buttons">
    <button class="btn-main btn-wilaya" onclick="showPage('lists-wilaya')">
     🏛️ المجلس الشعبي الولائي
@@ -302,24 +315,24 @@ button.btn-like { background: var(--gold); }
   </div>
  </div>
 
- <h2 style="text-align:center; color:var(--pvp-green); margin-bottom:20px;">⭐ المترشح المميز</h2>
- <div class="list-card" onclick="openCandidate(15)" style="border-color: var(--pvp-red); max-width: 500px; margin: auto;">
+ <h2 style="text-align:center; color:var(--pvp-green); margin-bottom:25px;">⭐ المترشح المميز</h2>
+ <div class="list-card" onclick="openCandidate('wilaya', 15)" style="border-color: var(--pvp-red); max-width: 500px; margin: auto;">
   <span class="badge" style="background:var(--gold)">المبرمج والمشرف</span>
   <h2>براهيمي يوسف</h2>
-  <p class="job">متصرف إداري بمقر الولاية</p>
-  <div class="header-info">القائمة 06 | المترشح رقم 15</div>
+  <p class="job" style="color:var(--muted); font-weight:700;">متصرف إداري بمقر الولاية</p>
+  <div class="header-info">قائمة الولاية 06 | المترشح رقم 15</div>
  </div>
 </section>
 
 <!-- 2. قوائم الولاية -->
 <section id="page-lists-wilaya" class="page-section">
  <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
- <h2 style="color: var(--pvp-green); text-align: center; margin-bottom: 20px;">قوائم المجلس الشعبي الولائي - أفلو</h2>
+ <h2 style="color: var(--pvp-green); text-align: center; margin-bottom: 25px;">قوائم المجلس الشعبي الولائي - أفلو</h2>
  <div class="grid-lists">
   <div class="list-card" onclick="showPage('candidates-wilaya')">
    <span class="badge">رقم القائمة: 06</span>
    <h2>حزب صوت الشعب</h2>
-   <p>أفلو</p>
+   <p style="color:var(--muted); font-weight:700;">دائرة أفلو</p>
    <div class="header-info">عدد المترشحين: 42</div>
   </div>
  </div>
@@ -328,12 +341,13 @@ button.btn-like { background: var(--gold); }
 <!-- 3. قوائم البلدية -->
 <section id="page-lists-baladiya" class="page-section">
  <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
- <h2 style="color: var(--accent); text-align: center; margin-bottom: 20px;">قوائم المجلس الشعبي البلدي</h2>
+ <h2 style="color: var(--pvp-red); text-align: center; margin-bottom: 25px;">قوائم المجلس الشعبي البلدي</h2>
  <div class="grid-lists">
-  <div class="list-card" style="opacity: 0.6; cursor: not-allowed;">
-   <span class="badge" style="background:var(--muted)">قريباً</span>
-   <h2>قوائم البلديات</h2>
-   <p>جاري إضافة قوائم المجالس البلدية بولاية أفلو</p>
+  <div class="list-card" onclick="showPage('candidates-baladiya')" style="border-color: rgba(217, 35, 46, 0.3);">
+   <span class="badge">رقم القائمة: 06</span>
+   <h2 style="color: var(--pvp-red);">حزب صوت الشعب</h2>
+   <p style="color:var(--muted); font-weight:700;">بلدية أفلو</p>
+   <div class="header-info">عدد المترشحين: 40</div>
   </div>
  </div>
 </section>
@@ -341,43 +355,52 @@ button.btn-like { background: var(--gold); }
 <!-- 4. مترشحي الولاية -->
 <section id="page-candidates-wilaya" class="page-section">
  <button class="btn-back" onclick="showPage('lists-wilaya')">← العودة للقوائم</button>
- <h2 style="text-align: center; color: var(--pvp-green); margin-bottom: 20px;">مترشحو القائمة 06 - ولاية أفلو</h2>
- <div class="candidates-grid" id="candidatesGrid">
-  <!-- سيتم توليد المترشحين هنا -->
+ <h2 style="text-align: center; color: var(--pvp-green); margin-bottom: 25px;">مترشحو قائمة الولاية (06) - أفلو</h2>
+ <div class="candidates-grid" id="candidatesGridWilaya">
+  <!-- سيتم التوليد هنا -->
  </div>
 </section>
 
-<!-- 5. البطاقة الفنية للمترشح -->
+<!-- 5. مترشحي البلدية -->
+<section id="page-candidates-baladiya" class="page-section">
+ <button class="btn-back" onclick="showPage('lists-baladiya')">← العودة للقوائم</button>
+ <h2 style="text-align: center; color: var(--pvp-red); margin-bottom: 25px;">مترشحو قائمة البلدية (06) - أفلو</h2>
+ <div class="candidates-grid" id="candidatesGridBaladiya">
+  <!-- سيتم التوليد هنا -->
+ </div>
+</section>
+
+<!-- 6. البطاقة الفنية للمترشح -->
 <section id="page-candidate-profile" class="page-section">
- <button class="btn-back" onclick="showPage('candidates-wilaya')">← العودة للمترشحين</button>
+ <button class="btn-back" id="profileBackBtn">← العودة للقائمة</button>
  
  <div class="profile-card" id="profileCard">
   <!-- محتوى البطاقة الديناميكي -->
  </div>
 
  <div class="interaction-box">
-  <h3 style="color: var(--pvp-green);">رأيك يهمنا</h3>
-  <p>عدد الإعجابات لهذا المترشح: <strong id="likeCount">0</strong></p>
+  <h3 style="color: var(--pvp-green-dark); text-align:center;">رأيك يهمنا</h3>
+  <p style="text-align:center; font-weight:bold; font-size:18px;">الإعجابات: <span id="likeCount" style="color:var(--pvp-red); font-size:24px;">0</span></p>
   <button id="likeBtn" class="btn-action btn-like">👍 أعجبني</button>
-  <div id="likeStatus" style="font-size:14px; margin-top:5px; color:var(--pvp-green); font-weight:bold;"></div>
+  <div id="likeStatus" style="text-align:center; font-size:14px; margin-bottom:15px; color:var(--pvp-green); font-weight:bold;"></div>
 
-  <hr style="border:0; border-top:1px solid var(--border); margin:20px 0;">
+  <hr style="border:0; border-top:1px solid var(--border); margin:25px 0;">
 
-  <h3 style="color: var(--pvp-green);">اكتب تعليقك</h3>
+  <h3 style="color: var(--pvp-green-dark);">اكتب تعليقك</h3>
   <form id="commentForm">
-   <textarea id="commentText" maxlength="500" placeholder="اكتب تعليقك بكل موضوعية..." required style="min-height:80px;"></textarea>
-   <button type="submit" class="btn-action" id="sendComment">إرسال التعليق</button>
+   <textarea id="commentText" maxlength="500" placeholder="اكتب تعليقك بكل موضوعية..." required style="min-height:100px;"></textarea>
+   <button type="submit" class="btn-action" id="sendComment" style="width:100%;">إرسال التعليق</button>
   </form>
-  <div id="message" style="font-size:14px; margin-top:5px; font-weight:bold;"></div>
+  <div id="message" style="text-align:center; font-size:14px; margin-top:10px; font-weight:bold;"></div>
 
-  <h3 style="margin-top:20px; color: var(--pvp-green);">التعليقات المنشورة</h3>
+  <h3 style="margin-top:30px; color: var(--pvp-green-dark); border-bottom:2px solid var(--border); padding-bottom:10px;">التعليقات المنشورة</h3>
   <div id="publishedComments"></div>
  </div>
 </section>
 
-<!-- 6. لوحة الإدارة -->
-<section id="adminSection" class="page-section container" style="margin-top:50px; border-top:2px dashed var(--border); padding-top:20px;">
- <h2>لوحة تحكم الإدارة</h2>
+<!-- 7. لوحة الإدارة -->
+<section id="adminSection" class="page-section container" style="margin-top:50px; border-top:2px dashed var(--border); padding-top:30px;">
+ <h2 style="color:var(--pvp-green-dark);">لوحة تحكم الإدارة</h2>
  
  <div id="adminLoginBox">
   <p>أدخل رمز الدخول لتعديل البيانات أو مراجعة التعليقات:</p>
@@ -387,10 +410,10 @@ button.btn-like { background: var(--gold); }
  </div>
 
  <div id="adminPanel" class="hidden">
-  <div style="display:flex; gap:20px; flex-wrap:wrap; margin-bottom:20px;">
-   <div class="stat-box"><strong id="dashVisits">0</strong> زائر</div>
-   <div class="stat-box"><strong id="dashLikes">0</strong> إجمالي الإعجابات</div>
-   <div class="stat-box"><strong id="dashComments">0</strong> تعليق منشور</div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px; margin-bottom:30px;">
+   <div class="stat-box"><strong id="dashVisits">0</strong> <span>زائر</span></div>
+   <div class="stat-box"><strong id="dashLikes">0</strong> <span>إجمالي الإعجابات</span></div>
+   <div class="stat-box"><strong id="dashComments">0</strong> <span>تعليق منشور</span></div>
   </div>
 
   <div class="adminNav">
@@ -402,12 +425,18 @@ button.btn-like { background: var(--gold); }
 
   <!-- شاشة تعديل الأسماء -->
   <div id="adminNamesView" class="hidden">
-   <h3>تعديل الأسماء والمهن (اضغط حفظ بعد الانتهاء)</h3>
-   <p style="font-size:14px; color:var(--muted);">ملاحظة: رقم 15 هو المترشح المميز (لن يتأثر بالتعديلات العامة).</p>
+   <h3>تعديل الأسماء والمهن</h3>
+   <p style="font-size:14px; color:var(--muted);">اختر القائمة التي تريد تعديلها، ثم اضغط حفظ.</p>
+   
+   <div class="list-selector">
+    <button id="btnEditWilaya" class="active" onclick="switchEditList('wilaya')">قائمة الولاية</button>
+    <button id="btnEditBaladiya" onclick="switchEditList('baladiya')">قائمة البلدية</button>
+   </div>
+
    <div class="edit-grid" id="editNamesGrid">
     <!-- يتم التوليد بالجافاسكريبت -->
    </div>
-   <button class="btn-action" style="margin-top:20px; width:100%; font-size:18px; padding:15px;" onclick="saveAllNames()" id="saveNamesBtn">💾 حفظ جميع التعديلات</button>
+   <button class="btn-action" style="margin-top:25px; width:100%; font-size:18px; padding:15px;" onclick="saveAllNames()" id="saveNamesBtn">💾 حفظ التعديلات</button>
    <div id="saveNamesMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
   </div>
 
@@ -426,14 +455,14 @@ button.btn-like { background: var(--gold); }
    <div id="visitorsList"></div>
   </div>
 
-  <button class="btn-action" style="background:var(--red); margin-top:20px;" onclick="document.getElementById('adminPanel').classList.add('hidden'); document.getElementById('adminLoginBox').style.display='block';">تسجيل الخروج</button>
+  <button class="btn-action" style="background:var(--pvp-red); margin-top:30px;" onclick="document.getElementById('adminPanel').classList.add('hidden'); document.getElementById('adminLoginBox').style.display='block';">تسجيل الخروج</button>
  </div>
 </section>
 
 </main>
 
 <footer style="text-align:center; padding:30px; color:var(--muted); border-top:1px solid var(--border); background:white; margin-top:50px;">
- <p><strong>حزب صوت الشعب</strong> - القائمة 06 - ولاية أفلو</p>
+ <p style="font-size:16px;"><strong>حزب صوت الشعب (PVP)</strong> - انتخابات 28 نوفمبر 2026</p>
  <p>تصميم وتطوير: <strong>براهيمي يوسف</strong></p>
  <button class="admin-access-btn" style="margin-top:15px;" onclick="openAdmin()">⚙️ دخول الإدارة</button>
 </footer>
@@ -457,77 +486,96 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const $ = id => document.getElementById(id);
 
-// البيانات الصحيحة بناءً على الصورة الجديدة
-let candidatesData = [
- { id: 1, name: "صافي بوقرة صلاح الدين", job: "" },
- { id: 2, name: "نمار عزيز", job: "" },
- { id: 3, name: "بوكر بلقاسم", job: "" },
- { id: 4, name: "عمارة عبد القادر", job: "" },
- { id: 5, name: "زحروف أحمد", job: "" },
- { id: 6, name: "خاشة عادل", job: "" },
- { id: 7, name: "بن حليمة عبد الغاني", job: "" },
- { id: 8, name: "شريط دربل", job: "" },
- { id: 9, name: "خالدي رابح", job: "" },
- { id: 10, name: "بشير محمد", job: "" },
- { id: 11, name: "بركة عبد الله", job: "" },
- { id: 12, name: "زوقاري إبراهيم", job: "" },
- { id: 13, name: "صافي أحمد", job: "" },
- { id: 14, name: "كسامي أحمد", job: "" },
+// --- البيانات الافتراضية ---
+let wilayaData = [
+ { id: 1, name: "صافي بوقرة صلاح الدين", job: "محامي" },
+ { id: 2, name: "نمار عزيز", job: "أعمال حرة" },
+ { id: 3, name: "بوكر بلقاسم", job: "مدير" },
+ { id: 4, name: "عمارة عبد القادر", job: "ممثل التربية" },
+ { id: 5, name: "زحروف أحمد", job: "مهندس" },
+ { id: 6, name: "خاشة عادل", job: "مساعد عملي" },
+ { id: 7, name: "بن حليمة عبد الغاني", job: "متصرف" },
+ { id: 8, name: "شريط دربل", job: "إطار" },
+ { id: 9, name: "خالدي رابح", job: "مهندس دولة" },
+ { id: 10, name: "بشير محمد", job: "متقاعد" },
+ { id: 11, name: "بركة عبد الله", job: "أعمال حرة" },
+ { id: 12, name: "زوقاري إبراهيم", job: "أستاذ" },
+ { id: 13, name: "صافي أحمد", job: "إطار" },
+ { id: 14, name: "كسامي أحمد", job: "أستاذ" },
  { id: 15, name: "براهيمي يوسف", job: "متصرف إداري بمقر الولاية", featured: true }, 
- { id: 16, name: "عقون بوعالم", job: "" },
- { id: 17, name: "مصدوري حكيم", job: "" },
- { id: 18, name: "حرين محمد", job: "" },
- { id: 19, name: "بركاتي المشري", job: "" },
- { id: 20, name: "معروفي كمال", job: "" },
- { id: 21, name: "بغدادي عزيز", job: "" },
- { id: 22, name: "روندالة خالد", job: "" },
- { id: 23, name: "بورحلة محمد", job: "" },
- { id: 24, name: "سعدي أحمد", job: "" },
- { id: 25, name: "دزداري يحيى", job: "" },
- { id: 26, name: "قطاف الطيب", job: "" },
- { id: 27, name: "قنابي الياس الحسين", job: "" },
- { id: 28, name: "شاذلي عبد الرحمان", job: "" },
- { id: 29, name: "رويشم محمد الأمين", job: "" },
- { id: 30, name: "رواب بولفة", job: "" },
- { id: 31, name: "طالبي إبراهيم", job: "" },
- { id: 32, name: "براهيمي العربي", job: "" },
- { id: 33, name: "زدك سعد", job: "" },
- { id: 34, name: "تركي خليل", job: "" },
- { id: 35, name: "محمودي طيب", job: "" },
- { id: 36, name: "مصيبيح صليحة", job: "" },
- { id: 37, name: "عليلي نجاة", job: "" },
- { id: 38, name: "زميت عمر", job: "" },
- { id: 39, name: "نور الدين الشيخ", job: "" },
- { id: 40, name: "شنوفي نصر الدين", job: "" },
- { id: 41, name: "معمري محمد الأمين", job: "" },
- { id: 42, name: "عقون مبارك", job: "" }
+ { id: 16, name: "عقون بوعالم", job: "موظف" },
+ { id: 17, name: "مصدوري حكيم", job: "أستاذ" },
+ { id: 18, name: "حرين محمد", job: "مفتش" },
+ { id: 19, name: "بركاتي المشري", job: "مفتش" },
+ { id: 20, name: "معروفي كمال", job: "موظف" },
+ { id: 21, name: "بغدادي عزيز", job: "متقاعد" },
+ { id: 22, name: "روندالة خالد", job: "أستاذ" },
+ { id: 23, name: "بورحلة محمد", job: "متقاعد" },
+ { id: 24, name: "سعدي أحمد", job: "موظف" },
+ { id: 25, name: "دزداري يحيى", job: "أستاذ" },
+ { id: 26, name: "قطاف الطيب", job: "موظف" },
+ { id: 27, name: "قنابي الياس الحسين", job: "أستاذ" },
+ { id: 28, name: "شاذلي عبد الرحمان", job: "موظف" },
+ { id: 29, name: "رويشم محمد الأمين", job: "أعمال حرة" },
+ { id: 30, name: "رواب بولفة", job: "إطار" },
+ { id: 31, name: "طالبي إبراهيم", job: "أعمال حرة" },
+ { id: 32, name: "براهيمي العربي", job: "أعمال حرة" },
+ { id: 33, name: "زدك سعد", job: "أعمال حرة" },
+ { id: 34, name: "تركي خليل", job: "إطار بنك" },
+ { id: 35, name: "محمودي طيب", job: "أعمال حرة" },
+ { id: 36, name: "مصيبيح صليحة", job: "أعمال حرة" },
+ { id: 37, name: "عليلي نجاة", job: "أعمال حرة" },
+ { id: 38, name: "زميت عمر", job: "إطار سوناطراك" },
+ { id: 39, name: "نور الدين الشيخ", job: "أستاذ" },
+ { id: 40, name: "شنوفي نصر الدين", job: "موظف" },
+ { id: 41, name: "معمري محمد الأمين", job: "موظف" },
+ { id: 42, name: "عقون مبارك", job: "متصرف" }
 ];
 
-window.openAdmin = function() {
- document.getElementById('adminSection').style.display = 'block';
- window.scrollTo(0, document.body.scrollHeight);
-}
+let baladiyaData = [
+ { id: 1, name: "زياني جيلالي", job: "إطار بالجماعات المحلية" },
+ { id: 2, name: "زوكل جلول", job: "رئيس جمعية متقاعد" },
+ { id: 3, name: "حديدي عباس", job: "عامل بمؤسسة وطنية" },
+ { id: 4, name: "مصيبح عيسى", job: "متقاعد من الجيش" },
+ { id: 5, name: "ريغي عبد القادر", job: "موظف بالبلدية" },
+ { id: 6, name: "يوسفي جيلالي", job: "متقاعد من شركة" },
+ { id: 7, name: "قني عبد القادر", job: "متقاعد من التربية" },
+ { id: 8, name: "بوكرمة عبد الجليل", job: "تقني سامي - أعمال حرة" },
+ { id: 9, name: "عزوزي بن عزوز", job: "متقاعد من قطاع العدالة" },
+ { id: 10, name: "مكي دهليس", job: "أستاذ تعليم إبتدائي" },
+ { id: 11, name: "لعوابي بوزيد", job: "إطار بوكالة التنمية الاجتماعية" },
+ { id: 12, name: "بدراوي عبد القادر", job: "منسق جهوي للأمن شركة وطنية" },
+ { id: 13, name: "مصطفاوي عبد القادر", job: "إطار بالصندوق الوطني" },
+ { id: 14, name: "سعدي عبد الحفيظ", job: "أعمال حرة" },
+ { id: 15, name: "جلولي محمد إسلام", job: "إطار بالوكالة الوطنية للتطهير" },
+ { id: 16, name: "مختاري أحمد", job: "إطار بالوكالة الوطنية لتسيير القرض المصغر" },
+ { id: 17, name: "سميداني أسامة", job: "أعمال حرة" },
+ { id: 18, name: "خيالية علي", job: "موظف" },
+ { id: 19, name: "قرادي عبد القادر", job: "ملحق رئيسي بالإدارة الإقليمية" },
+ { id: 20, name: "عمران بخير", job: "رئيس قسم بالشركة الجزائرية" },
+ { id: 21, name: "صياد ناصر", job: "متقاعد من الجيش" },
+ { id: 22, name: "حشاني ناصر", job: "عامل بمصنع" },
+ { id: 23, name: "بلغشوة مهدي", job: "رئيسي بالمكتبة" },
+ { id: 24, name: "غباني عبد العزيز", job: "أستاذ تعليم متوسط" },
+ { id: 25, name: "كربطة عيسى", job: "أعمال حرة" },
+ { id: 26, name: "طيبية علي", job: "مشرف تربية" },
+ { id: 27, name: "روندالة ناصر", job: "أعمال حرة" },
+ { id: 28, name: "كسامي علاء", job: "مشرف تربية" },
+ { id: 29, name: "عليلي عبد المجيب", job: "مهندس في شركة وطنية" },
+ { id: 30, name: "حسين محمد الأمين", job: "أعمال حرة" },
+ { id: 31, name: "دربالي طيب", job: "أعمال حرة" },
+ { id: 32, name: "سلمان جمال", job: "أعمال حرة" },
+ { id: 33, name: "عزيزي عبد الرزاق", job: "أعمال حرة" },
+ { id: 34, name: "بن حسين أحمد", job: "أعمال حرة" },
+ { id: 35, name: "خزناجي ناصر", job: "أعمال حرة" },
+ { id: 36, name: "شنافي مصطفى جنيب", job: "أستاذ تعليم متوسط" },
+ { id: 37, name: "سعدي مبارك", job: "أستاذ تعليم متوسط" },
+ { id: 38, name: "بن عدة فاطمة الزهراء", job: "أعمال حرة" },
+ { id: 39, name: "لعضفور عبد الحفيظ", job: "أعمال حرة" },
+ { id: 40, name: "عكروم نعيمة", job: "أعمال حرة" }
+];
 
-// مسار مفتوح ومصرح به في Firebase
-const namesRef = ref(db, "publishedComments/site_data_names"); 
-
-// جلب التعديلات المحفوظة
-onValue(namesRef, (snapshot) => {
- const savedData = snapshot.val();
- if(savedData && savedData.updatedList) {
-  candidatesData = candidatesData.map(c => {
-   if(savedData.updatedList[c.id]) {
-    return { ...c, name: savedData.updatedList[c.id].name, job: savedData.updatedList[c.id].job };
-   }
-   return c;
-  });
-  if(document.getElementById('page-candidates-wilaya').classList.contains('active')){
-   renderCandidatesGrid();
-  }
-  if(adminLoggedIn) renderNamesEditor();
- }
-});
-
+// --- إدارة التنقل بين الصفحات ---
 window.showPage = function(pageId) {
  document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
  const target = $('page-' + pageId);
@@ -535,49 +583,59 @@ window.showPage = function(pageId) {
   target.classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
  }
- if(pageId === 'candidates-wilaya') {
-  renderCandidatesGrid();
- }
+ if(pageId === 'candidates-wilaya') renderGrid(wilayaData, 'candidatesGridWilaya', 'wilaya');
+ if(pageId === 'candidates-baladiya') renderGrid(baladiyaData, 'candidatesGridBaladiya', 'baladiya');
+ if(pageId === 'home') document.getElementById('adminSection').style.display = 'none';
 }
 
-function renderCandidatesGrid() {
- const grid = $('candidatesGrid');
+function renderGrid(data, gridId, listType) {
+ const grid = $(gridId);
  grid.innerHTML = '';
- candidatesData.forEach(c => {
+ data.forEach(c => {
   const div = document.createElement('div');
   div.className = `candidate-mini ${c.featured ? 'featured' : ''}`;
-  div.onclick = () => openCandidate(c.id);
+  div.onclick = () => openCandidate(listType, c.id);
   div.innerHTML = `
    <div class="number">${c.id}</div>
    <h4>${c.name}</h4>
-   <p>${c.job}</p>
-   ${c.featured ? '<span style="color:var(--pvp-red); font-size:12px; font-weight:bold;">⭐ مميز</span>' : ''}
+   <p>${c.job || 'مترشح'}</p>
+   ${c.featured ? '<span style="color:var(--pvp-red); font-size:12px; font-weight:bold; margin-top:5px; display:block;">⭐ مميز</span>' : ''}
   `;
   grid.appendChild(div);
  });
 }
 
+// --- فتح صفحة المترشح ---
+let currentList = 'wilaya';
 let currentCandidateId = null;
-window.openCandidate = function(id) {
- const candidate = candidatesData.find(c => c.id === id);
+
+window.openCandidate = function(listType, id) {
+ currentList = listType;
+ currentCandidateId = id;
+ 
+ const data = listType === 'wilaya' ? wilayaData : baladiyaData;
+ const candidate = data.find(c => c.id === id);
  if(!candidate) return;
 
- currentCandidateId = id;
  const card = $('profileCard');
- 
  document.getElementById('likeCount').textContent = "0";
- document.getElementById('publishedComments').innerHTML = "جارٍ التحميل...";
+ document.getElementById('publishedComments').innerHTML = "<p style='color:var(--muted);'>جارٍ التحميل...</p>";
  document.getElementById('commentText').value = "";
  document.getElementById('message').textContent = "";
  
+ document.getElementById('profileBackBtn').onclick = () => showPage(`candidates-${listType}`);
+
+ const imgUrl = candidate.featured 
+  ? 'https://i.postimg.cc/Fzp3mx37/file-000000007fac81f4bfc40d244fc9529f.png' 
+  : 'https://ui-avatars.com/api/?name=' + encodeURIComponent(candidate.name) + '&background=' + (listType === 'wilaya' ? '0f763b' : 'd9232e') + '&color=fff&size=200&font-size=0.4';
+
  card.innerHTML = `
-  <div class="profile-header ${candidate.featured ? 'featured-profile' : ''}">
-   <img src="${candidate.featured ? 'https://i.postimg.cc/Fzp3mx37/file-000000007fac81f4bfc40d244fc9529f.png' : 'https://ui-avatars.com/api/?name=' + encodeURIComponent(candidate.name) + '&background=random&size=150'}" 
-        alt="${candidate.name}" class="profile-img">
+  <div class="profile-header ${candidate.featured ? 'featured-profile' : (listType === 'baladiya' ? 'baladiya-profile' : '')}">
+   <img src="${imgUrl}" alt="${candidate.name}" class="profile-img">
   </div>
   <div class="profile-body">
    <div class="profile-title">
-    <span class="badge-list">القائمة 06 | المترشح رقم ${candidate.id}</span>
+    <span class="badge-list">${listType === 'wilaya' ? 'قائمة الولاية' : 'قائمة البلدية'} 06 | رقم ${candidate.id}</span>
     <h2 style="${candidate.featured ? 'color:var(--pvp-red)' : ''}">${candidate.name}</h2>
     <p class="job">${candidate.job || 'مترشح'}</p>
    </div>
@@ -588,11 +646,11 @@ window.openCandidate = function(id) {
      <span>حزب صوت الشعب (PVP)</span>
     </div>
     <div class="info-item">
-     <strong>الولاية</strong>
+     <strong>الولاية / البلدية</strong>
      <span>أفلو</span>
     </div>
     ${candidate.featured ? `
-    <div class="info-item" style="grid-column: 1 / -1; border-color: var(--pvp-red);">
+    <div class="info-item" style="grid-column: 1 / -1; border-color: var(--pvp-red); background: #fffafa;">
      <strong style="color:var(--pvp-red)">نبذة</strong>
      <span>متصرف إداري بمقر الولاية، ماستر في تنظيم وعمل، شهادات في الإعلام الآلي واللغة الإنجليزية. مبرمج ومشرف على هذه المنصة.</span>
     </div>
@@ -602,22 +660,22 @@ window.openCandidate = function(id) {
  `;
 
  showPage('candidate-profile');
- initFirebaseForCandidate(id);
+ initFirebaseForCandidate(listType, id);
 }
 
+// --- إدارة Firebase للمترشح (إعجابات وتعليقات) ---
 let unsubLikes, unsubPublished;
 
-function initFirebaseForCandidate(candidateId) {
+function initFirebaseForCandidate(listType, candidateId) {
  if(unsubLikes) unsubLikes();
  if(unsubPublished) unsubPublished();
 
- const likesRef = ref(db, `candidateStats/${candidateId}/likes`);
- const publishedRef = ref(db, `candidateComments/${candidateId}`);
+ // مسارات دقيقة لكل مترشح في كل قائمة
+ const likesRef = ref(db, `stats/${listType}_${candidateId}/likes`);
+ const publishedRef = ref(db, `comments/${listType}_${candidateId}`);
 
  unsubLikes = onValue(likesRef, s => {
-  const val = Number(s.val() || 0);
-  document.getElementById('likeCount').textContent = val;
-  document.getElementById('dashLikes').textContent = val; 
+  document.getElementById('likeCount').textContent = Number(s.val() || 0);
  });
 
  unsubPublished = onValue(publishedRef, s => {
@@ -627,7 +685,7 @@ function initFirebaseForCandidate(candidateId) {
   const entries = Object.entries(data).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
   
   if(entries.length === 0) {
-   box.innerHTML = "<p style='color:var(--muted); font-size:14px;'>لا توجد تعليقات منشورة بعد.</p>";
+   box.innerHTML = "<p style='color:var(--muted); text-align:center;'>لا توجد تعليقات منشورة بعد.</p>";
    return;
   }
 
@@ -637,7 +695,7 @@ function initFirebaseForCandidate(candidateId) {
     div.className = 'comment-item';
     div.innerHTML = `<p>${v.message}</p>`;
     if(v.reply) {
-     div.innerHTML += `<div class="comment-reply"><strong>الرد:</strong> ${v.reply}</div>`;
+     div.innerHTML += `<div class="comment-reply"><strong style="color:var(--pvp-green)">الرد:</strong> ${v.reply}</div>`;
     }
     box.appendChild(div);
    }
@@ -645,6 +703,7 @@ function initFirebaseForCandidate(candidateId) {
  });
 }
 
+// --- تسجيل الزيارات العامة ---
 const visitorsRef = ref(db, "siteVisitors");
 const inboxRef = ref(db, "commentInbox");
 
@@ -656,26 +715,25 @@ async function recordVisit() {
  try {
   await runTransaction(myVisitorRef, c => {
    c = c || {};
-   return {
-    ...c, lastVisit: Date.now(), visits: (Number(c.visits)||0) + 1,
-    status: c.liked ? "أعجب بالموقع" : c.commented ? "علّق على الموقع" : "زار الموقع فقط"
-   };
+   return { ...c, lastVisit: Date.now(), visits: (Number(c.visits)||0) + 1 };
   });
  } catch(e) { console.error(e); }
 }
 recordVisit();
 
+// --- الأزرار ---
 document.getElementById('likeBtn').addEventListener('click', async () => {
  if(!currentCandidateId) return;
  const btn = document.getElementById('likeBtn');
  btn.disabled = true;
  try {
-  await runTransaction(ref(db, `candidateStats/${currentCandidateId}/likes`), n => (Number(n)||0) + 1);
+  await runTransaction(ref(db, `stats/${currentList}_${currentCandidateId}/likes`), n => (Number(n)||0) + 1);
   await update(myVisitorRef, { liked: true });
   document.getElementById('likeStatus').textContent = "تم تسجيل إعجابك!";
   document.getElementById('likeStatus').style.color = "green";
  } catch(e) {
   document.getElementById('likeStatus').textContent = "خطأ: " + e.message;
+  document.getElementById('likeStatus').style.color = "red";
  } finally { btn.disabled = false; }
 });
 
@@ -690,6 +748,7 @@ document.getElementById('commentForm').addEventListener('submit', async e => {
 
  try {
   await push(inboxRef, {
+   listType: currentList,
    candidateId: currentCandidateId,
    visitorId: visitorId,
    message: text,
@@ -698,7 +757,7 @@ document.getElementById('commentForm').addEventListener('submit', async e => {
   });
   await update(myVisitorRef, { commented: true });
   document.getElementById('commentText').value = "";
-  document.getElementById('message').textContent = "تم إرسال تعليقك للمراجعة.";
+  document.getElementById('message').textContent = "تم إرسال تعليقك بنجاح للمراجعة.";
   document.getElementById('message').style.color = "green";
  } catch(e) {
   document.getElementById('message').textContent = "خطأ: " + e.message;
@@ -706,12 +765,19 @@ document.getElementById('commentForm').addEventListener('submit', async e => {
  } finally { btn.disabled = false; }
 });
 
-// --- الإدارة (Admin) ---
+
+// --- لوحة الإدارة (Admin) ---
 let adminLoggedIn = false;
 let allInbox = {}, allPublished = {}, allVisits = {};
+let currentEditList = 'wilaya';
+
+window.openAdmin = function() {
+ document.getElementById('adminSection').style.display = 'block';
+ window.scrollTo(0, document.body.scrollHeight);
+}
 
 onValue(inboxRef, s => { allInbox = s.val() || {}; if(adminLoggedIn) renderPending(); });
-onValue(ref(db, "candidateComments"), s => { allPublished = s.val() || {}; if(adminLoggedIn) renderPublishedAdmin(); updateDashStats(); });
+onValue(ref(db, "comments"), s => { allPublished = s.val() || {}; if(adminLoggedIn) renderPublishedAdmin(); updateDashStats(); });
 onValue(visitorsRef, s => { allVisits = s.val() || {}; if(adminLoggedIn) renderVisitors(); });
 
 document.getElementById('adminLogin').addEventListener('click', () => {
@@ -738,17 +804,27 @@ window.toggleAdminView = function(view) {
  if(view === 'visitors') renderVisitors();
 }
 
+// تعديل الأسماء
+window.switchEditList = function(list) {
+ currentEditList = list;
+ document.getElementById('btnEditWilaya').classList.toggle('active', list === 'wilaya');
+ document.getElementById('btnEditBaladiya').classList.toggle('active', list === 'baladiya');
+ renderNamesEditor();
+}
+
 function renderNamesEditor() {
  const grid = document.getElementById('editNamesGrid');
  grid.innerHTML = '';
- candidatesData.forEach(c => {
+ const data = currentEditList === 'wilaya' ? wilayaData : baladiyaData;
+ 
+ data.forEach(c => {
   if(c.featured) return;
   const div = document.createElement('div');
   div.className = 'edit-row';
   div.innerHTML = `
    <span>${c.id}</span>
    <input type="text" id="edit_name_${c.id}" value="${c.name}" placeholder="الاسم">
-   <input type="text" id="edit_job_${c.id}" value="${c.job}" placeholder="المهنة (اختياري)">
+   <input type="text" id="edit_job_${c.id}" value="${c.job}" placeholder="المهنة">
   `;
   grid.appendChild(div);
  });
@@ -762,7 +838,9 @@ window.saveAllNames = async function() {
  msgBox.textContent = "";
  
  let updates = {};
- candidatesData.forEach(c => {
+ const data = currentEditList === 'wilaya' ? wilayaData : baladiyaData;
+ 
+ data.forEach(c => {
   if(c.featured) return;
   const newName = document.getElementById(`edit_name_${c.id}`).value.trim();
   const newJob = document.getElementById(`edit_job_${c.id}`).value.trim();
@@ -770,58 +848,77 @@ window.saveAllNames = async function() {
  });
 
  try {
-  // الحفظ في المسار المفتوح
-  await set(namesRef, { 
+  await set(ref(db, `settings/names_${currentEditList}`), { 
    updatedList: updates,
    timestamp: Date.now()
   });
   
-  msgBox.textContent = "✅ تم حفظ التعديلات بنجاح! سيتم تحديث الصفحات تلقائياً.";
+  msgBox.textContent = "✅ تم حفظ التعديلات بنجاح!";
   msgBox.style.color = "green";
   
   // تحديث الواجهة فوراً
-  candidatesData = candidatesData.map(c => {
-   if(updates[c.id]) {
-    return { ...c, name: updates[c.id].name, job: updates[c.id].job };
-   }
-   return c;
-  });
-  renderCandidatesGrid();
+  if(currentEditList === 'wilaya') {
+   wilayaData = wilayaData.map(c => updates[c.id] ? {...c, ...updates[c.id]} : c);
+  } else {
+   baladiyaData = baladiyaData.map(c => updates[c.id] ? {...c, ...updates[c.id]} : c);
+  }
+  renderGrid(currentEditList === 'wilaya' ? wilayaData : baladiyaData, currentEditList === 'wilaya' ? 'candidatesGridWilaya' : 'candidatesGridBaladiya', currentEditList);
 
  } catch(e) {
   msgBox.textContent = "❌ خطأ أثناء الحفظ: " + e.message;
   msgBox.style.color = "red";
-  console.error(e);
  } finally {
   btn.disabled = false;
-  btn.textContent = "💾 حفظ جميع التعديلات";
+  btn.textContent = "💾 حفظ التعديلات";
  }
 }
 
-function updateDashStats() {
- let pubCount = 0;
- for(let cid in allPublished) {
-  if(allPublished[cid]) pubCount += Object.keys(allPublished[cid]).length;
+// جلب التعديلات المحفوظة مسبقاً
+onValue(ref(db, "settings/names_wilaya"), (s) => {
+ if(s.exists() && s.val().updatedList) {
+  const updates = s.val().updatedList;
+  wilayaData = wilayaData.map(c => updates[c.id] ? {...c, ...updates[c.id]} : c);
+  if(document.getElementById('page-candidates-wilaya').classList.contains('active')) renderGrid(wilayaData, 'candidatesGridWilaya', 'wilaya');
  }
+});
+onValue(ref(db, "settings/names_baladiya"), (s) => {
+ if(s.exists() && s.val().updatedList) {
+  const updates = s.val().updatedList;
+  baladiyaData = baladiyaData.map(c => updates[c.id] ? {...c, ...updates[c.id]} : c);
+  if(document.getElementById('page-candidates-baladiya').classList.contains('active')) renderGrid(baladiyaData, 'candidatesGridBaladiya', 'baladiya');
+ }
+});
+
+
+// إحصائيات
+function updateDashStats() {
+ let pubCount = 0, likeCount = 0;
+ for(let list in allPublished) {
+  if(allPublished[list]) pubCount += Object.keys(allPublished[list]).length;
+ }
+ // يمكن إضافة جمع الإعجابات هنا إذا أردت، لكن سنكتفي بالتعليقات حالياً
  document.getElementById('dashComments').textContent = pubCount;
  document.getElementById('dashVisits').textContent = Object.keys(allVisits).length;
+ document.getElementById('dashLikes').textContent = "0"; // اختياري: يحتاج للبحث في كل المترشحين
 }
 
+// التعليقات الواردة
 function renderPending() {
  const box = document.getElementById('pendingComments');
  box.innerHTML = '';
  const pending = Object.entries(allInbox).filter(([k,v]) => v.status === "pending");
- if(pending.length === 0) { box.innerHTML = "<p>لا توجد تعليقات معلقة.</p>"; return; }
+ if(pending.length === 0) { box.innerHTML = "<p style='color:var(--muted);'>لا توجد تعليقات معلقة.</p>"; return; }
 
  pending.forEach(([id, data]) => {
-  const cName = candidatesData.find(c => c.id === data.candidateId)?.name || "غير معروف";
+  const listData = data.listType === 'wilaya' ? wilayaData : baladiyaData;
+  const cName = listData.find(c => c.id === data.candidateId)?.name || "غير معروف";
   const div = document.createElement('div');
   div.className = 'comment-item';
   div.innerHTML = `
-   <p><strong>للمترشح:</strong> ${cName} (رقم ${data.candidateId})</p>
-   <p>${data.message}</p>
-   <button class="btn-action" style="font-size:12px; padding:5px 10px;" onclick="publishComment('${id}')">نشر</button>
-   <button class="btn-action" style="font-size:12px; padding:5px 10px; background:red;" onclick="deleteInbox('${id}')">حذف</button>
+   <p><strong>للمترشح:</strong> ${cName} (${data.listType === 'wilaya' ? 'ولاية' : 'بلدية'} - ${data.candidateId})</p>
+   <p style="background:white; padding:10px; border-radius:8px;">${data.message}</p>
+   <button class="btn-action" style="font-size:12px; padding:6px 12px;" onclick="publishComment('${id}')">نشر</button>
+   <button class="btn-action" style="font-size:12px; padding:6px 12px; background:var(--pvp-red);" onclick="deleteInbox('${id}')">حذف</button>
   `;
   box.appendChild(div);
  });
@@ -830,34 +927,38 @@ function renderPending() {
 window.publishComment = async function(inboxId) {
  const data = allInbox[inboxId];
  if(!data) return;
- const cid = data.candidateId;
+ const path = `${data.listType}_${data.candidateId}`;
  try {
-  await push(ref(db, `candidateComments/${cid}`), {
+  await push(ref(db, `comments/${path}`), {
    message: data.message, createdAt: data.createdAt
   });
   await update(ref(db, `commentInbox/${inboxId}`), { status: "published" });
+  alert("تم النشر بنجاح!");
  } catch(e) { alert("خطأ: " + e.message); }
 }
 
 window.deleteInbox = async function(id) {
- if(!confirm("حذف؟")) return;
+ if(!confirm("حذف هذا التعليق نهائياً؟")) return;
  await remove(ref(db, `commentInbox/${id}`));
 }
 
+// التعليقات المنشورة
 function renderPublishedAdmin() {
  const box = document.getElementById('publishedAdmin');
  box.innerHTML = '';
  let hasAny = false;
  
- for(let cid in allPublished) {
-  const comments = allPublished[cid];
+ for(let path in allPublished) {
+  const comments = allPublished[path];
   if(!comments || Object.keys(comments).length === 0) continue;
   hasAny = true;
   
-  const cName = candidatesData.find(c => c.id == cid)?.name || "غير معروف";
+  const [listType, cid] = path.split('_');
+  const listData = listType === 'wilaya' ? wilayaData : baladiyaData;
+  const cName = listData.find(c => c.id == cid)?.name || "غير معروف";
   
   const header = document.createElement('h4');
-  header.textContent = `المترشح: ${cName} (رقم ${cid})`;
+  header.textContent = `المترشح: ${cName} (${listType === 'wilaya' ? 'ولاية' : 'بلدية'})`;
   box.appendChild(header);
 
   Object.entries(comments).forEach(([id, data]) => {
@@ -865,30 +966,31 @@ function renderPublishedAdmin() {
     const div = document.createElement('div');
     div.className = 'comment-item';
     div.innerHTML = `
-     <p>${data.message}</p>
-     <input type="text" id="reply_${id}" placeholder="اكتب الرد..." value="${data.reply || ''}" style="margin:10px 0; padding:8px;">
-     <button class="btn-action" style="font-size:12px; padding:5px 10px;" onclick="saveReply('${cid}', '${id}')">حفظ الرد</button>
-     <button class="btn-action" style="font-size:12px; padding:5px 10px; background:red;" onclick="deletePub('${cid}', '${id}')">حذف</button>
+     <p style="background:white; padding:10px; border-radius:8px;">${data.message}</p>
+     <input type="text" id="reply_${path}_${id}" placeholder="اكتب الرد..." value="${data.reply || ''}" style="margin:10px 0; padding:10px;">
+     <button class="btn-action" style="font-size:12px; padding:6px 12px;" onclick="saveReply('${path}', '${id}')">حفظ الرد</button>
+     <button class="btn-action" style="font-size:12px; padding:6px 12px; background:var(--pvp-red);" onclick="deletePub('${path}', '${id}')">حذف</button>
     `;
     box.appendChild(div);
    }
   });
  }
  
- if(!hasAny) box.innerHTML = "<p>لا توجد تعليقات منشورة.</p>";
+ if(!hasAny) box.innerHTML = "<p style='color:var(--muted);'>لا توجد تعليقات منشورة.</p>";
 }
 
-window.saveReply = async function(cid, id) {
- const txt = document.getElementById('reply_' + id).value.trim();
- await update(ref(db, `candidateComments/${cid}/${id}`), { reply: txt });
- alert("تم الحفظ");
+window.saveReply = async function(path, id) {
+ const txt = document.getElementById(`reply_${path}_${id}`).value.trim();
+ await update(ref(db, `comments/${path}/${id}`), { reply: txt });
+ alert("تم حفظ الرد!");
 }
 
-window.deletePub = async function(cid, id) {
+window.deletePub = async function(path, id) {
  if(!confirm("حذف نهائي؟")) return;
- await remove(ref(db, `candidateComments/${cid}/${id}`));
+ await remove(ref(db, `comments/${path}/${id}`));
 }
 
+// سجل الزوار
 function renderVisitors() {
  const box = document.getElementById('visitorsList');
  box.innerHTML = '';
@@ -898,7 +1000,7 @@ function renderVisitors() {
   div.className = 'comment-item';
   div.innerHTML = `
    <strong>زائر: ${id.slice(0,10)}</strong><br>
-   <span style="font-size:12px;">الحالة: ${d.status || 'زار الموقع'}</span>
+   <span style="font-size:13px; color:var(--muted);">آخر زيارة: ${new Date(d.lastVisit).toLocaleString('ar-DZ')}</span>
   `;
   box.appendChild(div);
  });
