@@ -131,6 +131,7 @@ header{
 .btn-main:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.18); }
 .btn-wilaya { background: var(--pvp-green); }
 .btn-baladiya { background: var(--pvp-red); }
+.btn-program { background: var(--gold); }
 
 /* بطاقات القوائم */
 .grid-lists {
@@ -229,11 +230,12 @@ button.btn-like:hover { background: #b01c25; }
 /* البرنامج الانتخابي */
 .program-container {
  background: var(--surface); border-radius: 24px; padding: 30px; border: 1px solid var(--border);
- box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+ box-shadow: 0 10px 30px rgba(0,0,0,0.03); margin-bottom: 30px;
 }
-.program-header { text-align: center; margin-bottom: 30px; }
+.program-header { text-align: center; margin-bottom: 30px; border-bottom: 2px dashed var(--border); padding-bottom: 20px;}
 .program-header h2 { color: var(--pvp-green); font-size: 28px; margin-bottom: 10px; }
 .program-header .badge { background: var(--pvp-red); color: white; padding: 5px 15px; border-radius: 999px; font-weight: bold; display: inline-block; font-size: 14px;}
+.program-main-idea { background: var(--pvp-green); color: white; padding: 20px; border-radius: 16px; font-weight: 800; text-align: center; font-size: 18px; margin-bottom: 25px; }
 .program-point {
  background: var(--bg); padding: 20px; border-radius: 16px; border: 1px solid var(--border);
  margin-bottom: 15px; border-right: 5px solid var(--pvp-green);
@@ -245,12 +247,12 @@ button.btn-like:hover { background: #b01c25; }
 /* لوحة الإدارة (Dashboard) */
 #adminSection { display: none; }
 .admin-dashboard-grid {
- display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin-bottom: 30px;
+ display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px;
 }
 .admin-btn {
- background: white; border: 2px solid var(--border); border-radius: 16px; padding: 20px 15px;
+ background: white; border: 2px solid var(--border); border-radius: 16px; padding: 20px 10px;
  text-align: center; cursor: pointer; transition: 0.2s; font-weight: 800; color: var(--text);
- display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 15px;
+ display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 14px;
  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
 }
 .admin-btn:hover { border-color: var(--pvp-green); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
@@ -321,12 +323,12 @@ button.btn-like:hover { background: #b01c25; }
   <p>المنصة الرسمية للتعريف بمترشحي حزب صوت الشعب (PVP) - انتخابات 28 نوفمبر 2026</p>
   <div class="hub-buttons">
    <button class="btn-main btn-wilaya" onclick="showPage('lists-wilaya')">
-    🏛️ المجلس الشعبي الولائي
+    🏛️ قائمة الولاية
    </button>
    <button class="btn-main btn-baladiya" onclick="showPage('lists-baladiya')">
-    🏢 المجلس الشعبي البلدي
+    🏢 قائمة البلدية
    </button>
-   <button class="btn-main" style="background:var(--gold);" onclick="showPage('program-baladiya')">
+   <button class="btn-main btn-program" onclick="showPage('programs')">
     📜 البرنامج الانتخابي
    </button>
   </div>
@@ -408,29 +410,170 @@ button.btn-like:hover { background: #b01c25; }
  </div>
 </section>
 
-<!-- 7. البرنامج الانتخابي (البلدي) -->
-<section id="page-program-baladiya" class="page-section">
+<!-- 7. قائمة البرامج الانتخابية -->
+<section id="page-programs" class="page-section">
  <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
+ <h2 style="color: var(--pvp-green); text-align: center; margin-bottom: 25px;">البرنامج الانتخابي - المجلس الشعبي البلدي</h2>
+ 
+ <div class="grid-lists">
+  <div class="list-card" onclick="showPage('program-principles')" style="border-color: var(--gold);">
+   <span class="badge" style="background:var(--gold)">مبادئ</span>
+   <h2>مبادئ الالتزام</h2>
+   <div class="header-info">5 مبادئ أساسية</div>
+  </div>
+
+  <div class="list-card" onclick="showPage('program-3')">
+   <span class="badge">المحور 3</span>
+   <h2>الإنارة العمومية والطرقات</h2>
+  </div>
+  <div class="list-card" onclick="showPage('program-4')">
+   <span class="badge">المحور 4</span>
+   <h2>المياه والصرف الصحي</h2>
+  </div>
+  <div class="list-card" onclick="showPage('program-5')">
+   <span class="badge">المحور 5</span>
+   <h2>الاقتصاد المحلي والاستثمار</h2>
+  </div>
+  <div class="list-card" onclick="showPage('program-6')">
+   <span class="badge">المحور 6</span>
+   <h2>الفلاحة وحماية الأراضي</h2>
+  </div>
+  <div class="list-card" onclick="showPage('program-7')">
+   <span class="badge">المحور 7</span>
+   <h2>الشباب والرياضة والثقافة</h2>
+  </div>
+  <div class="list-card" onclick="showPage('program-8')">
+   <span class="badge">المحور 8</span>
+   <h2>التضامن الاجتماعي</h2>
+  </div>
+  <div class="list-card" onclick="showPage('program-9')">
+   <span class="badge">المحور 9</span>
+   <h2>الإدارة الرقمية</h2>
+  </div>
+  <div class="list-card" onclick="showPage('program-10')">
+   <span class="badge">المحور 10</span>
+   <h2>الديمقراطية التشاركية</h2>
+  </div>
+ </div>
+</section>
+
+<!-- محتوى المحاور -->
+<section id="page-program-principles" class="page-section">
+ <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
+ <div class="program-container">
+  <div class="program-header">
+   <span class="badge" style="background:var(--gold)">البرنامج الانتخابي</span>
+   <h2>مبادئ الالتزام</h2>
+  </div>
+  <div class="program-point"><span>1</span><p>الشفافية في تسيير الشأن البلدي واحترام القوانين والتنظيمات.</p></div>
+  <div class="program-point"><span>2</span><p>ترشيد استعمال الموارد والوسائل المتاحة وتوجيهها نحو الأولويات.</p></div>
+  <div class="program-point"><span>3</span><p>التوازن بين مختلف أحياء ومناطق البلدية في الاستفادة من المشاريع والخدمات.</p></div>
+  <div class="program-point"><span>4</span><p>العمل بالتنسيق مع مصالح الدولة والهيئات العمومية والجمعيات والمواطنين.</p></div>
+  <div class="program-point"><span>5</span><p>تقييم البرنامج دوريا وقياس مدى تقدم المشاريع وتحقيق الأهداف.</p></div>
+ </div>
+</section>
+
+<section id="page-program-3" class="page-section">
+ <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
  <div class="program-container">
   <div class="program-header">
    <span class="badge">المحور 3</span>
    <h2>الإنارة العمومية والطرقات والمرافق المحلية</h2>
-   <p style="color:var(--muted); font-weight:700;">البرنامج الانتخابي للمجلس الشعبي البلدي - بلدية أفلو</p>
   </div>
-  
-  <div style="background:var(--pvp-green); color:white; padding:20px; border-radius:16px; font-weight:800; text-align:center; font-size:18px; margin-bottom:25px;">
-   إعداد برنامج دوري لصيانة الإنارة العمومية واستبدال التجهيزات المعطلة
-  </div>
+  <div class="program-main-idea">إعداد برنامج دوري لصيانة الإنارة العمومية واستبدال التجهيزات المعطلة</div>
+  <div class="program-point"><span>✔️</span><p>إعطاء الأولوية للمناطق والأحياء التي تعاني من ضعف الإنارة، خاصة النقاط الحساسة ومحيط المدارس والمرافق.</p></div>
+  <div class="program-point"><span>✔️</span><p>صيانة الطرق البلدية والأرصفة ومعالجة الحفر والنقاط المتضررة حسب الأولويات والإمكانيات.</p></div>
+ </div>
+</section>
 
-  <div class="program-point">
-   <span>✔️</span>
-   <p>إعطاء الأولوية للمناطق والأحياء التي تعاني من ضعف الإنارة، خاصة النقاط الحساسة ومحيط المدارس والمرافق.</p>
+<section id="page-program-4" class="page-section">
+ <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
+ <div class="program-container">
+  <div class="program-header">
+   <span class="badge">المحور 4</span>
+   <h2>المياه والصرف الصحي بالتنسيق مع الهيئات المختصة</h2>
   </div>
+  <div class="program-main-idea">متابعة النقاط المعرضة للفيضانات واقتراح حلول للحد من آثارها</div>
+  <div class="program-point"><span>✔️</span><p>رصد النقائص المتعلقة بالمياه والتطهير ورفعها إلى الهيئات المختصة ومتابعة معالجتها.</p></div>
+  <div class="program-point"><span>✔️</span><p>إشراك المواطنين في التبليغ عن الأعطاب والنقائص عبر قنوات اتصال واضحة.</p></div>
+ </div>
+</section>
 
-  <div class="program-point">
-   <span>✔️</span>
-   <p>صيانة الطرق البلدية والأرصفة ومعالجة الحفر والنقاط المتضررة حسب الأولويات والإمكانيات.</p>
+<section id="page-program-5" class="page-section">
+ <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
+ <div class="program-container">
+  <div class="program-header">
+   <span class="badge">المحور 5</span>
+   <h2>الاقتصاد المحلي والاستثمار والنشاط التجاري</h2>
   </div>
+  <div class="program-main-idea">تشجيع المبادرات التي تخلق نشاطا اقتصاديا وفرصا للعمل، خصوصا للشباب</div>
+  <div class="program-point"><span>✔️</span><p>تهيئة الظروف المحلية الملائمة للنشاط الاقتصادي وتشجيع المؤسسات الصغيرة والحرف والمهن المحلية.</p></div>
+  <div class="program-point"><span>✔️</span><p>تنظيم الفضاءات التجارية والأسواق بما يحافظ على النظام والنظافة وسلامة المواطنين.</p></div>
+ </div>
+</section>
+
+<section id="page-program-6" class="page-section">
+ <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
+ <div class="program-container">
+  <div class="program-header">
+   <span class="badge">المحور 6</span>
+   <h2>الفلاحة وحماية الأراضي والمنتوج المحلي</h2>
+  </div>
+  <div class="program-main-idea">حماية الأراضي الفلاحية داخل إقليم البلدية من التعدي والتوسع العمراني غير المنظم</div>
+  <div class="program-point"><span>✔️</span><p>دعم المبادرات المحلية الرامية إلى تثمين المنتجات الفلاحية والحرفية.</p></div>
+  <div class="program-point"><span>✔️</span><p>المساهمة في تنظيم الأسواق والفضاءات المناسبة لعرض المنتجات المحلية.</p></div>
+ </div>
+</section>
+
+<section id="page-program-7" class="page-section">
+ <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
+ <div class="program-container">
+  <div class="program-header">
+   <span class="badge">المحور 7</span>
+   <h2>الشباب والرياضة والثقافة</h2>
+  </div>
+  <div class="program-main-idea">إنشاء فضاءات جواريّة للشباب والترفيه وتنشيط الأحياء</div>
+  <div class="program-point"><span>✔️</span><p>صيانة وتطوير الملاعب والقاعات والمنشآت الرياضية الجوارية المتاحة للبلدية.</p></div>
+  <div class="program-point"><span>✔️</span><p>استغلال المرافق الثقافية والشبابية بطريقة منتظمة تخدم سكان البلدية.</p></div>
+ </div>
+</section>
+
+<section id="page-program-8" class="page-section">
+ <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
+ <div class="program-container">
+  <div class="program-header">
+   <span class="badge">المحور 8</span>
+   <h2>التضامن الاجتماعي والفئات الهشة</h2>
+  </div>
+  <div class="program-main-idea">تسهيل وصول ذوي الاحتياجات الخاصة إلى المرافق العمومية والفضاءات البلدية</div>
+  <div class="program-point"><span>✔️</span><p>تشجيع المبادرات التضامنية المحلية بالتنسيق مع الجمعيات والفاعلين المحليين.</p></div>
+  <div class="program-point"><span>✔️</span><p>إيلاء عناية خاصة للأحياء والمناطق التي تعرف نقائص اجتماعية وخدماتية.</p></div>
+ </div>
+</section>
+
+<section id="page-program-9" class="page-section">
+ <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
+ <div class="program-container">
+  <div class="program-header">
+   <span class="badge">المحور 9</span>
+   <h2>الإدارة والرقمنة وتقريب الخدمة من المواطن</h2>
+  </div>
+  <div class="program-main-idea">تبسيط الإجراءات البلدية وتقليل التنقلات غير الضرورية للمواطن</div>
+  <div class="program-point"><span>✔️</span><p>توسيع استعمال الرقمنة في استقبال الطلبات والشكاوى ومتابعة الملفات كلما توفرت الإمكانيات.</p></div>
+  <div class="program-point"><span>✔️</span><p>إنشاء قنوات واضحة لاستقبال انشغالات المواطنين والرد عليها ومتابعتها.</p></div>
+ </div>
+</section>
+
+<section id="page-program-10" class="page-section">
+ <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
+ <div class="program-container">
+  <div class="program-header">
+   <span class="badge">المحور 10</span>
+   <h2>الديمقراطية التشاركية ومشاركة المواطن</h2>
+  </div>
+  <div class="program-main-idea">تنظيم لقاءات دورية مع المواطنين للاستماع إلى انشغالاتهم ومناقشة المشاريع المحلية</div>
+  <div class="program-point"><span>✔️</span><p>إعطاء الأولوية للمشاريع التي تستجيب للحاجات الفعلية اليومية للسكان.</p></div>
+  <div class="program-point"><span>✔️</span><p>اعتماد المتابعة والتقييم كجزء أساسي من تنفيذ البرنامج البلدي.</p></div>
  </div>
 </section>
 
@@ -449,10 +592,10 @@ button.btn-like:hover { background: #b01c25; }
   <!-- أزرار لوحة التحكم -->
   <div class="admin-dashboard-grid">
    <div class="admin-btn active" onclick="toggleAdminView('stats')"><span class="icon">📊</span> الإحصائيات</div>
-   <div class="admin-btn" onclick="toggleAdminView('names-wilaya')"><span class="icon">🏛️</span> تعديل أسماء الولاية</div>
-   <div class="admin-btn" onclick="toggleAdminView('names-baladiya')"><span class="icon">🏢</span> تعديل أسماء البلدية</div>
-   <div class="admin-btn" onclick="toggleAdminView('pending')"><span class="icon">📥</span> التعليقات الواردة</div>
-   <div class="admin-btn" onclick="toggleAdminView('published')"><span class="icon">💬</span> التعليقات المنشورة</div>
+   <div class="admin-btn" onclick="toggleAdminView('names-wilaya')"><span class="icon">🏛️</span> تعديل الولاية</div>
+   <div class="admin-btn" onclick="toggleAdminView('names-baladiya')"><span class="icon">🏢</span> تعديل البلدية</div>
+   <div class="admin-btn" onclick="toggleAdminView('pending')"><span class="icon">📥</span> تعليقات واردة</div>
+   <div class="admin-btn" onclick="toggleAdminView('published')"><span class="icon">💬</span> تعليقات منشورة</div>
    <div class="admin-btn" onclick="toggleAdminView('visitors')"><span class="icon">👥</span> سجل الزوار</div>
   </div>
 
@@ -533,7 +676,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const $ = id => document.getElementById(id);
 
-// --- البيانات الافتراضية ---
+// --- البيانات الصحيحة (الولاية والبلدية) ---
 let wilayaData = [
  { id: 1, name: "صافي بوقرة صلاح الدين", job: "محامي" },
  { id: 2, name: "نمار عزيز", job: "أعمال حرة - نشاط تجاري" },
@@ -581,7 +724,7 @@ let wilayaData = [
 
 let baladiyaData = [
  { id: 1, name: "زياني جيلالي", job: "إطار بالجماعات المحلية" },
- { id: 2, name: "زوكل جلول", job: "رئيس جمعية متقاعد من الجيش" },
+ { id: 2, name: "زوكر جلول", job: "رئيس جمعية متقاعد من الجيش" },
  { id: 3, name: "حديدي عباس", job: "عامل بمؤسسة وطنية" },
  { id: 4, name: "مصيبح عيسى", job: "متقاعد من الجيش" },
  { id: 5, name: "ريغي عبد القادر", job: "موظف بالبلدية" },
@@ -835,30 +978,24 @@ document.getElementById('adminLogin').addEventListener('click', () => {
  document.getElementById('adminLoginBox').style.display = "none";
  document.getElementById('adminPanel').classList.remove('hidden');
  
- // إظهار الإحصائيات افتراضياً
  toggleAdminView('stats');
  renderNamesEditor('wilaya');
  renderNamesEditor('baladiya');
 });
 
 window.toggleAdminView = function(view) {
- // إخفاء كل المحتويات
  ['stats', 'names-wilaya', 'names-baladiya', 'pending', 'published', 'visitors'].forEach(v => {
   const el = $('admin' + v.charAt(0).toUpperCase() + v.slice(1).replace('-', '') + 'View');
   if(el) el.classList.add('hidden');
  });
- // إزالة التفعيل من كل الأزرار
  document.querySelectorAll('.admin-btn').forEach(btn => btn.classList.remove('active'));
 
- // إظهار المطلوب
  const targetView = $('admin' + view.charAt(0).toUpperCase() + view.slice(1).replace('-', '') + 'View');
  if(targetView) targetView.classList.remove('hidden');
  
- // تفعيل الزر
  const btn = Array.from(document.querySelectorAll('.admin-btn')).find(b => b.getAttribute('onclick').includes(view));
  if(btn) btn.classList.add('active');
 
- // إجراءات إضافية
  if(view === 'pending') renderPending();
  if(view === 'published') renderPublishedAdmin();
  if(view === 'visitors') renderVisitors();
@@ -910,7 +1047,6 @@ window.saveNames = async function(listType) {
   msgBox.textContent = "✅ تم حفظ التعديلات بنجاح!";
   msgBox.style.color = "green";
   
-  // تحديث الواجهة فوراً
   if(listType === 'wilaya') {
    wilayaData = wilayaData.map(c => updates[c.id] ? {...c, ...updates[c.id]} : c);
   } else {
