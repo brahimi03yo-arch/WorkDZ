@@ -7,19 +7,6 @@
 <title>اعرف مترشحك | حزب صوت الشعب - أفلو</title>
 <meta name="description" content="المنصة الانتخابية للتعريف بمترشحي حزب صوت الشعب (PVP) لولايات وأبلديات أفلو. تصميم وتطوير براهيمي يوسف.">
 
-<!-- صورة المعاينة -->
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ar_DZ">
-<meta property="og:site_name" content="اعرف مترشحك">
-<meta property="og:title" content="اعرف مترشحك | حزب صوت الشعب - أفلو">
-<meta property="og:description" content="المنصة الانتخابية للتعريف بمترشحي القوائم. تصميم وتطوير المترشح براهيمي يوسف.">
-<meta property="og:url" content="https://workdz-u7oo.onrender.com/">
-<meta property="og:image" content="https://i.postimg.cc/Fzp3mx37/file-000000007fac81f4bfc40d244fc9529f.png">
-<meta property="og:image:secure_url" content="https://i.postimg.cc/Fzp3mx37/file-000000007fac81f4bfc40d244fc9529f.png">
-<meta property="og:image:type" content="image/png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.postimg.cc/Fzp3mx37/file-000000007fac81f4bfc40d244fc9529f.png">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
@@ -27,7 +14,7 @@
 <style>
 :root{
  --bg: #f4f7f6;
- --surface: rgba(255, 255, 255, 0.95);
+ --surface: #ffffff;
  --border: #e2e8f0;
  --text: #1e293b;
  --muted: #64748b;
@@ -40,68 +27,41 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
- margin:0;
- min-height:100vh;
- color:var(--text);
- font-family:Tajawal,Cairo,sans-serif;
- line-height:1.8;
- overflow-x:hidden;
- background: var(--bg);
+ margin:0; min-height:100vh; color:var(--text);
+ font-family:Tajawal,Cairo,sans-serif; line-height:1.8;
+ overflow-x:hidden; background: var(--bg);
 }
 
 /* الشريط الدوار */
 .marquee-container {
  background: linear-gradient(90deg, var(--pvp-green), var(--pvp-green-dark));
- color: white;
- padding: 10px 0;
- overflow: hidden;
- white-space: nowrap;
- font-size: 15px;
- font-weight: 700;
- border-bottom: 3px solid var(--pvp-red);
+ color: white; padding: 10px 0; overflow: hidden; white-space: nowrap;
+ font-size: 15px; font-weight: 700; border-bottom: 3px solid var(--pvp-red);
 }
-.marquee-content {
- display: inline-block;
- animation: marquee 30s linear infinite;
-}
+.marquee-content { display: inline-block; animation: marquee 30s linear infinite; }
 .marquee-content span { padding: 0 30px; }
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
 html[dir="rtl"] .marquee-content { animation: marquee-rtl 30s linear infinite; }
 @keyframes marquee-rtl { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
 
 header{
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:14px;
- flex-wrap:wrap;
- padding:15px 25px;
- font-size:19px;
- font-weight:900;
- background:rgba(255,255,255,.98);
- border-bottom:1px solid var(--border);
- position:sticky; top:0; z-index:100;
- box-shadow: 0 4px 20px rgba(0,0,0,.06);
+ display:flex; align-items:center; justify-content:space-between;
+ padding:15px 25px; font-size:19px; font-weight:900;
+ background:#fff; border-bottom:1px solid var(--border);
+ position:sticky; top:0; z-index:100; box-shadow: 0 4px 20px rgba(0,0,0,.06);
 }
 .brand{display:flex;align-items:center;gap:12px; cursor:pointer;}
 .brand-mark{
- width:42px;height:42px;display:grid;place-items:center;
- border-radius:14px;font-size:22px;font-weight:900;
- color:#fff; background:var(--pvp-green);
- box-shadow:0 8px 20px rgba(15, 118, 59, 0.3);
+ width:42px;height:42px;display:grid;place-items:center; border-radius:14px;
+ font-size:22px;font-weight:900; color:#fff; background:var(--pvp-green);
 }
 .brand-name{
  font-size:15px;font-weight:800;color:var(--pvp-green);
- padding:8px 18px;border-radius:999px;
- border:1px solid rgba(15, 118, 59, 0.2); background:rgba(15, 118, 59, 0.08);
+ padding:8px 18px;border-radius:999px; border:1px solid rgba(15, 118, 59, 0.2);
+ background:rgba(15, 118, 59, 0.08);
 }
 
-.container{
- max-width:1200px;
- margin:auto;
- padding:30px 18px;
- min-height: 75vh;
-}
+.container{ max-width:1200px; margin:auto; padding:30px 18px; min-height: 75vh; }
 
 /* أقسام التنقل */
 .page-section { display: none; animation: fadeIn 0.4s ease; }
@@ -110,183 +70,117 @@ header{
 
 /* الصفحة الرئيسية */
 .hero-hub {
- text-align: center;
- padding: 50px 20px;
+ text-align: center; padding: 50px 20px;
  background: linear-gradient(135deg, rgba(15, 118, 59, 0.05) 0%, rgba(217, 35, 46, 0.05) 100%);
- border-radius: 30px;
- border: 1px solid rgba(15, 118, 59, 0.1);
- margin-bottom: 40px;
- position: relative;
- overflow: hidden;
+ border-radius: 30px; border: 1px solid rgba(15, 118, 59, 0.1); margin-bottom: 40px;
 }
-.hero-hub h1 { color: var(--pvp-green-dark); font-size: clamp(32px, 6vw, 54px); margin-bottom: 10px; font-weight: 900; letter-spacing: -1px;}
+.hero-hub h1 { color: var(--pvp-green-dark); font-size: clamp(32px, 6vw, 54px); margin-bottom: 10px; font-weight: 900;}
 .hero-hub p { color: var(--muted); font-size: 19px; margin-bottom: 40px; }
-.hub-buttons { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; }
+.hub-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 .btn-main {
- padding: 22px 45px; font-size: 20px; font-weight: 800; border-radius: 18px;
- border: none; cursor: pointer; color: white; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
- box-shadow: 0 12px 30px rgba(0,0,0,0.12);
- display: flex; align-items: center; gap: 12px;
+ padding: 20px 35px; font-size: 18px; font-weight: 800; border-radius: 16px;
+ border: none; cursor: pointer; color: white; transition: 0.3s;
+ box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px;
 }
-.btn-main:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.18); }
+.btn-main:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
 .btn-wilaya { background: var(--pvp-green); }
 .btn-baladiya { background: var(--pvp-red); }
 .btn-program { background: var(--gold); }
 
 /* بطاقات القوائم */
-.grid-lists {
- display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px;
-}
+.grid-lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 .list-card {
- background: var(--surface); border: 2px solid var(--border); border-radius: 24px;
- padding: 30px; text-align: center; cursor: pointer; transition: 0.3s;
- position: relative; overflow: hidden;
- box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+ background: var(--surface); border: 2px solid var(--border); border-radius: 20px;
+ padding: 25px; text-align: center; cursor: pointer; transition: 0.3s;
+ box-shadow: 0 8px 20px rgba(0,0,0,0.03);
 }
-.list-card:hover { border-color: var(--pvp-green); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-.list-card h2 { color: var(--pvp-green); margin: 15px 0; font-size: 26px; }
-.list-card .badge { background: var(--pvp-red); color: white; padding: 6px 20px; border-radius: 999px; font-weight: bold; display: inline-block; margin-bottom: 10px; font-size: 15px;}
-.list-card .header-info { background: var(--bg); padding: 12px; border-radius: 14px; font-weight: 700; font-size: 16px; margin-top: 15px;}
+.list-card:hover { border-color: var(--pvp-green); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+.list-card h2 { color: var(--pvp-green); margin: 15px 0; font-size: 24px; }
+.list-card .badge { background: var(--pvp-red); color: white; padding: 5px 15px; border-radius: 999px; font-weight: bold; display: inline-block; font-size: 14px;}
+.list-card .header-info { background: var(--bg); padding: 10px; border-radius: 12px; font-weight: 700; font-size: 15px; margin-top: 15px;}
 
 /* شبكة المترشحين */
-.candidates-grid {
- display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px;
-}
+.candidates-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
 .candidate-mini {
- background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
- padding: 20px 15px; text-align: center; cursor: pointer; transition: 0.25s;
- position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+ background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+ padding: 20px 15px; text-align: center; cursor: pointer; transition: 0.2s;
+ box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
 .candidate-mini:hover { border-color: var(--pvp-green); background: #fff; transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
 .candidate-mini .number {
- width: 36px; height: 36px; background: var(--pvp-green); color: white;
- border-radius: 12px; display: grid; place-items: center; font-weight: 900; margin: 0 auto 12px; font-size: 16px;
- box-shadow: 0 4px 10px rgba(15, 118, 59, 0.3);
+ width: 34px; height: 34px; background: var(--pvp-green); color: white;
+ border-radius: 10px; display: grid; place-items: center; font-weight: 900; margin: 0 auto 10px; font-size: 15px;
 }
 .candidate-mini.featured .number { background: var(--pvp-red); box-shadow: 0 0 15px rgba(217, 35, 46, 0.5); }
-.candidate-mini h4 { margin: 8px 0; color: var(--text); font-size: 17px; font-weight: 800; }
-.candidate-mini p { margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.4; }
+.candidate-mini h4 { margin: 8px 0; color: var(--text); font-size: 16px; font-weight: 800; }
+.candidate-mini p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.4; }
 .candidate-mini.featured { border: 2px solid var(--pvp-red); background: #fffafa; }
 
 /* الصفحة الفنية للمترشح */
-.profile-card {
- background: var(--surface); border-radius: 30px; overflow: hidden;
- box-shadow: 0 15px 40px rgba(0,0,0,0.08); border: 1px solid var(--border);
-}
-.profile-header {
- background: linear-gradient(135deg, var(--pvp-green) 50%, var(--pvp-green-dark) 100%);
- padding: 40px 30px; text-align: center; position: relative;
-}
+.profile-card { background: var(--surface); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid var(--border); }
+.profile-header { background: linear-gradient(135deg, var(--pvp-green) 50%, var(--pvp-green-dark) 100%); padding: 40px 30px; text-align: center; position: relative; }
 .profile-header.featured-profile { background: linear-gradient(135deg, var(--pvp-red) 0%, #a3151e 100%); }
-.profile-header::after {
- content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 30px;
- background: linear-gradient(to top right, var(--surface) 49%, transparent 50%),
-             linear-gradient(to top left, var(--surface) 49%, transparent 50%);
- background-size: 50% 100%; background-repeat: no-repeat; background-position: left, right;
-}
-.profile-img {
- width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
- border: 6px solid white; background: white; box-shadow: 0 15px 30px rgba(0,0,0,0.2);
- position: relative; z-index: 2;
-}
+.profile-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 5px solid white; background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.2); position: relative; z-index: 2; }
 .profile-body { padding: 20px 30px 40px; }
-.profile-title { text-align: center; margin-bottom: 25px; }
-.profile-title h2 { margin: 0; font-size: 32px; color: var(--text); font-weight: 900; }
-.profile-title .job { color: var(--pvp-green); font-size: 19px; font-weight: 700; margin-top: 5px;}
-.profile-title .badge-list { background: var(--pvp-green-dark); color: white; padding: 6px 20px; border-radius: 999px; font-size: 15px; display: inline-block; margin-bottom: 15px; font-weight: bold;}
-
-.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
-.info-item { background: var(--bg); padding: 18px; border-radius: 16px; border: 1px solid var(--border); }
-.info-item strong { display: block; color: var(--pvp-green); margin-bottom: 8px; font-size: 15px;}
+.profile-title { text-align: center; margin-bottom: 20px; }
+.profile-title h2 { margin: 0; font-size: 30px; color: var(--text); font-weight: 900; }
+.profile-title .job { color: var(--pvp-green); font-size: 18px; font-weight: 700; margin-top: 5px;}
+.profile-title .badge-list { background: var(--pvp-green-dark); color: white; padding: 5px 15px; border-radius: 999px; font-size: 14px; display: inline-block; margin-bottom: 10px; font-weight: bold;}
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+.info-item { background: var(--bg); padding: 15px; border-radius: 12px; border: 1px solid var(--border); }
+.info-item strong { display: block; color: var(--pvp-green); margin-bottom: 5px; font-size: 14px;}
 
 /* التعليقات والتفاعل */
-.interaction-box { margin-top: 30px; background: var(--surface); padding: 30px; border-radius: 24px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03);}
+.interaction-box { margin-top: 30px; background: var(--surface); padding: 30px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03);}
 .interaction-box h3 { color: var(--pvp-green-dark); margin-top: 0; }
-input, textarea {
- width: 100%; padding: 14px 18px; border-radius: 14px; border: 1px solid var(--border);
- font-family: inherit; margin-bottom: 12px; font-size: 16px; background: var(--bg);
- transition: 0.2s;
-}
+input, textarea { width: 100%; padding: 12px 15px; border-radius: 10px; border: 1px solid var(--border); font-family: inherit; margin-bottom: 10px; font-size: 15px; background: var(--bg); transition: 0.2s; }
 input:focus, textarea:focus { outline: none; border-color: var(--pvp-green); background: white; }
-button.btn-action {
- background: var(--pvp-green); color: white; border: none; padding: 12px 25px;
- border-radius: 12px; font-weight: 800; cursor: pointer; transition: 0.2s; font-size: 16px;
-}
+button.btn-action { background: var(--pvp-green); color: white; border: none; padding: 12px 25px; border-radius: 10px; font-weight: 800; cursor: pointer; transition: 0.2s; font-size: 16px; }
 button.btn-action:hover { background: var(--pvp-green-dark); transform: translateY(-2px); }
-button.btn-like { background: var(--pvp-red); font-size: 18px; padding: 15px 30px; border-radius: 50px; display: flex; align-items: center; justify-content: center; gap: 10px; margin: 15px auto; width: fit-content;}
+button.btn-like { background: var(--pvp-red); font-size: 18px; padding: 12px 30px; border-radius: 50px; display: flex; align-items: center; justify-content: center; gap: 10px; margin: 15px auto; width: fit-content;}
 button.btn-like:hover { background: #b01c25; }
-.comment-item { background: var(--bg); padding: 18px; border-radius: 16px; margin-top: 15px; border: 1px solid var(--border); border-right: 5px solid var(--gold); }
-.comment-reply { background: white; padding: 12px 15px; border-radius: 12px; margin-top: 12px; font-size: 14.5px; color: var(--text); border-right: 3px solid var(--pvp-green); box-shadow: 0 2px 5px rgba(0,0,0,0.02);}
+.comment-item { background: var(--bg); padding: 15px; border-radius: 12px; margin-top: 15px; border: 1px solid var(--border); border-right: 4px solid var(--gold); }
+.comment-reply { background: white; padding: 10px; border-radius: 8px; margin-top: 10px; font-size: 14px; color: var(--text); border-right: 3px solid var(--pvp-green); }
 
 /* Back Button */
-.btn-back {
- background: white; border: 1px solid var(--border); color: var(--text);
- padding: 10px 20px; border-radius: 12px; cursor: pointer; margin-bottom: 25px;
- font-weight: bold; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s;
- box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-}
+.btn-back { background: white; border: 1px solid var(--border); color: var(--text); padding: 10px 20px; border-radius: 10px; cursor: pointer; margin-bottom: 20px; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
 .btn-back:hover { background: var(--bg); border-color: var(--pvp-green); color: var(--pvp-green); }
 
 /* البرنامج الانتخابي */
-.program-container {
- background: var(--surface); border-radius: 24px; padding: 30px; border: 1px solid var(--border);
- box-shadow: 0 10px 30px rgba(0,0,0,0.03); margin-bottom: 30px;
-}
-.program-header { text-align: center; margin-bottom: 30px; border-bottom: 2px dashed var(--border); padding-bottom: 20px;}
-.program-header h2 { color: var(--pvp-green); font-size: 28px; margin-bottom: 10px; }
+.program-container { background: var(--surface); border-radius: 20px; padding: 30px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03); margin-bottom: 30px; }
+.program-header { text-align: center; margin-bottom: 25px; border-bottom: 2px dashed var(--border); padding-bottom: 15px;}
+.program-header h2 { color: var(--pvp-green); font-size: 26px; margin-bottom: 10px; }
 .program-header .badge { background: var(--pvp-red); color: white; padding: 5px 15px; border-radius: 999px; font-weight: bold; display: inline-block; font-size: 14px;}
-.program-main-idea { background: var(--pvp-green); color: white; padding: 20px; border-radius: 16px; font-weight: 800; text-align: center; font-size: 18px; margin-bottom: 25px; }
-.program-point {
- background: var(--bg); padding: 20px; border-radius: 16px; border: 1px solid var(--border);
- margin-bottom: 15px; border-right: 5px solid var(--pvp-green);
- display: flex; align-items: flex-start; gap: 15px;
-}
-.program-point span { font-size: 24px; color: var(--pvp-green); font-weight: bold; }
-.program-point p { margin: 0; font-weight: 700; font-size: 17px; color: var(--text);}
+.program-main-idea { background: var(--pvp-green); color: white; padding: 18px; border-radius: 12px; font-weight: 800; text-align: center; font-size: 17px; margin-bottom: 20px; }
+.program-point { background: var(--bg); padding: 18px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 12px; border-right: 5px solid var(--pvp-green); display: flex; align-items: flex-start; gap: 15px; }
+.program-point span { font-size: 22px; color: var(--pvp-green); font-weight: bold; }
+.program-point p { margin: 0; font-weight: 700; font-size: 16px; color: var(--text);}
 
-/* لوحة الإدارة (Dashboard) */
+/* لوحة الإدارة */
 #adminSection { display: none; }
-.admin-dashboard-grid {
- display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px;
-}
-.admin-btn {
- background: white; border: 2px solid var(--border); border-radius: 16px; padding: 20px 10px;
- text-align: center; cursor: pointer; transition: 0.2s; font-weight: 800; color: var(--text);
- display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 14px;
- box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-}
-.admin-btn:hover { border-color: var(--pvp-green); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-.admin-btn.active { background: var(--pvp-green); color: white; border-color: var(--pvp-green); box-shadow: 0 10px 20px rgba(15, 118, 59, 0.3);}
+.admin-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; margin-bottom: 30px; }
+.admin-btn { background: white; border: 2px solid var(--border); border-radius: 12px; padding: 20px 10px; text-align: center; cursor: pointer; transition: 0.2s; font-weight: 800; color: var(--text); display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+.admin-btn:hover { border-color: var(--pvp-green); transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.05); }
+.admin-btn.active { background: var(--pvp-green); color: white; border-color: var(--pvp-green); box-shadow: 0 8px 15px rgba(15, 118, 59, 0.3);}
 .admin-btn .icon { font-size: 28px; }
-
-.admin-panel-content {
- background: var(--surface); border-radius: 24px; padding: 30px; border: 1px solid var(--border);
- box-shadow: 0 10px 30px rgba(0,0,0,0.03); min-height: 400px;
-}
-
-.stat-box { background: var(--bg); padding: 25px; text-align: center; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 20px; }
-.stat-box strong { font-size: 38px; color: var(--pvp-red); display: block; margin-bottom: 5px;}
+.admin-panel-content { background: var(--surface); border-radius: 16px; padding: 25px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03); min-height: 400px; }
+.stat-box { background: var(--bg); padding: 20px; text-align: center; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; }
+.stat-box strong { font-size: 34px; color: var(--pvp-red); display: block; margin-bottom: 5px;}
 .stat-box span { font-weight: bold; color: var(--muted); }
-
-.edit-grid { display: grid; gap: 12px; }
-.edit-row { display: flex; gap: 15px; align-items: center; background: white; padding: 12px 15px; border-radius: 12px; border: 1px solid var(--border); }
-.edit-row span { font-weight: 900; width: 40px; text-align: center; color: var(--pvp-green); }
-.edit-row input { margin: 0; padding: 10px; flex: 1; }
-
+.edit-grid { display: grid; gap: 10px; }
+.edit-row { display: flex; gap: 10px; align-items: center; background: white; padding: 10px 15px; border-radius: 8px; border: 1px solid var(--border); }
+.edit-row span { font-weight: 900; width: 30px; text-align: center; color: var(--pvp-green); }
+.edit-row input { margin: 0; padding: 8px; flex: 1; border-radius: 6px;}
 .hidden { display: none !important; }
-
-.admin-access-btn {
- background: transparent; border: 1px solid var(--border); color: var(--muted);
- padding: 8px 16px; border-radius: 10px; cursor: pointer; font-weight: bold; font-family: inherit; transition: 0.2s;
-}
+.admin-access-btn { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: bold; font-family: inherit; transition: 0.2s; }
 .admin-access-btn:hover { background: var(--bg); color: var(--pvp-green); border-color: var(--pvp-green); }
 
 @media(max-width:768px){
  .info-grid { grid-template-columns: 1fr; }
- .profile-img { width: 130px; height: 130px; }
+ .profile-img { width: 120px; height: 120px; }
  .btn-main { width: 100%; justify-content: center; }
- .edit-row { flex-direction: column; align-items: stretch; gap: 8px; }
- .edit-row span { width: auto; text-align: right; margin-bottom: 5px;}
+ .edit-row { flex-direction: column; align-items: stretch; gap: 5px; }
+ .edit-row span { width: auto; text-align: right; margin-bottom: 2px;}
 }
 </style>
 </head>
@@ -322,19 +216,13 @@ button.btn-like:hover { background: #b01c25; }
   <h1>اعرف مترشحك</h1>
   <p>المنصة الرسمية للتعريف بمترشحي حزب صوت الشعب (PVP) - انتخابات 28 نوفمبر 2026</p>
   <div class="hub-buttons">
-   <button class="btn-main btn-wilaya" onclick="showPage('lists-wilaya')">
-    🏛️ قائمة الولاية
-   </button>
-   <button class="btn-main btn-baladiya" onclick="showPage('lists-baladiya')">
-    🏢 قائمة البلدية
-   </button>
-   <button class="btn-main btn-program" onclick="showPage('programs')">
-    📜 البرنامج الانتخابي
-   </button>
+   <button class="btn-main btn-wilaya" onclick="showPage('lists-wilaya')">🏛️ قائمة الولاية</button>
+   <button class="btn-main btn-baladiya" onclick="showPage('lists-baladiya')">🏢 قائمة البلدية</button>
+   <button class="btn-main btn-program" onclick="showPage('programs')">📜 البرنامج الانتخابي</button>
   </div>
  </div>
 
- <h2 style="text-align:center; color:var(--pvp-green); margin-bottom:25px;">⭐ المترشح المميز</h2>
+ <h2 style="text-align:center; color:var(--pvp-green); margin-bottom:20px;">⭐ المترشح المميز</h2>
  <div class="list-card" onclick="openCandidate('wilaya', 15)" style="border-color: var(--pvp-red); max-width: 500px; margin: auto;">
   <span class="badge" style="background:var(--gold)">المبرمج والمشرف</span>
   <h2>براهيمي يوسف</h2>
@@ -346,7 +234,7 @@ button.btn-like:hover { background: #b01c25; }
 <!-- 2. قوائم الولاية -->
 <section id="page-lists-wilaya" class="page-section">
  <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
- <h2 style="color: var(--pvp-green); text-align: center; margin-bottom: 25px;">قوائم المجلس الشعبي الولائي - أفلو</h2>
+ <h2 style="color: var(--pvp-green); text-align: center; margin-bottom: 20px;">قوائم المجلس الشعبي الولائي - أفلو</h2>
  <div class="grid-lists">
   <div class="list-card" onclick="showPage('candidates-wilaya')">
    <span class="badge">رقم القائمة: 06</span>
@@ -360,7 +248,7 @@ button.btn-like:hover { background: #b01c25; }
 <!-- 3. قوائم البلدية -->
 <section id="page-lists-baladiya" class="page-section">
  <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
- <h2 style="color: var(--pvp-red); text-align: center; margin-bottom: 25px;">قوائم المجلس الشعبي البلدي</h2>
+ <h2 style="color: var(--pvp-red); text-align: center; margin-bottom: 20px;">قوائم المجلس الشعبي البلدي</h2>
  <div class="grid-lists">
   <div class="list-card" onclick="showPage('candidates-baladiya')" style="border-color: rgba(217, 35, 46, 0.3);">
    <span class="badge">رقم القائمة: 06</span>
@@ -374,14 +262,14 @@ button.btn-like:hover { background: #b01c25; }
 <!-- 4. مترشحي الولاية -->
 <section id="page-candidates-wilaya" class="page-section">
  <button class="btn-back" onclick="showPage('lists-wilaya')">← العودة للقوائم</button>
- <h2 style="text-align: center; color: var(--pvp-green); margin-bottom: 25px;">مترشحو قائمة الولاية (06) - أفلو</h2>
+ <h2 style="text-align: center; color: var(--pvp-green); margin-bottom: 20px;">مترشحو قائمة الولاية (06) - أفلو</h2>
  <div class="candidates-grid" id="candidatesGridWilaya"></div>
 </section>
 
 <!-- 5. مترشحي البلدية -->
 <section id="page-candidates-baladiya" class="page-section">
  <button class="btn-back" onclick="showPage('lists-baladiya')">← العودة للقوائم</button>
- <h2 style="text-align: center; color: var(--pvp-red); margin-bottom: 25px;">مترشحو قائمة البلدية (06) - أفلو</h2>
+ <h2 style="text-align: center; color: var(--pvp-red); margin-bottom: 20px;">مترشحو قائمة البلدية (06) - أفلو</h2>
  <div class="candidates-grid" id="candidatesGridBaladiya"></div>
 </section>
 
@@ -396,11 +284,11 @@ button.btn-like:hover { background: #b01c25; }
   <button id="likeBtn" class="btn-action btn-like">👍 أعجبني</button>
   <div id="likeStatus" style="text-align:center; font-size:14px; margin-bottom:15px; color:var(--pvp-green); font-weight:bold;"></div>
 
-  <hr style="border:0; border-top:1px solid var(--border); margin:25px 0;">
+  <hr style="border:0; border-top:1px solid var(--border); margin:20px 0;">
 
   <h3 style="color: var(--pvp-green-dark);">اكتب تعليقك</h3>
   <form id="commentForm">
-   <textarea id="commentText" maxlength="500" placeholder="اكتب تعليقك بكل موضوعية..." required style="min-height:100px;"></textarea>
+   <textarea id="commentText" maxlength="500" placeholder="اكتب تعليقك بكل موضوعية..." required style="min-height:80px;"></textarea>
    <button type="submit" class="btn-action" id="sendComment" style="width:100%;">إرسال التعليق</button>
   </form>
   <div id="message" style="text-align:center; font-size:14px; margin-top:10px; font-weight:bold;"></div>
@@ -413,47 +301,21 @@ button.btn-like:hover { background: #b01c25; }
 <!-- 7. قائمة البرامج الانتخابية -->
 <section id="page-programs" class="page-section">
  <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
- <h2 style="color: var(--pvp-green); text-align: center; margin-bottom: 25px;">البرنامج الانتخابي - المجلس الشعبي البلدي</h2>
- 
+ <h2 style="color: var(--pvp-green); text-align: center; margin-bottom: 20px;">البرنامج الانتخابي - المجلس الشعبي البلدي</h2>
  <div class="grid-lists">
   <div class="list-card" onclick="showPage('program-principles')" style="border-color: var(--gold);">
    <span class="badge" style="background:var(--gold)">مبادئ</span>
    <h2>مبادئ الالتزام</h2>
    <div class="header-info">5 مبادئ أساسية</div>
   </div>
-
-  <div class="list-card" onclick="showPage('program-3')">
-   <span class="badge">المحور 3</span>
-   <h2>الإنارة العمومية والطرقات</h2>
-  </div>
-  <div class="list-card" onclick="showPage('program-4')">
-   <span class="badge">المحور 4</span>
-   <h2>المياه والصرف الصحي</h2>
-  </div>
-  <div class="list-card" onclick="showPage('program-5')">
-   <span class="badge">المحور 5</span>
-   <h2>الاقتصاد المحلي والاستثمار</h2>
-  </div>
-  <div class="list-card" onclick="showPage('program-6')">
-   <span class="badge">المحور 6</span>
-   <h2>الفلاحة وحماية الأراضي</h2>
-  </div>
-  <div class="list-card" onclick="showPage('program-7')">
-   <span class="badge">المحور 7</span>
-   <h2>الشباب والرياضة والثقافة</h2>
-  </div>
-  <div class="list-card" onclick="showPage('program-8')">
-   <span class="badge">المحور 8</span>
-   <h2>التضامن الاجتماعي</h2>
-  </div>
-  <div class="list-card" onclick="showPage('program-9')">
-   <span class="badge">المحور 9</span>
-   <h2>الإدارة الرقمية</h2>
-  </div>
-  <div class="list-card" onclick="showPage('program-10')">
-   <span class="badge">المحور 10</span>
-   <h2>الديمقراطية التشاركية</h2>
-  </div>
+  <div class="list-card" onclick="showPage('program-3')"><span class="badge">المحور 3</span><h2>الإنارة العمومية والطرقات</h2></div>
+  <div class="list-card" onclick="showPage('program-4')"><span class="badge">المحور 4</span><h2>المياه والصرف الصحي</h2></div>
+  <div class="list-card" onclick="showPage('program-5')"><span class="badge">المحور 5</span><h2>الاقتصاد المحلي والاستثمار</h2></div>
+  <div class="list-card" onclick="showPage('program-6')"><span class="badge">المحور 6</span><h2>الفلاحة وحماية الأراضي</h2></div>
+  <div class="list-card" onclick="showPage('program-7')"><span class="badge">المحور 7</span><h2>الشباب والرياضة والثقافة</h2></div>
+  <div class="list-card" onclick="showPage('program-8')"><span class="badge">المحور 8</span><h2>التضامن الاجتماعي</h2></div>
+  <div class="list-card" onclick="showPage('program-9')"><span class="badge">المحور 9</span><h2>الإدارة الرقمية</h2></div>
+  <div class="list-card" onclick="showPage('program-10')"><span class="badge">المحور 10</span><h2>الديمقراطية التشاركية</h2></div>
  </div>
 </section>
 
@@ -461,10 +323,7 @@ button.btn-like:hover { background: #b01c25; }
 <section id="page-program-principles" class="page-section">
  <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
  <div class="program-container">
-  <div class="program-header">
-   <span class="badge" style="background:var(--gold)">البرنامج الانتخابي</span>
-   <h2>مبادئ الالتزام</h2>
-  </div>
+  <div class="program-header"><span class="badge" style="background:var(--gold)">البرنامج الانتخابي</span><h2>مبادئ الالتزام</h2></div>
   <div class="program-point"><span>1</span><p>الشفافية في تسيير الشأن البلدي واحترام القوانين والتنظيمات.</p></div>
   <div class="program-point"><span>2</span><p>ترشيد استعمال الموارد والوسائل المتاحة وتوجيهها نحو الأولويات.</p></div>
   <div class="program-point"><span>3</span><p>التوازن بين مختلف أحياء ومناطق البلدية في الاستفادة من المشاريع والخدمات.</p></div>
@@ -476,10 +335,7 @@ button.btn-like:hover { background: #b01c25; }
 <section id="page-program-3" class="page-section">
  <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
  <div class="program-container">
-  <div class="program-header">
-   <span class="badge">المحور 3</span>
-   <h2>الإنارة العمومية والطرقات والمرافق المحلية</h2>
-  </div>
+  <div class="program-header"><span class="badge">المحور 3</span><h2>الإنارة العمومية والطرقات والمرافق المحلية</h2></div>
   <div class="program-main-idea">إعداد برنامج دوري لصيانة الإنارة العمومية واستبدال التجهيزات المعطلة</div>
   <div class="program-point"><span>✔️</span><p>إعطاء الأولوية للمناطق والأحياء التي تعاني من ضعف الإنارة، خاصة النقاط الحساسة ومحيط المدارس والمرافق.</p></div>
   <div class="program-point"><span>✔️</span><p>صيانة الطرق البلدية والأرصفة ومعالجة الحفر والنقاط المتضررة حسب الأولويات والإمكانيات.</p></div>
@@ -489,10 +345,7 @@ button.btn-like:hover { background: #b01c25; }
 <section id="page-program-4" class="page-section">
  <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
  <div class="program-container">
-  <div class="program-header">
-   <span class="badge">المحور 4</span>
-   <h2>المياه والصرف الصحي بالتنسيق مع الهيئات المختصة</h2>
-  </div>
+  <div class="program-header"><span class="badge">المحور 4</span><h2>المياه والصرف الصحي بالتنسيق مع الهيئات المختصة</h2></div>
   <div class="program-main-idea">متابعة النقاط المعرضة للفيضانات واقتراح حلول للحد من آثارها</div>
   <div class="program-point"><span>✔️</span><p>رصد النقائص المتعلقة بالمياه والتطهير ورفعها إلى الهيئات المختصة ومتابعة معالجتها.</p></div>
   <div class="program-point"><span>✔️</span><p>إشراك المواطنين في التبليغ عن الأعطاب والنقائص عبر قنوات اتصال واضحة.</p></div>
@@ -502,10 +355,7 @@ button.btn-like:hover { background: #b01c25; }
 <section id="page-program-5" class="page-section">
  <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
  <div class="program-container">
-  <div class="program-header">
-   <span class="badge">المحور 5</span>
-   <h2>الاقتصاد المحلي والاستثمار والنشاط التجاري</h2>
-  </div>
+  <div class="program-header"><span class="badge">المحور 5</span><h2>الاقتصاد المحلي والاستثمار والنشاط التجاري</h2></div>
   <div class="program-main-idea">تشجيع المبادرات التي تخلق نشاطا اقتصاديا وفرصا للعمل، خصوصا للشباب</div>
   <div class="program-point"><span>✔️</span><p>تهيئة الظروف المحلية الملائمة للنشاط الاقتصادي وتشجيع المؤسسات الصغيرة والحرف والمهن المحلية.</p></div>
   <div class="program-point"><span>✔️</span><p>تنظيم الفضاءات التجارية والأسواق بما يحافظ على النظام والنظافة وسلامة المواطنين.</p></div>
@@ -515,10 +365,7 @@ button.btn-like:hover { background: #b01c25; }
 <section id="page-program-6" class="page-section">
  <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
  <div class="program-container">
-  <div class="program-header">
-   <span class="badge">المحور 6</span>
-   <h2>الفلاحة وحماية الأراضي والمنتوج المحلي</h2>
-  </div>
+  <div class="program-header"><span class="badge">المحور 6</span><h2>الفلاحة وحماية الأراضي والمنتوج المحلي</h2></div>
   <div class="program-main-idea">حماية الأراضي الفلاحية داخل إقليم البلدية من التعدي والتوسع العمراني غير المنظم</div>
   <div class="program-point"><span>✔️</span><p>دعم المبادرات المحلية الرامية إلى تثمين المنتجات الفلاحية والحرفية.</p></div>
   <div class="program-point"><span>✔️</span><p>المساهمة في تنظيم الأسواق والفضاءات المناسبة لعرض المنتجات المحلية.</p></div>
@@ -528,10 +375,7 @@ button.btn-like:hover { background: #b01c25; }
 <section id="page-program-7" class="page-section">
  <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
  <div class="program-container">
-  <div class="program-header">
-   <span class="badge">المحور 7</span>
-   <h2>الشباب والرياضة والثقافة</h2>
-  </div>
+  <div class="program-header"><span class="badge">المحور 7</span><h2>الشباب والرياضة والثقافة</h2></div>
   <div class="program-main-idea">إنشاء فضاءات جواريّة للشباب والترفيه وتنشيط الأحياء</div>
   <div class="program-point"><span>✔️</span><p>صيانة وتطوير الملاعب والقاعات والمنشآت الرياضية الجوارية المتاحة للبلدية.</p></div>
   <div class="program-point"><span>✔️</span><p>استغلال المرافق الثقافية والشبابية بطريقة منتظمة تخدم سكان البلدية.</p></div>
@@ -541,10 +385,7 @@ button.btn-like:hover { background: #b01c25; }
 <section id="page-program-8" class="page-section">
  <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
  <div class="program-container">
-  <div class="program-header">
-   <span class="badge">المحور 8</span>
-   <h2>التضامن الاجتماعي والفئات الهشة</h2>
-  </div>
+  <div class="program-header"><span class="badge">المحور 8</span><h2>التضامن الاجتماعي والفئات الهشة</h2></div>
   <div class="program-main-idea">تسهيل وصول ذوي الاحتياجات الخاصة إلى المرافق العمومية والفضاءات البلدية</div>
   <div class="program-point"><span>✔️</span><p>تشجيع المبادرات التضامنية المحلية بالتنسيق مع الجمعيات والفاعلين المحليين.</p></div>
   <div class="program-point"><span>✔️</span><p>إيلاء عناية خاصة للأحياء والمناطق التي تعرف نقائص اجتماعية وخدماتية.</p></div>
@@ -554,10 +395,7 @@ button.btn-like:hover { background: #b01c25; }
 <section id="page-program-9" class="page-section">
  <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
  <div class="program-container">
-  <div class="program-header">
-   <span class="badge">المحور 9</span>
-   <h2>الإدارة والرقمنة وتقريب الخدمة من المواطن</h2>
-  </div>
+  <div class="program-header"><span class="badge">المحور 9</span><h2>الإدارة والرقمنة وتقريب الخدمة من المواطن</h2></div>
   <div class="program-main-idea">تبسيط الإجراءات البلدية وتقليل التنقلات غير الضرورية للمواطن</div>
   <div class="program-point"><span>✔️</span><p>توسيع استعمال الرقمنة في استقبال الطلبات والشكاوى ومتابعة الملفات كلما توفرت الإمكانيات.</p></div>
   <div class="program-point"><span>✔️</span><p>إنشاء قنوات واضحة لاستقبال انشغالات المواطنين والرد عليها ومتابعتها.</p></div>
@@ -567,10 +405,7 @@ button.btn-like:hover { background: #b01c25; }
 <section id="page-program-10" class="page-section">
  <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
  <div class="program-container">
-  <div class="program-header">
-   <span class="badge">المحور 10</span>
-   <h2>الديمقراطية التشاركية ومشاركة المواطن</h2>
-  </div>
+  <div class="program-header"><span class="badge">المحور 10</span><h2>الديمقراطية التشاركية ومشاركة المواطن</h2></div>
   <div class="program-main-idea">تنظيم لقاءات دورية مع المواطنين للاستماع إلى انشغالاتهم ومناقشة المشاريع المحلية</div>
   <div class="program-point"><span>✔️</span><p>إعطاء الأولوية للمشاريع التي تستجيب للحاجات الفعلية اليومية للسكان.</p></div>
   <div class="program-point"><span>✔️</span><p>اعتماد المتابعة والتقييم كجزء أساسي من تنفيذ البرنامج البلدي.</p></div>
@@ -589,7 +424,6 @@ button.btn-like:hover { background: #b01c25; }
  </div>
 
  <div id="adminPanel" class="hidden">
-  <!-- أزرار لوحة التحكم -->
   <div class="admin-dashboard-grid">
    <div class="admin-btn active" onclick="toggleAdminView('stats')"><span class="icon">📊</span> الإحصائيات</div>
    <div class="admin-btn" onclick="toggleAdminView('names-wilaya')"><span class="icon">🏛️</span> تعديل الولاية</div>
@@ -600,7 +434,6 @@ button.btn-like:hover { background: #b01c25; }
   </div>
 
   <div class="admin-panel-content">
-   <!-- إحصائيات -->
    <div id="adminStatsView">
     <h3 style="color:var(--pvp-green-dark); margin-top:0;">إحصائيات عامة</h3>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px;">
@@ -610,7 +443,6 @@ button.btn-like:hover { background: #b01c25; }
     </div>
    </div>
 
-   <!-- تعديل أسماء الولاية -->
    <div id="adminNames-wilayaView" class="hidden">
     <h3 style="color:var(--pvp-green-dark); margin-top:0;">تعديل أسماء ومهن قائمة الولاية</h3>
     <div class="edit-grid" id="editWilayaGrid"></div>
@@ -618,7 +450,6 @@ button.btn-like:hover { background: #b01c25; }
     <div id="saveWilayaMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
    </div>
 
-   <!-- تعديل أسماء البلدية -->
    <div id="adminNames-baladiyaView" class="hidden">
     <h3 style="color:var(--pvp-green-dark); margin-top:0;">تعديل أسماء ومهن قائمة البلدية</h3>
     <div class="edit-grid" id="editBaladiyaGrid"></div>
@@ -626,26 +457,23 @@ button.btn-like:hover { background: #b01c25; }
     <div id="saveBaladiyaMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
    </div>
 
-   <!-- التعليقات الواردة -->
    <div id="adminPendingView" class="hidden">
     <h3 style="color:var(--pvp-green-dark); margin-top:0;">التعليقات الواردة (تحتاج مراجعة)</h3>
     <div id="pendingComments"></div>
    </div>
 
-   <!-- التعليقات المنشورة -->
    <div id="adminPublishedView" class="hidden">
     <h3 style="color:var(--pvp-green-dark); margin-top:0;">التعليقات المنشورة وإدارتها</h3>
     <div id="publishedAdmin"></div>
    </div>
 
-   <!-- سجل الزوار -->
    <div id="adminVisitorsView" class="hidden">
     <h3 style="color:var(--pvp-green-dark); margin-top:0;">سجل الزوار</h3>
     <div id="visitorsList"></div>
    </div>
   </div>
 
-  <button class="btn-action" style="background:var(--pvp-red); margin-top:30px; width:100%;" onclick="document.getElementById('adminPanel').classList.add('hidden'); document.getElementById('adminLoginBox').style.display='block';">تسجيل الخروج</button>
+  <button class="btn-action" style="background:var(--pvp-red); margin-top:20px; width:100%;" onclick="document.getElementById('adminPanel').classList.add('hidden'); document.getElementById('adminLoginBox').style.display='block';">تسجيل الخروج</button>
  </div>
 </section>
 
@@ -676,7 +504,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const $ = id => document.getElementById(id);
 
-// --- البيانات الصحيحة (الولاية والبلدية) ---
+// البيانات الافتراضية
 let wilayaData = [
  { id: 1, name: "صافي بوقرة صلاح الدين", job: "محامي" },
  { id: 2, name: "نمار عزيز", job: "أعمال حرة - نشاط تجاري" },
@@ -724,7 +552,7 @@ let wilayaData = [
 
 let baladiyaData = [
  { id: 1, name: "زياني جيلالي", job: "إطار بالجماعات المحلية" },
- { id: 2, name: "زوكر جلول", job: "رئيس جمعية متقاعد من الجيش" },
+ { id: 2, name: "زوكل جلول", job: "رئيس جمعية متقاعد من الجيش" },
  { id: 3, name: "حديدي عباس", job: "عامل بمؤسسة وطنية" },
  { id: 4, name: "مصيبح عيسى", job: "متقاعد من الجيش" },
  { id: 5, name: "ريغي عبد القادر", job: "موظف بالبلدية" },
@@ -765,7 +593,6 @@ let baladiyaData = [
  { id: 40, name: "عكروم نعيمة", job: "أعمال حرة" }
 ];
 
-// --- إدارة التنقل بين الصفحات ---
 window.showPage = function(pageId) {
  document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
  const target = $('page-' + pageId);
@@ -795,7 +622,6 @@ function renderGrid(data, gridId, listType) {
  });
 }
 
-// --- فتح صفحة المترشح ---
 let currentList = 'wilaya';
 let currentCandidateId = null;
 
@@ -853,7 +679,6 @@ window.openCandidate = function(listType, id) {
  initFirebaseForCandidate(listType, id);
 }
 
-// --- إدارة Firebase للمترشح ---
 let unsubLikes, unsubPublished;
 
 function initFirebaseForCandidate(listType, candidateId) {
@@ -892,7 +717,6 @@ function initFirebaseForCandidate(listType, candidateId) {
  });
 }
 
-// --- تسجيل الزيارات العامة ---
 const visitorsRef = ref(db, "siteVisitors");
 const inboxRef = ref(db, "commentInbox");
 
@@ -910,7 +734,6 @@ async function recordVisit() {
 }
 recordVisit();
 
-// --- الأزرار ---
 document.getElementById('likeBtn').addEventListener('click', async () => {
  if(!currentCandidateId) return;
  const btn = document.getElementById('likeBtn');
@@ -955,7 +778,7 @@ document.getElementById('commentForm').addEventListener('submit', async e => {
 });
 
 
-// --- لوحة الإدارة (Admin) ---
+// --- لوحة الإدارة ---
 let adminLoggedIn = false;
 let allInbox = {}, allPublished = {}, allVisits = {};
 
@@ -1001,7 +824,6 @@ window.toggleAdminView = function(view) {
  if(view === 'visitors') renderVisitors();
 }
 
-// تعديل الأسماء
 function renderNamesEditor(listType) {
  const gridId = listType === 'wilaya' ? 'editWilayaGrid' : 'editBaladiyaGrid';
  const grid = $(gridId);
@@ -1039,7 +861,8 @@ window.saveNames = async function(listType) {
  });
 
  try {
-  await set(ref(db, `settings/names_${listType}`), { 
+  // حفظ في مسار مفتوح ومصرح به
+  await set(ref(db, `publishedComments/site_data_names_${listType}`), { 
    updatedList: updates,
    timestamp: Date.now()
   });
@@ -1062,15 +885,14 @@ window.saveNames = async function(listType) {
  }
 }
 
-// جلب التعديلات المحفوظة مسبقاً
-onValue(ref(db, "settings/names_wilaya"), (s) => {
+onValue(ref(db, "publishedComments/site_data_names_wilaya"), (s) => {
  if(s.exists() && s.val().updatedList) {
   const updates = s.val().updatedList;
   wilayaData = wilayaData.map(c => updates[c.id] ? {...c, ...updates[c.id]} : c);
   if(document.getElementById('page-candidates-wilaya').classList.contains('active')) renderGrid(wilayaData, 'candidatesGridWilaya', 'wilaya');
  }
 });
-onValue(ref(db, "settings/names_baladiya"), (s) => {
+onValue(ref(db, "publishedComments/site_data_names_baladiya"), (s) => {
  if(s.exists() && s.val().updatedList) {
   const updates = s.val().updatedList;
   baladiyaData = baladiyaData.map(c => updates[c.id] ? {...c, ...updates[c.id]} : c);
@@ -1079,7 +901,6 @@ onValue(ref(db, "settings/names_baladiya"), (s) => {
 });
 
 
-// إحصائيات
 function updateDashStats() {
  let pubCount = 0;
  for(let list in allPublished) {
@@ -1090,7 +911,6 @@ function updateDashStats() {
  document.getElementById('dashLikes').textContent = "0"; 
 }
 
-// التعليقات الواردة
 function renderPending() {
  const box = document.getElementById('pendingComments');
  box.innerHTML = '';
@@ -1130,7 +950,6 @@ window.deleteInbox = async function(id) {
  await remove(ref(db, `commentInbox/${id}`));
 }
 
-// التعليقات المنشورة
 function renderPublishedAdmin() {
  const box = document.getElementById('publishedAdmin');
  box.innerHTML = '';
@@ -1139,6 +958,8 @@ function renderPublishedAdmin() {
  for(let path in allPublished) {
   const comments = allPublished[path];
   if(!comments || Object.keys(comments).length === 0) continue;
+  if(path.includes('site_data_names')) continue; // تجاهل مسار تعديل الأسماء
+  
   hasAny = true;
   
   const [listType, cid] = path.split('_');
@@ -1178,7 +999,6 @@ window.deletePub = async function(path, id) {
  await remove(ref(db, `comments/${path}/${id}`));
 }
 
-// سجل الزوار
 function renderVisitors() {
  const box = document.getElementById('visitorsList');
  box.innerHTML = '';
