@@ -64,20 +64,10 @@ body{
  display: inline-block;
  animation: marquee 30s linear infinite;
 }
-.marquee-content span {
- padding: 0 30px;
-}
-@keyframes marquee {
- 0% { transform: translateX(0); }
- 100% { transform: translateX(100%); }
-}
-html[dir="rtl"] .marquee-content {
- animation: marquee-rtl 30s linear infinite;
-}
-@keyframes marquee-rtl {
- 0% { transform: translateX(0); }
- 100% { transform: translateX(100%); }
-}
+.marquee-content span { padding: 0 30px; }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
+html[dir="rtl"] .marquee-content { animation: marquee-rtl 30s linear infinite; }
+@keyframes marquee-rtl { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
 
 header{
  display:flex;
@@ -186,9 +176,7 @@ header{
  background: linear-gradient(135deg, var(--pvp-green) 50%, var(--pvp-green-dark) 100%);
  padding: 40px 30px; text-align: center; position: relative;
 }
-.profile-header.featured-profile {
- background: linear-gradient(135deg, var(--pvp-red) 0%, #a3151e 100%);
-}
+.profile-header.featured-profile { background: linear-gradient(135deg, var(--pvp-red) 0%, #a3151e 100%); }
 .profile-header::after {
  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 30px;
  background: linear-gradient(to top right, var(--surface) 49%, transparent 50%),
@@ -238,27 +226,53 @@ button.btn-like:hover { background: #b01c25; }
 }
 .btn-back:hover { background: var(--bg); border-color: var(--pvp-green); color: var(--pvp-green); }
 
-/* Admin Panel & Edit Names */
+/* البرنامج الانتخابي */
+.program-container {
+ background: var(--surface); border-radius: 24px; padding: 30px; border: 1px solid var(--border);
+ box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+.program-header { text-align: center; margin-bottom: 30px; }
+.program-header h2 { color: var(--pvp-green); font-size: 28px; margin-bottom: 10px; }
+.program-header .badge { background: var(--pvp-red); color: white; padding: 5px 15px; border-radius: 999px; font-weight: bold; display: inline-block; font-size: 14px;}
+.program-point {
+ background: var(--bg); padding: 20px; border-radius: 16px; border: 1px solid var(--border);
+ margin-bottom: 15px; border-right: 5px solid var(--pvp-green);
+ display: flex; align-items: flex-start; gap: 15px;
+}
+.program-point span { font-size: 24px; color: var(--pvp-green); font-weight: bold; }
+.program-point p { margin: 0; font-weight: 700; font-size: 17px; color: var(--text);}
+
+/* لوحة الإدارة (Dashboard) */
 #adminSection { display: none; }
-.adminNav { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
-.adminNav button { background: var(--text); color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: bold; transition: 0.2s;}
-.adminNav button:hover { background: #000; }
-.stat-box { background: white; padding: 25px; text-align: center; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.02);}
+.admin-dashboard-grid {
+ display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin-bottom: 30px;
+}
+.admin-btn {
+ background: white; border: 2px solid var(--border); border-radius: 16px; padding: 20px 15px;
+ text-align: center; cursor: pointer; transition: 0.2s; font-weight: 800; color: var(--text);
+ display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 15px;
+ box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+.admin-btn:hover { border-color: var(--pvp-green); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.admin-btn.active { background: var(--pvp-green); color: white; border-color: var(--pvp-green); box-shadow: 0 10px 20px rgba(15, 118, 59, 0.3);}
+.admin-btn .icon { font-size: 28px; }
+
+.admin-panel-content {
+ background: var(--surface); border-radius: 24px; padding: 30px; border: 1px solid var(--border);
+ box-shadow: 0 10px 30px rgba(0,0,0,0.03); min-height: 400px;
+}
+
+.stat-box { background: var(--bg); padding: 25px; text-align: center; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 20px; }
 .stat-box strong { font-size: 38px; color: var(--pvp-red); display: block; margin-bottom: 5px;}
 .stat-box span { font-weight: bold; color: var(--muted); }
 
-/* Edit Table */
 .edit-grid { display: grid; gap: 12px; }
 .edit-row { display: flex; gap: 15px; align-items: center; background: white; padding: 12px 15px; border-radius: 12px; border: 1px solid var(--border); }
 .edit-row span { font-weight: 900; width: 40px; text-align: center; color: var(--pvp-green); }
 .edit-row input { margin: 0; padding: 10px; flex: 1; }
-.list-selector { margin-bottom: 20px; display: flex; gap: 10px; }
-.list-selector button { padding: 10px 20px; border: 1px solid var(--border); background: white; border-radius: 8px; cursor: pointer; font-weight: bold; }
-.list-selector button.active { background: var(--pvp-green); color: white; border-color: var(--pvp-green); }
 
 .hidden { display: none !important; }
 
-/* أزرار الإدارة */
 .admin-access-btn {
  background: transparent; border: 1px solid var(--border); color: var(--muted);
  padding: 8px 16px; border-radius: 10px; cursor: pointer; font-weight: bold; font-family: inherit; transition: 0.2s;
@@ -312,6 +326,9 @@ button.btn-like:hover { background: #b01c25; }
    <button class="btn-main btn-baladiya" onclick="showPage('lists-baladiya')">
     🏢 المجلس الشعبي البلدي
    </button>
+   <button class="btn-main" style="background:var(--gold);" onclick="showPage('program-baladiya')">
+    📜 البرنامج الانتخابي
+   </button>
   </div>
  </div>
 
@@ -356,27 +373,20 @@ button.btn-like:hover { background: #b01c25; }
 <section id="page-candidates-wilaya" class="page-section">
  <button class="btn-back" onclick="showPage('lists-wilaya')">← العودة للقوائم</button>
  <h2 style="text-align: center; color: var(--pvp-green); margin-bottom: 25px;">مترشحو قائمة الولاية (06) - أفلو</h2>
- <div class="candidates-grid" id="candidatesGridWilaya">
-  <!-- سيتم التوليد هنا -->
- </div>
+ <div class="candidates-grid" id="candidatesGridWilaya"></div>
 </section>
 
 <!-- 5. مترشحي البلدية -->
 <section id="page-candidates-baladiya" class="page-section">
  <button class="btn-back" onclick="showPage('lists-baladiya')">← العودة للقوائم</button>
  <h2 style="text-align: center; color: var(--pvp-red); margin-bottom: 25px;">مترشحو قائمة البلدية (06) - أفلو</h2>
- <div class="candidates-grid" id="candidatesGridBaladiya">
-  <!-- سيتم التوليد هنا -->
- </div>
+ <div class="candidates-grid" id="candidatesGridBaladiya"></div>
 </section>
 
 <!-- 6. البطاقة الفنية للمترشح -->
 <section id="page-candidate-profile" class="page-section">
  <button class="btn-back" id="profileBackBtn">← العودة للقائمة</button>
- 
- <div class="profile-card" id="profileCard">
-  <!-- محتوى البطاقة الديناميكي -->
- </div>
+ <div class="profile-card" id="profileCard"></div>
 
  <div class="interaction-box">
   <h3 style="color: var(--pvp-green-dark); text-align:center;">رأيك يهمنا</h3>
@@ -398,64 +408,101 @@ button.btn-like:hover { background: #b01c25; }
  </div>
 </section>
 
-<!-- 7. لوحة الإدارة -->
+<!-- 7. البرنامج الانتخابي (البلدي) -->
+<section id="page-program-baladiya" class="page-section">
+ <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
+ <div class="program-container">
+  <div class="program-header">
+   <span class="badge">المحور 3</span>
+   <h2>الإنارة العمومية والطرقات والمرافق المحلية</h2>
+   <p style="color:var(--muted); font-weight:700;">البرنامج الانتخابي للمجلس الشعبي البلدي - بلدية أفلو</p>
+  </div>
+  
+  <div style="background:var(--pvp-green); color:white; padding:20px; border-radius:16px; font-weight:800; text-align:center; font-size:18px; margin-bottom:25px;">
+   إعداد برنامج دوري لصيانة الإنارة العمومية واستبدال التجهيزات المعطلة
+  </div>
+
+  <div class="program-point">
+   <span>✔️</span>
+   <p>إعطاء الأولوية للمناطق والأحياء التي تعاني من ضعف الإنارة، خاصة النقاط الحساسة ومحيط المدارس والمرافق.</p>
+  </div>
+
+  <div class="program-point">
+   <span>✔️</span>
+   <p>صيانة الطرق البلدية والأرصفة ومعالجة الحفر والنقاط المتضررة حسب الأولويات والإمكانيات.</p>
+  </div>
+ </div>
+</section>
+
+<!-- 8. لوحة الإدارة (Dashboard) -->
 <section id="adminSection" class="page-section container" style="margin-top:50px; border-top:2px dashed var(--border); padding-top:30px;">
- <h2 style="color:var(--pvp-green-dark);">لوحة تحكم الإدارة</h2>
+ <h2 style="color:var(--pvp-green-dark); text-align:center; margin-bottom:30px;">لوحة تحكم الإدارة</h2>
  
- <div id="adminLoginBox">
-  <p>أدخل رمز الدخول لتعديل البيانات أو مراجعة التعليقات:</p>
-  <input type="password" id="adminCode" placeholder="رمز الإدارة" style="max-width:300px;">
-  <button class="btn-action" id="adminLogin">دخول</button>
-  <div id="adminMessage" style="font-size:14px; font-weight:bold; margin-top:5px;"></div>
+ <div id="adminLoginBox" style="text-align:center; max-width:400px; margin:auto;">
+  <p style="color:var(--muted);">أدخل رمز الدخول لتعديل البيانات أو مراجعة التعليقات:</p>
+  <input type="password" id="adminCode" placeholder="رمز الإدارة" style="text-align:center; font-size:20px; letter-spacing:5px;">
+  <button class="btn-action" id="adminLogin" style="width:100%; font-size:18px;">دخول</button>
+  <div id="adminMessage" style="font-size:14px; font-weight:bold; margin-top:10px;"></div>
  </div>
 
  <div id="adminPanel" class="hidden">
-  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px; margin-bottom:30px;">
-   <div class="stat-box"><strong id="dashVisits">0</strong> <span>زائر</span></div>
-   <div class="stat-box"><strong id="dashLikes">0</strong> <span>إجمالي الإعجابات</span></div>
-   <div class="stat-box"><strong id="dashComments">0</strong> <span>تعليق منشور</span></div>
+  <!-- أزرار لوحة التحكم -->
+  <div class="admin-dashboard-grid">
+   <div class="admin-btn active" onclick="toggleAdminView('stats')"><span class="icon">📊</span> الإحصائيات</div>
+   <div class="admin-btn" onclick="toggleAdminView('names-wilaya')"><span class="icon">🏛️</span> تعديل أسماء الولاية</div>
+   <div class="admin-btn" onclick="toggleAdminView('names-baladiya')"><span class="icon">🏢</span> تعديل أسماء البلدية</div>
+   <div class="admin-btn" onclick="toggleAdminView('pending')"><span class="icon">📥</span> التعليقات الواردة</div>
+   <div class="admin-btn" onclick="toggleAdminView('published')"><span class="icon">💬</span> التعليقات المنشورة</div>
+   <div class="admin-btn" onclick="toggleAdminView('visitors')"><span class="icon">👥</span> سجل الزوار</div>
   </div>
 
-  <div class="adminNav">
-   <button onclick="toggleAdminView('names')" style="background:var(--pvp-green);">تعديل الأسماء والمهن</button>
-   <button onclick="toggleAdminView('pending')">التعليقات الواردة</button>
-   <button onclick="toggleAdminView('published')">التعليقات المنشورة</button>
-   <button onclick="toggleAdminView('visitors')">سجل الزوار</button>
-  </div>
-
-  <!-- شاشة تعديل الأسماء -->
-  <div id="adminNamesView" class="hidden">
-   <h3>تعديل الأسماء والمهن</h3>
-   <p style="font-size:14px; color:var(--muted);">اختر القائمة التي تريد تعديلها، ثم اضغط حفظ.</p>
-   
-   <div class="list-selector">
-    <button id="btnEditWilaya" class="active" onclick="switchEditList('wilaya')">قائمة الولاية</button>
-    <button id="btnEditBaladiya" onclick="switchEditList('baladiya')">قائمة البلدية</button>
+  <div class="admin-panel-content">
+   <!-- إحصائيات -->
+   <div id="adminStatsView">
+    <h3 style="color:var(--pvp-green-dark); margin-top:0;">إحصائيات عامة</h3>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px;">
+     <div class="stat-box"><strong id="dashVisits">0</strong> <span>زائر</span></div>
+     <div class="stat-box"><strong id="dashLikes">0</strong> <span>إجمالي الإعجابات</span></div>
+     <div class="stat-box"><strong id="dashComments">0</strong> <span>تعليق منشور</span></div>
+    </div>
    </div>
 
-   <div class="edit-grid" id="editNamesGrid">
-    <!-- يتم التوليد بالجافاسكريبت -->
+   <!-- تعديل أسماء الولاية -->
+   <div id="adminNames-wilayaView" class="hidden">
+    <h3 style="color:var(--pvp-green-dark); margin-top:0;">تعديل أسماء ومهن قائمة الولاية</h3>
+    <div class="edit-grid" id="editWilayaGrid"></div>
+    <button class="btn-action" style="margin-top:20px; width:100%; font-size:18px; padding:15px;" onclick="saveNames('wilaya')" id="saveWilayaBtn">💾 حفظ التعديلات</button>
+    <div id="saveWilayaMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
    </div>
-   <button class="btn-action" style="margin-top:25px; width:100%; font-size:18px; padding:15px;" onclick="saveAllNames()" id="saveNamesBtn">💾 حفظ التعديلات</button>
-   <div id="saveNamesMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
+
+   <!-- تعديل أسماء البلدية -->
+   <div id="adminNames-baladiyaView" class="hidden">
+    <h3 style="color:var(--pvp-green-dark); margin-top:0;">تعديل أسماء ومهن قائمة البلدية</h3>
+    <div class="edit-grid" id="editBaladiyaGrid"></div>
+    <button class="btn-action" style="margin-top:20px; width:100%; font-size:18px; padding:15px;" onclick="saveNames('baladiya')" id="saveBaladiyaBtn">💾 حفظ التعديلات</button>
+    <div id="saveBaladiyaMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
+   </div>
+
+   <!-- التعليقات الواردة -->
+   <div id="adminPendingView" class="hidden">
+    <h3 style="color:var(--pvp-green-dark); margin-top:0;">التعليقات الواردة (تحتاج مراجعة)</h3>
+    <div id="pendingComments"></div>
+   </div>
+
+   <!-- التعليقات المنشورة -->
+   <div id="adminPublishedView" class="hidden">
+    <h3 style="color:var(--pvp-green-dark); margin-top:0;">التعليقات المنشورة وإدارتها</h3>
+    <div id="publishedAdmin"></div>
+   </div>
+
+   <!-- سجل الزوار -->
+   <div id="adminVisitorsView" class="hidden">
+    <h3 style="color:var(--pvp-green-dark); margin-top:0;">سجل الزوار</h3>
+    <div id="visitorsList"></div>
+   </div>
   </div>
 
-  <div id="adminPendingView" class="hidden">
-   <h3>التعليقات الواردة (تحتاج مراجعة)</h3>
-   <div id="pendingComments"></div>
-  </div>
-
-  <div id="adminPublishedView" class="hidden">
-   <h3>التعليقات المنشورة وإدارتها</h3>
-   <div id="publishedAdmin"></div>
-  </div>
-
-  <div id="adminVisitorsView" class="hidden">
-   <h3>سجل الزوار</h3>
-   <div id="visitorsList"></div>
-  </div>
-
-  <button class="btn-action" style="background:var(--pvp-red); margin-top:30px;" onclick="document.getElementById('adminPanel').classList.add('hidden'); document.getElementById('adminLoginBox').style.display='block';">تسجيل الخروج</button>
+  <button class="btn-action" style="background:var(--pvp-red); margin-top:30px; width:100%;" onclick="document.getElementById('adminPanel').classList.add('hidden'); document.getElementById('adminLoginBox').style.display='block';">تسجيل الخروج</button>
  </div>
 </section>
 
@@ -489,56 +536,56 @@ const $ = id => document.getElementById(id);
 // --- البيانات الافتراضية ---
 let wilayaData = [
  { id: 1, name: "صافي بوقرة صلاح الدين", job: "محامي" },
- { id: 2, name: "نمار عزيز", job: "أعمال حرة" },
- { id: 3, name: "بوكر بلقاسم", job: "مدير" },
- { id: 4, name: "عمارة عبد القادر", job: "ممثل التربية" },
+ { id: 2, name: "نمار عزيز", job: "أعمال حرة - نشاط تجاري" },
+ { id: 3, name: "بوكر بلقاسم", job: "مدير إندلاعية" },
+ { id: 4, name: "عمارة عبد القادر", job: "ممثل التربية الوطنية" },
  { id: 5, name: "زحروف أحمد", job: "مهندس" },
  { id: 6, name: "خاشة عادل", job: "مساعد عملي" },
- { id: 7, name: "بن حليمة عبد الغاني", job: "متصرف" },
- { id: 8, name: "شريط دربل", job: "إطار" },
- { id: 9, name: "خالدي رابح", job: "مهندس دولة" },
- { id: 10, name: "بشير محمد", job: "متقاعد" },
+ { id: 7, name: "بن حليمة عبد الغاني", job: "متصرف إقليمي بالخارج" },
+ { id: 8, name: "شريط دربل", job: "إطار بالمديرية التجارة" },
+ { id: 9, name: "خالدي رابح", job: "مهندس دولة في السكن والعمران" },
+ { id: 10, name: "بشير محمد", job: "متقاعد من الجيش" },
  { id: 11, name: "بركة عبد الله", job: "أعمال حرة" },
- { id: 12, name: "زوقاري إبراهيم", job: "أستاذ" },
- { id: 13, name: "صافي أحمد", job: "إطار" },
- { id: 14, name: "كسامي أحمد", job: "أستاذ" },
+ { id: 12, name: "زوقاري إبراهيم", job: "أستاذ متقاعد" },
+ { id: 13, name: "صافي أحمد", job: "إطار في التربية" },
+ { id: 14, name: "كسامي أحمد", job: "أستاذ إبتدائي" },
  { id: 15, name: "براهيمي يوسف", job: "متصرف إداري بمقر الولاية", featured: true }, 
- { id: 16, name: "عقون بوعالم", job: "موظف" },
- { id: 17, name: "مصدوري حكيم", job: "أستاذ" },
- { id: 18, name: "حرين محمد", job: "مفتش" },
- { id: 19, name: "بركاتي المشري", job: "مفتش" },
- { id: 20, name: "معروفي كمال", job: "موظف" },
- { id: 21, name: "بغدادي عزيز", job: "متقاعد" },
- { id: 22, name: "روندالة خالد", job: "أستاذ" },
- { id: 23, name: "بورحلة محمد", job: "متقاعد" },
- { id: 24, name: "سعدي أحمد", job: "موظف" },
- { id: 25, name: "دزداري يحيى", job: "أستاذ" },
- { id: 26, name: "قطاف الطيب", job: "موظف" },
- { id: 27, name: "قنابي الياس الحسين", job: "أستاذ" },
- { id: 28, name: "شاذلي عبد الرحمان", job: "موظف" },
+ { id: 16, name: "عقون بوعالم", job: "موظف بالبلدية" },
+ { id: 17, name: "مصدوري حكيم", job: "أستاذ تكوين" },
+ { id: 18, name: "حرين محمد", job: "مفتش التعليم المتوسط" },
+ { id: 19, name: "بركاتي المشري", job: "مفتش التعليم المتوسط" },
+ { id: 20, name: "معروفي كمال", job: "موظف بالبلدية" },
+ { id: 21, name: "بغدادي عزيز", job: "متقاعد من الجيش" },
+ { id: 22, name: "روندالة خالد", job: "أستاذ تعليم متوسط" },
+ { id: 23, name: "بورحلة محمد", job: "متقاعد من الجيش" },
+ { id: 24, name: "السعدي أمحمد", job: "موظف" },
+ { id: 25, name: "دزداري يحيى", job: "أستاذ تعليم متوسط" },
+ { id: 26, name: "قطاف الطيب", job: "موظف بالبلدية" },
+ { id: 27, name: "قنابي الياس الحسين", job: "أستاذ تعليم ثانوي" },
+ { id: 28, name: "شاذلي عبد الرحمان", job: "موظف بمكتب التوثيق" },
  { id: 29, name: "رويشم محمد الأمين", job: "أعمال حرة" },
- { id: 30, name: "رواب بولفة", job: "إطار" },
+ { id: 30, name: "رواب بولفة", job: "إطار بمديرية الموارد المالية" },
  { id: 31, name: "طالبي إبراهيم", job: "أعمال حرة" },
  { id: 32, name: "براهيمي العربي", job: "أعمال حرة" },
  { id: 33, name: "زدك سعد", job: "أعمال حرة" },
- { id: 34, name: "تركي خليل", job: "إطار بنك" },
+ { id: 34, name: "تركي خليل", job: "إطار ببنك BNA" },
  { id: 35, name: "محمودي طيب", job: "أعمال حرة" },
- { id: 36, name: "مصيبيح صليحة", job: "أعمال حرة" },
+ { id: 36, name: "مصيبح صليحة", job: "أعمال حرة" },
  { id: 37, name: "عليلي نجاة", job: "أعمال حرة" },
- { id: 38, name: "زميت عمر", job: "إطار سوناطراك" },
- { id: 39, name: "نور الدين الشيخ", job: "أستاذ" },
- { id: 40, name: "شنوفي نصر الدين", job: "موظف" },
- { id: 41, name: "معمري محمد الأمين", job: "موظف" },
- { id: 42, name: "عقون مبارك", job: "متصرف" }
+ { id: 38, name: "زميت عمر", job: "إطار بشركة سوناطراك" },
+ { id: 39, name: "نور الدين الشيخ", job: "أستاذ تعليم ثانوي" },
+ { id: 40, name: "شنوفي نصر الدين", job: "موظف بالجامعة" },
+ { id: 41, name: "معمري محمد الأمين", job: "موظف بمفتشية العمل" },
+ { id: 42, name: "عقون مبارك", job: "متصرف رئيسي بالتربية" }
 ];
 
 let baladiyaData = [
  { id: 1, name: "زياني جيلالي", job: "إطار بالجماعات المحلية" },
- { id: 2, name: "زوكل جلول", job: "رئيس جمعية متقاعد" },
+ { id: 2, name: "زوكل جلول", job: "رئيس جمعية متقاعد من الجيش" },
  { id: 3, name: "حديدي عباس", job: "عامل بمؤسسة وطنية" },
  { id: 4, name: "مصيبح عيسى", job: "متقاعد من الجيش" },
  { id: 5, name: "ريغي عبد القادر", job: "موظف بالبلدية" },
- { id: 6, name: "يوسفي جيلالي", job: "متقاعد من شركة" },
+ { id: 6, name: "يوسفي جيلالي", job: "متقاعد من التربية - شركة وطنية" },
  { id: 7, name: "قني عبد القادر", job: "متقاعد من التربية" },
  { id: 8, name: "بوكرمة عبد الجليل", job: "تقني سامي - أعمال حرة" },
  { id: 9, name: "عزوزي بن عزوز", job: "متقاعد من قطاع العدالة" },
@@ -554,7 +601,7 @@ let baladiyaData = [
  { id: 19, name: "قرادي عبد القادر", job: "ملحق رئيسي بالإدارة الإقليمية" },
  { id: 20, name: "عمران بخير", job: "رئيس قسم بالشركة الجزائرية" },
  { id: 21, name: "صياد ناصر", job: "متقاعد من الجيش" },
- { id: 22, name: "حشاني ناصر", job: "عامل بمصنع" },
+ { id: 22, name: "حشاني ناصر", job: "عامل بمصنع amouda" },
  { id: 23, name: "بلغشوة مهدي", job: "رئيسي بالمكتبة" },
  { id: 24, name: "غباني عبد العزيز", job: "أستاذ تعليم متوسط" },
  { id: 25, name: "كربطة عيسى", job: "أعمال حرة" },
@@ -619,7 +666,7 @@ window.openCandidate = function(listType, id) {
 
  const card = $('profileCard');
  document.getElementById('likeCount').textContent = "0";
- document.getElementById('publishedComments').innerHTML = "<p style='color:var(--muted);'>جارٍ التحميل...</p>";
+ document.getElementById('publishedComments').innerHTML = "<p style='color:var(--muted); text-align:center;'>جارٍ التحميل...</p>";
  document.getElementById('commentText').value = "";
  document.getElementById('message').textContent = "";
  
@@ -646,7 +693,7 @@ window.openCandidate = function(listType, id) {
      <span>حزب صوت الشعب (PVP)</span>
     </div>
     <div class="info-item">
-     <strong>الولاية / البلدية</strong>
+     <strong>الدائرة</strong>
      <span>أفلو</span>
     </div>
     ${candidate.featured ? `
@@ -663,14 +710,13 @@ window.openCandidate = function(listType, id) {
  initFirebaseForCandidate(listType, id);
 }
 
-// --- إدارة Firebase للمترشح (إعجابات وتعليقات) ---
+// --- إدارة Firebase للمترشح ---
 let unsubLikes, unsubPublished;
 
 function initFirebaseForCandidate(listType, candidateId) {
  if(unsubLikes) unsubLikes();
  if(unsubPublished) unsubPublished();
 
- // مسارات دقيقة لكل مترشح في كل قائمة
  const likesRef = ref(db, `stats/${listType}_${candidateId}/likes`);
  const publishedRef = ref(db, `comments/${listType}_${candidateId}`);
 
@@ -769,7 +815,6 @@ document.getElementById('commentForm').addEventListener('submit', async e => {
 // --- لوحة الإدارة (Admin) ---
 let adminLoggedIn = false;
 let allInbox = {}, allPublished = {}, allVisits = {};
-let currentEditList = 'wilaya';
 
 window.openAdmin = function() {
  document.getElementById('adminSection').style.display = 'block';
@@ -789,33 +834,42 @@ document.getElementById('adminLogin').addEventListener('click', () => {
  adminLoggedIn = true;
  document.getElementById('adminLoginBox').style.display = "none";
  document.getElementById('adminPanel').classList.remove('hidden');
- toggleAdminView('names');
+ 
+ // إظهار الإحصائيات افتراضياً
+ toggleAdminView('stats');
+ renderNamesEditor('wilaya');
+ renderNamesEditor('baladiya');
 });
 
 window.toggleAdminView = function(view) {
- ['names', 'pending', 'published', 'visitors'].forEach(v => {
-  document.getElementById('admin' + v.charAt(0).toUpperCase() + v.slice(1) + 'View').classList.add('hidden');
+ // إخفاء كل المحتويات
+ ['stats', 'names-wilaya', 'names-baladiya', 'pending', 'published', 'visitors'].forEach(v => {
+  const el = $('admin' + v.charAt(0).toUpperCase() + v.slice(1).replace('-', '') + 'View');
+  if(el) el.classList.add('hidden');
  });
- document.getElementById('admin' + view.charAt(0).toUpperCase() + view.slice(1) + 'View').classList.remove('hidden');
+ // إزالة التفعيل من كل الأزرار
+ document.querySelectorAll('.admin-btn').forEach(btn => btn.classList.remove('active'));
+
+ // إظهار المطلوب
+ const targetView = $('admin' + view.charAt(0).toUpperCase() + view.slice(1).replace('-', '') + 'View');
+ if(targetView) targetView.classList.remove('hidden');
  
- if(view === 'names') renderNamesEditor();
+ // تفعيل الزر
+ const btn = Array.from(document.querySelectorAll('.admin-btn')).find(b => b.getAttribute('onclick').includes(view));
+ if(btn) btn.classList.add('active');
+
+ // إجراءات إضافية
  if(view === 'pending') renderPending();
  if(view === 'published') renderPublishedAdmin();
  if(view === 'visitors') renderVisitors();
 }
 
 // تعديل الأسماء
-window.switchEditList = function(list) {
- currentEditList = list;
- document.getElementById('btnEditWilaya').classList.toggle('active', list === 'wilaya');
- document.getElementById('btnEditBaladiya').classList.toggle('active', list === 'baladiya');
- renderNamesEditor();
-}
-
-function renderNamesEditor() {
- const grid = document.getElementById('editNamesGrid');
+function renderNamesEditor(listType) {
+ const gridId = listType === 'wilaya' ? 'editWilayaGrid' : 'editBaladiyaGrid';
+ const grid = $(gridId);
  grid.innerHTML = '';
- const data = currentEditList === 'wilaya' ? wilayaData : baladiyaData;
+ const data = listType === 'wilaya' ? wilayaData : baladiyaData;
  
  data.forEach(c => {
   if(c.featured) return;
@@ -823,32 +877,32 @@ function renderNamesEditor() {
   div.className = 'edit-row';
   div.innerHTML = `
    <span>${c.id}</span>
-   <input type="text" id="edit_name_${c.id}" value="${c.name}" placeholder="الاسم">
-   <input type="text" id="edit_job_${c.id}" value="${c.job}" placeholder="المهنة">
+   <input type="text" id="edit_${listType}_name_${c.id}" value="${c.name}" placeholder="الاسم">
+   <input type="text" id="edit_${listType}_job_${c.id}" value="${c.job}" placeholder="المهنة">
   `;
   grid.appendChild(div);
  });
 }
 
-window.saveAllNames = async function() {
- const btn = document.getElementById('saveNamesBtn');
- const msgBox = document.getElementById('saveNamesMsg');
+window.saveNames = async function(listType) {
+ const btn = listType === 'wilaya' ? document.getElementById('saveWilayaBtn') : document.getElementById('saveBaladiyaBtn');
+ const msgBox = listType === 'wilaya' ? document.getElementById('saveWilayaMsg') : document.getElementById('saveBaladiyaMsg');
  btn.disabled = true;
  btn.textContent = "جاري الحفظ...";
  msgBox.textContent = "";
  
  let updates = {};
- const data = currentEditList === 'wilaya' ? wilayaData : baladiyaData;
+ const data = listType === 'wilaya' ? wilayaData : baladiyaData;
  
  data.forEach(c => {
   if(c.featured) return;
-  const newName = document.getElementById(`edit_name_${c.id}`).value.trim();
-  const newJob = document.getElementById(`edit_job_${c.id}`).value.trim();
+  const newName = document.getElementById(`edit_${listType}_name_${c.id}`).value.trim();
+  const newJob = document.getElementById(`edit_${listType}_job_${c.id}`).value.trim();
   updates[c.id] = { name: newName, job: newJob };
  });
 
  try {
-  await set(ref(db, `settings/names_${currentEditList}`), { 
+  await set(ref(db, `settings/names_${listType}`), { 
    updatedList: updates,
    timestamp: Date.now()
   });
@@ -857,12 +911,11 @@ window.saveAllNames = async function() {
   msgBox.style.color = "green";
   
   // تحديث الواجهة فوراً
-  if(currentEditList === 'wilaya') {
+  if(listType === 'wilaya') {
    wilayaData = wilayaData.map(c => updates[c.id] ? {...c, ...updates[c.id]} : c);
   } else {
    baladiyaData = baladiyaData.map(c => updates[c.id] ? {...c, ...updates[c.id]} : c);
   }
-  renderGrid(currentEditList === 'wilaya' ? wilayaData : baladiyaData, currentEditList === 'wilaya' ? 'candidatesGridWilaya' : 'candidatesGridBaladiya', currentEditList);
 
  } catch(e) {
   msgBox.textContent = "❌ خطأ أثناء الحفظ: " + e.message;
@@ -892,14 +945,13 @@ onValue(ref(db, "settings/names_baladiya"), (s) => {
 
 // إحصائيات
 function updateDashStats() {
- let pubCount = 0, likeCount = 0;
+ let pubCount = 0;
  for(let list in allPublished) {
   if(allPublished[list]) pubCount += Object.keys(allPublished[list]).length;
  }
- // يمكن إضافة جمع الإعجابات هنا إذا أردت، لكن سنكتفي بالتعليقات حالياً
  document.getElementById('dashComments').textContent = pubCount;
  document.getElementById('dashVisits').textContent = Object.keys(allVisits).length;
- document.getElementById('dashLikes').textContent = "0"; // اختياري: يحتاج للبحث في كل المترشحين
+ document.getElementById('dashLikes').textContent = "0"; 
 }
 
 // التعليقات الواردة
