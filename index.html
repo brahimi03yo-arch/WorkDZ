@@ -4,24 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>اعرف مترشحك | حزب صوت الشعب - أفلو</title>
-<meta name="description" content="المنصة الانتخابية للتعريف بمترشحي حزب صوت الشعب (PVP) لولايات وأبلديات أفلو. تصميم وتطوير براهيمي يوسف.">
+<title>English Class Hub | منصة دراسة الحصة الإنجليزية</title>
+<meta name="description" content="منصة تعليمية متكاملة لدراسة الحصة الإنجليزية - تسجيل الطلبة، الواجبات، النقاط، الملاحظات، ورفع الأعمال.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
- --bg: #f4f7f6;
+ --bg: #f0f4f8;
  --surface: #ffffff;
  --border: #e2e8f0;
  --text: #1e293b;
  --muted: #64748b;
- --pvp-green: #0f763b;
- --pvp-green-dark: #0a5c2c;
- --pvp-red: #d9232e;
- --gold: #d97706;
+ --primary: #2563eb;
+ --primary-dark: #1d4ed8;
+ --success: #059669;
+ --warning: #d97706;
+ --danger: #dc2626;
+ --purple: #7c3aed;
 }
 
 *{box-sizing:border-box}
@@ -32,16 +34,14 @@ body{
  overflow-x:hidden; background: var(--bg);
 }
 
-/* الشريط الدوار */
-.marquee-container {
- background: linear-gradient(90deg, var(--pvp-green), var(--pvp-green-dark));
+/* الشريط العلوي */
+.top-banner {
+ background: linear-gradient(90deg, var(--primary), var(--purple));
  color: white; padding: 10px 0; overflow: hidden; white-space: nowrap;
- font-size: 15px; font-weight: 700; border-bottom: 3px solid var(--pvp-red);
+ font-size: 15px; font-weight: 700; border-bottom: 3px solid var(--success);
 }
-.marquee-content { display: inline-block; animation: marquee 30s linear infinite; }
-.marquee-content span { padding: 0 30px; }
-@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
-html[dir="rtl"] .marquee-content { animation: marquee-rtl 30s linear infinite; }
+.banner-content { display: inline-block; animation: marquee-rtl 35s linear infinite; }
+.banner-content span { padding: 0 30px; }
 @keyframes marquee-rtl { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
 
 header{
@@ -49,21 +49,24 @@ header{
  padding:15px 25px; font-size:19px; font-weight:900;
  background:#fff; border-bottom:1px solid var(--border);
  position:sticky; top:0; z-index:100; box-shadow: 0 4px 20px rgba(0,0,0,.06);
+ flex-wrap: wrap; gap: 10px;
 }
 .brand{display:flex;align-items:center;gap:12px; cursor:pointer;}
 .brand-mark{
- width:42px;height:42px;display:grid;place-items:center; border-radius:14px;
- font-size:22px;font-weight:900; color:#fff; background:var(--pvp-green);
+ width:44px;height:44px;display:grid;place-items:center; border-radius:14px;
+ font-size:22px;font-weight:900; color:#fff;
+ background: linear-gradient(135deg, var(--primary), var(--purple));
 }
 .brand-name{
- font-size:15px;font-weight:800;color:var(--pvp-green);
- padding:8px 18px;border-radius:999px; border:1px solid rgba(15, 118, 59, 0.2);
- background:rgba(15, 118, 59, 0.08);
+ font-size:14px;font-weight:800;color:var(--primary);
+ padding:8px 16px;border-radius:999px; border:1px solid rgba(37, 99, 235, 0.2);
+ background:rgba(37, 99, 235, 0.08);
+ font-family: 'Poppins', sans-serif;
 }
 
-.container{ max-width:1200px; margin:auto; padding:30px 18px; min-height: 75vh; }
+.container{ max-width:1250px; margin:auto; padding:30px 18px; min-height: 75vh; }
 
-/* أقسام التنقل */
+/* التنقل */
 .page-section { display: none; animation: fadeIn 0.4s ease; }
 .page-section.active { display: block; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
@@ -71,140 +74,174 @@ header{
 /* الصفحة الرئيسية */
 .hero-hub {
  text-align: center; padding: 50px 20px;
- background: linear-gradient(135deg, rgba(15, 118, 59, 0.05) 0%, rgba(217, 35, 46, 0.05) 100%);
- border-radius: 30px; border: 1px solid rgba(15, 118, 59, 0.1); margin-bottom: 40px;
+ background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%);
+ border-radius: 30px; border: 1px solid rgba(37, 99, 235, 0.1); margin-bottom: 40px;
+ position: relative; overflow: hidden;
 }
-.hero-hub h1 { color: var(--pvp-green-dark); font-size: clamp(32px, 6vw, 54px); margin-bottom: 10px; font-weight: 900;}
-.hero-hub p { color: var(--muted); font-size: 19px; margin-bottom: 40px; }
-.hub-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.hero-hub::before {
+ content: 'ABC'; position: absolute; top: -20px; left: -20px;
+ font-size: 200px; font-weight: 900; color: rgba(37, 99, 235, 0.04);
+ font-family: 'Poppins', sans-serif; pointer-events: none;
+}
+.hero-hub h1 { color: var(--primary-dark); font-size: clamp(32px, 6vw, 54px); margin-bottom: 10px; font-weight: 900; position: relative; }
+.hero-hub p { color: var(--muted); font-size: 19px; margin-bottom: 40px; position: relative; }
+.hub-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; position: relative; }
 .btn-main {
  padding: 20px 35px; font-size: 18px; font-weight: 800; border-radius: 16px;
  border: none; cursor: pointer; color: white; transition: 0.3s;
  box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px;
 }
 .btn-main:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
-.btn-wilaya { background: var(--pvp-green); }
-.btn-baladiya { background: var(--pvp-red); }
-.btn-program { background: var(--gold); }
+.btn-student { background: var(--primary); }
+.btn-teacher { background: var(--purple); }
+.btn-info { background: var(--success); }
 
-/* بطاقات القوائم */
+/* بطاقات */
 .grid-lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 .list-card {
  background: var(--surface); border: 2px solid var(--border); border-radius: 20px;
  padding: 25px; text-align: center; cursor: pointer; transition: 0.3s;
  box-shadow: 0 8px 20px rgba(0,0,0,0.03);
 }
-.list-card:hover { border-color: var(--pvp-green); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
-.list-card h2 { color: var(--pvp-green); margin: 15px 0; font-size: 24px; }
-.list-card .badge { background: var(--pvp-red); color: white; padding: 5px 15px; border-radius: 999px; font-weight: bold; display: inline-block; font-size: 14px;}
+.list-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+.list-card h2 { color: var(--primary); margin: 15px 0; font-size: 24px; }
+.list-card .badge { background: var(--purple); color: white; padding: 5px 15px; border-radius: 999px; font-weight: bold; display: inline-block; font-size: 14px;}
 .list-card .header-info { background: var(--bg); padding: 10px; border-radius: 12px; font-weight: 700; font-size: 15px; margin-top: 15px;}
 
-/* شبكة المترشحين */
-.candidates-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
-.candidate-mini {
+/* شبكة الطلبة */
+.students-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
+.student-mini {
  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
  padding: 20px 15px; text-align: center; cursor: pointer; transition: 0.2s;
  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
-.candidate-mini:hover { border-color: var(--pvp-green); background: #fff; transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-.candidate-mini .number {
- width: 34px; height: 34px; background: var(--pvp-green); color: white;
- border-radius: 10px; display: grid; place-items: center; font-weight: 900; margin: 0 auto 10px; font-size: 15px;
+.student-mini:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+.student-mini .avatar {
+ width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--purple)); color: white;
+ border-radius: 50%; display: grid; place-items: center; font-weight: 900; margin: 0 auto 10px; font-size: 18px;
 }
-.candidate-mini.featured .number { background: var(--pvp-red); box-shadow: 0 0 15px rgba(217, 35, 46, 0.5); }
-.candidate-mini h4 { margin: 8px 0; color: var(--text); font-size: 16px; font-weight: 800; }
-.candidate-mini p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.4; }
-.candidate-mini.featured { border: 2px solid var(--pvp-red); background: #fffafa; }
+.student-mini h4 { margin: 8px 0; color: var(--text); font-size: 16px; font-weight: 800; }
+.student-mini p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.4; }
 
-/* الصفحة الفنية للمترشح */
+/* بطاقة الطالب */
 .profile-card { background: var(--surface); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid var(--border); }
-.profile-header { background: linear-gradient(135deg, var(--pvp-green) 50%, var(--pvp-green-dark) 100%); padding: 40px 30px; text-align: center; position: relative; }
-.profile-header.featured-profile { background: linear-gradient(135deg, var(--pvp-red) 0%, #a3151e 100%); }
-.profile-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 5px solid white; background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.2); position: relative; z-index: 2; }
+.profile-header { background: linear-gradient(135deg, var(--primary) 50%, var(--purple) 100%); padding: 40px 30px; text-align: center; position: relative; }
+.profile-img { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 5px solid white; background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.2); position: relative; z-index: 2; }
 .profile-body { padding: 20px 30px 40px; }
 .profile-title { text-align: center; margin-bottom: 20px; }
 .profile-title h2 { margin: 0; font-size: 30px; color: var(--text); font-weight: 900; }
-.profile-title .job { color: var(--pvp-green); font-size: 18px; font-weight: 700; margin-top: 5px;}
-.profile-title .badge-list { background: var(--pvp-green-dark); color: white; padding: 5px 15px; border-radius: 999px; font-size: 14px; display: inline-block; margin-bottom: 10px; font-weight: bold;}
+.profile-title .job { color: var(--primary); font-size: 18px; font-weight: 700; margin-top: 5px;}
+.profile-title .badge-list { background: var(--primary-dark); color: white; padding: 5px 15px; border-radius: 999px; font-size: 14px; display: inline-block; margin-bottom: 10px; font-weight: bold;}
+
+/* المعلومات */
 .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
 .info-item { background: var(--bg); padding: 15px; border-radius: 12px; border: 1px solid var(--border); }
-.info-item strong { display: block; color: var(--pvp-green); margin-bottom: 5px; font-size: 14px;}
+.info-item strong { display: block; color: var(--primary); margin-bottom: 5px; font-size: 14px;}
 
-/* التعليقات والتفاعل */
-.interaction-box { margin-top: 30px; background: var(--surface); padding: 30px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03);}
-.interaction-box h3 { color: var(--pvp-green-dark); margin-top: 0; }
-input, textarea { width: 100%; padding: 12px 15px; border-radius: 10px; border: 1px solid var(--border); font-family: inherit; margin-bottom: 10px; font-size: 15px; background: var(--bg); transition: 0.2s; }
-input:focus, textarea:focus { outline: none; border-color: var(--pvp-green); background: white; }
-button.btn-action { background: var(--pvp-green); color: white; border: none; padding: 12px 25px; border-radius: 10px; font-weight: 800; cursor: pointer; transition: 0.2s; font-size: 16px; }
-button.btn-action:hover { background: var(--pvp-green-dark); transform: translateY(-2px); }
-button.btn-like { background: var(--pvp-red); font-size: 18px; padding: 12px 30px; border-radius: 50px; display: flex; align-items: center; justify-content: center; gap: 10px; margin: 15px auto; width: fit-content;}
-button.btn-like:hover { background: #b01c25; }
-.comment-item { background: var(--bg); padding: 15px; border-radius: 12px; margin-top: 15px; border: 1px solid var(--border); border-right: 4px solid var(--gold); }
-.comment-reply { background: white; padding: 10px; border-radius: 8px; margin-top: 10px; font-size: 14px; color: var(--text); border-right: 3px solid var(--pvp-green); }
+/* النقاط */
+.points-display { 
+ text-align: center; padding: 30px; background: linear-gradient(135deg, var(--success), #047857);
+ border-radius: 16px; color: white; margin: 20px 0;
+}
+.points-display .number { font-size: 56px; font-weight: 900; line-height: 1; font-family: 'Poppins', sans-serif; }
+.points-display .label { font-size: 18px; font-weight: 700; margin-top: 5px; }
 
-/* Back Button */
+/* الملاحظات */
+.notes-box { margin-top: 30px; background: var(--surface); padding: 30px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03);}
+.notes-box h3 { color: var(--primary-dark); margin-top: 0; border-bottom: 2px solid var(--border); padding-bottom: 10px;}
+.note-item { background: var(--bg); padding: 15px; border-radius: 12px; margin-top: 15px; border: 1px solid var(--border); border-right: 4px solid var(--warning); }
+
+/* النماذج */
+input, textarea, select { width: 100%; padding: 12px 15px; border-radius: 10px; border: 1px solid var(--border); font-family: inherit; margin-bottom: 10px; font-size: 15px; background: var(--bg); transition: 0.2s; }
+input:focus, textarea:focus, select:focus { outline: none; border-color: var(--primary); background: white; }
+button.btn-action { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 10px; font-weight: 800; cursor: pointer; transition: 0.2s; font-size: 16px; }
+button.btn-action:hover { background: var(--primary-dark); transform: translateY(-2px); }
+button.btn-action:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+button.btn-success { background: var(--success); }
+button.btn-success:hover { background: #047857; }
+button.btn-danger { background: var(--danger); }
+button.btn-danger:hover { background: #b91c1c; }
+button.btn-warning { background: var(--warning); }
+button.btn-warning:hover { background: #b45309; }
+
+/* زر الرجوع */
 .btn-back { background: white; border: 1px solid var(--border); color: var(--text); padding: 10px 20px; border-radius: 10px; cursor: pointer; margin-bottom: 20px; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-.btn-back:hover { background: var(--bg); border-color: var(--pvp-green); color: var(--pvp-green); }
+.btn-back:hover { background: var(--bg); border-color: var(--primary); color: var(--primary); }
 
-/* البرنامج الانتخابي */
-.program-container { background: var(--surface); border-radius: 20px; padding: 30px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03); margin-bottom: 30px; }
-.program-header { text-align: center; margin-bottom: 25px; border-bottom: 2px dashed var(--border); padding-bottom: 15px;}
-.program-header h2 { color: var(--pvp-green); font-size: 26px; margin-bottom: 10px; }
-.program-header .badge { background: var(--pvp-red); color: white; padding: 5px 15px; border-radius: 999px; font-weight: bold; display: inline-block; font-size: 14px;}
-.program-main-idea { background: var(--pvp-green); color: white; padding: 18px; border-radius: 12px; font-weight: 800; text-align: center; font-size: 17px; margin-bottom: 20px; }
-.program-point { background: var(--bg); padding: 18px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 12px; border-right: 5px solid var(--pvp-green); display: flex; align-items: flex-start; gap: 15px; }
-.program-point span { font-size: 22px; color: var(--pvp-green); font-weight: bold; }
-.program-point p { margin: 0; font-weight: 700; font-size: 16px; color: var(--text);}
-
-/* لوحة الإدارة */
-#adminSection { display: none; }
-.admin-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; margin-bottom: 30px; }
+/* لوحة الأستاذة */
+#teacherSection { display: none; }
+.teacher-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; margin-bottom: 30px; }
 .admin-btn { background: white; border: 2px solid var(--border); border-radius: 12px; padding: 20px 10px; text-align: center; cursor: pointer; transition: 0.2s; font-weight: 800; color: var(--text); display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
-.admin-btn:hover { border-color: var(--pvp-green); transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.05); }
-.admin-btn.active { background: var(--pvp-green); color: white; border-color: var(--pvp-green); box-shadow: 0 8px 15px rgba(15, 118, 59, 0.3);}
+.admin-btn:hover { border-color: var(--purple); transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.05); }
+.admin-btn.active { background: var(--purple); color: white; border-color: var(--purple); box-shadow: 0 8px 15px rgba(124, 58, 237, 0.3);}
 .admin-btn .icon { font-size: 28px; }
 .admin-panel-content { background: var(--surface); border-radius: 16px; padding: 25px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03); min-height: 400px; }
 .stat-box { background: var(--bg); padding: 20px; text-align: center; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; }
-.stat-box strong { font-size: 34px; color: var(--pvp-red); display: block; margin-bottom: 5px;}
+.stat-box strong { font-size: 34px; color: var(--purple); display: block; margin-bottom: 5px; font-family: 'Poppins', sans-serif;}
 .stat-box span { font-weight: bold; color: var(--muted); }
-.edit-grid { display: grid; gap: 10px; }
-.edit-row { display: flex; gap: 10px; align-items: center; background: white; padding: 10px 15px; border-radius: 8px; border: 1px solid var(--border); }
-.edit-row span { font-weight: 900; width: 30px; text-align: center; color: var(--pvp-green); }
-.edit-row input { margin: 0; padding: 8px; flex: 1; border-radius: 6px;}
 .hidden { display: none !important; }
 .admin-access-btn { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: bold; font-family: inherit; transition: 0.2s; }
-.admin-access-btn:hover { background: var(--bg); color: var(--pvp-green); border-color: var(--pvp-green); }
+.admin-access-btn:hover { background: var(--bg); color: var(--purple); border-color: var(--purple); }
+
+/* رفع الملفات */
+.upload-area {
+ border: 3px dashed var(--border); border-radius: 16px; padding: 40px 20px;
+ text-align: center; cursor: pointer; transition: 0.2s; background: var(--bg);
+ margin: 15px 0;
+}
+.upload-area:hover { border-color: var(--primary); background: rgba(37, 99, 235, 0.02); }
+.upload-area .icon { font-size: 48px; margin-bottom: 10px; }
+.upload-area p { color: var(--muted); margin: 5px 0; font-weight: 600; }
+.upload-area .file-name { color: var(--success); font-weight: 800; margin-top: 10px; }
+
+.submission-item {
+ background: white; border: 1px solid var(--border); border-radius: 12px;
+ padding: 15px; margin-bottom: 10px; border-right: 4px solid var(--success);
+}
+.submission-item .meta { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+.submission-item a { color: var(--primary); font-weight: 700; text-decoration: none; }
+.submission-item a:hover { text-decoration: underline; }
+
+/* شارات */
+.badge-success { background: var(--success); color: white; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.badge-warning { background: var(--warning); color: white; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.badge-danger { background: var(--danger); color: white; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+
+/* رسائل */
+.alert { padding: 12px 20px; border-radius: 10px; margin: 15px 0; font-weight: 700; }
+.alert-success { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+.alert-error { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+.alert-info { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
 
 @media(max-width:768px){
  .info-grid { grid-template-columns: 1fr; }
- .profile-img { width: 120px; height: 120px; }
+ .profile-img { width: 110px; height: 110px; }
  .btn-main { width: 100%; justify-content: center; }
- .edit-row { flex-direction: column; align-items: stretch; gap: 5px; }
- .edit-row span { width: auto; text-align: right; margin-bottom: 2px;}
+ .brand-name { display: none; }
 }
 </style>
 </head>
 <body>
 
-<!-- الشريط الدوار -->
-<div class="marquee-container">
- <div class="marquee-content">
-  <span>✦ منصة انتخابية من تصميم وتطوير المترشح براهيمي يوسف ✦</span>
-  <span>حزب صوت الشعب - انتخابات 28 نوفمبر 2026 ✦</span>
-  <span>صوتك أمانة ... وخدمتك شرف لنا ✦</span>
-  <span>منصة انتخابية من تصميم وتطوير المترشح براهيمي يوسف ✦</span>
-  <span>حزب صوت الشعب - انتخابات 28 نوفمبر 2026 ✦</span>
+<!-- الشريط العلوي -->
+<div class="top-banner">
+ <div class="banner-content">
+  <span>✦ منصة دراسة الحصة الإنجليزية ✦</span>
+  <span>تعلم، تقدم، وتفوق في اللغة الإنجليزية ✦</span>
+  <span>تسجيل الطلبة • النقاط • الملاحظات • رفع الأعمال ✦</span>
+  <span>✦ منصة دراسة الحصة الإنجليزية ✦</span>
+  <span>تعلم، تقدم، وتفوق في اللغة الإنجليزية ✦</span>
  </div>
 </div>
 
 <header>
  <div class="brand" onclick="showPage('home')">
-  <span class="brand-mark">ص</span>
-  <span>اعرف مترشحك</span>
+  <span class="brand-mark">EN</span>
+  <span>English Class Hub</span>
  </div>
  <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-  <span class="brand-name">حزب صوت الشعب | أفلو</span>
-  <button class="admin-access-btn" onclick="openAdmin()">⚙️ دخول الإدارة</button>
+  <span class="brand-name">Study English • Learn • Grow</span>
+  <button class="admin-access-btn" onclick="openTeacher()">👩‍🏫 دخول الأستاذة</button>
  </div>
 </header>
 
@@ -213,281 +250,188 @@ button.btn-like:hover { background: #b01c25; }
 <!-- 1. الرئيسية -->
 <section id="page-home" class="page-section active">
  <div class="hero-hub">
-  <h1>اعرف مترشحك</h1>
-  <p>المنصة الرسمية للتعريف بمترشحي حزب صوت الشعب (PVP) - انتخابات 28 نوفمبر 2026</p>
+  <h1>English Class Hub</h1>
+  <p>منصة تعليمية متكاملة لدراسة الحصة الإنجليزية - تسجيل، متابعة، وتقييم</p>
   <div class="hub-buttons">
-   <button class="btn-main btn-wilaya" onclick="showPage('lists-wilaya')">🏛️ قائمة الولاية</button>
-   <button class="btn-main btn-baladiya" onclick="showPage('lists-baladiya')">🏢 قائمة البلدية</button>
-   <button class="btn-main btn-program" onclick="showPage('programs')">📜 البرنامج الانتخابي</button>
+   <button class="btn-main btn-student" onclick="showPage('student-register')">📝 تسجيل طالب جديد</button>
+   <button class="btn-main btn-info" onclick="showPage('students-list')">👥 قائمة الطلبة</button>
+   <button class="btn-main btn-teacher" onclick="openTeacher()">👩‍🏫 دخول الأستاذة</button>
   </div>
  </div>
 
- <h2 style="text-align:center; color:var(--pvp-green); margin-bottom:20px;">⭐ المترشح المميز</h2>
- <div class="list-card" onclick="openCandidate('wilaya', 15)" style="border-color: var(--pvp-red); max-width: 500px; margin: auto;">
-  <span class="badge" style="background:var(--gold)">المبرمج والمشرف</span>
-  <h2>براهيمي يوسف</h2>
-  <p class="job" style="color:var(--muted); font-weight:700;">متصرف إداري بمقر الولاية</p>
-  <div class="header-info">قائمة الولاية 06 | المترشح رقم 15</div>
- </div>
-</section>
-
-<!-- 2. قوائم الولاية -->
-<section id="page-lists-wilaya" class="page-section">
- <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
- <h2 style="color: var(--pvp-green); text-align: center; margin-bottom: 20px;">قوائم المجلس الشعبي الولائي - أفلو</h2>
  <div class="grid-lists">
-  <div class="list-card" onclick="showPage('candidates-wilaya')">
-   <span class="badge">رقم القائمة: 06</span>
-   <h2>حزب صوت الشعب</h2>
-   <p style="color:var(--muted); font-weight:700;">دائرة أفلو</p>
-   <div class="header-info">عدد المترشحين: 42</div>
+  <div class="list-card" onclick="showPage('student-register')">
+   <span class="badge">جديد</span>
+   <h2>📝 سجّل الآن</h2>
+   <p style="color:var(--muted); font-weight:700;">انضم إلى حصة اللغة الإنجليزية</p>
+   <div class="header-info">التسجيل مجاني ومفتوح</div>
+  </div>
+  <div class="list-card" onclick="showPage('students-list')">
+   <span class="badge" style="background:var(--success)">الطلبة</span>
+   <h2>👥 الطلبة المسجلون</h2>
+   <p style="color:var(--muted); font-weight:700;">تصفح قائمة الطلبة ونقاطهم</p>
+   <div class="header-info" id="homeStudentsCount">عدد الطلبة: 0</div>
+  </div>
+  <div class="list-card" onclick="openTeacher()" style="border-color: rgba(124, 58, 237, 0.3);">
+   <span class="badge" style="background:var(--purple)">الأستاذة</span>
+   <h2 style="color:var(--purple);">👩‍🏫 لوحة التحكم</h2>
+   <p style="color:var(--muted); font-weight:700;">إدارة الطلبة، النقاط، والملاحظات</p>
+   <div class="header-info">دخول محمي</div>
   </div>
  </div>
 </section>
 
-<!-- 3. قوائم البلدية -->
-<section id="page-lists-baladiya" class="page-section">
+<!-- 2. تسجيل طالب -->
+<section id="page-student-register" class="page-section">
  <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
- <h2 style="color: var(--pvp-red); text-align: center; margin-bottom: 20px;">قوائم المجلس الشعبي البلدي</h2>
- <div class="grid-lists">
-  <div class="list-card" onclick="showPage('candidates-baladiya')" style="border-color: rgba(217, 35, 46, 0.3);">
-   <span class="badge">رقم القائمة: 06</span>
-   <h2 style="color: var(--pvp-red);">حزب صوت الشعب</h2>
-   <p style="color:var(--muted); font-weight:700;">بلدية أفلو</p>
-   <div class="header-info">عدد المترشحين: 40</div>
-  </div>
+ <h2 style="color: var(--primary); text-align: center; margin-bottom: 20px;">📝 تسجيل طالب جديد</h2>
+ 
+ <div class="notes-box" style="max-width: 600px; margin: auto;">
+  <form id="registerForm">
+   <label style="font-weight:800; color:var(--primary); display:block; margin-bottom:5px;">الاسم الكامل *</label>
+   <input type="text" id="regName" placeholder="مثال: أحمد بن علي" required>
+   
+   <label style="font-weight:800; color:var(--primary); display:block; margin-bottom:5px;">البريد الإلكتروني *</label>
+   <input type="email" id="regEmail" placeholder="example@email.com" required>
+   
+   <label style="font-weight:800; color:var(--primary); display:block; margin-bottom:5px;">رقم الهاتف</label>
+   <input type="tel" id="regPhone" placeholder="05xxxxxxxx">
+   
+   <label style="font-weight:800; color:var(--primary); display:block; margin-bottom:5px;">المستوى الدراسي *</label>
+   <select id="regLevel" required>
+    <option value="">-- اختر المستوى --</option>
+    <option value="1AS">أولى ثانوي</option>
+    <option value="2AS">ثانية ثانوي</option>
+    <option value="3AS">ثالثة ثانوي</option>
+    <option value="1AM">أولى متوسط</option>
+    <option value="2AM">ثانية متوسط</option>
+    <option value="3AM">ثالثة متوسط</option>
+    <option value="4AM">رابعة متوسط</option>
+    <option value="other">أخرى</option>
+   </select>
+   
+   <label style="font-weight:800; color:var(--primary); display:block; margin-bottom:5px;">القسم / الشعبة</label>
+   <input type="text" id="regClass" placeholder="مثال: 2AS علوم تجريبية">
+   
+   <label style="font-weight:800; color:var(--primary); display:block; margin-bottom:5px;">كلمة المرور * (للدخول لاحقاً)</label>
+   <input type="password" id="regPassword" placeholder="6 أحرف على الأقل" required minlength="6">
+   
+   <button type="submit" class="btn-action btn-success" style="width:100%; font-size:18px; padding:15px;" id="registerBtn">✅ تسجيل</button>
+  </form>
+  <div id="registerMsg" style="text-align:center; font-weight:bold; margin-top:15px;"></div>
  </div>
 </section>
 
-<!-- 4. مترشحي الولاية -->
-<section id="page-candidates-wilaya" class="page-section">
- <button class="btn-back" onclick="showPage('lists-wilaya')">← العودة للقوائم</button>
- <h2 style="text-align: center; color: var(--pvp-green); margin-bottom: 20px;">مترشحو قائمة الولاية (06) - أفلو</h2>
- <div class="candidates-grid" id="candidatesGridWilaya"></div>
+<!-- 3. قائمة الطلبة -->
+<section id="page-students-list" class="page-section">
+ <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
+ <h2 style="text-align: center; color: var(--primary); margin-bottom: 20px;">👥 الطلبة المسجلون</h2>
+ <div class="students-grid" id="studentsGrid">
+  <p style="text-align:center; color:var(--muted); grid-column:1/-1;">جارٍ التحميل...</p>
+ </div>
 </section>
 
-<!-- 5. مترشحي البلدية -->
-<section id="page-candidates-baladiya" class="page-section">
- <button class="btn-back" onclick="showPage('lists-baladiya')">← العودة للقوائم</button>
- <h2 style="text-align: center; color: var(--pvp-red); margin-bottom: 20px;">مترشحو قائمة البلدية (06) - أفلو</h2>
- <div class="candidates-grid" id="candidatesGridBaladiya"></div>
-</section>
-
-<!-- 6. البطاقة الفنية للمترشح -->
-<section id="page-candidate-profile" class="page-section">
+<!-- 4. بطاقة الطالب -->
+<section id="page-student-profile" class="page-section">
  <button class="btn-back" id="profileBackBtn">← العودة للقائمة</button>
  <div class="profile-card" id="profileCard"></div>
 
- <div class="interaction-box">
-  <h3 style="color: var(--pvp-green-dark); text-align:center;">رأيك يهمنا</h3>
-  <p style="text-align:center; font-weight:bold; font-size:18px;">الإعجابات: <span id="likeCount" style="color:var(--pvp-red); font-size:24px;">0</span></p>
-  <button id="likeBtn" class="btn-action btn-like">👍 أعجبني</button>
-  <div id="likeStatus" style="text-align:center; font-size:14px; margin-bottom:15px; color:var(--pvp-green); font-weight:bold;"></div>
+ <div class="notes-box">
+  <h3>📌 الملاحظات</h3>
+  <div id="studentNotes"><p style="color:var(--muted);">جارٍ التحميل...</p></div>
+ </div>
 
-  <hr style="border:0; border-top:1px solid var(--border); margin:20px 0;">
-
-  <h3 style="color: var(--pvp-green-dark);">اكتب تعليقك</h3>
-  <form id="commentForm">
-   <textarea id="commentText" maxlength="500" placeholder="اكتب تعليقك بكل موضوعية..." required style="min-height:80px;"></textarea>
-   <button type="submit" class="btn-action" id="sendComment" style="width:100%;">إرسال التعليق</button>
-  </form>
-  <div id="message" style="text-align:center; font-size:14px; margin-top:10px; font-weight:bold;"></div>
-
-  <h3 style="margin-top:30px; color: var(--pvp-green-dark); border-bottom:2px solid var(--border); padding-bottom:10px;">التعليقات المنشورة</h3>
-  <div id="publishedComments"></div>
+ <div class="notes-box">
+  <h3>📤 رفع العمل</h3>
+  <p style="color:var(--muted);">ارفع واجبك أو عملك هنا (روابط Google Drive، PDF، صور...)</p>
+  <input type="text" id="submissionTitle" placeholder="عنوان العمل (مثال: واجب الوحدة 3)">
+  <input type="url" id="submissionLink" placeholder="رابط العمل (Google Drive / Dropbox / ...)">
+  <textarea id="submissionNote" placeholder="ملاحظة اختيارية..." style="min-height:70px;"></textarea>
+  <button class="btn-action btn-success" onclick="submitWork()" style="width:100%;" id="submitWorkBtn">📤 إرسال العمل</button>
+  <div id="submitMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
+  
+  <h3 style="margin-top:30px;">📁 أعمالي المرفوعة</h3>
+  <div id="mySubmissions"><p style="color:var(--muted);">جارٍ التحميل...</p></div>
  </div>
 </section>
 
-<!-- 7. قائمة البرامج الانتخابية -->
-<section id="page-programs" class="page-section">
- <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
- <h2 style="color: var(--pvp-green); text-align: center; margin-bottom: 20px;">البرنامج الانتخابي - المجلس الشعبي البلدي</h2>
- <div class="grid-lists">
-  <div class="list-card" onclick="showPage('program-principles')" style="border-color: var(--gold);">
-   <span class="badge" style="background:var(--gold)">مبادئ</span>
-   <h2>مبادئ الالتزام</h2>
-   <div class="header-info">5 مبادئ أساسية</div>
-  </div>
-  <div class="list-card" onclick="showPage('program-3')"><span class="badge">المحور 3</span><h2>الإنارة العمومية والطرقات</h2></div>
-  <div class="list-card" onclick="showPage('program-4')"><span class="badge">المحور 4</span><h2>المياه والصرف الصحي</h2></div>
-  <div class="list-card" onclick="showPage('program-5')"><span class="badge">المحور 5</span><h2>الاقتصاد المحلي والاستثمار</h2></div>
-  <div class="list-card" onclick="showPage('program-6')"><span class="badge">المحور 6</span><h2>الفلاحة وحماية الأراضي</h2></div>
-  <div class="list-card" onclick="showPage('program-7')"><span class="badge">المحور 7</span><h2>الشباب والرياضة والثقافة</h2></div>
-  <div class="list-card" onclick="showPage('program-8')"><span class="badge">المحور 8</span><h2>التضامن الاجتماعي</h2></div>
-  <div class="list-card" onclick="showPage('program-9')"><span class="badge">المحور 9</span><h2>الإدارة الرقمية</h2></div>
-  <div class="list-card" onclick="showPage('program-10')"><span class="badge">المحور 10</span><h2>الديمقراطية التشاركية</h2></div>
- </div>
-</section>
-
-<!-- محتوى المحاور -->
-<section id="page-program-principles" class="page-section">
- <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
- <div class="program-container">
-  <div class="program-header"><span class="badge" style="background:var(--gold)">البرنامج الانتخابي</span><h2>مبادئ الالتزام</h2></div>
-  <div class="program-point"><span>1</span><p>الشفافية في تسيير الشأن البلدي واحترام القوانين والتنظيمات.</p></div>
-  <div class="program-point"><span>2</span><p>ترشيد استعمال الموارد والوسائل المتاحة وتوجيهها نحو الأولويات.</p></div>
-  <div class="program-point"><span>3</span><p>التوازن بين مختلف أحياء ومناطق البلدية في الاستفادة من المشاريع والخدمات.</p></div>
-  <div class="program-point"><span>4</span><p>العمل بالتنسيق مع مصالح الدولة والهيئات العمومية والجمعيات والمواطنين.</p></div>
-  <div class="program-point"><span>5</span><p>تقييم البرنامج دوريا وقياس مدى تقدم المشاريع وتحقيق الأهداف.</p></div>
- </div>
-</section>
-
-<section id="page-program-3" class="page-section">
- <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
- <div class="program-container">
-  <div class="program-header"><span class="badge">المحور 3</span><h2>الإنارة العمومية والطرقات والمرافق المحلية</h2></div>
-  <div class="program-main-idea">إعداد برنامج دوري لصيانة الإنارة العمومية واستبدال التجهيزات المعطلة</div>
-  <div class="program-point"><span>✔️</span><p>إعطاء الأولوية للمناطق والأحياء التي تعاني من ضعف الإنارة، خاصة النقاط الحساسة ومحيط المدارس والمرافق.</p></div>
-  <div class="program-point"><span>✔️</span><p>صيانة الطرق البلدية والأرصفة ومعالجة الحفر والنقاط المتضررة حسب الأولويات والإمكانيات.</p></div>
- </div>
-</section>
-
-<section id="page-program-4" class="page-section">
- <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
- <div class="program-container">
-  <div class="program-header"><span class="badge">المحور 4</span><h2>المياه والصرف الصحي بالتنسيق مع الهيئات المختصة</h2></div>
-  <div class="program-main-idea">متابعة النقاط المعرضة للفيضانات واقتراح حلول للحد من آثارها</div>
-  <div class="program-point"><span>✔️</span><p>رصد النقائص المتعلقة بالمياه والتطهير ورفعها إلى الهيئات المختصة ومتابعة معالجتها.</p></div>
-  <div class="program-point"><span>✔️</span><p>إشراك المواطنين في التبليغ عن الأعطاب والنقائص عبر قنوات اتصال واضحة.</p></div>
- </div>
-</section>
-
-<section id="page-program-5" class="page-section">
- <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
- <div class="program-container">
-  <div class="program-header"><span class="badge">المحور 5</span><h2>الاقتصاد المحلي والاستثمار والنشاط التجاري</h2></div>
-  <div class="program-main-idea">تشجيع المبادرات التي تخلق نشاطا اقتصاديا وفرصا للعمل، خصوصا للشباب</div>
-  <div class="program-point"><span>✔️</span><p>تهيئة الظروف المحلية الملائمة للنشاط الاقتصادي وتشجيع المؤسسات الصغيرة والحرف والمهن المحلية.</p></div>
-  <div class="program-point"><span>✔️</span><p>تنظيم الفضاءات التجارية والأسواق بما يحافظ على النظام والنظافة وسلامة المواطنين.</p></div>
- </div>
-</section>
-
-<section id="page-program-6" class="page-section">
- <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
- <div class="program-container">
-  <div class="program-header"><span class="badge">المحور 6</span><h2>الفلاحة وحماية الأراضي والمنتوج المحلي</h2></div>
-  <div class="program-main-idea">حماية الأراضي الفلاحية داخل إقليم البلدية من التعدي والتوسع العمراني غير المنظم</div>
-  <div class="program-point"><span>✔️</span><p>دعم المبادرات المحلية الرامية إلى تثمين المنتجات الفلاحية والحرفية.</p></div>
-  <div class="program-point"><span>✔️</span><p>المساهمة في تنظيم الأسواق والفضاءات المناسبة لعرض المنتجات المحلية.</p></div>
- </div>
-</section>
-
-<section id="page-program-7" class="page-section">
- <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
- <div class="program-container">
-  <div class="program-header"><span class="badge">المحور 7</span><h2>الشباب والرياضة والثقافة</h2></div>
-  <div class="program-main-idea">إنشاء فضاءات جواريّة للشباب والترفيه وتنشيط الأحياء</div>
-  <div class="program-point"><span>✔️</span><p>صيانة وتطوير الملاعب والقاعات والمنشآت الرياضية الجوارية المتاحة للبلدية.</p></div>
-  <div class="program-point"><span>✔️</span><p>استغلال المرافق الثقافية والشبابية بطريقة منتظمة تخدم سكان البلدية.</p></div>
- </div>
-</section>
-
-<section id="page-program-8" class="page-section">
- <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
- <div class="program-container">
-  <div class="program-header"><span class="badge">المحور 8</span><h2>التضامن الاجتماعي والفئات الهشة</h2></div>
-  <div class="program-main-idea">تسهيل وصول ذوي الاحتياجات الخاصة إلى المرافق العمومية والفضاءات البلدية</div>
-  <div class="program-point"><span>✔️</span><p>تشجيع المبادرات التضامنية المحلية بالتنسيق مع الجمعيات والفاعلين المحليين.</p></div>
-  <div class="program-point"><span>✔️</span><p>إيلاء عناية خاصة للأحياء والمناطق التي تعرف نقائص اجتماعية وخدماتية.</p></div>
- </div>
-</section>
-
-<section id="page-program-9" class="page-section">
- <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
- <div class="program-container">
-  <div class="program-header"><span class="badge">المحور 9</span><h2>الإدارة والرقمنة وتقريب الخدمة من المواطن</h2></div>
-  <div class="program-main-idea">تبسيط الإجراءات البلدية وتقليل التنقلات غير الضرورية للمواطن</div>
-  <div class="program-point"><span>✔️</span><p>توسيع استعمال الرقمنة في استقبال الطلبات والشكاوى ومتابعة الملفات كلما توفرت الإمكانيات.</p></div>
-  <div class="program-point"><span>✔️</span><p>إنشاء قنوات واضحة لاستقبال انشغالات المواطنين والرد عليها ومتابعتها.</p></div>
- </div>
-</section>
-
-<section id="page-program-10" class="page-section">
- <button class="btn-back" onclick="showPage('programs')">← العودة للبرامج</button>
- <div class="program-container">
-  <div class="program-header"><span class="badge">المحور 10</span><h2>الديمقراطية التشاركية ومشاركة المواطن</h2></div>
-  <div class="program-main-idea">تنظيم لقاءات دورية مع المواطنين للاستماع إلى انشغالاتهم ومناقشة المشاريع المحلية</div>
-  <div class="program-point"><span>✔️</span><p>إعطاء الأولوية للمشاريع التي تستجيب للحاجات الفعلية اليومية للسكان.</p></div>
-  <div class="program-point"><span>✔️</span><p>اعتماد المتابعة والتقييم كجزء أساسي من تنفيذ البرنامج البلدي.</p></div>
- </div>
-</section>
-
-<!-- 8. لوحة الإدارة (Dashboard) -->
-<section id="adminSection" class="page-section container" style="margin-top:50px; border-top:2px dashed var(--border); padding-top:30px;">
- <h2 style="color:var(--pvp-green-dark); text-align:center; margin-bottom:30px;">لوحة تحكم الإدارة</h2>
+<!-- 5. لوحة الأستاذة -->
+<section id="teacherSection" class="page-section container" style="margin-top:50px; border-top:2px dashed var(--border); padding-top:30px;">
+ <h2 style="color:var(--purple); text-align:center; margin-bottom:30px;">👩‍🏫 لوحة تحكم الأستاذة</h2>
  
- <div id="adminLoginBox" style="text-align:center; max-width:400px; margin:auto;">
-  <p style="color:var(--muted);">أدخل رمز الدخول لتعديل البيانات أو مراجعة التعليقات:</p>
-  <input type="password" id="adminCode" placeholder="رمز الإدارة" style="text-align:center; font-size:20px; letter-spacing:5px;">
-  <button class="btn-action" id="adminLogin" style="width:100%; font-size:18px;">دخول</button>
-  <div id="adminMessage" style="font-size:14px; font-weight:bold; margin-top:10px;"></div>
+ <div id="teacherLoginBox" style="text-align:center; max-width:400px; margin:auto;">
+  <p style="color:var(--muted);">أدخل رمز الدخول للوصول إلى لوحة التحكم:</p>
+  <input type="password" id="teacherCode" placeholder="رمز الأستاذة" style="text-align:center; font-size:20px; letter-spacing:5px;">
+  <button class="btn-action" id="teacherLogin" style="width:100%; font-size:18px; background:var(--purple);">دخول</button>
+  <div id="teacherMessage" style="font-size:14px; font-weight:bold; margin-top:10px;"></div>
  </div>
 
- <div id="adminPanel" class="hidden">
-  <div class="admin-dashboard-grid">
-   <div class="admin-btn active" onclick="toggleAdminView('stats')"><span class="icon">📊</span> الإحصائيات</div>
-   <div class="admin-btn" onclick="toggleAdminView('names-wilaya')"><span class="icon">🏛️</span> تعديل الولاية</div>
-   <div class="admin-btn" onclick="toggleAdminView('names-baladiya')"><span class="icon">🏢</span> تعديل البلدية</div>
-   <div class="admin-btn" onclick="toggleAdminView('pending')"><span class="icon">📥</span> تعليقات واردة</div>
-   <div class="admin-btn" onclick="toggleAdminView('published')"><span class="icon">💬</span> تعليقات منشورة</div>
-   <div class="admin-btn" onclick="toggleAdminView('visitors')"><span class="icon">👥</span> سجل الزوار</div>
+ <div id="teacherPanel" class="hidden">
+  <div class="teacher-dashboard-grid">
+   <div class="admin-btn active" onclick="toggleTeacherView('stats')"><span class="icon">📊</span> الإحصائيات</div>
+   <div class="admin-btn" onclick="toggleTeacherView('students')"><span class="icon">👥</span> الطلبة</div>
+   <div class="admin-btn" onclick="toggleTeacherView('points')"><span class="icon">⭐</span> النقاط</div>
+   <div class="admin-btn" onclick="toggleTeacherView('notes')"><span class="icon">📝</span> الملاحظات</div>
+   <div class="admin-btn" onclick="toggleTeacherView('submissions')"><span class="icon">📁</span> الأعمال المرفوعة</div>
   </div>
 
   <div class="admin-panel-content">
-   <div id="adminStatsView">
-    <h3 style="color:var(--pvp-green-dark); margin-top:0;">إحصائيات عامة</h3>
+   <div id="teacherStatsView">
+    <h3 style="color:var(--purple); margin-top:0;">إحصائيات عامة</h3>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px;">
-     <div class="stat-box"><strong id="dashVisits">0</strong> <span>زائر</span></div>
-     <div class="stat-box"><strong id="dashLikes">0</strong> <span>إجمالي الإعجابات</span></div>
-     <div class="stat-box"><strong id="dashComments">0</strong> <span>تعليق منشور</span></div>
+     <div class="stat-box"><strong id="dashStudents">0</strong> <span>طالب مسجل</span></div>
+     <div class="stat-box"><strong id="dashSubmissions">0</strong> <span>عمل مرفوع</span></div>
+     <div class="stat-box"><strong id="dashNotes">0</strong> <span>ملاحظة</span></div>
+     <div class="stat-box"><strong id="dashAvgPoints">0</strong> <span>معدل النقاط</span></div>
     </div>
    </div>
 
-   <div id="adminNames-wilayaView" class="hidden">
-    <h3 style="color:var(--pvp-green-dark); margin-top:0;">تعديل أسماء ومهن قائمة الولاية</h3>
-    <div class="edit-grid" id="editWilayaGrid"></div>
-    <button class="btn-action" style="margin-top:20px; width:100%; font-size:18px; padding:15px;" onclick="saveNames('wilaya')" id="saveWilayaBtn">💾 حفظ التعديلات</button>
-    <div id="saveWilayaMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
+   <div id="teacherStudentsView" class="hidden">
+    <h3 style="color:var(--purple); margin-top:0;">إدارة الطلبة</h3>
+    <div id="teacherStudentsList"></div>
    </div>
 
-   <div id="adminNames-baladiyaView" class="hidden">
-    <h3 style="color:var(--pvp-green-dark); margin-top:0;">تعديل أسماء ومهن قائمة البلدية</h3>
-    <div class="edit-grid" id="editBaladiyaGrid"></div>
-    <button class="btn-action" style="margin-top:20px; width:100%; font-size:18px; padding:15px;" onclick="saveNames('baladiya')" id="saveBaladiyaBtn">💾 حفظ التعديلات</button>
-    <div id="saveBaladiyaMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
+   <div id="teacherPointsView" class="hidden">
+    <h3 style="color:var(--purple); margin-top:0;">إدارة النقاط</h3>
+    <p style="color:var(--muted);">اختر طالباً ثم أضف أو اطرح نقاطاً.</p>
+    <select id="pointsStudentSelect" style="margin-bottom:15px;"></select>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+     <input type="number" id="pointsAmount" placeholder="عدد النقاط" style="flex:1; min-width:120px;" value="10">
+     <button class="btn-action btn-success" onclick="addPoints()" style="flex:1;">➕ إضافة</button>
+     <button class="btn-action btn-danger" onclick="subtractPoints()" style="flex:1;">➖ خصم</button>
+    </div>
+    <div id="pointsMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
    </div>
 
-   <div id="adminPendingView" class="hidden">
-    <h3 style="color:var(--pvp-green-dark); margin-top:0;">التعليقات الواردة (تحتاج مراجعة)</h3>
-    <div id="pendingComments"></div>
+   <div id="teacherNotesView" class="hidden">
+    <h3 style="color:var(--purple); margin-top:0;">إضافة ملاحظة</h3>
+    <select id="noteStudentSelect" style="margin-bottom:15px;"></select>
+    <textarea id="noteText" placeholder="اكتب الملاحظة هنا..." style="min-height:100px;"></textarea>
+    <button class="btn-action" onclick="addNote()" style="width:100%;">📝 إضافة الملاحظة</button>
+    <div id="noteMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
    </div>
 
-   <div id="adminPublishedView" class="hidden">
-    <h3 style="color:var(--pvp-green-dark); margin-top:0;">التعليقات المنشورة وإدارتها</h3>
-    <div id="publishedAdmin"></div>
-   </div>
-
-   <div id="adminVisitorsView" class="hidden">
-    <h3 style="color:var(--pvp-green-dark); margin-top:0;">سجل الزوار</h3>
-    <div id="visitorsList"></div>
+   <div id="teacherSubmissionsView" class="hidden">
+    <h3 style="color:var(--purple); margin-top:0;">الأعمال المرفوعة</h3>
+    <div id="allSubmissions"></div>
    </div>
   </div>
 
-  <button class="btn-action" style="background:var(--pvp-red); margin-top:20px; width:100%;" onclick="document.getElementById('adminPanel').classList.add('hidden'); document.getElementById('adminLoginBox').style.display='block';">تسجيل الخروج</button>
+  <button class="btn-action btn-danger" style="margin-top:20px; width:100%;" onclick="logoutTeacher()">تسجيل الخروج</button>
  </div>
 </section>
 
 </main>
 
 <footer style="text-align:center; padding:30px; color:var(--muted); border-top:1px solid var(--border); background:white; margin-top:50px;">
- <p style="font-size:16px;"><strong>حزب صوت الشعب (PVP)</strong> - انتخابات 28 نوفمبر 2026</p>
- <p>تصميم وتطوير: <strong>براهيمي يوسف</strong></p>
- <button class="admin-access-btn" style="margin-top:15px;" onclick="openAdmin()">⚙️ دخول الإدارة</button>
+ <p style="font-size:16px;"><strong>English Class Hub</strong> - منصة دراسة الحصة الإنجليزية</p>
+ <p>تعلم • تقدم • تفوق</p>
+ <button class="admin-access-btn" style="margin-top:15px;" onclick="openTeacher()">👩‍🏫 دخول الأستاذة</button>
 </footer>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import { getDatabase, ref, push, onValue, update, remove, runTransaction, set } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+import { getDatabase, ref, push, onValue, update, remove, set, get } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
 const firebaseConfig = {
  apiKey: "AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
@@ -504,95 +448,12 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const $ = id => document.getElementById(id);
 
-// البيانات الافتراضية
-let wilayaData = [
- { id: 1, name: "صافي بوقرة صلاح الدين", job: "محامي" },
- { id: 2, name: "نمار عزيز", job: "أعمال حرة - نشاط تجاري" },
- { id: 3, name: "بوكر بلقاسم", job: "مدير إندلاعية" },
- { id: 4, name: "عمارة عبد القادر", job: "ممثل التربية الوطنية" },
- { id: 5, name: "زحروف أحمد", job: "مهندس" },
- { id: 6, name: "خاشة عادل", job: "مساعد عملي" },
- { id: 7, name: "بن حليمة عبد الغاني", job: "متصرف إقليمي بالخارج" },
- { id: 8, name: "شريط دربل", job: "إطار بالمديرية التجارة" },
- { id: 9, name: "خالدي رابح", job: "مهندس دولة في السكن والعمران" },
- { id: 10, name: "بشير محمد", job: "متقاعد من الجيش" },
- { id: 11, name: "بركة عبد الله", job: "أعمال حرة" },
- { id: 12, name: "زوقاري إبراهيم", job: "أستاذ متقاعد" },
- { id: 13, name: "صافي أحمد", job: "إطار في التربية" },
- { id: 14, name: "كسامي أحمد", job: "أستاذ إبتدائي" },
- { id: 15, name: "براهيمي يوسف", job: "متصرف إداري بمقر الولاية", featured: true }, 
- { id: 16, name: "عقون بوعالم", job: "موظف بالبلدية" },
- { id: 17, name: "مصدوري حكيم", job: "أستاذ تكوين" },
- { id: 18, name: "حرين محمد", job: "مفتش التعليم المتوسط" },
- { id: 19, name: "بركاتي المشري", job: "مفتش التعليم المتوسط" },
- { id: 20, name: "معروفي كمال", job: "موظف بالبلدية" },
- { id: 21, name: "بغدادي عزيز", job: "متقاعد من الجيش" },
- { id: 22, name: "روندالة خالد", job: "أستاذ تعليم متوسط" },
- { id: 23, name: "بورحلة محمد", job: "متقاعد من الجيش" },
- { id: 24, name: "السعدي أمحمد", job: "موظف" },
- { id: 25, name: "دزداري يحيى", job: "أستاذ تعليم متوسط" },
- { id: 26, name: "قطاف الطيب", job: "موظف بالبلدية" },
- { id: 27, name: "قنابي الياس الحسين", job: "أستاذ تعليم ثانوي" },
- { id: 28, name: "شاذلي عبد الرحمان", job: "موظف بمكتب التوثيق" },
- { id: 29, name: "رويشم محمد الأمين", job: "أعمال حرة" },
- { id: 30, name: "رواب بولفة", job: "إطار بمديرية الموارد المالية" },
- { id: 31, name: "طالبي إبراهيم", job: "أعمال حرة" },
- { id: 32, name: "براهيمي العربي", job: "أعمال حرة" },
- { id: 33, name: "زدك سعد", job: "أعمال حرة" },
- { id: 34, name: "تركي خليل", job: "إطار ببنك BNA" },
- { id: 35, name: "محمودي طيب", job: "أعمال حرة" },
- { id: 36, name: "مصيبح صليحة", job: "أعمال حرة" },
- { id: 37, name: "عليلي نجاة", job: "أعمال حرة" },
- { id: 38, name: "زميت عمر", job: "إطار بشركة سوناطراك" },
- { id: 39, name: "نور الدين الشيخ", job: "أستاذ تعليم ثانوي" },
- { id: 40, name: "شنوفي نصر الدين", job: "موظف بالجامعة" },
- { id: 41, name: "معمري محمد الأمين", job: "موظف بمفتشية العمل" },
- { id: 42, name: "عقون مبارك", job: "متصرف رئيسي بالتربية" }
-];
+// متغيرات عامة
+let allStudents = {};
+let currentStudentId = null;
+let teacherLoggedIn = false;
 
-let baladiyaData = [
- { id: 1, name: "زياني جيلالي", job: "إطار بالجماعات المحلية" },
- { id: 2, name: "زوكل جلول", job: "رئيس جمعية متقاعد من الجيش" },
- { id: 3, name: "حديدي عباس", job: "عامل بمؤسسة وطنية" },
- { id: 4, name: "مصيبح عيسى", job: "متقاعد من الجيش" },
- { id: 5, name: "ريغي عبد القادر", job: "موظف بالبلدية" },
- { id: 6, name: "يوسفي جيلالي", job: "متقاعد من التربية - شركة وطنية" },
- { id: 7, name: "قني عبد القادر", job: "متقاعد من التربية" },
- { id: 8, name: "بوكرمة عبد الجليل", job: "تقني سامي - أعمال حرة" },
- { id: 9, name: "عزوزي بن عزوز", job: "متقاعد من قطاع العدالة" },
- { id: 10, name: "مكي دهليس", job: "أستاذ تعليم إبتدائي" },
- { id: 11, name: "لعوابي بوزيد", job: "إطار بوكالة التنمية الاجتماعية" },
- { id: 12, name: "بدراوي عبد القادر", job: "منسق جهوي للأمن شركة وطنية" },
- { id: 13, name: "مصطفاوي عبد القادر", job: "إطار بالصندوق الوطني" },
- { id: 14, name: "سعدي عبد الحفيظ", job: "أعمال حرة" },
- { id: 15, name: "جلولي محمد إسلام", job: "إطار بالوكالة الوطنية للتطهير" },
- { id: 16, name: "مختاري أحمد", job: "إطار بالوكالة الوطنية لتسيير القرض المصغر" },
- { id: 17, name: "سميداني أسامة", job: "أعمال حرة" },
- { id: 18, name: "خيالية علي", job: "موظف" },
- { id: 19, name: "قرادي عبد القادر", job: "ملحق رئيسي بالإدارة الإقليمية" },
- { id: 20, name: "عمران بخير", job: "رئيس قسم بالشركة الجزائرية" },
- { id: 21, name: "صياد ناصر", job: "متقاعد من الجيش" },
- { id: 22, name: "حشاني ناصر", job: "عامل بمصنع amouda" },
- { id: 23, name: "بلغشوة مهدي", job: "رئيسي بالمكتبة" },
- { id: 24, name: "غباني عبد العزيز", job: "أستاذ تعليم متوسط" },
- { id: 25, name: "كربطة عيسى", job: "أعمال حرة" },
- { id: 26, name: "طيبية علي", job: "مشرف تربية" },
- { id: 27, name: "روندالة ناصر", job: "أعمال حرة" },
- { id: 28, name: "كسامي علاء", job: "مشرف تربية" },
- { id: 29, name: "عليلي عبد المجيب", job: "مهندس في شركة وطنية" },
- { id: 30, name: "حسين محمد الأمين", job: "أعمال حرة" },
- { id: 31, name: "دربالي طيب", job: "أعمال حرة" },
- { id: 32, name: "سلمان جمال", job: "أعمال حرة" },
- { id: 33, name: "عزيزي عبد الرزاق", job: "أعمال حرة" },
- { id: 34, name: "بن حسين أحمد", job: "أعمال حرة" },
- { id: 35, name: "خزناجي ناصر", job: "أعمال حرة" },
- { id: 36, name: "شنافي مصطفى جنيب", job: "أستاذ تعليم متوسط" },
- { id: 37, name: "سعدي مبارك", job: "أستاذ تعليم متوسط" },
- { id: 38, name: "بن عدة فاطمة الزهراء", job: "أعمال حرة" },
- { id: 39, name: "لعضفور عبد الحفيظ", job: "أعمال حرة" },
- { id: 40, name: "عكروم نعيمة", job: "أعمال حرة" }
-];
-
+// ========== التنقل ==========
 window.showPage = function(pageId) {
  document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
  const target = $('page-' + pageId);
@@ -600,417 +461,417 @@ window.showPage = function(pageId) {
   target.classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
  }
- if(pageId === 'candidates-wilaya') renderGrid(wilayaData, 'candidatesGridWilaya', 'wilaya');
- if(pageId === 'candidates-baladiya') renderGrid(baladiyaData, 'candidatesGridBaladiya', 'baladiya');
- if(pageId === 'home') document.getElementById('adminSection').style.display = 'none';
+ if(pageId === 'students-list') renderStudentsList();
+ if(pageId === 'home') document.getElementById('teacherSection').style.display = 'none';
 }
 
-function renderGrid(data, gridId, listType) {
- const grid = $(gridId);
+// ========== تسجيل طالب ==========
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
+ e.preventDefault();
+ const btn = $('registerBtn');
+ const msg = $('registerMsg');
+ btn.disabled = true;
+ btn.textContent = "جارٍ التسجيل...";
+
+ const name = $('regName').value.trim();
+ const email = $('regEmail').value.trim().toLowerCase();
+ const phone = $('regPhone').value.trim();
+ const level = $('regLevel').value;
+ const cls = $('regClass').value.trim();
+ const password = $('regPassword').value;
+
+ try {
+  // التحقق من عدم تكرار البريد
+  const snapshot = await get(ref(db, 'students'));
+  const students = snapshot.val() || {};
+  for(let id in students) {
+   if(students[id].email === email) {
+    msg.textContent = "❌ هذا البريد مسجل مسبقاً!";
+    msg.style.color = "var(--danger)";
+    btn.disabled = false;
+    btn.textContent = "✅ تسجيل";
+    return;
+   }
+  }
+
+  await push(ref(db, 'students'), {
+   name, email, phone, level, cls, password,
+   points: 0,
+   createdAt: Date.now()
+  });
+
+  msg.textContent = "✅ تم التسجيل بنجاح! يمكنك الآن تسجيل الدخول.";
+  msg.style.color = "var(--success)";
+  $('registerForm').reset();
+  
+  setTimeout(() => showPage('students-list'), 1500);
+ } catch(err) {
+  msg.textContent = "❌ خطأ: " + err.message;
+  msg.style.color = "var(--danger)";
+ } finally {
+  btn.disabled = false;
+  btn.textContent = "✅ تسجيل";
+ }
+});
+
+// ========== قائمة الطلبة ==========
+const studentsRef = ref(db, 'students');
+onValue(studentsRef, (s) => {
+ allStudents = s.val() || {};
+ const count = Object.keys(allStudents).length;
+ const countEl = $('homeStudentsCount');
+ if(countEl) countEl.textContent = `عدد الطلبة: ${count}`;
+ if(document.getElementById('page-students-list').classList.contains('active')) renderStudentsList();
+ if(teacherLoggedIn) {
+  renderTeacherStudents();
+  renderPointsSelect();
+  renderNoteSelect();
+  updateTeacherStats();
+ }
+});
+
+function renderStudentsList() {
+ const grid = $('studentsGrid');
+ if(!grid) return;
  grid.innerHTML = '';
- data.forEach(c => {
+ const entries = Object.entries(allStudents).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
+ if(entries.length === 0) {
+  grid.innerHTML = "<p style='text-align:center; color:var(--muted); grid-column:1/-1;'>لا يوجد طلبة مسجلون بعد. <a href='#' onclick='showPage(\"student-register\"); return false;' style='color:var(--primary); font-weight:bold;'>سجّل الآن!</a></p>";
+  return;
+ }
+ entries.forEach(([id, st]) => {
   const div = document.createElement('div');
-  div.className = `candidate-mini ${c.featured ? 'featured' : ''}`;
-  div.onclick = () => openCandidate(listType, c.id);
+  div.className = 'student-mini';
+  div.onclick = () => openStudent(id);
+  const initials = st.name.split(' ').map(w => w[0]).slice(0,2).join('').toUpperCase();
   div.innerHTML = `
-   <div class="number">${c.id}</div>
-   <h4>${c.name}</h4>
-   <p>${c.job || 'مترشح'}</p>
-   ${c.featured ? '<span style="color:var(--pvp-red); font-size:12px; font-weight:bold; margin-top:5px; display:block;">⭐ مميز</span>' : ''}
+   <div class="avatar">${initials}</div>
+   <h4>${st.name}</h4>
+   <p>${st.level || ''} ${st.cls ? '- ' + st.cls : ''}</p>
+   <p style="color:var(--success); font-weight:800; margin-top:8px;">⭐ ${st.points || 0} نقطة</p>
   `;
   grid.appendChild(div);
  });
 }
 
-let currentList = 'wilaya';
-let currentCandidateId = null;
+// ========== بطاقة الطالب ==========
+window.openStudent = async function(studentId) {
+ currentStudentId = studentId;
+ const st = allStudents[studentId];
+ if(!st) return;
 
-window.openCandidate = function(listType, id) {
- currentList = listType;
- currentCandidateId = id;
- 
- const data = listType === 'wilaya' ? wilayaData : baladiyaData;
- const candidate = data.find(c => c.id === id);
- if(!candidate) return;
+ document.getElementById('profileBackBtn').onclick = () => showPage('students-list');
+ document.getElementById('submitMsg').textContent = '';
+ document.getElementById('submissionTitle').value = '';
+ document.getElementById('submissionLink').value = '';
+ document.getElementById('submissionNote').value = '';
+
+ const initials = st.name.split(' ').map(w => w[0]).slice(0,2).join('').toUpperCase();
 
  const card = $('profileCard');
- document.getElementById('likeCount').textContent = "0";
- document.getElementById('publishedComments').innerHTML = "<p style='color:var(--muted); text-align:center;'>جارٍ التحميل...</p>";
- document.getElementById('commentText').value = "";
- document.getElementById('message').textContent = "";
- 
- document.getElementById('profileBackBtn').onclick = () => showPage(`candidates-${listType}`);
-
- const imgUrl = candidate.featured 
-  ? 'https://i.postimg.cc/Fzp3mx37/file-000000007fac81f4bfc40d244fc9529f.png' 
-  : 'https://ui-avatars.com/api/?name=' + encodeURIComponent(candidate.name) + '&background=' + (listType === 'wilaya' ? '0f763b' : 'd9232e') + '&color=fff&size=200&font-size=0.4';
-
  card.innerHTML = `
-  <div class="profile-header ${candidate.featured ? 'featured-profile' : (listType === 'baladiya' ? 'baladiya-profile' : '')}">
-   <img src="${imgUrl}" alt="${candidate.name}" class="profile-img">
+  <div class="profile-header">
+   <div style="width:130px;height:130px;border-radius:50%;background:white;display:grid;place-items:center;margin:0 auto;font-size:40px;font-weight:900;color:var(--primary);box-shadow:0 10px 20px rgba(0,0,0,0.2);">${initials}</div>
   </div>
   <div class="profile-body">
    <div class="profile-title">
-    <span class="badge-list">${listType === 'wilaya' ? 'قائمة الولاية' : 'قائمة البلدية'} 06 | رقم ${candidate.id}</span>
-    <h2 style="${candidate.featured ? 'color:var(--pvp-red)' : ''}">${candidate.name}</h2>
-    <p class="job">${candidate.job || 'مترشح'}</p>
+    <span class="badge-list">${st.level || 'طالب'} ${st.cls ? '| ' + st.cls : ''}</span>
+    <h2>${st.name}</h2>
+    <p class="job">${st.email}</p>
    </div>
-   
+   <div class="points-display">
+    <div class="number">${st.points || 0}</div>
+    <div class="label">⭐ إجمالي النقاط</div>
+   </div>
    <div class="info-grid">
-    <div class="info-item">
-     <strong>الحزب</strong>
-     <span>حزب صوت الشعب (PVP)</span>
-    </div>
-    <div class="info-item">
-     <strong>الدائرة</strong>
-     <span>أفلو</span>
-    </div>
-    ${candidate.featured ? `
-    <div class="info-item" style="grid-column: 1 / -1; border-color: var(--pvp-red); background: #fffafa;">
-     <strong style="color:var(--pvp-red)">نبذة</strong>
-     <span>متصرف إداري بمقر الولاية، ماستر في تنظيم وعمل، شهادات في الإعلام الآلي واللغة الإنجليزية. مبرمج ومشرف على هذه المنصة.</span>
-    </div>
-    ` : ''}
+    <div class="info-item"><strong>رقم الهاتف</strong><span>${st.phone || 'غير محدد'}</span></div>
+    <div class="info-item"><strong>تاريخ التسجيل</strong><span>${new Date(st.createdAt).toLocaleDateString('ar-DZ')}</span></div>
    </div>
   </div>
  `;
 
- showPage('candidate-profile');
- initFirebaseForCandidate(listType, id);
+ showPage('student-profile');
+ loadStudentNotes(studentId);
+ loadStudentSubmissions(studentId);
 }
 
-let unsubLikes, unsubPublished;
-
-function initFirebaseForCandidate(listType, candidateId) {
- if(unsubLikes) unsubLikes();
- if(unsubPublished) unsubPublished();
-
- const likesRef = ref(db, `stats/${listType}_${candidateId}/likes`);
- const publishedRef = ref(db, `comments/${listType}_${candidateId}`);
-
- unsubLikes = onValue(likesRef, s => {
-  document.getElementById('likeCount').textContent = Number(s.val() || 0);
- });
-
- unsubPublished = onValue(publishedRef, s => {
+// ========== الملاحظات ==========
+function loadStudentNotes(studentId) {
+ const notesRef = ref(db, `notes/${studentId}`);
+ onValue(notesRef, (s) => {
+  const box = $('studentNotes');
   const data = s.val() || {};
-  const box = document.getElementById('publishedComments');
-  box.innerHTML = '';
   const entries = Object.entries(data).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
-  
   if(entries.length === 0) {
-   box.innerHTML = "<p style='color:var(--muted); text-align:center;'>لا توجد تعليقات منشورة بعد.</p>";
+   box.innerHTML = "<p style='color:var(--muted);'>لا توجد ملاحظات بعد.</p>";
    return;
   }
-
-  entries.forEach(([k, v]) => {
-   if(typeof v === 'object' && v.message) {
-    const div = document.createElement('div');
-    div.className = 'comment-item';
-    div.innerHTML = `<p>${v.message}</p>`;
-    if(v.reply) {
-     div.innerHTML += `<div class="comment-reply"><strong style="color:var(--pvp-green)">الرد:</strong> ${v.reply}</div>`;
-    }
-    box.appendChild(div);
-   }
+  box.innerHTML = '';
+  entries.forEach(([id, n]) => {
+   const div = document.createElement('div');
+   div.className = 'note-item';
+   div.innerHTML = `<p style="margin:0 0 5px 0; font-weight:700;">${n.text}</p>
+   <span style="font-size:12px; color:var(--muted);">${new Date(n.createdAt).toLocaleString('ar-DZ')}</span>`;
+   box.appendChild(div);
   });
  });
 }
 
-const visitorsRef = ref(db, "siteVisitors");
-const inboxRef = ref(db, "commentInbox");
+// ========== الأعمال المرفوعة ==========
+window.submitWork = async function() {
+ if(!currentStudentId) return;
+ const title = $('submissionTitle').value.trim();
+ const link = $('submissionLink').value.trim();
+ const note = $('submissionNote').value.trim();
+ const msg = $('submitMsg');
+ const btn = $('submitWorkBtn');
 
-let visitorId = localStorage.getItem("siteVisitorId") || (crypto.randomUUID ? crypto.randomUUID() : Date.now()+"-"+Math.random().toString(36).slice(2));
-localStorage.setItem("siteVisitorId", visitorId);
-const myVisitorRef = ref(db, "siteVisitors/" + visitorId);
+ if(!title || !link) {
+  msg.textContent = "❌ يرجى ملء العنوان والرابط.";
+  msg.style.color = "var(--danger)";
+  return;
+ }
 
-async function recordVisit() {
+ btn.disabled = true;
+ btn.textContent = "جارٍ الإرسال...";
+
  try {
-  await runTransaction(myVisitorRef, c => {
-   c = c || {};
-   return { ...c, lastVisit: Date.now(), visits: (Number(c.visits)||0) + 1 };
+  await push(ref(db, `submissions/${currentStudentId}`), {
+   title, link, note,
+   studentId: currentStudentId,
+   createdAt: Date.now()
   });
- } catch(e) { console.error(e); }
+  msg.textContent = "✅ تم رفع العمل بنجاح!";
+  msg.style.color = "var(--success)";
+  $('submissionTitle').value = '';
+  $('submissionLink').value = '';
+  $('submissionNote').value = '';
+ } catch(err) {
+  msg.textContent = "❌ خطأ: " + err.message;
+  msg.style.color = "var(--danger)";
+ } finally {
+  btn.disabled = false;
+  btn.textContent = "📤 إرسال العمل";
+ }
 }
-recordVisit();
 
-document.getElementById('likeBtn').addEventListener('click', async () => {
- if(!currentCandidateId) return;
- const btn = document.getElementById('likeBtn');
- btn.disabled = true;
- try {
-  await runTransaction(ref(db, `stats/${currentList}_${currentCandidateId}/likes`), n => (Number(n)||0) + 1);
-  await update(myVisitorRef, { liked: true });
-  document.getElementById('likeStatus').textContent = "تم تسجيل إعجابك!";
-  document.getElementById('likeStatus').style.color = "green";
- } catch(e) {
-  document.getElementById('likeStatus').textContent = "خطأ: " + e.message;
-  document.getElementById('likeStatus').style.color = "red";
- } finally { btn.disabled = false; }
-});
-
-document.getElementById('commentForm').addEventListener('submit', async e => {
- e.preventDefault();
- if(!currentCandidateId) return;
- const text = document.getElementById('commentText').value.trim();
- if(!text) return;
-
- const btn = document.getElementById('sendComment');
- btn.disabled = true;
-
- try {
-  await push(inboxRef, {
-   listType: currentList,
-   candidateId: currentCandidateId,
-   visitorId: visitorId,
-   message: text,
-   createdAt: Date.now(),
-   status: "pending"
+function loadStudentSubmissions(studentId) {
+ const subRef = ref(db, `submissions/${studentId}`);
+ onValue(subRef, (s) => {
+  const box = $('mySubmissions');
+  const data = s.val() || {};
+  const entries = Object.entries(data).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
+  if(entries.length === 0) {
+   box.innerHTML = "<p style='color:var(--muted);'>لا توجد أعمال مرفوعة بعد.</p>";
+   return;
+  }
+  box.innerHTML = '';
+  entries.forEach(([id, sub]) => {
+   const div = document.createElement('div');
+   div.className = 'submission-item';
+   div.innerHTML = `
+    <div class="meta">${new Date(sub.createdAt).toLocaleString('ar-DZ')}</div>
+    <strong>${sub.title}</strong><br>
+    <a href="${sub.link}" target="_blank">🔗 فتح العمل</a>
+    ${sub.note ? '<p style="font-size:13px; color:var(--muted); margin:5px 0;">' + sub.note + '</p>' : ''}
+   `;
+   box.appendChild(div);
   });
-  await update(myVisitorRef, { commented: true });
-  document.getElementById('commentText').value = "";
-  document.getElementById('message').textContent = "تم إرسال تعليقك بنجاح للمراجعة.";
-  document.getElementById('message').style.color = "green";
- } catch(e) {
-  document.getElementById('message').textContent = "خطأ: " + e.message;
-  document.getElementById('message').style.color = "red";
- } finally { btn.disabled = false; }
-});
+ });
+}
 
-
-// --- لوحة الإدارة ---
-let adminLoggedIn = false;
-let allInbox = {}, allPublished = {}, allVisits = {};
-
-window.openAdmin = function() {
- document.getElementById('adminSection').style.display = 'block';
+// ========== لوحة الأستاذة ==========
+window.openTeacher = function() {
+ document.getElementById('teacherSection').style.display = 'block';
  window.scrollTo(0, document.body.scrollHeight);
 }
 
-onValue(inboxRef, s => { allInbox = s.val() || {}; if(adminLoggedIn) renderPending(); });
-onValue(ref(db, "comments"), s => { allPublished = s.val() || {}; if(adminLoggedIn) renderPublishedAdmin(); updateDashStats(); });
-onValue(visitorsRef, s => { allVisits = s.val() || {}; if(adminLoggedIn) renderVisitors(); });
-
-document.getElementById('adminLogin').addEventListener('click', () => {
- if(document.getElementById('adminCode').value !== "031984") {
-  document.getElementById('adminMessage').textContent = "الرمز السري خاطئ!";
-  document.getElementById('adminMessage').style.color = "red";
+document.getElementById('teacherLogin').addEventListener('click', () => {
+ if($('teacherCode').value !== "1234") {
+  $('teacherMessage').textContent = "❌ الرمز السري خاطئ!";
+  $('teacherMessage').style.color = "var(--danger)";
   return;
  }
- adminLoggedIn = true;
- document.getElementById('adminLoginBox').style.display = "none";
- document.getElementById('adminPanel').classList.remove('hidden');
- 
- toggleAdminView('stats');
- renderNamesEditor('wilaya');
- renderNamesEditor('baladiya');
+ teacherLoggedIn = true;
+ $('teacherLoginBox').style.display = "none";
+ $('teacherPanel').classList.remove('hidden');
+ toggleTeacherView('stats');
+ renderTeacherStudents();
+ renderPointsSelect();
+ renderNoteSelect();
+ updateTeacherStats();
 });
 
-window.toggleAdminView = function(view) {
- ['stats', 'names-wilaya', 'names-baladiya', 'pending', 'published', 'visitors'].forEach(v => {
-  const el = $('admin' + v.charAt(0).toUpperCase() + v.slice(1).replace('-', '') + 'View');
+window.logoutTeacher = function() {
+ teacherLoggedIn = false;
+ $('teacherPanel').classList.add('hidden');
+ $('teacherLoginBox').style.display = "block";
+ $('teacherCode').value = '';
+ $('teacherMessage').textContent = '';
+}
+
+window.toggleTeacherView = function(view) {
+ ['stats', 'students', 'points', 'notes', 'submissions'].forEach(v => {
+  const el = $('teacher' + v.charAt(0).toUpperCase() + v.slice(1) + 'View');
   if(el) el.classList.add('hidden');
  });
  document.querySelectorAll('.admin-btn').forEach(btn => btn.classList.remove('active'));
 
- const targetView = $('admin' + view.charAt(0).toUpperCase() + view.slice(1).replace('-', '') + 'View');
+ const targetView = $('teacher' + view.charAt(0).toUpperCase() + view.slice(1) + 'View');
  if(targetView) targetView.classList.remove('hidden');
- 
- const btn = Array.from(document.querySelectorAll('.admin-btn')).find(b => b.getAttribute('onclick').includes(view));
+
+ const btn = Array.from(document.querySelectorAll('.admin-btn')).find(b => b.getAttribute('onclick')?.includes(view));
  if(btn) btn.classList.add('active');
 
- if(view === 'pending') renderPending();
- if(view === 'published') renderPublishedAdmin();
- if(view === 'visitors') renderVisitors();
+ if(view === 'students') renderTeacherStudents();
+ if(view === 'points') renderPointsSelect();
+ if(view === 'notes') renderNoteSelect();
+ if(view === 'submissions') renderAllSubmissions();
+ if(view === 'stats') updateTeacherStats();
 }
 
-function renderNamesEditor(listType) {
- const gridId = listType === 'wilaya' ? 'editWilayaGrid' : 'editBaladiyaGrid';
- const grid = $(gridId);
- grid.innerHTML = '';
- const data = listType === 'wilaya' ? wilayaData : baladiyaData;
- 
- data.forEach(c => {
-  if(c.featured) return;
-  const div = document.createElement('div');
-  div.className = 'edit-row';
-  div.innerHTML = `
-   <span>${c.id}</span>
-   <input type="text" id="edit_${listType}_name_${c.id}" value="${c.name}" placeholder="الاسم">
-   <input type="text" id="edit_${listType}_job_${c.id}" value="${c.job}" placeholder="المهنة">
-  `;
-  grid.appendChild(div);
- });
-}
-
-window.saveNames = async function(listType) {
- const btn = listType === 'wilaya' ? document.getElementById('saveWilayaBtn') : document.getElementById('saveBaladiyaBtn');
- const msgBox = listType === 'wilaya' ? document.getElementById('saveWilayaMsg') : document.getElementById('saveBaladiyaMsg');
- btn.disabled = true;
- btn.textContent = "جاري الحفظ...";
- msgBox.textContent = "";
- 
- let updates = {};
- const data = listType === 'wilaya' ? wilayaData : baladiyaData;
- 
- data.forEach(c => {
-  if(c.featured) return;
-  const newName = document.getElementById(`edit_${listType}_name_${c.id}`).value.trim();
-  const newJob = document.getElementById(`edit_${listType}_job_${c.id}`).value.trim();
-  updates[c.id] = { name: newName, job: newJob };
- });
-
- try {
-  // حفظ في مسار مفتوح ومصرح به
-  await set(ref(db, `publishedComments/site_data_names_${listType}`), { 
-   updatedList: updates,
-   timestamp: Date.now()
-  });
-  
-  msgBox.textContent = "✅ تم حفظ التعديلات بنجاح!";
-  msgBox.style.color = "green";
-  
-  if(listType === 'wilaya') {
-   wilayaData = wilayaData.map(c => updates[c.id] ? {...c, ...updates[c.id]} : c);
-  } else {
-   baladiyaData = baladiyaData.map(c => updates[c.id] ? {...c, ...updates[c.id]} : c);
-  }
-
- } catch(e) {
-  msgBox.textContent = "❌ خطأ أثناء الحفظ: " + e.message;
-  msgBox.style.color = "red";
- } finally {
-  btn.disabled = false;
-  btn.textContent = "💾 حفظ التعديلات";
- }
-}
-
-onValue(ref(db, "publishedComments/site_data_names_wilaya"), (s) => {
- if(s.exists() && s.val().updatedList) {
-  const updates = s.val().updatedList;
-  wilayaData = wilayaData.map(c => updates[c.id] ? {...c, ...updates[c.id]} : c);
-  if(document.getElementById('page-candidates-wilaya').classList.contains('active')) renderGrid(wilayaData, 'candidatesGridWilaya', 'wilaya');
- }
-});
-onValue(ref(db, "publishedComments/site_data_names_baladiya"), (s) => {
- if(s.exists() && s.val().updatedList) {
-  const updates = s.val().updatedList;
-  baladiyaData = baladiyaData.map(c => updates[c.id] ? {...c, ...updates[c.id]} : c);
-  if(document.getElementById('page-candidates-baladiya').classList.contains('active')) renderGrid(baladiyaData, 'candidatesGridBaladiya', 'baladiya');
- }
-});
-
-
-function updateDashStats() {
- let pubCount = 0;
- for(let list in allPublished) {
-  if(allPublished[list]) pubCount += Object.keys(allPublished[list]).length;
- }
- document.getElementById('dashComments').textContent = pubCount;
- document.getElementById('dashVisits').textContent = Object.keys(allVisits).length;
- document.getElementById('dashLikes').textContent = "0"; 
-}
-
-function renderPending() {
- const box = document.getElementById('pendingComments');
+function renderTeacherStudents() {
+ const box = $('teacherStudentsList');
+ if(!box) return;
  box.innerHTML = '';
- const pending = Object.entries(allInbox).filter(([k,v]) => v.status === "pending");
- if(pending.length === 0) { box.innerHTML = "<p style='color:var(--muted);'>لا توجد تعليقات معلقة.</p>"; return; }
-
- pending.forEach(([id, data]) => {
-  const listData = data.listType === 'wilaya' ? wilayaData : baladiyaData;
-  const cName = listData.find(c => c.id === data.candidateId)?.name || "غير معروف";
+ const entries = Object.entries(allStudents).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
+ if(entries.length === 0) {
+  box.innerHTML = "<p style='color:var(--muted);'>لا يوجد طلبة.</p>";
+  return;
+ }
+ entries.forEach(([id, st]) => {
   const div = document.createElement('div');
-  div.className = 'comment-item';
+  div.className = 'submission-item';
   div.innerHTML = `
-   <p><strong>للمترشح:</strong> ${cName} (${data.listType === 'wilaya' ? 'ولاية' : 'بلدية'} - ${data.candidateId})</p>
-   <p style="background:white; padding:10px; border-radius:8px;">${data.message}</p>
-   <button class="btn-action" style="font-size:12px; padding:6px 12px;" onclick="publishComment('${id}')">نشر</button>
-   <button class="btn-action" style="font-size:12px; padding:6px 12px; background:var(--pvp-red);" onclick="deleteInbox('${id}')">حذف</button>
+   <strong>${st.name}</strong> <span class="badge-success">${st.points || 0} نقطة</span><br>
+   <span class="meta">${st.email} | ${st.level || ''} ${st.cls || ''}</span><br>
+   <button class="btn-action btn-danger" style="font-size:12px; padding:6px 12px; margin-top:8px;" onclick="deleteStudent('${id}')">🗑️ حذف</button>
   `;
   box.appendChild(div);
  });
 }
 
-window.publishComment = async function(inboxId) {
- const data = allInbox[inboxId];
- if(!data) return;
- const path = `${data.listType}_${data.candidateId}`;
+window.deleteStudent = async function(id) {
+ if(!confirm("هل تريد حذف هذا الطالب نهائياً؟")) return;
+ await remove(ref(db, `students/${id}`));
+ await remove(ref(db, `notes/${id}`));
+ await remove(ref(db, `submissions/${id}`));
+ alert("تم الحذف.");
+}
+
+function renderPointsSelect() {
+ const sel = $('pointsStudentSelect');
+ if(!sel) return;
+ sel.innerHTML = '<option value="">-- اختر طالباً --</option>';
+ Object.entries(allStudents).forEach(([id, st]) => {
+  sel.innerHTML += `<option value="${id}">${st.name} (${st.points || 0} نقطة)</option>`;
+ });
+}
+
+function renderNoteSelect() {
+ const sel = $('noteStudentSelect');
+ if(!sel) return;
+ sel.innerHTML = '<option value="">-- اختر طالباً --</option>';
+ Object.entries(allStudents).forEach(([id, st]) => {
+  sel.innerHTML += `<option value="${id}">${st.name}</option>`;
+ });
+}
+
+window.addPoints = async function() {
+ const sid = $('pointsStudentSelect').value;
+ const amount = parseInt($('pointsAmount').value) || 10;
+ if(!sid) { $('pointsMsg').textContent = "❌ اختر طالباً أولاً."; $('pointsMsg').style.color = "var(--danger)"; return; }
  try {
-  await push(ref(db, `comments/${path}`), {
-   message: data.message, createdAt: data.createdAt
-  });
-  await update(ref(db, `commentInbox/${inboxId}`), { status: "published" });
-  alert("تم النشر بنجاح!");
- } catch(e) { alert("خطأ: " + e.message); }
+  const st = allStudents[sid];
+  await update(ref(db, `students/${sid}`), { points: (st.points || 0) + amount });
+  $('pointsMsg').textContent = `✅ تمت إضافة ${amount} نقطة.`;
+  $('pointsMsg').style.color = "var(--success)";
+ } catch(e) { $('pointsMsg').textContent = "❌ " + e.message; $('pointsMsg').style.color = "var(--danger)"; }
 }
 
-window.deleteInbox = async function(id) {
- if(!confirm("حذف هذا التعليق نهائياً؟")) return;
- await remove(ref(db, `commentInbox/${id}`));
+window.subtractPoints = async function() {
+ const sid = $('pointsStudentSelect').value;
+ const amount = parseInt($('pointsAmount').value) || 10;
+ if(!sid) { $('pointsMsg').textContent = "❌ اختر طالباً أولاً."; $('pointsMsg').style.color = "var(--danger)"; return; }
+ try {
+  const st = allStudents[sid];
+  await update(ref(db, `students/${sid}`), { points: Math.max(0, (st.points || 0) - amount) });
+  $('pointsMsg').textContent = `✅ تم خصم ${amount} نقطة.`;
+  $('pointsMsg').style.color = "var(--success)";
+ } catch(e) { $('pointsMsg').textContent = "❌ " + e.message; $('pointsMsg').style.color = "var(--danger)"; }
 }
 
-function renderPublishedAdmin() {
- const box = document.getElementById('publishedAdmin');
+window.addNote = async function() {
+ const sid = $('noteStudentSelect').value;
+ const text = $('noteText').value.trim();
+ if(!sid || !text) { $('noteMsg').textContent = "❌ اختر طالباً واكتب ملاحظة."; $('noteMsg').style.color = "var(--danger)"; return; }
+ try {
+  await push(ref(db, `notes/${sid}`), { text, createdAt: Date.now() });
+  $('noteMsg').textContent = "✅ تمت إضافة الملاحظة.";
+  $('noteMsg').style.color = "var(--success)";
+  $('noteText').value = '';
+ } catch(e) { $('noteMsg').textContent = "❌ " + e.message; $('noteMsg').style.color = "var(--danger)"; }
+}
+
+function renderAllSubmissions() {
+ const box = $('allSubmissions');
+ if(!box) return;
  box.innerHTML = '';
  let hasAny = false;
- 
- for(let path in allPublished) {
-  const comments = allPublished[path];
-  if(!comments || Object.keys(comments).length === 0) continue;
-  if(path.includes('site_data_names')) continue; // تجاهل مسار تعديل الأسماء
-  
-  hasAny = true;
-  
-  const [listType, cid] = path.split('_');
-  const listData = listType === 'wilaya' ? wilayaData : baladiyaData;
-  const cName = listData.find(c => c.id == cid)?.name || "غير معروف";
-  
-  const header = document.createElement('h4');
-  header.textContent = `المترشح: ${cName} (${listType === 'wilaya' ? 'ولاية' : 'بلدية'})`;
-  box.appendChild(header);
-
-  Object.entries(comments).forEach(([id, data]) => {
-   if(typeof data === 'object' && data.message) {
+ // جمع كل الأعمال
+ onValue(ref(db, 'submissions'), (s) => {
+  const data = s.val() || {};
+  box.innerHTML = '';
+  hasAny = false;
+  for(let sid in data) {
+   const st = allStudents[sid];
+   const stName = st ? st.name : 'طالب محذوف';
+   for(let subId in data[sid]) {
+    hasAny = true;
+    const sub = data[sid][subId];
     const div = document.createElement('div');
-    div.className = 'comment-item';
+    div.className = 'submission-item';
     div.innerHTML = `
-     <p style="background:white; padding:10px; border-radius:8px;">${data.message}</p>
-     <input type="text" id="reply_${path}_${id}" placeholder="اكتب الرد..." value="${data.reply || ''}" style="margin:10px 0; padding:10px;">
-     <button class="btn-action" style="font-size:12px; padding:6px 12px;" onclick="saveReply('${path}', '${id}')">حفظ الرد</button>
-     <button class="btn-action" style="font-size:12px; padding:6px 12px; background:var(--pvp-red);" onclick="deletePub('${path}', '${id}')">حذف</button>
+     <strong>${stName}</strong> - <span>${sub.title}</span><br>
+     <span class="meta">${new Date(sub.createdAt).toLocaleString('ar-DZ')}</span><br>
+     <a href="${sub.link}" target="_blank">🔗 فتح العمل</a>
+     ${sub.note ? '<p style="font-size:13px; color:var(--muted);">' + sub.note + '</p>' : ''}
+     <button class="btn-action btn-danger" style="font-size:12px; padding:6px 12px; margin-top:8px;" onclick="deleteSubmission('${sid}','${subId}')">🗑️ حذف</button>
     `;
     box.appendChild(div);
    }
-  });
- }
+  }
+  if(!hasAny) box.innerHTML = "<p style='color:var(--muted);'>لا توجد أعمال مرفوعة.</p>";
+ });
+}
+
+window.deleteSubmission = async function(sid, subId) {
+ if(!confirm("حذف هذا العمل؟")) return;
+ await remove(ref(db, `submissions/${sid}/${subId}`));
+}
+
+function updateTeacherStats() {
+ const count = Object.keys(allStudents).length;
+ let totalPoints = 0;
+ Object.values(allStudents).forEach(st => totalPoints += (st.points || 0));
+ const avg = count > 0 ? Math.round(totalPoints / count) : 0;
+ $('dashStudents').textContent = count;
+ $('dashAvgPoints').textContent = avg;
  
- if(!hasAny) box.innerHTML = "<p style='color:var(--muted);'>لا توجد تعليقات منشورة.</p>";
-}
-
-window.saveReply = async function(path, id) {
- const txt = document.getElementById(`reply_${path}_${id}`).value.trim();
- await update(ref(db, `comments/${path}/${id}`), { reply: txt });
- alert("تم حفظ الرد!");
-}
-
-window.deletePub = async function(path, id) {
- if(!confirm("حذف نهائي؟")) return;
- await remove(ref(db, `comments/${path}/${id}`));
-}
-
-function renderVisitors() {
- const box = document.getElementById('visitorsList');
- box.innerHTML = '';
- const entries = Object.entries(allVisits).sort((a,b) => (b[1].lastVisit||0) - (a[1].lastVisit||0));
- entries.forEach(([id, d]) => {
-  const div = document.createElement('div');
-  div.className = 'comment-item';
-  div.innerHTML = `
-   <strong>زائر: ${id.slice(0,10)}</strong><br>
-   <span style="font-size:13px; color:var(--muted);">آخر زيارة: ${new Date(d.lastVisit).toLocaleString('ar-DZ')}</span>
-  `;
-  box.appendChild(div);
+ // عدد الأعمال
+ let subCount = 0;
+ onValue(ref(db, 'submissions'), (s) => {
+  const data = s.val() || {};
+  for(let sid in data) subCount += Object.keys(data[sid]).length;
+  $('dashSubmissions').textContent = subCount;
+ });
+ 
+ // عدد الملاحظات
+ let noteCount = 0;
+ onValue(ref(db, 'notes'), (s) => {
+  const data = s.val() || {};
+  for(let sid in data) noteCount += Object.keys(data[sid]).length;
+  $('dashNotes').textContent = noteCount;
  });
 }
 </script>
