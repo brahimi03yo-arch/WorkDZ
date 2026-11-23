@@ -3,1244 +3,569 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>University English Session | جامعة أفلو</title>
-<meta name="description" content="منصة الحصة الإنجليزية الجامعية - جامعة أفلو. تصميم وبرمجة براهيمي يوسف.">
+<title>إحصائيات الناخبين | شريد علوي</title>
+<meta name="description" content="نظام إحصائيات الناخبين - براهيمي يوسف - مطور برامج وتطبيقات">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;900&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
- --bg: #f0f4f8;
- --surface: #ffffff;
- --border: #e2e8f0;
- --text: #1e293b;
- --muted: #64748b;
- --primary: #1e40af;
- --primary-dark: #1e3a8a;
- --accent: #0891b2;
- --success: #059669;
- --warning: #d97706;
- --danger: #dc2626;
- --purple: #7c3aed;
- --gold: #d97706;
+ --bg:#f0f4f8; --surface:#fff; --border:#e2e8f0; --text:#1e293b; --muted:#64748b;
+ --primary:#1e40af; --primary-dark:#1e3a8a; --accent:#0891b2;
+ --success:#059669; --warning:#d97706; --danger:#dc2626; --purple:#7c3aed; --gold:#d97706;
 }
-
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
- margin:0; min-height:100vh; color:var(--text);
- font-family:Tajawal,Cairo,sans-serif; line-height:1.8;
- overflow-x:hidden; background: var(--bg);
- transition: font-family 0.3s;
-}
-html[lang="en"] body{ font-family: Poppins, sans-serif; }
+body{margin:0;min-height:100vh;color:var(--text);font-family:Tajawal,Cairo,sans-serif;line-height:1.8;background:var(--bg)}
+html[lang="en"] body{font-family:Poppins,sans-serif}
 
-/* الشريط الدوار */
-.top-banner {
- background: linear-gradient(90deg, var(--primary), var(--purple));
- color: white; padding: 10px 0; overflow: hidden; white-space: nowrap;
- font-size: 14px; font-weight: 700; border-bottom: 3px solid var(--accent);
-}
-.banner-content { display: inline-block; animation: marquee-rtl 60s linear infinite; }
-.banner-content span { padding: 0 30px; }
-@keyframes marquee-rtl { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
+/* الشريط العلوي */
+.top-banner{background:linear-gradient(90deg,var(--primary),var(--purple));color:#fff;padding:10px 0;overflow:hidden;white-space:nowrap;font-size:14px;font-weight:700;border-bottom:3px solid var(--accent)}
+.banner-content{display:inline-block;animation:marquee 60s linear infinite}
+.banner-content span{padding:0 30px}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(100%)}}
 
-header{
- display:flex; align-items:center; justify-content:space-between;
- padding:15px 25px; font-size:19px; font-weight:900;
- background:#fff; border-bottom:1px solid var(--border);
- position:sticky; top:0; z-index:100; box-shadow: 0 4px 20px rgba(0,0,0,.06);
- flex-wrap: wrap; gap: 10px;
-}
-.brand{display:flex;align-items:center;gap:12px; cursor:pointer;}
-.brand-mark{
- width:44px;height:44px;display:grid;place-items:center; border-radius:14px;
- font-size:14px;font-weight:900; color:#fff;
- background: linear-gradient(135deg, var(--primary), var(--purple));
-}
-.brand-name{
- font-size:13px;font-weight:800;color:var(--primary);
- padding:8px 16px;border-radius:999px; border:1px solid rgba(30, 64, 175, 0.2);
- background:rgba(30, 64, 175, 0.08);
- font-family: 'Poppins', sans-serif;
-}
+header{display:flex;align-items:center;justify-content:space-between;padding:15px 25px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.06);flex-wrap:wrap;gap:10px}
+.brand{display:flex;align-items:center;gap:12px;cursor:pointer}
+.brand-mark{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--primary),var(--purple));font-size:13px}
+.brand-name{font-size:13px;font-weight:800;color:var(--primary);padding:8px 16px;border-radius:999px;border:1px solid rgba(30,64,175,.2);background:rgba(30,64,175,.08);font-family:'Poppins',sans-serif}
+.header-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.dev-badge{font-size:12px;color:var(--purple);font-weight:800;padding:6px 12px;border-radius:999px;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.2);display:inline-block}
+.admin-access-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:bold;font-family:inherit;transition:.2s}
+.admin-access-btn:hover{background:var(--bg);color:var(--purple);border-color:var(--purple)}
 
-.header-actions { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.container{max-width:1250px;margin:auto;padding:30px 18px;min-height:75vh}
+.page-section{display:none;animation:fadeIn .4s ease}
+.page-section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
 
-/* زر تغيير اللغة */
-.lang-switch {
- display: flex; align-items: center; gap: 6px;
- background: linear-gradient(135deg, var(--primary), var(--purple));
- color: white; border: none; cursor: pointer;
- padding: 8px 18px; border-radius: 999px; font-weight: 800; font-size: 14px;
- font-family: inherit; transition: 0.3s; box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
-}
-.lang-switch:hover { transform: scale(1.05); box-shadow: 0 6px 18px rgba(30, 64, 175, 0.4); }
-.lang-switch .flag { font-size: 18px; }
+.hero-hub{text-align:center;padding:50px 20px;background:linear-gradient(135deg,rgba(30,64,175,.08),rgba(124,58,237,.08));border-radius:30px;border:1px solid rgba(30,64,175,.1);margin-bottom:40px;position:relative;overflow:hidden}
+.hero-hub::before{content:'VOTE';position:absolute;top:-30px;left:-10px;font-size:180px;font-weight:900;color:rgba(30,64,175,.04);font-family:'Poppins',sans-serif;pointer-events:none}
+.hero-hub h1{color:var(--primary-dark);font-size:clamp(28px,6vw,48px);margin-bottom:10px;font-weight:900;position:relative}
+.hero-hub .subtitle{color:var(--muted);font-size:18px;margin-bottom:15px;position:relative}
+.university-badge{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--warning));color:#fff;padding:8px 24px;border-radius:999px;font-weight:800;font-size:15px;margin-bottom:10px;box-shadow:0 6px 20px rgba(217,119,6,.3)}
+.time-badge{display:inline-block;background:var(--accent);color:#fff;padding:8px 24px;border-radius:999px;font-weight:800;font-size:15px;margin-bottom:30px;box-shadow:0 6px 20px rgba(8,145,178,.3)}
+.hub-buttons{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;position:relative}
+.btn-main{padding:18px 30px;font-size:17px;font-weight:800;border-radius:16px;border:none;cursor:pointer;color:#fff;transition:.3s;box-shadow:0 10px 25px rgba(0,0,0,.1);display:flex;align-items:center;gap:10px;font-family:inherit}
+.btn-main:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.15)}
+.btn-student{background:var(--primary)}
+.btn-teacher{background:var(--purple)}
+.btn-info{background:var(--success)}
 
-.container{ max-width:1250px; margin:auto; padding:30px 18px; min-height: 75vh; }
-
-/* التنقل */
-.page-section { display: none; animation: fadeIn 0.4s ease; }
-.page-section.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-
-/* الصفحة الرئيسية */
-.hero-hub {
- text-align: center; padding: 50px 20px;
- background: linear-gradient(135deg, rgba(30, 64, 175, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%);
- border-radius: 30px; border: 1px solid rgba(30, 64, 175, 0.1); margin-bottom: 40px;
- position: relative; overflow: hidden;
-}
-.hero-hub::before {
- content: 'EN'; position: absolute; top: -30px; left: -10px;
- font-size: 220px; font-weight: 900; color: rgba(30, 64, 175, 0.04);
- font-family: 'Poppins', sans-serif; pointer-events: none;
-}
-.hero-hub h1 { color: var(--primary-dark); font-size: clamp(32px, 6vw, 52px); margin-bottom: 10px; font-weight: 900; position: relative; }
-.hero-hub .subtitle { color: var(--muted); font-size: 18px; margin-bottom: 15px; position: relative; }
-.university-badge {
- display: inline-block; background: linear-gradient(135deg, var(--gold), var(--warning)); color: white;
- padding: 8px 24px; border-radius: 999px; font-weight: 800; font-size: 15px;
- margin-bottom: 10px; position: relative;
- box-shadow: 0 6px 20px rgba(217, 119, 6, 0.3);
-}
-.time-badge {
- display: inline-block; background: var(--accent); color: white;
- padding: 8px 24px; border-radius: 999px; font-weight: 800; font-size: 15px;
- margin-bottom: 30px; position: relative;
- box-shadow: 0 6px 20px rgba(8, 145, 178, 0.3);
-}
-.hub-buttons { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; position: relative; }
-.btn-main {
- padding: 18px 30px; font-size: 17px; font-weight: 800; border-radius: 16px;
- border: none; cursor: pointer; color: white; transition: 0.3s;
- box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px;
- font-family: inherit;
-}
-.btn-main:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
-.btn-student { background: var(--primary); }
-.btn-teacher { background: var(--purple); }
-.btn-info { background: var(--success); }
-
-/* بطاقات الأبواب */
-.doors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 30px; }
-.door-card {
- background: var(--surface); border: 2px solid var(--border); border-radius: 22px;
- padding: 30px 22px; text-align: center; cursor: pointer; transition: 0.3s;
- box-shadow: 0 8px 20px rgba(0,0,0,0.03);
- position: relative; overflow: hidden;
-}
-.door-card::before {
- content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
- background: linear-gradient(90deg, var(--primary), var(--purple));
-}
-.door-card.door-register::before { background: var(--primary); }
-.door-card.door-students::before { background: var(--success); }
-.door-card.door-teacher::before { background: var(--purple); }
-.door-card.door-results::before { background: var(--gold); }
-.door-card:hover { transform: translateY(-6px); box-shadow: 0 18px 35px rgba(0,0,0,0.1); border-color: var(--primary); }
-.door-icon {
- font-size: 48px; margin-bottom: 12px; display: block;
-}
-.door-card h2 { color: var(--primary); margin: 10px 0; font-size: 22px; font-weight: 900; }
-.door-card p { color: var(--muted); font-weight: 700; font-size: 14px; margin: 8px 0 15px; }
-.door-card .door-task {
- background: var(--bg); padding: 10px; border-radius: 12px;
- font-weight: 800; font-size: 13px; color: var(--text);
- border: 1px solid var(--border);
-}
-.door-card .door-number {
- position: absolute; top: 15px; right: 20px;
- width: 34px; height: 34px; border-radius: 50%;
- background: var(--primary); color: white;
- display: grid; place-items: center; font-weight: 900; font-size: 14px;
-}
-.door-card.door-students .door-number { background: var(--success); }
-.door-card.door-teacher .door-number { background: var(--purple); }
-.door-card.door-results .door-number { background: var(--gold); }
-
-/* قسم عنوان الأبواب */
-.section-header {
- text-align: center; margin: 45px 0 15px;
-}
-.section-header h2 {
- color: var(--primary-dark); font-size: 28px; font-weight: 900; margin-bottom: 8px;
-}
-.section-header .line {
- width: 80px; height: 4px; margin: 0 auto;
- background: linear-gradient(90deg, var(--primary), var(--purple));
- border-radius: 999px;
-}
-
-/* شبكة الطلبة */
-.students-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
-.student-mini {
- background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
- padding: 20px 15px; text-align: center; cursor: pointer; transition: 0.2s;
- box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-}
-.student-mini:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-.student-mini .avatar {
- width: 52px; height: 52px; background: linear-gradient(135deg, var(--primary), var(--purple)); color: white;
- border-radius: 50%; display: grid; place-items: center; font-weight: 900; margin: 0 auto 10px; font-size: 18px;
-}
-.student-mini h4 { margin: 8px 0; color: var(--text); font-size: 16px; font-weight: 800; }
-.student-mini p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.4; }
-
-/* بطاقة الطالب */
-.profile-card { background: var(--surface); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid var(--border); }
-.profile-header { background: linear-gradient(135deg, var(--primary) 50%, var(--purple) 100%); padding: 40px 30px; text-align: center; position: relative; }
-.profile-body { padding: 20px 30px 40px; }
-.profile-title { text-align: center; margin-bottom: 20px; }
-.profile-title h2 { margin: 0; font-size: 28px; color: var(--text); font-weight: 900; }
-.profile-title .job { color: var(--primary); font-size: 17px; font-weight: 700; margin-top: 5px;}
-.profile-title .badge-list { background: var(--primary-dark); color: white; padding: 5px 15px; border-radius: 999px; font-size: 13px; display: inline-block; margin-bottom: 10px; font-weight: bold;}
-
-/* المعلومات */
-.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-.info-item { background: var(--bg); padding: 15px; border-radius: 12px; border: 1px solid var(--border); }
-.info-item strong { display: block; color: var(--primary); margin-bottom: 5px; font-size: 14px;}
-
-/* النقاط */
-.points-display { 
- text-align: center; padding: 30px; background: linear-gradient(135deg, var(--success), #047857);
- border-radius: 16px; color: white; margin: 20px 0;
-}
-.points-display .number { font-size: 56px; font-weight: 900; line-height: 1; font-family: 'Poppins', sans-serif; }
-.points-display .label { font-size: 18px; font-weight: 700; margin-top: 5px; }
-
-/* الملاحظات */
-.notes-box { margin-top: 30px; background: var(--surface); padding: 30px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03);}
-.notes-box h3 { color: var(--primary-dark); margin-top: 0; border-bottom: 2px solid var(--border); padding-bottom: 10px;}
-.note-item { background: var(--bg); padding: 15px; border-radius: 12px; margin-top: 15px; border: 1px solid var(--border); border-right: 4px solid var(--warning); }
+.section-header{text-align:center;margin:45px 0 15px}
+.section-header h2{color:var(--primary-dark);font-size:28px;font-weight:900;margin-bottom:8px}
+.section-header .line{width:80px;height:4px;margin:0 auto;background:linear-gradient(90deg,var(--primary),var(--purple));border-radius:999px}
 
 /* النماذج */
-input, textarea, select { width: 100%; padding: 12px 15px; border-radius: 10px; border: 1px solid var(--border); font-family: inherit; margin-bottom: 10px; font-size: 15px; background: var(--bg); transition: 0.2s; }
-input:focus, textarea:focus, select:focus { outline: none; border-color: var(--primary); background: white; }
-button.btn-action { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 10px; font-weight: 800; cursor: pointer; transition: 0.2s; font-size: 15px; font-family: inherit; }
-button.btn-action:hover { background: var(--primary-dark); transform: translateY(-2px); }
-button.btn-action:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-button.btn-success { background: var(--success); }
-button.btn-success:hover { background: #047857; }
-button.btn-danger { background: var(--danger); }
-button.btn-danger:hover { background: #b91c1c; }
+.form-box{background:var(--surface);padding:30px;border-radius:20px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,.03);max-width:600px;margin:auto}
+.form-box h3{color:var(--primary-dark);margin-top:0;border-bottom:2px solid var(--border);padding-bottom:10px}
+label{font-weight:800;color:var(--primary);display:block;margin-bottom:5px;margin-top:12px}
+input,textarea,select{width:100%;padding:12px 15px;border-radius:10px;border:1px solid var(--border);font-family:inherit;margin-bottom:10px;font-size:15px;background:var(--bg);transition:.2s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--primary);background:#fff}
+button.btn-action{background:var(--primary);color:#fff;border:none;padding:12px 25px;border-radius:10px;font-weight:800;cursor:pointer;transition:.2s;font-size:15px;font-family:inherit}
+button.btn-action:hover{background:var(--primary-dark);transform:translateY(-2px)}
+button.btn-action:disabled{opacity:.6;cursor:not-allowed;transform:none}
+button.btn-success{background:var(--success)}
+button.btn-success:hover{background:#047857}
+button.btn-danger{background:var(--danger)}
+button.btn-danger:hover{background:#b91c1c}
 
-/* زر الرجوع */
-.btn-back { background: white; border: 1px solid var(--border); color: var(--text); padding: 10px 20px; border-radius: 10px; cursor: pointer; margin-bottom: 20px; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.02); font-family: inherit; }
-.btn-back:hover { background: var(--bg); border-color: var(--primary); color: var(--primary); }
+.btn-back{background:#fff;border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:10px;cursor:pointer;margin-bottom:20px;font-weight:bold;display:inline-flex;align-items:center;gap:8px;transition:.2s;font-family:inherit}
+.btn-back:hover{background:var(--bg);border-color:var(--primary);color:var(--primary)}
 
-/* لوحة الأستاذة */
-#teacherSection { display: none; }
-.teacher-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px; }
-.admin-btn { background: white; border: 2px solid var(--border); border-radius: 12px; padding: 18px 10px; text-align: center; cursor: pointer; transition: 0.2s; font-weight: 800; color: var(--text); display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 13px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); font-family: inherit; }
-.admin-btn:hover { border-color: var(--purple); transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.05); }
-.admin-btn.active { background: var(--purple); color: white; border-color: var(--purple); box-shadow: 0 8px 15px rgba(124, 58, 237, 0.3);}
-.admin-btn .icon { font-size: 26px; }
-.admin-panel-content { background: var(--surface); border-radius: 16px; padding: 25px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03); min-height: 400px; }
-.stat-box { background: var(--bg); padding: 20px; text-align: center; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; }
-.stat-box strong { font-size: 34px; color: var(--purple); display: block; margin-bottom: 5px; font-family: 'Poppins', sans-serif;}
-.stat-box span { font-weight: bold; color: var(--muted); }
-.hidden { display: none !important; }
-.admin-access-btn { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: bold; font-family: inherit; transition: 0.2s; }
-.admin-access-btn:hover { background: var(--bg); color: var(--purple); border-color: var(--purple); }
+/* نتائج الإحصاء */
+.stats-result{background:linear-gradient(135deg,var(--success),#047857);border-radius:20px;padding:30px;color:#fff;margin:20px 0;text-align:center}
+.stats-result .big{font-size:56px;font-weight:900;font-family:'Poppins',sans-serif;line-height:1}
+.stats-result .label{font-size:16px;font-weight:700;margin-top:5px}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:15px;margin-top:20px}
+.result-card{background:rgba(255,255,255,.15);padding:15px;border-radius:12px;backdrop-filter:blur(4px)}
+.result-card .num{font-size:28px;font-weight:900;font-family:'Poppins',sans-serif}
+.result-card .lbl{font-size:13px;font-weight:700;opacity:.9}
 
-/* الأعمال */
-.submission-item {
- background: white; border: 1px solid var(--border); border-radius: 12px;
- padding: 15px; margin-bottom: 10px; border-right: 4px solid var(--success);
-}
-.submission-item .meta { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
-.submission-item a { color: var(--primary); font-weight: 700; text-decoration: none; }
-.submission-item a:hover { text-decoration: underline; }
+/* سجل */
+.record-item{background:#fff;border:1px solid var(--border);border-radius:12px;padding:15px;margin-bottom:10px;border-right:4px solid var(--primary);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.record-item .meta{font-size:12px;color:var(--muted)}
+.record-item strong{color:var(--primary)}
+.badge-success{background:var(--success);color:#fff;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700}
+.badge-warn{background:var(--warning);color:#fff;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700}
+.badge-danger{background:var(--danger);color:#fff;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700}
 
-/* شارات */
-.badge-success { background: var(--success); color: white; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.notes-box{margin-top:30px;background:var(--surface);padding:30px;border-radius:20px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,.03)}
+.notes-box h3{color:var(--primary-dark);margin-top:0;border-bottom:2px solid var(--border);padding-bottom:10px}
 
-/* Signature */
-.dev-badge {
- font-size:12px; color:var(--purple); font-weight:800;
- padding:6px 12px; border-radius:999px;
- background:rgba(124,58,237,0.1);
- border:1px solid rgba(124,58,237,0.2);
- display:inline-block;
-}
+.stat-box{background:var(--bg);padding:20px;text-align:center;border-radius:12px;border:1px solid var(--border);margin-bottom:20px}
+.stat-box strong{font-size:34px;color:var(--purple);display:block;margin-bottom:5px;font-family:'Poppins',sans-serif}
+.stat-box span{font-weight:bold;color:var(--muted)}
+
+.hidden{display:none!important}
+.alert-warn{background:#fef3c7;border:1px solid #f59e0b;color:#92400e;padding:12px;border-radius:10px;font-weight:700;margin-bottom:15px}
+.alert-err{background:#fee2e2;border:1px solid #ef4444;color:#991b1b;padding:12px;border-radius:10px;font-weight:700;margin-bottom:15px}
+.alert-ok{background:#d1fae5;border:1px solid #10b981;color:#065f46;padding:12px;border-radius:10px;font-weight:700;margin-bottom:15px}
+
+.teacher-dashboard-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:15px;margin-bottom:30px}
+.admin-btn{background:#fff;border:2px solid var(--border);border-radius:12px;padding:18px 10px;text-align:center;cursor:pointer;transition:.2s;font-weight:800;color:var(--text);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:13px;font-family:inherit}
+.admin-btn:hover{border-color:var(--purple);transform:translateY(-3px)}
+.admin-btn.active{background:var(--purple);color:#fff;border-color:var(--purple)}
+.admin-btn .icon{font-size:26px}
+.admin-panel-content{background:var(--surface);border-radius:16px;padding:25px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,.03);min-height:400px}
+
+footer{text-align:center;padding:30px;color:var(--muted);border-top:1px solid var(--border);background:#fff;margin-top:50px}
+footer p{margin:8px 0}
+.slogan{font-weight:900;color:var(--primary);font-size:18px;letter-spacing:1px}
 
 @media(max-width:768px){
- .info-grid { grid-template-columns: 1fr; }
- .btn-main { width: 100%; justify-content: center; }
- .brand-name { display: none; }
- .dev-badge { display: none; }
- .lang-switch { padding: 8px 14px; font-size: 13px; }
- .door-card { padding: 25px 18px; }
+ .btn-main{width:100%;justify-content:center}
+ .brand-name{display:none}
+ .dev-badge{display:none}
+ .info-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- الشريط الدوار -->
-<div class="top-banner">
- <div class="banner-content" id="bannerContent"></div>
-</div>
+<div class="top-banner"><div class="banner-content" id="bannerContent"></div></div>
 
 <header>
  <div class="brand" onclick="showPage('home')">
-  <span class="brand-mark">EN</span>
-  <span data-i18n="appName">University English Class</span>
+  <span class="brand-mark">VOTE</span>
+  <span>إحصائيات الناخبين</span>
  </div>
  <div class="header-actions">
-  <span class="brand-name">Université d'Aflou • Session 1h</span>
-  <span class="dev-badge" data-i18n="devCredit">👨‍💻 برمجة: براهيمي يوسف</span>
-  <button class="lang-switch" onclick="toggleLanguage()">
-   <span class="flag" id="langFlag">🇬🇧</span>
-   <span id="langText">English</span>
-  </button>
-  <button class="admin-access-btn" onclick="openTeacher()" data-i18n="teacherLogin">👩‍🏫 دخول الأستاذة</button>
+  <span class="brand-name">شريد علوي — عرعار وادي مرة</span>
+  <span class="dev-badge">👨‍💻 براهيمي يوسف</span>
+  <button class="admin-access-btn" onclick="showPage('admin')">🔑 دخول المسؤول</button>
  </div>
 </header>
 
 <main class="container">
 
-<!-- 1. الرئيسية -->
+<!-- الرئيسية -->
 <section id="page-home" class="page-section active">
  <div class="hero-hub">
-  <div class="university-badge" data-i18n="universityName">🎓 جامعة أفلو - Université d'Aflou</div>
-  <h1 data-i18n="heroTitle">University English Session</h1>
-  <p class="subtitle" data-i18n="heroSubtitle">منصة الحصة الإنجليزية الجامعية - تسجيل، متابعة، وتقييم</p>
-  <div class="time-badge" data-i18n="sessionDuration">⏱️ مدة الحصة: ساعة واحدة فقط</div>
+  <div class="university-badge">🗳️ نظام إحصائيات الناخبين</div>
+  <h1>إحصائيات الناخبين</h1>
+  <p class="subtitle">إدخال المجموع • الرجال • النساء — حساب النسب فوراً</p>
+  <div class="time-badge">🕐 يُسجَّل التاريخ والوقت تلقائياً</div>
   <div class="hub-buttons">
-   <button class="btn-main btn-student" onclick="showPage('student-register')" data-i18n="btnRegister">📝 تسجيل طالب</button>
-   <button class="btn-main btn-info" onclick="showPage('students-list')" data-i18n="btnStudents">👥 قائمة الطلبة</button>
-   <button class="btn-main btn-teacher" onclick="openTeacher()" data-i18n="btnTeacher">👩‍🏫 دخول الأستاذة</button>
+   <button class="btn-main btn-student" onclick="showPage('entry')">🗳️ إدخال الأعداد</button>
+   <button class="btn-main btn-info" onclick="showPage('records')">📁 السجلات المحفوظة</button>
+   <button class="btn-main btn-teacher" onclick="showPage('admin')">🔑 لوحة المسؤول</button>
   </div>
  </div>
 
- <!-- الأبواب -->
- <div class="section-header">
-  <h2 data-i18n="doorsTitle">🚪 أبواب المنصة</h2>
-  <div class="line"></div>
+ <!-- مربع التعليق الإجباري -->
+ <div id="commentGate" class="form-box" style="max-width:700px;margin-top:20px;border:3px solid var(--warning)">
+  <h3 style="color:var(--warning)">💬 قبل المتابعة — اترك تعليقك</h3>
+  <p style="color:var(--muted)">لا يمكنك استخدام المنصة دون كتابة تعليق قصير (5 أحرف على الأقل).</p>
+  <div id="userInfoBox" style="background:var(--bg);padding:10px;border-radius:10px;font-size:13px;color:var(--muted);margin-bottom:10px"></div>
+  <textarea id="gateComment" placeholder="اكتب تعليقك هنا..." style="min-height:90px"></textarea>
+  <button class="btn-action btn-success" onclick="saveGateComment()" style="width:100%">✅ حفظ التعليق والمتابعة</button>
+  <div id="gateMsg" style="text-align:center;font-weight:bold;margin-top:10px"></div>
+ </div>
+</section>
+
+<!-- إدخال الأعداد -->
+<section id="page-entry" class="page-section">
+ <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
+ <h2 style="color:var(--primary);text-align:center;margin-bottom:20px">🗳️ إدخال أعداد الناخبين</h2>
+
+ <div class="form-box">
+  <div id="entryWarn" class="alert-warn hidden"></div>
+
+  <label>📊 المجموع الكلي *</label>
+  <input type="number" id="inTotal" min="0" oninput="computePreview()" placeholder="مثال: 1000">
+
+  <label>👨 عدد الرجال *</label>
+  <input type="number" id="inMen" min="0" oninput="computePreview()" placeholder="مثال: 600">
+
+  <label>👩 عدد النساء *</label>
+  <input type="number" id="inWomen" min="0" oninput="computePreview()" placeholder="مثال: 400">
+
+  <label>📝 ملاحظة اختيارية</label>
+  <input type="text" id="inNote" placeholder="مثال: انتخابات المجلس البلدي 2025">
+
+  <button class="btn-action btn-success" onclick="saveEntry()" style="width:100%;font-size:18px;padding:15px;margin-top:10px">💾 حساب وحفظ</button>
+  <div id="entryMsg" style="text-align:center;font-weight:bold;margin-top:10px"></div>
  </div>
 
- <div class="doors-grid">
-  <!-- باب 1: التسجيل -->
-  <div class="door-card door-register" onclick="showPage('student-register')">
-   <span class="door-number">1</span>
-   <span class="door-icon">📝</span>
-   <h2 data-i18n="door1Title">باب التسجيل</h2>
-   <p data-i18n="door1Desc">تسجيل طالب جديد في الحصة الإنجليزية</p>
-   <div class="door-task" data-i18n="door1Task">📌 المهمة: ملء نموذج التسجيل بالبيانات الجامعية</div>
-  </div>
-
-  <!-- باب 2: قائمة الطلبة -->
-  <div class="door-card door-students" onclick="showPage('students-list')">
-   <span class="door-number">2</span>
-   <span class="door-icon">👥</span>
-   <h2 data-i18n="door2Title">باب الطلبة</h2>
-   <p data-i18n="door2Desc">تصفح قائمة الطلبة المسجلين ونقاطهم</p>
-   <div class="door-task" data-i18n="door2Task">📌 المهمة: عرض الطلبة، النقاط، ورفع الأعمال</div>
-  </div>
-
-  <!-- باب 3: الأستاذة -->
-  <div class="door-card door-teacher" onclick="openTeacher()">
-   <span class="door-number">3</span>
-   <span class="door-icon">👩‍🏫</span>
-   <h2 data-i18n="door3Title">باب الأستاذة</h2>
-   <p data-i18n="door3Desc">لوحة التحكم الكاملة للأستاذة الجامعية</p>
-   <div class="door-task" data-i18n="door3Task">📌 المهمة: إدارة الطلبة، النقاط، الملاحظات، والأعمال</div>
-  </div>
-
-  <!-- باب 4: النتائج -->
-  <div class="door-card door-results" onclick="showPage('results')">
-   <span class="door-number">4</span>
-   <span class="door-icon">🏆</span>
-   <h2 data-i18n="door4Title">باب النتائج</h2>
-   <p data-i18n="door4Desc">ترتيب الطلبة حسب النقاط</p>
-   <div class="door-task" data-i18n="door4Task">📌 المهمة: عرض لوحة الشرف والترتيب العام</div>
+ <!-- معاينة النسب -->
+ <div id="previewBox" class="notes-box hidden">
+  <h3>📈 النتائج الحالية</h3>
+  <div class="stats-result">
+   <div class="big" id="pvTotal">0</div>
+   <div class="label">المجموع الكلي</div>
+   <div class="result-grid">
+    <div class="result-card"><div class="num" id="pvMenPct">0%</div><div class="lbl">نسبة الرجال</div></div>
+    <div class="result-card"><div class="num" id="pvWomenPct">0%</div><div class="lbl">نسبة النساء</div></div>
+    <div class="result-card"><div class="num" id="pvMen">0</div><div class="lbl">رجال</div></div>
+    <div class="result-card"><div class="num" id="pvWomen">0</div><div class="lbl">نساء</div></div>
+   </div>
   </div>
  </div>
 </section>
 
-<!-- 2. تسجيل طالب -->
-<section id="page-student-register" class="page-section">
- <button class="btn-back" onclick="showPage('home')" data-i18n="btnBackHome">← العودة للرئيسية</button>
- <h2 style="color: var(--primary); text-align: center; margin-bottom: 20px;" data-i18n="registerTitle">📝 تسجيل طالب جديد</h2>
- 
- <div class="notes-box" style="max-width: 600px; margin: auto;">
-  <form id="registerForm">
-   <label style="font-weight:800; color:var(--primary); display:block; margin-bottom:5px;" data-i18n="labelFullName">الاسم الكامل *</label>
-   <input type="text" id="regName" required>
-   
-   <label style="font-weight:800; color:var(--primary); display:block; margin-bottom:5px;" data-i18n="labelEmail">البريد الإلكتروني *</label>
-   <input type="email" id="regEmail" required>
-   
-   <label style="font-weight:800; color:var(--primary); display:block; margin-bottom:5px;" data-i18n="labelPhone">رقم الهاتف</label>
-   <input type="tel" id="regPhone">
-   
-   <label style="font-weight:800; color:var(--primary); display:block; margin-bottom:5px;" data-i18n="labelLevel">المستوى الجامعي *</label>
-   <select id="regLevel" required>
-    <option value="" data-i18n="selectLevel">-- اختر المستوى --</option>
-    <option value="L1" data-i18n="l1">ليسانس 1</option>
-    <option value="L2" data-i18n="l2">ليسانس 2</option>
-    <option value="L3" data-i18n="l3">ليسانس 3</option>
-    <option value="M1" data-i18n="m1">ماستر 1</option>
-    <option value="M2" data-i18n="m2">ماستر 2</option>
-    <option value="PhD" data-i18n="phd">دكتوراه</option>
-   </select>
-   
-   <label style="font-weight:800; color:var(--primary); display:block; margin-bottom:5px;" data-i18n="labelSpecialty">التخصص / الشعبة</label>
-   <input type="text" id="regClass">
-   
-   <label style="font-weight:800; color:var(--primary); display:block; margin-bottom:5px;" data-i18n="labelPassword">كلمة المرور * (6 أحرف على الأقل)</label>
-   <input type="password" id="regPassword" required minlength="6">
-   
-   <button type="submit" class="btn-action btn-success" style="width:100%; font-size:18px; padding:15px;" id="registerBtn" data-i18n="btnSubmitRegister">✅ تسجيل</button>
-  </form>
-  <div id="registerMsg" style="text-align:center; font-weight:bold; margin-top:15px;"></div>
+<!-- السجلات -->
+<section id="page-records" class="page-section">
+ <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
+ <h2 style="text-align:center;color:var(--primary);margin-bottom:20px">📁 السجلات المحفوظة</h2>
+ <div style="text-align:center;margin-bottom:15px">
+  <button class="btn-action" onclick="exportCSV()" style="margin:0 5px">⬇️ تصدير CSV</button>
+  <button class="btn-action btn-danger" onclick="clearAllRecords()" style="margin:0 5px">🗑️ مسح كل السجلات</button>
  </div>
+ <div id="recordsList"></div>
 </section>
 
-<!-- 3. قائمة الطلبة -->
-<section id="page-students-list" class="page-section">
- <button class="btn-back" onclick="showPage('home')" data-i18n="btnBackHome">← العودة للرئيسية</button>
- <h2 style="text-align: center; color: var(--primary); margin-bottom: 20px;" data-i18n="studentsListTitle">👥 الطلبة المسجلون</h2>
- <div class="students-grid" id="studentsGrid">
-  <p style="text-align:center; color:var(--muted); grid-column:1/-1;">Loading...</p>
- </div>
-</section>
+<!-- لوحة المسؤول -->
+<section id="page-admin" class="page-section">
+ <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
+ <h2 style="color:var(--purple);text-align:center;margin-bottom:20px">🔑 لوحة المسؤول</h2>
 
-<!-- 4. بطاقة الطالب -->
-<section id="page-student-profile" class="page-section">
- <button class="btn-back" id="profileBackBtn">← Back</button>
- <div class="profile-card" id="profileCard"></div>
-
- <div class="notes-box">
-  <h3 data-i18n="notesTitle">📌 الملاحظات</h3>
-  <div id="studentNotes"><p style="color:var(--muted);">Loading...</p></div>
+ <div id="adminLoginBox" class="form-box" style="max-width:400px">
+  <p style="color:var(--muted)">أدخل رمز الدخول:</p>
+  <input type="password" id="adminCode" style="text-align:center;font-size:20px;letter-spacing:5px" placeholder="رمز المسؤول">
+  <button class="btn-action" onclick="adminLogin()" style="width:100%;background:var(--purple)">دخول</button>
+  <div id="adminMsg" style="text-align:center;font-weight:bold;margin-top:10px"></div>
  </div>
 
- <div class="notes-box">
-  <h3 data-i18n="uploadTitle">📤 رفع العمل</h3>
-  <p style="color:var(--muted);" data-i18n="uploadDesc">ارفع واجبك أو عملك هنا (روابط Google Drive، PDF، صور...)</p>
-  <input type="text" id="submissionTitle" data-i18n-placeholder="submissionTitlePh" placeholder="عنوان العمل">
-  <input type="url" id="submissionLink" data-i18n-placeholder="submissionLinkPh" placeholder="رابط العمل">
-  <textarea id="submissionNote" data-i18n-placeholder="submissionNotePh" placeholder="ملاحظة اختيارية..." style="min-height:70px;"></textarea>
-  <button class="btn-action btn-success" onclick="submitWork()" style="width:100%;" id="submitWorkBtn" data-i18n="btnSubmitWork">📤 إرسال العمل</button>
-  <div id="submitMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
-  
-  <h3 style="margin-top:30px;" data-i18n="myWorksTitle">📁 أعمالي المرفوعة</h3>
-  <div id="mySubmissions"><p style="color:var(--muted);">Loading...</p></div>
- </div>
-</section>
-
-<!-- 5. باب النتائج -->
-<section id="page-results" class="page-section">
- <button class="btn-back" onclick="showPage('home')" data-i18n="btnBackHome">← العودة للرئيسية</button>
- <h2 style="text-align: center; color: var(--gold); margin-bottom: 20px;" data-i18n="resultsTitle">🏆 لوحة الشرف - ترتيب الطلبة</h2>
- <div id="resultsList" style="max-width:700px; margin:auto;"></div>
-</section>
-
-<!-- 6. لوحة الأستاذة -->
-<section id="teacherSection" class="page-section container" style="margin-top:50px; border-top:2px dashed var(--border); padding-top:30px;">
- <h2 style="color:var(--purple); text-align:center; margin-bottom:30px;" data-i18n="teacherPanelTitle">👩‍🏫 لوحة تحكم الأستاذة</h2>
- 
- <div id="teacherLoginBox" style="text-align:center; max-width:400px; margin:auto;">
-  <p style="color:var(--muted);" data-i18n="teacherLoginDesc">أدخل رمز الدخول للوصول إلى لوحة التحكم:</p>
-  <input type="password" id="teacherCode" style="text-align:center; font-size:20px; letter-spacing:5px;" data-i18n-placeholder="teacherCodePh" placeholder="رمز الأستاذة">
-  <button class="btn-action" id="teacherLogin" style="width:100%; font-size:18px; background:var(--purple);" data-i18n="btnLogin">دخول</button>
-  <div id="teacherMessage" style="font-size:14px; font-weight:bold; margin-top:10px;"></div>
- </div>
-
- <div id="teacherPanel" class="hidden">
+ <div id="adminPanel" class="hidden">
   <div class="teacher-dashboard-grid">
-   <div class="admin-btn active" onclick="toggleTeacherView('stats')"><span class="icon">📊</span> <span data-i18n="tabStats">الإحصائيات</span></div>
-   <div class="admin-btn" onclick="toggleTeacherView('students')"><span class="icon">👥</span> <span data-i18n="tabStudents">الطلبة</span></div>
-   <div class="admin-btn" onclick="toggleTeacherView('points')"><span class="icon">⭐</span> <span data-i18n="tabPoints">النقاط</span></div>
-   <div class="admin-btn" onclick="toggleTeacherView('notes')"><span class="icon">📝</span> <span data-i18n="tabNotes">الملاحظات</span></div>
-   <div class="admin-btn" onclick="toggleTeacherView('submissions')"><span class="icon">📁</span> <span data-i18n="tabSubmissions">الأعمال</span></div>
+   <div class="admin-btn active" onclick="toggleAdmin('stats')"><span class="icon">📊</span><span>الإحصائيات</span></div>
+   <div class="admin-btn" onclick="toggleAdmin('records')"><span class="icon">📁</span><span>السجلات</span></div>
+   <div class="admin-btn" onclick="toggleAdmin('visitors')"><span class="icon">👥</span><span>الزوار</span></div>
+   <div class="admin-btn" onclick="toggleAdmin('comments')"><span class="icon">💬</span><span>التعليقات</span></div>
   </div>
 
   <div class="admin-panel-content">
-   <div id="teacherStatsView">
-    <h3 style="color:var(--purple); margin-top:0;" data-i18n="statsTitle">إحصائيات عامة</h3>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:20px;">
-     <div class="stat-box"><strong id="dashStudents">0</strong> <span data-i18n="statStudents">طالب مسجل</span></div>
-     <div class="stat-box"><strong id="dashSubmissions">0</strong> <span data-i18n="statSubmissions">عمل مرفوع</span></div>
-     <div class="stat-box"><strong id="dashNotes">0</strong> <span data-i18n="statNotes">ملاحظة</span></div>
-     <div class="stat-box"><strong id="dashAvgPoints">0</strong> <span data-i18n="statAvgPoints">معدل النقاط</span></div>
+   <div id="adminStatsView">
+    <h3 style="color:var(--purple);margin-top:0">إحصائيات عامة</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px">
+     <div class="stat-box"><strong id="stRecords">0</strong><span>سجل محفوظ</span></div>
+     <div class="stat-box"><strong id="stVisitors">0</strong><span>زائر مسجّل</span></div>
+     <div class="stat-box"><strong id="stComments">0</strong><span>تعليق</span></div>
+     <div class="stat-box"><strong id="stLastTotal">0</strong><span>آخر مجموع</span></div>
     </div>
    </div>
 
-   <div id="teacherStudentsView" class="hidden">
-    <h3 style="color:var(--purple); margin-top:0;" data-i18n="manageStudentsTitle">إدارة الطلبة</h3>
-    <div id="teacherStudentsList"></div>
+   <div id="adminRecordsView" class="hidden">
+    <h3 style="color:var(--purple);margin-top:0">كل السجلات</h3>
+    <div id="adminRecordsList"></div>
    </div>
 
-   <div id="teacherPointsView" class="hidden">
-    <h3 style="color:var(--purple); margin-top:0;" data-i18n="managePointsTitle">إدارة النقاط</h3>
-    <p style="color:var(--muted);" data-i18n="managePointsDesc">اختر طالباً ثم أضف أو اطرح نقاطاً.</p>
-    <select id="pointsStudentSelect" style="margin-bottom:15px;"></select>
-    <div style="display:flex; gap:10px; flex-wrap:wrap;">
-     <input type="number" id="pointsAmount" style="flex:1; min-width:120px;" value="10">
-     <button class="btn-action btn-success" onclick="addPoints()" style="flex:1;" data-i18n="btnAddPoints">➕ إضافة</button>
-     <button class="btn-action btn-danger" onclick="subtractPoints()" style="flex:1;" data-i18n="btnSubtractPoints">➖ خصم</button>
-    </div>
-    <div id="pointsMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
+   <div id="adminVisitorsView" class="hidden">
+    <h3 style="color:var(--purple);margin-top:0">سجل الزوار</h3>
+    <div id="adminVisitorsList"></div>
    </div>
 
-   <div id="teacherNotesView" class="hidden">
-    <h3 style="color:var(--purple); margin-top:0;" data-i18n="addNoteTitle">إضافة ملاحظة</h3>
-    <select id="noteStudentSelect" style="margin-bottom:15px;"></select>
-    <textarea id="noteText" style="min-height:100px;" data-i18n-placeholder="notePh" placeholder="اكتب الملاحظة هنا..."></textarea>
-    <button class="btn-action" onclick="addNote()" style="width:100%;" data-i18n="btnAddNote">📝 إضافة الملاحظة</button>
-    <div id="noteMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
-   </div>
-
-   <div id="teacherSubmissionsView" class="hidden">
-    <h3 style="color:var(--purple); margin-top:0;" data-i18n="allSubmissionsTitle">الأعمال المرفوعة</h3>
-    <div id="allSubmissions"></div>
+   <div id="adminCommentsView" class="hidden">
+    <h3 style="color:var(--purple);margin-top:0">كل التعليقات</h3>
+    <div id="adminCommentsList"></div>
    </div>
   </div>
 
-  <button class="btn-action btn-danger" style="margin-top:20px; width:100%;" onclick="logoutTeacher()" data-i18n="btnLogout">تسجيل الخروج</button>
+  <button class="btn-action btn-danger" style="margin-top:20px;width:100%" onclick="adminLogout()">تسجيل الخروج</button>
  </div>
 </section>
 
 </main>
 
-<footer style="text-align:center; padding:30px; color:var(--muted); border-top:1px solid var(--border); background:white; margin-top:50px;">
- <p style="font-size:16px;"><strong>University English Session</strong> - <span data-i18n="universityName">🎓 جامعة أفلو</span></p>
- <p style="font-weight:800; color:var(--primary); margin:10px 0; font-size:17px;" data-i18n="devCreditFooter">👨‍💻 تصميم وبرمجة: براهيمي يوسف</p>
- <p data-i18n="footerSlogan">تعلم • تقدم • تفوق</p>
- <button class="admin-access-btn" style="margin-top:15px;" onclick="openTeacher()" data-i18n="teacherLogin">👩‍🏫 دخول الأستاذة</button>
+<footer>
+ <p><strong>نظام إحصائيات الناخبين</strong></p>
+ <p class="slogan">شريد علوي — عرعار وادي مرة</p>
+ <p style="font-weight:800;color:var(--primary);font-size:16px">👨‍💻 تطوير: براهيمي يوسف — مطور برامج وتطبيقات</p>
+ <p style="font-size:13px">تصميم وتطوير احترافي • تعلم • تقدم • تفوق</p>
 </footer>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import { getDatabase, ref, push, onValue, update, remove } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+import { getDatabase, ref, push, onValue, update, remove, set, get } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
+/* ⚠️ استبدل هذه الإعدادات بإعدادات مشروعك من Firebase */
 const firebaseConfig = {
- apiKey: "AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
- authDomain: "workdz-web.firebaseapp.com",
- databaseURL: "https://workdz-web-default-rtdb.firebaseio.com",
- projectId: "workdz-web",
- storageBucket: "workdz-web.firebasestorage.app",
- messagingSenderId: "980881321562",
- appId: "1:980881321562:web:5046cc8bfe27749a73f263",
- measurementId: "G-NWPYNZT489"
+  apiKey: "AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
+  authDomain: "workdz-web.firebaseapp.com",
+  databaseURL: "https://workdz-web-default-rtdb.firebaseio.com",
+  projectId: "workdz-web",
+  storageBucket: "workdz-web.firebasestorage.app",
+  messagingSenderId: "980881321562",
+  appId: "1:980881321562:web:5046cc8bfe27749a73f263"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const $ = id => document.getElementById(id);
 
-// ================== الترجمة ==================
-const translations = {
- ar: {
-  appName: "منصة الإنجليزية الجامعية",
-  universityName: "🎓 جامعة أفلو - Université d'Aflou",
-  heroTitle: "الحصة الإنجليزية الجامعية",
-  heroSubtitle: "منصة تعليمية متكاملة - جامعة أفلو",
-  sessionDuration: "⏱️ مدة الحصة: ساعة واحدة فقط",
-  btnRegister: "📝 تسجيل طالب",
-  btnStudents: "👥 قائمة الطلبة",
-  btnTeacher: "👩‍🏫 دخول الأستاذة",
-  doorsTitle: "🚪 أبواب المنصة",
-  door1Title: "باب التسجيل",
-  door1Desc: "تسجيل طالب جديد في الحصة الإنجليزية",
-  door1Task: "📌 المهمة: ملء نموذج التسجيل بالبيانات الجامعية",
-  door2Title: "باب الطلبة",
-  door2Desc: "تصفح قائمة الطلبة المسجلين ونقاطهم",
-  door2Task: "📌 المهمة: عرض الطلبة، النقاط، ورفع الأعمال",
-  door3Title: "باب الأستاذة",
-  door3Desc: "لوحة التحكم الكاملة للأستاذة الجامعية",
-  door3Task: "📌 المهمة: إدارة الطلبة، النقاط، الملاحظات، والأعمال",
-  door4Title: "باب النتائج",
-  door4Desc: "ترتيب الطلبة حسب النقاط",
-  door4Task: "📌 المهمة: عرض لوحة الشرف والترتيب العام",
-  btnBackHome: "← العودة للرئيسية",
-  registerTitle: "📝 تسجيل طالب جديد",
-  labelFullName: "الاسم الكامل *",
-  labelEmail: "البريد الإلكتروني *",
-  labelPhone: "رقم الهاتف",
-  labelLevel: "المستوى الجامعي *",
-  selectLevel: "-- اختر المستوى --",
-  l1: "ليسانس 1", l2: "ليسانس 2", l3: "ليسانس 3",
-  m1: "ماستر 1", m2: "ماستر 2", phd: "دكتوراه",
-  labelSpecialty: "التخصص / الشعبة",
-  labelPassword: "كلمة المرور * (6 أحرف على الأقل)",
-  btnSubmitRegister: "✅ تسجيل",
-  studentsListTitle: "👥 الطلبة المسجلون",
-  notesTitle: "📌 الملاحظات",
-  uploadTitle: "📤 رفع العمل",
-  uploadDesc: "ارفع واجبك أو عملك هنا (روابط Google Drive، PDF، صور...)",
-  submissionTitlePh: "عنوان العمل",
-  submissionLinkPh: "رابط العمل",
-  submissionNotePh: "ملاحظة اختيارية...",
-  btnSubmitWork: "📤 إرسال العمل",
-  myWorksTitle: "📁 أعمالي المرفوعة",
-  resultsTitle: "🏆 لوحة الشرف - ترتيب الطلبة",
-  teacherPanelTitle: "👩‍🏫 لوحة تحكم الأستاذة",
-  teacherLoginDesc: "أدخل رمز الدخول للوصول إلى لوحة التحكم:",
-  teacherCodePh: "رمز الأستاذة",
-  btnLogin: "دخول",
-  tabStats: "الإحصائيات",
-  tabStudents: "الطلبة",
-  tabPoints: "النقاط",
-  tabNotes: "الملاحظات",
-  tabSubmissions: "الأعمال",
-  statsTitle: "إحصائيات عامة",
-  statStudents: "طالب مسجل",
-  statSubmissions: "عمل مرفوع",
-  statNotes: "ملاحظة",
-  statAvgPoints: "معدل النقاط",
-  manageStudentsTitle: "إدارة الطلبة",
-  managePointsTitle: "إدارة النقاط",
-  managePointsDesc: "اختر طالباً ثم أضف أو اطرح نقاطاً.",
-  btnAddPoints: "➕ إضافة",
-  btnSubtractPoints: "➖ خصم",
-  addNoteTitle: "إضافة ملاحظة",
-  notePh: "اكتب الملاحظة هنا...",
-  btnAddNote: "📝 إضافة الملاحظة",
-  allSubmissionsTitle: "الأعمال المرفوعة",
-  btnLogout: "تسجيل الخروج",
-  university: "جامعة أفلو",
-  devCreditFooter: "👨‍💻 تصميم وبرمجة: براهيمي يوسف",
-  footerSlogan: "تعلم • تقدم • تفوق",
-  teacherLogin: "👩‍🏫 دخول الأستاذة",
-  devCredit: "👨‍💻 برمجة: براهيمي يوسف",
-  banner: [
-   "✦ منصة الحصة الإنجليزية الجامعية - جامعة أفلو ✦",
-   "👨‍💻 تصميم وبرمجة: براهيمي يوسف ✦",
-   "🎓 جامعة أفلو - Université d'Aflou ✦",
-   "⏱️ ساعة واحدة فقط للتعلم والتقدم ✦",
-   "💻 برمجة وتطوير: براهيمي يوسف ✦",
-   "🚪 أبواب المنصة: التسجيل • الطلبة • الأستاذة • النتائج ✦",
-   "✨ من إنجاز المبرمج: براهيمي يوسف ✦",
-   "✦ منصة الحصة الإنجليزية الجامعية - جامعة أفلو ✦",
-   "👨‍💻 تصميم وبرمجة: براهيمي يوسف ✦",
-   "🏛️ جامعة أفلو - كلية اللغات الأجنبية ✦"
-  ],
-  pointsLabel: "⭐ إجمالي النقاط",
-  backToList: "← العودة للقائمة",
-  registeredSuccess: "✅ تم التسجيل بنجاح!",
-  emailExists: "❌ هذا البريد مسجل مسبقاً!",
-  error: "❌ خطأ: ",
-  studentCount: "عدد الطلبة: ",
-  noStudents: "لا يوجد طلبة مسجلون بعد.",
-  noNotes: "لا توجد ملاحظات بعد.",
-  noWorks: "لا توجد أعمال مرفوعة بعد.",
-  workUploaded: "✅ تم رفع العمل بنجاح!",
-  fillWorkFields: "❌ يرجى ملء العنوان والرابط.",
-  openWork: "🔗 فتح العمل",
-  pointsAdded: "✅ تمت إضافة النقاط.",
-  pointsSubtracted: "✅ تم خصم النقاط.",
-  chooseStudent: "❌ اختر طالباً أولاً.",
-  noteAdded: "✅ تمت إضافة الملاحظة.",
-  chooseAndWrite: "❌ اختر طالباً واكتب ملاحظة.",
-  deleteConfirm: "هل تريد حذف هذا الطالب نهائياً؟",
-  deleteWorkConfirm: "حذف هذا العمل؟",
-  deleted: "تم الحذف.",
-  wrongCode: "❌ الرمز السري خاطئ!",
-  phone: "رقم الهاتف",
-  registrationDate: "تاريخ التسجيل",
-  notSpecified: "غير محدد",
-  level: "المستوى",
-  specialty: "التخصص",
-  points: "نقطة",
-  delete: "🗑️ حذف",
-  rank: "الرتبة",
-  student: "الطالب",
-  noResults: "لا توجد نتائج بعد."
- },
- en: {
-  appName: "University English Class",
-  universityName: "🎓 University of Aflou",
-  heroTitle: "University English Session",
-  heroSubtitle: "Integrated educational platform - University of Aflou",
-  sessionDuration: "⏱️ Session duration: Only 1 hour",
-  btnRegister: "📝 Register Student",
-  btnStudents: "👥 Students List",
-  btnTeacher: "👩‍🏫 Teacher Login",
-  doorsTitle: "🚪 Platform Doors",
-  door1Title: "Registration Door",
-  door1Desc: "Register a new student in the English session",
-  door1Task: "📌 Task: Fill the registration form with university data",
-  door2Title: "Students Door",
-  door2Desc: "Browse registered students and their points",
-  door2Task: "📌 Task: View students, points, and upload works",
-  door3Title: "Teacher Door",
-  door3Desc: "Full control panel for the university teacher",
-  door3Task: "📌 Task: Manage students, points, notes, and works",
-  door4Title: "Results Door",
-  door4Desc: "Rank students by points",
-  door4Task: "📌 Task: Display honor board and general ranking",
-  btnBackHome: "← Back to Home",
-  registerTitle: "📝 Student Registration",
-  labelFullName: "Full Name *",
-  labelEmail: "Email *",
-  labelPhone: "Phone Number",
-  labelLevel: "Academic Level *",
-  selectLevel: "-- Select Level --",
-  l1: "Bachelor 1", l2: "Bachelor 2", l3: "Bachelor 3",
-  m1: "Master 1", m2: "Master 2", phd: "PhD",
-  labelSpecialty: "Specialty / Department",
-  labelPassword: "Password * (min 6 chars)",
-  btnSubmitRegister: "✅ Register",
-  studentsListTitle: "👥 Registered Students",
-  notesTitle: "📌 Notes",
-  uploadTitle: "📤 Upload Work",
-  uploadDesc: "Upload your homework or work here (Google Drive, PDF, images...)",
-  submissionTitlePh: "Work title",
-  submissionLinkPh: "Work link",
-  submissionNotePh: "Optional note...",
-  btnSubmitWork: "📤 Submit Work",
-  myWorksTitle: "📁 My Uploaded Works",
-  resultsTitle: "🏆 Honor Board - Student Ranking",
-  teacherPanelTitle: "👩‍🏫 Teacher Control Panel",
-  teacherLoginDesc: "Enter access code to reach the control panel:",
-  teacherCodePh: "Teacher code",
-  btnLogin: "Login",
-  tabStats: "Statistics",
-  tabStudents: "Students",
-  tabPoints: "Points",
-  tabNotes: "Notes",
-  tabSubmissions: "Works",
-  statsTitle: "General Statistics",
-  statStudents: "Registered Students",
-  statSubmissions: "Uploaded Works",
-  statNotes: "Notes",
-  statAvgPoints: "Average Points",
-  manageStudentsTitle: "Manage Students",
-  managePointsTitle: "Manage Points",
-  managePointsDesc: "Select a student then add or subtract points.",
-  btnAddPoints: "➕ Add",
-  btnSubtractPoints: "➖ Subtract",
-  addNoteTitle: "Add Note",
-  notePh: "Write the note here...",
-  btnAddNote: "📝 Add Note",
-  allSubmissionsTitle: "Uploaded Works",
-  btnLogout: "Logout",
-  university: "University of Aflou",
-  devCreditFooter: "👨‍💻 Designed & Developed by: Brahim Youssef",
-  footerSlogan: "Learn • Progress • Excel",
-  teacherLogin: "👩‍🏫 Teacher Login",
-  devCredit: "👨‍💻 Dev: Brahim Youssef",
-  banner: [
-   "✦ University English Session Platform - University of Aflou ✦",
-   "👨‍💻 Designed & Developed by: Brahim Youssef ✦",
-   "🎓 University of Aflou ✦",
-   "⏱️ Only one hour to learn and progress ✦",
-   "💻 Dev: Brahim Youssef ✦",
-   "🚪 Platform Doors: Registration • Students • Teacher • Results ✦",
-   "✨ By Developer: Brahim Youssef ✦",
-   "✦ University English Session Platform - University of Aflou ✦",
-   "👨‍💻 Designed & Developed by: Brahim Youssef ✦",
-   "🏛️ University of Aflou - Faculty of Foreign Languages ✦"
-  ],
-  pointsLabel: "⭐ Total Points",
-  backToList: "← Back to List",
-  registeredSuccess: "✅ Registered successfully!",
-  emailExists: "❌ This email is already registered!",
-  error: "❌ Error: ",
-  studentCount: "Students count: ",
-  noStudents: "No students registered yet.",
-  noNotes: "No notes yet.",
-  noWorks: "No works uploaded yet.",
-  workUploaded: "✅ Work uploaded successfully!",
-  fillWorkFields: "❌ Please fill the title and link.",
-  openWork: "🔗 Open Work",
-  pointsAdded: "✅ Points added.",
-  pointsSubtracted: "✅ Points subtracted.",
-  chooseStudent: "❌ Please select a student first.",
-  noteAdded: "✅ Note added.",
-  chooseAndWrite: "❌ Select a student and write a note.",
-  deleteConfirm: "Delete this student permanently?",
-  deleteWorkConfirm: "Delete this work?",
-  deleted: "Deleted.",
-  wrongCode: "❌ Wrong access code!",
-  phone: "Phone",
-  registrationDate: "Registration Date",
-  notSpecified: "Not specified",
-  level: "Level",
-  specialty: "Specialty",
-  points: "pts",
-  delete: "🗑️ Delete",
-  rank: "Rank",
-  student: "Student",
-  noResults: "No results yet."
- }
-};
+const ADMIN_CODE = "1234"; // غيّره لاحقاً
 
-let currentLang = localStorage.getItem('siteLang') || 'ar';
-function t(key) { return translations[currentLang][key] || key; }
+/* ========== الشريط ========== */
+const bannerTexts = [
+ "✦ نظام إحصائيات الناخبين ✦",
+ "👨‍💻 تطوير: براهيمي يوسف — مطور برامج وتطبيقات ✦",
+ "🏷️ شريد علوي — عرعار وادي مرة ✦",
+ "🗳️ إدخال المجموع • الرجال • النساء ✦",
+ "📊 حساب النسب المئوية فوراً ✦",
+ "🕐 تاريخ ووقت تلقائي مع كل حفظ ✦",
+ "💾 كل السجلات محفوظة ويمكن استرجاعها ✦"
+];
+function renderBanner(){
+ const b=$('bannerContent'); b.innerHTML='';
+ bannerTexts.forEach(t=>{const s=document.createElement('span');s.textContent=t;b.appendChild(s)});
+}
+renderBanner();
 
-window.toggleLanguage = function() {
- currentLang = currentLang === 'ar' ? 'en' : 'ar';
- localStorage.setItem('siteLang', currentLang);
- applyLanguage();
+/* ========== التنقل ========== */
+window.showPage = function(id){
+ document.querySelectorAll('.page-section').forEach(p=>p.classList.remove('active'));
+ const t=$('page-'+id); if(t){t.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+ if(id==='records') renderRecords();
+ if(id==='admin'){ /* لا شيء */ }
 }
 
-function applyLanguage() {
- document.documentElement.lang = currentLang;
- document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
- 
- document.querySelectorAll('[data-i18n]').forEach(el => {
-  const key = el.getAttribute('data-i18n');
-  if(translations[currentLang][key]) el.textContent = translations[currentLang][key];
- });
- document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-  const key = el.getAttribute('data-i18n-placeholder');
-  if(translations[currentLang][key]) el.placeholder = translations[currentLang][key];
- });
- 
- document.getElementById('langFlag').textContent = currentLang === 'ar' ? '🇬🇧' : '🇩🇿';
- document.getElementById('langText').textContent = currentLang === 'ar' ? 'English' : 'العربية';
- 
- renderBanner();
- if($('homeStudentsCount')) {
-  $('homeStudentsCount').textContent = t('studentCount') + Object.keys(allStudents).length;
- }
- if(document.getElementById('page-students-list').classList.contains('active')) renderStudentsList();
- if(document.getElementById('page-results').classList.contains('active')) renderResults();
-}
+/* ========== تسجيل الزوار + التعليق الإجباري ========== */
+const visitorId = localStorage.getItem('visitorId') || (()=>{ const id='v_'+Date.now()+'_'+Math.random().toString(36).slice(2,7); localStorage.setItem('visitorId',id); return id; })();
 
-function renderBanner() {
- const banner = $('bannerContent');
- banner.innerHTML = '';
- translations[currentLang].banner.forEach(text => {
-  const span = document.createElement('span');
-  span.textContent = text;
-  banner.appendChild(span);
- });
-}
-
-document.addEventListener('DOMContentLoaded', applyLanguage);
-
-// ================== التنقل ==================
-window.showPage = function(pageId) {
- document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
- const target = $('page-' + pageId);
- if(target) {
-  target.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
- }
- if(pageId === 'students-list') renderStudentsList();
- if(pageId === 'results') renderResults();
- if(pageId === 'home') document.getElementById('teacherSection').style.display = 'none';
-}
-
-// ================== Firebase ==================
-let allStudents = {};
-let currentStudentId = null;
-let teacherLoggedIn = false;
-
-onValue(ref(db, 'students'), (s) => {
- allStudents = s.val() || {};
- const count = Object.keys(allStudents).length;
- if($('homeStudentsCount')) $('homeStudentsCount').textContent = t('studentCount') + count;
- if(document.getElementById('page-students-list').classList.contains('active')) renderStudentsList();
- if(document.getElementById('page-results').classList.contains('active')) renderResults();
- if(teacherLoggedIn) {
-  renderTeacherStudents();
-  renderPointsSelect();
-  renderNoteSelect();
-  updateTeacherStats();
- }
-});
-
-// ================== تسجيل ==================
-document.getElementById('registerForm').addEventListener('submit', async (e) => {
- e.preventDefault();
- const btn = $('registerBtn');
- const msg = $('registerMsg');
- btn.disabled = true;
- btn.textContent = "...";
-
- const name = $('regName').value.trim();
- const email = $('regEmail').value.trim().toLowerCase();
- const phone = $('regPhone').value.trim();
- const level = $('regLevel').value;
- const cls = $('regClass').value.trim();
- const password = $('regPassword').value;
-
- try {
-  for(let id in allStudents) {
-   if(allStudents[id].email === email) {
-    msg.textContent = t('emailExists');
-    msg.style.color = "var(--danger)";
-    btn.disabled = false;
-    btn.textContent = t('btnSubmitRegister');
-    return;
-   }
-  }
-  await push(ref(db, 'students'), { name, email, phone, level, cls, password, points: 0, createdAt: Date.now() });
-  msg.textContent = t('registeredSuccess');
-  msg.style.color = "var(--success)";
-  $('registerForm').reset();
-  setTimeout(() => showPage('students-list'), 1500);
- } catch(err) {
-  msg.textContent = t('error') + err.message;
-  msg.style.color = "var(--danger)";
- } finally {
-  btn.disabled = false;
-  btn.textContent = t('btnSubmitRegister');
- }
-});
-
-// ================== قائمة الطلبة ==================
-function renderStudentsList() {
- const grid = $('studentsGrid');
- if(!grid) return;
- grid.innerHTML = '';
- const entries = Object.entries(allStudents).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
- if(entries.length === 0) {
-  grid.innerHTML = `<p style='text-align:center; color:var(--muted); grid-column:1/-1;'>${t('noStudents')}</p>`;
-  return;
- }
- entries.forEach(([id, st]) => {
-  const div = document.createElement('div');
-  div.className = 'student-mini';
-  div.onclick = () => openStudent(id);
-  const initials = st.name.split(' ').map(w => w[0]).slice(0,2).join('').toUpperCase();
-  div.innerHTML = `
-   <div class="avatar">${initials}</div>
-   <h4>${st.name}</h4>
-   <p>${st.level || ''} ${st.cls ? '- ' + st.cls : ''}</p>
-   <p style="color:var(--success); font-weight:800; margin-top:8px;">⭐ ${st.points || 0} ${t('points')}</p>
-  `;
-  grid.appendChild(div);
- });
-}
-
-// ================== نتائج ==================
-function renderResults() {
- const box = $('resultsList');
- if(!box) return;
- const entries = Object.entries(allStudents).sort((a,b) => (b[1].points||0) - (a[1].points||0));
- if(entries.length === 0) {
-  box.innerHTML = `<p style='text-align:center; color:var(--muted);'>${t('noResults')}</p>`;
-  return;
- }
- box.innerHTML = '';
- const medals = ['🥇', '🥈', '🥉'];
- entries.forEach(([id, st], idx) => {
-  const medal = idx < 3 ? medals[idx] : `#${idx+1}`;
-  const div = document.createElement('div');
-  div.className = 'submission-item';
-  div.style.borderRight = idx < 3 ? '4px solid var(--gold)' : '4px solid var(--primary)';
-  div.style.display = 'flex';
-  div.style.justifyContent = 'space-between';
-  div.style.alignItems = 'center';
-  div.style.flexWrap = 'wrap';
-  div.innerHTML = `
-   <div style="display:flex; align-items:center; gap:12px;">
-    <span style="font-size:24px; font-weight:900;">${medal}</span>
-    <div>
-     <strong>${st.name}</strong><br>
-     <span class="meta">${st.level || ''} ${st.cls || ''}</span>
-    </div>
-   </div>
-   <span class="badge-success" style="font-size:16px; padding:6px 16px;">⭐ ${st.points || 0} ${t('points')}</span>
-  `;
-  box.appendChild(div);
- });
-}
-
-// ================== بطاقة الطالب ==================
-window.openStudent = function(studentId) {
- currentStudentId = studentId;
- const st = allStudents[studentId];
- if(!st) return;
-
- const backBtn = $('profileBackBtn');
- backBtn.textContent = t('backToList');
- backBtn.onclick = () => showPage('students-list');
-
- $('submitMsg').textContent = '';
- $('submissionTitle').value = '';
- $('submissionLink').value = '';
- $('submissionNote').value = '';
-
- const initials = st.name.split(' ').map(w => w[0]).slice(0,2).join('').toUpperCase();
- const card = $('profileCard');
- card.innerHTML = `
-  <div class="profile-header">
-   <div style="width:130px;height:130px;border-radius:50%;background:white;display:grid;place-items:center;margin:0 auto;font-size:40px;font-weight:900;color:var(--primary);box-shadow:0 10px 20px rgba(0,0,0,0.2);">${initials}</div>
-  </div>
-  <div class="profile-body">
-   <div class="profile-title">
-    <span class="badge-list">${st.level || ''} ${st.cls ? '| ' + st.cls : ''}</span>
-    <h2>${st.name}</h2>
-    <p class="job">${st.email}</p>
-   </div>
-   <div class="points-display">
-    <div class="number">${st.points || 0}</div>
-    <div class="label">${t('pointsLabel')}</div>
-   </div>
-   <div class="info-grid">
-    <div class="info-item"><strong>${t('phone')}</strong><span>${st.phone || t('notSpecified')}</span></div>
-    <div class="info-item"><strong>${t('registrationDate')}</strong><span>${new Date(st.createdAt).toLocaleDateString(currentLang === 'ar' ? 'ar-DZ' : 'en-US')}</span></div>
-   </div>
-  </div>
- `;
- showPage('student-profile');
- loadStudentNotes(studentId);
- loadStudentSubmissions(studentId);
-}
-
-// ================== الملاحظات ==================
-function loadStudentNotes(studentId) {
- onValue(ref(db, `notes/${studentId}`), (s) => {
-  const box = $('studentNotes');
-  const data = s.val() || {};
-  const entries = Object.entries(data).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
-  if(entries.length === 0) { box.innerHTML = `<p style='color:var(--muted);'>${t('noNotes')}</p>`; return; }
-  box.innerHTML = '';
-  entries.forEach(([id, n]) => {
-   const div = document.createElement('div');
-   div.className = 'note-item';
-   div.innerHTML = `<p style="margin:0 0 5px 0; font-weight:700;">${n.text}</p>
-   <span style="font-size:12px; color:var(--muted);">${new Date(n.createdAt).toLocaleString(currentLang === 'ar' ? 'ar-DZ' : 'en-US')}</span>`;
-   box.appendChild(div);
+async function registerVisitor(){
+ const vref = ref(db,'visitors/'+visitorId);
+ const snap = await get(vref);
+ if(!snap.exists()){
+  await set(vref,{
+   firstVisit: Date.now(),
+   lastVisit: Date.now(),
+   userAgent: navigator.userAgent,
+   language: navigator.language,
+   screen: window.screen.width+'x'+window.screen.height,
+   visits: 1
   });
- });
-}
-
-// ================== الأعمال ==================
-window.submitWork = async function() {
- if(!currentStudentId) return;
- const title = $('submissionTitle').value.trim();
- const link = $('submissionLink').value.trim();
- const note = $('submissionNote').value.trim();
- const msg = $('submitMsg');
- const btn = $('submitWorkBtn');
- if(!title || !link) {
-  msg.textContent = t('fillWorkFields');
-  msg.style.color = "var(--danger)";
-  return;
- }
- btn.disabled = true;
- btn.textContent = "...";
- try {
-  await push(ref(db, `submissions/${currentStudentId}`), { title, link, note, studentId: currentStudentId, createdAt: Date.now() });
-  msg.textContent = t('workUploaded');
-  msg.style.color = "var(--success)";
-  $('submissionTitle').value = '';
-  $('submissionLink').value = '';
-  $('submissionNote').value = '';
- } catch(err) {
-  msg.textContent = t('error') + err.message;
-  msg.style.color = "var(--danger)";
- } finally {
-  btn.disabled = false;
-  btn.textContent = t('btnSubmitWork');
+ } else {
+  await update(vref,{ lastVisit: Date.now(), visits: (snap.val().visits||1)+1 });
  }
 }
+registerVisitor();
 
-function loadStudentSubmissions(studentId) {
- onValue(ref(db, `submissions/${studentId}`), (s) => {
-  const box = $('mySubmissions');
-  const data = s.val() || {};
-  const entries = Object.entries(data).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
-  if(entries.length === 0) { box.innerHTML = `<p style='color:var(--muted);'>${t('noWorks')}</p>`; return; }
-  box.innerHTML = '';
-  entries.forEach(([id, sub]) => {
-   const div = document.createElement('div');
-   div.className = 'submission-item';
-   div.innerHTML = `
-    <div class="meta">${new Date(sub.createdAt).toLocaleString(currentLang === 'ar' ? 'ar-DZ' : 'en-US')}</div>
-    <strong>${sub.title}</strong><br>
-    <a href="${sub.link}" target="_blank">${t('openWork')}</a>
-    ${sub.note ? '<p style="font-size:13px; color:var(--muted); margin:5px 0;">' + sub.note + '</p>' : ''}
-   `;
-   box.appendChild(div);
-  });
- });
-}
-
-// ================== لوحة الأستاذة ==================
-window.openTeacher = function() {
- document.getElementById('teacherSection').style.display = 'block';
- window.scrollTo(0, document.body.scrollHeight);
-}
-
-document.getElementById('teacherLogin').addEventListener('click', () => {
- if($('teacherCode').value !== "1234") {
-  $('teacherMessage').textContent = t('wrongCode');
-  $('teacherMessage').style.color = "var(--danger)";
-  return;
+/* حالة التعليق */
+onValue(ref(db,'comments_gate/'+visitorId),(s)=>{
+ const data = s.val();
+ const gate = $('commentGate');
+ if(data && data.text){
+  gate.classList.add('hidden');
+ } else {
+  gate.classList.remove('hidden');
+  $('userInfoBox').textContent = "🆔 معرّف الزائر: "+visitorId+" — يُسجَّل وقت تعليقك تلقائياً.";
  }
- teacherLoggedIn = true;
- $('teacherLoginBox').style.display = "none";
- $('teacherPanel').classList.remove('hidden');
- toggleTeacherView('stats');
- renderTeacherStudents();
- renderPointsSelect();
- renderNoteSelect();
- updateTeacherStats();
 });
 
-window.logoutTeacher = function() {
- teacherLoggedIn = false;
- $('teacherPanel').classList.add('hidden');
- $('teacherLoginBox').style.display = "block";
- $('teacherCode').value = '';
- $('teacherMessage').textContent = '';
+window.saveGateComment = async function(){
+ const text = $('gateComment').value.trim();
+ const msg = $('gateMsg');
+ if(text.length < 5){ msg.textContent='❌ اكتب 5 أحرف على الأقل'; msg.style.color='var(--danger)'; return; }
+ try{
+  await set(ref(db,'comments_gate/'+visitorId),{
+   text, visitorId, createdAt: Date.now(),
+   userAgent: navigator.userAgent
+  });
+  msg.textContent='✅ تم حفظ تعليقك، يمكنك المتابعة الآن';
+  msg.style.color='var(--success)';
+  $('gateComment').value='';
+ }catch(e){ msg.textContent='❌ '+e.message; msg.style.color='var(--danger)'; }
 }
 
-window.toggleTeacherView = function(view) {
- ['stats', 'students', 'points', 'notes', 'submissions'].forEach(v => {
-  const el = $('teacher' + v.charAt(0).toUpperCase() + v.slice(1) + 'View');
+/* ========== إدخال الأعداد ========== */
+let liveRecords = {};
+
+function computePreview(){
+ const total = parseInt($('inTotal').value)||0;
+ const men = parseInt($('inMen').value)||0;
+ const women = parseInt($('inWomen').value)||0;
+ const box = $('previewBox');
+ const warn = $('entryWarn');
+
+ if(total<=0 && men<=0 && women<=0){ box.classList.add('hidden'); warn.classList.add('hidden'); return; }
+ box.classList.remove('hidden');
+
+ $('pvTotal').textContent = total;
+ $('pvMen').textContent = men;
+ $('pvWomen').textContent = women;
+ $('pvMenPct').textContent = total>0 ? ((men/total)*100).toFixed(2)+'%' : '0%';
+ $('pvWomenPct').textContent = total>0 ? ((women/total)*100).toFixed(2)+'%' : '0%';
+
+ if(men+women !== total){
+  warn.classList.remove('hidden');
+  warn.textContent = `⚠️ تنبيه: مجموع الرجال+النساء (${men+women}) لا يساوي المجموع الكلي (${total}). الفرق: ${Math.abs(total-(men+women))}`;
+ } else {
+  warn.classList.add('hidden');
+ }
+}
+
+window.saveEntry = async function(){
+ const total = parseInt($('inTotal').value)||0;
+ const men = parseInt($('inMen').value)||0;
+ const women = parseInt($('inWomen').value)||0;
+ const note = $('inNote').value.trim();
+ const msg = $('entryMsg');
+
+ if(total<=0 || men<0 || women<0){ msg.textContent='❌ أدخل أرقاماً صحيحة'; msg.style.color='var(--danger)'; return; }
+
+ const menPct = total>0 ? +((men/total)*100).toFixed(2) : 0;
+ const womenPct = total>0 ? +((women/total)*100).toFixed(2) : 0;
+
+ try{
+  await push(ref(db,'records'),{
+   total, men, women, menPct, womenPct,
+   note, createdAt: Date.now(),
+   createdBy: visitorId
+  });
+  msg.textContent='✅ تم الحفظ بنجاح مع التاريخ والوقت';
+  msg.style.color='var(--success)';
+  $('inTotal').value=''; $('inMen').value=''; $('inWomen').value=''; $('inNote').value='';
+  $('previewBox').classList.add('hidden');
+ }catch(e){ msg.textContent='❌ '+e.message; msg.style.color='var(--danger)'; }
+}
+
+/* ========== السجلات ========== */
+onValue(ref(db,'records'),(s)=>{
+ liveRecords = s.val() || {};
+ if($('page-records').classList.contains('active')) renderRecords();
+ if($('adminPanel') && !$('adminPanel').classList.contains('hidden')){
+  renderAdminRecords(); updateAdminStats();
+ }
+});
+
+function renderRecords(){
+ const box = $('recordsList');
+ const entries = Object.entries(liveRecords).sort((a,b)=>b[1].createdAt-a[1].createdAt);
+ if(entries.length===0){ box.innerHTML='<p style="text-align:center;color:var(--muted)">لا توجد سجلات بعد.</p>'; return; }
+ box.innerHTML = entries.map(([id,r])=>`
+  <div class="record-item">
+   <div>
+    <strong>المجموع: ${r.total}</strong>
+    <div class="meta">👨 ${r.men} (${r.menPct}%) — 👩 ${r.women} (${r.womenPct}%)</div>
+    <div class="meta">🕐 ${new Date(r.createdAt).toLocaleString('ar-DZ')}</div>
+    ${r.note?'<div class="meta">📝 '+r.note+'</div>':''}
+   </div>
+   <span class="badge-success">👨 ${r.menPct}% / 👩 ${r.womenPct}%</span>
+  </div>
+ `).join('');
+}
+
+window.exportCSV = function(){
+ const entries = Object.values(liveRecords);
+ if(entries.length===0){ alert('لا توجد سجلات'); return; }
+ let csv = 'المجموع,الرجال,نسبة_الرجال,النساء,نسبة_النساء,ملاحظة,التاريخ\n';
+ entries.forEach(r=>{
+  csv += `${r.total},${r.men},${r.menPct}%,${r.women},${r.womenPct}%,"${(r.note||'').replace(/"/g,'""')}","${new Date(r.createdAt).toLocaleString('ar-DZ')}"\n`;
+ });
+ const blob = new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});
+ const a = document.createElement('a');
+ a.href = URL.createObjectURL(blob);
+ a.download = 'voter_records_'+Date.now()+'.csv';
+ a.click();
+}
+
+window.clearAllRecords = async function(){
+ if(!confirm('⚠️ هل أنت متأكد من مسح كل السجلات نهائياً؟')) return;
+ if(!confirm('⚠️ تأكيد نهائي: لا يمكن الرجوع بعد الحذف!')) return;
+ await remove(ref(db,'records'));
+ alert('تم مسح كل السجلات.');
+}
+
+/* ========== لوحة المسؤول ========== */
+let adminLogged=false;
+window.adminLogin = function(){
+ if($('adminCode').value !== ADMIN_CODE){
+  $('adminMsg').textContent='❌ رمز خاطئ'; $('adminMsg').style.color='var(--danger)'; return;
+ }
+ adminLogged=true;
+ $('adminLoginBox').classList.add('hidden');
+ $('adminPanel').classList.remove('hidden');
+ toggleAdmin('stats');
+ renderAdminRecords(); renderAdminVisitors(); renderAdminComments(); updateAdminStats();
+}
+window.adminLogout = function(){
+ adminLogged=false;
+ $('adminPanel').classList.add('hidden');
+ $('adminLoginBox').classList.remove('hidden');
+ $('adminCode').value=''; $('adminMsg').textContent='';
+}
+window.toggleAdmin = function(v){
+ ['stats','records','visitors','comments'].forEach(x=>{
+  const el = $('admin'+x.charAt(0).toUpperCase()+x.slice(1)+'View');
   if(el) el.classList.add('hidden');
  });
- document.querySelectorAll('.admin-btn').forEach(btn => btn.classList.remove('active'));
- const targetView = $('teacher' + view.charAt(0).toUpperCase() + view.slice(1) + 'View');
- if(targetView) targetView.classList.remove('hidden');
- const btn = Array.from(document.querySelectorAll('.admin-btn')).find(b => b.getAttribute('onclick')?.includes(view));
+ document.querySelectorAll('#adminPanel .admin-btn').forEach(b=>b.classList.remove('active'));
+ const tv = $('admin'+v.charAt(0).toUpperCase()+v.slice(1)+'View');
+ if(tv) tv.classList.remove('hidden');
+ const btn = Array.from(document.querySelectorAll('#adminPanel .admin-btn')).find(b=>b.getAttribute('onclick')?.includes("'"+v+"'"));
  if(btn) btn.classList.add('active');
- if(view === 'students') renderTeacherStudents();
- if(view === 'points') renderPointsSelect();
- if(view === 'notes') renderNoteSelect();
- if(view === 'submissions') renderAllSubmissions();
- if(view === 'stats') updateTeacherStats();
+ if(v==='records') renderAdminRecords();
+ if(v==='visitors') renderAdminVisitors();
+ if(v==='comments') renderAdminComments();
+ if(v==='stats') updateAdminStats();
 }
 
-function renderTeacherStudents() {
- const box = $('teacherStudentsList');
- if(!box) return;
- box.innerHTML = '';
- const entries = Object.entries(allStudents).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
- if(entries.length === 0) { box.innerHTML = `<p style='color:var(--muted);'>${t('noStudents')}</p>`; return; }
- entries.forEach(([id, st]) => {
-  const div = document.createElement('div');
-  div.className = 'submission-item';
-  div.innerHTML = `
-   <strong>${st.name}</strong> <span class="badge-success">${st.points || 0} ${t('points')}</span><br>
-   <span class="meta">${st.email} | ${st.level || ''} ${st.cls || ''}</span><br>
-   <button class="btn-action btn-danger" style="font-size:12px; padding:6px 12px; margin-top:8px;" onclick="deleteStudent('${id}')">${t('delete')}</button>
-  `;
-  box.appendChild(div);
- });
+function renderAdminRecords(){
+ const box=$('adminRecordsList'); if(!box) return;
+ const entries = Object.entries(liveRecords).sort((a,b)=>b[1].createdAt-a[1].createdAt);
+ if(entries.length===0){ box.innerHTML='<p style="color:var(--muted)">لا توجد سجلات.</p>'; return; }
+ box.innerHTML = entries.map(([id,r])=>`
+  <div class="record-item">
+   <div>
+    <strong>المجموع: ${r.total}</strong> — 👨 ${r.men} (${r.menPct}%) — 👩 ${r.women} (${r.womenPct}%)
+    <div class="meta">🕐 ${new Date(r.createdAt).toLocaleString('ar-DZ')}</div>
+    ${r.note?'<div class="meta">📝 '+r.note+'</div>':''}
+   </div>
+   <button class="btn-action btn-danger" style="padding:6px 12px;font-size:12px" onclick="delRecord('${id}')">🗑️ حذف</button>
+  </div>
+ `).join('');
+}
+window.delRecord = async function(id){
+ if(!confirm('حذف هذا السجل؟')) return;
+ await remove(ref(db,'records/'+id));
 }
 
-window.deleteStudent = async function(id) {
- if(!confirm(t('deleteConfirm'))) return;
- await remove(ref(db, `students/${id}`));
- await remove(ref(db, `notes/${id}`));
- await remove(ref(db, `submissions/${id}`));
- alert(t('deleted'));
+let visitorsCache={};
+onValue(ref(db,'visitors'),(s)=>{ visitorsCache = s.val()||{}; if($('adminPanel') && !$('adminPanel').classList.contains('hidden')){ renderAdminVisitors(); updateAdminStats(); }});
+
+function renderAdminVisitors(){
+ const box=$('adminVisitorsList'); if(!box) return;
+ const entries = Object.entries(visitorsCache).sort((a,b)=>(b[1].lastVisit||0)-(a[1].lastVisit||0));
+ if(entries.length===0){ box.innerHTML='<p style="color:var(--muted)">لا يوجد زوار.</p>'; return; }
+ box.innerHTML = entries.map(([id,v])=>`
+  <div class="record-item">
+   <div>
+    <strong>${id}</strong> <span class="badge-success">${v.visits||1} زيارة</span>
+    <div class="meta">🕐 أول زيارة: ${new Date(v.firstVisit).toLocaleString('ar-DZ')}</div>
+    <div class="meta">🕐 آخر زيارة: ${new Date(v.lastVisit).toLocaleString('ar-DZ')}</div>
+    <div class="meta">💻 ${v.screen||''} — 🌐 ${v.language||''}</div>
+   </div>
+  </div>
+ `).join('');
 }
 
-function renderPointsSelect() {
- const sel = $('pointsStudentSelect');
- if(!sel) return;
- sel.innerHTML = `<option value="">${currentLang === 'ar' ? '-- اختر طالباً --' : '-- Select a student --'}</option>`;
- Object.entries(allStudents).forEach(([id, st]) => {
-  sel.innerHTML += `<option value="${id}">${st.name} (${st.points || 0} ${t('points')})</option>`;
- });
+let commentsCache={};
+onValue(ref(db,'comments_gate'),(s)=>{ commentsCache = s.val()||{}; if($('adminPanel') && !$('adminPanel').classList.contains('hidden')){ renderAdminComments(); updateAdminStats(); }});
+
+function renderAdminComments(){
+ const box=$('adminCommentsList'); if(!box) return;
+ const entries = Object.entries(commentsCache).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
+ if(entries.length===0){ box.innerHTML='<p style="color:var(--muted)">لا توجد تعليقات.</p>'; return; }
+ box.innerHTML = entries.map(([id,c])=>`
+  <div class="record-item" style="border-right-color:var(--warning)">
+   <div>
+    <strong>${c.text}</strong>
+    <div class="meta">🆔 ${id}</div>
+    <div class="meta">🕐 ${new Date(c.createdAt).toLocaleString('ar-DZ')}</div>
+   </div>
+  </div>
+ `).join('');
 }
 
-function renderNoteSelect() {
- const sel = $('noteStudentSelect');
- if(!sel) return;
- sel.innerHTML = `<option value="">${currentLang === 'ar' ? '-- اختر طالباً --' : '-- Select a student --'}</option>`;
- Object.entries(allStudents).forEach(([id, st]) => {
-  sel.innerHTML += `<option value="${id}">${st.name}</option>`;
- });
-}
-
-window.addPoints = async function() {
- const sid = $('pointsStudentSelect').value;
- const amount = parseInt($('pointsAmount').value) || 10;
- if(!sid) { $('pointsMsg').textContent = t('chooseStudent'); $('pointsMsg').style.color = "var(--danger)"; return; }
- try {
-  const st = allStudents[sid];
-  await update(ref(db, `students/${sid}`), { points: (st.points || 0) + amount });
-  $('pointsMsg').textContent = t('pointsAdded');
-  $('pointsMsg').style.color = "var(--success)";
- } catch(e) { $('pointsMsg').textContent = t('error') + e.message; $('pointsMsg').style.color = "var(--danger)"; }
-}
-
-window.subtractPoints = async function() {
- const sid = $('pointsStudentSelect').value;
- const amount = parseInt($('pointsAmount').value) || 10;
- if(!sid) { $('pointsMsg').textContent = t('chooseStudent'); $('pointsMsg').style.color = "var(--danger)"; return; }
- try {
-  const st = allStudents[sid];
-  await update(ref(db, `students/${sid}`), { points: Math.max(0, (st.points || 0) - amount) });
-  $('pointsMsg').textContent = t('pointsSubtracted');
-  $('pointsMsg').style.color = "var(--success)";
- } catch(e) { $('pointsMsg').textContent = t('error') + e.message; $('pointsMsg').style.color = "var(--danger)"; }
-}
-
-window.addNote = async function() {
- const sid = $('noteStudentSelect').value;
- const text = $('noteText').value.trim();
- if(!sid || !text) { $('noteMsg').textContent = t('chooseAndWrite'); $('noteMsg').style.color = "var(--danger)"; return; }
- try {
-  await push(ref(db, `notes/${sid}`), { text, createdAt: Date.now() });
-  $('noteMsg').textContent = t('noteAdded');
-  $('noteMsg').style.color = "var(--success)";
-  $('noteText').value = '';
- } catch(e) { $('noteMsg').textContent = t('error') + e.message; $('noteMsg').style.color = "var(--danger)"; }
-}
-
-function renderAllSubmissions() {
- const box = $('allSubmissions');
- if(!box) return;
- onValue(ref(db, 'submissions'), (s) => {
-  const data = s.val() || {};
-  box.innerHTML = '';
-  let hasAny = false;
-  for(let sid in data) {
-   const st = allStudents[sid];
-   const stName = st ? st.name : 'Unknown';
-   for(let subId in data[sid]) {
-    hasAny = true;
-    const sub = data[sid][subId];
-    const div = document.createElement('div');
-    div.className = 'submission-item';
-    div.innerHTML = `
-     <strong>${stName}</strong> - <span>${sub.title}</span><br>
-     <span class="meta">${new Date(sub.createdAt).toLocaleString(currentLang === 'ar' ? 'ar-DZ' : 'en-US')}</span><br>
-     <a href="${sub.link}" target="_blank">${t('openWork')}</a>
-     ${sub.note ? '<p style="font-size:13px; color:var(--muted);">' + sub.note + '</p>' : ''}
-     <button class="btn-action btn-danger" style="font-size:12px; padding:6px 12px; margin-top:8px;" onclick="deleteSubmission('${sid}','${subId}')">${t('delete')}</button>
-    `;
-    box.appendChild(div);
-   }
-  }
-  if(!hasAny) box.innerHTML = `<p style='color:var(--muted);'>${t('noWorks')}</p>`;
- });
-}
-
-window.deleteSubmission = async function(sid, subId) {
- if(!confirm(t('deleteWorkConfirm'))) return;
- await remove(ref(db, `submissions/${sid}/${subId}`));
-}
-
-function updateTeacherStats() {
- const count = Object.keys(allStudents).length;
- let totalPoints = 0;
- Object.values(allStudents).forEach(st => totalPoints += (st.points || 0));
- const avg = count > 0 ? Math.round(totalPoints / count) : 0;
- $('dashStudents').textContent = count;
- $('dashAvgPoints').textContent = avg;
- let subCount = 0;
- onValue(ref(db, 'submissions'), (s) => {
-  const data = s.val() || {};
-  for(let sid in data) subCount += Object.keys(data[sid]).length;
-  $('dashSubmissions').textContent = subCount;
- });
- let noteCount = 0;
- onValue(ref(db, 'notes'), (s) => {
-  const data = s.val() || {};
-  for(let sid in data) noteCount += Object.keys(data[sid]).length;
-  $('dashNotes').textContent = noteCount;
- });
+function updateAdminStats(){
+ const recs = Object.values(liveRecords);
+ $('stRecords').textContent = recs.length;
+ $('stVisitors').textContent = Object.keys(visitorsCache).length;
+ $('stComments').textContent = Object.keys(commentsCache).length;
+ const last = recs.sort((a,b)=>b.createdAt-a.createdAt)[0];
+ $('stLastTotal').textContent = last ? last.total : 0;
 }
 </script>
 </body>
