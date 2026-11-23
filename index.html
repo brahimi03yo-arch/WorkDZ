@@ -3,570 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>إحصائيات الناخبين | شريد علوي</title>
-<meta name="description" content="نظام إحصائيات الناخبين - براهيمي يوسف - مطور برامج وتطبيقات">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;900&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
-
+<title>إحصائيات الناخبين</title>
 <style>
-:root{
- --bg:#f0f4f8; --surface:#fff; --border:#e2e8f0; --text:#1e293b; --muted:#64748b;
- --primary:#1e40af; --primary-dark:#1e3a8a; --accent:#0891b2;
- --success:#059669; --warning:#d97706; --danger:#dc2626; --purple:#7c3aed; --gold:#d97706;
-}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;min-height:100vh;color:var(--text);font-family:Tajawal,Cairo,sans-serif;line-height:1.8;background:var(--bg)}
-html[lang="en"] body{font-family:Poppins,sans-serif}
+body{
+  margin:0; min-height:100vh; background:#f0f4f8; color:#1e293b;
+  font-family:Tahoma,Arial,sans-serif; line-height:1.8; padding:20px;
+}
+.box{
+  max-width:520px; margin:0 auto; background:#fff; border-radius:20px;
+  padding:25px; box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+h1{ text-align:center; color:#1e40af; font-size:24px; margin:0 0 5px; }
+.sub{ text-align:center; color:#64748b; font-size:14px; margin-bottom:20px; }
 
-/* الشريط العلوي */
-.top-banner{background:linear-gradient(90deg,var(--primary),var(--purple));color:#fff;padding:10px 0;overflow:hidden;white-space:nowrap;font-size:14px;font-weight:700;border-bottom:3px solid var(--accent)}
-.banner-content{display:inline-block;animation:marquee 60s linear infinite}
-.banner-content span{padding:0 30px}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(100%)}}
+label{ display:block; font-weight:bold; color:#1e40af; margin:15px 0 5px; }
+input{
+  width:100%; padding:14px; font-size:20px; text-align:center; font-weight:bold;
+  border:2px solid #e2e8f0; border-radius:12px; background:#f8fafc;
+  font-family:inherit; transition:.2s;
+}
+input:focus{ outline:none; border-color:#1e40af; background:#fff; }
 
-header{display:flex;align-items:center;justify-content:space-between;padding:15px 25px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.06);flex-wrap:wrap;gap:10px}
-.brand{display:flex;align-items:center;gap:12px;cursor:pointer}
-.brand-mark{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--primary),var(--purple));font-size:13px}
-.brand-name{font-size:13px;font-weight:800;color:var(--primary);padding:8px 16px;border-radius:999px;border:1px solid rgba(30,64,175,.2);background:rgba(30,64,175,.08);font-family:'Poppins',sans-serif}
-.header-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.dev-badge{font-size:12px;color:var(--purple);font-weight:800;padding:6px 12px;border-radius:999px;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.2);display:inline-block}
-.admin-access-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:bold;font-family:inherit;transition:.2s}
-.admin-access-btn:hover{background:var(--bg);color:var(--purple);border-color:var(--purple)}
+hr{ border:none; border-top:2px dashed #cbd5e1; margin:25px 0; }
 
-.container{max-width:1250px;margin:auto;padding:30px 18px;min-height:75vh}
-.page-section{display:none;animation:fadeIn .4s ease}
-.page-section.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.pct{
+  text-align:center; font-size:32px; font-weight:900; color:#059669;
+  margin-top:8px; font-family:Arial,sans-serif;
+}
+.pct small{ display:block; font-size:13px; color:#64748b; font-weight:bold; }
 
-.hero-hub{text-align:center;padding:50px 20px;background:linear-gradient(135deg,rgba(30,64,175,.08),rgba(124,58,237,.08));border-radius:30px;border:1px solid rgba(30,64,175,.1);margin-bottom:40px;position:relative;overflow:hidden}
-.hero-hub::before{content:'VOTE';position:absolute;top:-30px;left:-10px;font-size:180px;font-weight:900;color:rgba(30,64,175,.04);font-family:'Poppins',sans-serif;pointer-events:none}
-.hero-hub h1{color:var(--primary-dark);font-size:clamp(28px,6vw,48px);margin-bottom:10px;font-weight:900;position:relative}
-.hero-hub .subtitle{color:var(--muted);font-size:18px;margin-bottom:15px;position:relative}
-.university-badge{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--warning));color:#fff;padding:8px 24px;border-radius:999px;font-weight:800;font-size:15px;margin-bottom:10px;box-shadow:0 6px 20px rgba(217,119,6,.3)}
-.time-badge{display:inline-block;background:var(--accent);color:#fff;padding:8px 24px;border-radius:999px;font-weight:800;font-size:15px;margin-bottom:30px;box-shadow:0 6px 20px rgba(8,145,178,.3)}
-.hub-buttons{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;position:relative}
-.btn-main{padding:18px 30px;font-size:17px;font-weight:800;border-radius:16px;border:none;cursor:pointer;color:#fff;transition:.3s;box-shadow:0 10px 25px rgba(0,0,0,.1);display:flex;align-items:center;gap:10px;font-family:inherit}
-.btn-main:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.15)}
-.btn-student{background:var(--primary)}
-.btn-teacher{background:var(--purple)}
-.btn-info{background:var(--success)}
+.pct.blue{ color:#1e40af; }
+.pct.pink{ color:#db2777; }
 
-.section-header{text-align:center;margin:45px 0 15px}
-.section-header h2{color:var(--primary-dark);font-size:28px;font-weight:900;margin-bottom:8px}
-.section-header .line{width:80px;height:4px;margin:0 auto;background:linear-gradient(90deg,var(--primary),var(--purple));border-radius:999px}
+.actions{ text-align:center; margin-top:25px; }
+button{
+  padding:12px 24px; font-size:16px; font-weight:bold; border:none;
+  border-radius:12px; cursor:pointer; font-family:inherit; margin:5px;
+}
+.save{ background:#059669; color:#fff; }
+.save:hover{ background:#047857; }
+.reset{ background:#dc2626; color:#fff; }
+.reset:hover{ background:#b91c1c; }
 
-/* النماذج */
-.form-box{background:var(--surface);padding:30px;border-radius:20px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,.03);max-width:600px;margin:auto}
-.form-box h3{color:var(--primary-dark);margin-top:0;border-bottom:2px solid var(--border);padding-bottom:10px}
-label{font-weight:800;color:var(--primary);display:block;margin-bottom:5px;margin-top:12px}
-input,textarea,select{width:100%;padding:12px 15px;border-radius:10px;border:1px solid var(--border);font-family:inherit;margin-bottom:10px;font-size:15px;background:var(--bg);transition:.2s}
-input:focus,textarea:focus,select:focus{outline:none;border-color:var(--primary);background:#fff}
-button.btn-action{background:var(--primary);color:#fff;border:none;padding:12px 25px;border-radius:10px;font-weight:800;cursor:pointer;transition:.2s;font-size:15px;font-family:inherit}
-button.btn-action:hover{background:var(--primary-dark);transform:translateY(-2px)}
-button.btn-action:disabled{opacity:.6;cursor:not-allowed;transform:none}
-button.btn-success{background:var(--success)}
-button.btn-success:hover{background:#047857}
-button.btn-danger{background:var(--danger)}
-button.btn-danger:hover{background:#b91c1c}
+.msg{ text-align:center; font-weight:bold; margin-top:12px; min-height:22px; font-size:14px; }
+.saved{ color:#059669; }
+.err{ color:#dc2626; }
 
-.btn-back{background:#fff;border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:10px;cursor:pointer;margin-bottom:20px;font-weight:bold;display:inline-flex;align-items:center;gap:8px;transition:.2s;font-family:inherit}
-.btn-back:hover{background:var(--bg);border-color:var(--primary);color:var(--primary)}
-
-/* نتائج الإحصاء */
-.stats-result{background:linear-gradient(135deg,var(--success),#047857);border-radius:20px;padding:30px;color:#fff;margin:20px 0;text-align:center}
-.stats-result .big{font-size:56px;font-weight:900;font-family:'Poppins',sans-serif;line-height:1}
-.stats-result .label{font-size:16px;font-weight:700;margin-top:5px}
-.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:15px;margin-top:20px}
-.result-card{background:rgba(255,255,255,.15);padding:15px;border-radius:12px;backdrop-filter:blur(4px)}
-.result-card .num{font-size:28px;font-weight:900;font-family:'Poppins',sans-serif}
-.result-card .lbl{font-size:13px;font-weight:700;opacity:.9}
-
-/* سجل */
-.record-item{background:#fff;border:1px solid var(--border);border-radius:12px;padding:15px;margin-bottom:10px;border-right:4px solid var(--primary);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.record-item .meta{font-size:12px;color:var(--muted)}
-.record-item strong{color:var(--primary)}
-.badge-success{background:var(--success);color:#fff;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700}
-.badge-warn{background:var(--warning);color:#fff;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700}
-.badge-danger{background:var(--danger);color:#fff;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700}
-
-.notes-box{margin-top:30px;background:var(--surface);padding:30px;border-radius:20px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,.03)}
-.notes-box h3{color:var(--primary-dark);margin-top:0;border-bottom:2px solid var(--border);padding-bottom:10px}
-
-.stat-box{background:var(--bg);padding:20px;text-align:center;border-radius:12px;border:1px solid var(--border);margin-bottom:20px}
-.stat-box strong{font-size:34px;color:var(--purple);display:block;margin-bottom:5px;font-family:'Poppins',sans-serif}
-.stat-box span{font-weight:bold;color:var(--muted)}
-
-.hidden{display:none!important}
-.alert-warn{background:#fef3c7;border:1px solid #f59e0b;color:#92400e;padding:12px;border-radius:10px;font-weight:700;margin-bottom:15px}
-.alert-err{background:#fee2e2;border:1px solid #ef4444;color:#991b1b;padding:12px;border-radius:10px;font-weight:700;margin-bottom:15px}
-.alert-ok{background:#d1fae5;border:1px solid #10b981;color:#065f46;padding:12px;border-radius:10px;font-weight:700;margin-bottom:15px}
-
-.teacher-dashboard-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:15px;margin-bottom:30px}
-.admin-btn{background:#fff;border:2px solid var(--border);border-radius:12px;padding:18px 10px;text-align:center;cursor:pointer;transition:.2s;font-weight:800;color:var(--text);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:13px;font-family:inherit}
-.admin-btn:hover{border-color:var(--purple);transform:translateY(-3px)}
-.admin-btn.active{background:var(--purple);color:#fff;border-color:var(--purple)}
-.admin-btn .icon{font-size:26px}
-.admin-panel-content{background:var(--surface);border-radius:16px;padding:25px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,.03);min-height:400px}
-
-footer{text-align:center;padding:30px;color:var(--muted);border-top:1px solid var(--border);background:#fff;margin-top:50px}
-footer p{margin:8px 0}
-.slogan{font-weight:900;color:var(--primary);font-size:18px;letter-spacing:1px}
-
-@media(max-width:768px){
- .btn-main{width:100%;justify-content:center}
- .brand-name{display:none}
- .dev-badge{display:none}
- .info-grid{grid-template-columns:1fr}
+.info{
+  text-align:center; font-size:12px; color:#94a3b8; margin-top:20px;
+  border-top:1px solid #e2e8f0; padding-top:12px;
 }
 </style>
 </head>
 <body>
 
-<div class="top-banner"><div class="banner-content" id="bannerContent"></div></div>
+<div class="box">
+  <h1>🗳️ إحصائيات الناخبين</h1>
+  <p class="sub">الأرقام تُحفظ تلقائياً في متصفحك</p>
 
-<header>
- <div class="brand" onclick="showPage('home')">
-  <span class="brand-mark">VOTE</span>
-  <span>إحصائيات الناخبين</span>
- </div>
- <div class="header-actions">
-  <span class="brand-name">شريد علوي — عرعار وادي مرة</span>
-  <span class="dev-badge">👨‍💻 براهيمي يوسف</span>
-  <button class="admin-access-btn" onclick="showPage('admin')">🔑 دخول المسؤول</button>
- </div>
-</header>
+  <label>📊 المجموع الكلي</label>
+  <input type="number" id="total" min="0" placeholder="0" oninput="save()">
 
-<main class="container">
+  <hr>
 
-<!-- الرئيسية -->
-<section id="page-home" class="page-section active">
- <div class="hero-hub">
-  <div class="university-badge">🗳️ نظام إحصائيات الناخبين</div>
-  <h1>إحصائيات الناخبين</h1>
-  <p class="subtitle">إدخال المجموع • الرجال • النساء — حساب النسب فوراً</p>
-  <div class="time-badge">🕐 يُسجَّل التاريخ والوقت تلقائياً</div>
-  <div class="hub-buttons">
-   <button class="btn-main btn-student" onclick="showPage('entry')">🗳️ إدخال الأعداد</button>
-   <button class="btn-main btn-info" onclick="showPage('records')">📁 السجلات المحفوظة</button>
-   <button class="btn-main btn-teacher" onclick="showPage('admin')">🔑 لوحة المسؤول</button>
+  <label>👨 عدد الرجال</label>
+  <input type="number" id="men" min="0" placeholder="0" oninput="save()">
+  <div class="pct blue" id="menPct">0%<small>نسبة الرجال</small></div>
+
+  <hr>
+
+  <label>👩 عدد النساء</label>
+  <input type="number" id="women" min="0" placeholder="0" oninput="save()">
+  <div class="pct pink" id="womenPct">0%<small>نسبة النساء</small></div>
+
+  <div class="actions">
+    <button class="save" onclick="save(true)">💾 حفظ</button>
+    <button class="reset" onclick="resetAll()">🗑️ مسح الكل</button>
   </div>
- </div>
+  <div class="msg" id="msg"></div>
 
- <!-- مربع التعليق الإجباري -->
- <div id="commentGate" class="form-box" style="max-width:700px;margin-top:20px;border:3px solid var(--warning)">
-  <h3 style="color:var(--warning)">💬 قبل المتابعة — اترك تعليقك</h3>
-  <p style="color:var(--muted)">لا يمكنك استخدام المنصة دون كتابة تعليق قصير (5 أحرف على الأقل).</p>
-  <div id="userInfoBox" style="background:var(--bg);padding:10px;border-radius:10px;font-size:13px;color:var(--muted);margin-bottom:10px"></div>
-  <textarea id="gateComment" placeholder="اكتب تعليقك هنا..." style="min-height:90px"></textarea>
-  <button class="btn-action btn-success" onclick="saveGateComment()" style="width:100%">✅ حفظ التعليق والمتابعة</button>
-  <div id="gateMsg" style="text-align:center;font-weight:bold;margin-top:10px"></div>
- </div>
-</section>
-
-<!-- إدخال الأعداد -->
-<section id="page-entry" class="page-section">
- <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
- <h2 style="color:var(--primary);text-align:center;margin-bottom:20px">🗳️ إدخال أعداد الناخبين</h2>
-
- <div class="form-box">
-  <div id="entryWarn" class="alert-warn hidden"></div>
-
-  <label>📊 المجموع الكلي *</label>
-  <input type="number" id="inTotal" min="0" oninput="computePreview()" placeholder="مثال: 1000">
-
-  <label>👨 عدد الرجال *</label>
-  <input type="number" id="inMen" min="0" oninput="computePreview()" placeholder="مثال: 600">
-
-  <label>👩 عدد النساء *</label>
-  <input type="number" id="inWomen" min="0" oninput="computePreview()" placeholder="مثال: 400">
-
-  <label>📝 ملاحظة اختيارية</label>
-  <input type="text" id="inNote" placeholder="مثال: انتخابات المجلس البلدي 2025">
-
-  <button class="btn-action btn-success" onclick="saveEntry()" style="width:100%;font-size:18px;padding:15px;margin-top:10px">💾 حساب وحفظ</button>
-  <div id="entryMsg" style="text-align:center;font-weight:bold;margin-top:10px"></div>
- </div>
-
- <!-- معاينة النسب -->
- <div id="previewBox" class="notes-box hidden">
-  <h3>📈 النتائج الحالية</h3>
-  <div class="stats-result">
-   <div class="big" id="pvTotal">0</div>
-   <div class="label">المجموع الكلي</div>
-   <div class="result-grid">
-    <div class="result-card"><div class="num" id="pvMenPct">0%</div><div class="lbl">نسبة الرجال</div></div>
-    <div class="result-card"><div class="num" id="pvWomenPct">0%</div><div class="lbl">نسبة النساء</div></div>
-    <div class="result-card"><div class="num" id="pvMen">0</div><div class="lbl">رجال</div></div>
-    <div class="result-card"><div class="num" id="pvWomen">0</div><div class="lbl">نساء</div></div>
-   </div>
+  <div class="info">
+    👨‍💻 تطوير: براهيمي يوسف — مطور برامج وتطبيقات<br>
+    شريد علوي — عرعار وادي مرة
   </div>
- </div>
-</section>
+</div>
 
-<!-- السجلات -->
-<section id="page-records" class="page-section">
- <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
- <h2 style="text-align:center;color:var(--primary);margin-bottom:20px">📁 السجلات المحفوظة</h2>
- <div style="text-align:center;margin-bottom:15px">
-  <button class="btn-action" onclick="exportCSV()" style="margin:0 5px">⬇️ تصدير CSV</button>
-  <button class="btn-action btn-danger" onclick="clearAllRecords()" style="margin:0 5px">🗑️ مسح كل السجلات</button>
- </div>
- <div id="recordsList"></div>
-</section>
-
-<!-- لوحة المسؤول -->
-<section id="page-admin" class="page-section">
- <button class="btn-back" onclick="showPage('home')">← العودة للرئيسية</button>
- <h2 style="color:var(--purple);text-align:center;margin-bottom:20px">🔑 لوحة المسؤول</h2>
-
- <div id="adminLoginBox" class="form-box" style="max-width:400px">
-  <p style="color:var(--muted)">أدخل رمز الدخول:</p>
-  <input type="password" id="adminCode" style="text-align:center;font-size:20px;letter-spacing:5px" placeholder="رمز المسؤول">
-  <button class="btn-action" onclick="adminLogin()" style="width:100%;background:var(--purple)">دخول</button>
-  <div id="adminMsg" style="text-align:center;font-weight:bold;margin-top:10px"></div>
- </div>
-
- <div id="adminPanel" class="hidden">
-  <div class="teacher-dashboard-grid">
-   <div class="admin-btn active" onclick="toggleAdmin('stats')"><span class="icon">📊</span><span>الإحصائيات</span></div>
-   <div class="admin-btn" onclick="toggleAdmin('records')"><span class="icon">📁</span><span>السجلات</span></div>
-   <div class="admin-btn" onclick="toggleAdmin('visitors')"><span class="icon">👥</span><span>الزوار</span></div>
-   <div class="admin-btn" onclick="toggleAdmin('comments')"><span class="icon">💬</span><span>التعليقات</span></div>
-  </div>
-
-  <div class="admin-panel-content">
-   <div id="adminStatsView">
-    <h3 style="color:var(--purple);margin-top:0">إحصائيات عامة</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px">
-     <div class="stat-box"><strong id="stRecords">0</strong><span>سجل محفوظ</span></div>
-     <div class="stat-box"><strong id="stVisitors">0</strong><span>زائر مسجّل</span></div>
-     <div class="stat-box"><strong id="stComments">0</strong><span>تعليق</span></div>
-     <div class="stat-box"><strong id="stLastTotal">0</strong><span>آخر مجموع</span></div>
-    </div>
-   </div>
-
-   <div id="adminRecordsView" class="hidden">
-    <h3 style="color:var(--purple);margin-top:0">كل السجلات</h3>
-    <div id="adminRecordsList"></div>
-   </div>
-
-   <div id="adminVisitorsView" class="hidden">
-    <h3 style="color:var(--purple);margin-top:0">سجل الزوار</h3>
-    <div id="adminVisitorsList"></div>
-   </div>
-
-   <div id="adminCommentsView" class="hidden">
-    <h3 style="color:var(--purple);margin-top:0">كل التعليقات</h3>
-    <div id="adminCommentsList"></div>
-   </div>
-  </div>
-
-  <button class="btn-action btn-danger" style="margin-top:20px;width:100%" onclick="adminLogout()">تسجيل الخروج</button>
- </div>
-</section>
-
-</main>
-
-<footer>
- <p><strong>نظام إحصائيات الناخبين</strong></p>
- <p class="slogan">شريد علوي — عرعار وادي مرة</p>
- <p style="font-weight:800;color:var(--primary);font-size:16px">👨‍💻 تطوير: براهيمي يوسف — مطور برامج وتطبيقات</p>
- <p style="font-size:13px">تصميم وتطوير احترافي • تعلم • تقدم • تفوق</p>
-</footer>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import { getDatabase, ref, push, onValue, update, remove, set, get } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
-
-/* ⚠️ استبدل هذه الإعدادات بإعدادات مشروعك من Firebase */
-const firebaseConfig = {
-  apiKey: "AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
-  authDomain: "workdz-web.firebaseapp.com",
-  databaseURL: "https://workdz-web-default-rtdb.firebaseio.com",
-  projectId: "workdz-web",
-  storageBucket: "workdz-web.firebasestorage.app",
-  messagingSenderId: "980881321562",
-  appId: "1:980881321562:web:5046cc8bfe27749a73f263"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+<script>
 const $ = id => document.getElementById(id);
 
-const ADMIN_CODE = "1234"; // غيّره لاحقاً
-
-/* ========== الشريط ========== */
-const bannerTexts = [
- "✦ نظام إحصائيات الناخبين ✦",
- "👨‍💻 تطوير: براهيمي يوسف — مطور برامج وتطبيقات ✦",
- "🏷️ شريد علوي — عرعار وادي مرة ✦",
- "🗳️ إدخال المجموع • الرجال • النساء ✦",
- "📊 حساب النسب المئوية فوراً ✦",
- "🕐 تاريخ ووقت تلقائي مع كل حفظ ✦",
- "💾 كل السجلات محفوظة ويمكن استرجاعها ✦"
-];
-function renderBanner(){
- const b=$('bannerContent'); b.innerHTML='';
- bannerTexts.forEach(t=>{const s=document.createElement('span');s.textContent=t;b.appendChild(s)});
-}
-renderBanner();
-
-/* ========== التنقل ========== */
-window.showPage = function(id){
- document.querySelectorAll('.page-section').forEach(p=>p.classList.remove('active'));
- const t=$('page-'+id); if(t){t.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
- if(id==='records') renderRecords();
- if(id==='admin'){ /* لا شيء */ }
+// تحميل القيم المحفوظة عند فتح الصفحة
+function load(){
+  $('total').value = localStorage.getItem('v_total') || '';
+  $('men').value   = localStorage.getItem('v_men')   || '';
+  $('women').value = localStorage.getItem('v_women') || '';
+  updatePct();
 }
 
-/* ========== تسجيل الزوار + التعليق الإجباري ========== */
-const visitorId = localStorage.getItem('visitorId') || (()=>{ const id='v_'+Date.now()+'_'+Math.random().toString(36).slice(2,7); localStorage.setItem('visitorId',id); return id; })();
+// حفظ القيم + حساب النسب
+function save(showMsg){
+  const t = $('total').value;
+  const m = $('men').value;
+  const w = $('women').value;
 
-async function registerVisitor(){
- const vref = ref(db,'visitors/'+visitorId);
- const snap = await get(vref);
- if(!snap.exists()){
-  await set(vref,{
-   firstVisit: Date.now(),
-   lastVisit: Date.now(),
-   userAgent: navigator.userAgent,
-   language: navigator.language,
-   screen: window.screen.width+'x'+window.screen.height,
-   visits: 1
-  });
- } else {
-  await update(vref,{ lastVisit: Date.now(), visits: (snap.val().visits||1)+1 });
- }
-}
-registerVisitor();
+  localStorage.setItem('v_total', t);
+  localStorage.setItem('v_men', m);
+  localStorage.setItem('v_women', w);
 
-/* حالة التعليق */
-onValue(ref(db,'comments_gate/'+visitorId),(s)=>{
- const data = s.val();
- const gate = $('commentGate');
- if(data && data.text){
-  gate.classList.add('hidden');
- } else {
-  gate.classList.remove('hidden');
-  $('userInfoBox').textContent = "🆔 معرّف الزائر: "+visitorId+" — يُسجَّل وقت تعليقك تلقائياً.";
- }
-});
+  updatePct();
 
-window.saveGateComment = async function(){
- const text = $('gateComment').value.trim();
- const msg = $('gateMsg');
- if(text.length < 5){ msg.textContent='❌ اكتب 5 أحرف على الأقل'; msg.style.color='var(--danger)'; return; }
- try{
-  await set(ref(db,'comments_gate/'+visitorId),{
-   text, visitorId, createdAt: Date.now(),
-   userAgent: navigator.userAgent
-  });
-  msg.textContent='✅ تم حفظ تعليقك، يمكنك المتابعة الآن';
-  msg.style.color='var(--success)';
-  $('gateComment').value='';
- }catch(e){ msg.textContent='❌ '+e.message; msg.style.color='var(--danger)'; }
+  if(showMsg){
+    $('msg').textContent = '✅ تم الحفظ بنجاح';
+    $('msg').className = 'msg saved';
+    setTimeout(()=>{ $('msg').textContent=''; }, 2000);
+  }
 }
 
-/* ========== إدخال الأعداد ========== */
-let liveRecords = {};
+// حساب النسب
+function updatePct(){
+  const total = parseFloat($('total').value) || 0;
+  const men   = parseFloat($('men').value)   || 0;
+  const women = parseFloat($('women').value) || 0;
 
-function computePreview(){
- const total = parseInt($('inTotal').value)||0;
- const men = parseInt($('inMen').value)||0;
- const women = parseInt($('inWomen').value)||0;
- const box = $('previewBox');
- const warn = $('entryWarn');
+  const menPct   = total > 0 ? (men   / total * 100) : 0;
+  const womenPct = total > 0 ? (women / total * 100) : 0;
 
- if(total<=0 && men<=0 && women<=0){ box.classList.add('hidden'); warn.classList.add('hidden'); return; }
- box.classList.remove('hidden');
-
- $('pvTotal').textContent = total;
- $('pvMen').textContent = men;
- $('pvWomen').textContent = women;
- $('pvMenPct').textContent = total>0 ? ((men/total)*100).toFixed(2)+'%' : '0%';
- $('pvWomenPct').textContent = total>0 ? ((women/total)*100).toFixed(2)+'%' : '0%';
-
- if(men+women !== total){
-  warn.classList.remove('hidden');
-  warn.textContent = `⚠️ تنبيه: مجموع الرجال+النساء (${men+women}) لا يساوي المجموع الكلي (${total}). الفرق: ${Math.abs(total-(men+women))}`;
- } else {
-  warn.classList.add('hidden');
- }
+  $('menPct').innerHTML   = menPct.toFixed(2)   + '%<small>نسبة الرجال</small>';
+  $('womenPct').innerHTML = womenPct.toFixed(2) + '%<small>نسبة النساء</small>';
 }
 
-window.saveEntry = async function(){
- const total = parseInt($('inTotal').value)||0;
- const men = parseInt($('inMen').value)||0;
- const women = parseInt($('inWomen').value)||0;
- const note = $('inNote').value.trim();
- const msg = $('entryMsg');
-
- if(total<=0 || men<0 || women<0){ msg.textContent='❌ أدخل أرقاماً صحيحة'; msg.style.color='var(--danger)'; return; }
-
- const menPct = total>0 ? +((men/total)*100).toFixed(2) : 0;
- const womenPct = total>0 ? +((women/total)*100).toFixed(2) : 0;
-
- try{
-  await push(ref(db,'records'),{
-   total, men, women, menPct, womenPct,
-   note, createdAt: Date.now(),
-   createdBy: visitorId
-  });
-  msg.textContent='✅ تم الحفظ بنجاح مع التاريخ والوقت';
-  msg.style.color='var(--success)';
-  $('inTotal').value=''; $('inMen').value=''; $('inWomen').value=''; $('inNote').value='';
-  $('previewBox').classList.add('hidden');
- }catch(e){ msg.textContent='❌ '+e.message; msg.style.color='var(--danger)'; }
+// مسح الكل
+function resetAll(){
+  if(!confirm('هل تريد مسح كل الأرقام؟')) return;
+  localStorage.removeItem('v_total');
+  localStorage.removeItem('v_men');
+  localStorage.removeItem('v_women');
+  $('total').value = '';
+  $('men').value = '';
+  $('women').value = '';
+  updatePct();
+  $('msg').textContent = '🗑️ تم المسح';
+  $('msg').className = 'msg err';
+  setTimeout(()=>{ $('msg').textContent=''; }, 2000);
 }
 
-/* ========== السجلات ========== */
-onValue(ref(db,'records'),(s)=>{
- liveRecords = s.val() || {};
- if($('page-records').classList.contains('active')) renderRecords();
- if($('adminPanel') && !$('adminPanel').classList.contains('hidden')){
-  renderAdminRecords(); updateAdminStats();
- }
-});
-
-function renderRecords(){
- const box = $('recordsList');
- const entries = Object.entries(liveRecords).sort((a,b)=>b[1].createdAt-a[1].createdAt);
- if(entries.length===0){ box.innerHTML='<p style="text-align:center;color:var(--muted)">لا توجد سجلات بعد.</p>'; return; }
- box.innerHTML = entries.map(([id,r])=>`
-  <div class="record-item">
-   <div>
-    <strong>المجموع: ${r.total}</strong>
-    <div class="meta">👨 ${r.men} (${r.menPct}%) — 👩 ${r.women} (${r.womenPct}%)</div>
-    <div class="meta">🕐 ${new Date(r.createdAt).toLocaleString('ar-DZ')}</div>
-    ${r.note?'<div class="meta">📝 '+r.note+'</div>':''}
-   </div>
-   <span class="badge-success">👨 ${r.menPct}% / 👩 ${r.womenPct}%</span>
-  </div>
- `).join('');
-}
-
-window.exportCSV = function(){
- const entries = Object.values(liveRecords);
- if(entries.length===0){ alert('لا توجد سجلات'); return; }
- let csv = 'المجموع,الرجال,نسبة_الرجال,النساء,نسبة_النساء,ملاحظة,التاريخ\n';
- entries.forEach(r=>{
-  csv += `${r.total},${r.men},${r.menPct}%,${r.women},${r.womenPct}%,"${(r.note||'').replace(/"/g,'""')}","${new Date(r.createdAt).toLocaleString('ar-DZ')}"\n`;
- });
- const blob = new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});
- const a = document.createElement('a');
- a.href = URL.createObjectURL(blob);
- a.download = 'voter_records_'+Date.now()+'.csv';
- a.click();
-}
-
-window.clearAllRecords = async function(){
- if(!confirm('⚠️ هل أنت متأكد من مسح كل السجلات نهائياً؟')) return;
- if(!confirm('⚠️ تأكيد نهائي: لا يمكن الرجوع بعد الحذف!')) return;
- await remove(ref(db,'records'));
- alert('تم مسح كل السجلات.');
-}
-
-/* ========== لوحة المسؤول ========== */
-let adminLogged=false;
-window.adminLogin = function(){
- if($('adminCode').value !== ADMIN_CODE){
-  $('adminMsg').textContent='❌ رمز خاطئ'; $('adminMsg').style.color='var(--danger)'; return;
- }
- adminLogged=true;
- $('adminLoginBox').classList.add('hidden');
- $('adminPanel').classList.remove('hidden');
- toggleAdmin('stats');
- renderAdminRecords(); renderAdminVisitors(); renderAdminComments(); updateAdminStats();
-}
-window.adminLogout = function(){
- adminLogged=false;
- $('adminPanel').classList.add('hidden');
- $('adminLoginBox').classList.remove('hidden');
- $('adminCode').value=''; $('adminMsg').textContent='';
-}
-window.toggleAdmin = function(v){
- ['stats','records','visitors','comments'].forEach(x=>{
-  const el = $('admin'+x.charAt(0).toUpperCase()+x.slice(1)+'View');
-  if(el) el.classList.add('hidden');
- });
- document.querySelectorAll('#adminPanel .admin-btn').forEach(b=>b.classList.remove('active'));
- const tv = $('admin'+v.charAt(0).toUpperCase()+v.slice(1)+'View');
- if(tv) tv.classList.remove('hidden');
- const btn = Array.from(document.querySelectorAll('#adminPanel .admin-btn')).find(b=>b.getAttribute('onclick')?.includes("'"+v+"'"));
- if(btn) btn.classList.add('active');
- if(v==='records') renderAdminRecords();
- if(v==='visitors') renderAdminVisitors();
- if(v==='comments') renderAdminComments();
- if(v==='stats') updateAdminStats();
-}
-
-function renderAdminRecords(){
- const box=$('adminRecordsList'); if(!box) return;
- const entries = Object.entries(liveRecords).sort((a,b)=>b[1].createdAt-a[1].createdAt);
- if(entries.length===0){ box.innerHTML='<p style="color:var(--muted)">لا توجد سجلات.</p>'; return; }
- box.innerHTML = entries.map(([id,r])=>`
-  <div class="record-item">
-   <div>
-    <strong>المجموع: ${r.total}</strong> — 👨 ${r.men} (${r.menPct}%) — 👩 ${r.women} (${r.womenPct}%)
-    <div class="meta">🕐 ${new Date(r.createdAt).toLocaleString('ar-DZ')}</div>
-    ${r.note?'<div class="meta">📝 '+r.note+'</div>':''}
-   </div>
-   <button class="btn-action btn-danger" style="padding:6px 12px;font-size:12px" onclick="delRecord('${id}')">🗑️ حذف</button>
-  </div>
- `).join('');
-}
-window.delRecord = async function(id){
- if(!confirm('حذف هذا السجل؟')) return;
- await remove(ref(db,'records/'+id));
-}
-
-let visitorsCache={};
-onValue(ref(db,'visitors'),(s)=>{ visitorsCache = s.val()||{}; if($('adminPanel') && !$('adminPanel').classList.contains('hidden')){ renderAdminVisitors(); updateAdminStats(); }});
-
-function renderAdminVisitors(){
- const box=$('adminVisitorsList'); if(!box) return;
- const entries = Object.entries(visitorsCache).sort((a,b)=>(b[1].lastVisit||0)-(a[1].lastVisit||0));
- if(entries.length===0){ box.innerHTML='<p style="color:var(--muted)">لا يوجد زوار.</p>'; return; }
- box.innerHTML = entries.map(([id,v])=>`
-  <div class="record-item">
-   <div>
-    <strong>${id}</strong> <span class="badge-success">${v.visits||1} زيارة</span>
-    <div class="meta">🕐 أول زيارة: ${new Date(v.firstVisit).toLocaleString('ar-DZ')}</div>
-    <div class="meta">🕐 آخر زيارة: ${new Date(v.lastVisit).toLocaleString('ar-DZ')}</div>
-    <div class="meta">💻 ${v.screen||''} — 🌐 ${v.language||''}</div>
-   </div>
-  </div>
- `).join('');
-}
-
-let commentsCache={};
-onValue(ref(db,'comments_gate'),(s)=>{ commentsCache = s.val()||{}; if($('adminPanel') && !$('adminPanel').classList.contains('hidden')){ renderAdminComments(); updateAdminStats(); }});
-
-function renderAdminComments(){
- const box=$('adminCommentsList'); if(!box) return;
- const entries = Object.entries(commentsCache).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
- if(entries.length===0){ box.innerHTML='<p style="color:var(--muted)">لا توجد تعليقات.</p>'; return; }
- box.innerHTML = entries.map(([id,c])=>`
-  <div class="record-item" style="border-right-color:var(--warning)">
-   <div>
-    <strong>${c.text}</strong>
-    <div class="meta">🆔 ${id}</div>
-    <div class="meta">🕐 ${new Date(c.createdAt).toLocaleString('ar-DZ')}</div>
-   </div>
-  </div>
- `).join('');
-}
-
-function updateAdminStats(){
- const recs = Object.values(liveRecords);
- $('stRecords').textContent = recs.length;
- $('stVisitors').textContent = Object.keys(visitorsCache).length;
- $('stComments').textContent = Object.keys(commentsCache).length;
- const last = recs.sort((a,b)=>b.createdAt-a.createdAt)[0];
- $('stLastTotal').textContent = last ? last.total : 0;
-}
+// تشغيل عند فتح الصفحة
+load();
 </script>
+
 </body>
 </html>
