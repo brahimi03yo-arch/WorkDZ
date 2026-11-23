@@ -42,13 +42,24 @@ textarea{ font-size:15px; text-align:right; font-weight:normal; min-height:80px;
 
 hr{ border:none; border-top:2px dashed #cbd5e1; margin:25px 0; }
 
+/* صندوق النسبة */
 .pct{
   text-align:center; font-size:32px; font-weight:900; color:#059669;
   margin-top:8px; font-family:Arial,sans-serif;
+  background:#f8fafc; border:2px solid #e2e8f0; border-radius:12px;
+  padding:12px; position:relative;
 }
-.pct small{ display:block; font-size:13px; color:#64748b; font-weight:bold; }
+.pct .pct-date{
+  display:block; font-size:12px; color:#64748b; font-weight:bold;
+  font-family:Tahoma,Arial,sans-serif; margin-bottom:4px;
+  border-bottom:1px dashed #cbd5e1; padding-bottom:5px;
+}
+.pct .pct-value{ display:block; }
+.pct small{ display:block; font-size:13px; color:#64748b; font-weight:bold; margin-top:3px; }
 .pct.blue{ color:#1e40af; }
 .pct.pink{ color:#db2777; }
+.pct .pct-date.blue{ color:#1e40af; }
+.pct .pct-date.pink{ color:#db2777; }
 
 .actions{ text-align:center; margin-top:25px; }
 button{
@@ -71,7 +82,6 @@ button{
   border-top:1px solid #e2e8f0; padding-top:12px;
 }
 
-/* السجلات */
 .section-title{
   color:#1e40af; font-size:18px; font-weight:bold; margin:25px 0 10px;
   border-bottom:2px solid #e2e8f0; padding-bottom:8px;
@@ -102,7 +112,6 @@ button{
 </head>
 <body>
 
-<!-- الشريط العلوي المتحرك -->
 <div class="top-banner">
   <div class="banner-content">
     <span>👨‍💻 تطوير: براهيمي يوسف — مطور برامج وتطبيقات</span>
@@ -124,13 +133,21 @@ button{
 
   <label>👨 عدد الرجال</label>
   <input type="number" id="men" min="0" placeholder="0" oninput="save()">
-  <div class="pct blue" id="menPct">0%<small>نسبة الرجال</small></div>
+  <div class="pct blue" id="menPct">
+    <span class="pct-date blue" id="menDate">🕐 — لم يُسجَّل بعد —</span>
+    <span class="pct-value" id="menValue">0%</span>
+    <small>نسبة الرجال</small>
+  </div>
 
   <hr>
 
   <label>👩 عدد النساء</label>
   <input type="number" id="women" min="0" placeholder="0" oninput="save()">
-  <div class="pct pink" id="womenPct">0%<small>نسبة النساء</small></div>
+  <div class="pct pink" id="womenPct">
+    <span class="pct-date pink" id="womenDate">🕐 — لم يُسجَّل بعد —</span>
+    <span class="pct-value" id="womenValue">0%</span>
+    <small>نسبة النساء</small>
+  </div>
 
   <div class="actions">
     <button class="save" onclick="save(true)">💾 حفظ</button>
@@ -138,23 +155,19 @@ button{
   </div>
   <div class="msg" id="msg"></div>
 
-  <!-- زر حفظ النسبة مع التاريخ -->
   <button class="save-pct" onclick="savePercent()">📌 حفظ النسبة الحالية مع التاريخ والوقت</button>
   <div class="msg" id="pctMsg"></div>
 
-  <!-- سجل النسب المحفوظة -->
   <div class="section-title">📁 النسب المحفوظة</div>
   <div id="recordsList"></div>
 
   <hr>
 
-  <!-- مربع التعليق -->
   <div class="section-title">💬 اترك تعليقاً لصاحب البرنامج</div>
   <textarea id="comment" placeholder="اكتب تعليقك هنا..."></textarea>
   <button class="save" style="width:100%;margin-top:10px" onclick="saveComment()">📝 إرسال التعليق</button>
   <div class="msg" id="commentMsg"></div>
 
-  <!-- قائمة التعليقات -->
   <div id="commentsList" style="margin-top:15px"></div>
 
   <div class="info">
@@ -171,20 +184,27 @@ function load(){
   $('total').value = localStorage.getItem('v_total') || '';
   $('men').value   = localStorage.getItem('v_men')   || '';
   $('women').value = localStorage.getItem('v_women') || '';
-  updatePct();
+
+  // تحديث النسب والتاريخ مباشرة من القيم المحفوظة
+  updatePctAndDate();
+
   renderRecords();
   renderComments();
 }
 
-/* ========== حفظ الأرقام ========== */
+/* ========== حفظ الأرقام + تحديث التاريخ فوراً ========== */
 function save(showMsg){
   const t = $('total').value;
   const m = $('men').value;
   const w = $('women').value;
+
   localStorage.setItem('v_total', t);
   localStorage.setItem('v_men', m);
   localStorage.setItem('v_women', w);
-  updatePct();
+
+  // تحديث النسب والتاريخ مباشرة في الصندوقين
+  updatePctAndDate();
+
   if(showMsg){
     $('msg').textContent = '✅ تم الحفظ';
     $('msg').className = 'msg saved';
@@ -192,8 +212,8 @@ function save(showMsg){
   }
 }
 
-/* ========== حساب النسب ========== */
-function updatePct(){
+/* ========== حساب النسب + عرض التاريخ والوقت الحالي ========== */
+function updatePctAndDate(){
   const total = parseFloat($('total').value) || 0;
   const men   = parseFloat($('men').value)   || 0;
   const women = parseFloat($('women').value) || 0;
@@ -201,8 +221,19 @@ function updatePct(){
   const menPct   = total > 0 ? (men   / total * 100) : 0;
   const womenPct = total > 0 ? (women / total * 100) : 0;
 
-  $('menPct').innerHTML   = menPct.toFixed(2)   + '%<small>نسبة الرجال</small>';
-  $('womenPct').innerHTML = womenPct.toFixed(2) + '%<small>نسبة النساء</small>';
+  // النسب
+  $('menValue').textContent   = menPct.toFixed(2)   + '%';
+  $('womenValue').textContent = womenPct.toFixed(2) + '%';
+
+  // التاريخ والوقت الحالي — يظهر مباشرة في أعلى الصندوق
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('ar-DZ') + ' — ' + now.toLocaleTimeString('ar-DZ');
+
+  $('menDate').textContent   = '🕐 ' + dateStr;
+  $('womenDate').textContent = '🕐 ' + dateStr;
+
+  // حفظ آخر تاريخ في الذاكرة
+  localStorage.setItem('v_date', dateStr);
 }
 
 /* ========== مسح الأرقام ========== */
@@ -211,16 +242,23 @@ function resetAll(){
   localStorage.removeItem('v_total');
   localStorage.removeItem('v_men');
   localStorage.removeItem('v_women');
+  localStorage.removeItem('v_date');
   $('total').value = '';
   $('men').value = '';
   $('women').value = '';
-  updatePct();
+
+  // إعادة الصندوقين إلى الحالة الأولى
+  $('menValue').textContent   = '0%';
+  $('womenValue').textContent = '0%';
+  $('menDate').textContent   = '🕐 — لم يُسجَّل بعد —';
+  $('womenDate').textContent = '🕐 — لم يُسجَّل بعد —';
+
   $('msg').textContent = '🗑️ تم المسح';
   $('msg').className = 'msg err';
   setTimeout(()=>{ $('msg').textContent=''; }, 2000);
 }
 
-/* ========== حفظ النسبة مع التاريخ ========== */
+/* ========== حفظ النسبة مع التاريخ في السجل ========== */
 function savePercent(){
   const total = parseFloat($('total').value) || 0;
   const men   = parseFloat($('men').value)   || 0;
