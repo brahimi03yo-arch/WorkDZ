@@ -8,22 +8,37 @@
 *{box-sizing:border-box}
 body{
   margin:0; min-height:100vh; background:#f0f4f8; color:#1e293b;
-  font-family:Tahoma,Arial,sans-serif; line-height:1.8; padding:20px;
+  font-family:Tahoma,Arial,sans-serif; line-height:1.8; padding:0 0 20px;
 }
+
+/* الشريط العلوي المتحرك */
+.top-banner{
+  background:linear-gradient(90deg,#1e40af,#7c3aed);
+  color:#fff; padding:10px 0; overflow:hidden; white-space:nowrap;
+  font-size:15px; font-weight:bold; border-bottom:3px solid #0891b2;
+}
+.banner-content{ display:inline-block; animation:marquee 25s linear infinite; }
+.banner-content span{ padding:0 40px; }
+@keyframes marquee{
+  0%{ transform:translateX(-100%); }
+  100%{ transform:translateX(100%); }
+}
+
 .box{
-  max-width:520px; margin:0 auto; background:#fff; border-radius:20px;
+  max-width:520px; margin:20px auto; background:#fff; border-radius:20px;
   padding:25px; box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 h1{ text-align:center; color:#1e40af; font-size:24px; margin:0 0 5px; }
 .sub{ text-align:center; color:#64748b; font-size:14px; margin-bottom:20px; }
 
 label{ display:block; font-weight:bold; color:#1e40af; margin:15px 0 5px; }
-input{
+input, textarea{
   width:100%; padding:14px; font-size:20px; text-align:center; font-weight:bold;
   border:2px solid #e2e8f0; border-radius:12px; background:#f8fafc;
   font-family:inherit; transition:.2s;
 }
-input:focus{ outline:none; border-color:#1e40af; background:#fff; }
+input:focus, textarea:focus{ outline:none; border-color:#1e40af; background:#fff; }
+textarea{ font-size:15px; text-align:right; font-weight:normal; min-height:80px; resize:vertical; }
 
 hr{ border:none; border-top:2px dashed #cbd5e1; margin:25px 0; }
 
@@ -32,7 +47,6 @@ hr{ border:none; border-top:2px dashed #cbd5e1; margin:25px 0; }
   margin-top:8px; font-family:Arial,sans-serif;
 }
 .pct small{ display:block; font-size:13px; color:#64748b; font-weight:bold; }
-
 .pct.blue{ color:#1e40af; }
 .pct.pink{ color:#db2777; }
 
@@ -43,6 +57,8 @@ button{
 }
 .save{ background:#059669; color:#fff; }
 .save:hover{ background:#047857; }
+.save-pct{ background:#1e40af; color:#fff; width:100%; padding:15px; font-size:17px; margin-top:15px; }
+.save-pct:hover{ background:#1e3a8a; }
 .reset{ background:#dc2626; color:#fff; }
 .reset:hover{ background:#b91c1c; }
 
@@ -54,9 +70,48 @@ button{
   text-align:center; font-size:12px; color:#94a3b8; margin-top:20px;
   border-top:1px solid #e2e8f0; padding-top:12px;
 }
+
+/* السجلات */
+.section-title{
+  color:#1e40af; font-size:18px; font-weight:bold; margin:25px 0 10px;
+  border-bottom:2px solid #e2e8f0; padding-bottom:8px;
+}
+.record{
+  background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px;
+  padding:12px 15px; margin-bottom:10px; border-right:4px solid #1e40af;
+}
+.record .row{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+.record .date{ font-size:12px; color:#64748b; margin-top:5px; }
+.record strong{ color:#1e40af; }
+
+.comment-record{
+  background:#fef3c7; border:1px solid #f59e0b; border-radius:12px;
+  padding:12px 15px; margin-bottom:10px; border-right:4px solid #d97706;
+}
+.comment-record .text{ font-weight:bold; color:#78350f; margin-bottom:5px; }
+.comment-record .date{ font-size:12px; color:#92400e; }
+
+.empty{ text-align:center; color:#94a3b8; font-size:14px; padding:15px; }
+
+.del-btn{
+  background:transparent; border:none; color:#dc2626; cursor:pointer;
+  font-size:12px; font-weight:bold; padding:2px 6px;
+}
+.del-btn:hover{ text-decoration:underline; }
 </style>
 </head>
 <body>
+
+<!-- الشريط العلوي المتحرك -->
+<div class="top-banner">
+  <div class="banner-content">
+    <span>👨‍💻 تطوير: براهيمي يوسف — مطور برامج وتطبيقات</span>
+    <span>🏷️ شريد علوي — عرعار وادي مرة</span>
+    <span>🗳️ نظام إحصائيات الناخبين</span>
+    <span>👨‍💻 براهيمي يوسف</span>
+    <span>📊 احسب النسب واحفظها بالتاريخ والوقت</span>
+  </div>
+</div>
 
 <div class="box">
   <h1>🗳️ إحصائيات الناخبين</h1>
@@ -79,9 +134,28 @@ button{
 
   <div class="actions">
     <button class="save" onclick="save(true)">💾 حفظ</button>
-    <button class="reset" onclick="resetAll()">🗑️ مسح الكل</button>
+    <button class="reset" onclick="resetAll()">🗑️ مسح الأرقام</button>
   </div>
   <div class="msg" id="msg"></div>
+
+  <!-- زر حفظ النسبة مع التاريخ -->
+  <button class="save-pct" onclick="savePercent()">📌 حفظ النسبة الحالية مع التاريخ والوقت</button>
+  <div class="msg" id="pctMsg"></div>
+
+  <!-- سجل النسب المحفوظة -->
+  <div class="section-title">📁 النسب المحفوظة</div>
+  <div id="recordsList"></div>
+
+  <hr>
+
+  <!-- مربع التعليق -->
+  <div class="section-title">💬 اترك تعليقاً لصاحب البرنامج</div>
+  <textarea id="comment" placeholder="اكتب تعليقك هنا..."></textarea>
+  <button class="save" style="width:100%;margin-top:10px" onclick="saveComment()">📝 إرسال التعليق</button>
+  <div class="msg" id="commentMsg"></div>
+
+  <!-- قائمة التعليقات -->
+  <div id="commentsList" style="margin-top:15px"></div>
 
   <div class="info">
     👨‍💻 تطوير: براهيمي يوسف — مطور برامج وتطبيقات<br>
@@ -92,34 +166,33 @@ button{
 <script>
 const $ = id => document.getElementById(id);
 
-// تحميل القيم المحفوظة عند فتح الصفحة
+/* ========== تحميل القيم المحفوظة ========== */
 function load(){
   $('total').value = localStorage.getItem('v_total') || '';
   $('men').value   = localStorage.getItem('v_men')   || '';
   $('women').value = localStorage.getItem('v_women') || '';
   updatePct();
+  renderRecords();
+  renderComments();
 }
 
-// حفظ القيم + حساب النسب
+/* ========== حفظ الأرقام ========== */
 function save(showMsg){
   const t = $('total').value;
   const m = $('men').value;
   const w = $('women').value;
-
   localStorage.setItem('v_total', t);
   localStorage.setItem('v_men', m);
   localStorage.setItem('v_women', w);
-
   updatePct();
-
   if(showMsg){
-    $('msg').textContent = '✅ تم الحفظ بنجاح';
+    $('msg').textContent = '✅ تم الحفظ';
     $('msg').className = 'msg saved';
     setTimeout(()=>{ $('msg').textContent=''; }, 2000);
   }
 }
 
-// حساب النسب
+/* ========== حساب النسب ========== */
 function updatePct(){
   const total = parseFloat($('total').value) || 0;
   const men   = parseFloat($('men').value)   || 0;
@@ -132,9 +205,9 @@ function updatePct(){
   $('womenPct').innerHTML = womenPct.toFixed(2) + '%<small>نسبة النساء</small>';
 }
 
-// مسح الكل
+/* ========== مسح الأرقام ========== */
 function resetAll(){
-  if(!confirm('هل تريد مسح كل الأرقام؟')) return;
+  if(!confirm('هل تريد مسح الأرقام الحالية؟ (النسب المحفوظة والتعليقات تبقى)')) return;
   localStorage.removeItem('v_total');
   localStorage.removeItem('v_men');
   localStorage.removeItem('v_women');
@@ -147,7 +220,138 @@ function resetAll(){
   setTimeout(()=>{ $('msg').textContent=''; }, 2000);
 }
 
-// تشغيل عند فتح الصفحة
+/* ========== حفظ النسبة مع التاريخ ========== */
+function savePercent(){
+  const total = parseFloat($('total').value) || 0;
+  const men   = parseFloat($('men').value)   || 0;
+  const women = parseFloat($('women').value) || 0;
+
+  if(total <= 0){
+    $('pctMsg').textContent = '❌ أدخل المجموع أولاً';
+    $('pctMsg').className = 'msg err';
+    setTimeout(()=>{ $('pctMsg').textContent=''; }, 2500);
+    return;
+  }
+
+  const menPct   = (men   / total * 100).toFixed(2);
+  const womenPct = (women / total * 100).toFixed(2);
+
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('ar-DZ') + ' — ' + now.toLocaleTimeString('ar-DZ');
+
+  const record = {
+    total: total,
+    men: men,
+    women: women,
+    menPct: menPct,
+    womenPct: womenPct,
+    date: dateStr,
+    timestamp: now.getTime()
+  };
+
+  const records = JSON.parse(localStorage.getItem('pct_records') || '[]');
+  records.unshift(record);
+  localStorage.setItem('pct_records', JSON.stringify(records));
+
+  renderRecords();
+
+  $('pctMsg').textContent = '✅ تم حفظ النسبة مع التاريخ والوقت';
+  $('pctMsg').className = 'msg saved';
+  setTimeout(()=>{ $('pctMsg').textContent=''; }, 2500);
+}
+
+/* ========== عرض سجل النسب ========== */
+function renderRecords(){
+  const box = $('recordsList');
+  const records = JSON.parse(localStorage.getItem('pct_records') || '[]');
+
+  if(records.length === 0){
+    box.innerHTML = '<div class="empty">لا توجد نسب محفوظة بعد.</div>';
+    return;
+  }
+
+  box.innerHTML = records.map((r, i) => `
+    <div class="record">
+      <div class="row">
+        <div><strong>المجموع:</strong> ${r.total}</div>
+        <div>👨 ${r.men} (${r.menPct}%)</div>
+        <div>👩 ${r.women} (${r.womenPct}%)</div>
+      </div>
+      <div class="date">🕐 ${r.date}
+        <button class="del-btn" onclick="delRecord(${i})">🗑️ حذف</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function delRecord(index){
+  if(!confirm('حذف هذه النسبة؟')) return;
+  const records = JSON.parse(localStorage.getItem('pct_records') || '[]');
+  records.splice(index, 1);
+  localStorage.setItem('pct_records', JSON.stringify(records));
+  renderRecords();
+}
+
+/* ========== حفظ التعليق ========== */
+function saveComment(){
+  const text = $('comment').value.trim();
+  if(text.length < 2){
+    $('commentMsg').textContent = '❌ اكتب تعليقاً أولاً';
+    $('commentMsg').className = 'msg err';
+    setTimeout(()=>{ $('commentMsg').textContent=''; }, 2500);
+    return;
+  }
+
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('ar-DZ') + ' — ' + now.toLocaleTimeString('ar-DZ');
+
+  const comment = {
+    text: text,
+    date: dateStr,
+    timestamp: now.getTime()
+  };
+
+  const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+  comments.unshift(comment);
+  localStorage.setItem('comments', JSON.stringify(comments));
+
+  $('comment').value = '';
+  renderComments();
+
+  $('commentMsg').textContent = '✅ تم إرسال تعليقك، شكراً لك';
+  $('commentMsg').className = 'msg saved';
+  setTimeout(()=>{ $('commentMsg').textContent=''; }, 2500);
+}
+
+/* ========== عرض التعليقات ========== */
+function renderComments(){
+  const box = $('commentsList');
+  const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+
+  if(comments.length === 0){
+    box.innerHTML = '<div class="empty">لا توجد تعليقات بعد. كن أول من يعلّق!</div>';
+    return;
+  }
+
+  box.innerHTML = comments.map((c, i) => `
+    <div class="comment-record">
+      <div class="text">"${c.text}"</div>
+      <div class="date">🕐 ${c.date}
+        <button class="del-btn" onclick="delComment(${i})">🗑️ حذف</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function delComment(index){
+  if(!confirm('حذف هذا التعليق؟')) return;
+  const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+  comments.splice(index, 1);
+  localStorage.setItem('comments', JSON.stringify(comments));
+  renderComments();
+}
+
+/* ========== تشغيل ========== */
 load();
 </script>
 
