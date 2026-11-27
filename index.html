@@ -5,99 +5,123 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>مركز التكوين المهني والتمهين - وادي مرة | التوجيه والإرشاد</title>
 
-<!-- ===== صورة المعاينة عند النشر (آخر رابط) ===== -->
+<!-- صورة المعاينة عند النشر -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="مركز التكوين المهني والتمهين - وادي مرة">
 <meta property="og:description" content="منصة توجيه وإرشاد المواطنين لاختيار التخصصات المهنية. سجل مع 14 من أصدقائك لتفتح تخصصك المفضل!">
 <meta property="og:image" content="https://i.postimg.cc/d3mbQzss/file-00000000d834821095f6c09d94088a6e.png">
-<meta property="og:image:secure_url" content="https://i.postimg.cc/d3mbQzss/file-00000000d834821095f6c09d94088a6e.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://ضع-رابط-موقعك-هنا.com/">
-<meta property="og:site_name" content="مركز التكوين المهني - وادي مرة">
-
-<!-- تويتر / X -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="مركز التكوين المهني والتمهين - وادي مرة">
-<meta name="twitter:description" content="منصة توجيه وإرشاد المواطنين لاختيار التخصصات المهنية.">
 <meta name="twitter:image" content="https://i.postimg.cc/d3mbQzss/file-00000000d834821095f6c09d94088a6e.png">
-<meta name="twitter:image:src" content="https://i.postimg.cc/d3mbQzss/file-00000000d834821095f6c09d94088a6e.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box}
-body{margin:0; background:#f4f7f6; color:#1e293b; font-family:'Segoe UI', Tahoma, sans-serif; line-height:1.8;}
+:root{
+ --bg: #f4f7f6;
+ --surface: #ffffff;
+ --border: #e2e8f0;
+ --text: #1e293b;
+ --muted: #64748b;
+ --primary: #1e40af;
+ --success: #059669;
+ --danger: #dc2626;
+ --warning: #f59e0b;
+ --gold: #facc15;
+}
 
-/* ===== الشريط المتحرك ===== */
+*{box-sizing:border-box}
+body{margin:0; background:var(--bg); color:var(--text); font-family:Tajawal, Cairo, sans-serif; line-height:1.8; overflow-x:hidden;}
+html{scroll-behavior:smooth;}
+
+/* الشريط المتحرك */
 .top-banner{
-  background:linear-gradient(90deg,#1e40af,#059669,#dc2626);
-  color:#fff; padding:12px 0; overflow:hidden; white-space:nowrap;
-  font-weight:bold; border-bottom:4px solid #facc15;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  position: relative;
+ background:linear-gradient(90deg, var(--primary), var(--success), var(--danger));
+ color:#fff; padding:12px 0; overflow:hidden; white-space:nowrap;
+ font-weight:bold; border-bottom:4px solid var(--gold);
+ box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+ position: relative;
 }
 .banner-content{
-  display: inline-block;
-  white-space: nowrap;
-  animation: marquee 20s linear infinite;
-  padding-left: 100%;
+ display: inline-block; white-space: nowrap;
+ animation: marquee 25s linear infinite; padding-left: 100%;
 }
 .banner-content span{ padding: 0 30px; font-size: 16px; display: inline-block; }
-@keyframes marquee{
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
+@keyframes marquee{ 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+html[dir="rtl"] .banner-content { animation: marquee-rtl 25s linear infinite; }
+@keyframes marquee-rtl { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
 
-/* ===== التصميم العام ===== */
-.box{max-width:800px; margin:20px auto; background:#fff; border-radius:20px; padding:30px; box-shadow:0 15px 35px rgba(0,0,0,.08); border-top:8px solid #1e40af;}
-h1{text-align:center; color:#1e40af; font-size:28px; margin:0;}
-.sub{text-align:center; color:#dc2626; font-weight:bold; margin-bottom:25px; font-size:18px;}
+/* التصميم العام */
+.container{max-width:900px; margin:30px auto; padding:0 15px;}
+.box{background:var(--surface); border-radius:24px; padding:35px; box-shadow:0 15px 40px rgba(0,0,0,.06); border-top:8px solid var(--primary);}
+h1{text-align:center; color:var(--primary); font-size:clamp(24px, 5vw, 32px); margin:0; font-weight:900;}
+.sub{text-align:center; color:var(--danger); font-weight:800; margin-bottom:25px; font-size:18px;}
 
 /* رسالة التوجيه */
 .guide-notice {
-  background: #e0f2fe; border: 2px solid #0284c7; color: #0c4a6e;
-  padding: 20px; border-radius: 12px; text-align: center;
-  font-weight: bold; margin-bottom: 25px; font-size: 16px;
+ background: #e0f2fe; border: 2px solid #0284c7; color: #0c4a6e;
+ padding: 25px; border-radius: 16px; text-align: center;
+ font-weight: bold; margin-bottom: 30px; font-size: 16px; line-height: 1.9;
+ box-shadow: 0 5px 15px rgba(2, 132, 199, 0.1);
 }
-.guide-notice span { color: #dc2626; font-size: 20px; }
+.guide-notice span { color: var(--danger); font-size: 20px; }
 
 /* الصور */
-.image-gallery{display:flex; flex-wrap:wrap; gap:15px; justify-content:center; margin-bottom:25px;}
-.image-gallery img{max-width:100%; height:auto; border-radius:12px; border:2px solid #e2e8f0; box-shadow: 0 5px 15px rgba(0,0,0,0.05);}
+.image-gallery{display:flex; flex-wrap:wrap; gap:15px; justify-content:center; margin-bottom:30px;}
+.image-gallery img{max-width:100%; height:auto; border-radius:16px; border:2px solid var(--border); box-shadow: 0 8px 20px rgba(0,0,0,0.08); transition: 0.3s;}
+.image-gallery img:hover { transform: scale(1.02); }
 
 /* النموذج */
-.form-title { color: #1e40af; font-size: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 20px; }
-label{display:block; font-weight:bold; color:#1e40af; margin:15px 0 8px;}
-.required-star { color: #dc2626; font-size: 18px; }
-input, textarea{width:100%; padding:14px; font-size:16px; border:2px solid #e2e8f0; border-radius:12px; background:#f8fafc; font-family:inherit;}
-input:focus, textarea:focus{outline:none; border-color:#1e40af; box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1);}
+.form-title { color: var(--primary); font-size: 22px; border-bottom: 2px solid var(--border); padding-bottom: 12px; margin-bottom: 25px; font-weight: 800;}
+label{display:block; font-weight:bold; color:var(--primary); margin:15px 0 8px; font-size: 16px;}
+.required-star { color: var(--danger); font-size: 18px; }
+input, textarea{width:100%; padding:14px 18px; font-size:16px; border:2px solid var(--border); border-radius:12px; background:#f8fafc; font-family:inherit; transition: 0.2s;}
+input:focus, textarea:focus{outline:none; border-color:var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1);}
 textarea{min-height:100px; resize:vertical;}
 
 .actions{text-align:center; margin-top:25px;}
-button{padding:16px 30px; font-size:18px; font-weight:bold; border:none; border-radius:12px; cursor:pointer; font-family:inherit; width:100%; background:#059669; color:#fff; transition:0.3s;}
-button:hover{background:#047857; transform:scale(1.02);}
-button:disabled{background:#94a3b8; cursor:not-allowed;}
+button.btn-action{padding:16px 30px; font-size:18px; font-weight:800; border:none; border-radius:12px; cursor:pointer; font-family:inherit; width:100%; background:var(--success); color:#fff; transition:0.3s; box-shadow: 0 5px 15px rgba(5, 150, 105, 0.3);}
+button.btn-action:hover{background:#047857; transform:translateY(-2px);}
+button.btn-action:disabled{background:#94a3b8; cursor:not-allowed; transform: none;}
 
 .msg{text-align:center; font-weight:bold; margin-top:15px; min-height:25px; font-size:16px;}
-.saved{color:#059669;}
-.err{color:#dc2626;}
+.saved{color:var(--success);}
+.err{color:var(--danger);}
 
-/* رسالة المدير التحفيزية */
+/* رسالة المدير */
 .director-message {
-  background: #fffbeb; border-right: 6px solid #f59e0b;
-  padding: 20px; border-radius: 10px; margin-top: 40px;
-  color: #78350f; font-size: 16px; text-align: center;
-  font-style: italic; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+ background: #fffbeb; border-right: 6px solid var(--warning);
+ padding: 25px; border-radius: 16px; margin-top: 40px;
+ color: #78350f; font-size: 16px; text-align: center;
+ font-style: italic; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.1);
 }
 .director-message strong { color: #b45309; font-size: 18px; display: block; margin-bottom: 10px; font-style: normal;}
 
 /* معلومات الاتصال */
-.contact-info{background:#1e293b; color:#fff; border-radius:15px; padding:25px; text-align:center; margin-top:40px;}
-.phone-number{display:inline-block; background:#dc2626; color:#fff; padding:8px 20px; border-radius:50px; font-size:20px; font-weight:bold; text-decoration:none; margin-top:10px;}
+.contact-info{background:#1e293b; color:#fff; border-radius:20px; padding:30px; text-align:center; margin-top:40px;}
+.phone-number{display:inline-block; background:var(--danger); color:#fff; padding:10px 25px; border-radius:50px; font-size:20px; font-weight:bold; text-decoration:none; margin-top:15px; transition: 0.2s;}
+.phone-number:hover { background: #b91c1c; transform: scale(1.05); }
 
-.admin-btn-container { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px dashed #cbd5e1; }
-.admin-btn { background: transparent; color: #94a3b8; border: 1px solid #e2e8f0; padding: 8px 15px; font-size: 14px; border-radius: 8px; cursor: pointer; width: auto; }
-.admin-btn:hover { background: #f1f5f9; color: #1e40af; border-color: #1e40af; }
+/* لوحة الإدارة */
+#adminSection { display: none; margin-top: 50px; }
+.admin-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-bottom: 25px; }
+.admin-btn { background: white; border: 2px solid var(--border); border-radius: 16px; padding: 20px 10px; text-align: center; cursor: pointer; transition: 0.2s; font-weight: 800; color: var(--text); display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+.admin-btn:hover { border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.05); }
+.admin-btn.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 8px 15px rgba(30, 64, 175, 0.3);}
+.admin-btn .icon { font-size: 28px; }
+.admin-panel-content { background: white; border-radius: 20px; padding: 25px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03); min-height: 300px; }
+.stat-box { background: var(--bg); padding: 20px; text-align: center; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; }
+.stat-box strong { font-size: 34px; color: var(--danger); display: block; margin-bottom: 5px;}
+.stat-box span { font-weight: bold; color: var(--muted); }
+.data-item { background: #f8fafc; border: 1px solid var(--border); padding: 15px; border-radius: 12px; margin-bottom: 12px; border-right: 5px solid var(--primary); }
+.data-item p { margin: 5px 0; font-size: 15px; }
+.data-item strong { color: var(--primary); }
+.hidden { display: none !important; }
+
+.admin-access-btn { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 10px 20px; border-radius: 12px; cursor: pointer; font-weight: bold; font-family: inherit; transition: 0.2s; margin-top: 20px; width: 100%; font-size: 15px;}
+.admin-access-btn:hover { background: var(--bg); color: var(--primary); border-color: var(--primary); }
 </style>
 </head>
 <body>
@@ -113,11 +137,11 @@ button:disabled{background:#94a3b8; cursor:not-allowed;}
   </div>
 </div>
 
-<div class="box">
+<div class="container">
+ <div class="box">
   <h1>مركز التكوين المهني والتمهين</h1>
   <p class="sub">وادي مرة — منصة التوجيه والإرشاد</p>
 
-  <!-- رسالة التوجيه والإرشاد الجديدة -->
   <div class="guide-notice">
     📌 <strong>ملاحظة هامة:</strong> هذا الموقع مخصص <strong>فقط للتوجيه والإرشاد</strong>.<br>
     عملية التسجيل الفعلية واختيار التخصصات تتم <strong>حضورياً في مقر المركز</strong>.<br><br>
@@ -125,36 +149,33 @@ button:disabled{background:#94a3b8; cursor:not-allowed;}
     <em>فبادر بدعوة أصدقائك وزملائك للتسجيل معك لفتح التخصص الذي ترغبون فيه!</em>
   </div>
 
-  <!-- الصور المرفقة -->
   <div class="image-gallery">
     <img src="https://i.postimg.cc/qvjpxCHD/1795783978938.jpg" alt="إعلان المركز 1" style="width:100%; max-width:600px;">
     <img src="https://i.postimg.cc/VLFwzbvv/1795784220448.jpg" alt="إعلان المركز 2" style="width:100%; max-width:350px;">
   </div>
 
-  <!-- نموذج التوجيه (المواطن يكتب التخصص بنفسه) -->
   <div class="form-title">✍️ سجل مقترحك (يجب جمع 15 شخصاً لفتح التخصص)</div>
   
   <form id="surveyForm">
-    <label>👤 الاسم واللقب <span class="required-star">*</span> (إلزامي)</label>
+    <label>👤 الاسم واللقب <span class="required-star">*</span></label>
     <input type="text" id="fullName" placeholder="مثال: محمد بن علي" required>
 
-    <label>📞 رقم الهاتف (اختياري - للتواصل معك)</label>
+    <label>📞 رقم الهاتف (اختياري)</label>
     <input type="tel" id="phone" placeholder="05...">
 
-    <label>🎯 التخصص الذي ترغب في دراسته <span class="required-star">*</span> (اكتبه بنفسك)</label>
-    <input type="text" id="specialty" placeholder="مثال: إعلام آلي، خياطة، كهرباء، طبخ..." required>
+    <label>🎯 التخصص الذي ترغب في دراسته <span class="required-star">*</span></label>
+    <input type="text" id="specialty" placeholder="مثال: إعلام آلي، خياطة، كهرباء..." required>
 
-    <label>💡 هل لديك أصدقاء أو زملاء يريدون نفس التخصص؟ (اختياري)</label>
+    <label>💡 أصدقاء يريدون نفس التخصص (اختياري)</label>
     <textarea id="suggestion" placeholder="اكتب أسماء أو أرقام الأشخاص الذين سيسجلون معك..."></textarea>
 
     <div class="actions">
-      <button type="submit" id="submitBtn">📤 إرسال المقترح للمركز</button>
+      <button type="submit" id="submitBtn" class="btn-action">📤 إرسال المقترح للمركز</button>
     </div>
     <div class="msg" id="formMsg"></div>
   </form>
 
-  <!-- رسالة المدير التحفيزية -->
-  <div class="director-message">
+  <div class="director-message" id="directorMessageBox">
     <strong>💬 كلمة من إدارة المركز</strong>
     "تكونو أنا أحد متكوني هذا المركز، واليوم بفضله افتتحت لي آفاق أخرى. بالتوفيق للجميع."<br><br>
     <strong>— المدير: سفراني فرحاتي</strong><br>
@@ -162,7 +183,6 @@ button:disabled{background:#94a3b8; cursor:not-allowed;}
     <em>صُمم هذا الموقع لتحفيز الشباب على التكوين والتمهين. مستقبلك يبدأ من هنا!</em>
   </div>
 
-  <!-- معلومات الاتصال -->
   <div class="contact-info">
     <h3>📞 معلومات الاتصال</h3>
     <p><strong>براهيمي يوسف</strong> — مطور برامج وتطبيقات</p>
@@ -170,86 +190,269 @@ button:disabled{background:#94a3b8; cursor:not-allowed;}
     <p style="margin-top: 20px; font-size: 14px; color: #94a3b8;">مركز التكوين المهني والتمهين - وادي مرة</p>
   </div>
 
-  <!-- زر لوحة الإدارة -->
-  <div class="admin-btn-container">
-    <button class="admin-btn" onclick="goToAdmin()">⚙️ لوحة الإدارة</button>
+  <div style="text-align: center;">
+    <button class="admin-access-btn" onclick="openAdmin()">⚙️ دخول الإدارة</button>
   </div>
+ </div>
+
+ <!-- لوحة الإدارة -->
+ <div id="adminSection">
+  <div class="box" style="border-top-color: var(--danger);">
+   <h2 style="text-align:center; color:var(--danger); margin-top:0;">لوحة تحكم الإدارة</h2>
+   
+   <div id="adminLoginBox" style="text-align:center; max-width:400px; margin:auto;">
+    <p style="color:var(--muted);">أدخل رمز الدخول للوصول إلى الإعدادات:</p>
+    <input type="password" id="adminCode" placeholder="رمز الإدارة" style="text-align:center; font-size:20px; letter-spacing:5px;">
+    <button class="btn-action" id="adminLogin" style="width:100%; font-size:18px;">دخول</button>
+    <div id="adminMessage" style="font-size:14px; font-weight:bold; margin-top:10px;"></div>
+   </div>
+
+   <div id="adminPanel" class="hidden">
+    <div class="admin-dashboard-grid">
+     <div class="admin-btn active" onclick="toggleAdminView('stats')"><span class="icon">📊</span> الإحصائيات</div>
+     <div class="admin-btn" onclick="toggleAdminView('surveys')"><span class="icon">📝</span> المقترحات</div>
+     <div class="admin-btn" onclick="toggleAdminView('visitors')"><span class="icon">👥</span> الزوار</div>
+     <div class="admin-btn" onclick="toggleAdminView('settings')"><span class="icon">⚙️</span> إعدادات الموقع</div>
+    </div>
+
+    <div class="admin-panel-content">
+     <!-- الإحصائيات -->
+     <div id="adminStatsView">
+      <h3 style="color:var(--primary); margin-top:0;">إحصائيات عامة</h3>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+       <div class="stat-box"><strong id="dashVisits">0</strong> <span>زائر</span></div>
+       <div class="stat-box"><strong id="dashSurveys">0</strong> <span>مقترح</span></div>
+      </div>
+     </div>
+
+     <!-- المقترحات -->
+     <div id="adminSurveysView" class="hidden">
+      <h3 style="color:var(--primary); margin-top:0;">المقترحات الواردة</h3>
+      <div id="surveysList"></div>
+     </div>
+
+     <!-- الزوار -->
+     <div id="adminVisitorsView" class="hidden">
+      <h3 style="color:var(--primary); margin-top:0;">سجل الزوار</h3>
+      <div id="visitorsList"></div>
+     </div>
+
+     <!-- إعدادات الموقع -->
+     <div id="adminSettingsView" class="hidden">
+      <h3 style="color:var(--primary); margin-top:0;">تعديل نصوص الموقع</h3>
+      <p style="color:var(--muted); font-size:14px;">أي تعديل هنا سيتم حفظه فوراً في قاعدة البيانات ويظهر لجميع الزوار.</p>
+      
+      <label>كلمة إدارة المركز:</label>
+      <textarea id="editDirectorMsg" style="min-height:120px;"></textarea>
+      
+      <button class="btn-action" onclick="saveSettings()" style="margin-top:15px; background:var(--primary);">💾 حفظ التعديلات</button>
+      <div id="saveSettingsMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
+     </div>
+    </div>
+    
+    <button class="btn-action" style="background:var(--danger); margin-top:20px;" onclick="document.getElementById('adminPanel').classList.add('hidden'); document.getElementById('adminLoginBox').style.display='block';">تسجيل الخروج</button>
+   </div>
+  </div>
+ </div>
 </div>
 
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import { getDatabase, ref, push, onValue, update, remove, runTransaction, set, get } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
-  // ⚠️ ضع إعدادات Firebase الخاصة بك هنا
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
-  };
+const firebaseConfig = {
+ apiKey: "AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
+ authDomain: "workdz-web.firebaseapp.com",
+ databaseURL: "https://workdz-web-default-rtdb.firebaseio.com",
+ projectId: "workdz-web",
+ storageBucket: "workdz-web.firebasestorage.app",
+ messagingSenderId: "980881321562",
+ appId: "1:980881321562:web:5046cc8bfe27749a73f263",
+ measurementId: "G-NWPYNZT489"
+};
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const $ = id => document.getElementById(id);
 
-  const form = document.getElementById('surveyForm');
-  const msg = document.getElementById('formMsg');
-  const btn = document.getElementById('submitBtn');
+// --- تسجيل الزيارات ---
+const visitorsRef = ref(db, "wadiMouraVisits");
+let visitorId = localStorage.getItem("wadiMouraVisitor") || (crypto.randomUUID ? crypto.randomUUID() : Date.now()+"-"+Math.random().toString(36).slice(2));
+localStorage.setItem("wadiMouraVisitor", visitorId);
+const myVisitorRef = ref(db, "wadiMouraVisits/" + visitorId);
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const name = document.getElementById('fullName').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const specialty = document.getElementById('specialty').value.trim();
-    const suggestion = document.getElementById('suggestion').value.trim();
+async function recordVisit() {
+ try {
+  await runTransaction(myVisitorRef, c => {
+   c = c || {};
+   return { ...c, lastVisit: Date.now(), visits: (Number(c.visits)||0) + 1 };
+  });
+ } catch(e) { console.error(e); }
+}
+recordVisit();
 
-    // التحقق من الاسم
-    const nameRegex = /^[a-zA-Z\u0600-\u06FF\s]{3,}$/;
-    if (name.length < 3 || !nameRegex.test(name) || name.split(' ').length < 2) {
-      showMsg('❌ خطأ: يرجى كتابة الاسم واللقب الحقيقي (كلمتين على الأقل، بدون أرقام أو رموز).', 'err');
-      return;
-    }
+// --- نموذج إرسال المقترح ---
+const form = $('surveyForm');
+const msg = $('formMsg');
+const btn = $('submitBtn');
 
-    // التحقق من كتابة التخصص
-    if (specialty.length < 2) {
-      showMsg('❌ خطأ: يجب عليك كتابة التخصص الذي ترغب فيه.', 'err');
-      return;
-    }
+form.addEventListener('submit', async (e) => {
+ e.preventDefault();
+ 
+ const name = $('fullName').value.trim();
+ const phone = $('phone').value.trim();
+ const specialty = $('specialty').value.trim();
+ const suggestion = $('suggestion').value.trim();
 
-    btn.disabled = true;
-    btn.textContent = '⏳ جاري الإرسال...';
+ const nameRegex = /^[a-zA-Z\u0600-\u06FF\s]{3,}$/;
+ if (name.length < 3 || !nameRegex.test(name) || name.split(' ').length < 2) {
+  showMsg('❌ خطأ: يرجى كتابة الاسم واللقب الحقيقي (كلمتين على الأقل).', 'err');
+  return;
+ }
 
-    try {
-      await addDoc(collection(db, "cnf_wadi_moura_survey"), {
-        name: name,
-        phone: phone || 'غير مذكور',
-        specialty: specialty,
-        suggestion: suggestion || 'لا يوجد',
-        createdAt: serverTimestamp()
-      });
+ if (specialty.length < 2) {
+  showMsg('❌ خطأ: يجب عليك كتابة التخصص الذي ترغب فيه.', 'err');
+  return;
+ }
 
-      showMsg('✅ شكراً لك! تم استلام مقترحك. ننتظرك في المركز لتسجيل الفعلي.', 'saved');
-      form.reset();
-    } catch (error) {
-      console.error(error);
-      showMsg('❌ حدث خطأ. يرجى المحاولة لاحقاً.', 'err');
-    } finally {
-      btn.disabled = false;
-      btn.textContent = '📤 إرسال المقترح للمركز';
-    }
+ btn.disabled = true;
+ btn.textContent = '⏳ جاري الإرسال...';
+
+ try {
+  await push(ref(db, "wadiMouraSurveys"), {
+   name: name,
+   phone: phone || 'غير مذكور',
+   specialty: specialty,
+   suggestion: suggestion || 'لا يوجد',
+   createdAt: Date.now()
   });
 
-  function showMsg(text, className) {
-    msg.textContent = text;
-    msg.className = 'msg ' + className;
-    setTimeout(() => { msg.textContent = ''; }, 5000);
-  }
+  showMsg('✅ شكراً لك! تم استلام مقترحك. ننتظرك في المركز للتسجيل الفعلي.', 'saved');
+  form.reset();
+ } catch (error) {
+  console.error(error);
+  showMsg('❌ حدث خطأ. يرجى المحاولة لاحقاً.', 'err');
+ } finally {
+  btn.disabled = false;
+  btn.textContent = '📤 إرسال المقترح للمركز';
+ }
+});
 
-  window.goToAdmin = function() {
-    window.location.href = 'admin.html'; 
-  };
+function showMsg(text, className) {
+ msg.textContent = text;
+ msg.className = 'msg ' + className;
+ setTimeout(() => { msg.textContent = ''; }, 5000);
+}
+
+// --- لوحة الإدارة ---
+let adminLoggedIn = false;
+let allSurveys = {}, allVisits = {};
+
+window.openAdmin = function() {
+ $('adminSection').style.display = 'block';
+ window.scrollTo(0, document.body.scrollHeight);
+}
+
+// جلب البيانات
+onValue(ref(db, "wadiMouraSurveys"), s => {
+ allSurveys = s.val() || {};
+ $('dashSurveys').textContent = Object.keys(allSurveys).length;
+ if(adminLoggedIn) renderSurveys();
+});
+
+onValue(visitorsRef, s => {
+ allVisits = s.val() || {};
+ $('dashVisits').textContent = Object.keys(allVisits).length;
+ if(adminLoggedIn) renderVisitors();
+});
+
+// جلب إعدادات الموقع
+onValue(ref(db, "wadiMouraSettings/directorMsg"), s => {
+ if(s.exists()) {
+  $('directorMessageBox').innerHTML = s.val();
+  $('editDirectorMsg').value = s.val();
+ }
+});
+
+$('adminLogin').addEventListener('click', () => {
+ if($('adminCode').value !== "031984") {
+  $('adminMessage').textContent = "الرمز السري خاطئ!";
+  $('adminMessage').style.color = "red";
+  return;
+ }
+ adminLoggedIn = true;
+ $('adminLoginBox').style.display = "none";
+ $('adminPanel').classList.remove('hidden');
+ 
+ toggleAdminView('stats');
+ renderSurveys();
+ renderVisitors();
+});
+
+window.toggleAdminView = function(view) {
+ ['stats', 'surveys', 'visitors', 'settings'].forEach(v => {
+  $('admin' + v.charAt(0).toUpperCase() + v.slice(1) + 'View').classList.add('hidden');
+ });
+ document.querySelectorAll('.admin-btn').forEach(btn => btn.classList.remove('active'));
+
+ $('admin' + view.charAt(0).toUpperCase() + view.slice(1) + 'View').classList.remove('hidden');
+ 
+ const btn = Array.from(document.querySelectorAll('.admin-btn')).find(b => b.getAttribute('onclick').includes(view));
+ if(btn) btn.classList.add('active');
+}
+
+function renderSurveys() {
+ const box = $('surveysList');
+ box.innerHTML = '';
+ const entries = Object.entries(allSurveys).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
+ 
+ if(entries.length === 0) { box.innerHTML = "<p style='color:var(--muted);'>لا توجد مقترحات بعد.</p>"; return; }
+
+ entries.forEach(([id, data]) => {
+  const div = document.createElement('div');
+  div.className = 'data-item';
+  div.innerHTML = `
+   <p><strong>الاسم:</strong> ${data.name}</p>
+   <p><strong>الهاتف:</strong> ${data.phone}</p>
+   <p><strong>التخصص المطلوب:</strong> <span style="color:var(--danger); font-weight:bold;">${data.specialty}</span></p>
+   <p><strong>أصدقاء:</strong> ${data.suggestion}</p>
+   <p style="font-size:12px; color:var(--muted); margin-top:10px;">التاريخ: ${new Date(data.createdAt).toLocaleString('ar-DZ')}</p>
+  `;
+  box.appendChild(div);
+ });
+}
+
+function renderVisitors() {
+ const box = $('visitorsList');
+ box.innerHTML = '';
+ const entries = Object.entries(allVisits).sort((a,b) => (b[1].lastVisit||0) - (a[1].lastVisit||0));
+ entries.forEach(([id, d]) => {
+  const div = document.createElement('div');
+  div.className = 'data-item';
+  div.innerHTML = `
+   <p><strong>زائر:</strong> ${id.slice(0,10)}</p>
+   <p><strong>آخر زيارة:</strong> ${new Date(d.lastVisit).toLocaleString('ar-DZ')}</p>
+  `;
+  box.appendChild(div);
+ });
+}
+
+window.saveSettings = async function() {
+ const newMsg = $('editDirectorMsg').value.trim();
+ const msgBox = $('saveSettingsMsg');
+ 
+ try {
+  await set(ref(db, "wadiMouraSettings/directorMsg"), newMsg);
+  msgBox.textContent = "✅ تم حفظ التعديلات بنجاح!";
+  msgBox.style.color = "green";
+  msgBox.style.marginTop = "10px";
+  msgBox.style.textAlign = "center";
+  msgBox.style.fontWeight = "bold";
+ } catch(e) {
+  msgBox.textContent = "❌ خطأ: " + e.message;
+  msgBox.style.color = "red";
+ }
+}
 </script>
 
 </body>
