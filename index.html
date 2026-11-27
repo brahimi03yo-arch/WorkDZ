@@ -3,39 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>استبيان مركز التكوين المهني - وادي مرة</title>
+<title>مركز التكوين المهني والتمهين - وادي مرة | التوجيه والإرشاد</title>
 
-<!-- ===== صورة المعاينة عند المشاركة ===== -->
+<!-- ===== صورة المعاينة عند النشر (آخر رابط) ===== -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="مركز التكوين المهني والتمهين - وادي مرة">
+<meta property="og:description" content="منصة توجيه وإرشاد المواطنين لاختيار التخصصات المهنية. سجل مع 14 من أصدقائك لتفتح تخصصك المفضل!">
 <meta property="og:image" content="https://i.postimg.cc/d3mbQzss/file-00000000d834821095f6c09d94088a6e.png">
+<meta property="og:image:secure_url" content="https://i.postimg.cc/d3mbQzss/file-00000000d834821095f6c09d94088a6e.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://ضع-رابط-موقعك-هنا.com/">
+<meta property="og:site_name" content="مركز التكوين المهني - وادي مرة">
+
+<!-- تويتر / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="مركز التكوين المهني والتمهين - وادي مرة">
+<meta name="twitter:description" content="منصة توجيه وإرشاد المواطنين لاختيار التخصصات المهنية.">
+<meta name="twitter:image" content="https://i.postimg.cc/d3mbQzss/file-00000000d834821095f6c09d94088a6e.png">
+<meta name="twitter:image:src" content="https://i.postimg.cc/d3mbQzss/file-00000000d834821095f6c09d94088a6e.png">
 
 <style>
 *{box-sizing:border-box}
 body{margin:0; background:#f4f7f6; color:#1e293b; font-family:'Segoe UI', Tahoma, sans-serif; line-height:1.8;}
-.top-banner{background:linear-gradient(90deg,#1e40af,#059669,#dc2626); color:#fff; padding:12px 0; overflow:hidden; white-space:nowrap; font-weight:bold; border-bottom:4px solid #facc15;}
-.banner-content{display:inline-block; animation:marquee 20s linear infinite;}
-.banner-content span{padding:0 40px;}
-@keyframes marquee{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+
+/* ===== الشريط المتحرك ===== */
+.top-banner{
+  background:linear-gradient(90deg,#1e40af,#059669,#dc2626);
+  color:#fff; padding:12px 0; overflow:hidden; white-space:nowrap;
+  font-weight:bold; border-bottom:4px solid #facc15;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  position: relative;
+}
+.banner-content{
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+  padding-left: 100%;
+}
+.banner-content span{ padding: 0 30px; font-size: 16px; display: inline-block; }
+@keyframes marquee{
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ===== التصميم العام ===== */
 .box{max-width:800px; margin:20px auto; background:#fff; border-radius:20px; padding:30px; box-shadow:0 15px 35px rgba(0,0,0,.08); border-top:8px solid #1e40af;}
 h1{text-align:center; color:#1e40af; font-size:28px; margin:0;}
-.sub{text-align:center; color:#dc2626; font-weight:bold; margin-bottom:25px;}
+.sub{text-align:center; color:#dc2626; font-weight:bold; margin-bottom:25px; font-size:18px;}
 
-/* تصميم تحذير الدعوة */
-.urgent-notice {
-  background: #fef2f2; border: 2px dashed #dc2626; color: #991b1b;
-  padding: 15px; border-radius: 10px; text-align: center;
-  font-weight: bold; margin-bottom: 20px; animation: pulse 2s infinite;
+/* رسالة التوجيه */
+.guide-notice {
+  background: #e0f2fe; border: 2px solid #0284c7; color: #0c4a6e;
+  padding: 20px; border-radius: 12px; text-align: center;
+  font-weight: bold; margin-bottom: 25px; font-size: 16px;
 }
-@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+.guide-notice span { color: #dc2626; font-size: 20px; }
 
+/* الصور */
 .image-gallery{display:flex; flex-wrap:wrap; gap:15px; justify-content:center; margin-bottom:25px;}
-.image-gallery img{max-width:100%; height:auto; border-radius:12px; border:2px solid #e2e8f0;}
-.intro-text{background:#eff6ff; border-right:6px solid #3b82f6; padding:20px; border-radius:10px; margin-bottom:30px;}
+.image-gallery img{max-width:100%; height:auto; border-radius:12px; border:2px solid #e2e8f0; box-shadow: 0 5px 15px rgba(0,0,0,0.05);}
 
+/* النموذج */
+.form-title { color: #1e40af; font-size: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 20px; }
 label{display:block; font-weight:bold; color:#1e40af; margin:15px 0 8px;}
 .required-star { color: #dc2626; font-size: 18px; }
-
-input, select, textarea{width:100%; padding:14px; font-size:16px; border:2px solid #e2e8f0; border-radius:12px; background:#f8fafc; font-family:inherit;}
-input:focus, select:focus, textarea:focus{outline:none; border-color:#1e40af;}
+input, textarea{width:100%; padding:14px; font-size:16px; border:2px solid #e2e8f0; border-radius:12px; background:#f8fafc; font-family:inherit;}
+input:focus, textarea:focus{outline:none; border-color:#1e40af; box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1);}
 textarea{min-height:100px; resize:vertical;}
 
 .actions{text-align:center; margin-top:25px;}
@@ -47,6 +82,16 @@ button:disabled{background:#94a3b8; cursor:not-allowed;}
 .saved{color:#059669;}
 .err{color:#dc2626;}
 
+/* رسالة المدير التحفيزية */
+.director-message {
+  background: #fffbeb; border-right: 6px solid #f59e0b;
+  padding: 20px; border-radius: 10px; margin-top: 40px;
+  color: #78350f; font-size: 16px; text-align: center;
+  font-style: italic; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.director-message strong { color: #b45309; font-size: 18px; display: block; margin-bottom: 10px; font-style: normal;}
+
+/* معلومات الاتصال */
 .contact-info{background:#1e293b; color:#fff; border-radius:15px; padding:25px; text-align:center; margin-top:40px;}
 .phone-number{display:inline-block; background:#dc2626; color:#fff; padding:8px 20px; border-radius:50px; font-size:20px; font-weight:bold; text-decoration:none; margin-top:10px;}
 
@@ -57,75 +102,75 @@ button:disabled{background:#94a3b8; cursor:not-allowed;}
 </head>
 <body>
 
+<!-- الشريط المتحرك -->
 <div class="top-banner">
   <div class="banner-content">
     <span>👨‍💻 تطوير: براهيمي يوسف — 0562175048</span>
     <span>🏫 مركز التكوين المهني - وادي مرة</span>
-    <span>📢 استبيان آراء دورة فيفري 2027</span>
+    <span>📢 منصة التوجيه والإرشاد المهني</span>
+    <span>👨‍💻 تطوير: براهيمي يوسف — 0562175048</span>
+    <span>🏫 مركز التكوين المهني - وادي مرة</span>
   </div>
 </div>
 
 <div class="box">
   <h1>مركز التكوين المهني والتمهين</h1>
-  <p class="sub">وادي مرة — استبيان آراء</p>
+  <p class="sub">وادي مرة — منصة التوجيه والإرشاد</p>
 
-  <!-- إلحاح ودعوة للزيارة -->
-  <div class="urgent-notice">
-    ⚠️ تنبيه هام: نرجو من جميع مواطني وادي مرة الزيارة والمشاركة الجدية. <br>
-    المقاعد محدودة، ورأيك يحدد مستقبل التخصصات في المنطقة!
+  <!-- رسالة التوجيه والإرشاد الجديدة -->
+  <div class="guide-notice">
+    📌 <strong>ملاحظة هامة:</strong> هذا الموقع مخصص <strong>فقط للتوجيه والإرشاد</strong>.<br>
+    عملية التسجيل الفعلية واختيار التخصصات تتم <strong>حضورياً في مقر المركز</strong>.<br><br>
+    ⚠️ <span>لتدوين أي تخصص في مقترحات المركز، يجب أن يجمع التخصص <strong>15 شخصاً على الأقل</strong>.</span><br>
+    <em>فبادر بدعوة أصدقائك وزملائك للتسجيل معك لفتح التخصص الذي ترغبون فيه!</em>
   </div>
 
+  <!-- الصور المرفقة -->
   <div class="image-gallery">
-    <img src="https://i.postimg.cc/qvjpxCHD/1795783978938.jpg" alt="إعلان 1" style="width:100%; max-width:600px;">
-    <img src="https://i.postimg.cc/VLFwzbvv/1795784220448.jpg" alt="إعلان 2" style="width:100%; max-width:350px;">
+    <img src="https://i.postimg.cc/qvjpxCHD/1795783978938.jpg" alt="إعلان المركز 1" style="width:100%; max-width:600px;">
+    <img src="https://i.postimg.cc/VLFwzbvv/1795784220448.jpg" alt="إعلان المركز 2" style="width:100%; max-width:350px;">
   </div>
 
-  <div class="intro-text">
-    <strong>تحسباً لاقتراح عروض دورة فيفري 2027،</strong> تعلن إدارة المركز عن إطلاق عملية <strong>سبر آراء</strong> لاستقبال مقترحاتكم حول التخصصات المهنية التي ترغبون في الاستفادة منها.
-    <br><br>
-    <em>ندعو جميع مواطني وادي مرة للمساهمة بجدية لاقتراح تخصصات تلبي احتياجات المنطقة.</em>
-  </div>
-
+  <!-- نموذج التوجيه (المواطن يكتب التخصص بنفسه) -->
+  <div class="form-title">✍️ سجل مقترحك (يجب جمع 15 شخصاً لفتح التخصص)</div>
+  
   <form id="surveyForm">
-    <!-- إلزامية الاسم واللقب -->
-    <label>👤 الاسم واللقب <span class="required-star">*</span> (إلزامي - يجب كتابة الاسم الحقيقي كاملاً)</label>
+    <label>👤 الاسم واللقب <span class="required-star">*</span> (إلزامي)</label>
     <input type="text" id="fullName" placeholder="مثال: محمد بن علي" required>
 
-    <label>📞 رقم الهاتف (اختياري)</label>
+    <label>📞 رقم الهاتف (اختياري - للتواصل معك)</label>
     <input type="tel" id="phone" placeholder="05...">
 
-    <!-- إلزامية اختيار التخصص من القائمة -->
-    <label>🎯 التخصص المهني المطلوب <span class="required-star">*</span> (يجب اختيار تخصص من القائمة)</label>
-    <select id="specialty" required>
-      <option value="" disabled selected>-- اضغط هنا لاختيار التخصص --</option>
-      <option value="إعلام آلي وأمن الحاسوب">إعلام آلي وأمن الحاسوب</option>
-      <option value="الخياطة وتصميم الأزياء">الخياطة وتصميم الأزياء</option>
-      <option value="الطبخ وفنون الطهي">الطبخ وفنون الطهي</option>
-      <option value="الكهرباء المنزلية والصناعية">الكهرباء المنزلية والصناعية</option>
-      <option value="اللحام والتلحيم">اللحام والتلحيم</option>
-      <option value="صيانة السيارات (ميكانيك)">صيانة السيارات (ميكانيك)</option>
-      <option value="النجارة والأثاث">النجارة والأثاث</option>
-      <option value="الزراعة والبيئة">الزراعة والبيئة</option>
-      <option value="المحاسبة وأمانة المخازن">المحاسبة وأمانة المخازن</option>
-      <option value="التبريد والتكييف">التبريد والتكييف</option>
-      <option value="أخرى (يرجى التوجه للمركز لطرحها)">أخرى (يرجى التوجه للمركز لطرحها)</option>
-    </select>
+    <label>🎯 التخصص الذي ترغب في دراسته <span class="required-star">*</span> (اكتبه بنفسك)</label>
+    <input type="text" id="specialty" placeholder="مثال: إعلام آلي، خياطة، كهرباء، طبخ..." required>
 
-    <label>💡 مقترحات إضافية (اختياري)</label>
-    <textarea id="suggestion" placeholder="اكتب اقتراحاتك..."></textarea>
+    <label>💡 هل لديك أصدقاء أو زملاء يريدون نفس التخصص؟ (اختياري)</label>
+    <textarea id="suggestion" placeholder="اكتب أسماء أو أرقام الأشخاص الذين سيسجلون معك..."></textarea>
 
     <div class="actions">
-      <button type="submit" id="submitBtn">📤 إرسال المشاركة</button>
+      <button type="submit" id="submitBtn">📤 إرسال المقترح للمركز</button>
     </div>
     <div class="msg" id="formMsg"></div>
   </form>
 
+  <!-- رسالة المدير التحفيزية -->
+  <div class="director-message">
+    <strong>💬 كلمة من إدارة المركز</strong>
+    "تكونو أنا أحد متكوني هذا المركز، واليوم بفضله افتتحت لي آفاق أخرى. بالتوفيق للجميع."<br><br>
+    <strong>— المدير: سفراني فرحاتي</strong><br>
+    وجميع العمال والزملاء<br><br>
+    <em>صُمم هذا الموقع لتحفيز الشباب على التكوين والتمهين. مستقبلك يبدأ من هنا!</em>
+  </div>
+
+  <!-- معلومات الاتصال -->
   <div class="contact-info">
     <h3>📞 معلومات الاتصال</h3>
     <p><strong>براهيمي يوسف</strong> — مطور برامج وتطبيقات</p>
     <a href="tel:0562175048" class="phone-number">📱 0562175048</a>
+    <p style="margin-top: 20px; font-size: 14px; color: #94a3b8;">مركز التكوين المهني والتمهين - وادي مرة</p>
   </div>
 
+  <!-- زر لوحة الإدارة -->
   <div class="admin-btn-container">
     <button class="admin-btn" onclick="goToAdmin()">⚙️ لوحة الإدارة</button>
   </div>
@@ -157,19 +202,19 @@ button:disabled{background:#94a3b8; cursor:not-allowed;}
     
     const name = document.getElementById('fullName').value.trim();
     const phone = document.getElementById('phone').value.trim();
-    const specialty = document.getElementById('specialty').value;
+    const specialty = document.getElementById('specialty').value.trim();
     const suggestion = document.getElementById('suggestion').value.trim();
 
-    // التحقق من الاسم (يجب أن يكون حقيقي، كلمتين على الأقل، بدون أرقام)
-    const nameRegex = /^[a-zA-Z\u0600-\u06FF\s]{3,}$/; // حروف عربية أو إنجليزية ومسافات فقط
+    // التحقق من الاسم
+    const nameRegex = /^[a-zA-Z\u0600-\u06FF\s]{3,}$/;
     if (name.length < 3 || !nameRegex.test(name) || name.split(' ').length < 2) {
       showMsg('❌ خطأ: يرجى كتابة الاسم واللقب الحقيقي (كلمتين على الأقل، بدون أرقام أو رموز).', 'err');
       return;
     }
 
-    // التحقق من اختيار التخصص
-    if (!specialty) {
-      showMsg('❌ خطأ: يجب عليك اختيار تخصص من القائمة.', 'err');
+    // التحقق من كتابة التخصص
+    if (specialty.length < 2) {
+      showMsg('❌ خطأ: يجب عليك كتابة التخصص الذي ترغب فيه.', 'err');
       return;
     }
 
@@ -185,14 +230,14 @@ button:disabled{background:#94a3b8; cursor:not-allowed;}
         createdAt: serverTimestamp()
       });
 
-      showMsg('✅ شكراً لك! تم استلام مشاركتك بنجاح. ننتظرك في المركز!', 'saved');
+      showMsg('✅ شكراً لك! تم استلام مقترحك. ننتظرك في المركز لتسجيل الفعلي.', 'saved');
       form.reset();
     } catch (error) {
       console.error(error);
       showMsg('❌ حدث خطأ. يرجى المحاولة لاحقاً.', 'err');
     } finally {
       btn.disabled = false;
-      btn.textContent = '📤 إرسال المشاركة';
+      btn.textContent = '📤 إرسال المقترح للمركز';
     }
   });
 
@@ -202,7 +247,6 @@ button:disabled{background:#94a3b8; cursor:not-allowed;}
     setTimeout(() => { msg.textContent = ''; }, 5000);
   }
 
-  // دالة الانتقال إلى لوحة الإدارة
   window.goToAdmin = function() {
     window.location.href = 'admin.html'; 
   };
