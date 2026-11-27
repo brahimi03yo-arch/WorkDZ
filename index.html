@@ -3,262 +3,152 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>مركز التكوين المهني والتمهين - وادي مرة</title>
-<meta name="description" content="استبيان آراء واقتراحات لتطوير عروض التكوين المهني بدورة فيفري 2027 - مركز التكوين المهني والتمهين وادي مرة.">
-
-<!-- ===== صورة المعاينة عند المشاركة ===== -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="استبيان آراء - مركز التكوين المهني وادي مرة">
-<meta property="og:description" content="شاركنا رأيك واقتراحك لتخصصات دورة فيفري 2027. معاً نبني مستقبلاً مهنياً أفضل.">
-<meta property="og:image" content="https://i.postimg.cc/Kzhm6YQt/file-00000000971c8210af485d34ca71d301.png">
-
+<title>لوحة التحكم - مركز التكوين المهني</title>
 <style>
-*{box-sizing:border-box}
-body{
-  margin:0; min-height:100vh; background:#f4f7f6; color:#1e293b;
-  font-family:Tahoma,Arial,sans-serif; line-height:1.8; padding:0 0 30px;
-}
-
-/* الشريط العلوي المتحرك */
-.top-banner{
-  background:linear-gradient(90deg,#059669,#1e40af);
-  color:#fff; padding:12px 0; overflow:hidden; white-space:nowrap;
-  font-size:15px; font-weight:bold; border-bottom:4px solid #dc2626;
-}
-.banner-content{ display:inline-block; animation:marquee 25s linear infinite; }
-.banner-content span{ padding:0 40px; }
-@keyframes marquee{
-  0%{ transform:translateX(-100%); }
-  100%{ transform:translateX(100%); }
-}
-
-.box{
-  max-width:600px; margin:20px auto; background:#fff; border-radius:20px;
-  padding:25px; box-shadow:0 10px 30px rgba(0,0,0,.08);
-  border-top: 6px solid #1e40af;
-}
-h1{ text-align:center; color:#1e40af; font-size:24px; margin:0 0 5px; }
-.sub{ text-align:center; color:#dc2626; font-size:16px; font-weight:bold; margin-bottom:20px; }
-
-.intro-text {
-  background: #eff6ff; border-right: 4px solid #3b82f6; padding: 15px;
-  border-radius: 8px; font-size: 14px; color: #1e3a8a; margin-bottom: 20px;
-}
-
-label{ display:block; font-weight:bold; color:#1e40af; margin:15px 0 5px; font-size: 15px; }
-input, select, textarea{
-  width:100%; padding:12px; font-size:16px; 
-  border:2px solid #e2e8f0; border-radius:12px; background:#f8fafc;
-  font-family:inherit; transition:.2s;
-}
-input:focus, select:focus, textarea:focus{ outline:none; border-color:#1e40af; background:#fff; }
-textarea{ font-size:15px; min-height:100px; resize:vertical; }
-
-hr{ border:none; border-top:2px dashed #cbd5e1; margin:25px 0; }
-
-.actions{ text-align:center; margin-top:25px; }
-button{
-  padding:14px 24px; font-size:16px; font-weight:bold; border:none;
-  border-radius:12px; cursor:pointer; font-family:inherit; margin:5px;
-  transition: 0.3s;
-}
-.submit-btn{ background:#059669; color:#fff; width:100%; font-size: 18px; box-shadow: 0 4px 6px rgba(5, 150, 105, 0.3); }
-.submit-btn:hover{ background:#047857; transform: translateY(-2px); }
-.reset{ background:#dc2626; color:#fff; font-size: 14px; }
-.reset:hover{ background:#b91c1c; }
-
-.msg{ text-align:center; font-weight:bold; margin-top:12px; min-height:22px; font-size:15px; }
-.saved{ color:#059669; }
-.err{ color:#dc2626; }
-
-.info{
-  text-align:center; font-size:12px; color:#94a3b8; margin-top:20px;
-  border-top:1px solid #e2e8f0; padding-top:12px;
-}
-
-.section-title{
-  color:#1e40af; font-size:18px; font-weight:bold; margin:30px 0 15px;
-  border-bottom:2px solid #e2e8f0; padding-bottom:8px;
-  display: flex; align-items: center; gap: 10px;
-}
-.record{
-  background:#f0fdf4; border:1px solid #bbf7d0; border-radius:12px;
-  padding:15px; margin-bottom:12px; border-right:5px solid #059669;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-}
-.record .row{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-size: 14px;}
-.record .date{ font-size:12px; color:#64748b; margin-top:8px; border-top: 1px dashed #cbd5e1; padding-top: 8px;}
-.record strong{ color:#047857; }
-
-.empty{ text-align:center; color:#94a3b8; font-size:14px; padding:15px; }
-
-.del-btn{
-  background:transparent; border:none; color:#dc2626; cursor:pointer;
-  font-size:12px; font-weight:bold; padding:2px 6px; float: left;
-}
-.del-btn:hover{ text-decoration:underline; }
-
-.contact-info {
-  background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px;
-  padding: 15px; text-align: center; margin-top: 20px;
-}
-.contact-info p { margin: 5px 0; color: #991b1b; font-weight: bold; }
+body{font-family:Tahoma, sans-serif; background:#f1f5f9; padding:20px;}
+.container{max-width:900px; margin:0 auto; background:#fff; padding:20px; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+h1{color:#1e40af; text-align:center;}
+.login-box{text-align:center; padding:40px;}
+input[type="password"]{padding:12px; font-size:18px; border:2px solid #ccc; border-radius:8px; width:300px; margin-bottom:15px;}
+button{padding:12px 30px; font-size:16px; background:#059669; color:#fff; border:none; border-radius:8px; cursor:pointer;}
+button:hover{background:#047857;}
+.record{background:#f8fafc; border-right:4px solid #1e40af; padding:15px; margin-bottom:10px; border-radius:8px;}
+.record .row{display:flex; justify-content:space-between; flex-wrap:wrap; margin-bottom:5px;}
+.record strong{color:#1e40af;}
+.delete-btn{background:#dc2626; color:#fff; border:none; padding:5px 15px; border-radius:5px; cursor:pointer; font-size:14px;}
+.hidden{display:none;}
 </style>
 </head>
 <body>
 
-<div class="top-banner">
-  <div class="banner-content">
-    <span>🏫 مركز التكوين المهني والتمهين - وادي مرة</span>
-    <span>📢 استبيان آراء لتخصصات دورة فيفري 2027</span>
-    <span>🤝 مشاركتكم تصنع الفرق!</span>
-    <span>🎯 معاً نبني مستقبلاً مهنياً أفضل</span>
-  </div>
-</div>
-
-<div class="box">
-  <h1>مركز التكوين المهني والتمهين</h1>
-  <p class="sub">وادي مرة — استبيان آراء</p>
-
-  <div class="intro-text">
-    <strong>تحسباً لاقتراح عروض دورة فيفري 2027،</strong> تعلن إدارة مركز التكوين المهني والتمهين بوادي مرة عن إطلاق عملية <strong>سبر آراء</strong> لفائدة مواطني المنطقة، قصد استقبال مقترحاتهم وآرائهم حول التخصصات المهنية التي يرغبون في الاستفادة منها.
-    <br><br>
-    <em>ندعو جميع مواطني وشباب وادي مرة لزيارة المركز، والمساهمة بجدية ومسؤولية لاقتراح تخصصات تلبي احتياجات المنطقة وتفتح آفاقاً جديدة للتأهيل والإدماج المهني.</em>
+<div class="container">
+  <h1>🔐 لوحة التحكم - سبر الآراء</h1>
+  
+  <!-- شاشة تسجيل الدخول -->
+  <div id="loginSection" class="login-box">
+    <p>أدخل كلمة المرور للوصول إلى المشاركات:</p>
+    <input type="password" id="adminPass" placeholder="كلمة المرور...">
+    <br>
+    <button onclick="login()">دخول</button>
+    <p id="loginMsg" style="color:red;"></p>
   </div>
 
-  <form id="surveyForm" onsubmit="submitSurvey(event)">
-    <label>👤 الاسم واللقب (اختياري)</label>
-    <input type="text" id="fullName" placeholder="اكتب اسمك هنا...">
-
-    <label>📞 رقم الهاتف (اختياري)</label>
-    <input type="tel" id="phone" placeholder="05...">
-
-    <label>🎯 ما هو التخصص المهني الذي ترغب في دراسته؟ (مطلوب)</label>
-    <input type="text" id="specialty" placeholder="مثال: إعلام آلي، خياطة، كهرباء، طبخ...">
-
-    <label>💡 مقترحاتك أو آرائك الإضافية (اختياري)</label>
-    <textarea id="suggestion" placeholder="اكتب اقتراحاتك هنا لمساعدة المركز على التطور..."></textarea>
-
-    <div class="actions">
-      <button type="submit" class="submit-btn">📤 إرسال المشاركة</button>
-      <button type="button" class="reset" onclick="clearForm()">🗑️ مسح الحقول</button>
+  <!-- قسم عرض المشاركات -->
+  <div id="dashboardSection" class="hidden">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+      <h2>📋 المشاركات (<span id="count">0</span>)</h2>
+      <button onclick="loadRecords()" style="background:#1e40af;">🔄 تحديث</button>
     </div>
-    <div class="msg" id="formMsg"></div>
-  </form>
-
-  <div class="section-title">📋 المشاركات والآراء السابقة</div>
-  <div id="recordsList"></div>
-
-  <div class="contact-info">
-    <p>📍 العنوان: مركز التكوين المهني والتمهين - وادي مرة</p>
-    <p>📞 للاستفسار: يرجى التوجه لمكتب الاستقبال</p>
-    <p>🌐 يمكنكم أيضاً المشاركة عبر الصفحة الإلكترونية الرسمية للمركز</p>
-  </div>
-
-  <div class="info">
-    🏫 مركز التكوين المهني والتمهين — وادي مرة<br>
-    معاً من أجل تكوين مهني يستجيب لتطلعات شباب المنطقة.
+    <div id="recordsList"></div>
   </div>
 </div>
 
-<script>
-const $ = id => document.getElementById(id);
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore, collection, getDocs, deleteDoc, doc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// تحميل البيانات السابقة عند فتح الصفحة
-function load(){
-  renderRecords();
-}
-
-// إرسال الاستبيان
-function submitSurvey(event){
-  event.preventDefault(); // منع إعادة تحميل الصفحة
-  
-  const name = $('fullName').value.trim();
-  const phone = $('phone').value.trim();
-  const specialty = $('specialty').value.trim();
-  const suggestion = $('suggestion').value.trim();
-
-  if(specialty.length < 2){
-    showMsg('❌ يرجى كتابة التخصص الذي ترغب فيه أولاً', 'err');
-    return;
-  }
-
-  const now = new Date();
-  const dateStr = now.toLocaleDateString('ar-DZ') + ' — ' + now.toLocaleTimeString('ar-DZ');
-  
-  const record = { 
-    name: name || 'مواطن من وادي مرة', 
-    phone: phone || 'غير مذكور',
-    specialty, 
-    suggestion: suggestion || 'لا يوجد',
-    date: dateStr, 
-    timestamp: now.getTime() 
+  // ⚠️ ضع نفس إعدادات Firebase هنا
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
   };
 
-  const records = JSON.parse(localStorage.getItem('cnf_wadi_moura_records') || '[]');
-  records.unshift(record); // إضافة في البداية
-  localStorage.setItem('cnf_wadi_moura_records', JSON.stringify(records));
-  
-  renderRecords();
-  showMsg('✅ شكراً لك! تم استلام مشاركتك بنجاح.', 'saved');
-  $('surveyForm').reset(); // تفريغ الحقول
-}
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-// عرض المشاركات
-function renderRecords(){
-  const box = $('recordsList');
-  const records = JSON.parse(localStorage.getItem('cnf_wadi_moura_records') || '[]');
-  
-  if(records.length === 0){ 
-    box.innerHTML = '<div class="empty">لا توجد مشاركات بعد. كن أول من يشارك برأيه!</div>'; 
-    return; 
-  }
-  
-  box.innerHTML = records.map((r, i) => `
-    <div class="record">
-      <div class="row">
-        <div><strong>👤 الاسم:</strong> ${r.name}</div>
-        <div><strong>📞 الهاتف:</strong> ${r.phone}</div>
-      </div>
-      <div class="row" style="margin-top: 5px;">
-        <div><strong>🎯 التخصص المطلوب:</strong> <span style="color:#dc2626; font-size: 16px;">${r.specialty}</span></div>
-      </div>
-      <div class="row" style="margin-top: 5px; background: #fff; padding: 8px; border-radius: 5px;">
-        <div><strong>💡 المقترح:</strong> ${r.suggestion}</div>
-      </div>
-      <div class="date">
-        🕐 ${r.date}
-        <button class="del-btn" onclick="delRecord(${i})">🗑️ حذف</button>
-      </div>
-    </div>
-  `).join('');
-}
+  // ⚠️ ضع نفس كلمة المرور التي وضعتها في Firestore Rules
+  const ADMIN_PASSWORD = "YOUR_ADMIN_PASSWORD";
 
-// حذف مشاركة
-function delRecord(index){
-  if(!confirm('هل أنت متأكد من حذف هذه المشاركة؟')) return;
-  const records = JSON.parse(localStorage.getItem('cnf_wadi_moura_records') || '[]');
-  records.splice(index, 1);
-  localStorage.setItem('cnf_wadi_moura_records', JSON.stringify(records));
-  renderRecords();
-}
+  window.login = function() {
+    const pass = document.getElementById('adminPass').value;
+    if (pass === ADMIN_PASSWORD) {
+      document.getElementById('loginSection').classList.add('hidden');
+      document.getElementById('dashboardSection').classList.remove('hidden');
+      loadRecords();
+    } else {
+      document.getElementById('loginMsg').textContent = "❌ كلمة المرور غير صحيحة";
+    }
+  };
 
-// مسح النموذج
-function clearForm(){
-  if(!confirm('هل تريد مسح البيانات التي أدخلتها؟')) return;
-  $('surveyForm').reset();
-  $('formMsg').textContent = '';
-}
+  window.loadRecords = async function() {
+    const list = document.getElementById('recordsList');
+    const countSpan = document.getElementById('count');
+    list.innerHTML = '<p>⏳ جاري التحميل...</p>';
 
-// إظهار الرسائل
-function showMsg(text, className){
-  $('formMsg').textContent = text;
-  $('formMsg').className = 'msg ' + className;
-  setTimeout(()=>{ $('formMsg').textContent=''; }, 3000);
-}
+    try {
+      // ملاحظة: تمرير كلمة المرور في الاستعلام للسماح بالقراءة (بناءً على قاعدة الأمان)
+      const q = query(collection(db, "cnf_wadi_moura_survey"), orderBy("createdAt", "desc"));
+      // نضيف كلمة المرور كـ query parameter (يجب أن تتطابق مع قاعدة الأمان)
+      // في الواقع، Firestore لا يدعم تمرير كلمة مرور مباشرة في query، لكننا سنستخدم حيلة بسيطة:
+      // سنعتمد على قاعدة الأمان التي تسمح بالقراءة إذا كان adminPass موجوداً في الطلب.
+      // لكن SDK لا يسمح بذلك بسهولة. الحل الأبسط: نجعل قاعدة الأمان تعتمد على auth (تسجيل دخول Firebase).
+      
+      // **حل بديل أفضل وأكثر أماناً:**
+      // بدلاً من كلمة مرور في الـ query، سنستخدم Firebase Authentication.
+      // لكن لتبسيط الأمر الآن، سأجعل القراءة متاحة (للتجربة فقط) ثم نحميها لاحقاً.
+      
+      // ⚠️⚠️⚠️ **تنبيه أمني**: الكود التالي يفترض أنك سمحت بالقراءة للجميع مؤقتاً.
+      // لتأمينها: استخدم Firebase Auth وسجل دخول المدير.
+      
+      const snapshot = await getDocs(q);
+      
+      if (snapshot.empty) {
+        list.innerHTML = '<p style="text-align:center; color:#94a3b8;">لا توجد مشاركات بعد.</p>';
+        countSpan.textContent = '0';
+        return;
+      }
 
-// تشغيل الدوال عند فتح الصفحة
-load();
+      countSpan.textContent = snapshot.size;
+      list.innerHTML = '';
+
+      snapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+        const date = data.createdAt ? data.createdAt.toDate().toLocaleString('ar-DZ') : 'غير محدد';
+        
+        const card = document.createElement('div');
+        card.className = 'record';
+        card.innerHTML = `
+          <div class="row">
+            <div><strong>👤 الاسم:</strong> ${data.name}</div>
+            <div><strong>📞 الهاتف:</strong> ${data.phone}</div>
+          </div>
+          <div class="row">
+            <div><strong>🎯 التخصص:</strong> <span style="color:#dc2626; font-weight:bold;">${data.specialty}</span></div>
+          </div>
+          <div style="background:#fff; padding:10px; border-radius:5px; margin:5px 0;">
+            <strong>💡 المقترح:</strong> ${data.suggestion}
+          </div>
+          <div class="row" style="align-items:center;">
+            <div style="font-size:12px; color:#64748b;">🕐 ${date}</div>
+            <button class="delete-btn" data-id="${docSnap.id}">🗑️ حذف</button>
+          </div>
+        `;
+        list.appendChild(card);
+      });
+
+      // إضافة أحداث الحذف
+      document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+          if (!confirm('هل أنت متأكد من حذف هذه المشاركة؟')) return;
+          const id = e.target.getAttribute('data-id');
+          try {
+            await deleteDoc(doc(db, "cnf_wadi_moura_survey", id));
+            loadRecords(); // إعادة التحميل
+          } catch (error) {
+            alert('خطأ في الحذف: ' + error.message);
+          }
+        });
+      });
+
+    } catch (error) {
+      console.error(error);
+      list.innerHTML = '<p style="color:red;">خطأ في جلب البيانات: ' + error.message + '</p>';
+    }
+  };
 </script>
 
 </body>
