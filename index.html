@@ -3,37 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>إحصائيات الناخبين</title>
-<meta name="description" content="نظام إحصائيات الناخبين — إدخال المجموع، الرجال، النساء، وحساب النسب فوراً. تطوير: براهيمي يوسف.">
+<title>مركز التكوين المهني والتمهين - وادي مرة</title>
+<meta name="description" content="استبيان آراء واقتراحات لتطوير عروض التكوين المهني بدورة فيفري 2027 - مركز التكوين المهني والتمهين وادي مرة.">
 
 <!-- ===== صورة المعاينة عند المشاركة ===== -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="إحصائيات الناخبين | شريد علوي">
-<meta property="og:description" content="إدخال المجموع، الرجال، النساء، وحساب النسب فوراً. تطوير: براهيمي يوسف — مطور برامج وتطبيقات.">
+<meta property="og:title" content="استبيان آراء - مركز التكوين المهني وادي مرة">
+<meta property="og:description" content="شاركنا رأيك واقتراحك لتخصصات دورة فيفري 2027. معاً نبني مستقبلاً مهنياً أفضل.">
 <meta property="og:image" content="https://i.postimg.cc/Kzhm6YQt/file-00000000971c8210af485d34ca71d301.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://ضع-رابط-موقعك-هنا.com/">
-<meta property="og:site_name" content="إحصائيات الناخبين — شريد علوي">
-
-<!-- تويتر / X -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="إحصائيات الناخبين | شريد علوي">
-<meta name="twitter:description" content="إدخال المجموع، الرجال، النساء، وحساب النسب فوراً — تطوير: براهيمي يوسف.">
-<meta name="twitter:image" content="https://i.postimg.cc/Kzhm6YQt/file-00000000971c8210af485d34ca71d301.png">
 
 <style>
 *{box-sizing:border-box}
 body{
-  margin:0; min-height:100vh; background:#f0f4f8; color:#1e293b;
-  font-family:Tahoma,Arial,sans-serif; line-height:1.8; padding:0 0 20px;
+  margin:0; min-height:100vh; background:#f4f7f6; color:#1e293b;
+  font-family:Tahoma,Arial,sans-serif; line-height:1.8; padding:0 0 30px;
 }
 
 /* الشريط العلوي المتحرك */
 .top-banner{
-  background:linear-gradient(90deg,#1e40af,#7c3aed);
-  color:#fff; padding:10px 0; overflow:hidden; white-space:nowrap;
-  font-size:15px; font-weight:bold; border-bottom:3px solid #0891b2;
+  background:linear-gradient(90deg,#059669,#1e40af);
+  color:#fff; padding:12px 0; overflow:hidden; white-space:nowrap;
+  font-size:15px; font-weight:bold; border-bottom:4px solid #dc2626;
 }
 .banner-content{ display:inline-block; animation:marquee 25s linear infinite; }
 .banner-content span{ padding:0 40px; }
@@ -43,54 +33,41 @@ body{
 }
 
 .box{
-  max-width:520px; margin:20px auto; background:#fff; border-radius:20px;
+  max-width:600px; margin:20px auto; background:#fff; border-radius:20px;
   padding:25px; box-shadow:0 10px 30px rgba(0,0,0,.08);
+  border-top: 6px solid #1e40af;
 }
 h1{ text-align:center; color:#1e40af; font-size:24px; margin:0 0 5px; }
-.sub{ text-align:center; color:#64748b; font-size:14px; margin-bottom:20px; }
+.sub{ text-align:center; color:#dc2626; font-size:16px; font-weight:bold; margin-bottom:20px; }
 
-label{ display:block; font-weight:bold; color:#1e40af; margin:15px 0 5px; }
-input, textarea{
-  width:100%; padding:14px; font-size:20px; text-align:center; font-weight:bold;
+.intro-text {
+  background: #eff6ff; border-right: 4px solid #3b82f6; padding: 15px;
+  border-radius: 8px; font-size: 14px; color: #1e3a8a; margin-bottom: 20px;
+}
+
+label{ display:block; font-weight:bold; color:#1e40af; margin:15px 0 5px; font-size: 15px; }
+input, select, textarea{
+  width:100%; padding:12px; font-size:16px; 
   border:2px solid #e2e8f0; border-radius:12px; background:#f8fafc;
   font-family:inherit; transition:.2s;
 }
-input:focus, textarea:focus{ outline:none; border-color:#1e40af; background:#fff; }
-textarea{ font-size:15px; text-align:right; font-weight:normal; min-height:80px; resize:vertical; }
+input:focus, select:focus, textarea:focus{ outline:none; border-color:#1e40af; background:#fff; }
+textarea{ font-size:15px; min-height:100px; resize:vertical; }
 
 hr{ border:none; border-top:2px dashed #cbd5e1; margin:25px 0; }
 
-.pct{
-  text-align:center; font-size:32px; font-weight:900; color:#059669;
-  margin-top:8px; font-family:Arial,sans-serif;
-  background:#f8fafc; border:2px solid #e2e8f0; border-radius:12px;
-  padding:12px; position:relative;
-}
-.pct .pct-date{
-  display:block; font-size:12px; color:#64748b; font-weight:bold;
-  font-family:Tahoma,Arial,sans-serif; margin-bottom:4px;
-  border-bottom:1px dashed #cbd5e1; padding-bottom:5px;
-}
-.pct .pct-value{ display:block; }
-.pct small{ display:block; font-size:13px; color:#64748b; font-weight:bold; margin-top:3px; }
-.pct.blue{ color:#1e40af; }
-.pct.pink{ color:#db2777; }
-.pct .pct-date.blue{ color:#1e40af; }
-.pct .pct-date.pink{ color:#db2777; }
-
 .actions{ text-align:center; margin-top:25px; }
 button{
-  padding:12px 24px; font-size:16px; font-weight:bold; border:none;
+  padding:14px 24px; font-size:16px; font-weight:bold; border:none;
   border-radius:12px; cursor:pointer; font-family:inherit; margin:5px;
+  transition: 0.3s;
 }
-.save{ background:#059669; color:#fff; }
-.save:hover{ background:#047857; }
-.save-pct{ background:#1e40af; color:#fff; width:100%; padding:15px; font-size:17px; margin-top:15px; }
-.save-pct:hover{ background:#1e3a8a; }
-.reset{ background:#dc2626; color:#fff; }
+.submit-btn{ background:#059669; color:#fff; width:100%; font-size: 18px; box-shadow: 0 4px 6px rgba(5, 150, 105, 0.3); }
+.submit-btn:hover{ background:#047857; transform: translateY(-2px); }
+.reset{ background:#dc2626; color:#fff; font-size: 14px; }
 .reset:hover{ background:#b91c1c; }
 
-.msg{ text-align:center; font-weight:bold; margin-top:12px; min-height:22px; font-size:14px; }
+.msg{ text-align:center; font-weight:bold; margin-top:12px; min-height:22px; font-size:15px; }
 .saved{ color:#059669; }
 .err{ color:#dc2626; }
 
@@ -100,252 +77,187 @@ button{
 }
 
 .section-title{
-  color:#1e40af; font-size:18px; font-weight:bold; margin:25px 0 10px;
+  color:#1e40af; font-size:18px; font-weight:bold; margin:30px 0 15px;
   border-bottom:2px solid #e2e8f0; padding-bottom:8px;
+  display: flex; align-items: center; gap: 10px;
 }
 .record{
-  background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px;
-  padding:12px 15px; margin-bottom:10px; border-right:4px solid #1e40af;
+  background:#f0fdf4; border:1px solid #bbf7d0; border-radius:12px;
+  padding:15px; margin-bottom:12px; border-right:5px solid #059669;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
 }
-.record .row{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
-.record .date{ font-size:12px; color:#64748b; margin-top:5px; }
-.record strong{ color:#1e40af; }
-
-.comment-record{
-  background:#fef3c7; border:1px solid #f59e0b; border-radius:12px;
-  padding:12px 15px; margin-bottom:10px; border-right:4px solid #d97706;
-}
-.comment-record .text{ font-weight:bold; color:#78350f; margin-bottom:5px; }
-.comment-record .date{ font-size:12px; color:#92400e; }
+.record .row{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-size: 14px;}
+.record .date{ font-size:12px; color:#64748b; margin-top:8px; border-top: 1px dashed #cbd5e1; padding-top: 8px;}
+.record strong{ color:#047857; }
 
 .empty{ text-align:center; color:#94a3b8; font-size:14px; padding:15px; }
 
 .del-btn{
   background:transparent; border:none; color:#dc2626; cursor:pointer;
-  font-size:12px; font-weight:bold; padding:2px 6px;
+  font-size:12px; font-weight:bold; padding:2px 6px; float: left;
 }
 .del-btn:hover{ text-decoration:underline; }
+
+.contact-info {
+  background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px;
+  padding: 15px; text-align: center; margin-top: 20px;
+}
+.contact-info p { margin: 5px 0; color: #991b1b; font-weight: bold; }
 </style>
 </head>
 <body>
 
 <div class="top-banner">
   <div class="banner-content">
-    <span>👨‍💻 تطوير: براهيمي يوسف — مطور برامج وتطبيقات</span>
-    <span>🏷️ شريد علوي — عرعار وادي مرة</span>
-    <span>🗳️ نظام إحصائيات الناخبين</span>
-    <span>👨‍💻 براهيمي يوسف</span>
-    <span>📊 احسب النسب واحفظها بالتاريخ والوقت</span>
+    <span>🏫 مركز التكوين المهني والتمهين - وادي مرة</span>
+    <span>📢 استبيان آراء لتخصصات دورة فيفري 2027</span>
+    <span>🤝 مشاركتكم تصنع الفرق!</span>
+    <span>🎯 معاً نبني مستقبلاً مهنياً أفضل</span>
   </div>
 </div>
 
 <div class="box">
-  <h1>🗳️ إحصائيات الناخبين</h1>
-  <p class="sub">الأرقام تُحفظ تلقائياً في متصفحك</p>
+  <h1>مركز التكوين المهني والتمهين</h1>
+  <p class="sub">وادي مرة — استبيان آراء</p>
 
-  <label>📊 المجموع الكلي</label>
-  <input type="number" id="total" min="0" placeholder="0" oninput="save()">
-
-  <hr>
-
-  <label>👨 عدد الرجال</label>
-  <input type="number" id="men" min="0" placeholder="0" oninput="save()">
-  <div class="pct blue" id="menPct">
-    <span class="pct-date blue" id="menDate">🕐 — لم يُسجَّل بعد —</span>
-    <span class="pct-value" id="menValue">0%</span>
-    <small>نسبة الرجال</small>
+  <div class="intro-text">
+    <strong>تحسباً لاقتراح عروض دورة فيفري 2027،</strong> تعلن إدارة مركز التكوين المهني والتمهين بوادي مرة عن إطلاق عملية <strong>سبر آراء</strong> لفائدة مواطني المنطقة، قصد استقبال مقترحاتهم وآرائهم حول التخصصات المهنية التي يرغبون في الاستفادة منها.
+    <br><br>
+    <em>ندعو جميع مواطني وشباب وادي مرة لزيارة المركز، والمساهمة بجدية ومسؤولية لاقتراح تخصصات تلبي احتياجات المنطقة وتفتح آفاقاً جديدة للتأهيل والإدماج المهني.</em>
   </div>
 
-  <hr>
+  <form id="surveyForm" onsubmit="submitSurvey(event)">
+    <label>👤 الاسم واللقب (اختياري)</label>
+    <input type="text" id="fullName" placeholder="اكتب اسمك هنا...">
 
-  <label>👩 عدد النساء</label>
-  <input type="number" id="women" min="0" placeholder="0" oninput="save()">
-  <div class="pct pink" id="womenPct">
-    <span class="pct-date pink" id="womenDate">🕐 — لم يُسجَّل بعد —</span>
-    <span class="pct-value" id="womenValue">0%</span>
-    <small>نسبة النساء</small>
-  </div>
+    <label>📞 رقم الهاتف (اختياري)</label>
+    <input type="tel" id="phone" placeholder="05...">
 
-  <div class="actions">
-    <button class="save" onclick="save(true)">💾 حفظ</button>
-    <button class="reset" onclick="resetAll()">🗑️ مسح الأرقام</button>
-  </div>
-  <div class="msg" id="msg"></div>
+    <label>🎯 ما هو التخصص المهني الذي ترغب في دراسته؟ (مطلوب)</label>
+    <input type="text" id="specialty" placeholder="مثال: إعلام آلي، خياطة، كهرباء، طبخ...">
 
-  <button class="save-pct" onclick="savePercent()">📌 حفظ النسبة الحالية مع التاريخ والوقت</button>
-  <div class="msg" id="pctMsg"></div>
+    <label>💡 مقترحاتك أو آرائك الإضافية (اختياري)</label>
+    <textarea id="suggestion" placeholder="اكتب اقتراحاتك هنا لمساعدة المركز على التطور..."></textarea>
 
-  <div class="section-title">📁 النسب المحفوظة</div>
+    <div class="actions">
+      <button type="submit" class="submit-btn">📤 إرسال المشاركة</button>
+      <button type="button" class="reset" onclick="clearForm()">🗑️ مسح الحقول</button>
+    </div>
+    <div class="msg" id="formMsg"></div>
+  </form>
+
+  <div class="section-title">📋 المشاركات والآراء السابقة</div>
   <div id="recordsList"></div>
 
-  <hr>
-
-  <div class="section-title">💬 اترك تعليقاً لصاحب البرنامج</div>
-  <textarea id="comment" placeholder="اكتب تعليقك هنا..."></textarea>
-  <button class="save" style="width:100%;margin-top:10px" onclick="saveComment()">📝 إرسال التعليق</button>
-  <div class="msg" id="commentMsg"></div>
-
-  <div id="commentsList" style="margin-top:15px"></div>
+  <div class="contact-info">
+    <p>📍 العنوان: مركز التكوين المهني والتمهين - وادي مرة</p>
+    <p>📞 للاستفسار: يرجى التوجه لمكتب الاستقبال</p>
+    <p>🌐 يمكنكم أيضاً المشاركة عبر الصفحة الإلكترونية الرسمية للمركز</p>
+  </div>
 
   <div class="info">
-    👨‍💻 تطوير: براهيمي يوسف — مطور برامج وتطبيقات<br>
-    شريد علوي — عرعار وادي مرة
+    🏫 مركز التكوين المهني والتمهين — وادي مرة<br>
+    معاً من أجل تكوين مهني يستجيب لتطلعات شباب المنطقة.
   </div>
 </div>
 
 <script>
 const $ = id => document.getElementById(id);
 
+// تحميل البيانات السابقة عند فتح الصفحة
 function load(){
-  $('total').value = localStorage.getItem('v_total') || '';
-  $('men').value   = localStorage.getItem('v_men')   || '';
-  $('women').value = localStorage.getItem('v_women') || '';
-  updatePctAndDate();
   renderRecords();
-  renderComments();
 }
 
-function save(showMsg){
-  const t = $('total').value;
-  const m = $('men').value;
-  const w = $('women').value;
-  localStorage.setItem('v_total', t);
-  localStorage.setItem('v_men', m);
-  localStorage.setItem('v_women', w);
-  updatePctAndDate();
-  if(showMsg){
-    $('msg').textContent = '✅ تم الحفظ';
-    $('msg').className = 'msg saved';
-    setTimeout(()=>{ $('msg').textContent=''; }, 2000);
-  }
-}
+// إرسال الاستبيان
+function submitSurvey(event){
+  event.preventDefault(); // منع إعادة تحميل الصفحة
+  
+  const name = $('fullName').value.trim();
+  const phone = $('phone').value.trim();
+  const specialty = $('specialty').value.trim();
+  const suggestion = $('suggestion').value.trim();
 
-function updatePctAndDate(){
-  const total = parseFloat($('total').value) || 0;
-  const men   = parseFloat($('men').value)   || 0;
-  const women = parseFloat($('women').value) || 0;
-  const menPct   = total > 0 ? (men   / total * 100) : 0;
-  const womenPct = total > 0 ? (women / total * 100) : 0;
-  $('menValue').textContent   = menPct.toFixed(2)   + '%';
-  $('womenValue').textContent = womenPct.toFixed(2) + '%';
-  const now = new Date();
-  const dateStr = now.toLocaleDateString('ar-DZ') + ' — ' + now.toLocaleTimeString('ar-DZ');
-  $('menDate').textContent   = '🕐 ' + dateStr;
-  $('womenDate').textContent = '🕐 ' + dateStr;
-  localStorage.setItem('v_date', dateStr);
-}
-
-function resetAll(){
-  if(!confirm('هل تريد مسح الأرقام الحالية؟ (النسب المحفوظة والتعليقات تبقى)')) return;
-  localStorage.removeItem('v_total');
-  localStorage.removeItem('v_men');
-  localStorage.removeItem('v_women');
-  localStorage.removeItem('v_date');
-  $('total').value = '';
-  $('men').value = '';
-  $('women').value = '';
-  $('menValue').textContent   = '0%';
-  $('womenValue').textContent = '0%';
-  $('menDate').textContent   = '🕐 — لم يُسجَّل بعد —';
-  $('womenDate').textContent = '🕐 — لم يُسجَّل بعد —';
-  $('msg').textContent = '🗑️ تم المسح';
-  $('msg').className = 'msg err';
-  setTimeout(()=>{ $('msg').textContent=''; }, 2000);
-}
-
-function savePercent(){
-  const total = parseFloat($('total').value) || 0;
-  const men   = parseFloat($('men').value)   || 0;
-  const women = parseFloat($('women').value) || 0;
-  if(total <= 0){
-    $('pctMsg').textContent = '❌ أدخل المجموع أولاً';
-    $('pctMsg').className = 'msg err';
-    setTimeout(()=>{ $('pctMsg').textContent=''; }, 2500);
+  if(specialty.length < 2){
+    showMsg('❌ يرجى كتابة التخصص الذي ترغب فيه أولاً', 'err');
     return;
   }
-  const menPct   = (men   / total * 100).toFixed(2);
-  const womenPct = (women / total * 100).toFixed(2);
+
   const now = new Date();
   const dateStr = now.toLocaleDateString('ar-DZ') + ' — ' + now.toLocaleTimeString('ar-DZ');
-  const record = { total, men, women, menPct, womenPct, date: dateStr, timestamp: now.getTime() };
-  const records = JSON.parse(localStorage.getItem('pct_records') || '[]');
-  records.unshift(record);
-  localStorage.setItem('pct_records', JSON.stringify(records));
+  
+  const record = { 
+    name: name || 'مواطن من وادي مرة', 
+    phone: phone || 'غير مذكور',
+    specialty, 
+    suggestion: suggestion || 'لا يوجد',
+    date: dateStr, 
+    timestamp: now.getTime() 
+  };
+
+  const records = JSON.parse(localStorage.getItem('cnf_wadi_moura_records') || '[]');
+  records.unshift(record); // إضافة في البداية
+  localStorage.setItem('cnf_wadi_moura_records', JSON.stringify(records));
+  
   renderRecords();
-  $('pctMsg').textContent = '✅ تم حفظ النسبة مع التاريخ والوقت';
-  $('pctMsg').className = 'msg saved';
-  setTimeout(()=>{ $('pctMsg').textContent=''; }, 2500);
+  showMsg('✅ شكراً لك! تم استلام مشاركتك بنجاح.', 'saved');
+  $('surveyForm').reset(); // تفريغ الحقول
 }
 
+// عرض المشاركات
 function renderRecords(){
   const box = $('recordsList');
-  const records = JSON.parse(localStorage.getItem('pct_records') || '[]');
-  if(records.length === 0){ box.innerHTML = '<div class="empty">لا توجد نسب محفوظة بعد.</div>'; return; }
+  const records = JSON.parse(localStorage.getItem('cnf_wadi_moura_records') || '[]');
+  
+  if(records.length === 0){ 
+    box.innerHTML = '<div class="empty">لا توجد مشاركات بعد. كن أول من يشارك برأيه!</div>'; 
+    return; 
+  }
+  
   box.innerHTML = records.map((r, i) => `
     <div class="record">
       <div class="row">
-        <div><strong>المجموع:</strong> ${r.total}</div>
-        <div>👨 ${r.men} (${r.menPct}%)</div>
-        <div>👩 ${r.women} (${r.womenPct}%)</div>
+        <div><strong>👤 الاسم:</strong> ${r.name}</div>
+        <div><strong>📞 الهاتف:</strong> ${r.phone}</div>
       </div>
-      <div class="date">🕐 ${r.date}
+      <div class="row" style="margin-top: 5px;">
+        <div><strong>🎯 التخصص المطلوب:</strong> <span style="color:#dc2626; font-size: 16px;">${r.specialty}</span></div>
+      </div>
+      <div class="row" style="margin-top: 5px; background: #fff; padding: 8px; border-radius: 5px;">
+        <div><strong>💡 المقترح:</strong> ${r.suggestion}</div>
+      </div>
+      <div class="date">
+        🕐 ${r.date}
         <button class="del-btn" onclick="delRecord(${i})">🗑️ حذف</button>
       </div>
     </div>
   `).join('');
 }
 
+// حذف مشاركة
 function delRecord(index){
-  if(!confirm('حذف هذه النسبة؟')) return;
-  const records = JSON.parse(localStorage.getItem('pct_records') || '[]');
+  if(!confirm('هل أنت متأكد من حذف هذه المشاركة؟')) return;
+  const records = JSON.parse(localStorage.getItem('cnf_wadi_moura_records') || '[]');
   records.splice(index, 1);
-  localStorage.setItem('pct_records', JSON.stringify(records));
+  localStorage.setItem('cnf_wadi_moura_records', JSON.stringify(records));
   renderRecords();
 }
 
-function saveComment(){
-  const text = $('comment').value.trim();
-  if(text.length < 2){
-    $('commentMsg').textContent = '❌ اكتب تعليقاً أولاً';
-    $('commentMsg').className = 'msg err';
-    setTimeout(()=>{ $('commentMsg').textContent=''; }, 2500);
-    return;
-  }
-  const now = new Date();
-  const dateStr = now.toLocaleDateString('ar-DZ') + ' — ' + now.toLocaleTimeString('ar-DZ');
-  const comment = { text, date: dateStr, timestamp: now.getTime() };
-  const comments = JSON.parse(localStorage.getItem('comments') || '[]');
-  comments.unshift(comment);
-  localStorage.setItem('comments', JSON.stringify(comments));
-  $('comment').value = '';
-  renderComments();
-  $('commentMsg').textContent = '✅ تم إرسال تعليقك، شكراً لك';
-  $('commentMsg').className = 'msg saved';
-  setTimeout(()=>{ $('commentMsg').textContent=''; }, 2500);
+// مسح النموذج
+function clearForm(){
+  if(!confirm('هل تريد مسح البيانات التي أدخلتها؟')) return;
+  $('surveyForm').reset();
+  $('formMsg').textContent = '';
 }
 
-function renderComments(){
-  const box = $('commentsList');
-  const comments = JSON.parse(localStorage.getItem('comments') || '[]');
-  if(comments.length === 0){ box.innerHTML = '<div class="empty">لا توجد تعليقات بعد. كن أول من يعلّق!</div>'; return; }
-  box.innerHTML = comments.map((c, i) => `
-    <div class="comment-record">
-      <div class="text">"${c.text}"</div>
-      <div class="date">🕐 ${c.date}
-        <button class="del-btn" onclick="delComment(${i})">🗑️ حذف</button>
-      </div>
-    </div>
-  `).join('');
+// إظهار الرسائل
+function showMsg(text, className){
+  $('formMsg').textContent = text;
+  $('formMsg').className = 'msg ' + className;
+  setTimeout(()=>{ $('formMsg').textContent=''; }, 3000);
 }
 
-function delComment(index){
-  if(!confirm('حذف هذا التعليق؟')) return;
-  const comments = JSON.parse(localStorage.getItem('comments') || '[]');
-  comments.splice(index, 1);
-  localStorage.setItem('comments', JSON.stringify(comments));
-  renderComments();
-}
-
+// تشغيل الدوال عند فتح الصفحة
 load();
 </script>
 
