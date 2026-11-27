@@ -3,262 +3,373 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>مركز التكوين المهني والتمهين - وادي مرة | التوجيه والإرشاد</title>
 
-<!-- صورة المعاينة عند النشر -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="مركز التكوين المهني والتمهين - وادي مرة">
-<meta property="og:description" content="منصة توجيه وإرشاد المواطنين لاختيار التخصصات المهنية. سجل مع 14 من أصدقائك لتفتح تخصصك المفضل!">
-<meta property="og:image" content="https://i.postimg.cc/d3mbQzss/file-00000000d834821095f6c09d94088a6e.png">
-<meta property="og:url" content="https://ضع-رابط-موقعك-هنا.com/">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.postimg.cc/d3mbQzss/file-00000000d834821095f6c09d94088a6e.png">
+<title>University English Session | جامعة أفلو</title>
+<meta name="description" content="منصة الحصة الإنجليزية الجامعية - جامعة أفلو. تصميم وبرمجة براهيمي يوسف.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
- --bg: #f4f7f6;
+ --bg: #f0f4f8;
  --surface: #ffffff;
  --border: #e2e8f0;
  --text: #1e293b;
  --muted: #64748b;
  --primary: #1e40af;
+ --primary-dark: #1e3a8a;
+ --accent: #0891b2;
  --success: #059669;
+ --warning: #d97706;
  --danger: #dc2626;
- --warning: #f59e0b;
- --gold: #facc15;
+ --purple: #7c3aed;
+ --gold: #d97706;
 }
-
 *{box-sizing:border-box}
-body{margin:0; background:var(--bg); color:var(--text); font-family:Tajawal, Cairo, sans-serif; line-height:1.8; overflow-x:hidden;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--text);font-family:Tajawal,Cairo,sans-serif;line-height:1.8;overflow-x:hidden;background:var(--bg);transition:font-family 0.3s;}
+html[lang="en"] body{font-family:Poppins,sans-serif;}
 
-/* الشريط المتحرك */
-.top-banner{
- background:linear-gradient(90deg, var(--primary), var(--success), var(--danger));
- color:#fff; padding:12px 0; overflow:hidden; white-space:nowrap;
- font-weight:bold; border-bottom:4px solid var(--gold);
- box-shadow: 0 4px 15px rgba(0,0,0,0.15);
- position: relative;
+.top-banner{background:linear-gradient(90deg,var(--primary),var(--purple));color:white;padding:10px 0;overflow:hidden;white-space:nowrap;font-size:14px;font-weight:700;border-bottom:3px solid var(--accent);}
+.banner-content{display:inline-block;animation:marquee-rtl 60s linear infinite;}
+.banner-content span{padding:0 30px;}
+@keyframes marquee-rtl{0%{transform:translateX(0);}100%{transform:translateX(100%);}}
+
+header{display:flex;align-items:center;justify-content:space-between;padding:15px 25px;font-size:19px;font-weight:900;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.06);flex-wrap:wrap;gap:10px;}
+.brand{display:flex;align-items:center;gap:12px;cursor:pointer;}
+.brand-mark{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;font-size:14px;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--primary),var(--purple));}
+.brand-name{font-size:13px;font-weight:800;color:var(--primary);padding:8px 16px;border-radius:999px;border:1px solid rgba(30,64,175,0.2);background:rgba(30,64,175,0.08);font-family:'Poppins',sans-serif;}
+.header-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+
+.lang-switch{display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--primary),var(--purple));color:white;border:none;cursor:pointer;padding:8px 18px;border-radius:999px;font-weight:800;font-size:14px;font-family:inherit;transition:0.3s;box-shadow:0 4px 12px rgba(30,64,175,0.3);}
+.lang-switch:hover{transform:scale(1.05);box-shadow:0 6px 18px rgba(30,64,175,0.4);}
+.lang-switch .flag{font-size:18px;}
+
+.container{max-width:1250px;margin:auto;padding:30px 18px;min-height:75vh;}
+.page-section{display:none;animation:fadeIn 0.4s ease;}
+.page-section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(15px);}to{opacity:1;transform:translateY(0);}}
+
+.hero-hub{text-align:center;padding:50px 20px;background:linear-gradient(135deg,rgba(30,64,175,0.08) 0%,rgba(124,58,237,0.08) 100%);border-radius:30px;border:1px solid rgba(30,64,175,0.1);margin-bottom:40px;position:relative;overflow:hidden;}
+.hero-hub::before{content:'EN';position:absolute;top:-30px;left:-10px;font-size:220px;font-weight:900;color:rgba(30,64,175,0.04);font-family:'Poppins',sans-serif;pointer-events:none;}
+.hero-hub h1{color:var(--primary-dark);font-size:clamp(32px,6vw,52px);margin-bottom:10px;font-weight:900;position:relative;}
+.hero-hub .subtitle{color:var(--muted);font-size:18px;margin-bottom:15px;position:relative;}
+.university-badge{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--warning));color:white;padding:8px 24px;border-radius:999px;font-weight:800;font-size:15px;margin-bottom:10px;position:relative;box-shadow:0 6px 20px rgba(217,119,6,0.3);}
+.time-badge{display:inline-block;background:var(--accent);color:white;padding:8px 24px;border-radius:999px;font-weight:800;font-size:15px;margin-bottom:30px;position:relative;box-shadow:0 6px 20px rgba(8,145,178,0.3);}
+.hub-buttons{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;position:relative;}
+.btn-main{padding:18px 30px;font-size:17px;font-weight:800;border-radius:16px;border:none;cursor:pointer;color:white;transition:0.3s;box-shadow:0 10px 25px rgba(0,0,0,0.1);display:flex;align-items:center;gap:10px;font-family:inherit;}
+.btn-main:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,0.15);}
+.btn-student{background:var(--primary);}
+.btn-teacher{background:var(--purple);}
+.btn-info{background:var(--success);}
+
+.doors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:30px;}
+.door-card{background:var(--surface);border:2px solid var(--border);border-radius:22px;padding:30px 22px;text-align:center;cursor:pointer;transition:0.3s;box-shadow:0 8px 20px rgba(0,0,0,0.03);position:relative;overflow:hidden;}
+.door-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--primary),var(--purple));}
+.door-card.door-register::before{background:var(--primary);}
+.door-card.door-students::before{background:var(--success);}
+.door-card.door-teacher::before{background:var(--purple);}
+.door-card.door-results::before{background:var(--gold);}
+.door-card:hover{transform:translateY(-6px);box-shadow:0 18px 35px rgba(0,0,0,0.1);border-color:var(--primary);}
+.door-icon{font-size:48px;margin-bottom:12px;display:block;}
+.door-card h2{color:var(--primary);margin:10px 0;font-size:22px;font-weight:900;}
+.door-card p{color:var(--muted);font-weight:700;font-size:14px;margin:8px 0 15px;}
+.door-card .door-task{background:var(--bg);padding:10px;border-radius:12px;font-weight:800;font-size:13px;color:var(--text);border:1px solid var(--border);}
+.door-card .door-number{position:absolute;top:15px;right:20px;width:34px;height:34px;border-radius:50%;background:var(--primary);color:white;display:grid;place-items:center;font-weight:900;font-size:14px;}
+.door-card.door-students .door-number{background:var(--success);}
+.door-card.door-teacher .door-number{background:var(--purple);}
+.door-card.door-results .door-number{background:var(--gold);}
+
+.section-header{text-align:center;margin:45px 0 15px;}
+.section-header h2{color:var(--primary-dark);font-size:28px;font-weight:900;margin-bottom:8px;}
+.section-header .line{width:80px;height:4px;margin:0 auto;background:linear-gradient(90deg,var(--primary),var(--purple));border-radius:999px;}
+
+.students-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:15px;}
+.student-mini{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px 15px;text-align:center;cursor:pointer;transition:0.2s;box-shadow:0 4px 15px rgba(0,0,0,0.03);}
+.student-mini:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 10px 25px rgba(0,0,0,0.08);}
+.student-mini .avatar{width:52px;height:52px;background:linear-gradient(135deg,var(--primary),var(--purple));color:white;border-radius:50%;display:grid;place-items:center;font-weight:900;margin:0 auto 10px;font-size:18px;}
+.student-mini h4{margin:8px 0;color:var(--text);font-size:16px;font-weight:800;}
+.student-mini p{margin:0;font-size:13px;color:var(--muted);line-height:1.4;}
+
+.profile-card{background:var(--surface);border-radius:24px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08);border:1px solid var(--border);}
+.profile-header{background:linear-gradient(135deg,var(--primary) 50%,var(--purple) 100%);padding:40px 30px;text-align:center;position:relative;}
+.profile-body{padding:20px 30px 40px;}
+.profile-title{text-align:center;margin-bottom:20px;}
+.profile-title h2{margin:0;font-size:28px;color:var(--text);font-weight:900;}
+.profile-title .job{color:var(--primary);font-size:17px;font-weight:700;margin-top:5px;}
+.profile-title .badge-list{background:var(--primary-dark);color:white;padding:5px 15px;border-radius:999px;font-size:13px;display:inline-block;margin-bottom:10px;font-weight:bold;}
+
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px;}
+.info-item{background:var(--bg);padding:15px;border-radius:12px;border:1px solid var(--border);}
+.info-item strong{display:block;color:var(--primary);margin-bottom:5px;font-size:14px;}
+
+.points-display{text-align:center;padding:30px;background:linear-gradient(135deg,var(--success),#047857);border-radius:16px;color:white;margin:20px 0;}
+.points-display .number{font-size:56px;font-weight:900;line-height:1;font-family:'Poppins',sans-serif;}
+.points-display .label{font-size:18px;font-weight:700;margin-top:5px;}
+
+.notes-box{margin-top:30px;background:var(--surface);padding:30px;border-radius:20px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,0.03);}
+.notes-box h3{color:var(--primary-dark);margin-top:0;border-bottom:2px solid var(--border);padding-bottom:10px;}
+.note-item{background:var(--bg);padding:15px;border-radius:12px;margin-top:15px;border:1px solid var(--border);border-right:4px solid var(--warning);}
+
+input,textarea,select{width:100%;padding:12px 15px;border-radius:10px;border:1px solid var(--border);font-family:inherit;margin-bottom:10px;font-size:15px;background:var(--bg);transition:0.2s;}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--primary);background:white;}
+button.btn-action{background:var(--primary);color:white;border:none;padding:12px 25px;border-radius:10px;font-weight:800;cursor:pointer;transition:0.2s;font-size:15px;font-family:inherit;}
+button.btn-action:hover{background:var(--primary-dark);transform:translateY(-2px);}
+button.btn-action:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+button.btn-success{background:var(--success);}
+button.btn-success:hover{background:#047857;}
+button.btn-danger{background:var(--danger);}
+button.btn-danger:hover{background:#b91c1c;}
+
+.btn-back{background:white;border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:10px;cursor:pointer;margin-bottom:20px;font-weight:bold;display:inline-flex;align-items:center;gap:8px;transition:0.2s;box-shadow:0 2px 5px rgba(0,0,0,0.02);font-family:inherit;}
+.btn-back:hover{background:var(--bg);border-color:var(--primary);color:var(--primary);}
+
+#teacherSection{display:none;}
+.teacher-dashboard-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:15px;margin-bottom:30px;}
+.admin-btn{background:white;border:2px solid var(--border);border-radius:12px;padding:18px 10px;text-align:center;cursor:pointer;transition:0.2s;font-weight:800;color:var(--text);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:13px;box-shadow:0 4px 10px rgba(0,0,0,0.02);font-family:inherit;}
+.admin-btn:hover{border-color:var(--purple);transform:translateY(-3px);box-shadow:0 8px 15px rgba(0,0,0,0.05);}
+.admin-btn.active{background:var(--purple);color:white;border-color:var(--purple);box-shadow:0 8px 15px rgba(124,58,237,0.3);}
+.admin-btn .icon{font-size:26px;}
+.admin-panel-content{background:var(--surface);border-radius:16px;padding:25px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,0.03);min-height:400px;}
+.stat-box{background:var(--bg);padding:20px;text-align:center;border-radius:12px;border:1px solid var(--border);margin-bottom:20px;}
+.stat-box strong{font-size:34px;color:var(--purple);display:block;margin-bottom:5px;font-family:'Poppins',sans-serif;}
+.stat-box span{font-weight:bold;color:var(--muted);}
+.hidden{display:none !important;}
+.admin-access-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:bold;font-family:inherit;transition:0.2s;}
+.admin-access-btn:hover{background:var(--bg);color:var(--purple);border-color:var(--purple);}
+
+.submission-item{background:white;border:1px solid var(--border);border-radius:12px;padding:15px;margin-bottom:10px;border-right:4px solid var(--success);}
+.submission-item .meta{font-size:13px;color:var(--muted);margin-bottom:8px;}
+.submission-item a{color:var(--primary);font-weight:700;text-decoration:none;}
+.submission-item a:hover{text-decoration:underline;}
+
+.badge-success{background:var(--success);color:white;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;}
+.dev-badge{font-size:12px;color:var(--purple);font-weight:800;padding:6px 12px;border-radius:999px;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);display:inline-block;}
+
+.alert{padding:12px 20px;border-radius:10px;margin:15px 0;font-weight:700;}
+.alert-success{background:#d1fae5;color:#065f46;border:1px solid #a7f3d0;}
+.alert-error{background:#fee2e2;color:#991b1b;border:1px solid #fecaca;}
+
+@media(max-width:768px){
+ .info-grid{grid-template-columns:1fr;}
+ .btn-main{width:100%;justify-content:center;}
+ .brand-name{display:none;}
+ .dev-badge{display:none;}
+ .lang-switch{padding:8px 14px;font-size:13px;}
+ .door-card{padding:25px 18px;}
 }
-.banner-content{
- display: inline-block; white-space: nowrap;
- animation: marquee 25s linear infinite; padding-left: 100%;
-}
-.banner-content span{ padding: 0 30px; font-size: 16px; display: inline-block; }
-@keyframes marquee{ 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-html[dir="rtl"] .banner-content { animation: marquee-rtl 25s linear infinite; }
-@keyframes marquee-rtl { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
-
-/* التصميم العام */
-.container{max-width:900px; margin:30px auto; padding:0 15px;}
-.box{background:var(--surface); border-radius:24px; padding:35px; box-shadow:0 15px 40px rgba(0,0,0,.06); border-top:8px solid var(--primary);}
-h1{text-align:center; color:var(--primary); font-size:clamp(24px, 5vw, 32px); margin:0; font-weight:900;}
-.sub{text-align:center; color:var(--danger); font-weight:800; margin-bottom:25px; font-size:18px;}
-
-/* رسالة التوجيه */
-.guide-notice {
- background: #e0f2fe; border: 2px solid #0284c7; color: #0c4a6e;
- padding: 25px; border-radius: 16px; text-align: center;
- font-weight: bold; margin-bottom: 30px; font-size: 16px; line-height: 1.9;
- box-shadow: 0 5px 15px rgba(2, 132, 199, 0.1);
-}
-.guide-notice span { color: var(--danger); font-size: 20px; }
-
-/* الصور */
-.image-gallery{display:flex; flex-wrap:wrap; gap:15px; justify-content:center; margin-bottom:30px;}
-.image-gallery img{max-width:100%; height:auto; border-radius:16px; border:2px solid var(--border); box-shadow: 0 8px 20px rgba(0,0,0,0.08); transition: 0.3s;}
-.image-gallery img:hover { transform: scale(1.02); }
-
-/* النموذج */
-.form-title { color: var(--primary); font-size: 22px; border-bottom: 2px solid var(--border); padding-bottom: 12px; margin-bottom: 25px; font-weight: 800;}
-label{display:block; font-weight:bold; color:var(--primary); margin:15px 0 8px; font-size: 16px;}
-.required-star { color: var(--danger); font-size: 18px; }
-input, textarea{width:100%; padding:14px 18px; font-size:16px; border:2px solid var(--border); border-radius:12px; background:#f8fafc; font-family:inherit; transition: 0.2s;}
-input:focus, textarea:focus{outline:none; border-color:var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1);}
-textarea{min-height:100px; resize:vertical;}
-
-.actions{text-align:center; margin-top:25px;}
-button.btn-action{padding:16px 30px; font-size:18px; font-weight:800; border:none; border-radius:12px; cursor:pointer; font-family:inherit; width:100%; background:var(--success); color:#fff; transition:0.3s; box-shadow: 0 5px 15px rgba(5, 150, 105, 0.3);}
-button.btn-action:hover{background:#047857; transform:translateY(-2px);}
-button.btn-action:disabled{background:#94a3b8; cursor:not-allowed; transform: none;}
-
-.msg{text-align:center; font-weight:bold; margin-top:15px; min-height:25px; font-size:16px;}
-.saved{color:var(--success);}
-.err{color:var(--danger);}
-
-/* رسالة المدير */
-.director-message {
- background: #fffbeb; border-right: 6px solid var(--warning);
- padding: 25px; border-radius: 16px; margin-top: 40px;
- color: #78350f; font-size: 16px; text-align: center;
- font-style: italic; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.1);
-}
-.director-message strong { color: #b45309; font-size: 18px; display: block; margin-bottom: 10px; font-style: normal;}
-
-/* معلومات الاتصال */
-.contact-info{background:#1e293b; color:#fff; border-radius:20px; padding:30px; text-align:center; margin-top:40px;}
-.phone-number{display:inline-block; background:var(--danger); color:#fff; padding:10px 25px; border-radius:50px; font-size:20px; font-weight:bold; text-decoration:none; margin-top:15px; transition: 0.2s;}
-.phone-number:hover { background: #b91c1c; transform: scale(1.05); }
-
-/* لوحة الإدارة */
-#adminSection { display: none; margin-top: 50px; }
-.admin-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-bottom: 25px; }
-.admin-btn { background: white; border: 2px solid var(--border); border-radius: 16px; padding: 20px 10px; text-align: center; cursor: pointer; transition: 0.2s; font-weight: 800; color: var(--text); display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
-.admin-btn:hover { border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.05); }
-.admin-btn.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 8px 15px rgba(30, 64, 175, 0.3);}
-.admin-btn .icon { font-size: 28px; }
-.admin-panel-content { background: white; border-radius: 20px; padding: 25px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03); min-height: 300px; }
-.stat-box { background: var(--bg); padding: 20px; text-align: center; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; }
-.stat-box strong { font-size: 34px; color: var(--danger); display: block; margin-bottom: 5px;}
-.stat-box span { font-weight: bold; color: var(--muted); }
-.data-item { background: #f8fafc; border: 1px solid var(--border); padding: 15px; border-radius: 12px; margin-bottom: 12px; border-right: 5px solid var(--primary); }
-.data-item p { margin: 5px 0; font-size: 15px; }
-.data-item strong { color: var(--primary); }
-.hidden { display: none !important; }
-
-.admin-access-btn { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 10px 20px; border-radius: 12px; cursor: pointer; font-weight: bold; font-family: inherit; transition: 0.2s; margin-top: 20px; width: 100%; font-size: 15px;}
-.admin-access-btn:hover { background: var(--bg); color: var(--primary); border-color: var(--primary); }
 </style>
 </head>
 <body>
 
-<!-- الشريط المتحرك -->
 <div class="top-banner">
-  <div class="banner-content">
-    <span>👨‍💻 تطوير: براهيمي يوسف — 0562175048</span>
-    <span>🏫 مركز التكوين المهني - وادي مرة</span>
-    <span>📢 منصة التوجيه والإرشاد المهني</span>
-    <span>👨‍💻 تطوير: براهيمي يوسف — 0562175048</span>
-    <span>🏫 مركز التكوين المهني - وادي مرة</span>
-  </div>
+ <div class="banner-content" id="bannerContent"></div>
 </div>
 
-<div class="container">
- <div class="box">
-  <h1>مركز التكوين المهني والتمهين</h1>
-  <p class="sub">وادي مرة — منصة التوجيه والإرشاد</p>
+<header>
+ <div class="brand" onclick="showPage('home')">
+  <span class="brand-mark">EN</span>
+  <span data-i18n="appName">University English Class</span>
+ </div>
+ <div class="header-actions">
+  <span class="brand-name">Université d'Aflou • Session 1h</span>
+  <span class="dev-badge" data-i18n="devCredit">👨‍💻 برمجة: براهيمي يوسف</span>
+  <button class="lang-switch" onclick="toggleLanguage()">
+   <span class="flag" id="langFlag">🇬🇧</span>
+   <span id="langText">English</span>
+  </button>
+  <button class="admin-access-btn" onclick="openTeacher()" data-i18n="teacherLogin">👩‍🏫 دخول الأستاذة</button>
+ </div>
+</header>
 
-  <div class="guide-notice">
-    📌 <strong>ملاحظة هامة:</strong> هذا الموقع مخصص <strong>فقط للتوجيه والإرشاد</strong>.<br>
-    عملية التسجيل الفعلية واختيار التخصصات تتم <strong>حضورياً في مقر المركز</strong>.<br><br>
-    ⚠️ <span>لتدوين أي تخصص في مقترحات المركز، يجب أن يجمع التخصص <strong>15 شخصاً على الأقل</strong>.</span><br>
-    <em>فبادر بدعوة أصدقائك وزملائك للتسجيل معك لفتح التخصص الذي ترغبون فيه!</em>
+<main class="container">
+
+<section id="page-home" class="page-section active">
+ <div class="hero-hub">
+  <div class="university-badge" data-i18n="universityName">🎓 جامعة أفلو - Université d'Aflou</div>
+  <h1 data-i18n="heroTitle">University English Session</h1>
+  <p class="subtitle" data-i18n="heroSubtitle">منصة الحصة الإنجليزية الجامعية - تسجيل، متابعة، وتقييم</p>
+  <div class="time-badge" data-i18n="sessionDuration">⏱️ مدة الحصة: ساعة واحدة فقط</div>
+  <div class="hub-buttons">
+   <button class="btn-main btn-student" onclick="showPage('student-register')" data-i18n="btnRegister">📝 تسجيل طالب</button>
+   <button class="btn-main btn-info" onclick="showPage('students-list')" data-i18n="btnStudents">👥 قائمة الطلبة</button>
+   <button class="btn-main btn-teacher" onclick="openTeacher()" data-i18n="btnTeacher">👩‍🏫 دخول الأستاذة</button>
   </div>
+ </div>
 
-  <div class="image-gallery">
-    <img src="https://i.postimg.cc/qvjpxCHD/1795783978938.jpg" alt="إعلان المركز 1" style="width:100%; max-width:600px;">
-    <img src="https://i.postimg.cc/VLFwzbvv/1795784220448.jpg" alt="إعلان المركز 2" style="width:100%; max-width:350px;">
+ <div class="section-header">
+  <h2 data-i18n="doorsTitle">🚪 أبواب المنصة</h2>
+  <div class="line"></div>
+ </div>
+
+ <div class="doors-grid">
+  <div class="door-card door-register" onclick="showPage('student-register')">
+   <span class="door-number">1</span>
+   <span class="door-icon">📝</span>
+   <h2 data-i18n="door1Title">باب التسجيل</h2>
+   <p data-i18n="door1Desc">تسجيل طالب جديد في الحصة الإنجليزية</p>
+   <div class="door-task" data-i18n="door1Task">📌 المهمة: ملء نموذج التسجيل بالبيانات الجامعية</div>
   </div>
+  <div class="door-card door-students" onclick="showPage('students-list')">
+   <span class="door-number">2</span>
+   <span class="door-icon">👥</span>
+   <h2 data-i18n="door2Title">باب الطلبة</h2>
+   <p data-i18n="door2Desc">تصفح قائمة الطلبة المسجلين ونقاطهم</p>
+   <div class="door-task" data-i18n="door2Task">📌 المهمة: عرض الطلبة، النقاط، ورفع الأعمال</div>
+  </div>
+  <div class="door-card door-teacher" onclick="openTeacher()">
+   <span class="door-number">3</span>
+   <span class="door-icon">👩‍🏫</span>
+   <h2 data-i18n="door3Title">باب الأستاذة</h2>
+   <p data-i18n="door3Desc">لوحة التحكم الكاملة للأستاذة الجامعية</p>
+   <div class="door-task" data-i18n="door3Task">📌 المهمة: إدارة الطلبة، النقاط، الملاحظات، والأعمال</div>
+  </div>
+  <div class="door-card door-results" onclick="showPage('results')">
+   <span class="door-number">4</span>
+   <span class="door-icon">🏆</span>
+   <h2 data-i18n="door4Title">باب النتائج</h2>
+   <p data-i18n="door4Desc">ترتيب الطلبة حسب النقاط</p>
+   <div class="door-task" data-i18n="door4Task">📌 المهمة: عرض لوحة الشرف والترتيب العام</div>
+  </div>
+ </div>
+</section>
 
-  <div class="form-title">✍️ سجل مقترحك (يجب جمع 15 شخصاً لفتح التخصص)</div>
-  
-  <form id="surveyForm">
-    <label>👤 الاسم واللقب <span class="required-star">*</span></label>
-    <input type="text" id="fullName" placeholder="مثال: محمد بن علي" required>
-
-    <label>📞 رقم الهاتف (اختياري)</label>
-    <input type="tel" id="phone" placeholder="05...">
-
-    <label>🎯 التخصص الذي ترغب في دراسته <span class="required-star">*</span></label>
-    <input type="text" id="specialty" placeholder="مثال: إعلام آلي، خياطة، كهرباء..." required>
-
-    <label>💡 أصدقاء يريدون نفس التخصص (اختياري)</label>
-    <textarea id="suggestion" placeholder="اكتب أسماء أو أرقام الأشخاص الذين سيسجلون معك..."></textarea>
-
-    <div class="actions">
-      <button type="submit" id="submitBtn" class="btn-action">📤 إرسال المقترح للمركز</button>
-    </div>
-    <div class="msg" id="formMsg"></div>
+<section id="page-student-register" class="page-section">
+ <button class="btn-back" onclick="showPage('home')" data-i18n="btnBackHome">← العودة للرئيسية</button>
+ <h2 style="color:var(--primary);text-align:center;margin-bottom:20px;" data-i18n="registerTitle">📝 تسجيل طالب جديد</h2>
+ <div class="notes-box" style="max-width:600px;margin:auto;">
+  <form id="registerForm">
+   <label style="font-weight:800;color:var(--primary);display:block;margin-bottom:5px;" data-i18n="labelFullName">الاسم الكامل *</label>
+   <input type="text" id="regName" required>
+   <label style="font-weight:800;color:var(--primary);display:block;margin-bottom:5px;" data-i18n="labelEmail">البريد الإلكتروني *</label>
+   <input type="email" id="regEmail" required>
+   <label style="font-weight:800;color:var(--primary);display:block;margin-bottom:5px;" data-i18n="labelPhone">رقم الهاتف</label>
+   <input type="tel" id="regPhone">
+   <label style="font-weight:800;color:var(--primary);display:block;margin-bottom:5px;" data-i18n="labelLevel">المستوى الجامعي *</label>
+   <select id="regLevel" required>
+    <option value="" data-i18n="selectLevel">-- اختر المستوى --</option>
+    <option value="L1" data-i18n="l1">ليسانس 1</option>
+    <option value="L2" data-i18n="l2">ليسانس 2</option>
+    <option value="L3" data-i18n="l3">ليسانس 3</option>
+    <option value="M1" data-i18n="m1">ماستر 1</option>
+    <option value="M2" data-i18n="m2">ماستر 2</option>
+    <option value="PhD" data-i18n="phd">دكتوراه</option>
+   </select>
+   <label style="font-weight:800;color:var(--primary);display:block;margin-bottom:5px;" data-i18n="labelSpecialty">التخصص / الشعبة</label>
+   <input type="text" id="regClass">
+   <label style="font-weight:800;color:var(--primary);display:block;margin-bottom:5px;" data-i18n="labelPassword">كلمة المرور * (6 أحرف على الأقل)</label>
+   <input type="password" id="regPassword" required minlength="6">
+   <button type="submit" class="btn-action btn-success" style="width:100%;font-size:18px;padding:15px;" id="registerBtn" data-i18n="btnSubmitRegister">✅ تسجيل</button>
   </form>
-
-  <div class="director-message" id="directorMessageBox">
-    <strong>💬 كلمة من إدارة المركز</strong>
-    "تكونو أنا أحد متكوني هذا المركز، واليوم بفضله افتتحت لي آفاق أخرى. بالتوفيق للجميع."<br><br>
-    <strong>— المدير: سفراني فرحاتي</strong><br>
-    وجميع العمال والزملاء<br><br>
-    <em>صُمم هذا الموقع لتحفيز الشباب على التكوين والتمهين. مستقبلك يبدأ من هنا!</em>
-  </div>
-
-  <div class="contact-info">
-    <h3>📞 معلومات الاتصال</h3>
-    <p><strong>براهيمي يوسف</strong> — مطور برامج وتطبيقات</p>
-    <a href="tel:0562175048" class="phone-number">📱 0562175048</a>
-    <p style="margin-top: 20px; font-size: 14px; color: #94a3b8;">مركز التكوين المهني والتمهين - وادي مرة</p>
-  </div>
-
-  <div style="text-align: center;">
-    <button class="admin-access-btn" onclick="openAdmin()">⚙️ دخول الإدارة</button>
-  </div>
+  <div id="registerMsg" style="text-align:center;font-weight:bold;margin-top:15px;"></div>
  </div>
+</section>
 
- <!-- لوحة الإدارة -->
- <div id="adminSection">
-  <div class="box" style="border-top-color: var(--danger);">
-   <h2 style="text-align:center; color:var(--danger); margin-top:0;">لوحة تحكم الإدارة</h2>
-   
-   <div id="adminLoginBox" style="text-align:center; max-width:400px; margin:auto;">
-    <p style="color:var(--muted);">أدخل رمز الدخول للوصول إلى الإعدادات:</p>
-    <input type="password" id="adminCode" placeholder="رمز الإدارة" style="text-align:center; font-size:20px; letter-spacing:5px;">
-    <button class="btn-action" id="adminLogin" style="width:100%; font-size:18px;">دخول</button>
-    <div id="adminMessage" style="font-size:14px; font-weight:bold; margin-top:10px;"></div>
+<section id="page-students-list" class="page-section">
+ <button class="btn-back" onclick="showPage('home')" data-i18n="btnBackHome">← العودة للرئيسية</button>
+ <h2 style="text-align:center;color:var(--primary);margin-bottom:20px;" data-i18n="studentsListTitle">👥 الطلبة المسجلون</h2>
+ <div class="students-grid" id="studentsGrid">
+  <p style="text-align:center;color:var(--muted);grid-column:1/-1;">Loading...</p>
+ </div>
+</section>
+
+<section id="page-student-profile" class="page-section">
+ <button class="btn-back" id="profileBackBtn">← Back</button>
+ <div class="profile-card" id="profileCard"></div>
+ <div class="notes-box">
+  <h3 data-i18n="notesTitle">📌 الملاحظات</h3>
+  <div id="studentNotes"><p style="color:var(--muted);">Loading...</p></div>
+ </div>
+ <div class="notes-box">
+  <h3 data-i18n="uploadTitle">📤 رفع العمل</h3>
+  <p style="color:var(--muted);" data-i18n="uploadDesc">ارفع واجبك أو عملك هنا (روابط Google Drive، PDF، صور...)</p>
+  <input type="text" id="submissionTitle" data-i18n-placeholder="submissionTitlePh" placeholder="عنوان العمل">
+  <input type="url" id="submissionLink" data-i18n-placeholder="submissionLinkPh" placeholder="رابط العمل">
+  <textarea id="submissionNote" data-i18n-placeholder="submissionNotePh" placeholder="ملاحظة اختيارية..." style="min-height:70px;"></textarea>
+  <button class="btn-action btn-success" onclick="submitWork()" style="width:100%;" id="submitWorkBtn" data-i18n="btnSubmitWork">📤 إرسال العمل</button>
+  <div id="submitMsg" style="text-align:center;font-weight:bold;margin-top:10px;"></div>
+  <h3 style="margin-top:30px;" data-i18n="myWorksTitle">📁 أعمالي المرفوعة</h3>
+  <div id="mySubmissions"><p style="color:var(--muted);">Loading...</p></div>
+ </div>
+</section>
+
+<section id="page-results" class="page-section">
+ <button class="btn-back" onclick="showPage('home')" data-i18n="btnBackHome">← العودة للرئيسية</button>
+ <h2 style="text-align:center;color:var(--gold);margin-bottom:20px;" data-i18n="resultsTitle">🏆 لوحة الشرف - ترتيب الطلبة</h2>
+ <div id="resultsList" style="max-width:700px;margin:auto;"></div>
+</section>
+
+<section id="teacherSection" class="page-section container" style="margin-top:50px;border-top:2px dashed var(--border);padding-top:30px;">
+ <h2 style="color:var(--purple);text-align:center;margin-bottom:30px;" data-i18n="teacherPanelTitle">👩‍🏫 لوحة تحكم الأستاذة</h2>
+ <div id="teacherLoginBox" style="text-align:center;max-width:400px;margin:auto;">
+  <p style="color:var(--muted);" data-i18n="teacherLoginDesc">أدخل رمز الدخول للوصول إلى لوحة التحكم:</p>
+  <input type="password" id="teacherCode" style="text-align:center;font-size:20px;letter-spacing:5px;" data-i18n-placeholder="teacherCodePh" placeholder="رمز الأستاذة">
+  <button class="btn-action" id="teacherLogin" style="width:100%;font-size:18px;background:var(--purple);" data-i18n="btnLogin">دخول</button>
+  <div id="teacherMessage" style="font-size:14px;font-weight:bold;margin-top:10px;"></div>
+ </div>
+ <div id="teacherPanel" class="hidden">
+  <div class="teacher-dashboard-grid">
+   <div class="admin-btn active" onclick="toggleTeacherView('stats')"><span class="icon">📊</span> <span data-i18n="tabStats">الإحصائيات</span></div>
+   <div class="admin-btn" onclick="toggleTeacherView('students')"><span class="icon">👥</span> <span data-i18n="tabStudents">الطلبة</span></div>
+   <div class="admin-btn" onclick="toggleTeacherView('points')"><span class="icon">⭐</span> <span data-i18n="tabPoints">النقاط</span></div>
+   <div class="admin-btn" onclick="toggleTeacherView('notes')"><span class="icon">📝</span> <span data-i18n="tabNotes">الملاحظات</span></div>
+   <div class="admin-btn" onclick="toggleTeacherView('submissions')"><span class="icon">📁</span> <span data-i18n="tabSubmissions">الأعمال</span></div>
+  </div>
+  <div class="admin-panel-content">
+   <div id="teacherStatsView">
+    <h3 style="color:var(--purple);margin-top:0;" data-i18n="statsTitle">إحصائيات عامة</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;">
+     <div class="stat-box"><strong id="dashStudents">0</strong> <span data-i18n="statStudents">طالب مسجل</span></div>
+     <div class="stat-box"><strong id="dashSubmissions">0</strong> <span data-i18n="statSubmissions">عمل مرفوع</span></div>
+     <div class="stat-box"><strong id="dashNotes">0</strong> <span data-i18n="statNotes">ملاحظة</span></div>
+     <div class="stat-box"><strong id="dashAvgPoints">0</strong> <span data-i18n="statAvgPoints">معدل النقاط</span></div>
+    </div>
    </div>
-
-   <div id="adminPanel" class="hidden">
-    <div class="admin-dashboard-grid">
-     <div class="admin-btn active" onclick="toggleAdminView('stats')"><span class="icon">📊</span> الإحصائيات</div>
-     <div class="admin-btn" onclick="toggleAdminView('surveys')"><span class="icon">📝</span> المقترحات</div>
-     <div class="admin-btn" onclick="toggleAdminView('visitors')"><span class="icon">👥</span> الزوار</div>
-     <div class="admin-btn" onclick="toggleAdminView('settings')"><span class="icon">⚙️</span> إعدادات الموقع</div>
+   <div id="teacherStudentsView" class="hidden">
+    <h3 style="color:var(--purple);margin-top:0;" data-i18n="manageStudentsTitle">إدارة الطلبة</h3>
+    <div id="teacherStudentsList"></div>
+   </div>
+   <div id="teacherPointsView" class="hidden">
+    <h3 style="color:var(--purple);margin-top:0;" data-i18n="managePointsTitle">إدارة النقاط</h3>
+    <p style="color:var(--muted);" data-i18n="managePointsDesc">اختر طالباً ثم أضف أو اطرح نقاطاً.</p>
+    <select id="pointsStudentSelect" style="margin-bottom:15px;"></select>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+     <input type="number" id="pointsAmount" style="flex:1;min-width:120px;" value="10">
+     <button class="btn-action btn-success" onclick="addPoints()" style="flex:1;" data-i18n="btnAddPoints">➕ إضافة</button>
+     <button class="btn-action btn-danger" onclick="subtractPoints()" style="flex:1;" data-i18n="btnSubtractPoints">➖ خصم</button>
     </div>
-
-    <div class="admin-panel-content">
-     <!-- الإحصائيات -->
-     <div id="adminStatsView">
-      <h3 style="color:var(--primary); margin-top:0;">إحصائيات عامة</h3>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
-       <div class="stat-box"><strong id="dashVisits">0</strong> <span>زائر</span></div>
-       <div class="stat-box"><strong id="dashSurveys">0</strong> <span>مقترح</span></div>
-      </div>
-     </div>
-
-     <!-- المقترحات -->
-     <div id="adminSurveysView" class="hidden">
-      <h3 style="color:var(--primary); margin-top:0;">المقترحات الواردة</h3>
-      <div id="surveysList"></div>
-     </div>
-
-     <!-- الزوار -->
-     <div id="adminVisitorsView" class="hidden">
-      <h3 style="color:var(--primary); margin-top:0;">سجل الزوار</h3>
-      <div id="visitorsList"></div>
-     </div>
-
-     <!-- إعدادات الموقع -->
-     <div id="adminSettingsView" class="hidden">
-      <h3 style="color:var(--primary); margin-top:0;">تعديل نصوص الموقع</h3>
-      <p style="color:var(--muted); font-size:14px;">أي تعديل هنا سيتم حفظه فوراً في قاعدة البيانات ويظهر لجميع الزوار.</p>
-      
-      <label>كلمة إدارة المركز:</label>
-      <textarea id="editDirectorMsg" style="min-height:120px;"></textarea>
-      
-      <button class="btn-action" onclick="saveSettings()" style="margin-top:15px; background:var(--primary);">💾 حفظ التعديلات</button>
-      <div id="saveSettingsMsg" style="text-align:center; font-weight:bold; margin-top:10px;"></div>
-     </div>
-    </div>
-    
-    <button class="btn-action" style="background:var(--danger); margin-top:20px;" onclick="document.getElementById('adminPanel').classList.add('hidden'); document.getElementById('adminLoginBox').style.display='block';">تسجيل الخروج</button>
+    <div id="pointsMsg" style="text-align:center;font-weight:bold;margin-top:10px;"></div>
+   </div>
+   <div id="teacherNotesView" class="hidden">
+    <h3 style="color:var(--purple);margin-top:0;" data-i18n="addNoteTitle">إضافة ملاحظة</h3>
+    <select id="noteStudentSelect" style="margin-bottom:15px;"></select>
+    <textarea id="noteText" style="min-height:100px;" data-i18n-placeholder="notePh" placeholder="اكتب الملاحظة هنا..."></textarea>
+    <button class="btn-action" onclick="addNote()" style="width:100%;" data-i18n="btnAddNote">📝 إضافة الملاحظة</button>
+    <div id="noteMsg" style="text-align:center;font-weight:bold;margin-top:10px;"></div>
+   </div>
+   <div id="teacherSubmissionsView" class="hidden">
+    <h3 style="color:var(--purple);margin-top:0;" data-i18n="allSubmissionsTitle">الأعمال المرفوعة</h3>
+    <div id="allSubmissions"></div>
    </div>
   </div>
+  <button class="btn-action btn-danger" style="margin-top:20px;width:100%;" onclick="logoutTeacher()" data-i18n="btnLogout">تسجيل الخروج</button>
  </div>
-</div>
+</section>
+
+</main>
+
+<footer style="text-align:center;padding:30px;color:var(--muted);border-top:1px solid var(--border);background:white;margin-top:50px;">
+ <p style="font-size:16px;"><strong>University English Session</strong> - <span data-i18n="universityName">🎓 جامعة أفلو</span></p>
+ <p style="font-weight:800;color:var(--primary);margin:10px 0;font-size:17px;" data-i18n="devCreditFooter">👨‍💻 تصميم وبرمجة: براهيمي يوسف</p>
+ <p data-i18n="footerSlogan">تعلم • تقدم • تفوق</p>
+ <button class="admin-access-btn" style="margin-top:15px;" onclick="openTeacher()" data-i18n="teacherLogin">👩‍🏫 دخول الأستاذة</button>
+</footer>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import { getDatabase, ref, push, onValue, update, remove, runTransaction, set, get } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+import { getDatabase, ref, push, onValue, update, remove } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
 const firebaseConfig = {
  apiKey: "AIzaSyCWNo0JmtA2Zz_hBOf-JgBjPVxX577Bjo4",
@@ -275,185 +386,648 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const $ = id => document.getElementById(id);
 
-// --- تسجيل الزيارات ---
-const visitorsRef = ref(db, "wadiMouraVisits");
-let visitorId = localStorage.getItem("wadiMouraVisitor") || (crypto.randomUUID ? crypto.randomUUID() : Date.now()+"-"+Math.random().toString(36).slice(2));
-localStorage.setItem("wadiMouraVisitor", visitorId);
-const myVisitorRef = ref(db, "wadiMouraVisits/" + visitorId);
+const translations = {
+ ar: {
+  appName:"منصة الإنجليزية الجامعية",
+  universityName:"🎓 جامعة أفلو - Université d'Aflou",
+  heroTitle:"الحصة الإنجليزية الجامعية",
+  heroSubtitle:"منصة تعليمية متكاملة - جامعة أفلو",
+  sessionDuration:"⏱️ مدة الحصة: ساعة واحدة فقط",
+  btnRegister:"📝 تسجيل طالب",
+  btnStudents:"👥 قائمة الطلبة",
+  btnTeacher:"👩‍🏫 دخول الأستاذة",
+  doorsTitle:"🚪 أبواب المنصة",
+  door1Title:"باب التسجيل",
+  door1Desc:"تسجيل طالب جديد في الحصة الإنجليزية",
+  door1Task:"📌 المهمة: ملء نموذج التسجيل بالبيانات الجامعية",
+  door2Title:"باب الطلبة",
+  door2Desc:"تصفح قائمة الطلبة المسجلين ونقاطهم",
+  door2Task:"📌 المهمة: عرض الطلبة، النقاط، ورفع الأعمال",
+  door3Title:"باب الأستاذة",
+  door3Desc:"لوحة التحكم الكاملة للأستاذة الجامعية",
+  door3Task:"📌 المهمة: إدارة الطلبة، النقاط، الملاحظات، والأعمال",
+  door4Title:"باب النتائج",
+  door4Desc:"ترتيب الطلبة حسب النقاط",
+  door4Task:"📌 المهمة: عرض لوحة الشرف والترتيب العام",
+  btnBackHome:"← العودة للرئيسية",
+  registerTitle:"📝 تسجيل طالب جديد",
+  labelFullName:"الاسم الكامل *",
+  labelEmail:"البريد الإلكتروني *",
+  labelPhone:"رقم الهاتف",
+  labelLevel:"المستوى الجامعي *",
+  selectLevel:"-- اختر المستوى --",
+  l1:"ليسانس 1", l2:"ليسانس 2", l3:"ليسانس 3",
+  m1:"ماستر 1", m2:"ماستر 2", phd:"دكتوراه",
+  labelSpecialty:"التخصص / الشعبة",
+  labelPassword:"كلمة المرور * (6 أحرف على الأقل)",
+  btnSubmitRegister:"✅ تسجيل",
+  studentsListTitle:"👥 الطلبة المسجلون",
+  notesTitle:"📌 الملاحظات",
+  uploadTitle:"📤 رفع العمل",
+  uploadDesc:"ارفع واجبك أو عملك هنا (روابط Google Drive، PDF، صور...)",
+  submissionTitlePh:"عنوان العمل",
+  submissionLinkPh:"رابط العمل",
+  submissionNotePh:"ملاحظة اختيارية...",
+  btnSubmitWork:"📤 إرسال العمل",
+  myWorksTitle:"📁 أعمالي المرفوعة",
+  resultsTitle:"🏆 لوحة الشرف - ترتيب الطلبة",
+  teacherPanelTitle:"👩‍🏫 لوحة تحكم الأستاذة",
+  teacherLoginDesc:"أدخل رمز الدخول للوصول إلى لوحة التحكم:",
+  teacherCodePh:"رمز الأستاذة",
+  btnLogin:"دخول",
+  tabStats:"الإحصائيات", tabStudents:"الطلبة", tabPoints:"النقاط", tabNotes:"الملاحظات", tabSubmissions:"الأعمال",
+  statsTitle:"إحصائيات عامة",
+  statStudents:"طالب مسجل", statSubmissions:"عمل مرفوع", statNotes:"ملاحظة", statAvgPoints:"معدل النقاط",
+  manageStudentsTitle:"إدارة الطلبة",
+  managePointsTitle:"إدارة النقاط",
+  managePointsDesc:"اختر طالباً ثم أضف أو اطرح نقاطاً.",
+  btnAddPoints:"➕ إضافة", btnSubtractPoints:"➖ خصم",
+  addNoteTitle:"إضافة ملاحظة",
+  notePh:"اكتب الملاحظة هنا...",
+  btnAddNote:"📝 إضافة الملاحظة",
+  allSubmissionsTitle:"الأعمال المرفوعة",
+  btnLogout:"تسجيل الخروج",
+  devCreditFooter:"👨‍💻 تصميم وبرمجة: براهيمي يوسف",
+  footerSlogan:"تعلم • تقدم • تفوق",
+  teacherLogin:"👩‍🏫 دخول الأستاذة",
+  devCredit:"👨‍💻 برمجة: براهيمي يوسف",
+  banner:["✦ منصة الحصة الإنجليزية الجامعية - جامعة أفلو ✦","👨‍💻 تصميم وبرمجة: براهيمي يوسف ✦","🎓 جامعة أفلو - Université d'Aflou ✦","⏱️ ساعة واحدة فقط للتعلم والتقدم ✦","💻 برمجة وتطوير: براهيمي يوسف ✦","🚪 أبواب المنصة: التسجيل • الطلبة • الأستاذة • النتائج ✦","✨ من إنجاز المبرمج: براهيمي يوسف ✦","✦ منصة الحصة الإنجليزية الجامعية - جامعة أفلو ✦","👨‍💻 تصميم وبرمجة: براهيمي يوسف ✦"],
+  pointsLabel:"⭐ إجمالي النقاط",
+  backToList:"← العودة للقائمة",
+  registeredSuccess:"✅ تم التسجيل بنجاح!",
+  emailExists:"❌ هذا البريد مسجل مسبقاً!",
+  error:"❌ خطأ: ",
+  studentCount:"عدد الطلبة: ",
+  noStudents:"لا يوجد طلبة مسجلون بعد.",
+  noNotes:"لا توجد ملاحظات بعد.",
+  noWorks:"لا توجد أعمال مرفوعة بعد.",
+  workUploaded:"✅ تم رفع العمل بنجاح!",
+  fillWorkFields:"❌ يرجى ملء العنوان والرابط.",
+  openWork:"🔗 فتح العمل",
+  pointsAdded:"✅ تمت إضافة النقاط.",
+  pointsSubtracted:"✅ تم خصم النقاط.",
+  chooseStudent:"❌ اختر طالباً أولاً.",
+  noteAdded:"✅ تمت إضافة الملاحظة.",
+  chooseAndWrite:"❌ اختر طالباً واكتب ملاحظة.",
+  deleteConfirm:"هل تريد حذف هذا الطالب نهائياً؟",
+  deleteWorkConfirm:"حذف هذا العمل؟",
+  deleted:"تم الحذف.",
+  wrongCode:"❌ الرمز السري خاطئ!",
+  phone:"رقم الهاتف",
+  registrationDate:"تاريخ التسجيل",
+  notSpecified:"غير محدد",
+  points:"نقطة",
+  delete:"🗑️ حذف",
+  rank:"الرتبة", student:"الطالب",
+  noResults:"لا توجد نتائج بعد."
+ },
+ en: {
+  appName:"University English Class",
+  universityName:"🎓 University of Aflou",
+  heroTitle:"University English Session",
+  heroSubtitle:"Integrated educational platform - University of Aflou",
+  sessionDuration:"⏱️ Session duration: Only 1 hour",
+  btnRegister:"📝 Register Student",
+  btnStudents:"👥 Students List",
+  btnTeacher:"👩‍🏫 Teacher Login",
+  doorsTitle:"🚪 Platform Doors",
+  door1Title:"Registration Door",
+  door1Desc:"Register a new student in the English session",
+  door1Task:"📌 Task: Fill the registration form with university data",
+  door2Title:"Students Door",
+  door2Desc:"Browse registered students and their points",
+  door2Task:"📌 Task: View students, points, and upload works",
+  door3Title:"Teacher Door",
+  door3Desc:"Full control panel for the university teacher",
+  door3Task:"📌 Task: Manage students, points, notes, and works",
+  door4Title:"Results Door",
+  door4Desc:"Rank students by points",
+  door4Task:"📌 Task: Display honor board and general ranking",
+  btnBackHome:"← Back to Home",
+  registerTitle:"📝 Student Registration",
+  labelFullName:"Full Name *",
+  labelEmail:"Email *",
+  labelPhone:"Phone Number",
+  labelLevel:"Academic Level *",
+  selectLevel:"-- Select Level --",
+  l1:"Bachelor 1", l2:"Bachelor 2", l3:"Bachelor 3",
+  m1:"Master 1", m2:"Master 2", phd:"PhD",
+  labelSpecialty:"Specialty / Department",
+  labelPassword:"Password * (min 6 chars)",
+  btnSubmitRegister:"✅ Register",
+  studentsListTitle:"👥 Registered Students",
+  notesTitle:"📌 Notes",
+  uploadTitle:"📤 Upload Work",
+  uploadDesc:"Upload your homework or work here (Google Drive, PDF, images...)",
+  submissionTitlePh:"Work title",
+  submissionLinkPh:"Work link",
+  submissionNotePh:"Optional note...",
+  btnSubmitWork:"📤 Submit Work",
+  myWorksTitle:"📁 My Uploaded Works",
+  resultsTitle:"🏆 Honor Board - Student Ranking",
+  teacherPanelTitle:"👩‍🏫 Teacher Control Panel",
+  teacherLoginDesc:"Enter access code to reach the control panel:",
+  teacherCodePh:"Teacher code",
+  btnLogin:"Login",
+  tabStats:"Statistics", tabStudents:"Students", tabPoints:"Points", tabNotes:"Notes", tabSubmissions:"Works",
+  statsTitle:"General Statistics",
+  statStudents:"Registered Students", statSubmissions:"Uploaded Works", statNotes:"Notes", statAvgPoints:"Average Points",
+  manageStudentsTitle:"Manage Students",
+  managePointsTitle:"Manage Points",
+  managePointsDesc:"Select a student then add or subtract points.",
+  btnAddPoints:"➕ Add", btnSubtractPoints:"➖ Subtract",
+  addNoteTitle:"Add Note",
+  notePh:"Write the note here...",
+  btnAddNote:"📝 Add Note",
+  allSubmissionsTitle:"Uploaded Works",
+  btnLogout:"Logout",
+  devCreditFooter:"👨‍💻 Designed & Developed by: Brahim Youssef",
+  footerSlogan:"Learn • Progress • Excel",
+  teacherLogin:"👩‍🏫 Teacher Login",
+  devCredit:"👨‍💻 Dev: Brahim Youssef",
+  banner:["✦ University English Session Platform - University of Aflou ✦","👨‍💻 Designed & Developed by: Brahim Youssef ✦","🎓 University of Aflou ✦","⏱️ Only one hour to learn and progress ✦","💻 Dev: Brahim Youssef ✦","🚪 Platform Doors: Registration • Students • Teacher • Results ✦","✨ By Developer: Brahim Youssef ✦","✦ University English Session Platform - University of Aflou ✦","👨‍💻 Designed & Developed by: Brahim Youssef ✦"],
+  pointsLabel:"⭐ Total Points",
+  backToList:"← Back to List",
+  registeredSuccess:"✅ Registered successfully!",
+  emailExists:"❌ This email is already registered!",
+  error:"❌ Error: ",
+  studentCount:"Students count: ",
+  noStudents:"No students registered yet.",
+  noNotes:"No notes yet.",
+  noWorks:"No works uploaded yet.",
+  workUploaded:"✅ Work uploaded successfully!",
+  fillWorkFields:"❌ Please fill the title and link.",
+  openWork:"🔗 Open Work",
+  pointsAdded:"✅ Points added.",
+  pointsSubtracted:"✅ Points subtracted.",
+  chooseStudent:"❌ Please select a student first.",
+  noteAdded:"✅ Note added.",
+  chooseAndWrite:"❌ Select a student and write a note.",
+  deleteConfirm:"Delete this student permanently?",
+  deleteWorkConfirm:"Delete this work?",
+  deleted:"Deleted.",
+  wrongCode:"❌ Wrong access code!",
+  phone:"Phone",
+  registrationDate:"Registration Date",
+  notSpecified:"Not specified",
+  points:"pts",
+  delete:"🗑️ Delete",
+  rank:"Rank", student:"Student",
+  noResults:"No results yet."
+ }
+};
 
-async function recordVisit() {
- try {
-  await runTransaction(myVisitorRef, c => {
-   c = c || {};
-   return { ...c, lastVisit: Date.now(), visits: (Number(c.visits)||0) + 1 };
-  });
- } catch(e) { console.error(e); }
+let currentLang = localStorage.getItem('siteLang') || 'ar';
+function t(key){ return translations[currentLang][key] || key; }
+
+window.toggleLanguage = function(){
+ currentLang = currentLang === 'ar' ? 'en' : 'ar';
+ localStorage.setItem('siteLang', currentLang);
+ applyLanguage();
 }
-recordVisit();
 
-// --- نموذج إرسال المقترح ---
-const form = $('surveyForm');
-const msg = $('formMsg');
-const btn = $('submitBtn');
+function applyLanguage(){
+ document.documentElement.lang = currentLang;
+ document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+ document.querySelectorAll('[data-i18n]').forEach(el => {
+  const key = el.getAttribute('data-i18n');
+  if(translations[currentLang][key]) el.textContent = translations[currentLang][key];
+ });
+ document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+  const key = el.getAttribute('data-i18n-placeholder');
+  if(translations[currentLang][key]) el.placeholder = translations[currentLang][key];
+ });
+ document.getElementById('langFlag').textContent = currentLang === 'ar' ? '🇬🇧' : '🇩🇿';
+ document.getElementById('langText').textContent = currentLang === 'ar' ? 'English' : 'العربية';
+ renderBanner();
+ if($('homeStudentsCount')) $('homeStudentsCount').textContent = t('studentCount') + Object.keys(allStudents).length;
+ if(document.getElementById('page-students-list').classList.contains('active')) renderStudentsList();
+ if(document.getElementById('page-results').classList.contains('active')) renderResults();
+}
 
-form.addEventListener('submit', async (e) => {
- e.preventDefault();
- 
- const name = $('fullName').value.trim();
- const phone = $('phone').value.trim();
- const specialty = $('specialty').value.trim();
- const suggestion = $('suggestion').value.trim();
+function renderBanner(){
+ const banner = $('bannerContent');
+ banner.innerHTML = '';
+ translations[currentLang].banner.forEach(text => {
+  const span = document.createElement('span');
+  span.textContent = text;
+  banner.appendChild(span);
+ });
+}
 
- const nameRegex = /^[a-zA-Z\u0600-\u06FF\s]{3,}$/;
- if (name.length < 3 || !nameRegex.test(name) || name.split(' ').length < 2) {
-  showMsg('❌ خطأ: يرجى كتابة الاسم واللقب الحقيقي (كلمتين على الأقل).', 'err');
-  return;
+document.addEventListener('DOMContentLoaded', applyLanguage);
+
+window.showPage = function(pageId){
+ document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
+ const target = $('page-' + pageId);
+ if(target){
+  target.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
  }
+ if(pageId === 'students-list') renderStudentsList();
+ if(pageId === 'results') renderResults();
+ if(pageId === 'home') document.getElementById('teacherSection').style.display = 'none';
+}
 
- if (specialty.length < 2) {
-  showMsg('❌ خطأ: يجب عليك كتابة التخصص الذي ترغب فيه.', 'err');
-  return;
- }
+let allStudents = {};
+let currentStudentId = null;
+let teacherLoggedIn = false;
 
- btn.disabled = true;
- btn.textContent = '⏳ جاري الإرسال...';
-
- try {
-  await push(ref(db, "wadiMouraSurveys"), {
-   name: name,
-   phone: phone || 'غير مذكور',
-   specialty: specialty,
-   suggestion: suggestion || 'لا يوجد',
-   createdAt: Date.now()
-  });
-
-  showMsg('✅ شكراً لك! تم استلام مقترحك. ننتظرك في المركز للتسجيل الفعلي.', 'saved');
-  form.reset();
- } catch (error) {
-  console.error(error);
-  showMsg('❌ حدث خطأ. يرجى المحاولة لاحقاً.', 'err');
- } finally {
-  btn.disabled = false;
-  btn.textContent = '📤 إرسال المقترح للمركز';
+onValue(ref(db, 'students'), (s) => {
+ allStudents = s.val() || {};
+ const count = Object.keys(allStudents).length;
+ if($('homeStudentsCount')) $('homeStudentsCount').textContent = t('studentCount') + count;
+ if(document.getElementById('page-students-list').classList.contains('active')) renderStudentsList();
+ if(document.getElementById('page-results').classList.contains('active')) renderResults();
+ if(teacherLoggedIn){
+  renderTeacherStudents();
+  renderPointsSelect();
+  renderNoteSelect();
+  updateTeacherStats();
  }
 });
 
-function showMsg(text, className) {
- msg.textContent = text;
- msg.className = 'msg ' + className;
- setTimeout(() => { msg.textContent = ''; }, 5000);
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
+ e.preventDefault();
+ const btn = $('registerBtn');
+ const msg = $('registerMsg');
+ btn.disabled = true;
+ btn.textContent = "...";
+
+ const name = $('regName').value.trim();
+ const email = $('regEmail').value.trim().toLowerCase();
+ const phone = $('regPhone').value.trim();
+ const level = $('regLevel').value;
+ const cls = $('regClass').value.trim();
+ const password = $('regPassword').value;
+
+ try {
+  for(let id in allStudents){
+   if(allStudents[id].email === email){
+    msg.textContent = t('emailExists');
+    msg.style.color = "var(--danger)";
+    btn.disabled = false;
+    btn.textContent = t('btnSubmitRegister');
+    return;
+   }
+  }
+  await push(ref(db, 'students'), { name, email, phone, level, cls, password, points: 0, createdAt: Date.now() });
+  msg.textContent = t('registeredSuccess');
+  msg.style.color = "var(--success)";
+  $('registerForm').reset();
+  setTimeout(() => showPage('students-list'), 1500);
+ } catch(err){
+  msg.textContent = t('error') + err.message;
+  msg.style.color = "var(--danger)";
+ } finally {
+  btn.disabled = false;
+  btn.textContent = t('btnSubmitRegister');
+ }
+});
+
+function renderStudentsList(){
+ const grid = $('studentsGrid');
+ if(!grid) return;
+ grid.innerHTML = '';
+ const entries = Object.entries(allStudents).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
+ if(entries.length === 0){
+  grid.innerHTML = `<p style='text-align:center;color:var(--muted);grid-column:1/-1;'>${t('noStudents')}</p>`;
+  return;
+ }
+ entries.forEach(([id, st]) => {
+  const div = document.createElement('div');
+  div.className = 'student-mini';
+  div.onclick = () => openStudent(id);
+  const initials = st.name.split(' ').map(w => w[0]).slice(0,2).join('').toUpperCase();
+  div.innerHTML = `
+   <div class="avatar">${initials}</div>
+   <h4>${st.name}</h4>
+   <p>${st.level || ''} ${st.cls ? '- ' + st.cls : ''}</p>
+   <p style="color:var(--success);font-weight:800;margin-top:8px;">⭐ ${st.points || 0} ${t('points')}</p>
+  `;
+  grid.appendChild(div);
+ });
 }
 
-// --- لوحة الإدارة ---
-let adminLoggedIn = false;
-let allSurveys = {}, allVisits = {};
+function renderResults(){
+ const box = $('resultsList');
+ if(!box) return;
+ const entries = Object.entries(allStudents).sort((a,b) => (b[1].points||0) - (a[1].points||0));
+ if(entries.length === 0){
+  box.innerHTML = `<p style='text-align:center;color:var(--muted);'>${t('noResults')}</p>`;
+  return;
+ }
+ box.innerHTML = '';
+ const medals = ['🥇','🥈','🥉'];
+ entries.forEach(([id, st], idx) => {
+  const medal = idx < 3 ? medals[idx] : `#${idx+1}`;
+  const div = document.createElement('div');
+  div.className = 'submission-item';
+  div.style.borderRight = idx < 3 ? '4px solid var(--gold)' : '4px solid var(--primary)';
+  div.style.display = 'flex';
+  div.style.justifyContent = 'space-between';
+  div.style.alignItems = 'center';
+  div.style.flexWrap = 'wrap';
+  div.innerHTML = `
+   <div style="display:flex;align-items:center;gap:12px;">
+    <span style="font-size:24px;font-weight:900;">${medal}</span>
+    <div>
+     <strong>${st.name}</strong><br>
+     <span class="meta">${st.level || ''} ${st.cls || ''}</span>
+    </div>
+   </div>
+   <span class="badge-success" style="font-size:16px;padding:6px 16px;">⭐ ${st.points || 0} ${t('points')}</span>
+  `;
+  box.appendChild(div);
+ });
+}
 
-window.openAdmin = function() {
- $('adminSection').style.display = 'block';
+window.openStudent = function(studentId){
+ currentStudentId = studentId;
+ const st = allStudents[studentId];
+ if(!st) return;
+ const backBtn = $('profileBackBtn');
+ backBtn.textContent = t('backToList');
+ backBtn.onclick = () => showPage('students-list');
+ $('submitMsg').textContent = '';
+ $('submissionTitle').value = '';
+ $('submissionLink').value = '';
+ $('submissionNote').value = '';
+ const initials = st.name.split(' ').map(w => w[0]).slice(0,2).join('').toUpperCase();
+ const card = $('profileCard');
+ card.innerHTML = `
+  <div class="profile-header">
+   <div style="width:130px;height:130px;border-radius:50%;background:white;display:grid;place-items:center;margin:0 auto;font-size:40px;font-weight:900;color:var(--primary);box-shadow:0 10px 20px rgba(0,0,0,0.2);">${initials}</div>
+  </div>
+  <div class="profile-body">
+   <div class="profile-title">
+    <span class="badge-list">${st.level || ''} ${st.cls ? '| ' + st.cls : ''}</span>
+    <h2>${st.name}</h2>
+    <p class="job">${st.email}</p>
+   </div>
+   <div class="points-display">
+    <div class="number">${st.points || 0}</div>
+    <div class="label">${t('pointsLabel')}</div>
+   </div>
+   <div class="info-grid">
+    <div class="info-item"><strong>${t('phone')}</strong><span>${st.phone || t('notSpecified')}</span></div>
+    <div class="info-item"><strong>${t('registrationDate')}</strong><span>${new Date(st.createdAt).toLocaleDateString(currentLang === 'ar' ? 'ar-DZ' : 'en-US')}</span></div>
+   </div>
+  </div>
+ `;
+ showPage('student-profile');
+ loadStudentNotes(studentId);
+ loadStudentSubmissions(studentId);
+}
+
+function loadStudentNotes(studentId){
+ onValue(ref(db, `notes/${studentId}`), (s) => {
+  const box = $('studentNotes');
+  const data = s.val() || {};
+  const entries = Object.entries(data).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
+  if(entries.length === 0){ box.innerHTML = `<p style='color:var(--muted);'>${t('noNotes')}</p>`; return; }
+  box.innerHTML = '';
+  entries.forEach(([id, n]) => {
+   const div = document.createElement('div');
+   div.className = 'note-item';
+   div.innerHTML = `<p style="margin:0 0 5px 0;font-weight:700;">${n.text}</p>
+   <span style="font-size:12px;color:var(--muted);">${new Date(n.createdAt).toLocaleString(currentLang === 'ar' ? 'ar-DZ' : 'en-US')}</span>`;
+   box.appendChild(div);
+  });
+ });
+}
+
+window.submitWork = async function(){
+ if(!currentStudentId) return;
+ const title = $('submissionTitle').value.trim();
+ const link = $('submissionLink').value.trim();
+ const note = $('submissionNote').value.trim();
+ const msg = $('submitMsg');
+ const btn = $('submitWorkBtn');
+ if(!title || !link){
+  msg.textContent = t('fillWorkFields');
+  msg.style.color = "var(--danger)";
+  return;
+ }
+ btn.disabled = true;
+ btn.textContent = "...";
+ try {
+  await push(ref(db, `submissions/${currentStudentId}`), { title, link, note, studentId: currentStudentId, createdAt: Date.now() });
+  msg.textContent = t('workUploaded');
+  msg.style.color = "var(--success)";
+  $('submissionTitle').value = '';
+  $('submissionLink').value = '';
+  $('submissionNote').value = '';
+ } catch(err){
+  msg.textContent = t('error') + err.message;
+  msg.style.color = "var(--danger)";
+ } finally {
+  btn.disabled = false;
+  btn.textContent = t('btnSubmitWork');
+ }
+}
+
+function loadStudentSubmissions(studentId){
+ onValue(ref(db, `submissions/${studentId}`), (s) => {
+  const box = $('mySubmissions');
+  const data = s.val() || {};
+  const entries = Object.entries(data).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
+  if(entries.length === 0){ box.innerHTML = `<p style='color:var(--muted);'>${t('noWorks')}</p>`; return; }
+  box.innerHTML = '';
+  entries.forEach(([id, sub]) => {
+   const div = document.createElement('div');
+   div.className = 'submission-item';
+   div.innerHTML = `
+    <div class="meta">${new Date(sub.createdAt).toLocaleString(currentLang === 'ar' ? 'ar-DZ' : 'en-US')}</div>
+    <strong>${sub.title}</strong><br>
+    <a href="${sub.link}" target="_blank">${t('openWork')}</a>
+    ${sub.note ? '<p style="font-size:13px;color:var(--muted);margin:5px 0;">' + sub.note + '</p>' : ''}
+   `;
+   box.appendChild(div);
+  });
+ });
+}
+
+window.openTeacher = function(){
+ document.getElementById('teacherSection').style.display = 'block';
  window.scrollTo(0, document.body.scrollHeight);
 }
 
-// جلب البيانات
-onValue(ref(db, "wadiMouraSurveys"), s => {
- allSurveys = s.val() || {};
- $('dashSurveys').textContent = Object.keys(allSurveys).length;
- if(adminLoggedIn) renderSurveys();
-});
-
-onValue(visitorsRef, s => {
- allVisits = s.val() || {};
- $('dashVisits').textContent = Object.keys(allVisits).length;
- if(adminLoggedIn) renderVisitors();
-});
-
-// جلب إعدادات الموقع
-onValue(ref(db, "wadiMouraSettings/directorMsg"), s => {
- if(s.exists()) {
-  $('directorMessageBox').innerHTML = s.val();
-  $('editDirectorMsg').value = s.val();
- }
-});
-
-$('adminLogin').addEventListener('click', () => {
- if($('adminCode').value !== "031984") {
-  $('adminMessage').textContent = "الرمز السري خاطئ!";
-  $('adminMessage').style.color = "red";
+document.getElementById('teacherLogin').addEventListener('click', () => {
+ if($('teacherCode').value !== "1234"){
+  $('teacherMessage').textContent = t('wrongCode');
+  $('teacherMessage').style.color = "var(--danger)";
   return;
  }
- adminLoggedIn = true;
- $('adminLoginBox').style.display = "none";
- $('adminPanel').classList.remove('hidden');
- 
- toggleAdminView('stats');
- renderSurveys();
- renderVisitors();
+ teacherLoggedIn = true;
+ $('teacherLoginBox').style.display = "none";
+ $('teacherPanel').classList.remove('hidden');
+ toggleTeacherView('stats');
+ renderTeacherStudents();
+ renderPointsSelect();
+ renderNoteSelect();
+ updateTeacherStats();
 });
 
-window.toggleAdminView = function(view) {
- ['stats', 'surveys', 'visitors', 'settings'].forEach(v => {
-  $('admin' + v.charAt(0).toUpperCase() + v.slice(1) + 'View').classList.add('hidden');
+window.logoutTeacher = function(){
+ teacherLoggedIn = false;
+ $('teacherPanel').classList.add('hidden');
+ $('teacherLoginBox').style.display = "block";
+ $('teacherCode').value = '';
+ $('teacherMessage').textContent = '';
+}
+
+window.toggleTeacherView = function(view){
+ ['stats','students','points','notes','submissions'].forEach(v => {
+  const el = $('teacher' + v.charAt(0).toUpperCase() + v.slice(1) + 'View');
+  if(el) el.classList.add('hidden');
  });
  document.querySelectorAll('.admin-btn').forEach(btn => btn.classList.remove('active'));
-
- $('admin' + view.charAt(0).toUpperCase() + view.slice(1) + 'View').classList.remove('hidden');
- 
- const btn = Array.from(document.querySelectorAll('.admin-btn')).find(b => b.getAttribute('onclick').includes(view));
+ const targetView = $('teacher' + view.charAt(0).toUpperCase() + view.slice(1) + 'View');
+ if(targetView) targetView.classList.remove('hidden');
+ const btn = Array.from(document.querySelectorAll('.admin-btn')).find(b => b.getAttribute('onclick')?.includes(view));
  if(btn) btn.classList.add('active');
+ if(view === 'students') renderTeacherStudents();
+ if(view === 'points') renderPointsSelect();
+ if(view === 'notes') renderNoteSelect();
+ if(view === 'submissions') renderAllSubmissions();
+ if(view === 'stats') updateTeacherStats();
 }
 
-function renderSurveys() {
- const box = $('surveysList');
+function renderTeacherStudents(){
+ const box = $('teacherStudentsList');
+ if(!box) return;
  box.innerHTML = '';
- const entries = Object.entries(allSurveys).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
- 
- if(entries.length === 0) { box.innerHTML = "<p style='color:var(--muted);'>لا توجد مقترحات بعد.</p>"; return; }
-
- entries.forEach(([id, data]) => {
+ const entries = Object.entries(allStudents).sort((a,b) => (b[1].createdAt||0) - (a[1].createdAt||0));
+ if(entries.length === 0){ box.innerHTML = `<p style='color:var(--muted);'>${t('noStudents')}</p>`; return; }
+ entries.forEach(([id, st]) => {
   const div = document.createElement('div');
-  div.className = 'data-item';
+  div.className = 'submission-item';
   div.innerHTML = `
-   <p><strong>الاسم:</strong> ${data.name}</p>
-   <p><strong>الهاتف:</strong> ${data.phone}</p>
-   <p><strong>التخصص المطلوب:</strong> <span style="color:var(--danger); font-weight:bold;">${data.specialty}</span></p>
-   <p><strong>أصدقاء:</strong> ${data.suggestion}</p>
-   <p style="font-size:12px; color:var(--muted); margin-top:10px;">التاريخ: ${new Date(data.createdAt).toLocaleString('ar-DZ')}</p>
+   <strong>${st.name}</strong> <span class="badge-success">${st.points || 0} ${t('points')}</span><br>
+   <span class="meta">${st.email} | ${st.level || ''} ${st.cls || ''}</span><br>
+   <button class="btn-action btn-danger" style="font-size:12px;padding:6px 12px;margin-top:8px;" onclick="deleteStudent('${id}')">${t('delete')}</button>
   `;
   box.appendChild(div);
  });
 }
 
-function renderVisitors() {
- const box = $('visitorsList');
- box.innerHTML = '';
- const entries = Object.entries(allVisits).sort((a,b) => (b[1].lastVisit||0) - (a[1].lastVisit||0));
- entries.forEach(([id, d]) => {
-  const div = document.createElement('div');
-  div.className = 'data-item';
-  div.innerHTML = `
-   <p><strong>زائر:</strong> ${id.slice(0,10)}</p>
-   <p><strong>آخر زيارة:</strong> ${new Date(d.lastVisit).toLocaleString('ar-DZ')}</p>
-  `;
-  box.appendChild(div);
+window.deleteStudent = async function(id){
+ if(!confirm(t('deleteConfirm'))) return;
+ await remove(ref(db, `students/${id}`));
+ await remove(ref(db, `notes/${id}`));
+ await remove(ref(db, `submissions/${id}`));
+ alert(t('deleted'));
+}
+
+function renderPointsSelect(){
+ const sel = $('pointsStudentSelect');
+ if(!sel) return;
+ sel.innerHTML = `<option value="">${currentLang === 'ar' ? '-- اختر طالباً --' : '-- Select a student --'}</option>`;
+ Object.entries(allStudents).forEach(([id, st]) => {
+  sel.innerHTML += `<option value="${id}">${st.name} (${st.points || 0} ${t('points')})</option>`;
  });
 }
 
-window.saveSettings = async function() {
- const newMsg = $('editDirectorMsg').value.trim();
- const msgBox = $('saveSettingsMsg');
- 
+function renderNoteSelect(){
+ const sel = $('noteStudentSelect');
+ if(!sel) return;
+ sel.innerHTML = `<option value="">${currentLang === 'ar' ? '-- اختر طالباً --' : '-- Select a student --'}</option>`;
+ Object.entries(allStudents).forEach(([id, st]) => {
+  sel.innerHTML += `<option value="${id}">${st.name}</option>`;
+ });
+}
+
+window.addPoints = async function(){
+ const sid = $('pointsStudentSelect').value;
+ const amount = parseInt($('pointsAmount').value) || 10;
+ if(!sid){ $('pointsMsg').textContent = t('chooseStudent'); $('pointsMsg').style.color = "var(--danger)"; return; }
  try {
-  await set(ref(db, "wadiMouraSettings/directorMsg"), newMsg);
-  msgBox.textContent = "✅ تم حفظ التعديلات بنجاح!";
-  msgBox.style.color = "green";
-  msgBox.style.marginTop = "10px";
-  msgBox.style.textAlign = "center";
-  msgBox.style.fontWeight = "bold";
- } catch(e) {
-  msgBox.textContent = "❌ خطأ: " + e.message;
-  msgBox.style.color = "red";
- }
+  const st = allStudents[sid];
+  await update(ref(db, `students/${sid}`), { points: (st.points || 0) + amount });
+  $('pointsMsg').textContent = t('pointsAdded');
+  $('pointsMsg').style.color = "var(--success)";
+ } catch(e){ $('pointsMsg').textContent = t('error') + e.message; $('pointsMsg').style.color = "var(--danger)"; }
+}
+
+window.subtractPoints = async function(){
+ const sid = $('pointsStudentSelect').value;
+ const amount = parseInt($('pointsAmount').value) || 10;
+ if(!sid){ $('pointsMsg').textContent = t('chooseStudent'); $('pointsMsg').style.color = "var(--danger)"; return; }
+ try {
+  const st = allStudents[sid];
+  await update(ref(db, `students/${sid}`), { points: Math.max(0, (st.points || 0) - amount) });
+  $('pointsMsg').textContent = t('pointsSubtracted');
+  $('pointsMsg').style.color = "var(--success)";
+ } catch(e){ $('pointsMsg').textContent = t('error') + e.message; $('pointsMsg').style.color = "var(--danger)"; }
+}
+
+window.addNote = async function(){
+ const sid = $('noteStudentSelect').value;
+ const text = $('noteText').value.trim();
+ if(!sid || !text){ $('noteMsg').textContent = t('chooseAndWrite'); $('noteMsg').style.color = "var(--danger)"; return; }
+ try {
+  await push(ref(db, `notes/${sid}`), { text, createdAt: Date.now() });
+  $('noteMsg').textContent = t('noteAdded');
+  $('noteMsg').style.color = "var(--success)";
+  $('noteText').value = '';
+ } catch(e){ $('noteMsg').textContent = t('error') + e.message; $('noteMsg').style.color = "var(--danger)"; }
+}
+
+function renderAllSubmissions(){
+ const box = $('allSubmissions');
+ if(!box) return;
+ onValue(ref(db, 'submissions'), (s) => {
+  const data = s.val() || {};
+  box.innerHTML = '';
+  let hasAny = false;
+  for(let sid in data){
+   const st = allStudents[sid];
+   const stName = st ? st.name : 'Unknown';
+   for(let subId in data[sid]){
+    hasAny = true;
+    const sub = data[sid][subId];
+    const div = document.createElement('div');
+    div.className = 'submission-item';
+    div.innerHTML = `
+     <strong>${stName}</strong> - <span>${sub.title}</span><br>
+     <span class="meta">${new Date(sub.createdAt).toLocaleString(currentLang === 'ar' ? 'ar-DZ' : 'en-US')}</span><br>
+     <a href="${sub.link}" target="_blank">${t('openWork')}</a>
+     ${sub.note ? '<p style="font-size:13px;color:var(--muted);">' + sub.note + '</p>' : ''}
+     <button class="btn-action btn-danger" style="font-size:12px;padding:6px 12px;margin-top:8px;" onclick="deleteSubmission('${sid}','${subId}')">${t('delete')}</button>
+    `;
+    box.appendChild(div);
+   }
+  }
+  if(!hasAny) box.innerHTML = `<p style='color:var(--muted);'>${t('noWorks')}</p>`;
+ });
+}
+
+window.deleteSubmission = async function(sid, subId){
+ if(!confirm(t('deleteWorkConfirm'))) return;
+ await remove(ref(db, `submissions/${sid}/${subId}`));
+}
+
+function updateTeacherStats(){
+ const count = Object.keys(allStudents).length;
+ let totalPoints = 0;
+ Object.values(allStudents).forEach(st => totalPoints += (st.points || 0));
+ const avg = count > 0 ? Math.round(totalPoints / count) : 0;
+ $('dashStudents').textContent = count;
+ $('dashAvgPoints').textContent = avg;
+ let subCount = 0;
+ onValue(ref(db, 'submissions'), (s) => {
+  const data = s.val() || {};
+  for(let sid in data) subCount += Object.keys(data[sid]).length;
+  $('dashSubmissions').textContent = subCount;
+ });
+ let noteCount = 0;
+ onValue(ref(db, 'notes'), (s) => {
+  const data = s.val() || {};
+  for(let sid in data) noteCount += Object.keys(data[sid]).length;
+  $('dashNotes').textContent = noteCount;
+ });
 }
 </script>
-
 </body>
 </html>
