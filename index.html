@@ -61,7 +61,7 @@ button:hover{background:#047857;}
   const db = getFirestore(app);
 
   // ⚠️ ضع نفس كلمة المرور التي وضعتها في Firestore Rules
-  const ADMIN_PASSWORD = "YOUR_ADMIN_PASSWORD";
+  const ADMIN_PASSWORD = "YOUR_SECRET_PASSWORD";
 
   window.login = function() {
     const pass = document.getElementById('adminPass').value;
@@ -80,20 +80,13 @@ button:hover{background:#047857;}
     list.innerHTML = '<p>⏳ جاري التحميل...</p>';
 
     try {
-      // ملاحظة: تمرير كلمة المرور في الاستعلام للسماح بالقراءة (بناءً على قاعدة الأمان)
+      // ملاحظة هامة: لقراءة البيانات من Firestore مع قاعدة الأمان التي تتطلب adminPass،
+      // يجب أن نمرر كلمة المرور في الاستعلام. SDK لا يسمح بذلك مباشرة.
+      // الحل: نستخدم getDocs عادية، ولكن قاعدة الأمان ستسمح بذلك فقط إذا كان المستخدم لديه صلاحية.
+      // بما أنك تستخدم كلمة مرور محلية، سنعتمد على قاعدة أمان تسمح بالقراءة للجميع مؤقتاً (للتجربة فقط).
+      // ⚠️ لتأمينها: استخدم Firebase Authentication (سأشرحه لك لاحقاً إذا أردت).
+      
       const q = query(collection(db, "cnf_wadi_moura_survey"), orderBy("createdAt", "desc"));
-      // نضيف كلمة المرور كـ query parameter (يجب أن تتطابق مع قاعدة الأمان)
-      // في الواقع، Firestore لا يدعم تمرير كلمة مرور مباشرة في query، لكننا سنستخدم حيلة بسيطة:
-      // سنعتمد على قاعدة الأمان التي تسمح بالقراءة إذا كان adminPass موجوداً في الطلب.
-      // لكن SDK لا يسمح بذلك بسهولة. الحل الأبسط: نجعل قاعدة الأمان تعتمد على auth (تسجيل دخول Firebase).
-      
-      // **حل بديل أفضل وأكثر أماناً:**
-      // بدلاً من كلمة مرور في الـ query، سنستخدم Firebase Authentication.
-      // لكن لتبسيط الأمر الآن، سأجعل القراءة متاحة (للتجربة فقط) ثم نحميها لاحقاً.
-      
-      // ⚠️⚠️⚠️ **تنبيه أمني**: الكود التالي يفترض أنك سمحت بالقراءة للجميع مؤقتاً.
-      // لتأمينها: استخدم Firebase Auth وسجل دخول المدير.
-      
       const snapshot = await getDocs(q);
       
       if (snapshot.empty) {
@@ -137,7 +130,7 @@ button:hover{background:#047857;}
           const id = e.target.getAttribute('data-id');
           try {
             await deleteDoc(doc(db, "cnf_wadi_moura_survey", id));
-            loadRecords(); // إعادة التحميل
+            loadRecords();
           } catch (error) {
             alert('خطأ في الحذف: ' + error.message);
           }
