@@ -3,51 +3,139 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>لوحة التحكم - مركز التكوين المهني</title>
+<title>استبيان مركز التكوين المهني - وادي مرة</title>
+
+<!-- ===== صورة المعاينة عند المشاركة ===== -->
+<meta property="og:image" content="https://i.postimg.cc/d3mbQzss/file-00000000d834821095f6c09d94088a6e.png">
+
 <style>
-body{font-family:Tahoma, sans-serif; background:#f1f5f9; padding:20px;}
-.container{max-width:900px; margin:0 auto; background:#fff; padding:20px; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-h1{color:#1e40af; text-align:center;}
-.login-box{text-align:center; padding:40px;}
-input[type="password"]{padding:12px; font-size:18px; border:2px solid #ccc; border-radius:8px; width:300px; margin-bottom:15px;}
-button{padding:12px 30px; font-size:16px; background:#059669; color:#fff; border:none; border-radius:8px; cursor:pointer;}
-button:hover{background:#047857;}
-.record{background:#f8fafc; border-right:4px solid #1e40af; padding:15px; margin-bottom:10px; border-radius:8px;}
-.record .row{display:flex; justify-content:space-between; flex-wrap:wrap; margin-bottom:5px;}
-.record strong{color:#1e40af;}
-.delete-btn{background:#dc2626; color:#fff; border:none; padding:5px 15px; border-radius:5px; cursor:pointer; font-size:14px;}
-.hidden{display:none;}
+*{box-sizing:border-box}
+body{margin:0; background:#f4f7f6; color:#1e293b; font-family:'Segoe UI', Tahoma, sans-serif; line-height:1.8;}
+.top-banner{background:linear-gradient(90deg,#1e40af,#059669,#dc2626); color:#fff; padding:12px 0; overflow:hidden; white-space:nowrap; font-weight:bold; border-bottom:4px solid #facc15;}
+.banner-content{display:inline-block; animation:marquee 20s linear infinite;}
+.banner-content span{padding:0 40px;}
+@keyframes marquee{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+.box{max-width:800px; margin:20px auto; background:#fff; border-radius:20px; padding:30px; box-shadow:0 15px 35px rgba(0,0,0,.08); border-top:8px solid #1e40af;}
+h1{text-align:center; color:#1e40af; font-size:28px; margin:0;}
+.sub{text-align:center; color:#dc2626; font-weight:bold; margin-bottom:25px;}
+
+/* تصميم تحذير الدعوة */
+.urgent-notice {
+  background: #fef2f2; border: 2px dashed #dc2626; color: #991b1b;
+  padding: 15px; border-radius: 10px; text-align: center;
+  font-weight: bold; margin-bottom: 20px; animation: pulse 2s infinite;
+}
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+
+.image-gallery{display:flex; flex-wrap:wrap; gap:15px; justify-content:center; margin-bottom:25px;}
+.image-gallery img{max-width:100%; height:auto; border-radius:12px; border:2px solid #e2e8f0;}
+.intro-text{background:#eff6ff; border-right:6px solid #3b82f6; padding:20px; border-radius:10px; margin-bottom:30px;}
+
+label{display:block; font-weight:bold; color:#1e40af; margin:15px 0 8px;}
+.required-star { color: #dc2626; font-size: 18px; }
+
+input, select, textarea{width:100%; padding:14px; font-size:16px; border:2px solid #e2e8f0; border-radius:12px; background:#f8fafc; font-family:inherit;}
+input:focus, select:focus, textarea:focus{outline:none; border-color:#1e40af;}
+textarea{min-height:100px; resize:vertical;}
+
+.actions{text-align:center; margin-top:25px;}
+button{padding:16px 30px; font-size:18px; font-weight:bold; border:none; border-radius:12px; cursor:pointer; font-family:inherit; width:100%; background:#059669; color:#fff; transition:0.3s;}
+button:hover{background:#047857; transform:scale(1.02);}
+button:disabled{background:#94a3b8; cursor:not-allowed;}
+
+.msg{text-align:center; font-weight:bold; margin-top:15px; min-height:25px; font-size:16px;}
+.saved{color:#059669;}
+.err{color:#dc2626;}
+
+.contact-info{background:#1e293b; color:#fff; border-radius:15px; padding:25px; text-align:center; margin-top:40px;}
+.phone-number{display:inline-block; background:#dc2626; color:#fff; padding:8px 20px; border-radius:50px; font-size:20px; font-weight:bold; text-decoration:none; margin-top:10px;}
+
+.admin-btn-container { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px dashed #cbd5e1; }
+.admin-btn { background: transparent; color: #94a3b8; border: 1px solid #e2e8f0; padding: 8px 15px; font-size: 14px; border-radius: 8px; cursor: pointer; width: auto; }
+.admin-btn:hover { background: #f1f5f9; color: #1e40af; border-color: #1e40af; }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <h1>🔐 لوحة التحكم - سبر الآراء</h1>
-  
-  <!-- شاشة تسجيل الدخول -->
-  <div id="loginSection" class="login-box">
-    <p>أدخل كلمة المرور للوصول إلى المشاركات:</p>
-    <input type="password" id="adminPass" placeholder="كلمة المرور...">
-    <br>
-    <button onclick="login()">دخول</button>
-    <p id="loginMsg" style="color:red;"></p>
+<div class="top-banner">
+  <div class="banner-content">
+    <span>👨‍💻 تطوير: براهيمي يوسف — 0562175048</span>
+    <span>🏫 مركز التكوين المهني - وادي مرة</span>
+    <span>📢 استبيان آراء دورة فيفري 2027</span>
+  </div>
+</div>
+
+<div class="box">
+  <h1>مركز التكوين المهني والتمهين</h1>
+  <p class="sub">وادي مرة — استبيان آراء</p>
+
+  <!-- إلحاح ودعوة للزيارة -->
+  <div class="urgent-notice">
+    ⚠️ تنبيه هام: نرجو من جميع مواطني وادي مرة الزيارة والمشاركة الجدية. <br>
+    المقاعد محدودة، ورأيك يحدد مستقبل التخصصات في المنطقة!
   </div>
 
-  <!-- قسم عرض المشاركات -->
-  <div id="dashboardSection" class="hidden">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-      <h2>📋 المشاركات (<span id="count">0</span>)</h2>
-      <button onclick="loadRecords()" style="background:#1e40af;">🔄 تحديث</button>
+  <div class="image-gallery">
+    <img src="https://i.postimg.cc/qvjpxCHD/1795783978938.jpg" alt="إعلان 1" style="width:100%; max-width:600px;">
+    <img src="https://i.postimg.cc/VLFwzbvv/1795784220448.jpg" alt="إعلان 2" style="width:100%; max-width:350px;">
+  </div>
+
+  <div class="intro-text">
+    <strong>تحسباً لاقتراح عروض دورة فيفري 2027،</strong> تعلن إدارة المركز عن إطلاق عملية <strong>سبر آراء</strong> لاستقبال مقترحاتكم حول التخصصات المهنية التي ترغبون في الاستفادة منها.
+    <br><br>
+    <em>ندعو جميع مواطني وادي مرة للمساهمة بجدية لاقتراح تخصصات تلبي احتياجات المنطقة.</em>
+  </div>
+
+  <form id="surveyForm">
+    <!-- إلزامية الاسم واللقب -->
+    <label>👤 الاسم واللقب <span class="required-star">*</span> (إلزامي - يجب كتابة الاسم الحقيقي كاملاً)</label>
+    <input type="text" id="fullName" placeholder="مثال: محمد بن علي" required>
+
+    <label>📞 رقم الهاتف (اختياري)</label>
+    <input type="tel" id="phone" placeholder="05...">
+
+    <!-- إلزامية اختيار التخصص من القائمة -->
+    <label>🎯 التخصص المهني المطلوب <span class="required-star">*</span> (يجب اختيار تخصص من القائمة)</label>
+    <select id="specialty" required>
+      <option value="" disabled selected>-- اضغط هنا لاختيار التخصص --</option>
+      <option value="إعلام آلي وأمن الحاسوب">إعلام آلي وأمن الحاسوب</option>
+      <option value="الخياطة وتصميم الأزياء">الخياطة وتصميم الأزياء</option>
+      <option value="الطبخ وفنون الطهي">الطبخ وفنون الطهي</option>
+      <option value="الكهرباء المنزلية والصناعية">الكهرباء المنزلية والصناعية</option>
+      <option value="اللحام والتلحيم">اللحام والتلحيم</option>
+      <option value="صيانة السيارات (ميكانيك)">صيانة السيارات (ميكانيك)</option>
+      <option value="النجارة والأثاث">النجارة والأثاث</option>
+      <option value="الزراعة والبيئة">الزراعة والبيئة</option>
+      <option value="المحاسبة وأمانة المخازن">المحاسبة وأمانة المخازن</option>
+      <option value="التبريد والتكييف">التبريد والتكييف</option>
+      <option value="أخرى (يرجى التوجه للمركز لطرحها)">أخرى (يرجى التوجه للمركز لطرحها)</option>
+    </select>
+
+    <label>💡 مقترحات إضافية (اختياري)</label>
+    <textarea id="suggestion" placeholder="اكتب اقتراحاتك..."></textarea>
+
+    <div class="actions">
+      <button type="submit" id="submitBtn">📤 إرسال المشاركة</button>
     </div>
-    <div id="recordsList"></div>
+    <div class="msg" id="formMsg"></div>
+  </form>
+
+  <div class="contact-info">
+    <h3>📞 معلومات الاتصال</h3>
+    <p><strong>براهيمي يوسف</strong> — مطور برامج وتطبيقات</p>
+    <a href="tel:0562175048" class="phone-number">📱 0562175048</a>
+  </div>
+
+  <div class="admin-btn-container">
+    <button class="admin-btn" onclick="goToAdmin()">⚙️ لوحة الإدارة</button>
   </div>
 </div>
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore, collection, getDocs, deleteDoc, doc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-  // ⚠️ ضع نفس إعدادات Firebase هنا
+  // ⚠️ ضع إعدادات Firebase الخاصة بك هنا
   const firebaseConfig = {
     apiKey: "YOUR_API_KEY",
     authDomain: "YOUR_PROJECT.firebaseapp.com",
@@ -60,87 +148,63 @@ button:hover{background:#047857;}
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // ⚠️ ضع نفس كلمة المرور التي وضعتها في Firestore Rules
-  const ADMIN_PASSWORD = "YOUR_SECRET_PASSWORD";
+  const form = document.getElementById('surveyForm');
+  const msg = document.getElementById('formMsg');
+  const btn = document.getElementById('submitBtn');
 
-  window.login = function() {
-    const pass = document.getElementById('adminPass').value;
-    if (pass === ADMIN_PASSWORD) {
-      document.getElementById('loginSection').classList.add('hidden');
-      document.getElementById('dashboardSection').classList.remove('hidden');
-      loadRecords();
-    } else {
-      document.getElementById('loginMsg').textContent = "❌ كلمة المرور غير صحيحة";
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const name = document.getElementById('fullName').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const specialty = document.getElementById('specialty').value;
+    const suggestion = document.getElementById('suggestion').value.trim();
+
+    // التحقق من الاسم (يجب أن يكون حقيقي، كلمتين على الأقل، بدون أرقام)
+    const nameRegex = /^[a-zA-Z\u0600-\u06FF\s]{3,}$/; // حروف عربية أو إنجليزية ومسافات فقط
+    if (name.length < 3 || !nameRegex.test(name) || name.split(' ').length < 2) {
+      showMsg('❌ خطأ: يرجى كتابة الاسم واللقب الحقيقي (كلمتين على الأقل، بدون أرقام أو رموز).', 'err');
+      return;
     }
-  };
 
-  window.loadRecords = async function() {
-    const list = document.getElementById('recordsList');
-    const countSpan = document.getElementById('count');
-    list.innerHTML = '<p>⏳ جاري التحميل...</p>';
+    // التحقق من اختيار التخصص
+    if (!specialty) {
+      showMsg('❌ خطأ: يجب عليك اختيار تخصص من القائمة.', 'err');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = '⏳ جاري الإرسال...';
 
     try {
-      // ملاحظة هامة: لقراءة البيانات من Firestore مع قاعدة الأمان التي تتطلب adminPass،
-      // يجب أن نمرر كلمة المرور في الاستعلام. SDK لا يسمح بذلك مباشرة.
-      // الحل: نستخدم getDocs عادية، ولكن قاعدة الأمان ستسمح بذلك فقط إذا كان المستخدم لديه صلاحية.
-      // بما أنك تستخدم كلمة مرور محلية، سنعتمد على قاعدة أمان تسمح بالقراءة للجميع مؤقتاً (للتجربة فقط).
-      // ⚠️ لتأمينها: استخدم Firebase Authentication (سأشرحه لك لاحقاً إذا أردت).
-      
-      const q = query(collection(db, "cnf_wadi_moura_survey"), orderBy("createdAt", "desc"));
-      const snapshot = await getDocs(q);
-      
-      if (snapshot.empty) {
-        list.innerHTML = '<p style="text-align:center; color:#94a3b8;">لا توجد مشاركات بعد.</p>';
-        countSpan.textContent = '0';
-        return;
-      }
-
-      countSpan.textContent = snapshot.size;
-      list.innerHTML = '';
-
-      snapshot.forEach((docSnap) => {
-        const data = docSnap.data();
-        const date = data.createdAt ? data.createdAt.toDate().toLocaleString('ar-DZ') : 'غير محدد';
-        
-        const card = document.createElement('div');
-        card.className = 'record';
-        card.innerHTML = `
-          <div class="row">
-            <div><strong>👤 الاسم:</strong> ${data.name}</div>
-            <div><strong>📞 الهاتف:</strong> ${data.phone}</div>
-          </div>
-          <div class="row">
-            <div><strong>🎯 التخصص:</strong> <span style="color:#dc2626; font-weight:bold;">${data.specialty}</span></div>
-          </div>
-          <div style="background:#fff; padding:10px; border-radius:5px; margin:5px 0;">
-            <strong>💡 المقترح:</strong> ${data.suggestion}
-          </div>
-          <div class="row" style="align-items:center;">
-            <div style="font-size:12px; color:#64748b;">🕐 ${date}</div>
-            <button class="delete-btn" data-id="${docSnap.id}">🗑️ حذف</button>
-          </div>
-        `;
-        list.appendChild(card);
+      await addDoc(collection(db, "cnf_wadi_moura_survey"), {
+        name: name,
+        phone: phone || 'غير مذكور',
+        specialty: specialty,
+        suggestion: suggestion || 'لا يوجد',
+        createdAt: serverTimestamp()
       });
 
-      // إضافة أحداث الحذف
-      document.querySelectorAll('.delete-btn').forEach(btn => {
-        btn.addEventListener('click', async (e) => {
-          if (!confirm('هل أنت متأكد من حذف هذه المشاركة؟')) return;
-          const id = e.target.getAttribute('data-id');
-          try {
-            await deleteDoc(doc(db, "cnf_wadi_moura_survey", id));
-            loadRecords();
-          } catch (error) {
-            alert('خطأ في الحذف: ' + error.message);
-          }
-        });
-      });
-
+      showMsg('✅ شكراً لك! تم استلام مشاركتك بنجاح. ننتظرك في المركز!', 'saved');
+      form.reset();
     } catch (error) {
       console.error(error);
-      list.innerHTML = '<p style="color:red;">خطأ في جلب البيانات: ' + error.message + '</p>';
+      showMsg('❌ حدث خطأ. يرجى المحاولة لاحقاً.', 'err');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = '📤 إرسال المشاركة';
     }
+  });
+
+  function showMsg(text, className) {
+    msg.textContent = text;
+    msg.className = 'msg ' + className;
+    setTimeout(() => { msg.textContent = ''; }, 5000);
+  }
+
+  // دالة الانتقال إلى لوحة الإدارة
+  window.goToAdmin = function() {
+    window.location.href = 'admin.html'; 
   };
 </script>
 
